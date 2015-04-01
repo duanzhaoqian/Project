@@ -1,0 +1,13 @@
+﻿正在安装程序集“D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\MessageUpdate\bin\Debug\MessageUpdate.exe”。
+受影响的参数是:
+   logtoconsole = 
+   logfile = D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\MessageUpdate\bin\Debug\MessageUpdate.InstallLog
+   assemblypath = D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\MessageUpdate\bin\Debug\MessageUpdate.exe
+正在安装服务 Tx_UpdateMessage...
+已成功安装服务 Tx_UpdateMessage。
+正在日志 Application 中创建 EventLog 源 Tx_UpdateMessage...
+正在提交程序集“D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\MessageUpdate\bin\Debug\MessageUpdate.exe”。
+受影响的参数是:
+   logtoconsole = 
+   logfile = D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\MessageUpdate\bin\Debug\MessageUpdate.InstallLog
+   assemblypath = D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\MessageUpdate\bin\Debug\MessageUpdate.exe

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+	${Student.Name.Substring(0, 3)}
+	${Student.Age}
+	${Student.Say()}
+	#if(${Student.Name}!="AAA")
+	abc
+	#else
+	123
+	#end
+	#if($String.IsNullOrEmpty(${Student.Name}))
+	isnull
+	#else
+	not null
+	#end
+	
+	
+	#if(${Student.Name}.Contains(${Student.Name}))
+	Contains
+	#else
+	Not Contains
+	#end
+	</body>
+</html>

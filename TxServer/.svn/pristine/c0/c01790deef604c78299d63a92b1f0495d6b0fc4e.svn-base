@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A9175B72-2774-4F5C-A609-85CBB79A248A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TXSearch</RootNamespace>
+    <AssemblyName>TXSearch</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\TXLib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\..\TXLib\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Area\jquery-1.4.2.min.js" />
+    <Content Include="Area\test.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Log4net.xml" />
+    <Content Include="LuceneConfigure.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActiveHouse\GetActiveHouseIndex.ashx.cs">
+      <DependentUpon>GetActiveHouseIndex.ashx</DependentUpon>
+    </Compile>
+    <Content Include="App_Code\Constant.cs" />
+    <Content Include="App_Code\ProductAnalyzer.cs" />
+    <Content Include="App_Code\SearchData.cs" />
+    <Compile Include="Advert\GetAdvertIndex.ashx.cs">
+      <DependentUpon>GetAdvertIndex.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\Constant.cs" />
+    <Compile Include="App_Data\ProductAnalyzer.cs" />
+    <Compile Include="Area\GetAreaIndex.ashx.cs">
+      <DependentUpon>GetAreaIndex.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Area\test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Area\test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Company\GetCompanyIndex.ashx.cs">
+      <DependentUpon>GetCompanyIndex.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RentHouse\AddSearchIndexTest.ashx.cs">
+      <DependentUpon>AddSearchIndexTest.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="RentHouse\GetLongHouseIndex.ashx.cs">
+      <DependentUpon>GetLongHouseIndex.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SubWayVillage\GetSubWayVillageIndex.ashx.cs">
+      <DependentUpon>GetSubWayVillageIndex.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Traffic\GetTrafficIndex.ashx.cs">
+      <DependentUpon>GetTrafficIndex.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Village\GetVillageIndex.ashx.cs">
+      <DependentUpon>GetVillageIndex.ashx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RentHouse\GetLongHouseIndex.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RentHouse\AddSearchIndexTest.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Village\GetVillageIndex.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Area\GetAreaIndex.ashx" />
+    <Content Include="ActiveHouse\GetActiveHouseIndex.ashx" />
+    <Content Include="Advert\GetAdvertIndex.ashx" />
+    <None Include="AreaIndex\segments.gen" />
+    <None Include="AreaIndex\segments_2" />
+    <None Include="AreaIndex\_0.cfs" />
+    <Content Include="Company\GetCompanyIndex.ashx" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="LongHouseIndex\segments.gen" />
+    <None Include="LongHouseIndex\segments_a" />
+    <None Include="LongHouseIndex\_0.cfs" />
+    <None Include="LongHouseIndex\_0_1.del" />
+    <None Include="LongHouseIndex\_1.cfs" />
+    <None Include="LongHouseIndex\_1_1.del" />
+    <None Include="LongHouseIndex\_2.cfs" />
+    <None Include="LongHouseIndex\_2_1.del" />
+    <None Include="LongHouseIndex\_3.cfs" />
+    <None Include="LongHouseIndex\_3_1.del" />
+    <None Include="LongHouseIndex\_4.cfs" />
+    <Content Include="Traffic\GetTrafficIndex.ashx" />
+    <Content Include="SubWayVillage\GetSubWayVillageIndex.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TXCommons\TXCommons.csproj">
+      <Project>{A5057049-32E1-495C-919D-C702B60AFB80}</Project>
+      <Name>TXCommons</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2077</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

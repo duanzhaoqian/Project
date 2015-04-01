@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="kyj_UserDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="kyj_UserDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="H_GWUser" EntityType="kyj_UserDBModel.H_GWUser" />
+    <EntitySet Name="H_SUser" EntityType="kyj_UserDBModel.H_SUser" />
+    <EntitySet Name="SystemMessages" EntityType="kyj_UserDBModel.SystemMessage" />
+    <EntitySet Name="U_Account" EntityType="kyj_UserDBModel.U_Account" />
+    <EntitySet Name="U_AccountLog" EntityType="kyj_UserDBModel.U_AccountLog" />
+    <EntitySet Name="U_Recharge" EntityType="kyj_UserDBModel.U_Recharge" />
+    <EntitySet Name="U_WithdrawCash" EntityType="kyj_UserDBModel.U_WithdrawCash" />
+    <EntitySet Name="Users" EntityType="kyj_UserDBModel.User" />
+    <EntitySet Name="UserAddressBooks" EntityType="kyj_UserDBModel.UserAddressBook" />
+    <EntitySet Name="UserBlackMessageLists" EntityType="kyj_UserDBModel.UserBlackMessageList" />
+    <EntitySet Name="UserFavorites" EntityType="kyj_UserDBModel.UserFavorite" />
+    <EntitySet Name="UserFeedbacks" EntityType="kyj_UserDBModel.UserFeedback" />
+    <EntitySet Name="UserInfoCalls" EntityType="kyj_UserDBModel.UserInfoCall" />
+    <EntitySet Name="UserInfoCallDeleteds" EntityType="kyj_UserDBModel.UserInfoCallDeleted" />
+    <EntitySet Name="UserInfoCallMaxes" EntityType="kyj_UserDBModel.UserInfoCallMax" />
+    <EntitySet Name="UserInfoCallTemps" EntityType="kyj_UserDBModel.UserInfoCallTemp" />
+    <EntitySet Name="UserMessages" EntityType="kyj_UserDBModel.UserMessage" />
+  </EntityContainer>
+  <EntityType Name="H_GWUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="BuyerPoint" Type="Int32" Nullable="false" />
+    <Property Name="BuyerGrade" Type="Int32" Nullable="false" />
+    <Property Name="SellerPoint" Type="Int32" Nullable="false" />
+    <Property Name="SellerGrade" Type="Int32" Nullable="false" />
+    <Property Name="InternalLetter" Type="Int32" Nullable="false" />
+    <Property Name="SendEmail" Type="Int32" Nullable="false" />
+    <Property Name="IsCloseShop" Type="Boolean" />
+    <Property Name="IsBlackList" Type="Boolean" />
+    <Property Name="BreadRulesID" Type="Int32" />
+    <Property Name="IDCard" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="IsShop" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="H_SUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CancelOrderNum" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Score" Type="Int32" Nullable="false" />
+    <Property Name="TenantScore" Type="Int32" Nullable="false" />
+    <Property Name="ProvinceID" Type="Int32" />
+    <Property Name="ProvinceName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="DId" Type="Int32" />
+    <Property Name="DName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="BId" Type="Int32" />
+    <Property Name="BName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="CompanyName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="SystemMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminId" Type="Int32" Nullable="false" />
+    <Property Name="ReceiveUserId" Type="Int32" Nullable="false" />
+    <Property Name="Platform" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Title" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="Content" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="IsRead" Type="Boolean" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+    <Property Name="IsDel" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="U_Account">
+    <Key>
+      <PropertyRef Name="AId" />
+    </Key>
+    <Property Name="AId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="UserType" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="UpdateTime" Type="DateTime" Nullable="false" />
+    <Property Name="BackPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="DrawMoneyTimes" Type="Int32" Nullable="false" />
+    <Property Name="RechargeTotalPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="InvesteTotalPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="InvesteIncomeTotalPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="WithdrawCashTotalPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="U_AccountLog">
+    <Key>
+      <PropertyRef Name="ALId" />
+    </Key>
+    <Property Name="ALId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="UserType" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="Byte" Nullable="false" />
+    <Property Name="LogType" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Desc" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Createtime" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="U_Recharge">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="UserType" Type="Int32" Nullable="false" />
+    <Property Name="RechargeNo" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+    <Property Name="UpdateTime" Type="DateTime" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Explain" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="U_WithdrawCash">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="UserType" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Mobile" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+    <Property Name="UpdateTime" Type="DateTime" Nullable="false" />
+    <Property Name="AdminId" Type="Int32" Nullable="false" />
+    <Property Name="AdminName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="ReceiveType" Type="Int32" Nullable="false" />
+    <Property Name="RealName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="ALiPayAccount" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="CityId" Type="Int32" />
+    <Property Name="CityName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ProvinceID" Type="Int32" />
+    <Property Name="ProvinceName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="BankName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="PubBankName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="BankAccount" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDNO" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="LoginName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Pwd" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="NikeName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="RealName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+    <Property Name="UpdateTime" Type="DateTime" Nullable="false" />
+    <Property Name="IsDel" Type="Boolean" Nullable="false" />
+    <Property Name="Guid" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="Sex" Type="Byte" Nullable="false" />
+    <Property Name="Mobile" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="AllState" Type="Byte" Nullable="false" />
+    <Property Name="AdminId" Type="Int32" />
+    <Property Name="AdminName" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="LastLoginTime" Type="DateTime" />
+    <Property Name="SpareTelephone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Telephone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="FcUserType" Type="Int32" Nullable="false" />
+    <Property Name="RepastUserType" Type="Int32" Nullable="false" />
+    <Property Name="EshopUserType" Type="Int32" Nullable="false" />
+    <Property Name="CityId" Type="Int32" />
+    <Property Name="CityName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="InfoCall" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Platform" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="QQ" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UserAddressBook">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+    <Property Name="Platform" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="ProvinceId" Type="Int32" />
+    <Property Name="ProvinceName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CityId" Type="Int32" />
+    <Property Name="CityName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="DistrictId" Type="Int32" />
+    <Property Name="DistrictName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="PostCode" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
+    <Property Name="ReceiverName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ReceiverMobile" Type="String" MaxLength="11" Unicode="false" FixedLength="false" />
+    <Property Name="ReceiverPhone" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+    <Property Name="IsDel" Type="Boolean" Nullable="false" />
+    <Property Name="Sex" Type="Int32" />
+  </EntityType>
+  <EntityType Name="UserBlackMessageList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="BlackUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserFavorite">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Platform" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="BusinessId" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="BusinessName" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="PicUrl" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+    <Property Name="IsDel" Type="Boolean" Nullable="false" />
+    <Property Name="Expand" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UserFeedback">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="Contact" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+    <Property Name="IsDel" Type="Boolean" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="UserInfoCall">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoginName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ShortNum" Type="Int32" Nullable="false" />
+    <Property Name="EnterNo" Type="Int32" Nullable="false" />
+    <Property Name="CallInId" Type="Int32" Nullable="false" />
+    <Property Name="WorkerGroupId" Type="Int32" Nullable="false" />
+    <Property Name="WorkerId" Type="Int32" Nullable="false" />
+    <Property Name="EnterpriseId" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="WEBPWD" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserInfoCallDeleted">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShortNum" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserInfoCallMax">
+    <Key>
+      <PropertyRef Name="MaxShortNum" />
+    </Key>
+    <Property Name="MaxShortNum" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserInfoCallTemp">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoginName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="InfoCall" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UserMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SendUserId" Type="Int32" Nullable="false" />
+    <Property Name="ReceiveUserId" Type="Int32" Nullable="false" />
+    <Property Name="Platform" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Title" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="Content" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+    <Property Name="IsRead" Type="Boolean" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+    <Property Name="IsDel" Type="Boolean" Nullable="false" />
+    <Property Name="MessageType" Type="Int32" Nullable="false" />
+    <Property Name="MessageSource" Type="Int32" Nullable="false" />
+    <Property Name="SourceCount" Type="Int32" />
+    <Property Name="Expand1" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="Expand2" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="Expand3" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="Expand4" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="Expand5" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+  </EntityType>
+</Schema>

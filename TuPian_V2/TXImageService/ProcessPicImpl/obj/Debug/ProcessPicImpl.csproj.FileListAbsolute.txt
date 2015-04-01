@@ -1,0 +1,9 @@
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\ProcessPicImpl\bin\Debug\ProcessPicImpl.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\ProcessPicImpl\bin\Debug\ProcessPicImpl.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\ProcessPicImpl\bin\Debug\IService.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\ProcessPicImpl\bin\Debug\Model.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\ProcessPicImpl\bin\Debug\IService.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\ProcessPicImpl\bin\Debug\Model.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\ProcessPicImpl\obj\Debug\ProcessPicImpl.csprojResolveAssemblyReference.cache
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\ProcessPicImpl\obj\Debug\ProcessPicImpl.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\ProcessPicImpl\obj\Debug\ProcessPicImpl.pdb

@@ -1,0 +1,7 @@
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\IService\bin\Debug\IService.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\IService\bin\Debug\IService.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\IService\bin\Debug\Model.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\IService\bin\Debug\Model.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\IService\obj\Debug\IService.csprojResolveAssemblyReference.cache
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\IService\obj\Debug\IService.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\IService\obj\Debug\IService.pdb

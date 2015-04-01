@@ -1,0 +1,6 @@
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ListenRedis\bin\Debug\ListenRedis.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ListenRedis\bin\Debug\ListenRedis.pdb
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ListenRedis\obj\Debug\ListenRedis.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ListenRedis\obj\Debug\ListenRedis.pdb
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ListenRedis\bin\Debug\KYJ.ServiceStack.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ListenRedis\bin\Debug\Newtonsoft.Json.dll

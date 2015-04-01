@@ -1,0 +1,672 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="kyj_WebDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="kyj_WebDBModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="kyj_WebDBModel.Store.Admin" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AdminLog" EntityType="kyj_WebDBModel.Store.AdminLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Agent" EntityType="kyj_WebDBModel.Store.Agent" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Area" EntityType="kyj_WebDBModel.Store.Area" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Bank" EntityType="kyj_WebDBModel.Store.Bank" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Business" EntityType="kyj_WebDBModel.Store.Business" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CityIP" EntityType="kyj_WebDBModel.Store.CityIP" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="District" EntityType="kyj_WebDBModel.Store.District" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Hospital" EntityType="kyj_WebDBModel.Store.Hospital" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HotelOther" EntityType="kyj_WebDBModel.Store.HotelOther" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HotelSubWay" EntityType="kyj_WebDBModel.Store.HotelSubWay" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Model" EntityType="kyj_WebDBModel.Store.Model" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PostOffice" EntityType="kyj_WebDBModel.Store.PostOffice" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Role" EntityType="kyj_WebDBModel.Store.Role" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Role_backup" EntityType="kyj_WebDBModel.Store.Role_backup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Salers" EntityType="kyj_WebDBModel.Store.Salers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Scenic" EntityType="kyj_WebDBModel.Store.Scenic" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="School" EntityType="kyj_WebDBModel.Store.School" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SchoolLevel" EntityType="kyj_WebDBModel.Store.SchoolLevel" store:Type="Tables" store:Schema="dbo" store:Name="SchoolLevel">
+      <DefiningQuery>SELECT 
+      [SchoolLevel].[SchoolType] AS [SchoolType], 
+      [SchoolLevel].[Level] AS [Level], 
+      [SchoolLevel].[Name] AS [Name]
+      FROM [dbo].[SchoolLevel] AS [SchoolLevel]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SchoolNature" EntityType="kyj_WebDBModel.Store.SchoolNature" store:Type="Tables" store:Schema="dbo" store:Name="SchoolNature">
+      <DefiningQuery>SELECT 
+      [SchoolNature].[SchoolType] AS [SchoolType], 
+      [SchoolNature].[Nature] AS [Nature], 
+      [SchoolNature].[Name] AS [Name]
+      FROM [dbo].[SchoolNature] AS [SchoolNature]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SchoolType" EntityType="kyj_WebDBModel.Store.SchoolType" store:Type="Tables" store:Schema="dbo" store:Name="SchoolType">
+      <DefiningQuery>SELECT 
+      [SchoolType].[SchoolType] AS [SchoolType], 
+      [SchoolType].[Name] AS [Name]
+      FROM [dbo].[SchoolType] AS [SchoolType]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Shop" EntityType="kyj_WebDBModel.Store.Shop" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StationAndAirport" EntityType="kyj_WebDBModel.Store.StationAndAirport" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SubWay" EntityType="kyj_WebDBModel.Store.SubWay" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="kyj_WebDBModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Traffic" EntityType="kyj_WebDBModel.Store.Traffic" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="village" EntityType="kyj_WebDBModel.Store.village" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LoginName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Pwd" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="Rate" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreatTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="Status" Type="int" />
+    <Property Name="OperAdminID" Type="int" />
+    <Property Name="OperAdminUser" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastLoginTime" Type="datetime" />
+    <Property Name="CityId" Type="int" />
+  </EntityType>
+  <EntityType Name="AdminLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="tinyint" Nullable="false" />
+    <Property Name="Desc" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+    <Property Name="IpAddress" Type="nvarchar" Nullable="false" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Agent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LoginName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Pwd" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="NikeName" Type="nvarchar" MaxLength="20" />
+    <Property Name="RealName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="Guid" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="Sex" Type="tinyint" Nullable="false" />
+    <Property Name="AdminId" Type="int" />
+    <Property Name="AdminName" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastLoginTime" Type="datetime" />
+    <Property Name="AllState" Type="tinyint" Nullable="false" />
+    <Property Name="Mobile" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="SpareTelephone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="CityName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="IdCard" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="ProvinceID" Type="int" Nullable="false" />
+    <Property Name="ProvinceName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="DId" Type="int" Nullable="false" />
+    <Property Name="DName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="BId" Type="int" Nullable="false" />
+    <Property Name="BName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="ShopName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+    <Property Name="Lng" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Lat" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+    <Property Name="TelePhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsOpenHOTELHigh" Type="bit" Nullable="false" />
+    <Property Name="IsOpenDZLow" Type="bit" Nullable="false" />
+    <Property Name="IsOpenGWHigh" Type="bit" Nullable="false" />
+    <Property Name="IsOpenGWLow" Type="bit" Nullable="false" />
+    <Property Name="IsOpenMSHigh" Type="bit" Nullable="false" />
+    <Property Name="IsOpenMSLow" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bank">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="DId" Type="int" Nullable="false" />
+    <Property Name="BId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Business">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+    <Property Name="Lng" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Lat" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+    <Property Name="IsRecommend" Type="bit" Nullable="false" />
+    <Property Name="cityid" Type="int" />
+  </EntityType>
+  <EntityType Name="CityIP">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IP_Start" Type="bigint" Nullable="false" />
+    <Property Name="IP_End" Type="bigint" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+    <Property Name="Lng" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Lat" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Hospital">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PId" Type="int" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="DId" Type="int" Nullable="false" />
+    <Property Name="BId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="ShotName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="updatetime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="Guid" Type="nvarchar" MaxLength="200" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+    <Property Name="Nature" Type="int" Nullable="false" />
+    <Property Name="Level" Type="int" Nullable="false" />
+    <Property Name="Characteristic" Type="nvarchar" MaxLength="200" />
+    <Property Name="HospitalType" Type="int" Nullable="false" />
+    <Property Name="Tel" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="IsRecommend" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HotelOther">
+    <Key>
+      <PropertyRef Name="HId" />
+    </Key>
+    <Property Name="HId" Type="int" Nullable="false" />
+    <Property Name="Introduce" Type="text" />
+    <Property Name="NearInstallation" Type="nvarchar" MaxLength="500" />
+    <Property Name="Traffic" Type="nvarchar" MaxLength="500" />
+    <Property Name="BBSUrl" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="HotelSubWay">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TId" Type="int" Nullable="false" />
+    <Property Name="HId" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Model">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="Version" Type="int" />
+  </EntityType>
+  <EntityType Name="PostOffice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PId" Type="int" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="DId" Type="int" Nullable="false" />
+    <Property Name="BId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="RATE" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="AdminId" Type="int" />
+    <Property Name="AdminName" Type="nvarchar" MaxLength="20" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role_backup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="RATE" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="AdminId" Type="int" />
+    <Property Name="AdminName" Type="nvarchar" MaxLength="20" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Salers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="LoginName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Pwd" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Mobil" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="LastLoginTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Scenic">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PId" Type="int" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="DId" Type="int" Nullable="false" />
+    <Property Name="BId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="ShotName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="updatetime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="Guid" Type="nvarchar" MaxLength="200" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+    <Property Name="Nature" Type="int" Nullable="false" />
+    <Property Name="Level" Type="int" Nullable="false" />
+    <Property Name="Characteristic" Type="nvarchar" MaxLength="200" />
+    <Property Name="ScenicType" Type="int" Nullable="false" />
+    <Property Name="Tel" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="IsRecommend" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="School">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PId" Type="int" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="DId" Type="int" Nullable="false" />
+    <Property Name="BId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="ShotName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="updatetime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="Guid" Type="nvarchar" MaxLength="200" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+    <Property Name="Nature" Type="int" Nullable="false" />
+    <Property Name="Level" Type="int" Nullable="false" />
+    <Property Name="Characteristic" Type="nvarchar" MaxLength="200" />
+    <Property Name="SchoolType" Type="int" Nullable="false" />
+    <Property Name="Tel" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="IsRecommend" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+      警告 6002: 表/视图“kyj_WebDB.dbo.SchoolLevel”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+  <EntityType Name="SchoolLevel">
+    <Key>
+      <PropertyRef Name="SchoolType" />
+      <PropertyRef Name="Level" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="SchoolType" Type="int" Nullable="false" />
+    <Property Name="Level" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
+      警告 6002: 表/视图“kyj_WebDB.dbo.SchoolNature”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+  <EntityType Name="SchoolNature">
+    <Key>
+      <PropertyRef Name="SchoolType" />
+      <PropertyRef Name="Nature" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="SchoolType" Type="int" Nullable="false" />
+    <Property Name="Nature" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
+      警告 6002: 表/视图“kyj_WebDB.dbo.SchoolType”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+  <EntityType Name="SchoolType">
+    <Key>
+      <PropertyRef Name="SchoolType" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="SchoolType" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Shop">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PId" Type="int" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="DId" Type="int" Nullable="false" />
+    <Property Name="BId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StationAndAirport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PId" Type="int" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="DId" Type="int" Nullable="false" />
+    <Property Name="BId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="ShotName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="updatetime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="Guid" Type="nvarchar" MaxLength="200" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+    <Property Name="Nature" Type="int" Nullable="false" />
+    <Property Name="Level" Type="int" Nullable="false" />
+    <Property Name="Characteristic" Type="nvarchar" MaxLength="200" />
+    <Property Name="StationAndAirportType" Type="int" Nullable="false" />
+    <Property Name="Tel" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="IsRecommend" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubWay">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TId" Type="int" Nullable="false" />
+    <Property Name="VId" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Traffic">
+    <Key>
+      <PropertyRef Name="TId" />
+    </Key>
+    <Property Name="TId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+    <Property Name="Sort" Type="int" />
+  </EntityType>
+  <EntityType Name="village">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ProvinceId" Type="int" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="DId" Type="int" Nullable="false" />
+    <Property Name="BId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="Guid" Type="nvarchar" MaxLength="50" />
+    <Property Name="AdminId" Type="int" />
+    <Property Name="AdminName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsUsed" Type="bit" />
+    <Property Name="Lat" Type="nvarchar" MaxLength="50" />
+    <Property Name="Lng" Type="nvarchar" MaxLength="50" />
+    <Property Name="ManagedType" Type="nvarchar" MaxLength="200" />
+    <Property Name="Developers" Type="nvarchar" MaxLength="500" />
+    <Property Name="CompletedDate" Type="nvarchar" MaxLength="250" />
+    <Property Name="ContainRate" Type="nvarchar" MaxLength="500" />
+    <Property Name="GreenRate" Type="nvarchar" MaxLength="280" />
+    <Property Name="ManageCost" Type="nvarchar" MaxLength="280" />
+    <Property Name="ManagedName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Area" Type="nvarchar" MaxLength="250" />
+    <Property Name="FamilyNum" Type="nvarchar" MaxLength="260" />
+    <Property Name="Stall" Type="nvarchar" MaxLength="500" />
+    <Property Name="NearInstallation" Type="nvarchar" MaxLength="500" />
+    <Property Name="VillageInstallation" Type="nvarchar" MaxLength="500" />
+    <Property Name="Introduce" Type="text" />
+    <Property Name="Bus" Type="nvarchar" MaxLength="500" />
+    <Property Name="Shop" Type="nvarchar(max)" />
+    <Property Name="Hospital" Type="nvarchar" MaxLength="500" />
+    <Property Name="Bank" Type="nvarchar" MaxLength="500" />
+    <Property Name="Project" Type="nvarchar" MaxLength="500" />
+    <Property Name="BuildeType" Type="nvarchar" MaxLength="500" />
+    <Property Name="LinkPosition" Type="nvarchar" MaxLength="500" />
+    <Property Name="AddInfo" Type="nvarchar" MaxLength="500" />
+    <Property Name="FloorSpace" Type="nvarchar" MaxLength="500" />
+    <Property Name="CurrentNum" Type="nvarchar" MaxLength="500" />
+    <Property Name="Metro" Type="nvarchar" MaxLength="500" />
+    <Property Name="Kindergarten" Type="nvarchar" MaxLength="500" />
+    <Property Name="MidAndPriSchool" Type="nvarchar" MaxLength="500" />
+    <Property Name="College" Type="nvarchar" MaxLength="500" />
+    <Property Name="PostOffice" Type="nvarchar" MaxLength="500" />
+    <Property Name="pageUrl" Type="nvarchar" MaxLength="500" />
+    <Property Name="MapUrl" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_S_Area_json" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_S_Page" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tblName" Type="varchar" Mode="In" />
+    <Parameter Name="fldName" Type="varchar" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="PageIndex" Type="int" Mode="In" />
+    <Parameter Name="IsCount" Type="bit" Mode="In" />
+    <Parameter Name="OrderType" Type="bit" Mode="In" />
+    <Parameter Name="strWhere" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_S_Village_ADD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProvinceId" Type="int" Mode="In" />
+    <Parameter Name="CityId" Type="int" Mode="In" />
+    <Parameter Name="DId" Type="int" Mode="In" />
+    <Parameter Name="BId" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="CreateTime" Type="datetime" Mode="In" />
+    <Parameter Name="UpdateTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsDel" Type="bit" Mode="In" />
+    <Parameter Name="Guid" Type="nvarchar" Mode="In" />
+    <Parameter Name="AdminId" Type="int" Mode="In" />
+    <Parameter Name="IsUsed" Type="bit" Mode="In" />
+    <Parameter Name="OtherPlat" Type="nvarchar" Mode="In" />
+    <Parameter Name="Lat" Type="nvarchar" Mode="In" />
+    <Parameter Name="Lng" Type="nvarchar" Mode="In" />
+    <Parameter Name="schoolsId" Type="nvarchar" Mode="In" />
+    <Parameter Name="ScenicsId" Type="nvarchar" Mode="In" />
+    <Parameter Name="HospitalsId" Type="nvarchar" Mode="In" />
+    <Parameter Name="StationAndAirportsId" Type="nvarchar" Mode="In" />
+    <Parameter Name="ManagedType" Type="nvarchar" Mode="In" />
+    <Parameter Name="Stall" Type="bit" Mode="In" />
+    <Parameter Name="ContainRate" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Developers" Type="nvarchar" Mode="In" />
+    <Parameter Name="GreenRate" Type="nvarchar" Mode="In" />
+    <Parameter Name="ManagedName" Type="nvarchar" Mode="In" />
+    <Parameter Name="NearInstallation" Type="nvarchar" Mode="In" />
+    <Parameter Name="Bus" Type="nvarchar" Mode="In" />
+    <Parameter Name="VillageInstallation" Type="nvarchar" Mode="In" />
+    <Parameter Name="Coord" Type="nvarchar" Mode="In" />
+    <Parameter Name="BBSUrl" Type="nvarchar" Mode="In" />
+    <Parameter Name="BuildYear" Type="int" Mode="In" />
+    <Parameter Name="TrafficIds" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="proc_S_Village_Page" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PageIndex" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="CityId" Type="int" Mode="In" />
+    <Parameter Name="DistrictId" Type="int" Mode="In" />
+    <Parameter Name="BussinesId" Type="int" Mode="In" />
+    <Parameter Name="ManagedType" Type="varchar" Mode="In" />
+    <Parameter Name="VillageName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_S_Village_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VId" Type="int" Mode="In" />
+    <Parameter Name="ProvinceId" Type="int" Mode="In" />
+    <Parameter Name="CityId" Type="int" Mode="In" />
+    <Parameter Name="DId" Type="int" Mode="In" />
+    <Parameter Name="BId" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="UpdateTime" Type="datetime" Mode="In" />
+    <Parameter Name="Lat" Type="nvarchar" Mode="In" />
+    <Parameter Name="Lng" Type="nvarchar" Mode="In" />
+    <Parameter Name="SchoolsId" Type="nvarchar" Mode="In" />
+    <Parameter Name="ScenicsId" Type="nvarchar" Mode="In" />
+    <Parameter Name="HospitalsId" Type="nvarchar" Mode="In" />
+    <Parameter Name="StationAndAirportsId" Type="nvarchar" Mode="In" />
+    <Parameter Name="Introduce" Type="text" Mode="In" />
+    <Parameter Name="ManagedType" Type="nvarchar" Mode="In" />
+    <Parameter Name="Stall" Type="bit" Mode="In" />
+    <Parameter Name="ContainRate" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Developers" Type="nvarchar" Mode="In" />
+    <Parameter Name="GreenRate" Type="nvarchar" Mode="In" />
+    <Parameter Name="ManagedName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ManageCost" Type="nvarchar" Mode="In" />
+    <Parameter Name="NearInstallation" Type="nvarchar" Mode="In" />
+    <Parameter Name="Bus" Type="nvarchar" Mode="In" />
+    <Parameter Name="Coord" Type="nvarchar" Mode="In" />
+    <Parameter Name="BBSUrl" Type="nvarchar" Mode="In" />
+    <Parameter Name="BuildYear" Type="int" Mode="In" />
+    <Parameter Name="TrafficIds" Type="nvarchar" Mode="In" />
+    <Parameter Name="AdminId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <!--生成过程中发现错误:
+      警告 6013: 表/视图“kyj_WebDB.dbo.ErrorTable”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+      
+      <EntityType Name="ErrorTable">
+        <Property Name="pName" Type="varchar" MaxLength="500" />
+      </EntityType>
+      生成过程中发现错误:
+      警告 6013: 表/视图“kyj_WebDB.dbo.picture”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+      
+      <EntityType Name="picture">
+        <Property Name="id" Type="varchar" MaxLength="500" />
+        <Property Name="village_id" Type="varchar" MaxLength="500" />
+        <Property Name="picType" Type="varchar" MaxLength="45" />
+        <Property Name="localurl" Type="varchar" MaxLength="500" />
+        <Property Name="name" Type="varchar" MaxLength="500" />
+        <Property Name="createTime" Type="datetime" />
+        <Property Name="status" Type="int" />
+        <Property Name="updateTime" Type="datetime" />
+        <Property Name="user" Type="varchar" MaxLength="45" />
+        <Property Name="city" Type="varchar" MaxLength="45" />
+      </EntityType>
+      生成过程中发现错误:
+      警告 6013: 表/视图“kyj_WebDB.dbo.VillagePicture”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+      
+      <EntityType Name="VillagePicture">
+        <Property Name="VillageId" Type="int" />
+        <Property Name="PType" Type="int" />
+        <Property Name="Guid" Type="varchar" MaxLength="50" />
+        <Property Name="VillageName" Type="varchar" MaxLength="50" />
+        <Property Name="PageUrl" Type="varchar" MaxLength="250" />
+        <Property Name="LocalPath" Type="varchar" MaxLength="250" />
+        <Property Name="IsDel" Type="bit" />
+        <Property Name="PName" Type="varchar" MaxLength="50" />
+        <Property Name="IsImage" Type="bit" />
+      </EntityType>-->
+</Schema>

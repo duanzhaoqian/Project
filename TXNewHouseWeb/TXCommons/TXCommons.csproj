@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A5057049-32E1-495C-919D-C702B60AFB80}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TXCommons</RootNamespace>
+    <AssemblyName>TXCommons</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Apache.NMS">
+      <HintPath>..\dll\Apache.NMS.dll</HintPath>
+    </Reference>
+    <Reference Include="Apache.NMS.ActiveMQ">
+      <HintPath>..\dll\Apache.NMS.ActiveMQ.dll</HintPath>
+    </Reference>
+    <Reference Include="KYJ.ServiceStack">
+      <HintPath>..\dll\KYJ.ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="Log4netService">
+      <HintPath>..\dll\Log4netService.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\dll\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="MQ">
+      <HintPath>..\dll\MQ.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\dll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis">
+      <HintPath>..\dll\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admins\AdminComs.cs" />
+    <Compile Include="Admins\AdminTypes.cs" />
+    <Compile Include="AlipayTools\AlipayConfig.cs" />
+    <Compile Include="AlipayTools\AlipayCore.cs" />
+    <Compile Include="AlipayTools\AlipayNotify.cs" />
+    <Compile Include="AlipayTools\AlipaySubmit.cs" />
+    <Compile Include="AlipayTools\MD5.cs" />
+    <Compile Include="ComObjOrXml.cs" />
+    <Compile Include="DataToEntity\PremisesData.cs" />
+    <Compile Include="DataToEntity\TableToEntity.cs" />
+    <Compile Include="ExportExcel.cs" />
+    <Compile Include="FilterHelper.cs" />
+    <Compile Include="ForKuaiYouJiaCookie\BaseRC4.cs" />
+    <Compile Include="ForKuaiYouJiaCookie\CookieHelper.cs" />
+    <Compile Include="ForKuaiYouJiaCookie\RC4.cs" />
+    <Compile Include="GetConfig.cs" />
+    <Compile Include="GetSpell.cs" />
+    <Compile Include="Han2Ping.cs" />
+    <Compile Include="Index\IndexConditionInfo.cs" />
+    <Compile Include="Index\IndexHouse.cs" />
+    <Compile Include="Index\IndexPremises.cs" />
+    <Compile Include="Index\IndexPremisesConditionInfo.cs" />
+    <Compile Include="Index\IndexPremisesPic.cs" />
+    <Compile Include="Index\IndexRanking.cs" />
+    <Compile Include="Index\IndexRankingConditionInfo.cs" />
+    <Compile Include="Index\IndexRecList.cs" />
+    <Compile Include="Index\IndexRoom.cs" />
+    <Compile Include="Index\IndexRoomConditionInfo.cs" />
+    <Compile Include="Index\IndexVillage.cs" />
+    <Compile Include="Injection\MobileCode.cs" />
+    <Compile Include="Injection\VerificationCode.cs" />
+    <Compile Include="LuceneSearch\SearchNHouseInfo.cs" />
+    <Compile Include="LuceneSearch\SearchNHouseResultInfo.cs" />
+    <Compile Include="MsgQueue\MQHelp.cs" />
+    <Compile Include="MsgQueue\SendMessage.cs" />
+    <Compile Include="NewHouseWeb\ActivitiesType.cs" />
+    <Compile Include="NewHouseWeb\AlbumType.cs" />
+    <Compile Include="NewHouseWeb\BuildingType.cs" />
+    <Compile Include="NewHouseWeb\HouseType.cs" />
+    <Compile Include="NewHouseWeb\PremisesType.cs" />
+    <Compile Include="NHUserAccount.cs" />
+    <Compile Include="NHWebFavorite.cs" />
+    <Compile Include="NHWebUrl.cs" />
+    <Compile Include="PictureModular\DocumentInfo.cs" />
+    <Compile Include="PictureModular\GetPicture.cs" />
+    <Compile Include="PictureModular\KeyManager.cs" />
+    <Compile Include="PictureModular\PicLog.cs" />
+    <Compile Include="PictureModular\PremisesPictureInfo.cs" />
+    <Compile Include="PictureModular\Redis.cs" />
+    <Compile Include="PictureModular\RedisLua.cs" />
+    <Compile Include="PictureModular\Thumbnail.cs" />
+    <Compile Include="PictureModular\Tool.cs" />
+    <Compile Include="PictureModular\UploadHelper.cs" />
+    <Compile Include="PictureModular\UploadPicture.cs" />
+    <Compile Include="PictureModular\UploadThumbnail.cs" />
+    <Compile Include="PictureModular\UserPictureInfo.cs" />
+    <Compile Include="PictureModular\VillagePictureInfo.cs" />
+    <Compile Include="PinyinHelper.cs" />
+    <Compile Include="DBUtility\SQLHelper.cs" />
+    <Compile Include="DESEncrypt.cs" />
+    <Compile Include="Email.cs" />
+    <Compile Include="MailComm.cs" />
+    <Compile Include="MsgQueue\Sender.cs" />
+    <Compile Include="PremisesType.cs" />
+    <Compile Include="Redis.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="PubConstant.cs" />
+    <Compile Include="SEO\SeoCommon.cs" />
+    <Compile Include="SMSTool.cs" />
+    <Compile Include="ToJson.cs" />
+    <Compile Include="Util.cs" />
+    <Compile Include="Web References\bd.cjkjb.webservice\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\com.w_99bill.sandbox\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\user.cjkjb.webservice\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="KeyList.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://userwebservice.cjkjb.com/OperaUser.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\user.cjkjb.webservice\</RelPath>
+      <UpdateFromURL>http://userwebservice.cjkjb.com/OperaUser.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>TXCommons_user_cjkjb_webservice_OperaUserService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://webservice.cjkjb.com/BaseDataWebService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\bd.cjkjb.webservice\</RelPath>
+      <UpdateFromURL>http://webservice.cjkjb.com/BaseDataWebService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>TXCommons_bd_cjkjb_webservice_BaseDataWebService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://www.99bill.com/webapp/services/BatchPayWS%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\com.w_99bill.sandbox\</RelPath>
+      <UpdateFromURL>https://www.99bill.com/webapp/services/BatchPayWS%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>TXCommons_com_w_99bill_sandbox_BatchPayService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="app.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\Agent.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\Area.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\Bank.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\BaseDataWebService.wsdl" />
+    <None Include="Web References\bd.cjkjb.webservice\Business.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\City.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\CityIP.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\Coordinate.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\District.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\Hospital.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\HotModel.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\PostOffice.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\Scenic.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\School.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\SchoolLevel.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\SchoolNature.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\SchoolType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\Shop.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\StationAndAirport.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\Traffic.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\TrafficVillage.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\Village.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\bd.cjkjb.webservice\VillagePage.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\com.w_99bill.sandbox\BankResponseBean.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\com.w_99bill.sandbox\BatchPayWS.wsdl" />
+    <None Include="Web References\com.w_99bill.sandbox\PostResponseBean.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\com.w_99bill.sandbox\QueryResponseBean.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\com.w_99bill.sandbox\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\com.w_99bill.sandbox\SimpleResponseBean.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\user.cjkjb.webservice\AccountLog.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\user.cjkjb.webservice\ARentContractInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\user.cjkjb.webservice\BlackUserPage.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\user.cjkjb.webservice\OperaUser.wsdl" />
+    <None Include="Web References\user.cjkjb.webservice\RechargeInfoPage.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\user.cjkjb.webservice\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\user.cjkjb.webservice\SystemMessagePage.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\user.cjkjb.webservice\UKBLogInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\user.cjkjb.webservice\UKBLogPage.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\user.cjkjb.webservice\UserAccountInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\user.cjkjb.webservice\UserAddress.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\user.cjkjb.webservice\UserAddressPage.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\user.cjkjb.webservice\UserFavoritePage.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\user.cjkjb.webservice\UserInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\user.cjkjb.webservice\UserInfoCallTemp.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\user.cjkjb.webservice\UserMessageInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\user.cjkjb.webservice\UserMessagePage.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\user.cjkjb.webservice\UserPictureInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\user.cjkjb.webservice\WithdrawalInfoPage.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\user.cjkjb.webservice\OperaUser.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\bd.cjkjb.webservice\BaseDataWebService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="WebClient\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

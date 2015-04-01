@@ -1,0 +1,5 @@
+D:\Visual Studio 2010\Projects\画图\DrawingPictureHelp\bin\Debug\DrawingPictureHelp.dll
+D:\Visual Studio 2010\Projects\画图\DrawingPictureHelp\bin\Debug\DrawingPictureHelp.pdb
+D:\Visual Studio 2010\Projects\画图\DrawingPictureHelp\obj\Debug\DrawingPictureHelp.dll
+D:\Visual Studio 2010\Projects\画图\DrawingPictureHelp\obj\Debug\DrawingPictureHelp.pdb
+D:\Visual Studio 2010\Projects\画图\DrawingPictureHelp\obj\Debug\DrawingPictureHelp.csprojResolveAssemblyReference.cache

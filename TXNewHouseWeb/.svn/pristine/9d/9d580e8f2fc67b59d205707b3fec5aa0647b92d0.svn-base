@@ -1,0 +1,15 @@
+﻿<Redis IMGPATH_BASE="e:\yfxs\PremisesImg\" IMGWEB_BASE="http://premisesimg.yfxs.cn/"  USER_IMGPATH_BASE="e:\yfxs\PremisesImg\user\" USER_IMGWEB_BASE="http://premisesimg.yfxs.cn/user/" DOCUMENT_BASE="e:\yfxs\document\"  DOCUMENT_WEB_BASE="http://premisesimg.yfxs.cn/document/"  VILLAGE_BASE="e:\yfxs\village\"  VILLAGE_WEB_BASE="http://premisesimg.yfxs.cn/village/" 
+HouseImage01="http://redis.cjkjb.com:8080/lua0"
+HouseImage02="http://redis.cjkjb.com:8080/lua0"
+       
+UserHeadImage01="http://redis.cjkjb.com:8080/lua0"
+UserHeadImage02="http://redis.cjkjb.com:8080/lua0"
+       
+BidPrice01="http://redis.cjkjb.com:8080/lua0"
+
+ViewCount01="http://redis.cjkjb.com:8080/lua0"
+RedisServerDefault="http://redis.cjkjb.com:8080/lua0"
+        
+NewHouse01="http://redis.cjkjb.com:8080/lua0"
+KuaiYouDai01="http://redis.cjkjb.com:8080/lua0"
+/>

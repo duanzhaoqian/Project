@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="kyj_UserDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="kyj_UserDBModelStoreContainer">
+    <EntitySet Name="H_GWUser" EntityType="kyj_UserDBModel.Store.H_GWUser" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="H_SUser" EntityType="kyj_UserDBModel.Store.H_SUser" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SystemMessage" EntityType="kyj_UserDBModel.Store.SystemMessage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="U_Account" EntityType="kyj_UserDBModel.Store.U_Account" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="U_AccountLog" EntityType="kyj_UserDBModel.Store.U_AccountLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="U_Recharge" EntityType="kyj_UserDBModel.Store.U_Recharge" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="U_WithdrawCash" EntityType="kyj_UserDBModel.Store.U_WithdrawCash" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="kyj_UserDBModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserAddressBook" EntityType="kyj_UserDBModel.Store.UserAddressBook" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserBlackMessageList" EntityType="kyj_UserDBModel.Store.UserBlackMessageList" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserFavorite" EntityType="kyj_UserDBModel.Store.UserFavorite" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserFeedback" EntityType="kyj_UserDBModel.Store.UserFeedback" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserInfoCall" EntityType="kyj_UserDBModel.Store.UserInfoCall" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserInfoCallDeleted" EntityType="kyj_UserDBModel.Store.UserInfoCallDeleted" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserInfoCallMax" EntityType="kyj_UserDBModel.Store.UserInfoCallMax" store:Type="Tables" store:Schema="dbo" store:Name="UserInfoCallMax">
+      <DefiningQuery>SELECT 
+      [UserInfoCallMax].[MaxShortNum] AS [MaxShortNum]
+      FROM [dbo].[UserInfoCallMax] AS [UserInfoCallMax]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="UserInfoCallTemp" EntityType="kyj_UserDBModel.Store.UserInfoCallTemp" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserMessage" EntityType="kyj_UserDBModel.Store.UserMessage" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="H_GWUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="BuyerPoint" Type="int" Nullable="false" />
+    <Property Name="BuyerGrade" Type="int" Nullable="false" />
+    <Property Name="SellerPoint" Type="int" Nullable="false" />
+    <Property Name="SellerGrade" Type="int" Nullable="false" />
+    <Property Name="InternalLetter" Type="int" Nullable="false" />
+    <Property Name="SendEmail" Type="int" Nullable="false" />
+    <Property Name="IsCloseShop" Type="bit" />
+    <Property Name="IsBlackList" Type="bit" />
+    <Property Name="BreadRulesID" Type="int" />
+    <Property Name="IDCard" Type="varchar" MaxLength="30" />
+    <Property Name="IsShop" Type="char" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="H_SUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CancelOrderNum" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Score" Type="int" Nullable="false" />
+    <Property Name="TenantScore" Type="int" Nullable="false" />
+    <Property Name="ProvinceID" Type="int" />
+    <Property Name="ProvinceName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DId" Type="int" />
+    <Property Name="DName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BId" Type="int" />
+    <Property Name="BName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompanyId" Type="int" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="SystemMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+    <Property Name="ReceiveUserId" Type="int" Nullable="false" />
+    <Property Name="Platform" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="Title" Type="nvarchar" MaxLength="200" />
+    <Property Name="Content" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsRead" Type="bit" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="U_Account">
+    <Key>
+      <PropertyRef Name="AId" />
+    </Key>
+    <Property Name="AId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="UserType" Type="int" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="BackPrice" Type="money" Nullable="false" />
+    <Property Name="DrawMoneyTimes" Type="int" Nullable="false" />
+    <Property Name="RechargeTotalPrice" Type="money" Nullable="false" />
+    <Property Name="InvesteTotalPrice" Type="money" Nullable="false" />
+    <Property Name="InvesteIncomeTotalPrice" Type="money" Nullable="false" />
+    <Property Name="WithdrawCashTotalPrice" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="U_AccountLog">
+    <Key>
+      <PropertyRef Name="ALId" />
+    </Key>
+    <Property Name="ALId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="UserType" Type="int" Nullable="false" />
+    <Property Name="Type" Type="tinyint" Nullable="false" />
+    <Property Name="LogType" Type="int" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="Desc" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Createtime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="U_Recharge">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="UserType" Type="int" Nullable="false" />
+    <Property Name="RechargeNo" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Explain" Type="nvarchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="U_WithdrawCash">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="UserType" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Mobile" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+    <Property Name="AdminName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="ReceiveType" Type="int" Nullable="false" />
+    <Property Name="RealName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="ALiPayAccount" Type="nvarchar" MaxLength="200" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProvinceID" Type="int" />
+    <Property Name="ProvinceName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BankName" Type="nvarchar" MaxLength="200" />
+    <Property Name="PubBankName" Type="nvarchar" MaxLength="200" />
+    <Property Name="BankAccount" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IDNO" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="LoginName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Pwd" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="NikeName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="RealName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="Guid" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Sex" Type="tinyint" Nullable="false" />
+    <Property Name="Mobile" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="AllState" Type="tinyint" Nullable="false" />
+    <Property Name="AdminId" Type="int" />
+    <Property Name="AdminName" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastLoginTime" Type="datetime" />
+    <Property Name="SpareTelephone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+    <Property Name="FcUserType" Type="int" Nullable="false" />
+    <Property Name="RepastUserType" Type="int" Nullable="false" />
+    <Property Name="EshopUserType" Type="int" Nullable="false" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+    <Property Name="InfoCall" Type="nvarchar" MaxLength="50" />
+    <Property Name="Platform" Type="varchar" MaxLength="20" />
+    <Property Name="QQ" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="UserAddressBook">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="IsDefault" Type="bit" Nullable="false" />
+    <Property Name="Platform" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="ProvinceId" Type="int" />
+    <Property Name="ProvinceName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DistrictId" Type="int" />
+    <Property Name="DistrictName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" />
+    <Property Name="PostCode" Type="varchar" MaxLength="6" />
+    <Property Name="ReceiverName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReceiverMobile" Type="varchar" MaxLength="11" />
+    <Property Name="ReceiverPhone" Type="varchar" MaxLength="20" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="Sex" Type="int" />
+  </EntityType>
+  <EntityType Name="UserBlackMessageList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="BlackUserId" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserFavorite">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Platform" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="Type" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="BusinessId" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="BusinessName" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="PicUrl" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="Expand" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="UserFeedback">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Content" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="Contact" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="UserInfoCall">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LoginName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="ShortNum" Type="int" Nullable="false" />
+    <Property Name="EnterNo" Type="int" Nullable="false" />
+    <Property Name="CallInId" Type="int" Nullable="false" />
+    <Property Name="WorkerGroupId" Type="int" Nullable="false" />
+    <Property Name="WorkerId" Type="int" Nullable="false" />
+    <Property Name="EnterpriseId" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="WEBPWD" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserInfoCallDeleted">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ShortNum" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+      警告 6002: 表/视图“kyj_UserDB.dbo.UserInfoCallMax”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+  <EntityType Name="UserInfoCallMax">
+    <Key>
+      <PropertyRef Name="MaxShortNum" />
+    </Key>
+    <Property Name="MaxShortNum" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserInfoCallTemp">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LoginName" Type="nvarchar" MaxLength="50" />
+    <Property Name="InfoCall" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SendUserId" Type="int" Nullable="false" />
+    <Property Name="ReceiveUserId" Type="int" Nullable="false" />
+    <Property Name="Platform" Type="varchar" MaxLength="20" />
+    <Property Name="Title" Type="nvarchar" MaxLength="200" />
+    <Property Name="Content" Type="nvarchar" />
+    <Property Name="IsRead" Type="bit" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="MessageType" Type="int" Nullable="false" />
+    <Property Name="MessageSource" Type="int" Nullable="false" />
+    <Property Name="SourceCount" Type="int" />
+    <Property Name="Expand1" Type="nvarchar" MaxLength="500" />
+    <Property Name="Expand2" Type="nvarchar" MaxLength="500" />
+    <Property Name="Expand3" Type="nvarchar" MaxLength="500" />
+    <Property Name="Expand4" Type="nvarchar" MaxLength="500" />
+    <Property Name="Expand5" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <Function Name="proc_GetUserMessagePageForOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fields" Type="varchar" Mode="In" />
+    <Parameter Name="Filter" Type="varchar" Mode="In" />
+    <Parameter Name="PageIndex" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+    <Parameter Name="isRead" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_UpdateWithdrawCashStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="State" Type="int" Mode="In" />
+    <Parameter Name="WithdrawCashPrice" Type="money" Mode="In" />
+    <Parameter Name="UserId" Type="int" Mode="In" />
+    <Parameter Name="AdminId" Type="int" Mode="In" />
+    <Parameter Name="AdminName" Type="varchar" Mode="In" />
+    <Parameter Name="UpdateTime" Type="datetime" Mode="In" />
+  </Function>
+</Schema>

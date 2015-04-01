@@ -1,0 +1,5 @@
+D:\Visual Studio 2010\Projects\TestTypeBuilder\TestTypeBuilder\bin\Debug\TestTypeBuilder.exe.config
+D:\Visual Studio 2010\Projects\TestTypeBuilder\TestTypeBuilder\bin\Debug\TestTypeBuilder.exe
+D:\Visual Studio 2010\Projects\TestTypeBuilder\TestTypeBuilder\bin\Debug\TestTypeBuilder.pdb
+D:\Visual Studio 2010\Projects\TestTypeBuilder\TestTypeBuilder\obj\x86\Debug\TestTypeBuilder.exe
+D:\Visual Studio 2010\Projects\TestTypeBuilder\TestTypeBuilder\obj\x86\Debug\TestTypeBuilder.pdb

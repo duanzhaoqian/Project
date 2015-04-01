@@ -1,0 +1,9 @@
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\WaterMarkImpl\bin\Debug\WaterMarkImpl.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\WaterMarkImpl\bin\Debug\WaterMarkImpl.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\WaterMarkImpl\bin\Debug\IService.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\WaterMarkImpl\bin\Debug\Model.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\WaterMarkImpl\bin\Debug\IService.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\WaterMarkImpl\bin\Debug\Model.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\WaterMarkImpl\obj\Debug\WaterMarkImpl.csprojResolveAssemblyReference.cache
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\WaterMarkImpl\obj\Debug\WaterMarkImpl.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\WaterMarkImpl\obj\Debug\WaterMarkImpl.pdb

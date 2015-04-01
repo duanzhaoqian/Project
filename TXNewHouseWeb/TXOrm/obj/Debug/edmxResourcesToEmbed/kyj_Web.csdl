@@ -1,0 +1,610 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="kyj_WebDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="kyj_WebDBEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="proc_S_Village_Page">
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="CityId" Mode="In" Type="Int32" />
+      <Parameter Name="DistrictId" Mode="In" Type="Int32" />
+      <Parameter Name="BussinesId" Mode="In" Type="Int32" />
+      <Parameter Name="ManagedType" Mode="In" Type="String" />
+      <Parameter Name="VillageName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_S_Village_Update">
+      <Parameter Name="VId" Mode="In" Type="Int32" />
+      <Parameter Name="ProvinceId" Mode="In" Type="Int32" />
+      <Parameter Name="CityId" Mode="In" Type="Int32" />
+      <Parameter Name="DId" Mode="In" Type="Int32" />
+      <Parameter Name="BId" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="UpdateTime" Mode="In" Type="DateTime" />
+      <Parameter Name="Lat" Mode="In" Type="String" />
+      <Parameter Name="Lng" Mode="In" Type="String" />
+      <Parameter Name="SchoolsId" Mode="In" Type="String" />
+      <Parameter Name="ScenicsId" Mode="In" Type="String" />
+      <Parameter Name="HospitalsId" Mode="In" Type="String" />
+      <Parameter Name="StationAndAirportsId" Mode="In" Type="String" />
+      <Parameter Name="Introduce" Mode="In" Type="String" />
+      <Parameter Name="ManagedType" Mode="In" Type="String" />
+      <Parameter Name="Stall" Mode="In" Type="Boolean" />
+      <Parameter Name="ContainRate" Mode="In" Type="String" />
+      <Parameter Name="Developers" Mode="In" Type="String" />
+      <Parameter Name="GreenRate" Mode="In" Type="String" />
+      <Parameter Name="ManagedName" Mode="In" Type="String" />
+      <Parameter Name="ManageCost" Mode="In" Type="String" />
+      <Parameter Name="NearInstallation" Mode="In" Type="String" />
+      <Parameter Name="Bus" Mode="In" Type="String" />
+      <Parameter Name="Coord" Mode="In" Type="String" />
+      <Parameter Name="BBSUrl" Mode="In" Type="String" />
+      <Parameter Name="BuildYear" Mode="In" Type="Int32" />
+      <Parameter Name="TrafficIds" Mode="In" Type="String" />
+      <Parameter Name="AdminId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_S_Area_json" />
+    <FunctionImport Name="proc_S_Page">
+      <Parameter Name="tblName" Mode="In" Type="String" />
+      <Parameter Name="fldName" Mode="In" Type="String" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="IsCount" Mode="In" Type="Boolean" />
+      <Parameter Name="OrderType" Mode="In" Type="Boolean" />
+      <Parameter Name="strWhere" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="proc_S_Village_ADD">
+      <Parameter Name="ProvinceId" Mode="In" Type="Int32" />
+      <Parameter Name="CityId" Mode="In" Type="Int32" />
+      <Parameter Name="DId" Mode="In" Type="Int32" />
+      <Parameter Name="BId" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="CreateTime" Mode="In" Type="DateTime" />
+      <Parameter Name="UpdateTime" Mode="In" Type="DateTime" />
+      <Parameter Name="IsDel" Mode="In" Type="Boolean" />
+      <Parameter Name="Guid" Mode="In" Type="String" />
+      <Parameter Name="AdminId" Mode="In" Type="Int32" />
+      <Parameter Name="IsUsed" Mode="In" Type="Boolean" />
+      <Parameter Name="OtherPlat" Mode="In" Type="String" />
+      <Parameter Name="Lat" Mode="In" Type="String" />
+      <Parameter Name="Lng" Mode="In" Type="String" />
+      <Parameter Name="schoolsId" Mode="In" Type="String" />
+      <Parameter Name="ScenicsId" Mode="In" Type="String" />
+      <Parameter Name="HospitalsId" Mode="In" Type="String" />
+      <Parameter Name="StationAndAirportsId" Mode="In" Type="String" />
+      <Parameter Name="ManagedType" Mode="In" Type="String" />
+      <Parameter Name="Stall" Mode="In" Type="Boolean" />
+      <Parameter Name="ContainRate" Mode="In" Type="String" />
+      <Parameter Name="Developers" Mode="In" Type="String" />
+      <Parameter Name="GreenRate" Mode="In" Type="String" />
+      <Parameter Name="ManagedName" Mode="In" Type="String" />
+      <Parameter Name="NearInstallation" Mode="In" Type="String" />
+      <Parameter Name="Bus" Mode="In" Type="String" />
+      <Parameter Name="VillageInstallation" Mode="In" Type="String" />
+      <Parameter Name="Coord" Mode="In" Type="String" />
+      <Parameter Name="BBSUrl" Mode="In" Type="String" />
+      <Parameter Name="BuildYear" Mode="In" Type="Int32" />
+      <Parameter Name="TrafficIds" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Admins" EntityType="kyj_WebDBModel.Admin" />
+    <EntitySet Name="AdminLogs" EntityType="kyj_WebDBModel.AdminLog" />
+    <EntitySet Name="Agents" EntityType="kyj_WebDBModel.Agent" />
+    <EntitySet Name="Areas" EntityType="kyj_WebDBModel.Area" />
+    <EntitySet Name="Banks" EntityType="kyj_WebDBModel.Bank" />
+    <EntitySet Name="Businesses" EntityType="kyj_WebDBModel.Business" />
+    <EntitySet Name="CityIPs" EntityType="kyj_WebDBModel.CityIP" />
+    <EntitySet Name="Districts" EntityType="kyj_WebDBModel.District" />
+    <EntitySet Name="Hospitals" EntityType="kyj_WebDBModel.Hospital" />
+    <EntitySet Name="HotelOthers" EntityType="kyj_WebDBModel.HotelOther" />
+    <EntitySet Name="HotelSubWays" EntityType="kyj_WebDBModel.HotelSubWay" />
+    <EntitySet Name="Models" EntityType="kyj_WebDBModel.Model" />
+    <EntitySet Name="PostOffices" EntityType="kyj_WebDBModel.PostOffice" />
+    <EntitySet Name="Roles" EntityType="kyj_WebDBModel.Role" />
+    <EntitySet Name="Role_backup" EntityType="kyj_WebDBModel.Role_backup" />
+    <EntitySet Name="Salers" EntityType="kyj_WebDBModel.Saler" />
+    <EntitySet Name="Scenics" EntityType="kyj_WebDBModel.Scenic" />
+    <EntitySet Name="Schools" EntityType="kyj_WebDBModel.School" />
+    <EntitySet Name="SchoolLevels" EntityType="kyj_WebDBModel.SchoolLevel" />
+    <EntitySet Name="SchoolNatures" EntityType="kyj_WebDBModel.SchoolNature" />
+    <EntitySet Name="SchoolTypes" EntityType="kyj_WebDBModel.SchoolType" />
+    <EntitySet Name="Shops" EntityType="kyj_WebDBModel.Shop" />
+    <EntitySet Name="StationAndAirports" EntityType="kyj_WebDBModel.StationAndAirport" />
+    <EntitySet Name="SubWays" EntityType="kyj_WebDBModel.SubWay" />
+    <EntitySet Name="sysdiagrams" EntityType="kyj_WebDBModel.sysdiagram" />
+    <EntitySet Name="Traffic" EntityType="kyj_WebDBModel.Traffic" />
+    <EntitySet Name="villages" EntityType="kyj_WebDBModel.village" />
+  </EntityContainer>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="LoginName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Pwd" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="RoleId" Nullable="false" />
+    <Property Type="String" Name="Rate" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreatTime" Nullable="false" />
+    <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+    <Property Type="Boolean" Name="IsDel" Nullable="false" />
+    <Property Type="Int32" Name="Status" />
+    <Property Type="Int32" Name="OperAdminID" />
+    <Property Type="String" Name="OperAdminUser" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Email" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Mobile" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="LastLoginTime" />
+    <Property Type="Int32" Name="CityId" />
+  </EntityType>
+  <EntityType Name="AdminLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Byte" Name="Type" Nullable="false" />
+    <Property Type="String" Name="Desc" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="Int32" Name="AdminId" Nullable="false" />
+    <Property Type="String" Name="IpAddress" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Agent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="LoginName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Pwd" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NikeName" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RealName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+    <Property Type="Boolean" Name="IsDel" Nullable="false" />
+    <Property Type="String" Name="Guid" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Email" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Byte" Name="Sex" Nullable="false" />
+    <Property Type="Int32" Name="AdminId" />
+    <Property Type="String" Name="AdminName" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="LastLoginTime" />
+    <Property Type="Byte" Name="AllState" Nullable="false" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SpareTelephone" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Telephone" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="CityId" Nullable="false" />
+    <Property Type="String" Name="CityName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="IdCard" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ProvinceID" Nullable="false" />
+    <Property Type="String" Name="ProvinceName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="DId" Nullable="false" />
+    <Property Type="String" Name="DName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="BId" Nullable="false" />
+    <Property Type="String" Name="BName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="CompanyId" Nullable="false" />
+    <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ShopName" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Status" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="PId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Sort" Nullable="false" />
+    <Property Type="String" Name="Lng" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Lat" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+    <Property Type="Int32" Name="AdminId" Nullable="false" />
+    <Property Type="String" Name="TelePhone" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Description" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsOpenHOTELHigh" Nullable="false" />
+    <Property Type="Boolean" Name="IsOpenDZLow" Nullable="false" />
+    <Property Type="Boolean" Name="IsOpenGWHigh" Nullable="false" />
+    <Property Type="Boolean" Name="IsOpenGWLow" Nullable="false" />
+    <Property Type="Boolean" Name="IsOpenMSHigh" Nullable="false" />
+    <Property Type="Boolean" Name="IsOpenMSLow" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bank">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="CityId" Nullable="false" />
+    <Property Type="Int32" Name="DId" Nullable="false" />
+    <Property Type="Int32" Name="BId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+    <Property Type="Boolean" Name="IsDel" Nullable="false" />
+    <Property Type="Int32" Name="AdminId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Business">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="DId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Sort" Nullable="false" />
+    <Property Type="String" Name="Lng" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Lat" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+    <Property Type="Int32" Name="AdminId" Nullable="false" />
+    <Property Type="Boolean" Name="IsRecommend" Nullable="false" />
+    <Property Type="Int32" Name="cityid" />
+  </EntityType>
+  <EntityType Name="CityIP">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="IP_Start" Nullable="false" />
+    <Property Type="Int64" Name="IP_End" Nullable="false" />
+    <Property Type="Int32" Name="CityId" Nullable="false" />
+    <Property Type="String" Name="CityName" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="CityId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Sort" Nullable="false" />
+    <Property Type="String" Name="Lng" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Lat" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+    <Property Type="Int32" Name="AdminId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Hospital">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="PId" Nullable="false" />
+    <Property Type="Int32" Name="CityId" Nullable="false" />
+    <Property Type="Int32" Name="DId" Nullable="false" />
+    <Property Type="Int32" Name="BId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ShotName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="updatetime" Nullable="false" />
+    <Property Type="Boolean" Name="IsDel" Nullable="false" />
+    <Property Type="String" Name="Guid" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="AdminId" Nullable="false" />
+    <Property Type="Int32" Name="Nature" Nullable="false" />
+    <Property Type="Int32" Name="Level" Nullable="false" />
+    <Property Type="String" Name="Characteristic" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="HospitalType" Nullable="false" />
+    <Property Type="String" Name="Tel" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsRecommend" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HotelOther">
+    <Key>
+      <PropertyRef Name="HId" />
+    </Key>
+    <Property Type="Int32" Name="HId" Nullable="false" />
+    <Property Type="String" Name="Introduce" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="NearInstallation" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Traffic" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BBSUrl" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="HotelSubWay">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="TId" Nullable="false" />
+    <Property Type="Int32" Name="HId" Nullable="false" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+    <Property Type="Boolean" Name="IsDel" Nullable="false" />
+    <Property Type="Int32" Name="AdminId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Model">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="PId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+    <Property Type="Boolean" Name="IsDel" Nullable="false" />
+    <Property Type="Int32" Name="Version" />
+  </EntityType>
+  <EntityType Name="PostOffice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="PId" Nullable="false" />
+    <Property Type="Int32" Name="CityId" Nullable="false" />
+    <Property Type="Int32" Name="DId" Nullable="false" />
+    <Property Type="Int32" Name="BId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+    <Property Type="Boolean" Name="IsDel" Nullable="false" />
+    <Property Type="Int32" Name="AdminId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RATE" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+    <Property Type="Boolean" Name="IsDel" Nullable="false" />
+    <Property Type="Int32" Name="AdminId" />
+    <Property Type="String" Name="AdminName" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Status" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role_backup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RATE" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+    <Property Type="Boolean" Name="IsDel" Nullable="false" />
+    <Property Type="Int32" Name="AdminId" />
+    <Property Type="String" Name="AdminName" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Status" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Saler">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LoginName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Pwd" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Mobil" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="AdminId" Nullable="false" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+    <Property Type="Int32" Name="State" Nullable="false" />
+    <Property Type="Boolean" Name="IsDel" Nullable="false" />
+    <Property Type="String" Name="Email" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="LastLoginTime" />
+  </EntityType>
+  <EntityType Name="Scenic">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="PId" Nullable="false" />
+    <Property Type="Int32" Name="CityId" Nullable="false" />
+    <Property Type="Int32" Name="DId" Nullable="false" />
+    <Property Type="Int32" Name="BId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ShotName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="updatetime" Nullable="false" />
+    <Property Type="Boolean" Name="IsDel" Nullable="false" />
+    <Property Type="String" Name="Guid" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="AdminId" Nullable="false" />
+    <Property Type="Int32" Name="Nature" Nullable="false" />
+    <Property Type="Int32" Name="Level" Nullable="false" />
+    <Property Type="String" Name="Characteristic" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ScenicType" Nullable="false" />
+    <Property Type="String" Name="Tel" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsRecommend" Nullable="false" />
+  </EntityType>
+  <EntityType Name="School">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="PId" Nullable="false" />
+    <Property Type="Int32" Name="CityId" Nullable="false" />
+    <Property Type="Int32" Name="DId" Nullable="false" />
+    <Property Type="Int32" Name="BId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ShotName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="updatetime" Nullable="false" />
+    <Property Type="Boolean" Name="IsDel" Nullable="false" />
+    <Property Type="String" Name="Guid" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="AdminId" Nullable="false" />
+    <Property Type="Int32" Name="Nature" Nullable="false" />
+    <Property Type="Int32" Name="Level" Nullable="false" />
+    <Property Type="String" Name="Characteristic" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="SchoolType" Nullable="false" />
+    <Property Type="String" Name="Tel" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsRecommend" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SchoolLevel">
+    <Key>
+      <PropertyRef Name="SchoolType" />
+      <PropertyRef Name="Level" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Type="Int32" Name="SchoolType" Nullable="false" />
+    <Property Type="Int32" Name="Level" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SchoolNature">
+    <Key>
+      <PropertyRef Name="SchoolType" />
+      <PropertyRef Name="Nature" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Type="Int32" Name="SchoolType" Nullable="false" />
+    <Property Type="Int32" Name="Nature" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SchoolType">
+    <Key>
+      <PropertyRef Name="SchoolType1" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Type="Int32" Name="SchoolType1" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Shop">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="PId" Nullable="false" />
+    <Property Type="Int32" Name="CityId" Nullable="false" />
+    <Property Type="Int32" Name="DId" Nullable="false" />
+    <Property Type="Int32" Name="BId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+    <Property Type="Boolean" Name="IsDel" Nullable="false" />
+    <Property Type="Int32" Name="AdminId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StationAndAirport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="PId" Nullable="false" />
+    <Property Type="Int32" Name="CityId" Nullable="false" />
+    <Property Type="Int32" Name="DId" Nullable="false" />
+    <Property Type="Int32" Name="BId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ShotName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="updatetime" Nullable="false" />
+    <Property Type="Boolean" Name="IsDel" Nullable="false" />
+    <Property Type="String" Name="Guid" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="AdminId" Nullable="false" />
+    <Property Type="Int32" Name="Nature" Nullable="false" />
+    <Property Type="Int32" Name="Level" Nullable="false" />
+    <Property Type="String" Name="Characteristic" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="StationAndAirportType" Nullable="false" />
+    <Property Type="String" Name="Tel" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsRecommend" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubWay">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="TId" Nullable="false" />
+    <Property Type="Int32" Name="VId" Nullable="false" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+    <Property Type="Boolean" Name="IsDel" Nullable="false" />
+    <Property Type="Int32" Name="AdminId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="principal_id" Nullable="false" />
+    <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="version" />
+    <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Traffic">
+    <Key>
+      <PropertyRef Name="TId" />
+    </Key>
+    <Property Type="Int32" Name="TId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="PId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="CityId" Nullable="false" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+    <Property Type="Boolean" Name="IsDel" Nullable="false" />
+    <Property Type="Int32" Name="AdminId" Nullable="false" />
+    <Property Type="Int32" Name="Sort" />
+  </EntityType>
+  <EntityType Name="village">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ProvinceId" Nullable="false" />
+    <Property Type="Int32" Name="CityId" Nullable="false" />
+    <Property Type="Int32" Name="DId" Nullable="false" />
+    <Property Type="Int32" Name="BId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+    <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+    <Property Type="Boolean" Name="IsDel" Nullable="false" />
+    <Property Type="String" Name="Guid" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="AdminId" />
+    <Property Type="String" Name="AdminName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsUsed" />
+    <Property Type="String" Name="Lat" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Lng" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ManagedType" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Developers" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CompletedDate" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ContainRate" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="GreenRate" MaxLength="280" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ManageCost" MaxLength="280" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ManagedName" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Area" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FamilyNum" MaxLength="260" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Stall" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NearInstallation" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="VillageInstallation" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Introduce" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Bus" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Shop" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Hospital" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Bank" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Project" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BuildeType" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LinkPosition" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AddInfo" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FloorSpace" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CurrentNum" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Metro" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Kindergarten" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MidAndPriSchool" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="College" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PostOffice" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="pageUrl" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MapUrl" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

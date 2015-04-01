@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="kyj_UserDBModelStoreContainer" CdmEntityContainer="kyj_UserDBEntities">
+    <EntitySetMapping Name="H_GWUser">
+      <EntityTypeMapping TypeName="kyj_UserDBModel.H_GWUser">
+        <MappingFragment StoreEntitySet="H_GWUser">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BuyerPoint" ColumnName="BuyerPoint" />
+          <ScalarProperty Name="BuyerGrade" ColumnName="BuyerGrade" />
+          <ScalarProperty Name="SellerPoint" ColumnName="SellerPoint" />
+          <ScalarProperty Name="SellerGrade" ColumnName="SellerGrade" />
+          <ScalarProperty Name="InternalLetter" ColumnName="InternalLetter" />
+          <ScalarProperty Name="SendEmail" ColumnName="SendEmail" />
+          <ScalarProperty Name="IsCloseShop" ColumnName="IsCloseShop" />
+          <ScalarProperty Name="IsBlackList" ColumnName="IsBlackList" />
+          <ScalarProperty Name="BreadRulesID" ColumnName="BreadRulesID" />
+          <ScalarProperty Name="IDCard" ColumnName="IDCard" />
+          <ScalarProperty Name="IsShop" ColumnName="IsShop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="H_SUser">
+      <EntityTypeMapping TypeName="kyj_UserDBModel.H_SUser">
+        <MappingFragment StoreEntitySet="H_SUser">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CancelOrderNum" ColumnName="CancelOrderNum" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="TenantScore" ColumnName="TenantScore" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+          <ScalarProperty Name="DId" ColumnName="DId" />
+          <ScalarProperty Name="DName" ColumnName="DName" />
+          <ScalarProperty Name="BId" ColumnName="BId" />
+          <ScalarProperty Name="BName" ColumnName="BName" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemMessages">
+      <EntityTypeMapping TypeName="kyj_UserDBModel.SystemMessage">
+        <MappingFragment StoreEntitySet="SystemMessage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="ReceiveUserId" ColumnName="ReceiveUserId" />
+          <ScalarProperty Name="Platform" ColumnName="Platform" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_Account">
+      <EntityTypeMapping TypeName="kyj_UserDBModel.U_Account">
+        <MappingFragment StoreEntitySet="U_Account">
+          <ScalarProperty Name="AId" ColumnName="AId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="BackPrice" ColumnName="BackPrice" />
+          <ScalarProperty Name="DrawMoneyTimes" ColumnName="DrawMoneyTimes" />
+          <ScalarProperty Name="RechargeTotalPrice" ColumnName="RechargeTotalPrice" />
+          <ScalarProperty Name="InvesteTotalPrice" ColumnName="InvesteTotalPrice" />
+          <ScalarProperty Name="InvesteIncomeTotalPrice" ColumnName="InvesteIncomeTotalPrice" />
+          <ScalarProperty Name="WithdrawCashTotalPrice" ColumnName="WithdrawCashTotalPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_AccountLog">
+      <EntityTypeMapping TypeName="kyj_UserDBModel.U_AccountLog">
+        <MappingFragment StoreEntitySet="U_AccountLog">
+          <ScalarProperty Name="ALId" ColumnName="ALId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="LogType" ColumnName="LogType" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_Recharge">
+      <EntityTypeMapping TypeName="kyj_UserDBModel.U_Recharge">
+        <MappingFragment StoreEntitySet="U_Recharge">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="RechargeNo" ColumnName="RechargeNo" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Explain" ColumnName="Explain" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_WithdrawCash">
+      <EntityTypeMapping TypeName="kyj_UserDBModel.U_WithdrawCash">
+        <MappingFragment StoreEntitySet="U_WithdrawCash">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ReceiveType" ColumnName="ReceiveType" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="ALiPayAccount" ColumnName="ALiPayAccount" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="PubBankName" ColumnName="PubBankName" />
+          <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="kyj_UserDBModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IDNO" ColumnName="IDNO" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+          <ScalarProperty Name="NikeName" ColumnName="NikeName" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="AllState" ColumnName="AllState" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+          <ScalarProperty Name="SpareTelephone" ColumnName="SpareTelephone" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="FcUserType" ColumnName="FcUserType" />
+          <ScalarProperty Name="RepastUserType" ColumnName="RepastUserType" />
+          <ScalarProperty Name="EshopUserType" ColumnName="EshopUserType" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="InfoCall" ColumnName="InfoCall" />
+          <ScalarProperty Name="Platform" ColumnName="Platform" />
+          <ScalarProperty Name="QQ" ColumnName="QQ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAddressBooks">
+      <EntityTypeMapping TypeName="kyj_UserDBModel.UserAddressBook">
+        <MappingFragment StoreEntitySet="UserAddressBook">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="Platform" ColumnName="Platform" />
+          <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+          <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
+          <ScalarProperty Name="ReceiverMobile" ColumnName="ReceiverMobile" />
+          <ScalarProperty Name="ReceiverPhone" ColumnName="ReceiverPhone" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserBlackMessageLists">
+      <EntityTypeMapping TypeName="kyj_UserDBModel.UserBlackMessageList">
+        <MappingFragment StoreEntitySet="UserBlackMessageList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BlackUserId" ColumnName="BlackUserId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserFavorites">
+      <EntityTypeMapping TypeName="kyj_UserDBModel.UserFavorite">
+        <MappingFragment StoreEntitySet="UserFavorite">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Platform" ColumnName="Platform" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+          <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+          <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Expand" ColumnName="Expand" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserFeedbacks">
+      <EntityTypeMapping TypeName="kyj_UserDBModel.UserFeedback">
+        <MappingFragment StoreEntitySet="UserFeedback">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInfoCalls">
+      <EntityTypeMapping TypeName="kyj_UserDBModel.UserInfoCall">
+        <MappingFragment StoreEntitySet="UserInfoCall">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="ShortNum" ColumnName="ShortNum" />
+          <ScalarProperty Name="EnterNo" ColumnName="EnterNo" />
+          <ScalarProperty Name="CallInId" ColumnName="CallInId" />
+          <ScalarProperty Name="WorkerGroupId" ColumnName="WorkerGroupId" />
+          <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+          <ScalarProperty Name="EnterpriseId" ColumnName="EnterpriseId" />
+          <ScalarProperty Name="WEBPWD" ColumnName="WEBPWD" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInfoCallDeleteds">
+      <EntityTypeMapping TypeName="kyj_UserDBModel.UserInfoCallDeleted">
+        <MappingFragment StoreEntitySet="UserInfoCallDeleted">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ShortNum" ColumnName="ShortNum" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInfoCallMaxes">
+      <EntityTypeMapping TypeName="kyj_UserDBModel.UserInfoCallMax">
+        <MappingFragment StoreEntitySet="UserInfoCallMax">
+          <ScalarProperty Name="MaxShortNum" ColumnName="MaxShortNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInfoCallTemps">
+      <EntityTypeMapping TypeName="kyj_UserDBModel.UserInfoCallTemp">
+        <MappingFragment StoreEntitySet="UserInfoCallTemp">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="InfoCall" ColumnName="InfoCall" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserMessages">
+      <EntityTypeMapping TypeName="kyj_UserDBModel.UserMessage">
+        <MappingFragment StoreEntitySet="UserMessage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SendUserId" ColumnName="SendUserId" />
+          <ScalarProperty Name="ReceiveUserId" ColumnName="ReceiveUserId" />
+          <ScalarProperty Name="Platform" ColumnName="Platform" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+          <ScalarProperty Name="MessageSource" ColumnName="MessageSource" />
+          <ScalarProperty Name="SourceCount" ColumnName="SourceCount" />
+          <ScalarProperty Name="Expand1" ColumnName="Expand1" />
+          <ScalarProperty Name="Expand2" ColumnName="Expand2" />
+          <ScalarProperty Name="Expand3" ColumnName="Expand3" />
+          <ScalarProperty Name="Expand4" ColumnName="Expand4" />
+          <ScalarProperty Name="Expand5" ColumnName="Expand5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

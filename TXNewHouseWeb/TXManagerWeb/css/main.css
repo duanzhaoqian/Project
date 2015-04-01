@@ -1,0 +1,97 @@
+﻿@charset "utf-8";
+/* CSS Document */
+@import url(public.css);
+@import url(modular.css);
+body{font-size:12px;color:#333;}
+/*基础数据-全部房价*/
+.aPri .mbox{min-width:377px;_width:377px;}
+.aPri .pubSearch{color:#666;}
+.aPri em{font-weight:bold;color:#666;}
+.relN input.wid170{width:170px;}
+.relN .mbox{border-bottom:solid 1px #7f9db9;border-top:solid 1px #7f9db9;margin-top:10px;margin-bottom:10px;}
+.relN p.rel_link{margin-left:140px;}
+.relN p.rel_link a
+/*add by nxd*/
+,.relN p.rel_link input{cursor:pointer;background-image:url(../images/bg.gif);background-repeat:no-repeat;display:inline-block;text-align:center;color:#333;line-height:25px;width:79px;height:25px;}
+.relN .submit{background-position:left -89px;}
+.relN .cancer{background-position:left -119px;}
+.relN .pubTT-tab input{width:180px;height:22px;}
+.relN .pubTT-tab select{width:80px;}
+/*房源管理-管理出售房源*/
+.mbuy select.wid110{width:110px;}
+.mbuy table tr td input{vertical-align:-2px;}
+.mbuy .search_button{background-position:left -89px;width:79px;height:25px;line-height:25px;text-align:center;color:#333;}
+.mbuy p.allCheck{margin:20px 0;padding-left:22px;}
+.mbuy p.allCheck input{vertical-align:-2px;}
+.mbuy .pubPage{margin-top:-59px;}
+/*弹出框*/
+.bData_bomb{padding-left:27px;padding-top:10px;}
+.bData_bomb .con{text-align:left;}
+.bData_bomb p a{display:inline-block;text-align:center;background-image:url(../images/bg.gif);background-repeat:no-repeat;width:79px;height:25px;line-height:25px;margin:10px 0;margin-right:26px;}
+.bData_bomb p a.ok_link{background-position:-87px -119px;color:#fff;}
+.bData_bomb p a.cancer_link{background-position:left -119px;color:#333;}
+.bData_bomb textarea{width:250px;margin-top:5px;}
+.bData_bomb .close_link{}
+.bData_bomb02{padding:10px;}
+.bData_bomb02 p{margin-top:20px;}
+.bData_bomb02 p a{display:inline-block;text-align:center;background-image:url(../images/bg.gif);background-repeat:no-repeat;width:79px;height:25px;line-height:25px;margin:10px 0;margin-right:26px;}
+.bData_bomb02 p a.ok_link{background-position:-87px -119px;color:#fff;}
+.bData_bomb02 p a.cancer_link{background-position:left -119px;color:#333;}
+
+input.ok_link{
+background:url(../images/bg.gif) -87px -119px no-repeat; color:#FFF;
+width:79px;height:25px;margin:10px 0;margin-right:26px; outline:none 0; border:none 0; cursor:pointer}
+input.cancer_link{
+background:url(../images/bg.gif) left -119px no-repeat; color:#333;
+width:79px;height:25px;margin:10px 0;margin-right:26px; outline:none 0; border:none 0; cursor:pointer}
+/*彭燕*/
+.p-Rbody{margin:15px 0 0 22px; border-top:1px solid #7f9db9; border-bottom:1px solid #7f9db9; min-width:400px;}
+.p-Big{padding-top:40px; padding-left:10px; float:left;}
+.p-red{color:#ff0000;}
+.p-999{color:#999;}
+.pubTT-butongLine a
+/* add by nxd*/
+,.pubTT-butongLine input{ cursor:pointer;display:inline-block;text-align:center;background-image:url(../images/bg.gif);background-repeat:no-repeat;width:79px;height:25px;line-height:25px;margin:10px 0;margin-right:26px;}
+.pubTable_submit{background-position:-87px -119px;color:#fff;}
+.pubTable_cancer{background-position:left -119px;color:#333;}
+.pubTT-tab .search_button{background-position:left -89px;width:79px;height:25px;line-height:25px;text-align:center;color:#333;}
+.pubTT-tab .tableIcon{background-position:left -525px;background-repeat:no-repeat;padding-left:15px;margin-left:10px;}
+.pubTT-tab .tableIcon span{color:#009944;}
+.loginIN{ width:887px; height:450px; margin:35px auto 0 auto; background:url(../images/loginC.jpg) no-repeat;}
+.loginC{height:500px; width:100%; background:url(../images/bg1.gif) 0 bottom repeat-x;}
+.loginC a{color:#333;}
+.loginbox{ float:right; display:inline; width:277px; margin-right:90px; margin-top:110px; color:#333}
+.loginbox input{height:27px;background:url(../images/bg.gif) left -170px repeat-x; border:1px solid #94C0E0;width:179px;}
+.loginbox span{display:inline-block; vertical-align:middle; font-size:14px;}
+.enterBtn{background:url(../images/btn_login.gif) 0 0 no-repeat; width:132px; height:36px; line-height:36px; font-family:"微软雅黑"; font-size:14px; padding:0; border:0; color:#fff; margin:22px 0 22px 56px;display:block;}
+.enterBtn_loading{background:url(../images/btn_login.gif) 0 bottom no-repeat; width:132px; height:36px; line-height:36px; font-family:"微软雅黑"; font-size:14px; padding:0; border:0; color:#fff; margin:22px 0 22px 56px;display:block;}
+.bordB{ border-bottom:1px solid #94C0E0; height:70px; *height:90px; position:relative}
+	.bordB .tips{ position:absolute; bottom:5px; left:55px}
+	.bordB .wrong { background:url(../images/icon_wrong.gif) 0 0 no-repeat; padding-left:20px}
+.zmb_m{ margin:22px 0 0 56px; padding-left:27px; background:url(../images/icon.gif) left -594px no-repeat; height:16px;}
+#header{width:988px; margin:0 auto; height:109px; background:url(../images/head.gif) left bottom no-repeat}
+#footer a,#header a{color:#333;}
+.logo{margin-left:48px;margin-top: 40px;}
+.hr{ margin-top:80px; margin-right:55px; line-height:12px;}
+/*尾部重写公用样式*/
+.footerh{ height:37px; line-height:37px; background:#F6F8F6; color:#585858;}
+.footerb{ height:50px; line-height:22px; padding:20px 0;}
+/*账号管理-添加账号*/
+.addAcc table tr td.ml10 input{margin-left:20px;}
+.addAcc table tr td.text input{height:24px;line-height:24px;padding-left:4px;width:216px;}
+.addAcc table tr td input.noMar{margin:0;}
+.addAcc .taBox{margin:20px;margin-top:10px;margin-bottom:10px;}
+.addAcc table tr th,.viewDet table tr th{background-color:#F5F5F5;text-align:right;height:38px;padding-right:10px;color:#333;}
+.addAcc .pubPage{margin:0 20px 0 20px;padding:0;}
+.addAcc table tr th em{color:#FF0000;}
+.addAcc table tr td{padding-left:15px;}
+.addAcc table tr td input{vertical-align:-2px;}
+/*账号管理-查看详情*/
+.viewDet .taBox{margin:20px 0 10px 40px;}
+.viewDet table tr th{width:130px;}
+.viewDet table tr td{padding-left:10px;}
+.viewDet .pubTT-butongLine{margin-left:70px;}
+/*账号管理-修改密码*/
+.changePW .text{color:#999;}
+.changePW table tr th{color:#333;}
+.changePW .taBox{border:none;}

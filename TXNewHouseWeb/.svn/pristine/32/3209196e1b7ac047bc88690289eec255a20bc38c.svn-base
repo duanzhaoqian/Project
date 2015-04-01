@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+    <!-- 服务开始运行、运行结束时会改变该值 -->
+    <add key="IsRunBody" value="0" />
+    <!-- 服务运行开始时间 -->
+    <add key="BeginTime" value="2014-03-19 00:00:00" />
+    <!-- 服务运行时间间隔(单位:小时) -->
+    <add key="TimeInterval" value="1" />
+
+    <!-- 服务开始运行、运行结束时会改变该值 -->
+    <add key="IsRunBody_Characteristic" value="0"/>
+    <!-- 服务运行开始时间 -->
+    <add key="BeginTime_Characteristic" value="2014-03-19 00:00:00" />
+    <!-- 服务运行时间间隔(单位:小时) -->
+    <add key="TimeInterval_Characteristic" value="24" />
+</settings>

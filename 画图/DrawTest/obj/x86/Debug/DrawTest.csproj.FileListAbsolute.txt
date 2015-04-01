@@ -1,0 +1,10 @@
+D:\Visual Studio 2010\Projects\画图\DrawTest\bin\Debug\DrawTest.exe.config
+D:\Visual Studio 2010\Projects\画图\DrawTest\bin\Debug\DrawTest.exe
+D:\Visual Studio 2010\Projects\画图\DrawTest\bin\Debug\DrawTest.pdb
+D:\Visual Studio 2010\Projects\画图\DrawTest\bin\Debug\DrawingPictureHelp.dll
+D:\Visual Studio 2010\Projects\画图\DrawTest\bin\Debug\DrawingPictureHelp.pdb
+D:\Visual Studio 2010\Projects\画图\DrawTest\obj\x86\Debug\DrawTest.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\画图\DrawTest\obj\x86\Debug\DrawTest.exe
+D:\Visual Studio 2010\Projects\画图\DrawTest\obj\x86\Debug\DrawTest.pdb
+D:\Visual Studio 2010\Projects\画图\DrawTest\bin\Debug\SQLData.dll
+D:\Visual Studio 2010\Projects\画图\DrawTest\bin\Debug\SQLData.pdb

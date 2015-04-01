@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{61248EF1-4C27-4C0C-8AC5-DB6312287F8B}</ProjectGuid>
+    <ProjectTypeGuids>{F85E285D-A4E0-4152-9332-AB1D724D3325};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TXDevelopersWeb</RootNamespace>
+    <AssemblyName>TXDevelopersWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="KYJ.ServiceStack, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\KYJ.ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="Log4netService, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Log4netService.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcPager">
+      <HintPath>..\..\..\fangchan\5.0\dll\MvcPager.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\dll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ActivityController.cs" />
+    <Compile Include="Controllers\NhBuildingController.cs" />
+    <Compile Include="Controllers\NHouseController.cs" />
+    <Compile Include="Controllers\PremisesController.cs" />
+    <Compile Include="Controllers\RechargeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Activity\YaoHao\YaoHaoTable.ascx.cs">
+      <DependentUpon>YaoHaoTable.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Activity\YaoHao\YaoHaoTable.ascx.designer.cs">
+      <DependentUpon>YaoHaoTable.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\global.css" />
+    <Content Include="css\web.css" />
+    <Content Include="flash\Room.swf" />
+    <Content Include="flash\Sandbox.swf" />
+    <Content Include="images\arrow-bb.gif" />
+    <Content Include="images\arrow-tt.gif" />
+    <Content Include="images\bank\kq.gif" />
+    <Content Include="images\card.png" />
+    <Content Include="images\f_bj.gif" />
+    <Content Include="images\f_cx.gif" />
+    <Content Include="images\f_wx.gif" />
+    <Content Include="images\msg.png" />
+    <Content Include="js\commons\base.js" />
+    <Content Include="js\commons\InitMap.js" />
+    <Content Include="js\commons\jqRegExpMothod.js" />
+    <Content Include="js\jquery.jcrop\Jcrop.gif" />
+    <Content Include="js\jquery.jcrop\jquery.Jcrop.css" />
+    <Content Include="css\public.css" />
+    <Content Include="css\rxl.css" />
+    <Content Include="Global.asax" />
+    <Content Include="images\bank\z1.gif" />
+    <Content Include="images\bank\z10.gif" />
+    <Content Include="images\bank\z11.gif" />
+    <Content Include="images\bank\z12.gif" />
+    <Content Include="images\bank\z13.gif" />
+    <Content Include="images\bank\z14.gif" />
+    <Content Include="images\bank\z15.gif" />
+    <Content Include="images\bank\z16.gif" />
+    <Content Include="images\bank\z17.gif" />
+    <Content Include="images\bank\z18.gif" />
+    <Content Include="images\bank\z19.gif" />
+    <Content Include="images\bank\z2.gif" />
+    <Content Include="images\bank\z20.gif" />
+    <Content Include="images\bank\z3.gif" />
+    <Content Include="images\bank\z4.gif" />
+    <Content Include="images\bank\z5.gif" />
+    <Content Include="images\bank\z6.gif" />
+    <Content Include="images\bank\z7.gif" />
+    <Content Include="images\bank\z8.gif" />
+    <Content Include="images\bank\z9.gif" />
+    <Content Include="images\bank\zfb.gif" />
+    <Content Include="images\bdsc.gif" />
+    <Content Include="images\bg_footerR1.gif" />
+    <Content Include="images\big_icon.png" />
+    <Content Include="images\bita.gif" />
+    <Content Include="images\blank.gif" />
+    <Content Include="images\btn70.gif" />
+    <Content Include="images\btn_120.gif" />
+    <Content Include="images\btn_green_120.gif" />
+    <Content Include="images\btn_tj01.png" />
+    <Content Include="images\btn_w111_grey.gif" />
+    <Content Include="images\btn_w123.gif" />
+    <Content Include="images\btn_w123_hover.gif" />
+    <Content Include="images\btn_w152.gif" />
+    <Content Include="images\btn_w152_hover.gif" />
+    <Content Include="images\btn_w80.gif" />
+    <Content Include="images\btn_w80_hover.gif" />
+    <Content Include="images\btn_w91.gif" />
+    <Content Include="images\btn_w91_hover.gif" />
+    <Content Include="images\btn_w97_green.gif" />
+    <Content Include="images\btn_w97_green_hover.gif" />
+    <Content Include="images\btn_w98_green.gif" />
+    <Content Include="images\btn_w98_green_hover.gif" />
+    <Content Include="images\btn_xyb.png" />
+    <Content Include="images\btn_yzm.gif" />
+    <Content Include="images\cjlogin_bg.png" />
+    <Content Include="images\colose.gif" />
+    <Content Include="images\colose_a.gif" />
+    <Content Include="images\colse1.gif" />
+    <Content Include="images\c_bg.gif" />
+    <Content Include="images\icons_bt.gif" />
+    <Content Include="images\img.jpg" />
+    <Content Include="images\img_1.jpg" />
+    <Content Include="images\img_2.jpg" />
+    <Content Include="images\img_3.jpg" />
+    <Content Include="images\letter.gif" />
+    <Content Include="images\line1.gif" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\login.jpg" />
+    <Content Include="images\logo.gif" />
+    <Content Include="images\lr_bg.gif" />
+    <Content Include="images\no.gif" />
+    <Content Include="images\ok.gif" />
+    <Content Include="images\photo_50.jpg" />
+    <Content Include="images\photo_96.jpg" />
+    <Content Include="images\photo_d.jpg" />
+    <Content Include="images\rz_gray_1.gif" />
+    <Content Include="images\rz_gray_2.gif" />
+    <Content Include="images\rz_g_1.gif" />
+    <Content Include="images\rz_y_1.gif" />
+    <Content Include="images\serch.gif" />
+    <Content Include="images\succeed.gif" />
+    <Content Include="images\th_bg.gif" />
+    <Content Include="images\ts.gif" />
+    <Content Include="images\ts1.gif" />
+    <Content Include="images\v_line.gif" />
+    <Content Include="images\whao.gif" />
+    <Content Include="images\wj02.png" />
+    <Content Include="images\wj03.png" />
+    <Content Include="images\yellow_bjtb.png" />
+    <Content Include="js\commons\DD_belatedPNG_0.0.8a.js" />
+    <Content Include="js\commons\dialog.js" />
+    <Content Include="js\commons\dialog_new.js" />
+    <Content Include="js\commons\jquery-1.9.1.js" />
+    <Content Include="js\commons\jquery-1.9.1.min.js" />
+    <Content Include="js\commons\jquery.cookie-1.4.js" />
+    <Content Include="js\jquery.jcrop\jquery.Jcrop.js" />
+    <Content Include="js\jquery.jcrop\jquery.Jcrop.min.css" />
+    <Content Include="js\jquery.jcrop\jquery.Jcrop.min.js" />
+    <Content Include="js\commons\jquery.json-2.4.js" />
+    <Content Include="js\commons\jquery.json-2.4.min.js" />
+    <Content Include="js\commons\jquery.validate.js" />
+    <Content Include="js\commons\jquery.validate.min.js" />
+    <Content Include="js\commons\MicrosoftAjax.js" />
+    <Content Include="js\commons\MicrosoftMvcAjax.js" />
+    <Content Include="js\my97datepicker\calendar.js" />
+    <Content Include="js\my97datepicker\config.js" />
+    <Content Include="js\my97datepicker\lang\en.js" />
+    <Content Include="js\my97datepicker\lang\zh-cn.js" />
+    <Content Include="js\my97datepicker\lang\zh-tw.js" />
+    <Content Include="js\my97datepicker\My97DatePicker.htm" />
+    <Content Include="js\my97datepicker\skin\datePicker.gif" />
+    <Content Include="js\my97datepicker\skin\default\datepicker.css" />
+    <Content Include="js\my97datepicker\skin\default\img.gif" />
+    <Content Include="js\my97datepicker\skin\WdatePicker.css" />
+    <Content Include="js\my97datepicker\skin\whyGreen\bg.jpg" />
+    <Content Include="js\my97datepicker\skin\whyGreen\datepicker.css" />
+    <Content Include="js\my97datepicker\skin\whyGreen\img.gif" />
+    <Content Include="js\my97datepicker\WdatePicker.js" />
+    <Content Include="LuceneConfigure.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="RedisConfigure.xml" />
+    <Content Include="js\uploadify\jquery.uploadify.js" />
+    <Content Include="js\uploadify\jquery.uploadify.min.js" />
+    <Content Include="js\uploadify\uploadify-cancel.png" />
+    <Content Include="js\uploadify\uploadify.css" />
+    <Content Include="js\uploadify\uploadify.swf" />
+    <Content Include="Views\Account\AccountTable.ascx" />
+    <Content Include="Views\Account\AlipayOrderConfirm.aspx" />
+    <Content Include="Views\Account\AlipayOrderSuc.aspx" />
+    <Content Include="Views\Account\Index.aspx" />
+    <Content Include="Views\Account\OnlinePay.aspx" />
+    <Content Include="Views\Account\Send.aspx" />
+    <Content Include="Views\Activity\APrice\APrice.aspx" />
+    <Content Include="Views\Activity\APrice\APriceList.aspx" />
+    <Content Include="Views\Activity\APrice\UserList.aspx" />
+    <Content Include="Views\Activity\Bargain\Bargain.aspx" />
+    <Content Include="Views\Activity\Bargain\BargainList.aspx" />
+    <Content Include="Views\Activity\Bargain\UserList.aspx" />
+    <Content Include="Views\Activity\Biding\Biding.aspx" />
+    <Content Include="Views\Activity\Biding\BidingList.aspx" />
+    <Content Include="Views\Activity\Biding\UserList.aspx" />
+    <Content Include="Views\Activity\Common\APriceSecKillHouseList.ascx" />
+    <Content Include="Views\Activity\Common\BarginBidingHouseList.ascx" />
+    <Content Include="Views\Activity\Discount\Create.aspx" />
+    <Content Include="Views\Activity\Discount\Detail.aspx" />
+    <Content Include="Views\Activity\Discount\Discount.aspx" />
+    <Content Include="Views\Activity\Discount\DiscountList.aspx" />
+    <Content Include="Views\Activity\Discount\UserList.aspx" />
+    <Content Include="Views\Activity\SecKill\SecKill.aspx" />
+    <Content Include="Views\Activity\SecKill\SecKillList.aspx" />
+    <Content Include="Views\Activity\SecKill\UserList.aspx" />
+    <Content Include="Views\Activity\TuanGou\Detail.aspx" />
+    <Content Include="Views\Activity\TuanGou\TuanGou.aspx" />
+    <Content Include="Views\Activity\TuanGou\TuanGouList.aspx" />
+    <Content Include="Views\Activity\TuanGou\UserList.aspx" />
+    <Content Include="Views\Activity\YaoHao\Add.aspx" />
+    <Content Include="Views\Activity\YaoHao\List.aspx" />
+    <Content Include="Views\Activity\YaoHao\Success.aspx" />
+    <Content Include="Views\Activity\YaoHao\UserList.aspx" />
+    <Content Include="Views\Activity\YaoHao\YaoHaoTable.ascx" />
+    <Content Include="Views\Home\Identification.aspx" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Home\Message.aspx" />
+    <Content Include="Views\Home\MessageTable.ascx" />
+    <Content Include="Views\Home\UpdateMobile.aspx" />
+    <Content Include="Views\Home\UpdatePassword.aspx" />
+    <Content Include="Views\Home\UpdatePhoto.aspx" />
+    <Content Include="Views\Home\UpdatePhotoExpert.aspx" />
+    <Content Include="Views\Home\UploadAuthenticationPhoto.ascx" />
+    <Content Include="Views\Home\UploadAuthenticationHeTong.ascx" />
+    <Content Include="Views\NhBuilding\Create.aspx" />
+    <Content Include="Views\NhBuilding\List.aspx" />
+    <Content Include="Views\NhBuilding\NhBuildingTable.ascx" />
+    <Content Include="Views\NhBuilding\Edit.aspx" />
+    <Content Include="Views\NHouse\Create.aspx" />
+    <Content Include="Views\NHouse\List.aspx" />
+    <Content Include="Views\NHouse\Edit.aspx" />
+    <Content Include="Views\NHouse\HouseTable.ascx" />
+    <Content Include="Views\NHouse\TemplateEdit.aspx" />
+    <Content Include="Views\Premises\PremisesPhotoAdvert.ascx" />
+    <Content Include="Views\Premises\UploadPremisesPhotoLogo.ascx" />
+    <Content Include="Views\Premises\UploadPremisesPhotoSp.ascx" />
+    <Content Include="Views\Shared\AddTemplate.ascx" />
+    <Content Include="Views\Premises\Create.aspx" />
+    <Content Include="Views\Premises\Edit.aspx" />
+    <Content Include="Views\Premises\List.aspx" />
+    <Content Include="Views\Premises\PremisesImage.aspx" />
+    <Content Include="Views\Premises\PremisesPhoto.ascx" />
+    <Content Include="Views\Premises\PremisesTable.ascx" />
+    <Content Include="Views\NHouse\TemplateList.aspx" />
+    <Content Include="Views\NHouse\TemplateTable.ascx" />
+    <Content Include="Views\Premises\UploadPremisesPhoto.aspx" />
+    <Content Include="Views\Recharge\RechargeAlipayNotify_Alipay.aspx" />
+    <Content Include="Views\Shared\AddTemplate.ascx" />
+    <Content Include="Views\Activity\Common\Arranging.ascx" />
+    <Content Include="Views\Premises\BargainInfo.aspx" />
+    <Content Include="Views\Shared\Coordinate.ascx" />
+    <Content Include="Views\Shared\HousePager.ascx" />
+    <Content Include="Views\Shared\Sandbox.ascx" />
+    <Content Include="Views\Shared\Traffic.ascx" />
+    <Content Include="Views\Shared\RoomMarked.ascx" />
+    <Content Include="Views\Shared\HouseIsRelease.ascx" />
+    <Content Include="Views\User\ForgetPassword1.aspx" />
+    <Content Include="Views\User\ForgetPassword2.aspx" />
+    <Content Include="Views\User\Login.aspx" />
+    <Content Include="Views\User\Register.aspx" />
+    <Content Include="Views\User\RegisterSuccess.aspx" />
+    <Content Include="Views\Home\UpdateUserInfo.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="xml\ExcelMode.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="bin\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Main.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Login.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TXBll\TXBll.csproj">
+      <Project>{E299FDB5-DE9A-4F41-9086-D5334E7298E5}</Project>
+      <Name>TXBll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TXCommons\TXCommons.csproj">
+      <Project>{A5057049-32E1-495C-919D-C702B60AFB80}</Project>
+      <Name>TXCommons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TXModel\TXModel.csproj">
+      <Project>{69ADBBB2-5D29-4474-8042-9136CED4AE25}</Project>
+      <Name>TXModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TXOrm\TXOrm.csproj">
+      <Project>{FB2BAEA7-BCA5-4EF8-BACC-5CA76D2F79E6}</Project>
+      <Name>TXOrm</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\99bill\99bill.cert.rsa.20140728.cer">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Views\99bill\KYJFangchan-rsa.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>18658</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://nhdevelopers.kyjob.com/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://nhdevelopers.kyjob.com/</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

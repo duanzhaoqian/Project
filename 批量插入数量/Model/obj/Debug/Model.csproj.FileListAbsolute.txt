@@ -1,0 +1,4 @@
+D:\Visual Studio 2010\Projects\批量插入数量\Model\bin\Debug\Model.dll
+D:\Visual Studio 2010\Projects\批量插入数量\Model\bin\Debug\Model.pdb
+D:\Visual Studio 2010\Projects\批量插入数量\Model\obj\Debug\Model.dll
+D:\Visual Studio 2010\Projects\批量插入数量\Model\obj\Debug\Model.pdb

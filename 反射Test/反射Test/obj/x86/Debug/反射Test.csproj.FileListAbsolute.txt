@@ -1,0 +1,4 @@
+D:\Visual Studio 2010\Projects\反射Test\反射Test\bin\Debug\反射Test.exe
+D:\Visual Studio 2010\Projects\反射Test\反射Test\bin\Debug\反射Test.pdb
+D:\Visual Studio 2010\Projects\反射Test\反射Test\obj\x86\Debug\反射Test.exe
+D:\Visual Studio 2010\Projects\反射Test\反射Test\obj\x86\Debug\反射Test.pdb

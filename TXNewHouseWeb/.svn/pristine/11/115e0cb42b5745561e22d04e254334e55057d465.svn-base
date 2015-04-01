@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Advs>
+  <City id="253" pinyin="beijing">
+    <Adv pos="1" type="img" disurl="" linkurl="#" alt="" />
+    <Adv pos="2" type="img" disurl="" linkurl="#" alt="" />
+    <Adv pos="3" type="img" disurl="" linkurl="#" alt="" />
+    <Adv pos="4" type="img" disurl="" linkurl="#" alt="" />
+    <Adv pos="5" type="img" disurl="" linkurl="#" alt="" />
+    <Adv pos="6" type="img" disurl="" linkurl="#" alt="" />
+  </City>
+  <City id="239" pinyin="shanghai">
+    <Adv pos="1" type="img" disurl="/images/shanghai/t-1.jpg" linkurl="http://shanghai.kuaiyoujia.com/xinfang/lp-24141.html" alt="" />
+    <Adv pos="2" type="img" disurl="/images/shanghai/t-2.jpg" linkurl="http://shanghai.kuaiyoujia.com/xinfang/lp-335.html" alt="" />
+    <Adv pos="3" type="img" disurl="/images/shanghai/ggt-250-240-1.jpg" linkurl="http://shanghai.kuaiyoujia.com/xinfang/lp-335.html" alt="" />
+    <Adv pos="4" type="img" disurl="/images/shanghai/ggt-250-70.gif" linkurl="http://shanghai.kuaiyoujia.com/xinfang/lp-703.html" alt="" />
+    <Adv pos="5" type="img" disurl="/images/shanghai/ggt-250-240.jpg" linkurl="http://shanghai.kuaiyoujia.com/xinfang/lp-688.html" alt="" />
+    <Adv pos="6" type="img" disurl="/images/shanghai/ggt-1190-60.jpg" linkurl="http://shanghai.kuaiyoujia.com/xinfang/lp-700.html" alt="" />
+  </City>
+  <City id="355" pinyin="shenzhen">
+    <Adv pos="1" type="img" disurl="" linkurl="#" alt="" />
+    <Adv pos="2" type="img" disurl="/images/shenzhen/t-2.jpg" linkurl="http://shenzhen.kuaiyoujia.com/xinfang/lp-24115.html" alt="" />
+    <Adv pos="3" type="img" disurl="/images/shenzhen/ggt-250-240-1.jpg" linkurl="http://shenzhen.kuaiyoujia.com/xinfang/lp-24123.html" alt="" />
+    <Adv pos="4" type="img" disurl="" linkurl="#" alt="" />
+    <Adv pos="5" type="img" disurl="" linkurl="#" alt="" />
+    <Adv pos="6" type="img" disurl="" linkurl="#" alt="" />
+  </City>
+  <City id="344" pinyin="guangzhou">
+    <Adv pos="1" type="img" disurl="" linkurl="#" alt="" />
+    <Adv pos="2" type="img" disurl="" linkurl="#" alt="" />
+    <Adv pos="3" type="img" disurl="/images/guangzhou/r-1.jpg" linkurl="http://guangzhou.kuaiyoujia.com/xinfang/lp-24158.html" alt="" />
+    <Adv pos="4" type="img" disurl="/images/guangzhou/r-2.gif" linkurl="http://guangzhou.kuaiyoujia.com/xinfang/lp-500.html" alt="" />
+    <Adv pos="5" type="img" disurl="" linkurl="#" alt="" />
+    <Adv pos="6" type="img" disurl="/images/guangzhou/t-3.jpg" linkurl="http://guangzhou.kuaiyoujia.com/xinfang/lp-24157.html" alt="" />
+  </City>
+  <City id="346" pinyin="huizhou">
+    <Adv pos="1" type="img" disurl="/images/huizhou/ggt-1190-100.jpg" linkurl="http://huizhou.kuaiyoujia.com/xinfang/lp-24138.html" alt="" />
+    <Adv pos="2" type="img" disurl="" linkurl="#" alt="" />
+    <Adv pos="3" type="img" disurl="" linkurl="#" alt="" />
+    <Adv pos="4" type="img" disurl="" linkurl="#" alt="" />
+    <Adv pos="5" type="img" disurl="" linkurl="#" alt="" />
+    <Adv pos="6" type="img" disurl="" linkurl="#" alt="" />
+  </City>
+    <City id="347" pinyin="jiangmen">
+        <Adv pos="1" type="img" disurl="" linkurl="" alt="" />
+        <Adv pos="2" type="img" disurl="/images/jiangmen/t-2.jpg" linkurl="http://jiangmen.kuaiyoujia.com/xinfang/lp-24144.html" alt="" />
+        <Adv pos="3" type="img" disurl="" linkurl="#" alt="" />
+        <Adv pos="4" type="img" disurl="" linkurl="#" alt="" />
+        <Adv pos="5" type="img" disurl="" linkurl="#" alt="" />
+        <Adv pos="6" type="img" disurl="" linkurl="#" alt="" />
+    </City>
+</Advs>

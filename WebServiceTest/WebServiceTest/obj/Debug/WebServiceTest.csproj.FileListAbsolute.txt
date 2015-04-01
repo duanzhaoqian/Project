@@ -1,0 +1,4 @@
+D:\Visual Studio 2010\Projects\WebServiceTest\WebServiceTest\bin\WebServiceTest.dll
+D:\Visual Studio 2010\Projects\WebServiceTest\WebServiceTest\bin\WebServiceTest.pdb
+D:\Visual Studio 2010\Projects\WebServiceTest\WebServiceTest\obj\Debug\WebServiceTest.dll
+D:\Visual Studio 2010\Projects\WebServiceTest\WebServiceTest\obj\Debug\WebServiceTest.pdb

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MQLibrary>
+  <MQIPAddress>
+    <IPAddress>
+      192.168.3.153:61616
+    </IPAddress>
+    <IPAddress>
+      121.52.212.50:61616
+    </IPAddress>
+    <IPAddress>
+      121.52.212.108:61616
+    </IPAddress>
+  </MQIPAddress>
+  <MQName>
+    <Name>fc_newhouse_3_0_premises_test</Name>
+    <Name>fc_newhouse_3_0_apartment_test</Name>
+  </MQName>
+  <MQMessage>
+    <cmbMsg1>
+      <text>{"MethodType":"Update","Ids":"20"}</text>
+      <text>{"MethodType":"Update","Ids":"21"}</text>
+    </cmbMsg1>
+    <cmbMsg2></cmbMsg2>
+    <cmbMsg3></cmbMsg3>
+    <cmbMsg4></cmbMsg4>
+  </MQMessage>
+</MQLibrary>

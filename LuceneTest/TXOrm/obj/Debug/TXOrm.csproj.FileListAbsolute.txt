@@ -1,0 +1,10 @@
+D:\kuaiyoujiaPrj\pc\fangchan\5.8\TXOrm\bin\Debug\TXOrm.dll.config
+D:\kuaiyoujiaPrj\pc\fangchan\5.8\TXOrm\bin\Debug\TXOrm.dll
+D:\kuaiyoujiaPrj\pc\fangchan\5.8\TXOrm\bin\Debug\TXOrm.pdb
+D:\kuaiyoujiaPrj\pc\fangchan\5.8\TXOrm\obj\Debug\TXOrm.dll
+D:\kuaiyoujiaPrj\pc\fangchan\5.8\TXOrm\obj\Debug\TXOrm.pdb
+D:\Visual Studio 2010\Projects\LuceneTest\TXOrm\bin\Debug\TXOrm.dll.config
+D:\Visual Studio 2010\Projects\LuceneTest\TXOrm\bin\Debug\TXOrm.dll
+D:\Visual Studio 2010\Projects\LuceneTest\TXOrm\bin\Debug\TXOrm.pdb
+D:\Visual Studio 2010\Projects\LuceneTest\TXOrm\obj\Debug\TXOrm.dll
+D:\Visual Studio 2010\Projects\LuceneTest\TXOrm\obj\Debug\TXOrm.pdb

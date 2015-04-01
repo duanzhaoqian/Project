@@ -1,0 +1,15 @@
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\Factory\obj\Debug\Factory.csprojResolveAssemblyReference.cache
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\Factory\bin\Debug\Factory.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\Factory\bin\Debug\Factory.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\Factory\bin\Debug\IService.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\Factory\bin\Debug\PicCutImpl.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\Factory\bin\Debug\ProcessPicImpl.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\Factory\bin\Debug\Model.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\Factory\bin\Debug\IService.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\Factory\bin\Debug\PicCutImpl.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\Factory\bin\Debug\ProcessPicImpl.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\Factory\bin\Debug\Model.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\Factory\obj\Debug\Factory.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\Factory\obj\Debug\Factory.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\Factory\bin\Debug\DiskDalImpl.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\Factory\bin\Debug\DiskDalImpl.pdb

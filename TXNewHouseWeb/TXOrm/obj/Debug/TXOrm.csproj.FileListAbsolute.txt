@@ -1,0 +1,5 @@
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXOrm\bin\Debug\TXOrm.dll.config
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXOrm\bin\Debug\TXOrm.dll
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXOrm\bin\Debug\TXOrm.pdb
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXOrm\obj\Debug\TXOrm.dll
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXOrm\obj\Debug\TXOrm.pdb

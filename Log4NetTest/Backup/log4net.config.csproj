@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{073ED4F1-709F-4BB7-8DFA-BD7539DDB6E4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>log4net.config</RootNamespace>
+    <AssemblyName>log4net.config</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Log4Net.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="schema0.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LICENSE" />
+    <Content Include="log4net.xml" />
+    <None Include="NOTICE" />
+    <Content Include="READ_ME.txt" />
+    <Content Include="Samples\Sample1.xml" />
+    <Content Include="Samples\Sample2.xml" />
+    <Content Include="Samples\Sample3.xml" />
+    <Content Include="Samples\Sample4.xml" />
+    <None Include="log4net.xsd" />
+    <None Include="schema0.xsd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>cd $(TargetDir)
+"c:\Program Files\Microsoft SDKs\Windows\v6.0A\bin\xsd.exe" /nologo $(TargetFileName) /outputdir:..\..\ /type:log4net
+"C:\Program Files\Microsoft SDKs\Windows\v6.0A\bin\sgen.exe" /nologo /force /assembly:$(TargetFileName)
+</PostBuildEvent>
+    <PreBuildEvent>cd $(ProjectDir)
+"c:\Program Files\Microsoft SDKs\Windows\v6.0A\bin\xsd.exe" /nologo schema0.xsd /c /f
+</PreBuildEvent>
+  </PropertyGroup>
+</Project>

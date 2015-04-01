@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<log4net xsi:noNamespaceSchemaLocation="../schema0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <appender name="AspNetTraceAppender" type="log4net.Appender.AspNetTraceAppender" >
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+    </layout>
+  </appender>
+  <appender name="BufferingForwardingAppender" type="log4net.Appender.BufferingForwardingAppender" >
+    <bufferSize value="100"/>
+    <appender-ref ref="ConsoleAppender" />
+  </appender>
+  <appender name="BufferingForwardingAppender" type="log4net.Appender.BufferingForwardingAppender" >
+    <bufferSize value="512" />
+    <lossy value="true" />
+    <evaluator type="log4net.Core.LevelEvaluator">
+      <threshold value="WARN"/>
+    </evaluator>
+    <appender-ref ref="ConsoleAppender" />
+  </appender>
+  <appender name="ColoredConsoleAppender" type="log4net.Appender.ColoredConsoleAppender">
+    <mapping>
+      <level value="ERROR" />
+      <foreColor value="White" />
+      <backColor value="Red" />
+    </mapping>
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+    </layout>
+  </appender>
+  <appender name="ColoredConsoleAppender" type="log4net.Appender.ColoredConsoleAppender">
+    <mapping>
+      <level value="ERROR" />
+      <foreColor value="White" />
+      <backColor value="Red" />
+    </mapping>
+    <mapping>
+      <level value="DEBUG" />
+      <backColor value="Green" />
+    </mapping>
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+    </layout>
+  </appender>
+  <appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender">
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+    </layout>
+  </appender>
+  <appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender">
+    <target value="Console.Error" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+    </layout>
+  </appender>
+  <appender name="EventLogAppender" type="log4net.Appender.EventLogAppender" >
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+    </layout>
+  </appender>
+  <appender name="EventLogAppender" type="log4net.Appender.EventLogAppender" >
+    <applicationName value="MyApp" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+    </layout>
+  </appender>
+  <appender name="ForwardingAppender" type="log4net.Appender.ForwardingAppender" >
+    <threshold value="WARN"/>
+    <appender-ref ref="ConsoleAppender" />
+  </appender>
+  <appender name="MemoryAppender" type="log4net.Appender.MemoryAppender">
+  </appender>
+  <appender name="NetSendAppender" type="log4net.Appender.NetSendAppender">
+    <threshold value="ERROR" />
+    <server value="SQUARE" />
+    <recipient value="nicko" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+    </layout>
+  </appender>
+  <appender name="OutputDebugStringAppender" type="log4net.Appender.OutputDebugStringAppender" >
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+    </layout>
+  </appender>
+  <appender name="RemotingAppender" type="log4net.Appender.RemotingAppender" >
+    <sink value="tcp://localhost:8085/LoggingSink" />
+    <lossy value="false" />
+    <bufferSize value="95" />
+  </appender>
+  <appender name="RemotingAppender" type="log4net.Appender.RemotingAppender" >
+    <sink value="tcp://localhost:8085/LoggingSink" />
+    <lossy value="true" />
+    <bufferSize value="200" />
+    <evaluator type="log4net.Core.LevelEvaluator">
+      <threshold value="ERROR"/>
+    </evaluator>
+  </appender>
+  <appender name="SmtpAppender" type="log4net.Appender.SmtpAppender">
+    <to value="to@domain.com" />
+    <from value="from@domain.com" />
+    <subject value="test logging message" />
+    <smtpHost value="SMTPServer.domain.com" />
+    <bufferSize value="512" />
+    <lossy value="true" />
+    <evaluator type="log4net.Core.LevelEvaluator">
+      <threshold value="WARN"/>
+    </evaluator>
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%newline%date [%thread] %-5level %logger [%property{NDC}] - %message%newline%newline%newline" />
+    </layout>
+  </appender>
+  <appender name="SmtpAppender" type="log4net.Appender.SmtpAppender">
+    <to value="to@domain.com" />
+    <from value="from@domain.com" />
+    <subject value="test logging message" />
+    <smtpHost value="SMTPServer.domain.com" />
+    <bufferSize value="512" />
+    <lossy value="false" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%newline%date [%thread] %-5level %logger [%property{NDC}] - %message%newline%newline%newline" />
+    </layout>
+  </appender>
+  <appender name="SmtpAppender" type="log4net.Appender.SmtpAppender">
+    <to value="to@domain.com" />
+    <from value="from@domain.com" />
+    <subject value="test logging message" />
+    <smtpHost value="SMTPServer.domain.com" />
+    <bufferSize value="512" />
+    <lossy value="false" />
+    <evaluator type="log4net.Core.LevelEvaluator">
+      <threshold value="WARN" />
+    </evaluator>
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%property{log4net:HostName} :: %level :: %message %newlineLogger: %logger%newlineThread: %thread%newlineDate: %date%newlineNDC: %property{NDC}%newline%newline" />
+    </layout>
+  </appender>
+  <appender name="SmtpPickupDirAppender" type="log4net.Appender.SmtpPickupDirAppender">
+    <to value="to@domain.com" />
+    <from value="from@domain.com" />
+    <subject value="test logging message" />
+    <pickupDir value="C:\SmtpPickup" />
+    <bufferSize value="512" />
+    <lossy value="true" />
+    <evaluator type="log4net.Core.LevelEvaluator">
+      <threshold value="WARN"/>
+    </evaluator>
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%newline%date [%thread] %-5level %logger [%property{NDC}] - %message%newline%newline%newline" />
+    </layout>
+  </appender>
+  <appender name="TraceAppender" type="log4net.Appender.TraceAppender">
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+    </layout>
+  </appender>
+  <appender name="UdpAppender" type="log4net.Appender.UdpAppender">
+    <localPort value="8080" />
+    <remoteAddress value="224.0.0.1" />
+    <remotePort value="8080" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%-5level %logger [%property{NDC}] - %message%newline" />
+    </layout>
+  </appender>
+
+</log4net>

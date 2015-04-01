@@ -1,0 +1,56 @@
+﻿.notification {
+position: relative;
+/*margin: 0 0 15px 0;*/
+margin:0;
+padding: 0;
+border: 1px solid;
+background-position: 10px 11px !important;
+background-repeat: no-repeat !important;
+font-size: 13px;
+width: 99.8%;
+}               
+.notification div {
+display:block;
+font-style:normal;
+padding: 10px 10px 10px 36px;
+line-height: 1.5em;
+}
+
+.notification .close {
+color:#990000;
+font-size:9px;
+position:absolute;
+right:5px;
+top:5px;
+}
+
+.notification_information {
+background: #dbe3ff url('../images/icons/information.png');
+border-color: #a2b4ee;
+color: #585b66;
+}
+
+.notification_success {
+background: #d5ffce url('../images/icons/tick_circle.png');
+border-color: #9adf8f;
+color: #556652;
+
+}
+
+.notification_error {
+background: #ffcece url('../images/icons/cross_circle.png');
+border-color: #df8f8f;
+
+color: #665252;
+}
+
+/*公用分页*/
+.pubPage{text-align:right;padding-top:13px;border-top:solid 1px #e0e0e0;margin-top:5px;}
+.pubPage a{display:inline-block;background-color:#fff;border:solid 1px #ccc;min-width:10px;padding:0 5px;height:19px;line-height:19px;margin:0 6px;text-align:center;color:#333;}
+.pubPage a.sel{background-color:#2156b0;border:solid 1px #2156b0;color:#fff;}
+.pubPage a.wid57{width:57px;}
+.pubPage a.wid36{width:36px;}
+.pubPage a.cor04{color:#2156b0;}
+.pubPage a.cor07{color:#999;}
+
+.yellow_bjtb { background: url(../images/yellow_bjtb.png) no-repeat; color: #FFFFFF; display: inline-block; height: 18px; line-height: 18px; padding-left: 3px; width: 33px; text-align:left;}

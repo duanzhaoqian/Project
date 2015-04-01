@@ -1,0 +1,15 @@
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXNewHouseServices\bin\Debug\RedisConfigure.xml
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXNewHouseServices\bin\Debug\settings.xml
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXNewHouseServices\bin\Debug\app.config
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXNewHouseServices\bin\Debug\TXNewHouseServices.exe.config
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXNewHouseServices\bin\Debug\TXNewHouseServices.exe
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXNewHouseServices\bin\Debug\TXNewHouseServices.pdb
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXNewHouseServices\bin\Debug\KYJ.ServiceStack.dll
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXNewHouseServices\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXNewHouseServices\bin\Debug\ServiceStack.Redis.dll
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXNewHouseServices\bin\Debug\Newtonsoft.Json.dll
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXNewHouseServices\obj\x86\Debug\TXNewHouseServices.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXNewHouseServices\obj\x86\Debug\TXNewHouseServices.ProjectInstaller.resources
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXNewHouseServices\obj\x86\Debug\TXNewHouseServices.csproj.GenerateResource.Cache
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXNewHouseServices\obj\x86\Debug\TXNewHouseServices.exe
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXNewHouseServices\obj\x86\Debug\TXNewHouseServices.pdb

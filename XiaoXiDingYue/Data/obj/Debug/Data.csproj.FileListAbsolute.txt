@@ -1,0 +1,4 @@
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\Data\bin\Debug\Data.dll
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\Data\bin\Debug\Data.pdb
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\Data\obj\Debug\Data.dll
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\Data\obj\Debug\Data.pdb

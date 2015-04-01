@@ -1,0 +1,4 @@
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXModel\bin\Debug\TXModel.dll
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXModel\bin\Debug\TXModel.pdb
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXModel\obj\Debug\TXModel.dll
+D:\Visual Studio 2010\Projects\TXNewHouseWeb\TXModel\obj\Debug\TXModel.pdb

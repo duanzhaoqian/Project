@@ -1,0 +1,9 @@
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\SqlDalImpl\bin\Debug\SqlDalImpl.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\SqlDalImpl\bin\Debug\SqlDalImpl.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\SqlDalImpl\bin\Debug\IService.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\SqlDalImpl\bin\Debug\Model.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\SqlDalImpl\bin\Debug\IService.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\SqlDalImpl\bin\Debug\Model.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\SqlDalImpl\obj\Debug\SqlDalImpl.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\SqlDalImpl\obj\Debug\SqlDalImpl.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\TuPian_V2\TXImageService\SqlDalImpl\obj\Debug\SqlDalImpl.csprojResolveAssemblyReference.cache

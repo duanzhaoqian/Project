@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<rewriter>
+  
+  <!--楼盘首页-->
+  <rewrite url="/(xinfang)/(lp)-(\d+).html/?$"  to="~/Premises/PremisesIndex/$3" processing="stop"/>
+
+  <!--楼盘搜索列表-->
+  <rewrite url="/(xinfang)/(quyu|sub)/?$"  to="~/Search/PremisesList/cs-$1-$2" processing="stop"/>
+  <rewrite url="/(xinfang)/(quyu|sub)(([\-][d|v|t|u|m|n|r|p|s|q|h|j|i|o|y|g|l|c|j|z|k|w_](\d?,|\d|\w+){1,}){0,})/?$"  to="~/Search/PremisesList/cs-$1-$2$3" processing="stop"/>
+  <rewrite url="/(xinfang)/(quyu|sub)-([a-z]+|x\d{1,})(([\-][d|v|t|u|m|n|r|p|s|q|h|j|i|o|y|g|l|c|j|z|k|w_](\d?,|\d|\w+){1,}){0,})/?$"  to="~/Search/PremisesList/cs-$1-$2-$3$4" processing="stop"/>
+  <rewrite url="/(xinfang)/(quyu|sub)-([a-z]+|x\d{1,})-([a-z]+|b\d{1,})(([\-][d|v|t|u|m|n|r|p|s|q|h|j|i|o|y|g|l|c|j|z|k|w_](\d?,|\d|\w+){1,}){0,})/?$"  to="~/Search/PremisesList/cs-$1-$2-$3-$4$5" processing="stop"/>
+  <rewrite url="/(xinfang)/(quyu|sub)-([a-z]+|x\d{1,})-([a-z]+)-([a-z]+)(([\-][d|v|t|u|m|n|r|p|s|q|h|j|i|o|y|g|l|c|j|z|k|w_](\d?,|\d|\w+){1,}){0,})/?$"  to="~/Search/PremisesList/cs-$1-$2-$3-$4-$5$6" processing="stop"/>
+  
+  <!--楼盘户型图页-->
+  <rewrite url="/(xinfang)/(lp-hxt)([-](\d+)([-](d[\d]{1,}){1,}|[-](l[\d]{1,}){1,}|[-](i[\d]{1,}){1,}|[-](r[\d]{1,}){1,}|[-](m[\d]{1,}){1,}){0,})/?$"  to="~/Premises/SizeChart/$3" processing="stop"/>
+  <!--楼盘相册页-->
+  <rewrite url="/(xinfang)/(lp-xc)([-](\d+)([-](t\d){1,}|[-](i\d){1,}){0,})/?$"  to="~/Premises/Album/$3" processing="stop"/>
+  <rewrite url="/(xinfang)/(lp-xc)(-hxt|-ldt|-xgt|-sjt|-ght|-wzt|-jtt)([-](\d+)?|[-](\d+)?([-](r[\d]{1,}){1,}))/?$"  to="~/Premises/Album/$3$4$7$11" processing="stop"/>
+  <!--图片详情页-->
+  <rewrite url="/(xinfang)/(lp-pic)(-hxt|-ldt|-xgt|-sjt|-ght|-wzt|-jtt)([-](\d+)[-](\d){1,})(([-]r[\d]{1,})|([-]d[\d]{1,})|([-]m[\d]{1,})?)(([-]h[\d]{1,})?)/?$"  to="~/Premises/ImageDetails/$3$4$7$11" processing="stop"/>
+
+
+  <!--楼盘交通配套页-->
+  <rewrite url="/(xinfang)/(lp-jtpt-)(\d+)/?$"  to="~/Premises/TrafficFacilities/$3" processing="stop"/>
+  
+  <!--楼盘详情页-->
+  <rewrite url="/(xinfang)/(lp)-(xq)-(\d+).html/?$"  to="~/Premises/PremisesDetail/$4" processing="stop"/>
+  
+  <!--楼盘房源页-->
+  <!--<rewrite url="/(xinfang)/(lp_fy_)([p](\d){1,})(([_][b|u|f](\d){1,}){0,})/?$"  to="/Premises/PremisesHouse/$3$5" processing="stop"/>-->
+  <rewrite url="/(xinfang)/(lp-fy-)([p](\d){1,})(([-][b|u|f](\d|-\d){1,}){0,})/?$"  to="~/Premises/PremisesHouse/$3$5" processing="stop"/>
+  
+  <!--楼盘房间信息页-->
+  <rewrite url="/(xinfang)/(lp-fy-house-)(\d+).html/?$"  to="~/Premises/House/$3" processing="stop"/>
+  
+  <!--摇号活动列表页-->
+  <rewrite url="/(xinfang)/(yhhd)((([\-])([i])(\d+)){0,})/?$"  to="~/Activity/ActivityList/$7" processing="stop"/>
+  
+  <!--摇号结果列表页-->
+  <rewrite url="/(xinfang)/(yhhd-yhjg)/?$"  to="~/Activity/ActivityResult/" processing="stop"/>
+
+  <!--摇号直播页-->
+  <rewrite url="/(xinfang)/(yhhd-live)-(\d+)/?$"  to="~/Activity/ActivityLive/$3" processing="stop"/>
+
+  <!--工具页-->
+  <rewrite url="/(xinfang)/(gj)-(lppk)-(\d+|\d+[,]\d+|\d+[,]\d+[,]\d+|\d+[,]\d+[,]\d+[,]\d+)/?$"  to="~/Tools/PremisesCompare/$4" processing="stop"/>
+  <rewrite url="/(xinfang)/(gj)-(dk)-(\d).html/?$"  to="~/Tools/index/$4" processing="stop"/>
+  <rewrite url="/(xinfang)/(gj)-(gfsc).html/?$"  to="~/Tools/GouFangShouCe/" processing="stop"/>
+  <rewrite url="/(xinfang)/(gj)-(gfsc)-(\d+).html/?$"  to="~/Tools/GouFangShouCeXQ/$3" processing="stop"/>
+  <rewrite url="/(xinfang)/(gj)-(gfzc).html/?$"  to="~/Tools/GouFangZiChaXT/" processing="stop"/>
+   <!--地图找房-->
+    <rewrite url="/(xinfang)/(dt)-(dtzf).html/?$"  to="~/MapPremise/Index/" processing="stop"/>
+</rewriter>

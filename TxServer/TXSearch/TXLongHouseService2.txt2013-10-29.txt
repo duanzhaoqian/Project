@@ -1,0 +1,142 @@
+服务启动:  2013/10/29 17:15:49379 :2013/10/29 17:15:49
+
+服务启动:  2013/10/29 17:15:52536 :2013/10/29 17:15:52
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:15:54
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:15:55
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:15:56
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:15:57
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:15:58
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:15:59
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:00
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:01
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:02
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:03
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:04
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:05
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:06
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:07
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:08
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:09
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:10
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:11
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:12
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:13
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:14
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:15
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:16
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:17
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:18
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:19
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:20
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:21
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:22
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:23
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:24
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:25
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:26
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:28
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:29
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:30
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:31
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:32
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:33
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:34
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:35
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:36
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:37
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:38
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:39
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:40
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:41
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:42
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:43
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:44
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:45
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:46
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:47
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:48
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:49
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:50
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:51
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:52
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:53
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:54
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:55
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:56
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:57
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:58
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:16:59
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:17:00
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:17:01
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:17:02
+
+修改房源索引异常:  Lock obtain timed out: NativeFSLock@D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex\write.lock :2013/10/29 17:17:03
+

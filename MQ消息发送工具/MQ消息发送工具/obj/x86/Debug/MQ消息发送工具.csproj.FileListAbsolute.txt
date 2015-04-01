@@ -1,0 +1,13 @@
+D:\Visual Studio 2010\Projects\MQ消息发送工具\MQ消息发送工具\bin\Debug\MQ消息发送工具.exe.config
+D:\Visual Studio 2010\Projects\MQ消息发送工具\MQ消息发送工具\bin\Debug\MQ消息发送工具.exe
+D:\Visual Studio 2010\Projects\MQ消息发送工具\MQ消息发送工具\bin\Debug\MQ消息发送工具.pdb
+D:\Visual Studio 2010\Projects\MQ消息发送工具\MQ消息发送工具\bin\Debug\Apache.NMS.ActiveMQ.dll
+D:\Visual Studio 2010\Projects\MQ消息发送工具\MQ消息发送工具\bin\Debug\Apache.NMS.dll
+D:\Visual Studio 2010\Projects\MQ消息发送工具\MQ消息发送工具\bin\Debug\log4net.dll
+D:\Visual Studio 2010\Projects\MQ消息发送工具\MQ消息发送工具\obj\x86\Debug\MQ消息发送工具.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\MQ消息发送工具\MQ消息发送工具\obj\x86\Debug\MQ消息发送工具.MQ消息发送工具.resources
+D:\Visual Studio 2010\Projects\MQ消息发送工具\MQ消息发送工具\obj\x86\Debug\MQ消息发送工具.Properties.Resources.resources
+D:\Visual Studio 2010\Projects\MQ消息发送工具\MQ消息发送工具\obj\x86\Debug\MQ消息发送工具.csproj.GenerateResource.Cache
+D:\Visual Studio 2010\Projects\MQ消息发送工具\MQ消息发送工具\obj\x86\Debug\MQ消息发送工具.exe
+D:\Visual Studio 2010\Projects\MQ消息发送工具\MQ消息发送工具\obj\x86\Debug\MQ消息发送工具.pdb
+D:\Visual Studio 2010\Projects\MQ消息发送工具\MQ消息发送工具\bin\Debug\MQLibrary.xml

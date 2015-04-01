@@ -1,0 +1,7 @@
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\SQLHelp\bin\Debug\SQLHelp.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\SQLHelp\bin\Debug\SQLHelp.pdb
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\SQLHelp\obj\Debug\SQLHelp.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\SQLHelp\obj\Debug\SQLHelp.pdb
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\SQLHelp\obj\Debug\SQLHelp.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\SQLHelp\bin\Debug\Command.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\SQLHelp\bin\Debug\Command.pdb

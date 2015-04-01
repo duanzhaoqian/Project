@@ -1,0 +1,4 @@
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\Model\bin\Debug\Model.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\Model\bin\Debug\Model.pdb
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\Model\obj\Debug\Model.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\Model\obj\Debug\Model.pdb

@@ -1,0 +1,6 @@
+D:\Visual Studio 2010\Projects\TestSend\TestSend\bin\Debug\TestSend.exe.config
+D:\Visual Studio 2010\Projects\TestSend\TestSend\bin\Debug\TestSend.exe
+D:\Visual Studio 2010\Projects\TestSend\TestSend\bin\Debug\TestSend.pdb
+D:\Visual Studio 2010\Projects\TestSend\TestSend\obj\x86\Debug\TestSend.exe
+D:\Visual Studio 2010\Projects\TestSend\TestSend\obj\x86\Debug\TestSend.pdb
+D:\Visual Studio 2010\Projects\TestSend\TestSend\obj\x86\Debug\TestSend.csprojResolveAssemblyReference.cache

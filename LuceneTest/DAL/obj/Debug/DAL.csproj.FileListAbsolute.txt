@@ -1,0 +1,7 @@
+D:\Visual Studio 2010\Projects\LuceneTest\DAL\bin\Debug\DAL.dll
+D:\Visual Studio 2010\Projects\LuceneTest\DAL\bin\Debug\DAL.pdb
+D:\Visual Studio 2010\Projects\LuceneTest\DAL\bin\Debug\TXOrm.dll
+D:\Visual Studio 2010\Projects\LuceneTest\DAL\bin\Debug\TXOrm.pdb
+D:\Visual Studio 2010\Projects\LuceneTest\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\LuceneTest\DAL\obj\Debug\DAL.dll
+D:\Visual Studio 2010\Projects\LuceneTest\DAL\obj\Debug\DAL.pdb

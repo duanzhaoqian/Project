@@ -1,0 +1,10 @@
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ListenMQ\bin\Debug\ListenMQ.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ListenMQ\bin\Debug\ListenMQ.pdb
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ListenMQ\bin\Debug\Apache.NMS.ActiveMQ.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ListenMQ\bin\Debug\Apache.NMS.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ListenMQ\bin\Debug\MQ.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ListenMQ\obj\Debug\ListenMQ.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ListenMQ\obj\Debug\ListenMQ.pdb
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ListenMQ\bin\Debug\Command.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ListenMQ\bin\Debug\Command.pdb
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ListenMQ\obj\Debug\ListenMQ.csprojResolveAssemblyReference.cache

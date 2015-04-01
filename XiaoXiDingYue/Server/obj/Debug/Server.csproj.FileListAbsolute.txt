@@ -1,0 +1,4 @@
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\Server\bin\Debug\Server.dll
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\Server\bin\Debug\Server.pdb
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\Server\obj\Debug\Server.dll
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\Server\obj\Debug\Server.pdb

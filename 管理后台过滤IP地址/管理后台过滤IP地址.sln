@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilterIPAddress", "FilterIPAddress\FilterIPAddress.csproj", "{C767DDF3-371E-43D2-8E77-E9320D38735E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcTest", "MvcTest\MvcTest.csproj", "{2B29EE4B-AF04-4F05-BE39-1FD6B9DAF692}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C767DDF3-371E-43D2-8E77-E9320D38735E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C767DDF3-371E-43D2-8E77-E9320D38735E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C767DDF3-371E-43D2-8E77-E9320D38735E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C767DDF3-371E-43D2-8E77-E9320D38735E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B29EE4B-AF04-4F05-BE39-1FD6B9DAF692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B29EE4B-AF04-4F05-BE39-1FD6B9DAF692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B29EE4B-AF04-4F05-BE39-1FD6B9DAF692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B29EE4B-AF04-4F05-BE39-1FD6B9DAF692}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

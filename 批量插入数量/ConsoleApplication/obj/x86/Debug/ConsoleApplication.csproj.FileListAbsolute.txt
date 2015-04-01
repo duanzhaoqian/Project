@@ -1,0 +1,10 @@
+D:\Visual Studio 2010\Projects\批量插入数量\ConsoleApplication\bin\Debug\ConsoleApplication.exe.config
+D:\Visual Studio 2010\Projects\批量插入数量\ConsoleApplication\bin\Debug\ConsoleApplication.exe
+D:\Visual Studio 2010\Projects\批量插入数量\ConsoleApplication\bin\Debug\ConsoleApplication.pdb
+D:\Visual Studio 2010\Projects\批量插入数量\ConsoleApplication\bin\Debug\Model.dll
+D:\Visual Studio 2010\Projects\批量插入数量\ConsoleApplication\bin\Debug\SQLData.dll
+D:\Visual Studio 2010\Projects\批量插入数量\ConsoleApplication\bin\Debug\Model.pdb
+D:\Visual Studio 2010\Projects\批量插入数量\ConsoleApplication\obj\x86\Debug\ConsoleApplication.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\批量插入数量\ConsoleApplication\obj\x86\Debug\ConsoleApplication.exe
+D:\Visual Studio 2010\Projects\批量插入数量\ConsoleApplication\obj\x86\Debug\ConsoleApplication.pdb
+D:\Visual Studio 2010\Projects\批量插入数量\ConsoleApplication\bin\Debug\SQLData.pdb

@@ -1,0 +1,7 @@
+D:\Visual Studio 2010\Projects\ServerTest\ServerTest\bin\Debug\ServerTest.exe
+D:\Visual Studio 2010\Projects\ServerTest\ServerTest\obj\x86\Debug\ServerTest.ProjectInstaller.resources
+D:\Visual Studio 2010\Projects\ServerTest\ServerTest\obj\x86\Debug\ServerTest.TestService.resources
+D:\Visual Studio 2010\Projects\ServerTest\ServerTest\obj\x86\Debug\ServerTest.csproj.GenerateResource.Cache
+D:\Visual Studio 2010\Projects\ServerTest\ServerTest\obj\x86\Debug\ServerTest.exe
+D:\Visual Studio 2010\Projects\ServerTest\ServerTest\obj\x86\Debug\ServerTest.pdb
+D:\Visual Studio 2010\Projects\ServerTest\ServerTest\bin\Debug\ServerTest.pdb

@@ -1,0 +1,14 @@
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ConsoleApplication1\bin\Debug\Bll.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ConsoleApplication1\bin\Debug\Command.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ConsoleApplication1\bin\Debug\SQLHelp.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ConsoleApplication1\bin\Debug\Dal.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ConsoleApplication1\bin\Debug\Bll.pdb
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ConsoleApplication1\bin\Debug\Command.pdb
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ConsoleApplication1\bin\Debug\SQLHelp.pdb
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ConsoleApplication1\bin\Debug\Dal.pdb
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb

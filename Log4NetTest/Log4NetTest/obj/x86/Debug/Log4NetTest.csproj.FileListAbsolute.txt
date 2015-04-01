@@ -1,0 +1,8 @@
+D:\Visual Studio 2010\Projects\Log4NetTest\Log4NetTest\bin\Debug\Log4NetTest.exe
+D:\Visual Studio 2010\Projects\Log4NetTest\Log4NetTest\bin\Debug\Log4NetTest.pdb
+D:\Visual Studio 2010\Projects\Log4NetTest\Log4NetTest\obj\x86\Debug\Log4NetTest.exe
+D:\Visual Studio 2010\Projects\Log4NetTest\Log4NetTest\obj\x86\Debug\Log4NetTest.pdb
+D:\Visual Studio 2010\Projects\Log4NetTest\Log4NetTest\bin\Debug\Log4NetTest.exe.config
+D:\Visual Studio 2010\Projects\Log4NetTest\Log4NetTest\bin\Debug\log4net.dll
+D:\Visual Studio 2010\Projects\Log4NetTest\Log4NetTest\bin\Debug\log4net.xml
+D:\Visual Studio 2010\Projects\Log4NetTest\Log4NetTest\bin\Debug\log4net.config

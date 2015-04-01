@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="F:\上线" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="配置文件1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Web.config" publishTime="05/20/2014 15:46:34" />
+    <file relUrl="bin/TXCommons.dll" publishTime="05/21/2014 17:33:18" />
+    <file relUrl="HouseImage.asmx" publishTime="05/08/2014 14:43:37" />
+    <file relUrl="bin/app.config" publishTime="05/14/2014 09:21:08" />
+    <file relUrl="crossdomain.xml" publishTime="05/08/2014 14:43:14" />
+    <file relUrl="RedisConfigure.xml" publishTime="05/09/2014 15:31:44" />
+    <file relUrl="bin/Apache.NMS.dll" publishTime="07/15/2013 08:46:34" />
+    <file relUrl="bin/MQ.dll" publishTime="07/15/2013 08:46:34" />
+    <file relUrl="bin/log4net.dll" publishTime="07/15/2013 08:46:34" />
+    <file relUrl="bin/KYJ.ServiceStack.dll" publishTime="05/20/2014 10:36:50" />
+    <file relUrl="bin/Newtonsoft.Json.dll" publishTime="07/26/2013 09:46:23" />
+    <file relUrl="bin/Apache.NMS.ActiveMQ.dll" publishTime="07/15/2013 08:46:33" />
+    <file relUrl="bin/Log4netService.dll" publishTime="11/22/2013 14:39:42" />
+    <file relUrl="bin/TXCommons.pdb" publishTime="05/21/2014 17:33:18" />
+    <file relUrl="bin/KYJ.ServiceStack.pdb" publishTime="05/20/2014 10:36:50" />
+    <file relUrl="Log4net.xml" publishTime="05/08/2014 14:43:14" />
+    <file relUrl="bin/RedisConfigure.xml" publishTime="05/09/2014 15:31:44" />
+    <file relUrl="bin/TXImageWebService.pdb" publishTime="05/22/2014 09:19:13" />
+    <file relUrl="bin/TXImageWebService.dll" publishTime="05/22/2014 09:19:13" />
+  </publishProfile>
+</publishData>

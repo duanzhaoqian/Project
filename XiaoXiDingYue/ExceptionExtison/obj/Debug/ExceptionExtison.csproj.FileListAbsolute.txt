@@ -1,0 +1,4 @@
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\ExceptionExtison\bin\Debug\ExceptionExtison.dll
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\ExceptionExtison\bin\Debug\ExceptionExtison.pdb
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\ExceptionExtison\obj\Debug\ExceptionExtison.dll
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\ExceptionExtison\obj\Debug\ExceptionExtison.pdb

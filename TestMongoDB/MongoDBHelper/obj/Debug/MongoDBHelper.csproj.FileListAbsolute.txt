@@ -1,0 +1,12 @@
+D:\Visual Studio 2010\Projects\TestMongoDB\MongoDBHelper\bin\Debug\MongoDBHelper.dll
+D:\Visual Studio 2010\Projects\TestMongoDB\MongoDBHelper\bin\Debug\MongoDBHelper.pdb
+D:\Visual Studio 2010\Projects\TestMongoDB\MongoDBHelper\bin\Debug\MongoDBHelper.dll.CodeAnalysisLog.xml
+D:\Visual Studio 2010\Projects\TestMongoDB\MongoDBHelper\bin\Debug\MongoDBHelper.dll.lastcodeanalysissucceeded
+D:\Visual Studio 2010\Projects\TestMongoDB\MongoDBHelper\bin\Debug\MongoDB.Bson.dll
+D:\Visual Studio 2010\Projects\TestMongoDB\MongoDBHelper\bin\Debug\MongoDB.Driver.dll
+D:\Visual Studio 2010\Projects\TestMongoDB\MongoDBHelper\bin\Debug\MongoDB.Bson.pdb
+D:\Visual Studio 2010\Projects\TestMongoDB\MongoDBHelper\bin\Debug\MongoDB.Bson.xml
+D:\Visual Studio 2010\Projects\TestMongoDB\MongoDBHelper\bin\Debug\MongoDB.Driver.pdb
+D:\Visual Studio 2010\Projects\TestMongoDB\MongoDBHelper\bin\Debug\MongoDB.Driver.xml
+D:\Visual Studio 2010\Projects\TestMongoDB\MongoDBHelper\obj\Debug\MongoDBHelper.dll
+D:\Visual Studio 2010\Projects\TestMongoDB\MongoDBHelper\obj\Debug\MongoDBHelper.pdb

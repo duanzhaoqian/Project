@@ -1,0 +1,29 @@
+﻿<?xml version="1.0"?>
+<configuration>
+  <system.web>
+    <!--<httpRuntime maxRequestLength= "204800" executionTimeout= "60" />
+    <identity impersonate="true" userName="yfxsadmin" password="shjl2013!@#" />-->
+  </system.web>
+  <appSettings>
+    <add key="StatrTime" value="9:56"/><!--服务启动时间-->
+    <add key="DelCJLongHouseDay" value="3"/><!--软删除采集房源天数-->
+    <add key="LongHouseDay" value="30"/><!--租房软删除未操作天数-->
+    <add key="SecHouseDay" value="50"/><!--二手房软删除未操作天数-->
+    <add key="DelHouseDay" value="3"/> <!--物理删除未操作天数-->
+    <add key="LogPath" value="D:\log\log"/><!--日志记录地址-->
+
+    <!--<add key="BaseInfoDB" value="server=192.168.3.156;uid=sa;pwd=110;database=kyj_HouseDBZS20140211;" />-->
+    <add key="BaseInfoDB" value="server=.;uid=sa;pwd=dou;database=kyj_HouseDB_ZS20140226;" />
+    <add key="DelId" value="679"/>
+
+    <!--121.52.212.50:61616  192.168.0.22:61616-->
+    <add key="MQIPAddress" value="121.52.212.50:61616" />
+    <add key="MQConnectionTimeOut" value="3" />
+    <add key="MQRetryCount" value="2" />
+    <add key="MQRentHousePicQueueName" value="fc_renthousepic" />
+    <add key="MQShortHouseSearchQueueName" value="fc_shorthousesearch" />
+    <add key="MQLongHouseSearchQueueName" value="fc_longhousesearch" />
+    <add key="MQUserInfoCallQueueName" value="userinfocalldeal_test" />
+    
+  </appSettings>
+<startup><supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/></startup></configuration>

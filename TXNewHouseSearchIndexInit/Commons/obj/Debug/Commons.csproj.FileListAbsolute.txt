@@ -1,0 +1,32 @@
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\bin\Debug\app.config
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\bin\Debug\Commons.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\bin\Debug\Commons.pdb
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\bin\Debug\KYJ.ServiceStack.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\bin\Debug\Lucene.Net.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\bin\Debug\Newtonsoft.Json.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\bin\Debug\PanGu.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\bin\Debug\PanGu.Lucene.Analyzer.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\bin\Debug\TXCommons.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\bin\Debug\Log4netService.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\bin\Debug\MQ.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\bin\Debug\Apache.NMS.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\bin\Debug\log4net.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\bin\Debug\Apache.NMS.ActiveMQ.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\bin\Debug\TXCommons.pdb
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\bin\Debug\KYJ.ServiceStack.pdb
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\bin\Debug\PanGu.xml
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\obj\Debug\Commons.csprojResolveAssemblyReference.cache
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\obj\Debug\Commons.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXNewServer\Commons\obj\Debug\Commons.pdb
+D:\Visual Studio 2010\Projects\TXNewHouseSearchIndexInit\Commons\bin\Debug\app.config
+D:\Visual Studio 2010\Projects\TXNewHouseSearchIndexInit\Commons\bin\Debug\Commons.dll
+D:\Visual Studio 2010\Projects\TXNewHouseSearchIndexInit\Commons\bin\Debug\Commons.pdb
+D:\Visual Studio 2010\Projects\TXNewHouseSearchIndexInit\Commons\bin\Debug\TXCommons.dll
+D:\Visual Studio 2010\Projects\TXNewHouseSearchIndexInit\Commons\bin\Debug\Log4netService.dll
+D:\Visual Studio 2010\Projects\TXNewHouseSearchIndexInit\Commons\bin\Debug\MQ.dll
+D:\Visual Studio 2010\Projects\TXNewHouseSearchIndexInit\Commons\bin\Debug\Apache.NMS.dll
+D:\Visual Studio 2010\Projects\TXNewHouseSearchIndexInit\Commons\bin\Debug\Apache.NMS.ActiveMQ.dll
+D:\Visual Studio 2010\Projects\TXNewHouseSearchIndexInit\Commons\bin\Debug\TXCommons.pdb
+D:\Visual Studio 2010\Projects\TXNewHouseSearchIndexInit\Commons\obj\Debug\Commons.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\TXNewHouseSearchIndexInit\Commons\obj\Debug\Commons.dll
+D:\Visual Studio 2010\Projects\TXNewHouseSearchIndexInit\Commons\obj\Debug\Commons.pdb

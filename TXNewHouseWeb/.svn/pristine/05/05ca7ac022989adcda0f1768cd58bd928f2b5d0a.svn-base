@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{69ADBBB2-5D29-4474-8042-9136CED4AE25}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TXModel</RootNamespace>
+    <AssemblyName>TXModel</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminLogs\Z_AdminLog.cs" />
+    <Compile Include="AdminPVM\PVE_HN_ADvertise.cs" />
+    <Compile Include="AdminPVM\PVE_NH_PremisesAllImg.cs" />
+    <Compile Include="AdminPVM\PVE_NH_Biding.cs" />
+    <Compile Include="AdminPVM\PVE_NH_Building.cs" />
+    <Compile Include="AdminPVM\PVE_NH_Discount.cs" />
+    <Compile Include="AdminPVM\PVE_NH_Discount_Detail.cs" />
+    <Compile Include="AdminPVM\PVE_NH_Discount_Houses.cs" />
+    <Compile Include="AdminPVM\PVE_NH_Discount_HousesJson.cs" />
+    <Compile Include="AdminPVM\PVE_NH_Discount_JoinHouse.cs" />
+    <Compile Include="AdminPVM\PVE_NH_House.cs" />
+    <Compile Include="AdminPVM\PVE_NH_House_Detail.cs" />
+    <Compile Include="AdminPVM\PVE_NH_Premises2.cs" />
+    <Compile Include="AdminPVM\PVE_NH_Premises_Imgs.cs" />
+    <Compile Include="AdminPVM\PVE_NH_SecKill_Edit.cs" />
+    <Compile Include="AdminPVM\PVE_NH_SecKill_HouseInfo.cs" />
+    <Compile Include="AdminPVM\PVE_NH_YaoHao.cs" />
+    <Compile Include="AdminPVM\PVE_PermitPresale.cs" />
+    <Compile Include="AdminPVM\PVM_NH_Bargain.cs" />
+    <Compile Include="AdminPVM\PVM_NH_Biding.cs" />
+    <Compile Include="AdminPVM\PVM_NH_BidingUsers.cs" />
+    <Compile Include="AdminPVM\PVM_NH_Biding_House.cs" />
+    <Compile Include="AdminPVM\PVM_NH_Bond.cs" />
+    <Compile Include="AdminPVM\PVM_NH_Building.cs" />
+    <Compile Include="AdminPVM\PVM_NH_Developer.cs" />
+    <Compile Include="AdminPVM\PVM_NH_Discount.cs" />
+    <Compile Include="AdminPVM\PVM_NH_Discount_Edit1.cs" />
+    <Compile Include="AdminPVM\PVM_NH_Discount_Edit2.cs" />
+    <Compile Include="AdminPVM\PVM_NH_Discount_UserReport.cs" />
+    <Compile Include="AdminPVM\PVM_NH_LadderBuy.cs" />
+    <Compile Include="AdminPVM\PVM_NH_Premises.cs" />
+    <Compile Include="AdminPVM\PVM_NH_House.cs" />
+    <Compile Include="AdminPVM\PVM_NH_Purchase.cs" />
+    <Compile Include="AdminPVM\PVM_NH_Purchase_Edit2.cs" />
+    <Compile Include="AdminPVM\PVM_NH_RegistrationUser.cs" />
+    <Compile Include="AdminPVM\PVM_NH_SandBox_Selection.cs" />
+    <Compile Include="AdminPVM\PVM_NH_SecKill.cs" />
+    <Compile Include="AdminPVM\PVM_NH_SecKill_Edit_Houses.cs" />
+    <Compile Include="AdminPVM\PVM_NH_SecKill_UserReport.cs" />
+    <Compile Include="AdminPVM\PVM_NH_TuanGou_Social.cs" />
+    <Compile Include="AdminPVM\PVM_NH_WithdrawCash.cs" />
+    <Compile Include="AdminPVM\PVM_NH_YaoHao.cs" />
+    <Compile Include="AdminPVM\PVM_NH_YaoHaoUsers.cs" />
+    <Compile Include="AdminPVM\PVS_NH_Bargain.cs" />
+    <Compile Include="AdminPVM\PVS_NH_Biding.cs" />
+    <Compile Include="AdminPVM\PVS_NH_BidingUsers.cs" />
+    <Compile Include="AdminPVM\PVS_NH_Biding_House.cs" />
+    <Compile Include="AdminPVM\PVS_NH_Bond.cs" />
+    <Compile Include="AdminPVM\PVS_NH_Building.cs" />
+    <Compile Include="AdminPVM\PVS_NH_Developer.cs" />
+    <Compile Include="AdminPVM\PVS_NH_DeveloperAgentName.cs" />
+    <Compile Include="AdminPVM\PVS_NH_Discount.cs" />
+    <Compile Include="AdminPVM\PVS_NH_Discount_Houses.cs" />
+    <Compile Include="AdminPVM\PVS_NH_Discount_Houses_Edit1.cs" />
+    <Compile Include="AdminPVM\PVS_NH_ForHouseCount.cs" />
+    <Compile Include="AdminPVM\PVS_NH_House.cs" />
+    <Compile Include="AdminPVM\PVS_NH_LadderBuy.cs" />
+    <Compile Include="AdminPVM\PVS_NH_Premises.cs" />
+    <Compile Include="AdminPVM\PVS_NH_RegistrationUser.cs" />
+    <Compile Include="AdminPVM\PVS_NH_SecKill.cs" />
+    <Compile Include="AdminPVM\PVS_NH_SecKill_Edit.cs" />
+    <Compile Include="AdminPVM\PVS_NH_YaoHao.cs" />
+    <Compile Include="AdminPVM\PVS_NH_YaoHaoUsers.cs" />
+    <Compile Include="AdminPVM\PVS_NH_WithdrawCash.cs" />
+    <Compile Include="AdminPVM\PVS_NH_Purchase_Edit.cs" />
+    <Compile Include="AdminPVM\PVE_NH_Purchase_JoinHouse.cs" />
+    <Compile Include="AdminPVM\PVM_NH_TuanGou.cs" />
+    <Compile Include="AdminPVM\PVE_NH_Purchase_Detail.cs" />
+    <Compile Include="Admins\Z_Admin.cs" />
+    <Compile Include="AdminLogs\Z_OperAdminLog.cs" />
+    <Compile Include="AD\Advs.cs" />
+    <Compile Include="Ajax\StaticData.cs" />
+    <Compile Include="Commons\ESqlResult.cs" />
+    <Compile Include="Commons\ESqlResult_SelectList.cs" />
+    <Compile Include="Commons\Paging.cs" />
+    <Compile Include="Dev\CT_DeveAndIdenInfo.cs" />
+    <Compile Include="Dev\CT_LoginUser.cs" />
+    <Compile Include="Geography\Z_GeographyItem.cs" />
+    <Compile Include="Geography\Z_Traffic.cs" />
+    <Compile Include="Models\Model_AdminPageInfo.cs" />
+    <Compile Include="Models\Z_Model.cs" />
+    <Compile Include="Models\Z_OperModel.cs" />
+    <Compile Include="NHouseActivies\APrice\CT_UserList.cs" />
+    <Compile Include="NHouseActivies\Arranging\CT_UserList.cs" />
+    <Compile Include="NHouseActivies\Bargain\BargainInfoModel.cs" />
+    <Compile Include="NHouseActivies\Bargain\CT_UserList.cs" />
+    <Compile Include="NHouseActivies\Biding\BidingInfoModel.cs" />
+    <Compile Include="NHouseActivies\Biding\CT_UserList.cs" />
+    <Compile Include="NHouseActivies\Common\ActivityHouse.cs" />
+    <Compile Include="NHouseActivies\Discount\ActivityInfoModel.cs" />
+    <Compile Include="NHouseActivies\Discount\CreateActivityModel.cs" />
+    <Compile Include="NHouseActivies\Discount\CT_Activity.cs" />
+    <Compile Include="NHouseActivies\Discount\CT_UserList.cs" />
+    <Compile Include="NHouseActivies\Discount\HouseInfoModel.cs" />
+    <Compile Include="NHouseActivies\Discount\PremiseModel.cs" />
+    <Compile Include="NHouseActivies\SecKill\CT_UserList.cs" />
+    <Compile Include="NHouseActivies\TuanGou\CT_UserList.cs" />
+    <Compile Include="NHouseActivies\YaoHao\CT_YaoHao.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\CT_Bid.cs" />
+    <Compile Include="User\CT_FavoritePrem.cs" />
+    <Compile Include="User\CT_Yaohao.cs" />
+    <Compile Include="Web\ActivityList.cs" />
+    <Compile Include="Web\BuildingHouseHuX.cs" />
+    <Compile Include="Web\HouseFloor.cs" />
+    <Compile Include="Web\HouseFloorCount.cs" />
+    <Compile Include="Web\PremisesActivitiesHouse.cs" />
+    <Compile Include="Web\PremisesBuilding.cs" />
+    <Compile Include="Web\PremisesCarousel.cs" />
+    <Compile Include="Web\PremisesCompare.cs" />
+    <Compile Include="Web\PremisesHouse.cs" />
+    <Compile Include="Web\PremisesHouseHuX.cs" />
+    <Compile Include="Web\PremisesHouseRoom.cs" />
+    <Compile Include="Web\RecentlyViewed.cs" />
+    <Compile Include="Web\HouseAndBuilding.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

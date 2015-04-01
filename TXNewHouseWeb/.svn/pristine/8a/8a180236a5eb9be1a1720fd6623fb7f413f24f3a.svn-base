@@ -1,0 +1,141 @@
+@charset "utf-8";
+/* 头部 */
+.header1 { border-top: 5px solid #E3E3E3; padding: 20px 0px 10px 0px; height: 62px; }
+.header_box { width: 1000px; margin: 0px auto; }
+.header_box .logo { float: left; }
+.header_box .linkGroup { float: right; margin-top: 40px; }
+.header_box .linkGroup a { color: #0068b7; }
+.header_box .linkGroup a:hover { color: #ff3300; }
+.header_box .linkGroup i { padding: 0 7px; color: #999; }
+span.countx { background: url(../images/msg.png) no-repeat; color: #FFFFFF; display: block; font-size: 12px; font-weight: bold; height: 21px; line-height: 17px; position: absolute; right: 5px; text-align: center; top: -18px; width: 30px; }
+/* 尾部 */
+.footer_user { font-size: 12px; margin: 20px auto }
+.footer_user .bg { width: 1000px; margin: 0 auto; background: url(../images/bg_footerR1.gif) #FFF 0 0 repeat-x; height: 39px; line-height: 39px; color: #434950; text-align: center; border-bottom: 3px solid #717171; border-top: 1px solid #e4e4e4; }
+.footer_user a { color: #434950; }
+.footer_user .copyright { width: 1000px; margin: 0 auto; line-height: 25px; text-align: center; height: 69px; padding-top: 10px; color: #666; font-family: Arial, Helvetica, sans-serif; }
+/* 登录 */
+.bg_login { background: url(../images/login.jpg) no-repeat; width: 300px; padding: 0px 10px 0px 690px; height: 366px; }
+.login_title { font-size: 18px; font-family: "MicroSoft YaHei"; color: #fff; line-height: 38px; padding-left: 55px; }
+.login_table { margin: 28px auto; }
+.login_table tr th { text-align: right; vertical-align: middle; font-size: 14px; color: #333; padding: 10px 2px; }
+.login_table tr td { padding: 10px 2px; }
+.input_w200 { width: 200px; padding: 5px; height: 22px; line-height: 22px; border: 1px solid #cccccc; background: #fafafa; }
+.btn_w97_green, .btn_w98_green { background: url(../images/btn_w97_green.gif) no-repeat; width: 97px; height: 30px; line-height: 30px; text-align: center; color: #fff; cursor: pointer; font-weight: bold; font-size: 14px; border: none; }
+.btn_w98_green { background: url(../images/btn_w98_green.gif) no-repeat; width: 98px; }
+.btn_w97_green:hover { background: url(../images/btn_w97_green_hover.gif) no-repeat; }
+.btn_w98_green:hover { background: url(../images/btn_w98_green_hover.gif) no-repeat; }
+.no, .ok, .ts { background: url(../images/no.gif) no-repeat left center; padding-left: 20px; font-size: 12px; color: #ff3300; display: inline-block; padding-top: 2px; }
+.ok { background: url(../images/ok.gif) no-repeat left 6px; color: #333; display: inline-block; height: 20px; line-height: 20px; }
+.ts { background: url(../images/ts.gif) no-repeat left center; }
+.border_top { border-top: 1px solid #e3e3e3; padding: 20px 0px; }
+.ie_valign_5 {
+*vertical-align:6px; _vertical-align: 5px; }
+/* 注册 */
+h4.title_h4 { background: #f8f8f8; border-bottom: 1px solid #369131; height: 32px; position: relative; color: #666; clear: both; }
+h4.title_h4 span { display: inline-block; padding: 10px 30px 0px 30px; height: 18px; background: #FFF; border: 1px solid #369131; border-bottom: 1px solid #fff; text-align: center; position: absolute; left: 46px; bottom: -1px; font-weight: bold; font-size: 14px; color: #328d2e; }
+h4.title_h4 .ts_right { position: absolute; right: 12px; top: 10px; font-size: 12px; }
+h4.title_h4 .ts_right .red { margin-right: 5px; }
+.table_box { margin: 30px 0px; }
+.table_box tr td { padding: 5px; font-size: 14px; color: #333; }
+.valign2 { vertical-align: -2px; _vertical-align: 0px; }
+.btn_w111_gray { background: url(../images/btn_w111_grey.gif) no-repeat; width: 111px; height: 23px; line-height: 23px; text-align: center; cursor: pointer; border: none; color: #333; font-size: 12px; margin: 0px 10px 0px 117px; }
+.btn_w111_gray_none{ color:#999; cursor:auto;}
+.input_reg { border: 1px solid #e4e4e4; width: 220px; height: 18px; line-height: 18px; padding: 3px; background: #fff; margin-right: 10px; }
+.yellow_box { border: 1px solid #ffdd55; background: #feffef; padding: 3px 10px; }
+.ts1 { line-height: 24px; font-size: 12px; padding: 0px 10px 0px 20px; background: url(../images/ts1.gif) no-repeat left 3px; }
+/* 注册完成 */
+.pad100 { padding: 100px; }
+.succeed { background: url(../images/succeed.gif) no-repeat; padding-left: 60px; line-height: 34px; display: inline-block; font-size: 24px; color: #009900; font-family: "MicroSoft YaHei"; }
+.line { height: 0px; border-bottom: 1px dashed #e8e8e8; margin: 35px auto; }
+.btn_w152 { background: url(../images/btn_w152.gif) no-repeat; width: 152px; height: 24px; line-height: 24px; border: none; cursor: pointer; text-align: center; font-size: 12px; color: #333; }
+.btn_w152:hover { background: url(../images/btn_w152_hover.gif) no-repeat; }
+/* 首页 */
+.btn_w80 { width: 80px; height: 24px; line-height: 24px; font-size: 12px; color: #333; border: none; cursor: pointer; text-align: center; background: url(../images/btn_w80.gif) no-repeat; }
+.btn_w80:hover { background: url(../images/btn_w80_hover.gif) no-repeat; }
+.green_box { border: 1px solid #90c08e; background: #fcfff9; }
+.green_box dl { padding: 8px 10px; height: 120px; }
+.green_box dl dt { width: 110px; height: 120px; float: left; text-align: center; margin-top: 10px; }
+.green_box dl dt p { font-size: 12px; line-height: 20px; }
+.green_box dl dt img { width: 80px; height: 80px; border: 1px solid #dcdcdc; }
+.green_box dl dd { width: 850px; float: right; }
+.green_box dl dd ul li { line-height: 30px; float: left; width: 280px; font-size: 14px; color: #333333; }
+.rz_g_1 { background: url(../images/rz_g_1.gif) no-repeat; width: 127px; height: 30px; display: inline-block; }
+.rz_y_1 { background: url(../images/rz_y_1.gif) no-repeat; width: 127px; height: 30px; display: inline-block; }
+/* 限时折扣-创建限时折扣 */
+.table_box1 { margin: 20px 0px; }
+.table_box1 tr th, .table_box1 tr td { padding: 5px 2px; font-size: 12px; line-height:22px;}
+.select1 { padding: 3px; border: 1px solid #cecece; background: #fff; }
+.input_wauto { border: 1px solid #cecece; background: #fff; height: 18px; line-height: 18px; padding: 2px 3px; }
+/* 账户管理-在线支付 */
+.my_title { background: #f5f5f5; height: 35px; font-size: 14px; color: #666; padding-left: 15px; }
+.my_title a { padding: 0 20px; line-height: 30px; margin-top: 5px; display: inline-block; color: #666; }
+.my_title a:hover { color: #666; text-decoration: none; }
+.my_title a.on { background: #fff; padding: 0 20px; line-height: 30px; margin-top: 5px; display: inline-block; font-weight: bold; }
+.my_title span.my_span { margin-left: 30px; font-size: 12px; }
+.bankGroups tr th { line-height: 38px; }
+.bankGroups tr td .blankList li { width: 175px; height: 37px; display: inline; float: left; margin-right: 10px; margin-bottom: 15px; }
+.blankList input.unsaved { width: 22px; height: 19px; padding: 3px 5px; line-height: 19px; font-size: 14px; color: #999; border-color: #FFF; margin-right: 0 !important; }
+.blankList .fn-left { float: left; margin-top: 10px; display: block; position: relative; left: 5px }
+.blankList .icon-container { border: 1px solid #e4e4e4; width: 128px; height: 38px; display: inline-block; overflow: hidden; float: left; margin-left: 10px; }
+.m10px { margin-left: 10px !important; *margin-left:35px !important;
+_margin-left: 30px; margin-left: 0px\0 !important; }
+.blankList .icon-container i { height: 37px; line-height: 37px; display: block; }
+.icon-container i.z1 { background: url(../images/bank/z1.gif) center center no-repeat }
+.icon-container i.z2 { background: url(../images/bank/z2.gif) center center no-repeat }
+.icon-container i.z3 { background: url(../images/bank/z3.gif) center center no-repeat }
+.icon-container i.z4 { background: url(../images/bank/z4.gif) center center no-repeat }
+.icon-container i.z5 { background: url(../images/bank/z5.gif) center center no-repeat }
+.icon-container i.z6 { background: url(../images/bank/z6.gif) center center no-repeat }
+.icon-container i.z7 { background: url(../images/bank/z7.gif) center center no-repeat }
+.icon-container i.z8 { background: url(../images/bank/z8.gif) center center no-repeat }
+.icon-container i.z9 { background: url(../images/bank/z9.gif) center center no-repeat }
+.icon-container i.z10 { background: url(../images/bank/z10.gif) center center no-repeat }
+.icon-container i.z11 { background: url(../images/bank/z11.gif) center center no-repeat }
+.icon-container i.z12 { background: url(../images/bank/z12.gif) center center no-repeat }
+.icon-container i.z13 { background: url(../images/bank/z13.gif) center center no-repeat }
+.icon-container i.z14 { background: url(../images/bank/z14.gif) center center no-repeat }
+.icon-container i.z15 { background: url(../images/bank/z15.gif) center center no-repeat }
+.icon-container i.z16 { background: url(../images/bank/z16.gif) center center no-repeat }
+.icon-container i.z17 { background: url(../images/bank/z17.gif) center center no-repeat }
+.icon-container i.z18 { background: url(../images/bank/z18.gif) center center no-repeat }
+.icon-container i.z19 { background: url(../images/bank/z19.gif) center center no-repeat }
+.icon-container i.z20 { background: url(../images/bank/z20.gif) center center no-repeat }
+.icon-container i.zfb { background: url(../images/bank/zfb.gif) center center no-repeat }
+/* 账户管理-我要充值 */
+.whao { background: url(../images/whao.gif) no-repeat left center; padding-left: 20px; height: 20px; line-height: 20px; display: inline-block; color: #0068B7; }
+.dd_skip { display: none; }
+.table_box2 tr td { padding: 6px 5px; vertical-align: text-top; line-height: 24px; }
+.bg_line { background: url(../images/line1.gif) no-repeat center top; padding: 15px 0px; }
+.bg_fafafa { background: #fafafa; }
+.upload_photo { margin: 0px auto; padding: 20px 0px; width: 630px; }
+.upload_photo .left { width: 210px; float: left; }
+.upload_photo .right { width: 375px; float: right; }
+/* 站内信 */
+.landlord_box table { border: 1px solid #E4E4E4; border-bottom: none; }
+.landlord_box table tr td { border-bottom: 1px solid #E4E4E4; padding: 10px; font-size: 12px; color: #333; line-height: 20px; }
+.read { background: url(../images/letter.gif) 0px 0px no-repeat; width: 28px; height: 30px; display: inline-block; }
+.unread { background: url(../images/letter.gif) 0px -38px no-repeat; width: 28px; height: 22px; display: inline-block; }
+.input_h30 { height: 25px; line-height: 25px; padding: 2px 5px; color: #999; border: 1px solid #CCCCCC; background: #FAFAFA; }
+/*忘记密码*/
+.passCt { background: url(../images/cjlogin_bg.png) #f9f9f9 no-repeat left top; border: 1px solid #e4e4e4; padding: 70px 180px; color: #666; font-size: 14px; }
+.passTAB { line-height: 50px; }
+.passTAB .passWxts { line-height: 24px; border: 1px solid #ffd173; padding: 10px 20px; margin-top: 25px; background-color: #fffcd2; font-size: 12px; }
+.passCt .passMt { width: 300px; margin: 0 auto; }
+.passCt .passMt .good { background: url(../images/icons/good_03.png) no-repeat 0 0; padding-left: 50px; height: 42px; line-height: 42px; font-size: 24px; text-align: center; margin-bottom: 20px; }
+.passCt .passMt .fontAlint { padding-left: 80px; font-size: 14px; line-height: 40px; }
+input.input { border: 1px solid #dddddd; height: 34px; line-height: 34px; margin-right: 10px; padding-left: 5px; width: 240px; background: #fff; }
+.btn_tj { width: 177px; height: 43px; background: url(../images/btn_tj01.png) no-repeat 0 0; border: none; }
+.btn_tj:hover { background-position: 0 -47px; }
+.btn_xyb { width: 177px; height: 43px; background: url(../images/btn_xyb.png) no-repeat 0 0; border: none; cursor: pointer; }
+.btn_xyb:hover { background-position: 0 -46px; }
+.btn_yzm { width: 122px; height: 26px; background: url(../images/btn_yzm.gif) no-repeat 0 0; display: block; border: none; cursor: pointer; }
+/*身份认证*/
+.img { border: 1px solid #ccc; padding: 5px; display: inline-block; }
+/*弹出框*/
+.layer_box { border: 2px solid #359132; position: relative; background-color: #fff; }
+.layer_title { background: #f3f3f3; border-bottom: 2px solid #e8e7e7; height: 30px; line-height: 30px; padding: 0px 10px; font-size: 14px; }
+.layer_box .close { width: 13px; height: 12px; background: url(../images/colose.gif) left top no-repeat; position: absolute; top: 8px; right: 8px; display: inline-block; }
+.layer_box .close:hover { background: url(../images/colose_a.gif) left top no-repeat; }
+.yellow_bjtb { background: url(../images/yellow_bjtb.png) no-repeat; color: #FFFFFF; display: inline-block; height: 18px; line-height: 18px; padding-left: 3px; width: 33px; text-align: left; }
+.ps_r { position: relative; }
+.ps_a { position: absolute; left: 0px; top: -3px; filter: alpha(Opacity=0); opacity: 0; width: 123px; height: 24px; }

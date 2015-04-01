@@ -1,0 +1,4 @@
+D:\Visual Studio 2010\Projects\WcfService2\WcfService1\bin\WcfService1.dll
+D:\Visual Studio 2010\Projects\WcfService2\WcfService1\bin\WcfService1.pdb
+D:\Visual Studio 2010\Projects\WcfService2\WcfService1\obj\Debug\WcfService1.dll
+D:\Visual Studio 2010\Projects\WcfService2\WcfService1\obj\Debug\WcfService1.pdb

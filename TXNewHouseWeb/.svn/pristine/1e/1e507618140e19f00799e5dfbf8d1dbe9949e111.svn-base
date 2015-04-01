@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<configuration>
+<startup><supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/></startup>
+  <connectionStrings>
+    <!--<add name="kyj_NewHouseDBEntities" connectionString="metadata=res://*/kyj_NewHouseDB.csdl|res://*/kyj_NewHouseDB.ssdl|res://*/kyj_NewHouseDB.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=192.168.3.156;Initial Catalog=kyj_NewHouseDB;Persist Security Info=True;User ID=sa;Password=110;MultipleActiveResultSets=True;Application Name=EntityFramework&quot;" providerName="System.Data.EntityClient" />-->
+    <add name="kyj_NewHouseDBEntities" connectionString="Data Source=192.168.3.156;Initial Catalog=kyj_NewHouseDB;User ID=sa;Password=110;" providerName="System.Data.EntityClient" />
+  </connectionStrings>
+</configuration>

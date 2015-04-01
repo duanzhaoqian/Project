@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="D:\发布\search" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="配置文件1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/KYJ.ServiceStack.pdb" publishTime="11/01/2013 09:25:35" />
+    <file relUrl="bin/MQ.dll" publishTime="07/15/2013 10:57:39" />
+    <file relUrl="bin/Newtonsoft.Json.dll" publishTime="07/15/2013 10:57:39" />
+    <file relUrl="Global.asax" publishTime="07/15/2013 10:57:37" />
+    <file relUrl="Area/GetAreaIndex.ashx" publishTime="08/20/2013 16:23:27" />
+    <file relUrl="bin/HBase.Thrift.dll" publishTime="07/15/2013 10:57:40" />
+    <file relUrl="bin/log4net.dll" publishTime="07/15/2013 10:57:39" />
+    <file relUrl="Area/jquery-1.4.2.min.js" publishTime="08/23/2013 09:15:41" />
+    <file relUrl="bin/Log4netService.dll" publishTime="11/01/2013 09:25:35" />
+    <file relUrl="Village/GetVillageIndex.ashx" publishTime="08/15/2013 15:51:47" />
+    <file relUrl="Traffic/GetTrafficIndex.ashx" publishTime="08/20/2013 16:40:28" />
+    <file relUrl="bin/TXCommons.pdb" publishTime="11/01/2013 09:25:35" />
+    <file relUrl="RentHouse/GetLongHouseIndex.ashx" publishTime="07/15/2013 10:57:38" />
+    <file relUrl="bin/Thrift.dll" publishTime="07/15/2013 10:57:40" />
+    <file relUrl="bin/TXCommons.dll" publishTime="11/01/2013 09:25:35" />
+    <file relUrl="Area/test.aspx" publishTime="08/28/2013 13:51:10" />
+    <file relUrl="bin/TXSearch.pdb" publishTime="11/01/2013 09:25:36" />
+    <file relUrl="bin/Apache.NMS.dll" publishTime="07/15/2013 10:57:39" />
+    <file relUrl="Log4net.xml" publishTime="07/15/2013 10:57:37" />
+    <file relUrl="bin/TXOrm.pdb" publishTime="11/01/2013 09:04:35" />
+    <file relUrl="bin/TXSearch.dll" publishTime="11/01/2013 09:25:36" />
+    <file relUrl="bin/Lucene.Net.dll" publishTime="07/15/2013 10:57:40" />
+    <file relUrl="bin/ServiceStack.Redis.dll" publishTime="07/15/2013 10:57:39" />
+    <file relUrl="RentHouse/AddSearchIndexTest.ashx" publishTime="07/15/2013 10:57:38" />
+    <file relUrl="bin/TXOrm.dll" publishTime="11/01/2013 09:04:35" />
+    <file relUrl="Web.config" publishTime="11/01/2013 09:25:43" />
+    <file relUrl="bin/Apache.NMS.ActiveMQ.dll" publishTime="07/15/2013 10:57:39" />
+    <file relUrl="bin/Log4netService.pdb" publishTime="11/01/2013 09:25:34" />
+    <file relUrl="bin/KYJ.ServiceStack.dll" publishTime="11/01/2013 09:25:35" />
+    <file relUrl="SubWayVillage/GetSubWayVillageIndex.ashx" publishTime="08/21/2013 10:43:39" />
+  </publishProfile>
+</publishData>

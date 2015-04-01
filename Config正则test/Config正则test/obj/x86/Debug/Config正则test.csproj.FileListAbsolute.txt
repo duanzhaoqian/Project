@@ -1,0 +1,6 @@
+D:\Visual Studio 2010\Projects\Config正则test\Config正则test\bin\Debug\Config正则test.exe.config
+D:\Visual Studio 2010\Projects\Config正则test\Config正则test\bin\Debug\Config正则test.exe
+D:\Visual Studio 2010\Projects\Config正则test\Config正则test\bin\Debug\Config正则test.pdb
+D:\Visual Studio 2010\Projects\Config正则test\Config正则test\obj\x86\Debug\Config正则test.exe
+D:\Visual Studio 2010\Projects\Config正则test\Config正则test\obj\x86\Debug\Config正则test.pdb
+D:\Visual Studio 2010\Projects\Config正则test\Config正则test\bin\Debug\TextFile1.txt

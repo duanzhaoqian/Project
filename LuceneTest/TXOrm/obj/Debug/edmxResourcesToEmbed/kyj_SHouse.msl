@@ -1,0 +1,1921 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="kyj_HouseDB_5ModelStoreContainer" CdmEntityContainer="kyj_HouseDBEntities">
+    <FunctionImportMapping FunctionImportName="proc_longhouse_update_v1_0" FunctionName="kyj_HouseDB_5Model.Store.proc_longhouse_update_v1_0" />
+    <FunctionImportMapping FunctionImportName="proc_longhouse_add_v1_0" FunctionName="kyj_HouseDB_5Model.Store.proc_longhouse_add_v1_0" />
+    <FunctionImportMapping FunctionImportName="proc_longhouse_update_v2_0" FunctionName="kyj_HouseDB_5Model.Store.proc_longhouse_update_v2_0" />
+    <FunctionImportMapping FunctionImportName="proc_longhouse_add_v2_0" FunctionName="kyj_HouseDB_5Model.Store.proc_longhouse_add_v2_0" />
+    <FunctionImportMapping FunctionImportName="proc_GetHouseDetail" FunctionName="kyj_HouseDB_5Model.Store.proc_GetHouseDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kyj_HouseDB_5Model.HouseDetail">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PrivateNum" ColumnName="PrivateNum" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
+          <ScalarProperty Name="HouseType" ColumnName="HouseType" />
+          <ScalarProperty Name="OfficeType" ColumnName="OfficeType" />
+          <ScalarProperty Name="PropertyRight" ColumnName="PropertyRight" />
+          <ScalarProperty Name="PType" ColumnName="PType" />
+          <ScalarProperty Name="PTypeState" ColumnName="PTypeState" />
+          <ScalarProperty Name="IsOnePrice" ColumnName="IsOnePrice" />
+          <ScalarProperty Name="IsBargaining" ColumnName="IsBargaining" />
+          <ScalarProperty Name="IsAgency" ColumnName="IsAgency" />
+          <ScalarProperty Name="IsSVip" ColumnName="IsSVip" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="DId" ColumnName="DId" />
+          <ScalarProperty Name="DName" ColumnName="DName" />
+          <ScalarProperty Name="BId" ColumnName="BId" />
+          <ScalarProperty Name="BName" ColumnName="BName" />
+          <ScalarProperty Name="VId" ColumnName="VId" />
+          <ScalarProperty Name="UId" ColumnName="UId" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UName" ColumnName="UName" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="VName" ColumnName="VName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+          <ScalarProperty Name="QuotedPrice" ColumnName="QuotedPrice" />
+          <ScalarProperty Name="QuotedMaxPrice" ColumnName="QuotedMaxPrice" />
+          <ScalarProperty Name="QuotedMinPrice" ColumnName="QuotedMinPrice" />
+          <ScalarProperty Name="RentType" ColumnName="RentType" />
+          <ScalarProperty Name="PayType" ColumnName="PayType" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Hall" ColumnName="Hall" />
+          <ScalarProperty Name="Toilet" ColumnName="Toilet" />
+          <ScalarProperty Name="Kitchen" ColumnName="Kitchen" />
+          <ScalarProperty Name="Balcony" ColumnName="Balcony" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="BuildingArea" ColumnName="BuildingArea" />
+          <ScalarProperty Name="BuildingStructure" ColumnName="BuildingStructure" />
+          <ScalarProperty Name="BuildingType" ColumnName="BuildingType" />
+          <ScalarProperty Name="BuildingYear" ColumnName="BuildingYear" />
+          <ScalarProperty Name="theFloar" ColumnName="theFloar" />
+          <ScalarProperty Name="allFloar" ColumnName="allFloar" />
+          <ScalarProperty Name="IsCut" ColumnName="IsCut" />
+          <ScalarProperty Name="Orientation" ColumnName="Orientation" />
+          <ScalarProperty Name="Renovation" ColumnName="Renovation" />
+          <ScalarProperty Name="SupportingFacilities" ColumnName="SupportingFacilities" />
+          <ScalarProperty Name="IndoorFacilities" ColumnName="IndoorFacilities" />
+          <ScalarProperty Name="SearchTime" ColumnName="SearchTime" />
+          <ScalarProperty Name="CheckInTime" ColumnName="CheckInTime" />
+          <ScalarProperty Name="AuthenticationState" ColumnName="AuthenticationState" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="IsRecommend" ColumnName="IsRecommend" />
+          <ScalarProperty Name="VideoUrl" ColumnName="VideoUrl" />
+          <ScalarProperty Name="ParticipateNum" ColumnName="ParticipateNum" />
+          <ScalarProperty Name="BidStatus" ColumnName="BidStatus" />
+          <ScalarProperty Name="IsPlat" ColumnName="IsPlat" />
+          <ScalarProperty Name="IsDK" ColumnName="IsDK" />
+          <ScalarProperty Name="IsGuarantee" ColumnName="IsGuarantee" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="IsTxfree" ColumnName="IsTxfree" />
+          <ScalarProperty Name="IsFullYears" ColumnName="IsFullYears" />
+          <ScalarProperty Name="IsUnique" ColumnName="IsUnique" />
+          <ScalarProperty Name="HouseScore" ColumnName="HouseScore" />
+          <ScalarProperty Name="IsReal" ColumnName="IsReal" />
+          <ScalarProperty Name="IsReturn" ColumnName="IsReturn" />
+          <ScalarProperty Name="IsWorry" ColumnName="IsWorry" />
+          <ScalarProperty Name="IsMorePic" ColumnName="IsMorePic" />
+          <ScalarProperty Name="AuthenticationTime" ColumnName="AuthenticationTime" />
+          <ScalarProperty Name="fromurl" ColumnName="fromurl" />
+          <ScalarProperty Name="IsSheng" ColumnName="IsSheng" />
+          <ScalarProperty Name="sentdate" ColumnName="sentdate" />
+          <ScalarProperty Name="SendState" ColumnName="SendState" />
+          <ScalarProperty Name="RecTime" ColumnName="RecTime" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Bus" ColumnName="Bus" />
+          <ScalarProperty Name="Supporting" ColumnName="Supporting" />
+          <ScalarProperty Name="Housegoods" ColumnName="Housegoods" />
+          <ScalarProperty Name="Sincerity" ColumnName="Sincerity" />
+          <ScalarProperty Name="IsDaiK" ColumnName="IsDaiK" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_GetLookHouseFirst" FunctionName="kyj_HouseDB_5Model.Store.proc_GetLookHouseFirst" />
+    <EntitySetMapping Name="A_Account">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.A_Account">
+        <MappingFragment StoreEntitySet="A_Account">
+          <ScalarProperty Name="JBCount" ColumnName="JBCount" />
+          <ScalarProperty Name="WithdrawCashTotalPrice" ColumnName="WithdrawCashTotalPrice" />
+          <ScalarProperty Name="InvesteIncomeTotalPrice" ColumnName="InvesteIncomeTotalPrice" />
+          <ScalarProperty Name="InvesteTotalPrice" ColumnName="InvesteTotalPrice" />
+          <ScalarProperty Name="RechargeTotalPrice" ColumnName="RechargeTotalPrice" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="DrawMoneyTimes" ColumnName="DrawMoneyTimes" />
+          <ScalarProperty Name="BackPrice" ColumnName="BackPrice" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A_ConsumeLog">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.A_ConsumeLog">
+        <MappingFragment StoreEntitySet="A_ConsumeLog">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="PayBank" ColumnName="PayBank" />
+          <ScalarProperty Name="PayType" ColumnName="PayType" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="A_Id" ColumnName="A_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A_KBLog">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.A_KBLog">
+        <MappingFragment StoreEntitySet="A_KBLog">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="PayBank" ColumnName="PayBank" />
+          <ScalarProperty Name="PayType" ColumnName="PayType" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="A_Id" ColumnName="A_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A_Recharge">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.A_Recharge">
+        <MappingFragment StoreEntitySet="A_Recharge">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="IsSuc" ColumnName="IsSuc" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="RechargeNo" ColumnName="RechargeNo" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="A_Id" ColumnName="A_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="A_WithdrawCash">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.A_WithdrawCash">
+        <MappingFragment StoreEntitySet="A_WithdrawCash">
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
+          <ScalarProperty Name="PubBankName" ColumnName="PubBankName" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="ALiPayAccount" ColumnName="ALiPayAccount" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="ReceiveType" ColumnName="ReceiveType" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="A_Id" ColumnName="A_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Adverts">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.Advert">
+        <MappingFragment StoreEntitySet="Advert">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="BuyType" ColumnName="BuyType" />
+          <ScalarProperty Name="BuyTime" ColumnName="BuyTime" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+          <ScalarProperty Name="AreaType" ColumnName="AreaType" />
+          <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+          <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+          <ScalarProperty Name="PayType" ColumnName="PayType" />
+          <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdvertLogs">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.AdvertLog">
+        <MappingFragment StoreEntitySet="AdvertLog">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="BuyType" ColumnName="BuyType" />
+          <ScalarProperty Name="BuyTime" ColumnName="BuyTime" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+          <ScalarProperty Name="AreaType" ColumnName="AreaType" />
+          <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+          <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+          <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AgentLogs">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.AgentLog">
+        <MappingFragment StoreEntitySet="AgentLog">
+          <ScalarProperty Name="Admin" ColumnName="Admin" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="StateTime" ColumnName="StateTime" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Refuse" ColumnName="Refuse" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AgentPays">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.AgentPay">
+        <MappingFragment StoreEntitySet="AgentPay">
+          <ScalarProperty Name="adminname" ColumnName="adminname" />
+          <ScalarProperty Name="adminid" ColumnName="adminid" />
+          <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+          <ScalarProperty Name="APRId" ColumnName="APRId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AgentServices">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.AgentService">
+        <MappingFragment StoreEntitySet="AgentService">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="IsNow" ColumnName="IsNow" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="S_Id" ColumnName="S_Id" />
+          <ScalarProperty Name="A_Id" ColumnName="A_Id" />
+          <ScalarProperty Name="C_Id" ColumnName="C_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplyPRents">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.ApplyPRent">
+        <MappingFragment StoreEntitySet="ApplyPRent">
+          <ScalarProperty Name="IsBackC" ColumnName="IsBackC" />
+          <ScalarProperty Name="isdel" ColumnName="isdel" />
+          <ScalarProperty Name="adminname" ColumnName="adminname" />
+          <ScalarProperty Name="adminid" ColumnName="adminid" />
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+          <ScalarProperty Name="allstate" ColumnName="allstate" />
+          <ScalarProperty Name="isbpay" ColumnName="isbpay" />
+          <ScalarProperty Name="iscpay" ColumnName="iscpay" />
+          <ScalarProperty Name="aucdesc" ColumnName="aucdesc" />
+          <ScalarProperty Name="auctime" ColumnName="auctime" />
+          <ScalarProperty Name="aucstate" ColumnName="aucstate" />
+          <ScalarProperty Name="cpnum" ColumnName="cpnum" />
+          <ScalarProperty Name="cmobile" ColumnName="cmobile" />
+          <ScalarProperty Name="cname" ColumnName="cname" />
+          <ScalarProperty Name="lblname" ColumnName="lblname" />
+          <ScalarProperty Name="lbzname" ColumnName="lbzname" />
+          <ScalarProperty Name="lbname" ColumnName="lbname" />
+          <ScalarProperty Name="lbcityid" ColumnName="lbcityid" />
+          <ScalarProperty Name="lbpriventid" ColumnName="lbpriventid" />
+          <ScalarProperty Name="lbanknum" ColumnName="lbanknum" />
+          <ScalarProperty Name="lpnum" ColumnName="lpnum" />
+          <ScalarProperty Name="lmobile" ColumnName="lmobile" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="LUId" ColumnName="LUId" />
+          <ScalarProperty Name="agentname" ColumnName="agentname" />
+          <ScalarProperty Name="agentmobile" ColumnName="agentmobile" />
+          <ScalarProperty Name="ABCityId" ColumnName="ABCityId" />
+          <ScalarProperty Name="ABPriventId" ColumnName="ABPriventId" />
+          <ScalarProperty Name="ABAName" ColumnName="ABAName" />
+          <ScalarProperty Name="ABZName" ColumnName="ABZName" />
+          <ScalarProperty Name="ABName" ColumnName="ABName" />
+          <ScalarProperty Name="ABankNum" ColumnName="ABankNum" />
+          <ScalarProperty Name="agentId" ColumnName="agentId" />
+          <ScalarProperty Name="bond" ColumnName="bond" />
+          <ScalarProperty Name="commissiononline" ColumnName="commissiononline" />
+          <ScalarProperty Name="commissionunline" ColumnName="commissionunline" />
+          <ScalarProperty Name="commission" ColumnName="commission" />
+          <ScalarProperty Name="etime" ColumnName="etime" />
+          <ScalarProperty Name="btime" ColumnName="btime" />
+          <ScalarProperty Name="pprice" ColumnName="pprice" />
+          <ScalarProperty Name="rtype" ColumnName="rtype" />
+          <ScalarProperty Name="rentprice" ColumnName="rentprice" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="num" ColumnName="num" />
+          <ScalarProperty Name="hnum" ColumnName="hnum" />
+          <ScalarProperty Name="gid" ColumnName="gid" />
+          <ScalarProperty Name="vname" ColumnName="vname" />
+          <ScalarProperty Name="RPTime" ColumnName="RPTime" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="houseid" ColumnName="houseid" />
+          <ScalarProperty Name="cityname" ColumnName="cityname" />
+          <ScalarProperty Name="cityId" ColumnName="cityId" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ARCPics">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.ARCPic">
+        <MappingFragment StoreEntitySet="ARCPic">
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          <ScalarProperty Name="Gid" ColumnName="Gid" />
+          <ScalarProperty Name="ARCId" ColumnName="ARCId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ARents">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.ARent">
+        <MappingFragment StoreEntitySet="ARent">
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Backtime" ColumnName="Backtime" />
+          <ScalarProperty Name="Isback" ColumnName="Isback" />
+          <ScalarProperty Name="Paytime" ColumnName="Paytime" />
+          <ScalarProperty Name="Etime" ColumnName="Etime" />
+          <ScalarProperty Name="Btime" ColumnName="Btime" />
+          <ScalarProperty Name="Aucime" ColumnName="Aucime" />
+          <ScalarProperty Name="PayAgain" ColumnName="PayAgain" />
+          <ScalarProperty Name="AucState" ColumnName="AucState" />
+          <ScalarProperty Name="IsPay" ColumnName="IsPay" />
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          <ScalarProperty Name="IsLock" ColumnName="IsLock" />
+          <ScalarProperty Name="Btype" ColumnName="Btype" />
+          <ScalarProperty Name="BTypeContract" ColumnName="BTypeContract" />
+          <ScalarProperty Name="AllPrice" ColumnName="AllPrice" />
+          <ScalarProperty Name="RealPrice" ColumnName="RealPrice" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="PayNum" ColumnName="PayNum" />
+          <ScalarProperty Name="PayName" ColumnName="PayName" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="DayAgain" ColumnName="DayAgain" />
+          <ScalarProperty Name="DayNum" ColumnName="DayNum" />
+          <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ARentContracts">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.ARentContract">
+        <MappingFragment StoreEntitySet="ARentContract">
+          <ScalarProperty Name="YMobile" ColumnName="YMobile" />
+          <ScalarProperty Name="YName" ColumnName="YName" />
+          <ScalarProperty Name="KAucTime" ColumnName="KAucTime" />
+          <ScalarProperty Name="LAucTime" ColumnName="LAucTime" />
+          <ScalarProperty Name="Isdel" ColumnName="Isdel" />
+          <ScalarProperty Name="AucTime" ColumnName="AucTime" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          <ScalarProperty Name="Updatetime" ColumnName="Updatetime" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="ZTime" ColumnName="ZTime" />
+          <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+          <ScalarProperty Name="LBLName" ColumnName="LBLName" />
+          <ScalarProperty Name="LBZName" ColumnName="LBZName" />
+          <ScalarProperty Name="LBName" ColumnName="LBName" />
+          <ScalarProperty Name="LBCityId" ColumnName="LBCityId" />
+          <ScalarProperty Name="LBPriventId" ColumnName="LBPriventId" />
+          <ScalarProperty Name="LBankNum" ColumnName="LBankNum" />
+          <ScalarProperty Name="LPNum" ColumnName="LPNum" />
+          <ScalarProperty Name="LMobile" ColumnName="LMobile" />
+          <ScalarProperty Name="LName" ColumnName="LName" />
+          <ScalarProperty Name="FKPNum" ColumnName="FKPNum" />
+          <ScalarProperty Name="FKMobile" ColumnName="FKMobile" />
+          <ScalarProperty Name="FKName" ColumnName="FKName" />
+          <ScalarProperty Name="FKUId" ColumnName="FKUId" />
+          <ScalarProperty Name="OtherDesc" ColumnName="OtherDesc" />
+          <ScalarProperty Name="BZ" ColumnName="BZ" />
+          <ScalarProperty Name="TZPrice" ColumnName="TZPrice" />
+          <ScalarProperty Name="TZDays" ColumnName="TZDays" />
+          <ScalarProperty Name="FKPrice" ColumnName="FKPrice" />
+          <ScalarProperty Name="FDPrice" ColumnName="FDPrice" />
+          <ScalarProperty Name="FKArrearsPrice" ColumnName="FKArrearsPrice" />
+          <ScalarProperty Name="JZDays" ColumnName="JZDays" />
+          <ScalarProperty Name="JFDays" ColumnName="JFDays" />
+          <ScalarProperty Name="WXDays" ColumnName="WXDays" />
+          <ScalarProperty Name="TQDays" ColumnName="TQDays" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="JFTime" ColumnName="JFTime" />
+          <ScalarProperty Name="ETime" ColumnName="ETime" />
+          <ScalarProperty Name="BTime" ColumnName="BTime" />
+          <ScalarProperty Name="FKFPrice" ColumnName="FKFPrice" />
+          <ScalarProperty Name="FDCD" ColumnName="FDCD" />
+          <ScalarProperty Name="FKCD" ColumnName="FKCD" />
+          <ScalarProperty Name="YPrice" ColumnName="YPrice" />
+          <ScalarProperty Name="PriceType" ColumnName="PriceType" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="PMaxNum" ColumnName="PMaxNum" />
+          <ScalarProperty Name="PNum" ColumnName="PNum" />
+          <ScalarProperty Name="YType" ColumnName="YType" />
+          <ScalarProperty Name="IsDY" ColumnName="IsDY" />
+          <ScalarProperty Name="OunerName" ColumnName="OunerName" />
+          <ScalarProperty Name="OunerNum" ColumnName="OunerNum" />
+          <ScalarProperty Name="OunerType" ColumnName="OunerType" />
+          <ScalarProperty Name="Fromname" ColumnName="Fromname" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DirectId" ColumnName="DirectId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="PriventId" ColumnName="PriventId" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="GId" ColumnName="GId" />
+          <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+          <ScalarProperty Name="IsPlat" ColumnName="IsPlat" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ARentPayments">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.ARentPayment">
+        <MappingFragment StoreEntitySet="ARentPayment">
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="ZTime" ColumnName="ZTime" />
+          <ScalarProperty Name="PayTime" ColumnName="PayTime" />
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          <ScalarProperty Name="Updatetime" ColumnName="Updatetime" />
+          <ScalarProperty Name="Auctime" ColumnName="Auctime" />
+          <ScalarProperty Name="AucState" ColumnName="AucState" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="EPrice" ColumnName="EPrice" />
+          <ScalarProperty Name="YPrice" ColumnName="YPrice" />
+          <ScalarProperty Name="FPrice" ColumnName="FPrice" />
+          <ScalarProperty Name="ZPrice" ColumnName="ZPrice" />
+          <ScalarProperty Name="IsZ" ColumnName="IsZ" />
+          <ScalarProperty Name="IsY" ColumnName="IsY" />
+          <ScalarProperty Name="IsF" ColumnName="IsF" />
+          <ScalarProperty Name="HType" ColumnName="HType" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="IsKYD" ColumnName="IsKYD" />
+          <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="ARCId" ColumnName="ARCId" />
+          <ScalarProperty Name="RType" ColumnName="RType" />
+          <ScalarProperty Name="PayNum" ColumnName="PayNum" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ETime" ColumnName="ETime" />
+          <ScalarProperty Name="BTime" ColumnName="BTime" />
+          <ScalarProperty Name="FlowTo" ColumnName="FlowTo" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BrokerMobiles">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.BrokerMobile">
+        <MappingFragment StoreEntitySet="BrokerMobile">
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CashSQs">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.CashSQ">
+        <MappingFragment StoreEntitySet="CashSQ">
+          <ScalarProperty Name="NPrice" ColumnName="NPrice" />
+          <ScalarProperty Name="LPrice" ColumnName="LPrice" />
+          <ScalarProperty Name="Reson" ColumnName="Reson" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="Updatetime" ColumnName="Updatetime" />
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+          <ScalarProperty Name="LLoginName" ColumnName="LLoginName" />
+          <ScalarProperty Name="LMobile" ColumnName="LMobile" />
+          <ScalarProperty Name="LName" ColumnName="LName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="KId" ColumnName="KId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComplaintPays">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.ComplaintPay">
+        <MappingFragment StoreEntitySet="ComplaintPay">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Updatetime" ColumnName="Updatetime" />
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="LosDesc" ColumnName="LosDesc" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="BackType" ColumnName="BackType" />
+          <ScalarProperty Name="HouseType" ColumnName="HouseType" />
+          <ScalarProperty Name="Houseid" ColumnName="Houseid" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Consultations">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.Consultation">
+        <MappingFragment StoreEntitySet="Consultation">
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="DCount" ColumnName="DCount" />
+          <ScalarProperty Name="ShowType" ColumnName="ShowType" />
+          <ScalarProperty Name="IsTop" ColumnName="IsTop" />
+          <ScalarProperty Name="IsRecommend" ColumnName="IsRecommend" />
+          <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="Word" ColumnName="Word" />
+          <ScalarProperty Name="Abstract" ColumnName="Abstract" />
+          <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TypeL" ColumnName="TypeL" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DJLogs">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.DJLog">
+        <MappingFragment StoreEntitySet="DJLog">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="BuyTime" ColumnName="BuyTime" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="UId" ColumnName="UId" />
+          <ScalarProperty Name="Usertype" ColumnName="Usertype" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DraftBoxes">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.DraftBox">
+        <MappingFragment StoreEntitySet="DraftBox">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entrusts">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.Entrust">
+        <MappingFragment StoreEntitySet="Entrust">
+          <ScalarProperty Name="AllFloar" ColumnName="AllFloar" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="IsOnly" ColumnName="IsOnly" />
+          <ScalarProperty Name="Remerk" ColumnName="Remerk" />
+          <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="EntrustMobile" ColumnName="EntrustMobile" />
+          <ScalarProperty Name="EntrustUserName" ColumnName="EntrustUserName" />
+          <ScalarProperty Name="PriceType" ColumnName="PriceType" />
+          <ScalarProperty Name="Toilet" ColumnName="Toilet" />
+          <ScalarProperty Name="Hall" ColumnName="Hall" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="MaxPrice" ColumnName="MaxPrice" />
+          <ScalarProperty Name="MinPrice" ColumnName="MinPrice" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="VName" ColumnName="VName" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="RentType" ColumnName="RentType" />
+          <ScalarProperty Name="PayType" ColumnName="PayType" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EssenceOpinions">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.EssenceOpinion">
+        <MappingFragment StoreEntitySet="EssenceOpinion">
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+          <ScalarProperty Name="Admin" ColumnName="Admin" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="SubmitTime" ColumnName="SubmitTime" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="QC" ColumnName="QC" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Expiries">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.Expiry">
+        <MappingFragment StoreEntitySet="Expiry">
+          <ScalarProperty Name="BingoTime" ColumnName="BingoTime" />
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          <ScalarProperty Name="IsBingo" ColumnName="IsBingo" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="BingoState" ColumnName="BingoState" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.Game">
+        <MappingFragment StoreEntitySet="Game">
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Rule" ColumnName="Rule" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="Introduction" ColumnName="Introduction" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="MinPeople" ColumnName="MinPeople" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="PrizeType" ColumnName="PrizeType" />
+          <ScalarProperty Name="PjPrice" ColumnName="PjPrice" />
+          <ScalarProperty Name="PrizePrice" ColumnName="PrizePrice" />
+          <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+          <ScalarProperty Name="PrizeName" ColumnName="PrizeName" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="PrizeCount" ColumnName="PrizeCount" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CityIDS" ColumnName="CityIDS" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HouseCounts">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.HouseCount">
+        <MappingFragment StoreEntitySet="HouseCount">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="DayTime" ColumnName="DayTime" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HouseStates">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.HouseState">
+        <MappingFragment StoreEntitySet="HouseState">
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="Adminid" ColumnName="Adminid" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="sman" ColumnName="sman" />
+          <ScalarProperty Name="stime" ColumnName="stime" />
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          <ScalarProperty Name="Rtype" ColumnName="Rtype" />
+          <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HPRegistrations">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.HPRegistration">
+        <MappingFragment StoreEntitySet="HPRegistration">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kjwActivities">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.kjwActivity">
+        <MappingFragment StoreEntitySet="kjwActivity">
+          <ScalarProperty Name="Qi" ColumnName="Qi" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="BidedCS" ColumnName="BidedCS" />
+          <ScalarProperty Name="BidKD" ColumnName="BidKD" />
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          <ScalarProperty Name="Success" ColumnName="Success" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="IsNow" ColumnName="IsNow" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KJWBidPrices">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.KJWBidPrice">
+        <MappingFragment StoreEntitySet="KJWBidPrice">
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          <ScalarProperty Name="N" ColumnName="N" />
+          <ScalarProperty Name="IsOnly" ColumnName="IsOnly" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+          <ScalarProperty Name="kyjId" ColumnName="kyjId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LNHouses">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.LNHouse">
+        <MappingFragment StoreEntitySet="LNHouse">
+          <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Houseid" ColumnName="Houseid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loans">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.Loan">
+        <MappingFragment StoreEntitySet="Loan">
+          <ScalarProperty Name="IsNow" ColumnName="IsNow" />
+          <ScalarProperty Name="Updatetime" ColumnName="Updatetime" />
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="ReturnTime" ColumnName="ReturnTime" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="LosDesc" ColumnName="LosDesc" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ARPId" ColumnName="ARPId" />
+          <ScalarProperty Name="APRId" ColumnName="APRId" />
+          <ScalarProperty Name="GId" ColumnName="GId" />
+          <ScalarProperty Name="Userid" ColumnName="Userid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoanPayments">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.LoanPayment">
+        <MappingFragment StoreEntitySet="LoanPayment">
+          <ScalarProperty Name="PayTime" ColumnName="PayTime" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          <ScalarProperty Name="PayNum" ColumnName="PayNum" />
+          <ScalarProperty Name="PayType" ColumnName="PayType" />
+          <ScalarProperty Name="FPrice" ColumnName="FPrice" />
+          <ScalarProperty Name="DPrice" ColumnName="DPrice" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FlowTo" ColumnName="FlowTo" />
+          <ScalarProperty Name="UId" ColumnName="UId" />
+          <ScalarProperty Name="LId" ColumnName="LId" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocalUsers">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.LocalUser">
+        <MappingFragment StoreEntitySet="LocalUser">
+          <ScalarProperty Name="TuiJianId" ColumnName="TuiJianId" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
+          <ScalarProperty Name="AuthenticationState" ColumnName="AuthenticationState" />
+          <ScalarProperty Name="FcUserType" ColumnName="FcUserType" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="AllState" ColumnName="AllState" />
+          <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+          <ScalarProperty Name="Vocation" ColumnName="Vocation" />
+          <ScalarProperty Name="RentalPurposes" ColumnName="RentalPurposes" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="TenantNum" ColumnName="TenantNum" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="HouseNeed" ColumnName="HouseNeed" />
+          <ScalarProperty Name="IsAllowShow" ColumnName="IsAllowShow" />
+          <ScalarProperty Name="Wechat" ColumnName="Wechat" />
+          <ScalarProperty Name="QQ" ColumnName="QQ" />
+          <ScalarProperty Name="EMail" ColumnName="EMail" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookHouses">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.LookHouse">
+        <MappingFragment StoreEntitySet="LookHouse">
+          <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LotNums">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.LotNum">
+        <MappingFragment StoreEntitySet="LotNum">
+          <ScalarProperty Name="IsBingo" ColumnName="IsBingo" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LuckDrawUsers">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.LuckDrawUser">
+        <MappingFragment StoreEntitySet="LuckDrawUser">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="IsWin" ColumnName="IsWin" />
+          <ScalarProperty Name="Money" ColumnName="Money" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="IDNo" ColumnName="IDNo" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LuckUsers">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.LuckUser">
+        <MappingFragment StoreEntitySet="LuckUser">
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="IsWin" ColumnName="IsWin" />
+          <ScalarProperty Name="BuyHouseDes" ColumnName="BuyHouseDes" />
+          <ScalarProperty Name="HomeDes" ColumnName="HomeDes" />
+          <ScalarProperty Name="InCome" ColumnName="InCome" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="IDNo" ColumnName="IDNo" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OpenLookeHouses">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.OpenLookeHouse">
+        <MappingFragment StoreEntitySet="OpenLookeHouse">
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+          <ScalarProperty Name="Updatetime" ColumnName="Updatetime" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Opinions">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.Opinion">
+        <MappingFragment StoreEntitySet="Opinion">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+          <ScalarProperty Name="IsEssence" ColumnName="IsEssence" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="paytime" ColumnName="paytime" />
+          <ScalarProperty Name="auctime" ColumnName="auctime" />
+          <ScalarProperty Name="aucstate" ColumnName="aucstate" />
+          <ScalarProperty Name="adminname" ColumnName="adminname" />
+          <ScalarProperty Name="adminid" ColumnName="adminid" />
+          <ScalarProperty Name="etime" ColumnName="etime" />
+          <ScalarProperty Name="btime" ColumnName="btime" />
+          <ScalarProperty Name="month" ColumnName="month" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+          <ScalarProperty Name="paynum" ColumnName="paynum" />
+          <ScalarProperty Name="paytype" ColumnName="paytype" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="realprice" ColumnName="realprice" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="flowto" ColumnName="flowto" />
+          <ScalarProperty Name="UId" ColumnName="UId" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="aprid" ColumnName="aprid" />
+          <ScalarProperty Name="ordernum" ColumnName="ordernum" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Refurbishes">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.Refurbish">
+        <MappingFragment StoreEntitySet="Refurbish">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Minute" ColumnName="Minute" />
+          <ScalarProperty Name="Hour" ColumnName="Hour" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+          <ScalarProperty Name="HouseID" ColumnName="HouseID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefurbishLogs">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.RefurbishLog">
+        <MappingFragment StoreEntitySet="RefurbishLog">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsR" ColumnName="IsR" />
+          <ScalarProperty Name="RType" ColumnName="RType" />
+          <ScalarProperty Name="RTime" ColumnName="RTime" />
+          <ScalarProperty Name="HouseID" ColumnName="HouseID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefurbishShemes">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.RefurbishSheme">
+        <MappingFragment StoreEntitySet="RefurbishSheme">
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="RName" ColumnName="RName" />
+          <ScalarProperty Name="RID" ColumnName="RID" />
+          <ScalarProperty Name="RData" ColumnName="RData" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_Complaint">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.S_Complaint">
+        <MappingFragment StoreEntitySet="S_Complaint">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="HId" ColumnName="HId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_LongHouse_delete">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.S_LongHouse_delete">
+        <MappingFragment StoreEntitySet="S_LongHouse_delete">
+          <ScalarProperty Name="IsDaiK" ColumnName="IsDaiK" />
+          <ScalarProperty Name="RecTime" ColumnName="RecTime" />
+          <ScalarProperty Name="SendState" ColumnName="SendState" />
+          <ScalarProperty Name="sentdate" ColumnName="sentdate" />
+          <ScalarProperty Name="IsSheng" ColumnName="IsSheng" />
+          <ScalarProperty Name="fromurl" ColumnName="fromurl" />
+          <ScalarProperty Name="AuthenticationTime" ColumnName="AuthenticationTime" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="IsMorePic" ColumnName="IsMorePic" />
+          <ScalarProperty Name="IsWorry" ColumnName="IsWorry" />
+          <ScalarProperty Name="IsReturn" ColumnName="IsReturn" />
+          <ScalarProperty Name="IsReal" ColumnName="IsReal" />
+          <ScalarProperty Name="HouseScore" ColumnName="HouseScore" />
+          <ScalarProperty Name="SalesManId" ColumnName="SalesManId" />
+          <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+          <ScalarProperty Name="IsUnique" ColumnName="IsUnique" />
+          <ScalarProperty Name="IsFullYears" ColumnName="IsFullYears" />
+          <ScalarProperty Name="IsTxfree" ColumnName="IsTxfree" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="MinPrice" ColumnName="MinPrice" />
+          <ScalarProperty Name="MaxPrice" ColumnName="MaxPrice" />
+          <ScalarProperty Name="IsGuarantee" ColumnName="IsGuarantee" />
+          <ScalarProperty Name="IsDK" ColumnName="IsDK" />
+          <ScalarProperty Name="IsPlat" ColumnName="IsPlat" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="BidStatus" ColumnName="BidStatus" />
+          <ScalarProperty Name="BidEndTime" ColumnName="BidEndTime" />
+          <ScalarProperty Name="BidStartTime" ColumnName="BidStartTime" />
+          <ScalarProperty Name="BidUserNum" ColumnName="BidUserNum" />
+          <ScalarProperty Name="BidCount" ColumnName="BidCount" />
+          <ScalarProperty Name="ParticipateNum" ColumnName="ParticipateNum" />
+          <ScalarProperty Name="VideoUrl" ColumnName="VideoUrl" />
+          <ScalarProperty Name="IsRecommend" ColumnName="IsRecommend" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="AuthenticationState" ColumnName="AuthenticationState" />
+          <ScalarProperty Name="CheckInTime" ColumnName="CheckInTime" />
+          <ScalarProperty Name="SearchTime" ColumnName="SearchTime" />
+          <ScalarProperty Name="IndoorFacilities" ColumnName="IndoorFacilities" />
+          <ScalarProperty Name="SupportingFacilities" ColumnName="SupportingFacilities" />
+          <ScalarProperty Name="Renovation" ColumnName="Renovation" />
+          <ScalarProperty Name="Orientation" ColumnName="Orientation" />
+          <ScalarProperty Name="IsCut" ColumnName="IsCut" />
+          <ScalarProperty Name="allFloar" ColumnName="allFloar" />
+          <ScalarProperty Name="theFloar" ColumnName="theFloar" />
+          <ScalarProperty Name="BuildingYear" ColumnName="BuildingYear" />
+          <ScalarProperty Name="BuildingType" ColumnName="BuildingType" />
+          <ScalarProperty Name="BuildingStructure" ColumnName="BuildingStructure" />
+          <ScalarProperty Name="BuildingArea" ColumnName="BuildingArea" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Balcony" ColumnName="Balcony" />
+          <ScalarProperty Name="Kitchen" ColumnName="Kitchen" />
+          <ScalarProperty Name="Toilet" ColumnName="Toilet" />
+          <ScalarProperty Name="Hall" ColumnName="Hall" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="PayType" ColumnName="PayType" />
+          <ScalarProperty Name="RentType" ColumnName="RentType" />
+          <ScalarProperty Name="QuotedMinPrice" ColumnName="QuotedMinPrice" />
+          <ScalarProperty Name="QuotedMaxPrice" ColumnName="QuotedMaxPrice" />
+          <ScalarProperty Name="QuotedPrice" ColumnName="QuotedPrice" />
+          <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="VName" ColumnName="VName" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="UName" ColumnName="UName" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UId" ColumnName="UId" />
+          <ScalarProperty Name="VId" ColumnName="VId" />
+          <ScalarProperty Name="BName" ColumnName="BName" />
+          <ScalarProperty Name="BId" ColumnName="BId" />
+          <ScalarProperty Name="DName" ColumnName="DName" />
+          <ScalarProperty Name="DId" ColumnName="DId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="IsSVip" ColumnName="IsSVip" />
+          <ScalarProperty Name="IsAgency" ColumnName="IsAgency" />
+          <ScalarProperty Name="IsBargaining" ColumnName="IsBargaining" />
+          <ScalarProperty Name="IsOnePrice" ColumnName="IsOnePrice" />
+          <ScalarProperty Name="PTypeState" ColumnName="PTypeState" />
+          <ScalarProperty Name="PType" ColumnName="PType" />
+          <ScalarProperty Name="PropertyRight" ColumnName="PropertyRight" />
+          <ScalarProperty Name="OfficeType" ColumnName="OfficeType" />
+          <ScalarProperty Name="HouseType" ColumnName="HouseType" />
+          <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="PrivateNum" ColumnName="PrivateNum" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_LongHouseBase">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.S_LongHouseBase">
+        <MappingFragment StoreEntitySet="S_LongHouseBase">
+          <ScalarProperty Name="IsFDVip" ColumnName="IsFDVip" />
+          <ScalarProperty Name="IsKjw" ColumnName="IsKjw" />
+          <ScalarProperty Name="UpdatePriceDate" ColumnName="UpdatePriceDate" />
+          <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="IsReal" ColumnName="IsReal" />
+          <ScalarProperty Name="IsRecommend" ColumnName="IsRecommend" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="AuthenticationTime" ColumnName="AuthenticationTime" />
+          <ScalarProperty Name="AuthenticationState" ColumnName="AuthenticationState" />
+          <ScalarProperty Name="Renovation" ColumnName="Renovation" />
+          <ScalarProperty Name="Orientation" ColumnName="Orientation" />
+          <ScalarProperty Name="BuildingArea" ColumnName="BuildingArea" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Balcony" ColumnName="Balcony" />
+          <ScalarProperty Name="Kitchen" ColumnName="Kitchen" />
+          <ScalarProperty Name="Toilet" ColumnName="Toilet" />
+          <ScalarProperty Name="Hall" ColumnName="Hall" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="PayType" ColumnName="PayType" />
+          <ScalarProperty Name="RentType" ColumnName="RentType" />
+          <ScalarProperty Name="QuotedMinPrice" ColumnName="QuotedMinPrice" />
+          <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="VName" ColumnName="VName" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="UName" ColumnName="UName" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UId" ColumnName="UId" />
+          <ScalarProperty Name="VId" ColumnName="VId" />
+          <ScalarProperty Name="BName" ColumnName="BName" />
+          <ScalarProperty Name="BId" ColumnName="BId" />
+          <ScalarProperty Name="DName" ColumnName="DName" />
+          <ScalarProperty Name="DId" ColumnName="DId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="IsSVip" ColumnName="IsSVip" />
+          <ScalarProperty Name="PType" ColumnName="PType" />
+          <ScalarProperty Name="HouseType" ColumnName="HouseType" />
+          <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_LongHouseBidPrice">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.S_LongHouseBidPrice">
+        <MappingFragment StoreEntitySet="S_LongHouseBidPrice">
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="SignUpState" ColumnName="SignUpState" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="LookAroundUpdateTime" ColumnName="LookAroundUpdateTime" />
+          <ScalarProperty Name="LookAroundTime" ColumnName="LookAroundTime" />
+          <ScalarProperty Name="IsLookAround" ColumnName="IsLookAround" />
+          <ScalarProperty Name="AgreeTime" ColumnName="AgreeTime" />
+          <ScalarProperty Name="SubscribeTime" ColumnName="SubscribeTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+          <ScalarProperty Name="RecommendStatus" ColumnName="RecommendStatus" />
+          <ScalarProperty Name="BidCount" ColumnName="BidCount" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsAllowShow" ColumnName="IsAllowShow" />
+          <ScalarProperty Name="BidUserWechat" ColumnName="BidUserWechat" />
+          <ScalarProperty Name="BidUserMail" ColumnName="BidUserMail" />
+          <ScalarProperty Name="BidUserQQ" ColumnName="BidUserQQ" />
+          <ScalarProperty Name="BidUserName" ColumnName="BidUserName" />
+          <ScalarProperty Name="BidUserMobile" ColumnName="BidUserMobile" />
+          <ScalarProperty Name="BidUserId" ColumnName="BidUserId" />
+          <ScalarProperty Name="BidPrice" ColumnName="BidPrice" />
+          <ScalarProperty Name="HousePrice" ColumnName="HousePrice" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="Agency" ColumnName="Agency" />
+          <ScalarProperty Name="InformationPrice" ColumnName="InformationPrice" />
+          <ScalarProperty Name="IsBuy" ColumnName="IsBuy" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="HouseType" ColumnName="HouseType" />
+          <ScalarProperty Name="ShId" ColumnName="ShId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_LongHouseExtend">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.S_LongHouseExtend">
+        <MappingFragment StoreEntitySet="S_LongHouseExtend">
+          <ScalarProperty Name="IsDaiK" ColumnName="IsDaiK" />
+          <ScalarProperty Name="RecTime" ColumnName="RecTime" />
+          <ScalarProperty Name="SendState" ColumnName="SendState" />
+          <ScalarProperty Name="sentdate" ColumnName="sentdate" />
+          <ScalarProperty Name="IsSheng" ColumnName="IsSheng" />
+          <ScalarProperty Name="fromurl" ColumnName="fromurl" />
+          <ScalarProperty Name="IsMorePic" ColumnName="IsMorePic" />
+          <ScalarProperty Name="IsUnique" ColumnName="IsUnique" />
+          <ScalarProperty Name="IsFullYears" ColumnName="IsFullYears" />
+          <ScalarProperty Name="IsTxfree" ColumnName="IsTxfree" />
+          <ScalarProperty Name="IsPlat" ColumnName="IsPlat" />
+          <ScalarProperty Name="BidEndTime" ColumnName="BidEndTime" />
+          <ScalarProperty Name="BidStartTime" ColumnName="BidStartTime" />
+          <ScalarProperty Name="BidUserNum" ColumnName="BidUserNum" />
+          <ScalarProperty Name="BidCount" ColumnName="BidCount" />
+          <ScalarProperty Name="ParticipateNum" ColumnName="ParticipateNum" />
+          <ScalarProperty Name="VideoUrl" ColumnName="VideoUrl" />
+          <ScalarProperty Name="CheckInTime" ColumnName="CheckInTime" />
+          <ScalarProperty Name="SearchTime" ColumnName="SearchTime" />
+          <ScalarProperty Name="MinPrice" ColumnName="MinPrice" />
+          <ScalarProperty Name="MaxPrice" ColumnName="MaxPrice" />
+          <ScalarProperty Name="IndoorFacilities" ColumnName="IndoorFacilities" />
+          <ScalarProperty Name="SupportingFacilities" ColumnName="SupportingFacilities" />
+          <ScalarProperty Name="allFloar" ColumnName="allFloar" />
+          <ScalarProperty Name="theFloar" ColumnName="theFloar" />
+          <ScalarProperty Name="BuildingYear" ColumnName="BuildingYear" />
+          <ScalarProperty Name="BuildingType" ColumnName="BuildingType" />
+          <ScalarProperty Name="BuildingStructure" ColumnName="BuildingStructure" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="PropertyRight" ColumnName="PropertyRight" />
+          <ScalarProperty Name="OfficeType" ColumnName="OfficeType" />
+          <ScalarProperty Name="SLHId" ColumnName="SLHId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_LongHouseLost">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.S_LongHouseLost">
+        <MappingFragment StoreEntitySet="S_LongHouseLost">
+          <ScalarProperty Name="IsWorry" ColumnName="IsWorry" />
+          <ScalarProperty Name="IsReturn" ColumnName="IsReturn" />
+          <ScalarProperty Name="HouseScore" ColumnName="HouseScore" />
+          <ScalarProperty Name="SalesManId" ColumnName="SalesManId" />
+          <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+          <ScalarProperty Name="IsGuarantee" ColumnName="IsGuarantee" />
+          <ScalarProperty Name="IsDK" ColumnName="IsDK" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="BidStatus" ColumnName="BidStatus" />
+          <ScalarProperty Name="IsCut" ColumnName="IsCut" />
+          <ScalarProperty Name="QuotedMaxPrice" ColumnName="QuotedMaxPrice" />
+          <ScalarProperty Name="QuotedPrice" ColumnName="QuotedPrice" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="IsAgency" ColumnName="IsAgency" />
+          <ScalarProperty Name="IsBargaining" ColumnName="IsBargaining" />
+          <ScalarProperty Name="IsOnePrice" ColumnName="IsOnePrice" />
+          <ScalarProperty Name="PTypeState" ColumnName="PTypeState" />
+          <ScalarProperty Name="PrivateNum" ColumnName="PrivateNum" />
+          <ScalarProperty Name="SLHId" ColumnName="SLHId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_LongHouseOther">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.S_LongHouseOther">
+        <MappingFragment StoreEntitySet="S_LongHouseOther">
+          <ScalarProperty Name="CommonRemarks" ColumnName="CommonRemarks" />
+          <ScalarProperty Name="ExamineRemarks" ColumnName="ExamineRemarks" />
+          <ScalarProperty Name="DiscountRemarks" ColumnName="DiscountRemarks" />
+          <ScalarProperty Name="ReturnRemarks" ColumnName="ReturnRemarks" />
+          <ScalarProperty Name="WorryRemarks" ColumnName="WorryRemarks" />
+          <ScalarProperty Name="WorryTime" ColumnName="WorryTime" />
+          <ScalarProperty Name="DealTime" ColumnName="DealTime" />
+          <ScalarProperty Name="MinSincerityCount" ColumnName="MinSincerityCount" />
+          <ScalarProperty Name="Sincerity" ColumnName="Sincerity" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="RData" ColumnName="RData" />
+          <ScalarProperty Name="RefurbishEndCount" ColumnName="RefurbishEndCount" />
+          <ScalarProperty Name="RefurbishCount" ColumnName="RefurbishCount" />
+          <ScalarProperty Name="Housegoods" ColumnName="Housegoods" />
+          <ScalarProperty Name="Supporting" ColumnName="Supporting" />
+          <ScalarProperty Name="Bus" ColumnName="Bus" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SLHId" ColumnName="SLHId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="S_LongTemplate">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.S_LongTemplate">
+        <MappingFragment StoreEntitySet="S_LongTemplate">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_Agent">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.U_Agent">
+        <MappingFragment StoreEntitySet="U_Agent">
+          <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+          <ScalarProperty Name="AdminMobile" ColumnName="AdminMobile" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="IsShowLog" ColumnName="IsShowLog" />
+          <ScalarProperty Name="EvaluateScore" ColumnName="EvaluateScore" />
+          <ScalarProperty Name="BargainingCount" ColumnName="BargainingCount" />
+          <ScalarProperty Name="ForRentCount" ColumnName="ForRentCount" />
+          <ScalarProperty Name="BuyCount" ColumnName="BuyCount" />
+          <ScalarProperty Name="RentCount" ColumnName="RentCount" />
+          <ScalarProperty Name="SaleCount" ColumnName="SaleCount" />
+          <ScalarProperty Name="DeleteBidCount" ColumnName="DeleteBidCount" />
+          <ScalarProperty Name="UpdateBidCount" ColumnName="UpdateBidCount" />
+          <ScalarProperty Name="InsertBidCount" ColumnName="InsertBidCount" />
+          <ScalarProperty Name="DeleteSaleCount" ColumnName="DeleteSaleCount" />
+          <ScalarProperty Name="DeleteRentCount" ColumnName="DeleteRentCount" />
+          <ScalarProperty Name="UpdateSaleCount" ColumnName="UpdateSaleCount" />
+          <ScalarProperty Name="UpdateRentCount" ColumnName="UpdateRentCount" />
+          <ScalarProperty Name="InsertSaleCount" ColumnName="InsertSaleCount" />
+          <ScalarProperty Name="InsertRentCount" ColumnName="InsertRentCount" />
+          <ScalarProperty Name="BCount" ColumnName="BCount" />
+          <ScalarProperty Name="VcationalCetification" ColumnName="VcationalCetification" />
+          <ScalarProperty Name="CardCetification" ColumnName="CardCetification" />
+          <ScalarProperty Name="IDCetification" ColumnName="IDCetification" />
+          <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="BName" ColumnName="BName" />
+          <ScalarProperty Name="BId" ColumnName="BId" />
+          <ScalarProperty Name="DName" ColumnName="DName" />
+          <ScalarProperty Name="DId" ColumnName="DId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="IsAllowShow" ColumnName="IsAllowShow" />
+          <ScalarProperty Name="Wechat" ColumnName="Wechat" />
+          <ScalarProperty Name="QQ" ColumnName="QQ" />
+          <ScalarProperty Name="EMail" ColumnName="EMail" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Professional" ColumnName="Professional" />
+          <ScalarProperty Name="Card" ColumnName="Card" />
+          <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+          <ScalarProperty Name="BackupTel" ColumnName="BackupTel" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="IDNo" ColumnName="IDNo" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="IsExcellent" ColumnName="IsExcellent" />
+          <ScalarProperty Name="IsPort" ColumnName="IsPort" />
+          <ScalarProperty Name="IsSVip" ColumnName="IsSVip" />
+          <ScalarProperty Name="IsVip" ColumnName="IsVip" />
+          <ScalarProperty Name="CompanyShop" ColumnName="CompanyShop" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="AS_Id" ColumnName="AS_Id" />
+          <ScalarProperty Name="AC_Id" ColumnName="AC_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_Agent_backup1">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.U_Agent_backup1">
+        <MappingFragment StoreEntitySet="U_Agent_backup1">
+          <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+          <ScalarProperty Name="AdminMobile" ColumnName="AdminMobile" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="IsShowLog" ColumnName="IsShowLog" />
+          <ScalarProperty Name="EvaluateScore" ColumnName="EvaluateScore" />
+          <ScalarProperty Name="BargainingCount" ColumnName="BargainingCount" />
+          <ScalarProperty Name="ForRentCount" ColumnName="ForRentCount" />
+          <ScalarProperty Name="BuyCount" ColumnName="BuyCount" />
+          <ScalarProperty Name="RentCount" ColumnName="RentCount" />
+          <ScalarProperty Name="SaleCount" ColumnName="SaleCount" />
+          <ScalarProperty Name="DeleteBidCount" ColumnName="DeleteBidCount" />
+          <ScalarProperty Name="UpdateBidCount" ColumnName="UpdateBidCount" />
+          <ScalarProperty Name="InsertBidCount" ColumnName="InsertBidCount" />
+          <ScalarProperty Name="DeleteSaleCount" ColumnName="DeleteSaleCount" />
+          <ScalarProperty Name="DeleteRentCount" ColumnName="DeleteRentCount" />
+          <ScalarProperty Name="UpdateSaleCount" ColumnName="UpdateSaleCount" />
+          <ScalarProperty Name="UpdateRentCount" ColumnName="UpdateRentCount" />
+          <ScalarProperty Name="InsertSaleCount" ColumnName="InsertSaleCount" />
+          <ScalarProperty Name="InsertRentCount" ColumnName="InsertRentCount" />
+          <ScalarProperty Name="BCount" ColumnName="BCount" />
+          <ScalarProperty Name="VcationalCetification" ColumnName="VcationalCetification" />
+          <ScalarProperty Name="CardCetification" ColumnName="CardCetification" />
+          <ScalarProperty Name="IDCetification" ColumnName="IDCetification" />
+          <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="BName" ColumnName="BName" />
+          <ScalarProperty Name="BId" ColumnName="BId" />
+          <ScalarProperty Name="DName" ColumnName="DName" />
+          <ScalarProperty Name="DId" ColumnName="DId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="IsAllowShow" ColumnName="IsAllowShow" />
+          <ScalarProperty Name="Wechat" ColumnName="Wechat" />
+          <ScalarProperty Name="QQ" ColumnName="QQ" />
+          <ScalarProperty Name="EMail" ColumnName="EMail" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Professional" ColumnName="Professional" />
+          <ScalarProperty Name="Card" ColumnName="Card" />
+          <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+          <ScalarProperty Name="BackupTel" ColumnName="BackupTel" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="IDNo" ColumnName="IDNo" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="IsExcellent" ColumnName="IsExcellent" />
+          <ScalarProperty Name="IsPort" ColumnName="IsPort" />
+          <ScalarProperty Name="IsSVip" ColumnName="IsSVip" />
+          <ScalarProperty Name="IsVip" ColumnName="IsVip" />
+          <ScalarProperty Name="CompanyShop" ColumnName="CompanyShop" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="AS_Id" ColumnName="AS_Id" />
+          <ScalarProperty Name="AC_Id" ColumnName="AC_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_AgentCard">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.U_AgentCard">
+        <MappingFragment StoreEntitySet="U_AgentCard">
+          <ScalarProperty Name="Remerk" ColumnName="Remerk" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AgentID" ColumnName="AgentID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_AgentCard_House">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.U_AgentCard_House">
+        <MappingFragment StoreEntitySet="U_AgentCard_House">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="HouseID" ColumnName="HouseID" />
+          <ScalarProperty Name="CardID" ColumnName="CardID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_AgentComPany">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.U_AgentComPany">
+        <MappingFragment StoreEntitySet="U_AgentComPany">
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="CPName" ColumnName="CPName" />
+          <ScalarProperty Name="CPId" ColumnName="CPId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_Agentcorporation">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.U_Agentcorporation">
+        <MappingFragment StoreEntitySet="U_Agentcorporation">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_AgentSignUp">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.U_AgentSignUp">
+        <MappingFragment StoreEntitySet="U_AgentSignUp">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IsSend" ColumnName="IsSend" />
+          <ScalarProperty Name="ReviewState" ColumnName="ReviewState" />
+          <ScalarProperty Name="ReviewTime" ColumnName="ReviewTime" />
+          <ScalarProperty Name="ReviewName" ColumnName="ReviewName" />
+          <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+          <ScalarProperty Name="Profile" ColumnName="Profile" />
+          <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="ComeFrom" ColumnName="ComeFrom" />
+          <ScalarProperty Name="BName" ColumnName="BName" />
+          <ScalarProperty Name="BId" ColumnName="BId" />
+          <ScalarProperty Name="DName" ColumnName="DName" />
+          <ScalarProperty Name="DId" ColumnName="DId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_Complaint">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.U_Complaint">
+        <MappingFragment StoreEntitySet="U_Complaint">
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="Updatetime" ColumnName="Updatetime" />
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          <ScalarProperty Name="SendState" ColumnName="SendState" />
+          <ScalarProperty Name="StateR" ColumnName="StateR" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="SMSMessage" ColumnName="SMSMessage" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="BackType" ColumnName="BackType" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_Contract">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.U_Contract">
+        <MappingFragment StoreEntitySet="U_Contract">
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="SDesc" ColumnName="SDesc" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+          <ScalarProperty Name="InputDate" ColumnName="InputDate" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="SName" ColumnName="SName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="C_Num" ColumnName="C_Num" />
+          <ScalarProperty Name="Cid" ColumnName="Cid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_Evaluate">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.U_Evaluate">
+        <MappingFragment StoreEntitySet="U_Evaluate">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="Other" ColumnName="Other" />
+          <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+          <ScalarProperty Name="LookAround" ColumnName="LookAround" />
+          <ScalarProperty Name="Authenticity" ColumnName="Authenticity" />
+          <ScalarProperty Name="Reasonably" ColumnName="Reasonably" />
+          <ScalarProperty Name="UserEvaluateId" ColumnName="UserEvaluateId" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserSubId" ColumnName="UserSubId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_Guarantee">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.U_Guarantee">
+        <MappingFragment StoreEntitySet="U_Guarantee">
+          <ScalarProperty Name="IsPay" ColumnName="IsPay" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ReturnTime" ColumnName="ReturnTime" />
+          <ScalarProperty Name="IsReturn" ColumnName="IsReturn" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_GuaranteeSincerity">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.U_GuaranteeSincerity">
+        <MappingFragment StoreEntitySet="U_GuaranteeSincerity">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="BidPriceId" ColumnName="BidPriceId" />
+          <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_PayZD">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.U_PayZD">
+        <MappingFragment StoreEntitySet="U_PayZD">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="HNum" ColumnName="HNum" />
+          <ScalarProperty Name="Ispay" ColumnName="Ispay" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_QuitService">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.U_QuitService">
+        <MappingFragment StoreEntitySet="U_QuitService">
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="IsSuc" ColumnName="IsSuc" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="S_Id" ColumnName="S_Id" />
+          <ScalarProperty Name="A_Id" ColumnName="A_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_Service">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.U_Service">
+        <MappingFragment StoreEntitySet="U_Service">
+          <ScalarProperty Name="Remerk" ColumnName="Remerk" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BeiginTime" ColumnName="BeiginTime" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="BargainingCount" ColumnName="BargainingCount" />
+          <ScalarProperty Name="ACount" ColumnName="ACount" />
+          <ScalarProperty Name="TCount" ColumnName="TCount" />
+          <ScalarProperty Name="ServiceCount" ColumnName="ServiceCount" />
+          <ScalarProperty Name="IsPreferential" ColumnName="IsPreferential" />
+          <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+          <ScalarProperty Name="ReplacId" ColumnName="ReplacId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_Store">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.U_Store">
+        <MappingFragment StoreEntitySet="U_Store">
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="BName" ColumnName="BName" />
+          <ScalarProperty Name="BId" ColumnName="BId" />
+          <ScalarProperty Name="DName" ColumnName="DName" />
+          <ScalarProperty Name="DId" ColumnName="DId" />
+          <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+          <ScalarProperty Name="AC_Id" ColumnName="AC_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_UserMessage">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.U_UserMessage">
+        <MappingFragment StoreEntitySet="U_UserMessage">
+          <ScalarProperty Name="Expand5" ColumnName="Expand5" />
+          <ScalarProperty Name="Expand4" ColumnName="Expand4" />
+          <ScalarProperty Name="Expand3" ColumnName="Expand3" />
+          <ScalarProperty Name="Expand2" ColumnName="Expand2" />
+          <ScalarProperty Name="Expand1" ColumnName="Expand1" />
+          <ScalarProperty Name="SourceCount" ColumnName="SourceCount" />
+          <ScalarProperty Name="MessageSource" ColumnName="MessageSource" />
+          <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Platform" ColumnName="Platform" />
+          <ScalarProperty Name="ReceiveUserId" ColumnName="ReceiveUserId" />
+          <ScalarProperty Name="SendUserId" ColumnName="SendUserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="U_UserOther">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.U_UserOther">
+        <MappingFragment StoreEntitySet="U_UserOther">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="BargainingCount" ColumnName="BargainingCount" />
+          <ScalarProperty Name="BCount" ColumnName="BCount" />
+          <ScalarProperty Name="RefurbishEndCount" ColumnName="RefurbishEndCount" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserBTimes">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.UserBTime">
+        <MappingFragment StoreEntitySet="UserBTime">
+          <ScalarProperty Name="SecNum" ColumnName="SecNum" />
+          <ScalarProperty Name="RentNum" ColumnName="RentNum" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="BTime" ColumnName="BTime" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserGames">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.UserGame">
+        <MappingFragment StoreEntitySet="UserGame">
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="GId" ColumnName="GId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserGamePrizes">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.UserGamePrize">
+        <MappingFragment StoreEntitySet="UserGamePrize">
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="SendName" ColumnName="SendName" />
+          <ScalarProperty Name="SendDesc" ColumnName="SendDesc" />
+          <ScalarProperty Name="SendType" ColumnName="SendType" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="GId" ColumnName="GId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLookHouses">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.UserLookHouse">
+        <MappingFragment StoreEntitySet="UserLookHouse">
+          <ScalarProperty Name="Updatetime" ColumnName="Updatetime" />
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="LookTime" ColumnName="LookTime" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+          <ScalarProperty Name="Userid" ColumnName="Userid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPMessages">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.UserPMessage">
+        <MappingFragment StoreEntitySet="UserPMessage">
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          <ScalarProperty Name="ObjId" ColumnName="ObjId" />
+          <ScalarProperty Name="UsedTime" ColumnName="UsedTime" />
+          <ScalarProperty Name="ReadTime" ColumnName="ReadTime" />
+          <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+          <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZFOrders">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.ZFOrder">
+        <MappingFragment StoreEntitySet="ZFOrder">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ZFtime" ColumnName="ZFtime" />
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VipHouseApplies">
+      <EntityTypeMapping TypeName="kyj_HouseDB_5Model.VipHouseApply">
+        <MappingFragment StoreEntitySet="VipHouseApply">
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Updatetime" ColumnName="Updatetime" />
+          <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="BNum" ColumnName="BNum" />
+          <ScalarProperty Name="BName" ColumnName="BName" />
+          <ScalarProperty Name="ZBankName" ColumnName="ZBankName" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="PriventId" ColumnName="PriventId" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+          <ScalarProperty Name="PayType" ColumnName="PayType" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="MonthPrice" ColumnName="MonthPrice" />
+          <ScalarProperty Name="LMobile" ColumnName="LMobile" />
+          <ScalarProperty Name="LName" ColumnName="LName" />
+          <ScalarProperty Name="Houseid" ColumnName="Houseid" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

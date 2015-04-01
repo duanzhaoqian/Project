@@ -1,0 +1,4 @@
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\Command\bin\Debug\Command.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\Command\bin\Debug\Command.pdb
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\Command\obj\Debug\Command.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\Command\obj\Debug\Command.pdb

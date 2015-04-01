@@ -1,0 +1,872 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="kyj_UserDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="kyj_UserDBModelStoreContainer">
+          <EntitySet Name="H_GWUser" EntityType="kyj_UserDBModel.Store.H_GWUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="H_SUser" EntityType="kyj_UserDBModel.Store.H_SUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SystemMessage" EntityType="kyj_UserDBModel.Store.SystemMessage" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="U_Account" EntityType="kyj_UserDBModel.Store.U_Account" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="U_AccountLog" EntityType="kyj_UserDBModel.Store.U_AccountLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="U_Recharge" EntityType="kyj_UserDBModel.Store.U_Recharge" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="U_WithdrawCash" EntityType="kyj_UserDBModel.Store.U_WithdrawCash" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="kyj_UserDBModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserAddressBook" EntityType="kyj_UserDBModel.Store.UserAddressBook" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserBlackMessageList" EntityType="kyj_UserDBModel.Store.UserBlackMessageList" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserFavorite" EntityType="kyj_UserDBModel.Store.UserFavorite" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserFeedback" EntityType="kyj_UserDBModel.Store.UserFeedback" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserInfoCall" EntityType="kyj_UserDBModel.Store.UserInfoCall" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserInfoCallDeleted" EntityType="kyj_UserDBModel.Store.UserInfoCallDeleted" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserInfoCallMax" EntityType="kyj_UserDBModel.Store.UserInfoCallMax" store:Type="Tables" store:Schema="dbo" store:Name="UserInfoCallMax">
+            <DefiningQuery>SELECT 
+      [UserInfoCallMax].[MaxShortNum] AS [MaxShortNum]
+      FROM [dbo].[UserInfoCallMax] AS [UserInfoCallMax]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserInfoCallTemp" EntityType="kyj_UserDBModel.Store.UserInfoCallTemp" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserMessage" EntityType="kyj_UserDBModel.Store.UserMessage" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="H_GWUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="BuyerPoint" Type="int" Nullable="false" />
+          <Property Name="BuyerGrade" Type="int" Nullable="false" />
+          <Property Name="SellerPoint" Type="int" Nullable="false" />
+          <Property Name="SellerGrade" Type="int" Nullable="false" />
+          <Property Name="InternalLetter" Type="int" Nullable="false" />
+          <Property Name="SendEmail" Type="int" Nullable="false" />
+          <Property Name="IsCloseShop" Type="bit" />
+          <Property Name="IsBlackList" Type="bit" />
+          <Property Name="BreadRulesID" Type="int" />
+          <Property Name="IDCard" Type="varchar" MaxLength="30" />
+          <Property Name="IsShop" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="H_SUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CancelOrderNum" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Score" Type="int" Nullable="false" />
+          <Property Name="TenantScore" Type="int" Nullable="false" />
+          <Property Name="ProvinceID" Type="int" />
+          <Property Name="ProvinceName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DId" Type="int" />
+          <Property Name="DName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BId" Type="int" />
+          <Property Name="BName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="SystemMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AdminId" Type="int" Nullable="false" />
+          <Property Name="ReceiveUserId" Type="int" Nullable="false" />
+          <Property Name="Platform" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Content" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsRead" Type="bit" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="U_Account">
+          <Key>
+            <PropertyRef Name="AId" />
+          </Key>
+          <Property Name="AId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserType" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="BackPrice" Type="money" Nullable="false" />
+          <Property Name="DrawMoneyTimes" Type="int" Nullable="false" />
+          <Property Name="RechargeTotalPrice" Type="money" Nullable="false" />
+          <Property Name="InvesteTotalPrice" Type="money" Nullable="false" />
+          <Property Name="InvesteIncomeTotalPrice" Type="money" Nullable="false" />
+          <Property Name="WithdrawCashTotalPrice" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="U_AccountLog">
+          <Key>
+            <PropertyRef Name="ALId" />
+          </Key>
+          <Property Name="ALId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserType" Type="int" Nullable="false" />
+          <Property Name="Type" Type="tinyint" Nullable="false" />
+          <Property Name="LogType" Type="int" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Desc" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Createtime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="U_Recharge">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserType" Type="int" Nullable="false" />
+          <Property Name="RechargeNo" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Explain" Type="nvarchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="U_WithdrawCash">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserType" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="AdminId" Type="int" Nullable="false" />
+          <Property Name="AdminName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="ReceiveType" Type="int" Nullable="false" />
+          <Property Name="RealName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="ALiPayAccount" Type="nvarchar" MaxLength="200" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProvinceID" Type="int" />
+          <Property Name="ProvinceName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="200" />
+          <Property Name="PubBankName" Type="nvarchar" MaxLength="200" />
+          <Property Name="BankAccount" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDNO" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="LoginName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Pwd" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="NikeName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="RealName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+          <Property Name="Guid" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Sex" Type="tinyint" Nullable="false" />
+          <Property Name="Mobile" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="AllState" Type="tinyint" Nullable="false" />
+          <Property Name="AdminId" Type="int" />
+          <Property Name="AdminName" Type="nvarchar" MaxLength="20" />
+          <Property Name="LastLoginTime" Type="datetime" />
+          <Property Name="SpareTelephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="FcUserType" Type="int" Nullable="false" />
+          <Property Name="RepastUserType" Type="int" Nullable="false" />
+          <Property Name="EshopUserType" Type="int" Nullable="false" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="InfoCall" Type="nvarchar" MaxLength="50" />
+          <Property Name="Platform" Type="varchar" MaxLength="20" />
+          <Property Name="QQ" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="UserAddressBook">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+          <Property Name="Platform" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="ProvinceId" Type="int" />
+          <Property Name="ProvinceName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="DistrictName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="PostCode" Type="varchar" MaxLength="6" />
+          <Property Name="ReceiverName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiverMobile" Type="varchar" MaxLength="11" />
+          <Property Name="ReceiverPhone" Type="varchar" MaxLength="20" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+          <Property Name="Sex" Type="int" />
+        </EntityType>
+        <EntityType Name="UserBlackMessageList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="BlackUserId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserFavorite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Platform" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Type" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="BusinessId" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="BusinessName" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="PicUrl" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+          <Property Name="Expand" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="UserFeedback">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Contact" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="UserInfoCall">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LoginName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ShortNum" Type="int" Nullable="false" />
+          <Property Name="EnterNo" Type="int" Nullable="false" />
+          <Property Name="CallInId" Type="int" Nullable="false" />
+          <Property Name="WorkerGroupId" Type="int" Nullable="false" />
+          <Property Name="WorkerId" Type="int" Nullable="false" />
+          <Property Name="EnterpriseId" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="WEBPWD" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfoCallDeleted">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ShortNum" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“kyj_UserDB.dbo.UserInfoCallMax”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="UserInfoCallMax">
+          <Key>
+            <PropertyRef Name="MaxShortNum" />
+          </Key>
+          <Property Name="MaxShortNum" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfoCallTemp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LoginName" Type="nvarchar" MaxLength="50" />
+          <Property Name="InfoCall" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SendUserId" Type="int" Nullable="false" />
+          <Property Name="ReceiveUserId" Type="int" Nullable="false" />
+          <Property Name="Platform" Type="varchar" MaxLength="20" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Content" Type="nvarchar" />
+          <Property Name="IsRead" Type="bit" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+          <Property Name="MessageType" Type="int" Nullable="false" />
+          <Property Name="MessageSource" Type="int" Nullable="false" />
+          <Property Name="SourceCount" Type="int" />
+          <Property Name="Expand1" Type="nvarchar" MaxLength="500" />
+          <Property Name="Expand2" Type="nvarchar" MaxLength="500" />
+          <Property Name="Expand3" Type="nvarchar" MaxLength="500" />
+          <Property Name="Expand4" Type="nvarchar" MaxLength="500" />
+          <Property Name="Expand5" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <Function Name="proc_GetUserMessagePageForOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Fields" Type="varchar" Mode="In" />
+          <Parameter Name="Filter" Type="varchar" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+          <Parameter Name="isRead" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="proc_UpdateWithdrawCashStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="State" Type="int" Mode="In" />
+          <Parameter Name="WithdrawCashPrice" Type="money" Mode="In" />
+          <Parameter Name="UserId" Type="int" Mode="In" />
+          <Parameter Name="AdminId" Type="int" Mode="In" />
+          <Parameter Name="AdminName" Type="varchar" Mode="In" />
+          <Parameter Name="UpdateTime" Type="datetime" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="kyj_UserDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="kyj_UserDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="H_GWUser" EntityType="kyj_UserDBModel.H_GWUser" />
+          <EntitySet Name="H_SUser" EntityType="kyj_UserDBModel.H_SUser" />
+          <EntitySet Name="SystemMessages" EntityType="kyj_UserDBModel.SystemMessage" />
+          <EntitySet Name="U_Account" EntityType="kyj_UserDBModel.U_Account" />
+          <EntitySet Name="U_AccountLog" EntityType="kyj_UserDBModel.U_AccountLog" />
+          <EntitySet Name="U_Recharge" EntityType="kyj_UserDBModel.U_Recharge" />
+          <EntitySet Name="U_WithdrawCash" EntityType="kyj_UserDBModel.U_WithdrawCash" />
+          <EntitySet Name="Users" EntityType="kyj_UserDBModel.User" />
+          <EntitySet Name="UserAddressBooks" EntityType="kyj_UserDBModel.UserAddressBook" />
+          <EntitySet Name="UserBlackMessageLists" EntityType="kyj_UserDBModel.UserBlackMessageList" />
+          <EntitySet Name="UserFavorites" EntityType="kyj_UserDBModel.UserFavorite" />
+          <EntitySet Name="UserFeedbacks" EntityType="kyj_UserDBModel.UserFeedback" />
+          <EntitySet Name="UserInfoCalls" EntityType="kyj_UserDBModel.UserInfoCall" />
+          <EntitySet Name="UserInfoCallDeleteds" EntityType="kyj_UserDBModel.UserInfoCallDeleted" />
+          <EntitySet Name="UserInfoCallMaxes" EntityType="kyj_UserDBModel.UserInfoCallMax" />
+          <EntitySet Name="UserInfoCallTemps" EntityType="kyj_UserDBModel.UserInfoCallTemp" />
+          <EntitySet Name="UserMessages" EntityType="kyj_UserDBModel.UserMessage" />
+        </EntityContainer>
+        <EntityType Name="H_GWUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="BuyerPoint" Type="Int32" Nullable="false" />
+          <Property Name="BuyerGrade" Type="Int32" Nullable="false" />
+          <Property Name="SellerPoint" Type="Int32" Nullable="false" />
+          <Property Name="SellerGrade" Type="Int32" Nullable="false" />
+          <Property Name="InternalLetter" Type="Int32" Nullable="false" />
+          <Property Name="SendEmail" Type="Int32" Nullable="false" />
+          <Property Name="IsCloseShop" Type="Boolean" />
+          <Property Name="IsBlackList" Type="Boolean" />
+          <Property Name="BreadRulesID" Type="Int32" />
+          <Property Name="IDCard" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="IsShop" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="H_SUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CancelOrderNum" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <Property Name="TenantScore" Type="Int32" Nullable="false" />
+          <Property Name="ProvinceID" Type="Int32" />
+          <Property Name="ProvinceName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DId" Type="Int32" />
+          <Property Name="DName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="BId" Type="Int32" />
+          <Property Name="BName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CompanyId" Type="Int32" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SystemMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminId" Type="Int32" Nullable="false" />
+          <Property Name="ReceiveUserId" Type="Int32" Nullable="false" />
+          <Property Name="Platform" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Title" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Content" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="IsRead" Type="Boolean" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+          <Property Name="IsDel" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="U_Account">
+          <Key>
+            <PropertyRef Name="AId" />
+          </Key>
+          <Property Name="AId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserType" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" />
+          <Property Name="BackPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="DrawMoneyTimes" Type="Int32" Nullable="false" />
+          <Property Name="RechargeTotalPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="InvesteTotalPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="InvesteIncomeTotalPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="WithdrawCashTotalPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="U_AccountLog">
+          <Key>
+            <PropertyRef Name="ALId" />
+          </Key>
+          <Property Name="ALId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserType" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Byte" Nullable="false" />
+          <Property Name="LogType" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Desc" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Createtime" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="U_Recharge">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserType" Type="Int32" Nullable="false" />
+          <Property Name="RechargeNo" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Explain" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="U_WithdrawCash">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserType" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" />
+          <Property Name="AdminId" Type="Int32" Nullable="false" />
+          <Property Name="AdminName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="ReceiveType" Type="Int32" Nullable="false" />
+          <Property Name="RealName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="ALiPayAccount" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="CityName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ProvinceID" Type="Int32" />
+          <Property Name="ProvinceName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="BankName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="PubBankName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="BankAccount" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDNO" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="LoginName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Pwd" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="NikeName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="RealName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" />
+          <Property Name="IsDel" Type="Boolean" Nullable="false" />
+          <Property Name="Guid" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Sex" Type="Byte" Nullable="false" />
+          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AllState" Type="Byte" Nullable="false" />
+          <Property Name="AdminId" Type="Int32" />
+          <Property Name="AdminName" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="LastLoginTime" Type="DateTime" />
+          <Property Name="SpareTelephone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Telephone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FcUserType" Type="Int32" Nullable="false" />
+          <Property Name="RepastUserType" Type="Int32" Nullable="false" />
+          <Property Name="EshopUserType" Type="Int32" Nullable="false" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="CityName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="InfoCall" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Platform" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="QQ" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserAddressBook">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <Property Name="Platform" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ProvinceId" Type="Int32" />
+          <Property Name="ProvinceName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="CityName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="DistrictName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="PostCode" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="ReceiverName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ReceiverMobile" Type="String" MaxLength="11" Unicode="false" FixedLength="false" />
+          <Property Name="ReceiverPhone" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+          <Property Name="IsDel" Type="Boolean" Nullable="false" />
+          <Property Name="Sex" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserBlackMessageList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="BlackUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserFavorite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Platform" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="BusinessId" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="BusinessName" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="PicUrl" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+          <Property Name="IsDel" Type="Boolean" Nullable="false" />
+          <Property Name="Expand" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserFeedback">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Contact" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+          <Property Name="IsDel" Type="Boolean" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserInfoCall">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ShortNum" Type="Int32" Nullable="false" />
+          <Property Name="EnterNo" Type="Int32" Nullable="false" />
+          <Property Name="CallInId" Type="Int32" Nullable="false" />
+          <Property Name="WorkerGroupId" Type="Int32" Nullable="false" />
+          <Property Name="WorkerId" Type="Int32" Nullable="false" />
+          <Property Name="EnterpriseId" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="WEBPWD" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfoCallDeleted">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShortNum" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfoCallMax">
+          <Key>
+            <PropertyRef Name="MaxShortNum" />
+          </Key>
+          <Property Name="MaxShortNum" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfoCallTemp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="InfoCall" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SendUserId" Type="Int32" Nullable="false" />
+          <Property Name="ReceiveUserId" Type="Int32" Nullable="false" />
+          <Property Name="Platform" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Title" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Content" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="IsRead" Type="Boolean" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+          <Property Name="IsDel" Type="Boolean" Nullable="false" />
+          <Property Name="MessageType" Type="Int32" Nullable="false" />
+          <Property Name="MessageSource" Type="Int32" Nullable="false" />
+          <Property Name="SourceCount" Type="Int32" />
+          <Property Name="Expand1" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Expand2" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Expand3" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Expand4" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Expand5" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="kyj_UserDBModelStoreContainer" CdmEntityContainer="kyj_UserDBEntities">
+          <EntitySetMapping Name="H_GWUser"><EntityTypeMapping TypeName="kyj_UserDBModel.H_GWUser"><MappingFragment StoreEntitySet="H_GWUser">
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="BuyerPoint" ColumnName="BuyerPoint" />
+            <ScalarProperty Name="BuyerGrade" ColumnName="BuyerGrade" />
+            <ScalarProperty Name="SellerPoint" ColumnName="SellerPoint" />
+            <ScalarProperty Name="SellerGrade" ColumnName="SellerGrade" />
+            <ScalarProperty Name="InternalLetter" ColumnName="InternalLetter" />
+            <ScalarProperty Name="SendEmail" ColumnName="SendEmail" />
+            <ScalarProperty Name="IsCloseShop" ColumnName="IsCloseShop" />
+            <ScalarProperty Name="IsBlackList" ColumnName="IsBlackList" />
+            <ScalarProperty Name="BreadRulesID" ColumnName="BreadRulesID" />
+            <ScalarProperty Name="IDCard" ColumnName="IDCard" />
+            <ScalarProperty Name="IsShop" ColumnName="IsShop" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="H_SUser"><EntityTypeMapping TypeName="kyj_UserDBModel.H_SUser"><MappingFragment StoreEntitySet="H_SUser">
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="CancelOrderNum" ColumnName="CancelOrderNum" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="Score" ColumnName="Score" />
+            <ScalarProperty Name="TenantScore" ColumnName="TenantScore" />
+            <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+            <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+            <ScalarProperty Name="DId" ColumnName="DId" />
+            <ScalarProperty Name="DName" ColumnName="DName" />
+            <ScalarProperty Name="BId" ColumnName="BId" />
+            <ScalarProperty Name="BName" ColumnName="BName" />
+            <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+            <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SystemMessages"><EntityTypeMapping TypeName="kyj_UserDBModel.SystemMessage"><MappingFragment StoreEntitySet="SystemMessage">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+            <ScalarProperty Name="ReceiveUserId" ColumnName="ReceiveUserId" />
+            <ScalarProperty Name="Platform" ColumnName="Platform" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="Content" ColumnName="Content" />
+            <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+            <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+            <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="U_Account"><EntityTypeMapping TypeName="kyj_UserDBModel.U_Account"><MappingFragment StoreEntitySet="U_Account">
+            <ScalarProperty Name="AId" ColumnName="AId" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="UserType" ColumnName="UserType" />
+            <ScalarProperty Name="Price" ColumnName="Price" />
+            <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+            <ScalarProperty Name="BackPrice" ColumnName="BackPrice" />
+            <ScalarProperty Name="DrawMoneyTimes" ColumnName="DrawMoneyTimes" />
+            <ScalarProperty Name="RechargeTotalPrice" ColumnName="RechargeTotalPrice" />
+            <ScalarProperty Name="InvesteTotalPrice" ColumnName="InvesteTotalPrice" />
+            <ScalarProperty Name="InvesteIncomeTotalPrice" ColumnName="InvesteIncomeTotalPrice" />
+            <ScalarProperty Name="WithdrawCashTotalPrice" ColumnName="WithdrawCashTotalPrice" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="U_AccountLog"><EntityTypeMapping TypeName="kyj_UserDBModel.U_AccountLog"><MappingFragment StoreEntitySet="U_AccountLog">
+            <ScalarProperty Name="ALId" ColumnName="ALId" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="UserType" ColumnName="UserType" />
+            <ScalarProperty Name="Type" ColumnName="Type" />
+            <ScalarProperty Name="LogType" ColumnName="LogType" />
+            <ScalarProperty Name="Price" ColumnName="Price" />
+            <ScalarProperty Name="Desc" ColumnName="Desc" />
+            <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="U_Recharge"><EntityTypeMapping TypeName="kyj_UserDBModel.U_Recharge"><MappingFragment StoreEntitySet="U_Recharge">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="UserType" ColumnName="UserType" />
+            <ScalarProperty Name="RechargeNo" ColumnName="RechargeNo" />
+            <ScalarProperty Name="Price" ColumnName="Price" />
+            <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+            <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="Explain" ColumnName="Explain" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="U_WithdrawCash"><EntityTypeMapping TypeName="kyj_UserDBModel.U_WithdrawCash"><MappingFragment StoreEntitySet="U_WithdrawCash">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="UserType" ColumnName="UserType" />
+            <ScalarProperty Name="UserName" ColumnName="UserName" />
+            <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+            <ScalarProperty Name="Price" ColumnName="Price" />
+            <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+            <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+            <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+            <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="ReceiveType" ColumnName="ReceiveType" />
+            <ScalarProperty Name="RealName" ColumnName="RealName" />
+            <ScalarProperty Name="ALiPayAccount" ColumnName="ALiPayAccount" />
+            <ScalarProperty Name="CityId" ColumnName="CityId" />
+            <ScalarProperty Name="CityName" ColumnName="CityName" />
+            <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+            <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+            <ScalarProperty Name="BankName" ColumnName="BankName" />
+            <ScalarProperty Name="PubBankName" ColumnName="PubBankName" />
+            <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="kyj_UserDBModel.User"><MappingFragment StoreEntitySet="User">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="IDNO" ColumnName="IDNO" />
+            <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+            <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+            <ScalarProperty Name="NikeName" ColumnName="NikeName" />
+            <ScalarProperty Name="RealName" ColumnName="RealName" />
+            <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+            <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+            <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+            <ScalarProperty Name="Guid" ColumnName="Guid" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="Sex" ColumnName="Sex" />
+            <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+            <ScalarProperty Name="AllState" ColumnName="AllState" />
+            <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+            <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+            <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+            <ScalarProperty Name="SpareTelephone" ColumnName="SpareTelephone" />
+            <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+            <ScalarProperty Name="FcUserType" ColumnName="FcUserType" />
+            <ScalarProperty Name="RepastUserType" ColumnName="RepastUserType" />
+            <ScalarProperty Name="EshopUserType" ColumnName="EshopUserType" />
+            <ScalarProperty Name="CityId" ColumnName="CityId" />
+            <ScalarProperty Name="CityName" ColumnName="CityName" />
+            <ScalarProperty Name="InfoCall" ColumnName="InfoCall" />
+            <ScalarProperty Name="Platform" ColumnName="Platform" />
+            <ScalarProperty Name="QQ" ColumnName="QQ" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UserAddressBooks"><EntityTypeMapping TypeName="kyj_UserDBModel.UserAddressBook"><MappingFragment StoreEntitySet="UserAddressBook">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+            <ScalarProperty Name="Platform" ColumnName="Platform" />
+            <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+            <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+            <ScalarProperty Name="CityId" ColumnName="CityId" />
+            <ScalarProperty Name="CityName" ColumnName="CityName" />
+            <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+            <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+            <ScalarProperty Name="Address" ColumnName="Address" />
+            <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+            <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
+            <ScalarProperty Name="ReceiverMobile" ColumnName="ReceiverMobile" />
+            <ScalarProperty Name="ReceiverPhone" ColumnName="ReceiverPhone" />
+            <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+            <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+            <ScalarProperty Name="Sex" ColumnName="Sex" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UserBlackMessageLists"><EntityTypeMapping TypeName="kyj_UserDBModel.UserBlackMessageList"><MappingFragment StoreEntitySet="UserBlackMessageList">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="BlackUserId" ColumnName="BlackUserId" />
+            <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UserFavorites"><EntityTypeMapping TypeName="kyj_UserDBModel.UserFavorite"><MappingFragment StoreEntitySet="UserFavorite">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="Platform" ColumnName="Platform" />
+            <ScalarProperty Name="Type" ColumnName="Type" />
+            <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+            <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+            <ScalarProperty Name="PicUrl" ColumnName="PicUrl" />
+            <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+            <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+            <ScalarProperty Name="Expand" ColumnName="Expand" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UserFeedbacks"><EntityTypeMapping TypeName="kyj_UserDBModel.UserFeedback"><MappingFragment StoreEntitySet="UserFeedback">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Content" ColumnName="Content" />
+            <ScalarProperty Name="Contact" ColumnName="Contact" />
+            <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+            <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UserInfoCalls"><EntityTypeMapping TypeName="kyj_UserDBModel.UserInfoCall"><MappingFragment StoreEntitySet="UserInfoCall">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+            <ScalarProperty Name="ShortNum" ColumnName="ShortNum" />
+            <ScalarProperty Name="EnterNo" ColumnName="EnterNo" />
+            <ScalarProperty Name="CallInId" ColumnName="CallInId" />
+            <ScalarProperty Name="WorkerGroupId" ColumnName="WorkerGroupId" />
+            <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+            <ScalarProperty Name="EnterpriseId" ColumnName="EnterpriseId" />
+            <ScalarProperty Name="WEBPWD" ColumnName="WEBPWD" />
+            <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UserInfoCallDeleteds"><EntityTypeMapping TypeName="kyj_UserDBModel.UserInfoCallDeleted"><MappingFragment StoreEntitySet="UserInfoCallDeleted">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="ShortNum" ColumnName="ShortNum" />
+            <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UserInfoCallMaxes"><EntityTypeMapping TypeName="kyj_UserDBModel.UserInfoCallMax"><MappingFragment StoreEntitySet="UserInfoCallMax">
+            <ScalarProperty Name="MaxShortNum" ColumnName="MaxShortNum" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UserInfoCallTemps"><EntityTypeMapping TypeName="kyj_UserDBModel.UserInfoCallTemp"><MappingFragment StoreEntitySet="UserInfoCallTemp">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+            <ScalarProperty Name="InfoCall" ColumnName="InfoCall" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UserMessages"><EntityTypeMapping TypeName="kyj_UserDBModel.UserMessage"><MappingFragment StoreEntitySet="UserMessage">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="SendUserId" ColumnName="SendUserId" />
+            <ScalarProperty Name="ReceiveUserId" ColumnName="ReceiveUserId" />
+            <ScalarProperty Name="Platform" ColumnName="Platform" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="Content" ColumnName="Content" />
+            <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+            <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+            <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+            <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+            <ScalarProperty Name="MessageSource" ColumnName="MessageSource" />
+            <ScalarProperty Name="SourceCount" ColumnName="SourceCount" />
+            <ScalarProperty Name="Expand1" ColumnName="Expand1" />
+            <ScalarProperty Name="Expand2" ColumnName="Expand2" />
+            <ScalarProperty Name="Expand3" ColumnName="Expand3" />
+            <ScalarProperty Name="Expand4" ColumnName="Expand4" />
+            <ScalarProperty Name="Expand5" ColumnName="Expand5" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="kyj_User">
+        <EntityTypeShape EntityType="kyj_UserDBModel.H_GWUser" Width="1.5" PointX="0.75" PointY="0.75" Height="3.3071704101562496" IsExpanded="true" />
+        <EntityTypeShape EntityType="kyj_UserDBModel.H_SUser" Width="1.5" PointX="2.75" PointY="0.75" Height="3.4981901041666656" IsExpanded="true" />
+        <EntityTypeShape EntityType="kyj_UserDBModel.SystemMessage" Width="1.5" PointX="4.75" PointY="0.75" Height="2.7341113281249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="kyj_UserDBModel.U_Account" Width="1.5" PointX="4.75" PointY="4.75" Height="3.1161507161458335" IsExpanded="true" />
+        <EntityTypeShape EntityType="kyj_UserDBModel.U_AccountLog" Width="1.5" PointX="0.75" PointY="5.75" Height="2.5430916341145835" IsExpanded="true" />
+        <EntityTypeShape EntityType="kyj_UserDBModel.U_Recharge" Width="1.5" PointX="6.75" PointY="0.75" Height="2.7341113281249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="kyj_UserDBModel.U_WithdrawCash" Width="1.5" PointX="6.75" PointY="4.75" Height="5.02634765625" IsExpanded="true" />
+        <EntityTypeShape EntityType="kyj_UserDBModel.User" Width="1.5" PointX="8.75" PointY="0.75" Height="6.1724658203125031" IsExpanded="true" />
+        <EntityTypeShape EntityType="kyj_UserDBModel.UserAddressBook" Width="1.5" PointX="2.75" PointY="8.75" Height="4.4532885742187531" IsExpanded="true" />
+        <EntityTypeShape EntityType="kyj_UserDBModel.UserBlackMessageList" Width="1.5" PointX="8.75" PointY="7.75" Height="1.7790128580729174" IsExpanded="true" />
+        <EntityTypeShape EntityType="kyj_UserDBModel.UserFavorite" Width="1.5" PointX="10.75" PointY="0.75" Height="2.9251310221354174" IsExpanded="true" />
+        <EntityTypeShape EntityType="kyj_UserDBModel.UserFeedback" Width="1.5" PointX="10.75" PointY="4.75" Height="2.1610522460937531" IsExpanded="true" />
+        <EntityTypeShape EntityType="kyj_UserDBModel.UserInfoCall" Width="1.5" PointX="4.75" PointY="10.75" Height="2.9251310221354174" IsExpanded="true" />
+        <EntityTypeShape EntityType="kyj_UserDBModel.UserInfoCallDeleted" Width="1.5" PointX="6.75" PointY="10.75" Height="1.5879931640625031" IsExpanded="true" />
+        <EntityTypeShape EntityType="kyj_UserDBModel.UserInfoCallMax" Width="1.5" PointX="10.75" PointY="7.75" Height="1.2059537760416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="kyj_UserDBModel.UserInfoCallTemp" Width="1.5" PointX="8.75" PointY="10.75" Height="1.5879931640625031" IsExpanded="true" />
+        <EntityTypeShape EntityType="kyj_UserDBModel.UserMessage" Width="1.5" PointX="10.75" PointY="9.75" Height="4.2622688802083388" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

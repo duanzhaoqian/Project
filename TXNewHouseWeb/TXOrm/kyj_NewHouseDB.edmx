@@ -1,0 +1,2266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="kyj_NewHouseDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="kyj_NewHouseDBModelStoreContainer">
+          <EntitySet Name="Activities" EntityType="kyj_NewHouseDBModel.Store.Activities" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ActivitiesHouse" EntityType="kyj_NewHouseDBModel.Store.ActivitiesHouse" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ActivitiesTiming" EntityType="kyj_NewHouseDBModel.Store.ActivitiesTiming" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ActivitiesYaoHaoApply" EntityType="kyj_NewHouseDBModel.Store.ActivitiesYaoHaoApply" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ActivitiesYaoHaoInfos" EntityType="kyj_NewHouseDBModel.Store.ActivitiesYaoHaoInfos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Advertise" EntityType="kyj_NewHouseDBModel.Store.Advertise" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AdvertiseAll" EntityType="kyj_NewHouseDBModel.Store.AdvertiseAll" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AmountTiming" EntityType="kyj_NewHouseDBModel.Store.AmountTiming" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BidPrice" EntityType="kyj_NewHouseDBModel.Store.BidPrice" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Building" EntityType="kyj_NewHouseDBModel.Store.Building" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Developer" EntityType="kyj_NewHouseDBModel.Store.Developer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Developer_Account" EntityType="kyj_NewHouseDBModel.Store.Developer_Account" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Developer_AccountLog" EntityType="kyj_NewHouseDBModel.Store.Developer_AccountLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Developer_Identity" EntityType="kyj_NewHouseDBModel.Store.Developer_Identity" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Developer_WithdrawCash" EntityType="kyj_NewHouseDBModel.Store.Developer_WithdrawCash" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DeveloperMessage" EntityType="kyj_NewHouseDBModel.Store.DeveloperMessage" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="House" EntityType="kyj_NewHouseDBModel.Store.House" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HouseTemplate" EntityType="kyj_NewHouseDBModel.Store.HouseTemplate" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="JHS_ActivePremise" EntityType="kyj_NewHouseDBModel.Store.JHS_ActivePremise" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="JHS_ActiveUserReport" EntityType="kyj_NewHouseDBModel.Store.JHS_ActiveUserReport" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Order" EntityType="kyj_NewHouseDBModel.Store.Order" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PermitPresale" EntityType="kyj_NewHouseDBModel.Store.PermitPresale" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Picture" EntityType="kyj_NewHouseDBModel.Store.Picture" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PremiseImgMap" EntityType="kyj_NewHouseDBModel.Store.PremiseImgMap" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Premises" EntityType="kyj_NewHouseDBModel.Store.Premises" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PremisesClickStatistics" EntityType="kyj_NewHouseDBModel.Store.PremisesClickStatistics" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PremisesFavorite" EntityType="kyj_NewHouseDBModel.Store.PremisesFavorite" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PremisesFeature" EntityType="kyj_NewHouseDBModel.Store.PremisesFeature" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PremisesOther" EntityType="kyj_NewHouseDBModel.Store.PremisesOther" store:Type="Tables" store:Schema="dbo" store:Name="PremisesOther">
+            <DefiningQuery>SELECT 
+      [PremisesOther].[PremisesId] AS [PremisesId], 
+      [PremisesOther].[School] AS [School], 
+      [PremisesOther].[Shopping] AS [Shopping], 
+      [PremisesOther].[Hospital] AS [Hospital], 
+      [PremisesOther].[Life] AS [Life], 
+      [PremisesOther].[Entertainment] AS [Entertainment], 
+      [PremisesOther].[Catering] AS [Catering], 
+      [PremisesOther].[Bus] AS [Bus], 
+      [PremisesOther].[Subway] AS [Subway]
+      FROM [dbo].[PremisesOther] AS [PremisesOther]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PremisesRanking" EntityType="kyj_NewHouseDBModel.Store.PremisesRanking" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PremisesSubway" EntityType="kyj_NewHouseDBModel.Store.PremisesSubway" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PremisesViewCount" EntityType="kyj_NewHouseDBModel.Store.PremisesViewCount" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PremisStatisticsInfo" EntityType="kyj_NewHouseDBModel.Store.PremisStatisticsInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RoomCount" EntityType="kyj_NewHouseDBModel.Store.RoomCount" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SandTableLabel" EntityType="kyj_NewHouseDBModel.Store.SandTableLabel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Social" EntityType="kyj_NewHouseDBModel.Store.Social" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TimingRecord" EntityType="kyj_NewHouseDBModel.Store.TimingRecord" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UniqueActivitiesHouse" EntityType="kyj_NewHouseDBModel.Store.UniqueActivitiesHouse" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Unit" EntityType="kyj_NewHouseDBModel.Store.Unit" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Activities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DeveloperId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="UserCount" Type="int" Nullable="false" />
+          <Property Name="HouseCount" Type="int" Nullable="false" />
+          <Property Name="BidPrice" Type="money" Nullable="false" />
+          <Property Name="AddPrice" Type="money" Nullable="false" />
+          <Property Name="MaxPrice" Type="money" Nullable="false" />
+          <Property Name="SignupBeginTime" Type="datetime" />
+          <Property Name="SignupEndTime" Type="datetime" />
+          <Property Name="BeginTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
+          <Property Name="Bond" Type="money" Nullable="false" />
+          <Property Name="ActivitieState" Type="int" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActivitiesHouse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ActivitiesId" Type="int" Nullable="false" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="DeveloperId" Type="int" Nullable="false" />
+          <Property Name="PremisesId" Type="int" Nullable="false" />
+          <Property Name="BuildingId" Type="int" Nullable="false" />
+          <Property Name="UnitId" Type="int" Nullable="false" />
+          <Property Name="HouseId" Type="int" Nullable="false" />
+          <Property Name="Discount" Type="int" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActivitiesTiming">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ActivityID" Type="int" Nullable="false" />
+          <Property Name="HouseId" Type="int" Nullable="false" />
+          <Property Name="OperId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActivitiesYaoHaoApply">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ActivitiesId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="DeveloperId" Type="int" Nullable="false" />
+          <Property Name="PremisesId" Type="int" Nullable="false" />
+          <Property Name="IsAllPremises" Type="bit" Nullable="false" />
+          <Property Name="BuildingIds" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="State" Type="int" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActivitiesYaoHaoInfos">
+          <Key>
+            <PropertyRef Name="ActivitiesId" />
+          </Key>
+          <Property Name="ActivitiesId" Type="int" Nullable="false" />
+          <Property Name="Periods" Type="int" Nullable="false" />
+          <Property Name="BuildingIds" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="ActivitieLocation" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="NotarialOffice" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="ChooseHouseTime" Type="datetime" Nullable="false" />
+          <Property Name="Introduction" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Notice" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Process" Type="nvarchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Advertise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Position" Type="int" Nullable="false" />
+          <Property Name="PremisesId" Type="int" Nullable="false" />
+          <Property Name="PremisesName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="SequenceNum" Type="int" Nullable="false" />
+          <Property Name="BeginTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+          <Property Name="AdminID" Type="int" Nullable="false" />
+          <Property Name="AdminName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AdvertiseAll">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="PremisesId" Type="int" Nullable="false" />
+          <Property Name="PremisesName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="InnerCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Telephone" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="PropertyPrice" Type="money" Nullable="false" />
+          <Property Name="Ring" Type="int" Nullable="false" />
+          <Property Name="PremisesAddress" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Characteristic" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="PropertyRight" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="RSort" Type="int" Nullable="false" />
+          <Property Name="Creatime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AmountTiming">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ActivityID" Type="int" Nullable="false" />
+          <Property Name="OperId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="AmountRecord" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="OperPrice" Type="money" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BidPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ActivitiesId" Type="int" Nullable="false" />
+          <Property Name="HouseId" Type="int" Nullable="false" />
+          <Property Name="BidUserId" Type="int" Nullable="false" />
+          <Property Name="BidUserName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="BidRealName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="IDCard" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="BidUserMobile" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="BidUserQQ" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="BidUserMail" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="InnerCode" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="BidUserPrice" Type="money" Nullable="false" />
+          <Property Name="BidUserNumber" Type="int" Nullable="false" />
+          <Property Name="BidCount" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DeveloperId" Type="int" Nullable="false" />
+          <Property Name="PremisesId" Type="int" Nullable="false" />
+          <Property Name="Periods" Type="int" Nullable="false" />
+          <Property Name="PropertyType" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="PictureData" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="NameType" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="FamilyNum" Type="int" Nullable="false" />
+          <Property Name="TheFloor" Type="int" Nullable="false" />
+          <Property Name="Underloor" Type="int" Nullable="false" />
+          <Property Name="Ladder" Type="int" Nullable="false" />
+          <Property Name="Renovation" Type="int" Nullable="false" />
+          <Property Name="BuildingPosition" Type="int" Nullable="false" />
+          <Property Name="OpeningTime" Type="datetime" Nullable="false" />
+          <Property Name="OthersTime" Type="datetime" Nullable="false" />
+          <Property Name="State" Type="int" Nullable="false" />
+          <Property Name="PresaleId" Type="int" Nullable="false" />
+          <Property Name="PermitPresale" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PNum" Type="int" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Developer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProvinceId" Type="int" Nullable="false" />
+          <Property Name="ProvinceName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Telephone" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="SpareTelephone" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="LoginName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Pwd" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="RealName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="State" Type="int" Nullable="false" />
+          <Property Name="LockState" Type="int" Nullable="false" />
+          <Property Name="InnerCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LoginTime" Type="datetime" Nullable="false" />
+          <Property Name="OldLoginTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsRecommend" Type="bit" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Developer_Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DeveloperId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Developer_AccountLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DeveloperId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="PayType" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="RechargeNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="IsSuc" Type="bit" Nullable="false" />
+          <Property Name="Desc" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Developer_Identity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DeveloperId" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="UserMobile" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="UserEmail" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="ProvinceId" Type="int" Nullable="false" />
+          <Property Name="ProvinceName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="DId" Type="int" Nullable="false" />
+          <Property Name="DName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CompanyName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="CompanyAddress" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Refuse" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Developer_WithdrawCash">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DeveloperId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="AdminId" Type="int" Nullable="false" />
+          <Property Name="AdminName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="ReceiveType" Type="int" Nullable="false" />
+          <Property Name="RealName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="ALiPayAccount" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ProvinceId" Type="int" Nullable="false" />
+          <Property Name="ProvinceName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="BankName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="PubBankName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="BankAccount" Type="nvarchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="DeveloperMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SendUserId" Type="int" Nullable="false" />
+          <Property Name="ReceiveUserId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Content" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="IsRead" Type="bit" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="House">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="InnerCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="DeveloperId" Type="int" Nullable="false" />
+          <Property Name="PremisesId" Type="int" Nullable="false" />
+          <Property Name="BuildingId" Type="int" Nullable="false" />
+          <Property Name="UnitId" Type="int" Nullable="false" />
+          <Property Name="Floor" Type="int" Nullable="false" />
+          <Property Name="RId" Type="int" Nullable="false" />
+          <Property Name="PictureData" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="BuildingType" Type="int" Nullable="false" />
+          <Property Name="Orientation" Type="int" Nullable="false" />
+          <Property Name="PriceType" Type="int" Nullable="false" />
+          <Property Name="TotalPrice" Type="money" Nullable="false" />
+          <Property Name="SinglePrice" Type="money" Nullable="false" />
+          <Property Name="DownPayment" Type="money" Nullable="false" />
+          <Property Name="SalesStatus" Type="int" Nullable="false" />
+          <Property Name="BuildingArea" Type="float" Nullable="false" />
+          <Property Name="Area" Type="float" Nullable="false" />
+          <Property Name="Room" Type="int" Nullable="false" />
+          <Property Name="Hall" Type="int" Nullable="false" />
+          <Property Name="Toilet" Type="int" Nullable="false" />
+          <Property Name="Kitchen" Type="int" Nullable="false" />
+          <Property Name="CoordX" Type="float" Nullable="false" />
+          <Property Name="CoordY" Type="float" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+          <Property Name="IsRelease" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HouseTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DeveloperId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Remark" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Content" Type="text" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JHS_ActivePremise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Period" Type="int" Nullable="false" />
+          <Property Name="ActiveType" Type="int" Nullable="false" />
+          <Property Name="BeginTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
+          <Property Name="PremiseName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="InnerCode" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="SignUpCount" Type="int" Nullable="false" />
+          <Property Name="ViewCount" Type="int" Nullable="false" />
+          <Property Name="PropertyPrice" Type="money" Nullable="false" />
+          <Property Name="FavourableFeature" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="FavourableInformation" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+          <Property Name="AdminId" Type="int" Nullable="false" />
+          <Property Name="AdminName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Creatime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JHS_ActiveUserReport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="JHS_Period" Type="int" Nullable="false" />
+          <Property Name="JHS_PremiseId" Type="int" Nullable="false" />
+          <Property Name="RealName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Mobile" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Remark1" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+          <Property Name="Creatime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ActivitiesId" Type="int" Nullable="false" />
+          <Property Name="HouseId" Type="int" Nullable="false" />
+          <Property Name="BidUserId" Type="int" Nullable="false" />
+          <Property Name="BidUserName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="BidRealName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="IDCard" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="BidUserMobile" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="BidUserQQ" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="BidUserMail" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="InnerCode" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="BidUserPrice" Type="money" Nullable="false" />
+          <Property Name="BidUserNumber" Type="int" Nullable="false" />
+          <Property Name="BidCount" Type="int" Nullable="false" />
+          <Property Name="OrderNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Desc" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="BondStatus" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PermitPresale">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PremisesId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PremisesId" Type="int" Nullable="false" />
+          <Property Name="BuildingId" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PremiseImgMap">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CityID" Type="int" Nullable="false" />
+          <Property Name="PermitID" Type="int" Nullable="false" />
+          <Property Name="PremiseName" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="InnerCode" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="ImgID" Type="int" Nullable="false" />
+          <Property Name="ImgTitle" Type="varchar" MaxLength="500" />
+          <Property Name="ImgDes" Type="text" />
+          <Property Name="ImgPath" Type="varchar" MaxLength="500" />
+          <Property Name="PictureType" Type="varchar" MaxLength="100" />
+          <Property Name="PictureTypeName" Type="varchar" MaxLength="100" />
+          <Property Name="ImgIsDel" Type="bit" />
+          <Property Name="adminid" Type="int" />
+          <Property Name="adminName" Type="varchar" MaxLength="100" />
+          <Property Name="EditDate" Type="datetime" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Premises">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DeveloperId" Type="int" Nullable="false" />
+          <Property Name="InnerCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ProvinceId" Type="int" Nullable="false" />
+          <Property Name="ProvinceName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="DId" Type="int" Nullable="false" />
+          <Property Name="DName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="BId" Type="int" Nullable="false" />
+          <Property Name="BName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="TId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ReferencePrice" Type="money" Nullable="false" />
+          <Property Name="TelePhone" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="SalesStatus" Type="int" Nullable="false" />
+          <Property Name="Ring" Type="int" Nullable="false" />
+          <Property Name="PremisesAddress" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="salesAddress" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Developer" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Agent" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="SalePermit" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="PropertyRight" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="BuildingArea" Type="float" Nullable="false" />
+          <Property Name="Area" Type="float" Nullable="false" />
+          <Property Name="UserCount" Type="int" Nullable="false" />
+          <Property Name="Characteristic" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="BuildingType" Type="int" Nullable="false" />
+          <Property Name="PropertyType" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="AreaRatio" Type="float" Nullable="false" />
+          <Property Name="RoomRate" Type="float" Nullable="false" />
+          <Property Name="PropertyPrice" Type="money" Nullable="false" />
+          <Property Name="ParkingLot" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Renovation" Type="int" Nullable="false" />
+          <Property Name="PropertyCompany" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="GreeningRate" Type="float" Nullable="false" />
+          <Property Name="TrafficIntroduction" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SupportingIntroduction" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PremisesIntroduction" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Lng" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Lat" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Phone400" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsShow400" Type="bit" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+          <Property Name="pageUrl" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="PremisesClickStatistics">
+          <Key>
+            <PropertyRef Name="PremisesId" />
+          </Key>
+          <Property Name="PremisesId" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PremisesFavorite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PremisesId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PremisesFeature">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“kyj_NewHouseDB.dbo.PremisesOther”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="PremisesOther">
+          <Key>
+            <PropertyRef Name="PremisesId" />
+            <PropertyRef Name="School" />
+            <PropertyRef Name="Shopping" />
+            <PropertyRef Name="Hospital" />
+            <PropertyRef Name="Life" />
+            <PropertyRef Name="Entertainment" />
+            <PropertyRef Name="Catering" />
+            <PropertyRef Name="Bus" />
+            <PropertyRef Name="Subway" />
+          </Key>
+          <Property Name="PremisesId" Type="int" Nullable="false" />
+          <Property Name="School" Type="text" Nullable="false" />
+          <Property Name="Shopping" Type="text" Nullable="false" />
+          <Property Name="Hospital" Type="text" Nullable="false" />
+          <Property Name="Life" Type="text" Nullable="false" />
+          <Property Name="Entertainment" Type="text" Nullable="false" />
+          <Property Name="Catering" Type="text" Nullable="false" />
+          <Property Name="Bus" Type="text" Nullable="false" />
+          <Property Name="Subway" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PremisesRanking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PremisesId" Type="int" Nullable="false" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="RSort" Type="int" Nullable="false" />
+          <Property Name="Creatime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PremisesSubway">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PId" Type="int" Nullable="false" />
+          <Property Name="Tid" Type="int" Nullable="false" />
+          <Property Name="TName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="VId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PremisesViewCount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PremisesId" Type="int" Nullable="false" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="ViewCount" Type="int" Nullable="false" />
+          <Property Name="RankNum" Type="int" Nullable="false" />
+          <Property Name="RankTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PremisStatisticsInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PremisId" Type="int" Nullable="false" />
+          <Property Name="InputTime" Type="datetime" Nullable="false" />
+          <Property Name="SubscribedCount" Type="int" Nullable="false" />
+          <Property Name="BargainCount" Type="int" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoomCount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PremisesId" Type="int" Nullable="false" />
+          <Property Name="Room" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SandTableLabel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DeveloperId" Type="int" Nullable="false" />
+          <Property Name="PremisesId" Type="int" Nullable="false" />
+          <Property Name="SandBox" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="Number" Type="int" Nullable="false" />
+          <Property Name="CoordX" Type="float" Nullable="false" />
+          <Property Name="CoordY" Type="float" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Social">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ActivitiesId" Type="int" Nullable="false" />
+          <Property Name="UserCount" Type="int" Nullable="false" />
+          <Property Name="Discount" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TimingRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DealStatus" Type="int" Nullable="false" />
+          <Property Name="Desc" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="DealTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UniqueActivitiesHouse">
+          <Key>
+            <PropertyRef Name="HouseId" />
+          </Key>
+          <Property Name="HouseId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DeveloperId" Type="int" Nullable="false" />
+          <Property Name="PremisesId" Type="int" Nullable="false" />
+          <Property Name="BuildingId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="kyj_NewHouseDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="kyj_NewHouseDBEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="GetMyNewHouseYaohao" ReturnType="Collection(kyj_NewHouseDBModel.GetMyNewHouseYaohao_Result)">
+          <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetMyNewHouseBid" ReturnType="Collection(kyj_NewHouseDBModel.GetMyNewHouseBid_Result)">
+          <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Activities" EntityType="kyj_NewHouseDBModel.Activity" />
+          <EntitySet Name="ActivitiesHouses" EntityType="kyj_NewHouseDBModel.ActivitiesHouse" />
+          <EntitySet Name="ActivitiesTimings" EntityType="kyj_NewHouseDBModel.ActivitiesTiming" />
+          <EntitySet Name="ActivitiesYaoHaoApplies" EntityType="kyj_NewHouseDBModel.ActivitiesYaoHaoApply" />
+          <EntitySet Name="ActivitiesYaoHaoInfos" EntityType="kyj_NewHouseDBModel.ActivitiesYaoHaoInfo" />
+          <EntitySet Name="Advertises" EntityType="kyj_NewHouseDBModel.Advertise" />
+          <EntitySet Name="AdvertiseAlls" EntityType="kyj_NewHouseDBModel.AdvertiseAll" />
+          <EntitySet Name="AmountTimings" EntityType="kyj_NewHouseDBModel.AmountTiming" />
+          <EntitySet Name="BidPrices" EntityType="kyj_NewHouseDBModel.BidPrice" />
+          <EntitySet Name="Buildings" EntityType="kyj_NewHouseDBModel.Building" />
+          <EntitySet Name="Developers" EntityType="kyj_NewHouseDBModel.Developer" />
+          <EntitySet Name="Developer_Account" EntityType="kyj_NewHouseDBModel.Developer_Account" />
+          <EntitySet Name="Developer_AccountLog" EntityType="kyj_NewHouseDBModel.Developer_AccountLog" />
+          <EntitySet Name="Developer_Identity" EntityType="kyj_NewHouseDBModel.Developer_Identity" />
+          <EntitySet Name="Developer_WithdrawCash" EntityType="kyj_NewHouseDBModel.Developer_WithdrawCash" />
+          <EntitySet Name="DeveloperMessages" EntityType="kyj_NewHouseDBModel.DeveloperMessage" />
+          <EntitySet Name="Houses" EntityType="kyj_NewHouseDBModel.House" />
+          <EntitySet Name="HouseTemplates" EntityType="kyj_NewHouseDBModel.HouseTemplate" />
+          <EntitySet Name="JHS_ActivePremise" EntityType="kyj_NewHouseDBModel.JHS_ActivePremise" />
+          <EntitySet Name="JHS_ActiveUserReport" EntityType="kyj_NewHouseDBModel.JHS_ActiveUserReport" />
+          <EntitySet Name="Orders" EntityType="kyj_NewHouseDBModel.Order" />
+          <EntitySet Name="PermitPresales" EntityType="kyj_NewHouseDBModel.PermitPresale" />
+          <EntitySet Name="Pictures" EntityType="kyj_NewHouseDBModel.Picture" />
+          <EntitySet Name="PremiseImgMaps" EntityType="kyj_NewHouseDBModel.PremiseImgMap" />
+          <EntitySet Name="Premises" EntityType="kyj_NewHouseDBModel.Premis" />
+          <EntitySet Name="PremisesClickStatistics" EntityType="kyj_NewHouseDBModel.PremisesClickStatistic" />
+          <EntitySet Name="PremisesFavorites" EntityType="kyj_NewHouseDBModel.PremisesFavorite" />
+          <EntitySet Name="PremisesFeatures" EntityType="kyj_NewHouseDBModel.PremisesFeature" />
+          <EntitySet Name="PremisesOthers" EntityType="kyj_NewHouseDBModel.PremisesOther" />
+          <EntitySet Name="PremisesRankings" EntityType="kyj_NewHouseDBModel.PremisesRanking" />
+          <EntitySet Name="PremisesSubways" EntityType="kyj_NewHouseDBModel.PremisesSubway" />
+          <EntitySet Name="PremisesViewCounts" EntityType="kyj_NewHouseDBModel.PremisesViewCount" />
+          <EntitySet Name="PremisStatisticsInfoes" EntityType="kyj_NewHouseDBModel.PremisStatisticsInfo" />
+          <EntitySet Name="RoomCounts" EntityType="kyj_NewHouseDBModel.RoomCount" />
+          <EntitySet Name="SandTableLabels" EntityType="kyj_NewHouseDBModel.SandTableLabel" />
+          <EntitySet Name="Socials" EntityType="kyj_NewHouseDBModel.Social" />
+          <EntitySet Name="TimingRecords" EntityType="kyj_NewHouseDBModel.TimingRecord" />
+          <EntitySet Name="UniqueActivitiesHouses" EntityType="kyj_NewHouseDBModel.UniqueActivitiesHouse" />
+          <EntitySet Name="Units" EntityType="kyj_NewHouseDBModel.Unit" />
+          </EntityContainer>
+        <ComplexType Name="GetMyNewHouseBid_Result">
+          <Property Type="Int32" Name="HouseId" Nullable="false" />
+          <Property Type="String" Name="InnerCode" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Room" Nullable="false" />
+          <Property Type="Int32" Name="Floor" Nullable="false" />
+          <Property Type="Int32" Name="Hall" Nullable="false" />
+          <Property Type="Decimal" Name="Marketprice" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="BidPrice" Nullable="true" Precision="19" />
+          <Property Type="Double" Name="BuildingArea" Nullable="false" />
+          <Property Type="Int32" Name="HouseState" Nullable="false" />
+          <Property Type="String" Name="PremisesName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BuildingName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Unit" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ActivieType" Nullable="true" />
+          <Property Type="DateTime" Name="BeginTime" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="EndTime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ActivieStatus" Nullable="true" />
+          <Property Type="DateTime" Name="BidTime" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="BidPriceState" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="ActivieAddress" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="TheFloor" Nullable="true" />
+          <Property Type="Int32" Name="BondState" Nullable="false" />
+          <Property Type="Int32" Name="BidCount" Nullable="true" />
+          <Property Type="Int32" Name="UserCount" Nullable="true" />
+          <Property Type="String" Name="ActivitieName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="CityId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetMyNewHouseYaohao_Result">
+          <Property Type="Int32" Name="ActivitiesId" Nullable="false" />
+          <Property Type="String" Name="ActivitieLocation" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="NotarialOffice" Nullable="false" MaxLength="200" />
+          <Property Type="DateTime" Name="ChooseHouseTime" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="SignupBeginTime" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="SignupEndTime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="UserCount" Nullable="true" />
+          <Property Type="DateTime" Name="BeginTime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ActivieStatus" Nullable="true" />
+          <Property Type="Decimal" Name="Bond" Nullable="true" Precision="19" />
+        </ComplexType>
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DeveloperId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="Int32" Name="UserCount" Nullable="false" />
+          <Property Type="Int32" Name="HouseCount" Nullable="false" />
+          <Property Type="Decimal" Name="BidPrice" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="AddPrice" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="MaxPrice" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="DateTime" Name="SignupBeginTime" />
+          <Property Type="DateTime" Name="SignupEndTime" />
+          <Property Type="DateTime" Name="BeginTime" Nullable="false" />
+          <Property Type="DateTime" Name="EndTime" Nullable="false" />
+          <Property Type="Decimal" Name="Bond" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="ActivitieState" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActivitiesHouse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ActivitiesId" Nullable="false" />
+          <Property Type="Int32" Name="CityId" Nullable="false" />
+          <Property Type="Int32" Name="DeveloperId" Nullable="false" />
+          <Property Type="Int32" Name="PremisesId" Nullable="false" />
+          <Property Type="Int32" Name="BuildingId" Nullable="false" />
+          <Property Type="Int32" Name="UnitId" Nullable="false" />
+          <Property Type="Int32" Name="HouseId" Nullable="false" />
+          <Property Type="Int32" Name="Discount" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActivitiesTiming">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ActivityID" Nullable="false" />
+          <Property Type="Int32" Name="HouseId" Nullable="false" />
+          <Property Type="String" Name="OperId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="EndTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActivitiesYaoHaoApply">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ActivitiesId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="DeveloperId" Nullable="false" />
+          <Property Type="Int32" Name="PremisesId" Nullable="false" />
+          <Property Type="Boolean" Name="IsAllPremises" Nullable="false" />
+          <Property Type="String" Name="BuildingIds" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="State" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActivitiesYaoHaoInfo">
+          <Key>
+            <PropertyRef Name="ActivitiesId" />
+          </Key>
+          <Property Type="Int32" Name="ActivitiesId" Nullable="false" />
+          <Property Type="Int32" Name="Periods" Nullable="false" />
+          <Property Type="String" Name="BuildingIds" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ActivitieLocation" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NotarialOffice" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ChooseHouseTime" Nullable="false" />
+          <Property Type="String" Name="Introduction" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Notice" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Process" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Advertise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CityId" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Position" Nullable="false" />
+          <Property Type="Int32" Name="PremisesId" Nullable="false" />
+          <Property Type="String" Name="PremisesName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="SequenceNum" Nullable="false" />
+          <Property Type="DateTime" Name="BeginTime" Nullable="false" />
+          <Property Type="DateTime" Name="EndTime" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+          <Property Type="Int32" Name="AdminID" Nullable="false" />
+          <Property Type="String" Name="AdminName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AdvertiseAll">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TypeId" Nullable="false" />
+          <Property Type="Int32" Name="CityId" Nullable="false" />
+          <Property Type="Int32" Name="PremisesId" Nullable="false" />
+          <Property Type="String" Name="PremisesName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="InnerCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Telephone" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="PropertyPrice" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="Ring" Nullable="false" />
+          <Property Type="String" Name="PremisesAddress" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Characteristic" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PropertyRight" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="RSort" Nullable="false" />
+          <Property Type="DateTime" Name="Creatime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AmountTiming">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ActivityID" Nullable="false" />
+          <Property Type="String" Name="OperId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="String" Name="AmountRecord" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="OperPrice" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="DateTime" Name="EndTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BidPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ActivitiesId" Nullable="false" />
+          <Property Type="Int32" Name="HouseId" Nullable="false" />
+          <Property Type="Int32" Name="BidUserId" Nullable="false" />
+          <Property Type="String" Name="BidUserName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BidRealName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IDCard" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BidUserMobile" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BidUserQQ" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BidUserMail" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="InnerCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="BidUserPrice" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="BidUserNumber" Nullable="false" />
+          <Property Type="Int32" Name="BidCount" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DeveloperId" Nullable="false" />
+          <Property Type="Int32" Name="PremisesId" Nullable="false" />
+          <Property Type="Int32" Name="Periods" Nullable="false" />
+          <Property Type="String" Name="PropertyType" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="String" Name="PictureData" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NameType" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="FamilyNum" Nullable="false" />
+          <Property Type="Int32" Name="TheFloor" Nullable="false" />
+          <Property Type="Int32" Name="Underloor" Nullable="false" />
+          <Property Type="Int32" Name="Ladder" Nullable="false" />
+          <Property Type="Int32" Name="Renovation" Nullable="false" />
+          <Property Type="Int32" Name="BuildingPosition" Nullable="false" />
+          <Property Type="DateTime" Name="OpeningTime" Nullable="false" />
+          <Property Type="DateTime" Name="OthersTime" Nullable="false" />
+          <Property Type="Int32" Name="State" Nullable="false" />
+          <Property Type="Int32" Name="PresaleId" Nullable="false" />
+          <Property Type="String" Name="PermitPresale" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PNum" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Developer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ProvinceId" Nullable="false" />
+          <Property Type="String" Name="ProvinceName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CityId" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Telephone" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SpareTelephone" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LoginName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Pwd" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RealName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="State" Nullable="false" />
+          <Property Type="Int32" Name="LockState" Nullable="false" />
+          <Property Type="String" Name="InnerCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LoginTime" Nullable="false" />
+          <Property Type="DateTime" Name="OldLoginTime" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsRecommend" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Developer_Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DeveloperId" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="Int32" Name="IsDel" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Developer_AccountLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DeveloperId" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="PayType" Nullable="false" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="String" Name="RechargeNo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Boolean" Name="IsSuc" Nullable="false" />
+          <Property Type="String" Name="Desc" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="Int32" Name="IsDel" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Developer_Identity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DeveloperId" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UserMobile" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UserEmail" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="Int32" Name="ProvinceId" Nullable="false" />
+          <Property Type="String" Name="ProvinceName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CityId" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="DId" Nullable="false" />
+          <Property Type="String" Name="DName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CompanyAddress" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Refuse" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Developer_WithdrawCash">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DeveloperId" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="Int32" Name="AdminId" Nullable="false" />
+          <Property Type="String" Name="AdminName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="ReceiveType" Nullable="false" />
+          <Property Type="String" Name="RealName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ALiPayAccount" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CityId" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ProvinceId" Nullable="false" />
+          <Property Type="String" Name="ProvinceName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BankName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PubBankName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BankAccount" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DeveloperMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SendUserId" Nullable="false" />
+          <Property Type="Int32" Name="ReceiveUserId" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Content" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsRead" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+        </EntityType>
+        <EntityType Name="House">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="InnerCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="DeveloperId" Nullable="false" />
+          <Property Type="Int32" Name="PremisesId" Nullable="false" />
+          <Property Type="Int32" Name="BuildingId" Nullable="false" />
+          <Property Type="Int32" Name="UnitId" Nullable="false" />
+          <Property Type="Int32" Name="Floor" Nullable="false" />
+          <Property Type="Int32" Name="RId" Nullable="false" />
+          <Property Type="String" Name="PictureData" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="BuildingType" Nullable="false" />
+          <Property Type="Int32" Name="Orientation" Nullable="false" />
+          <Property Type="Int32" Name="PriceType" Nullable="false" />
+          <Property Type="Decimal" Name="TotalPrice" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="SinglePrice" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="DownPayment" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="SalesStatus" Nullable="false" />
+          <Property Type="Double" Name="BuildingArea" Nullable="false" />
+          <Property Type="Double" Name="Area" Nullable="false" />
+          <Property Type="Int32" Name="Room" Nullable="false" />
+          <Property Type="Int32" Name="Hall" Nullable="false" />
+          <Property Type="Int32" Name="Toilet" Nullable="false" />
+          <Property Type="Int32" Name="Kitchen" Nullable="false" />
+          <Property Type="Double" Name="CoordX" Nullable="false" />
+          <Property Type="Double" Name="CoordY" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+          <Property Type="Boolean" Name="IsRelease" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HouseTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DeveloperId" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Remark" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Content" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JHS_ActivePremise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Period" Nullable="false" />
+          <Property Type="Int32" Name="ActiveType" Nullable="false" />
+          <Property Type="DateTime" Name="BeginTime" Nullable="false" />
+          <Property Type="DateTime" Name="EndTime" Nullable="false" />
+          <Property Type="String" Name="PremiseName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="InnerCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SignUpCount" Nullable="false" />
+          <Property Type="Int32" Name="ViewCount" Nullable="false" />
+          <Property Type="Decimal" Name="PropertyPrice" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="String" Name="FavourableFeature" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FavourableInformation" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+          <Property Type="Int32" Name="AdminId" Nullable="false" />
+          <Property Type="String" Name="AdminName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Creatime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JHS_ActiveUserReport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="JHS_Period" Nullable="false" />
+          <Property Type="Int32" Name="JHS_PremiseId" Nullable="false" />
+          <Property Type="String" Name="RealName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Mobile" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Remark1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+          <Property Type="DateTime" Name="Creatime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ActivitiesId" Nullable="false" />
+          <Property Type="Int32" Name="HouseId" Nullable="false" />
+          <Property Type="Int32" Name="BidUserId" Nullable="false" />
+          <Property Type="String" Name="BidUserName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BidRealName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IDCard" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BidUserMobile" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BidUserQQ" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BidUserMail" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="InnerCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="BidUserPrice" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="BidUserNumber" Nullable="false" />
+          <Property Type="Int32" Name="BidCount" Nullable="false" />
+          <Property Type="String" Name="OrderNo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Desc" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="BondStatus" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PermitPresale">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PremisesId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PremisesId" Nullable="false" />
+          <Property Type="Int32" Name="BuildingId" Nullable="false" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PremiseImgMap">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CityID" Nullable="false" />
+          <Property Type="Int32" Name="PermitID" Nullable="false" />
+          <Property Type="String" Name="PremiseName" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="InnerCode" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ImgID" Nullable="false" />
+          <Property Type="String" Name="ImgTitle" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ImgDes" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ImgPath" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PictureType" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PictureTypeName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="ImgIsDel" />
+          <Property Type="Int32" Name="adminid" />
+          <Property Type="String" Name="adminName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="EditDate" />
+          <Property Type="DateTime" Name="CreateDate" />
+        </EntityType>
+        <EntityType Name="Premis">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DeveloperId" Nullable="false" />
+          <Property Type="String" Name="InnerCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ProvinceId" Nullable="false" />
+          <Property Type="String" Name="ProvinceName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CityId" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="DId" Nullable="false" />
+          <Property Type="String" Name="DName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="BId" Nullable="false" />
+          <Property Type="String" Name="BName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="ReferencePrice" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="String" Name="TelePhone" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="SalesStatus" Nullable="false" />
+          <Property Type="Int32" Name="Ring" Nullable="false" />
+          <Property Type="String" Name="PremisesAddress" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="salesAddress" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Developer" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Agent" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SalePermit" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PropertyRight" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="BuildingArea" Nullable="false" />
+          <Property Type="Double" Name="Area" Nullable="false" />
+          <Property Type="Int32" Name="UserCount" Nullable="false" />
+          <Property Type="String" Name="Characteristic" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="BuildingType" Nullable="false" />
+          <Property Type="String" Name="PropertyType" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="AreaRatio" Nullable="false" />
+          <Property Type="Double" Name="RoomRate" Nullable="false" />
+          <Property Type="Decimal" Name="PropertyPrice" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="String" Name="ParkingLot" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Renovation" Nullable="false" />
+          <Property Type="String" Name="PropertyCompany" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="GreeningRate" Nullable="false" />
+          <Property Type="String" Name="TrafficIntroduction" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SupportingIntroduction" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PremisesIntroduction" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Lng" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Lat" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone400" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsShow400" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+          <Property Type="String" Name="pageUrl" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PremisesClickStatistic">
+          <Key>
+            <PropertyRef Name="PremisesId" />
+          </Key>
+          <Property Type="Int32" Name="PremisesId" Nullable="false" />
+          <Property Type="Int32" Name="Count" Nullable="false" />
+          <Property Type="Int32" Name="CityId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PremisesFavorite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PremisesId" Nullable="false" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PremisesFeature">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PremisesOther">
+          <Key>
+            <PropertyRef Name="PremisesId" />
+            <PropertyRef Name="School" />
+            <PropertyRef Name="Shopping" />
+            <PropertyRef Name="Hospital" />
+            <PropertyRef Name="Life" />
+            <PropertyRef Name="Entertainment" />
+            <PropertyRef Name="Catering" />
+            <PropertyRef Name="Bus" />
+            <PropertyRef Name="Subway" />
+          </Key>
+          <Property Type="Int32" Name="PremisesId" Nullable="false" />
+          <Property Type="String" Name="School" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Shopping" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Hospital" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Life" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Entertainment" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Catering" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Bus" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Subway" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PremisesRanking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PremisesId" Nullable="false" />
+          <Property Type="Int32" Name="CityId" Nullable="false" />
+          <Property Type="Int32" Name="TypeId" Nullable="false" />
+          <Property Type="Int32" Name="RSort" Nullable="false" />
+          <Property Type="DateTime" Name="Creatime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PremisesSubway">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PId" Nullable="false" />
+          <Property Type="Int32" Name="Tid" Nullable="false" />
+          <Property Type="String" Name="TName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="VId" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PremisesViewCount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PremisesId" Nullable="false" />
+          <Property Type="Int32" Name="CityId" Nullable="false" />
+          <Property Type="Int32" Name="ViewCount" Nullable="false" />
+          <Property Type="Int32" Name="RankNum" Nullable="false" />
+          <Property Type="DateTime" Name="RankTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PremisStatisticsInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PremisId" Nullable="false" />
+          <Property Type="DateTime" Name="InputTime" Nullable="false" />
+          <Property Type="Int32" Name="SubscribedCount" Nullable="false" />
+          <Property Type="Int32" Name="BargainCount" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoomCount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PremisesId" Nullable="false" />
+          <Property Type="Int32" Name="Room" Nullable="false" />
+          <Property Type="Int32" Name="Count" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SandTableLabel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DeveloperId" Nullable="false" />
+          <Property Type="Int32" Name="PremisesId" Nullable="false" />
+          <Property Type="String" Name="SandBox" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Number" Nullable="false" />
+          <Property Type="Double" Name="CoordX" Nullable="false" />
+          <Property Type="Double" Name="CoordY" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Social">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ActivitiesId" Nullable="false" />
+          <Property Type="Int32" Name="UserCount" Nullable="false" />
+          <Property Type="Int32" Name="Discount" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TimingRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DealStatus" Nullable="false" />
+          <Property Type="String" Name="Desc" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DealTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UniqueActivitiesHouse">
+          <Key>
+            <PropertyRef Name="HouseId" />
+          </Key>
+          <Property Type="Int32" Name="HouseId" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DeveloperId" Nullable="false" />
+          <Property Type="Int32" Name="PremisesId" Nullable="false" />
+          <Property Type="Int32" Name="BuildingId" Nullable="false" />
+          <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="kyj_NewHouseDBModelStoreContainer" CdmEntityContainer="kyj_NewHouseDBEntities">
+          <EntitySetMapping Name="Activities">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.Activity">
+              <MappingFragment StoreEntitySet="Activities">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="ActivitieState" ColumnName="ActivitieState" />
+                <ScalarProperty Name="Bond" ColumnName="Bond" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+                <ScalarProperty Name="SignupEndTime" ColumnName="SignupEndTime" />
+                <ScalarProperty Name="SignupBeginTime" ColumnName="SignupBeginTime" />
+                <ScalarProperty Name="MaxPrice" ColumnName="MaxPrice" />
+                <ScalarProperty Name="AddPrice" ColumnName="AddPrice" />
+                <ScalarProperty Name="BidPrice" ColumnName="BidPrice" />
+                <ScalarProperty Name="HouseCount" ColumnName="HouseCount" />
+                <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DeveloperId" ColumnName="DeveloperId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivitiesHouses">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.ActivitiesHouse">
+              <MappingFragment StoreEntitySet="ActivitiesHouse">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+                <ScalarProperty Name="PremisesId" ColumnName="PremisesId" />
+                <ScalarProperty Name="DeveloperId" ColumnName="DeveloperId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="ActivitiesId" ColumnName="ActivitiesId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivitiesTimings">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.ActivitiesTiming">
+              <MappingFragment StoreEntitySet="ActivitiesTiming">
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="OperId" ColumnName="OperId" />
+                <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivitiesYaoHaoApplies">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.ActivitiesYaoHaoApply">
+              <MappingFragment StoreEntitySet="ActivitiesYaoHaoApply">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="BuildingIds" ColumnName="BuildingIds" />
+                <ScalarProperty Name="IsAllPremises" ColumnName="IsAllPremises" />
+                <ScalarProperty Name="PremisesId" ColumnName="PremisesId" />
+                <ScalarProperty Name="DeveloperId" ColumnName="DeveloperId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ActivitiesId" ColumnName="ActivitiesId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivitiesYaoHaoInfos">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.ActivitiesYaoHaoInfo">
+              <MappingFragment StoreEntitySet="ActivitiesYaoHaoInfos">
+                <ScalarProperty Name="Process" ColumnName="Process" />
+                <ScalarProperty Name="Notice" ColumnName="Notice" />
+                <ScalarProperty Name="Introduction" ColumnName="Introduction" />
+                <ScalarProperty Name="ChooseHouseTime" ColumnName="ChooseHouseTime" />
+                <ScalarProperty Name="NotarialOffice" ColumnName="NotarialOffice" />
+                <ScalarProperty Name="ActivitieLocation" ColumnName="ActivitieLocation" />
+                <ScalarProperty Name="BuildingIds" ColumnName="BuildingIds" />
+                <ScalarProperty Name="Periods" ColumnName="Periods" />
+                <ScalarProperty Name="ActivitiesId" ColumnName="ActivitiesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Advertises">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.Advertise">
+              <MappingFragment StoreEntitySet="Advertise">
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+                <ScalarProperty Name="SequenceNum" ColumnName="SequenceNum" />
+                <ScalarProperty Name="PremisesName" ColumnName="PremisesName" />
+                <ScalarProperty Name="PremisesId" ColumnName="PremisesId" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdvertiseAlls">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.AdvertiseAll">
+              <MappingFragment StoreEntitySet="AdvertiseAll">
+                <ScalarProperty Name="Creatime" ColumnName="Creatime" />
+                <ScalarProperty Name="RSort" ColumnName="RSort" />
+                <ScalarProperty Name="PropertyRight" ColumnName="PropertyRight" />
+                <ScalarProperty Name="Characteristic" ColumnName="Characteristic" />
+                <ScalarProperty Name="PremisesAddress" ColumnName="PremisesAddress" />
+                <ScalarProperty Name="Ring" ColumnName="Ring" />
+                <ScalarProperty Name="PropertyPrice" ColumnName="PropertyPrice" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+                <ScalarProperty Name="PremisesName" ColumnName="PremisesName" />
+                <ScalarProperty Name="PremisesId" ColumnName="PremisesId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AmountTimings">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.AmountTiming">
+              <MappingFragment StoreEntitySet="AmountTiming">
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="OperPrice" ColumnName="OperPrice" />
+                <ScalarProperty Name="AmountRecord" ColumnName="AmountRecord" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OperId" ColumnName="OperId" />
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BidPrices">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.BidPrice">
+              <MappingFragment StoreEntitySet="BidPrice">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="BidCount" ColumnName="BidCount" />
+                <ScalarProperty Name="BidUserNumber" ColumnName="BidUserNumber" />
+                <ScalarProperty Name="BidUserPrice" ColumnName="BidUserPrice" />
+                <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+                <ScalarProperty Name="BidUserMail" ColumnName="BidUserMail" />
+                <ScalarProperty Name="BidUserQQ" ColumnName="BidUserQQ" />
+                <ScalarProperty Name="BidUserMobile" ColumnName="BidUserMobile" />
+                <ScalarProperty Name="IDCard" ColumnName="IDCard" />
+                <ScalarProperty Name="BidRealName" ColumnName="BidRealName" />
+                <ScalarProperty Name="BidUserName" ColumnName="BidUserName" />
+                <ScalarProperty Name="BidUserId" ColumnName="BidUserId" />
+                <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+                <ScalarProperty Name="ActivitiesId" ColumnName="ActivitiesId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buildings">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.Building">
+              <MappingFragment StoreEntitySet="Building">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="PNum" ColumnName="PNum" />
+                <ScalarProperty Name="PermitPresale" ColumnName="PermitPresale" />
+                <ScalarProperty Name="PresaleId" ColumnName="PresaleId" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="OthersTime" ColumnName="OthersTime" />
+                <ScalarProperty Name="OpeningTime" ColumnName="OpeningTime" />
+                <ScalarProperty Name="BuildingPosition" ColumnName="BuildingPosition" />
+                <ScalarProperty Name="Renovation" ColumnName="Renovation" />
+                <ScalarProperty Name="Ladder" ColumnName="Ladder" />
+                <ScalarProperty Name="Underloor" ColumnName="Underloor" />
+                <ScalarProperty Name="TheFloor" ColumnName="TheFloor" />
+                <ScalarProperty Name="FamilyNum" ColumnName="FamilyNum" />
+                <ScalarProperty Name="NameType" ColumnName="NameType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PictureData" ColumnName="PictureData" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
+                <ScalarProperty Name="Periods" ColumnName="Periods" />
+                <ScalarProperty Name="PremisesId" ColumnName="PremisesId" />
+                <ScalarProperty Name="DeveloperId" ColumnName="DeveloperId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Developers">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.Developer">
+              <MappingFragment StoreEntitySet="Developer">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="IsRecommend" ColumnName="IsRecommend" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="OldLoginTime" ColumnName="OldLoginTime" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+                <ScalarProperty Name="LockState" ColumnName="LockState" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="SpareTelephone" ColumnName="SpareTelephone" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Developer_Account">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.Developer_Account">
+              <MappingFragment StoreEntitySet="Developer_Account">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DeveloperId" ColumnName="DeveloperId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Developer_AccountLog">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.Developer_AccountLog">
+              <MappingFragment StoreEntitySet="Developer_AccountLog">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="IsSuc" ColumnName="IsSuc" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RechargeNo" ColumnName="RechargeNo" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="PayType" ColumnName="PayType" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DeveloperId" ColumnName="DeveloperId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Developer_Identity">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.Developer_Identity">
+              <MappingFragment StoreEntitySet="Developer_Identity">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Refuse" ColumnName="Refuse" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="DName" ColumnName="DName" />
+                <ScalarProperty Name="DId" ColumnName="DId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserMobile" ColumnName="UserMobile" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="DeveloperId" ColumnName="DeveloperId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Developer_WithdrawCash">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.Developer_WithdrawCash">
+              <MappingFragment StoreEntitySet="Developer_WithdrawCash">
+                <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
+                <ScalarProperty Name="PubBankName" ColumnName="PubBankName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="ALiPayAccount" ColumnName="ALiPayAccount" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="ReceiveType" ColumnName="ReceiveType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DeveloperId" ColumnName="DeveloperId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeveloperMessages">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.DeveloperMessage">
+              <MappingFragment StoreEntitySet="DeveloperMessage">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ReceiveUserId" ColumnName="ReceiveUserId" />
+                <ScalarProperty Name="SendUserId" ColumnName="SendUserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Houses">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.House">
+              <MappingFragment StoreEntitySet="House">
+                <ScalarProperty Name="IsRelease" ColumnName="IsRelease" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CoordY" ColumnName="CoordY" />
+                <ScalarProperty Name="CoordX" ColumnName="CoordX" />
+                <ScalarProperty Name="Kitchen" ColumnName="Kitchen" />
+                <ScalarProperty Name="Toilet" ColumnName="Toilet" />
+                <ScalarProperty Name="Hall" ColumnName="Hall" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="BuildingArea" ColumnName="BuildingArea" />
+                <ScalarProperty Name="SalesStatus" ColumnName="SalesStatus" />
+                <ScalarProperty Name="DownPayment" ColumnName="DownPayment" />
+                <ScalarProperty Name="SinglePrice" ColumnName="SinglePrice" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="PriceType" ColumnName="PriceType" />
+                <ScalarProperty Name="Orientation" ColumnName="Orientation" />
+                <ScalarProperty Name="BuildingType" ColumnName="BuildingType" />
+                <ScalarProperty Name="PictureData" ColumnName="PictureData" />
+                <ScalarProperty Name="RId" ColumnName="RId" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+                <ScalarProperty Name="PremisesId" ColumnName="PremisesId" />
+                <ScalarProperty Name="DeveloperId" ColumnName="DeveloperId" />
+                <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HouseTemplates">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.HouseTemplate">
+              <MappingFragment StoreEntitySet="HouseTemplate">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DeveloperId" ColumnName="DeveloperId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JHS_ActivePremise">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.JHS_ActivePremise">
+              <MappingFragment StoreEntitySet="JHS_ActivePremise">
+                <ScalarProperty Name="Creatime" ColumnName="Creatime" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="FavourableInformation" ColumnName="FavourableInformation" />
+                <ScalarProperty Name="FavourableFeature" ColumnName="FavourableFeature" />
+                <ScalarProperty Name="PropertyPrice" ColumnName="PropertyPrice" />
+                <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+                <ScalarProperty Name="SignUpCount" ColumnName="SignUpCount" />
+                <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+                <ScalarProperty Name="PremiseName" ColumnName="PremiseName" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+                <ScalarProperty Name="ActiveType" ColumnName="ActiveType" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JHS_ActiveUserReport">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.JHS_ActiveUserReport">
+              <MappingFragment StoreEntitySet="JHS_ActiveUserReport">
+                <ScalarProperty Name="Creatime" ColumnName="Creatime" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="Remark1" ColumnName="Remark1" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="JHS_PremiseId" ColumnName="JHS_PremiseId" />
+                <ScalarProperty Name="JHS_Period" ColumnName="JHS_Period" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="BondStatus" ColumnName="BondStatus" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="BidCount" ColumnName="BidCount" />
+                <ScalarProperty Name="BidUserNumber" ColumnName="BidUserNumber" />
+                <ScalarProperty Name="BidUserPrice" ColumnName="BidUserPrice" />
+                <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+                <ScalarProperty Name="BidUserMail" ColumnName="BidUserMail" />
+                <ScalarProperty Name="BidUserQQ" ColumnName="BidUserQQ" />
+                <ScalarProperty Name="BidUserMobile" ColumnName="BidUserMobile" />
+                <ScalarProperty Name="IDCard" ColumnName="IDCard" />
+                <ScalarProperty Name="BidRealName" ColumnName="BidRealName" />
+                <ScalarProperty Name="BidUserName" ColumnName="BidUserName" />
+                <ScalarProperty Name="BidUserId" ColumnName="BidUserId" />
+                <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+                <ScalarProperty Name="ActivitiesId" ColumnName="ActivitiesId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PermitPresales">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.PermitPresale">
+              <MappingFragment StoreEntitySet="PermitPresale">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PremisesId" ColumnName="PremisesId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pictures">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.Picture">
+              <MappingFragment StoreEntitySet="Picture">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+                <ScalarProperty Name="PremisesId" ColumnName="PremisesId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PremiseImgMaps">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.PremiseImgMap">
+              <MappingFragment StoreEntitySet="PremiseImgMap">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="adminName" ColumnName="adminName" />
+                <ScalarProperty Name="adminid" ColumnName="adminid" />
+                <ScalarProperty Name="ImgIsDel" ColumnName="ImgIsDel" />
+                <ScalarProperty Name="PictureTypeName" ColumnName="PictureTypeName" />
+                <ScalarProperty Name="PictureType" ColumnName="PictureType" />
+                <ScalarProperty Name="ImgPath" ColumnName="ImgPath" />
+                <ScalarProperty Name="ImgDes" ColumnName="ImgDes" />
+                <ScalarProperty Name="ImgTitle" ColumnName="ImgTitle" />
+                <ScalarProperty Name="ImgID" ColumnName="ImgID" />
+                <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+                <ScalarProperty Name="PremiseName" ColumnName="PremiseName" />
+                <ScalarProperty Name="PermitID" ColumnName="PermitID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Premises">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.Premis">
+              <MappingFragment StoreEntitySet="Premises">
+                <ScalarProperty Name="pageUrl" ColumnName="pageUrl" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsShow400" ColumnName="IsShow400" />
+                <ScalarProperty Name="Phone400" ColumnName="Phone400" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="PremisesIntroduction" ColumnName="PremisesIntroduction" />
+                <ScalarProperty Name="SupportingIntroduction" ColumnName="SupportingIntroduction" />
+                <ScalarProperty Name="TrafficIntroduction" ColumnName="TrafficIntroduction" />
+                <ScalarProperty Name="GreeningRate" ColumnName="GreeningRate" />
+                <ScalarProperty Name="PropertyCompany" ColumnName="PropertyCompany" />
+                <ScalarProperty Name="Renovation" ColumnName="Renovation" />
+                <ScalarProperty Name="ParkingLot" ColumnName="ParkingLot" />
+                <ScalarProperty Name="PropertyPrice" ColumnName="PropertyPrice" />
+                <ScalarProperty Name="RoomRate" ColumnName="RoomRate" />
+                <ScalarProperty Name="AreaRatio" ColumnName="AreaRatio" />
+                <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
+                <ScalarProperty Name="BuildingType" ColumnName="BuildingType" />
+                <ScalarProperty Name="Characteristic" ColumnName="Characteristic" />
+                <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="BuildingArea" ColumnName="BuildingArea" />
+                <ScalarProperty Name="PropertyRight" ColumnName="PropertyRight" />
+                <ScalarProperty Name="SalePermit" ColumnName="SalePermit" />
+                <ScalarProperty Name="Agent" ColumnName="Agent" />
+                <ScalarProperty Name="Developer" ColumnName="Developer" />
+                <ScalarProperty Name="salesAddress" ColumnName="salesAddress" />
+                <ScalarProperty Name="PremisesAddress" ColumnName="PremisesAddress" />
+                <ScalarProperty Name="Ring" ColumnName="Ring" />
+                <ScalarProperty Name="SalesStatus" ColumnName="SalesStatus" />
+                <ScalarProperty Name="TelePhone" ColumnName="TelePhone" />
+                <ScalarProperty Name="ReferencePrice" ColumnName="ReferencePrice" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TId" ColumnName="TId" />
+                <ScalarProperty Name="BName" ColumnName="BName" />
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="DName" ColumnName="DName" />
+                <ScalarProperty Name="DId" ColumnName="DId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+                <ScalarProperty Name="DeveloperId" ColumnName="DeveloperId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PremisesClickStatistics">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.PremisesClickStatistic">
+              <MappingFragment StoreEntitySet="PremisesClickStatistics">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="PremisesId" ColumnName="PremisesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PremisesFavorites">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.PremisesFavorite">
+              <MappingFragment StoreEntitySet="PremisesFavorite">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PremisesId" ColumnName="PremisesId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PremisesFeatures">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.PremisesFeature">
+              <MappingFragment StoreEntitySet="PremisesFeature">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PremisesOthers">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.PremisesOther">
+              <MappingFragment StoreEntitySet="PremisesOther">
+                <ScalarProperty Name="Subway" ColumnName="Subway" />
+                <ScalarProperty Name="Bus" ColumnName="Bus" />
+                <ScalarProperty Name="Catering" ColumnName="Catering" />
+                <ScalarProperty Name="Entertainment" ColumnName="Entertainment" />
+                <ScalarProperty Name="Life" ColumnName="Life" />
+                <ScalarProperty Name="Hospital" ColumnName="Hospital" />
+                <ScalarProperty Name="Shopping" ColumnName="Shopping" />
+                <ScalarProperty Name="School" ColumnName="School" />
+                <ScalarProperty Name="PremisesId" ColumnName="PremisesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PremisesRankings">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.PremisesRanking">
+              <MappingFragment StoreEntitySet="PremisesRanking">
+                <ScalarProperty Name="Creatime" ColumnName="Creatime" />
+                <ScalarProperty Name="RSort" ColumnName="RSort" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="PremisesId" ColumnName="PremisesId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PremisesSubways">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.PremisesSubway">
+              <MappingFragment StoreEntitySet="PremisesSubway">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="VId" ColumnName="VId" />
+                <ScalarProperty Name="TName" ColumnName="TName" />
+                <ScalarProperty Name="Tid" ColumnName="Tid" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PremisesViewCounts">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.PremisesViewCount">
+              <MappingFragment StoreEntitySet="PremisesViewCount">
+                <ScalarProperty Name="RankTime" ColumnName="RankTime" />
+                <ScalarProperty Name="RankNum" ColumnName="RankNum" />
+                <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="PremisesId" ColumnName="PremisesId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PremisStatisticsInfoes">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.PremisStatisticsInfo">
+              <MappingFragment StoreEntitySet="PremisStatisticsInfo">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="BargainCount" ColumnName="BargainCount" />
+                <ScalarProperty Name="SubscribedCount" ColumnName="SubscribedCount" />
+                <ScalarProperty Name="InputTime" ColumnName="InputTime" />
+                <ScalarProperty Name="PremisId" ColumnName="PremisId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomCounts">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.RoomCount">
+              <MappingFragment StoreEntitySet="RoomCount">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="PremisesId" ColumnName="PremisesId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SandTableLabels">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.SandTableLabel">
+              <MappingFragment StoreEntitySet="SandTableLabel">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CoordY" ColumnName="CoordY" />
+                <ScalarProperty Name="CoordX" ColumnName="CoordX" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="SandBox" ColumnName="SandBox" />
+                <ScalarProperty Name="PremisesId" ColumnName="PremisesId" />
+                <ScalarProperty Name="DeveloperId" ColumnName="DeveloperId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Socials">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.Social">
+              <MappingFragment StoreEntitySet="Social">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+                <ScalarProperty Name="ActivitiesId" ColumnName="ActivitiesId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimingRecords">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.TimingRecord">
+              <MappingFragment StoreEntitySet="TimingRecord">
+                <ScalarProperty Name="DealTime" ColumnName="DealTime" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="DealStatus" ColumnName="DealStatus" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UniqueActivitiesHouses">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.UniqueActivitiesHouse">
+              <MappingFragment StoreEntitySet="UniqueActivitiesHouse">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Units">
+            <EntityTypeMapping TypeName="kyj_NewHouseDBModel.Unit">
+              <MappingFragment StoreEntitySet="Unit">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+                <ScalarProperty Name="PremisesId" ColumnName="PremisesId" />
+                <ScalarProperty Name="DeveloperId" ColumnName="DeveloperId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="kyj_NewHouseDB" ZoomLevel="76">
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.Activity" Width="1.5" PointX="0.75" PointY="0.75" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.ActivitiesHouse" Width="1.5" PointX="2.75" PointY="0.75" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.ActivitiesTiming" Width="1.5" PointX="0.75" PointY="2.75" Height="0.40000000000000036" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.ActivitiesYaoHaoApply" Width="1.5" PointX="2.75" PointY="2.75" Height="0.40000000000000036" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.ActivitiesYaoHaoInfo" Width="1.5" PointX="4.75" PointY="0.75" Height="0.40000000000000036" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.Advertise" Width="1.5" PointX="0.75" PointY="4.75" Height="0.40000000000000036" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.AdvertiseAll" Width="1.5" PointX="4.75" PointY="2.75" Height="0.40000000000000036" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.AmountTiming" Width="1.5" PointX="2.75" PointY="4.75" Height="0.40000000000000036" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.BidPrice" Width="1.5" PointX="4.75" PointY="4.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.Building" Width="1.5" PointX="6.75" PointY="0.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.Developer" Width="1.5" PointX="0.75" PointY="6.75" Height="0.40000000000000036" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.Developer_Account" Width="1.5" PointX="6.75" PointY="2.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.Developer_AccountLog" Width="1.5" PointX="2.75" PointY="6.75" Height="0.40000000000000036" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.Developer_Identity" Width="1.5" PointX="6.75" PointY="4.75" Height="0.40000000000000036" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.Developer_WithdrawCash" Width="1.5" PointX="4.75" PointY="6.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.DeveloperMessage" Width="1.5" PointX="6.75" PointY="6.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.House" Width="1.5" PointX="8.75" PointY="0.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.HouseTemplate" Width="1.5" PointX="0.75" PointY="8.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.JHS_ActivePremise" Width="1.5" PointX="8.75" PointY="2.75" Height="0.40000000000000036" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.JHS_ActiveUserReport" Width="1.5" PointX="2.75" PointY="8.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.Order" Width="1.5" PointX="8.75" PointY="4.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.PermitPresale" Width="1.5" PointX="4.75" PointY="8.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.Picture" Width="1.5" PointX="8.75" PointY="6.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.PremiseImgMap" Width="1.5" PointX="6.75" PointY="8.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.Premis" Width="1.5" PointX="8.75" PointY="8.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.PremisesClickStatistic" Width="1.5" PointX="10.75" PointY="0.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.PremisesFavorite" Width="1.5" PointX="0.75" PointY="10.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.PremisesFeature" Width="1.5" PointX="10.75" PointY="2.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.PremisesOther" Width="1.5" PointX="2.75" PointY="10.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.PremisesRanking" Width="1.5" PointX="10.75" PointY="4.75" Height="0.40000000000000036" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.PremisesSubway" Width="1.5" PointX="4.75" PointY="10.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.PremisesViewCount" Width="1.5" PointX="10.75" PointY="6.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.PremisStatisticsInfo" Width="1.5" PointX="6.75" PointY="10.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.RoomCount" Width="1.5" PointX="10.75" PointY="8.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.SandTableLabel" Width="1.5" PointX="8.75" PointY="10.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.Social" Width="1.5" PointX="10.75" PointY="10.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.TimingRecord" Width="1.5" PointX="12.75" PointY="0.75" Height="0.39999999999999991" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.UniqueActivitiesHouse" Width="1.5" PointX="0.75" PointY="12.75" Height="0.39999999999999858" IsExpanded="false" />
+        <EntityTypeShape EntityType="kyj_NewHouseDBModel.Unit" Width="1.5" PointX="12.75" PointY="2.75" Height="0.39999999999999858" IsExpanded="false" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,554 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{11994923-F9CA-4C71-BD46-B5492ED0AF9F}</ProjectGuid>
+    <ProjectTypeGuids>{F85E285D-A4E0-4152-9332-AB1D724D3325};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TXManagerWeb</RootNamespace>
+    <AssemblyName>TXManagerWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="KYJ.ServiceStack, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TXDevelopersWeb\bin\KYJ.ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="org.in2bits.MyXls">
+      <HintPath>..\dll\org.in2bits.MyXls.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\AdminNavi.cs" />
+    <Compile Include="Common\AdminPageInfoModel.cs" />
+    <Compile Include="Common\AuthenticationService.cs" />
+    <Compile Include="Common\Auxiliary.cs" />
+    <Compile Include="Common\ServiceContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\ActionFilters\AdminPageInfoAttribute.cs" />
+    <Compile Include="Controllers\ActionFilters\ControllerExtensions.cs" />
+    <Compile Include="Controllers\ActionFilters\CurrentAttribute.cs" />
+    <Compile Include="Controllers\ActionFilters\ExcelResultExtensions.cs" />
+    <Compile Include="Controllers\ActionFilters\LoginCheckedAttribute.cs" />
+    <Compile Include="Controllers\ActionFilters\OutputExcel.cs" />
+    <Compile Include="Controllers\APriceController.cs" />
+    <Compile Include="Controllers\BargainActiveController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\DevelopersAccountController.cs" />
+    <Compile Include="Controllers\DevelopersController.cs" />
+    <Compile Include="Controllers\DiscountController.cs" />
+    <Compile Include="Controllers\GeographyController.cs" />
+    <Compile Include="Controllers\ImgManagerController.cs" />
+    <Compile Include="Controllers\LadderGroupController.cs" />
+    <Compile Include="Controllers\NhAdvertiseController.cs" />
+    <Compile Include="Controllers\NhBidingController.cs" />
+    <Compile Include="Controllers\NhBuildingController.cs" />
+    <Compile Include="Controllers\NhGuaranteeController.cs" />
+    <Compile Include="Controllers\NHouseController.cs" />
+    <Compile Include="Controllers\NhWithdrawCashController.cs" />
+    <Compile Include="Controllers\PremisesController.cs" />
+    <Compile Include="Controllers\PurchaseHouseController.cs" />
+    <Compile Include="Controllers\SecKillController.cs" />
+    <Compile Include="Controllers\ToolsController.cs" />
+    <Compile Include="Controllers\YaoHaoController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\SiteUrlHelper.cs" />
+    <Compile Include="Utility\SiteUrlHelper_UrlRoutes.cs" />
+    <Compile Include="Utility\UrlHelperExtension.cs" />
+    <Compile Include="Utility\UtilityExtension.cs" />
+    <Compile Include="Utility\WebViewPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\common.css" />
+    <Content Include="css\global.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\manage.css" />
+    <Content Include="css\manage_c.css" />
+    <Content Include="css\modular.css" />
+    <Content Include="css\public.css" />
+    <Content Include="css\reset.css" />
+    <Content Include="images\icons\icon_delpng.png" />
+    <Content Include="images\yellow_bjtb.png" />
+    <Content Include="js\flash\house.swf" />
+    <Content Include="js\flash\Room.swf" />
+    <Content Include="js\flash\Sandbox.swf" />
+    <Content Include="Global.asax" />
+    <Content Include="images\a_map.gif" />
+    <Content Include="images\bdsc.gif" />
+    <Content Include="images\bg.gif" />
+    <Content Include="images\bg1.gif" />
+    <Content Include="images\BG_accordion_box.gif" />
+    <Content Include="images\BG_accordion_box1-2.gif" />
+    <Content Include="images\BG_accordion_box1.gif" />
+    <Content Include="images\bg_btn04.gif" />
+    <Content Include="images\bg_btnnwe.gif" />
+    <Content Include="images\bg_current.gif" />
+    <Content Include="images\bg_current_root.gif" />
+    <Content Include="images\bg_footerBorder.gif" />
+    <Content Include="images\bg_icon_buttonA.gif" />
+    <Content Include="images\bg_login_footer.gif" />
+    <Content Include="images\bg_navMenuHover.gif" />
+    <Content Include="images\bg_wallpaper.gif" />
+    <Content Include="images\big_icon.png" />
+    <Content Include="images\bjdz_btn.gif" />
+    <Content Include="images\btn.gif" />
+    <Content Include="images\btn.png" />
+    <Content Include="images\btn08.gif" />
+    <Content Include="images\btn1.gif" />
+    <Content Include="images\btn_120.gif" />
+    <Content Include="images\btn_bg.gif" />
+    <Content Include="images\btn_login.gif" />
+    <Content Include="images\btn_long.gif" />
+    <Content Include="images\btn_w123.gif" />
+    <Content Include="images\btn_w80.gif" />
+    <Content Include="images\btn_w80_hover.gif" />
+    <Content Include="images\btn_w97_green.gif" />
+    <Content Include="images\btn_w97_green_hover.gif" />
+    <Content Include="images\btn_w_layer1.gif" />
+    <Content Include="images\btn_w_layer2.gif" />
+    <Content Include="images\card.png" />
+    <Content Include="images\close_pop1.gif" />
+    <Content Include="images\colose.gif" />
+    <Content Include="images\colose_a.gif" />
+    <Content Include="images\delete_imageBox_theImage.gif" />
+    <Content Include="images\demo01.jpg" />
+    <Content Include="images\demo_map.gif" />
+    <Content Include="images\head.gif" />
+    <Content Include="images\icon.gif" />
+    <Content Include="images\icon.png" />
+    <Content Include="images\icons\arrow01.gif" />
+    <Content Include="images\icons\bg_tabCon.png" />
+    <Content Include="images\icons\close01.gif" />
+    <Content Include="images\icons\cross_circle.png" />
+    <Content Include="images\icons\cross_grey_small.png" />
+    <Content Include="images\icons\icon_exclamation1.gif" />
+    <Content Include="images\icons\icon_exclamation2.gif" />
+    <Content Include="images\icons\icon_map_tips1.gif" />
+    <Content Include="images\icons\icon_new.png" />
+    <Content Include="images\icons\icon_right1.gif" />
+    <Content Include="images\icons\icon_wrong1.gif" />
+    <Content Include="images\icons\information.png" />
+    <Content Include="images\icons\magnifier01.gif" />
+    <Content Include="images\icons\sp_accordion.gif" />
+    <Content Include="images\icons\sp_btn.gif" />
+    <Content Include="images\icons\sp_gif.gif" />
+    <Content Include="images\icons\sp_login.gif" />
+    <Content Include="images\icons\sp_png24.png" />
+    <Content Include="images\icons\tel01.gif" />
+    <Content Include="images\icons\tipsX01.gif" />
+    <Content Include="images\icons\tipsX02.gif" />
+    <Content Include="images\icons\windowClose.gif" />
+    <Content Include="images\icons\windowClose.jpg" />
+    <Content Include="images\icon_buttonAall.gif" />
+    <Content Include="images\icon_delete0.gif" />
+    <Content Include="images\icon_delete1.gif" />
+    <Content Include="images\icon_exclamation2.gif" />
+    <Content Include="images\icon_right.gif" />
+    <Content Include="images\icon_wrong.gif" />
+    <Content Include="images\img03.gif" />
+    <Content Include="images\img04.gif" />
+    <Content Include="images\img95x60.jpg" />
+    <Content Include="images\img_2.jpg" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\loginC.jpg" />
+    <Content Include="images\logo.gif" />
+    <Content Include="images\map.gif" />
+    <Content Include="images\map1.gif" />
+    <Content Include="images\nj_img.gif" />
+    <Content Include="images\no.gif" />
+    <Content Include="images\paopao1.png" />
+    <Content Include="images\paopao2.png" />
+    <Content Include="images\sideborbg.gif" />
+    <Content Include="images\sp_accordion.gif" />
+    <Content Include="images\sp_gif.gif" />
+    <Content Include="images\sp_gif1.gif" />
+    <Content Include="images\sp_gif3.gif" />
+    <Content Include="images\tab_head.gif" />
+    <Content Include="images\testimg12.jpg" />
+    <Content Include="images\testimg13.jpg" />
+    <Content Include="images\testimg14.jpg" />
+    <Content Include="images\testimg15.jpg" />
+    <Content Include="images\testimg16.jpg" />
+    <Content Include="images\testimg17.jpg" />
+    <Content Include="images\testimg20.gif" />
+    <Content Include="images\testimg21.jpg" />
+    <Content Include="images\ts1.gif" />
+    <Content Include="images\v_line.gif" />
+    <Content Include="images\welcome.jpg" />
+    <Content Include="js\admincoms.js" />
+    <Content Include="js\dialog\dialog.css" />
+    <Content Include="js\dialog\dialog.js" />
+    <Content Include="js\dialog\images\bg4.gif" />
+    <Content Include="js\dialog\images\bg5.gif" />
+    <Content Include="js\dialog\images\btn_file.jpg" />
+    <Content Include="js\dialog\images\btn_s_c.jpg" />
+    <Content Include="js\dialog\images\but_s.gif" />
+    <Content Include="js\dialog\images\entrust.gif" />
+    <Content Include="js\dialog\images\formbg1.png" />
+    <Content Include="js\dialog\images\icon.gif" />
+    <Content Include="js\dialog\images\jiathis.gif" />
+    <Content Include="js\dialog\images\menban.jpg" />
+    <Content Include="js\dialog\images\pop.gif" />
+    <Content Include="js\dialog\images\pop_bd.jpg" />
+    <Content Include="js\dialog\images\success.gif" />
+    <Content Include="js\dialog\images\warn1.gif" />
+    <Content Include="js\dialog\images\warn2.gif" />
+    <Content Include="js\dialog\images\zm-delet.gif" />
+    <Content Include="js\freeui\example\dialog.htm" />
+    <Content Include="js\freeui\example\windows.htm" />
+    <Content Include="js\freeui\js\core\base.js" />
+    <Content Include="js\freeui\js\plugins\freeDialog.js" />
+    <Content Include="js\freeui\js\plugins\freeDrag.js" />
+    <Content Include="js\freeui\js\plugins\freeResizable.js" />
+    <Content Include="js\freeui\skins\deepblue\css\dialog.css" />
+    <Content Include="js\freeui\skins\deepblue\images\box-icons.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\dialog\dialog-bc.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\dialog\dialog-icons.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\dialog\dialog-tc.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\dialog\dialog-winbtns.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\dialog\dialog.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\dialog\dialogbtn.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\dialog\dialogicon.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\panel\bar-bg.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\panel\header-bg.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\panel\header-bg.jpg" />
+    <Content Include="js\freeui\skins\deepblue\images\panel\header2-bg.jpg" />
+    <Content Include="js\freeui\skins\deepblue\images\panel\panel-btn-l.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\panel\panel-btn-r.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\panel\panel-btn.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\panel\panel-header.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\panel\panel-menu-item-down.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\panel\panel-menu.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\panel\panel-toolbar.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\panel\panel-tools.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\win\box.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\win\dialog-winbtns.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\win\taskbar-task.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\win\taskbar.gif" />
+    <Content Include="js\freeui\skins\deepblue\images\win\taskbar.png" />
+    <Content Include="js\freeui\skins\deepblue\images\win\taskicon.gif" />
+    <Content Include="js\jquery.blockUI.js" />
+    <Content Include="js\jquery.jcrop\Jcrop.gif" />
+    <Content Include="js\jquery.jcrop\jquery.Jcrop.css" />
+    <Content Include="js\jquery.jcrop\jquery.Jcrop.js" />
+    <Content Include="js\jquery.jcrop\jquery.Jcrop.min.css" />
+    <Content Include="js\jquery.jcrop\jquery.Jcrop.min.js" />
+    <Content Include="js\jquery.pagination.js" />
+    <Content Include="js\jqueryui\css\ui-lightness\images\animated-overlay.gif" />
+    <Content Include="js\jqueryui\css\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="js\jqueryui\css\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="js\jqueryui\css\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="js\jqueryui\css\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="js\jqueryui\css\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="js\jqueryui\css\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="js\jqueryui\css\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="js\jqueryui\css\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="js\jqueryui\css\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="js\jqueryui\css\ui-lightness\images\ui-icons_222222_256x240.png" />
+    <Content Include="js\jqueryui\css\ui-lightness\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="js\jqueryui\css\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="js\jqueryui\css\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="js\jqueryui\css\ui-lightness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="js\jqueryui\css\ui-lightness\jquery-ui-1.10.3.custom.min.css" />
+    <Content Include="js\jqueryui\js\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="js\jqueryui\js\jquery.ui.tooltip.js" />
+    <Content Include="js\jquery\jquery-1.9.1.js" />
+    <Content Include="js\jquery\jquery-1.9.1.min.js" />
+    <Content Include="js\my97datepicker\calendar.js" />
+    <Content Include="js\my97datepicker\config.js" />
+    <Content Include="js\my97datepicker\lang\en.js" />
+    <Content Include="js\my97datepicker\lang\zh-cn.js" />
+    <Content Include="js\my97datepicker\lang\zh-tw.js" />
+    <Content Include="js\my97datepicker\My97DatePicker.htm" />
+    <Content Include="js\my97datepicker\skin\datePicker.gif" />
+    <Content Include="js\my97datepicker\skin\default\datepicker.css" />
+    <Content Include="js\my97datepicker\skin\default\img.gif" />
+    <Content Include="js\my97datepicker\skin\WdatePicker.css" />
+    <Content Include="js\my97datepicker\skin\whyGreen\bg.jpg" />
+    <Content Include="js\my97datepicker\skin\whyGreen\datepicker.css" />
+    <Content Include="js\my97datepicker\skin\whyGreen\img.gif" />
+    <Content Include="js\my97datepicker\WdatePicker.js" />
+    <Content Include="js\pageTestDemo.js" />
+    <Content Include="js\uploadify\jquery.uploadify.js" />
+    <Content Include="js\uploadify\jquery.uploadify.min.js" />
+    <Content Include="js\uploadify\uploadify-cancel.png" />
+    <Content Include="js\uploadify\uploadify.css" />
+    <Content Include="js\uploadify\uploadify.swf" />
+    <Content Include="js\z_common.js" />
+    <Content Include="LuceneConfigure.xml" />
+    <Content Include="RedisConfigure.xml" />
+    <Content Include="Scripts\base.js" />
+    <Content Include="Scripts\floating-gallery\floating-gallery.css" />
+    <Content Include="Scripts\floating-gallery\floating-gallery.js" />
+    <Content Include="Scripts\floating-gallery\marker_bottom.gif" />
+    <Content Include="Scripts\floating-gallery\marker_middle.gif" />
+    <Content Include="Scripts\floating-gallery\marker_top.gif" />
+    <Content Include="Scripts\global.css" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="js\jquery.form.js" />
+    <Content Include="Scripts\pub-v13.css" />
+    <Content Include="Scripts\ui-sortable\jquery-ui.custom.js" />
+    <Content Include="Scripts\ui-sortable\jquery.ui.core.js" />
+    <Content Include="Scripts\ui-sortable\jquery.ui.droppable.js" />
+    <Content Include="Scripts\ui-sortable\jquery.ui.mouse.js" />
+    <Content Include="Scripts\ui-sortable\jquery.ui.sortable.js" />
+    <Content Include="Scripts\ui-sortable\jquery.ui.tabs.js" />
+    <Content Include="Scripts\ui-sortable\jquery.ui.widget.js" />
+    <Content Include="Scripts\ui-sortable\minified\jquery-ui.custom.min.js" />
+    <Content Include="Scripts\ui-sortable\minified\jquery.ui.core.min.js" />
+    <Content Include="Scripts\ui-sortable\minified\jquery.ui.mouse.min.js" />
+    <Content Include="Scripts\ui-sortable\minified\jquery.ui.sortable.min.js" />
+    <Content Include="Scripts\ui-sortable\minified\jquery.ui.widget.min.js" />
+    <Content Include="Scripts\uploadify\bjdz_btn_dd.gif" />
+    <Content Include="Scripts\uploadify\bjdz_btn_xzwj.gif" />
+    <Content Include="Scripts\uploadify\btn1.gif" />
+    <Content Include="Scripts\uploadify\btn2.gif" />
+    <Content Include="Scripts\uploadify\btn_ggmp.gif" />
+    <Content Include="Scripts\uploadify\btn_sc.gif" />
+    <Content Include="Scripts\uploadify\btn_uploads.gif" />
+    <Content Include="Scripts\uploadify\cancel.png" />
+    <Content Include="Scripts\uploadify\jquery.uploadify.v2.1.4.js" />
+    <Content Include="Scripts\uploadify\jquery.uploadify.v2.1.4.min.js" />
+    <Content Include="Scripts\uploadify\swfobject.js" />
+    <Content Include="Scripts\uploadify\uploadify.css" />
+    <Content Include="Scripts\uploadify\uploadify.swf" />
+    <Content Include="Scripts\user1.css" />
+    <Content Include="Views\APrice\Index.aspx" />
+    <Content Include="Views\APrice\RegistrationUserIndex.aspx" />
+    <Content Include="Views\APrice\UpdateAPrice.aspx" />
+    <Content Include="Views\BargainActive\Index.aspx" />
+    <Content Include="Views\BargainActive\RegistrationUserIndex.aspx" />
+    <Content Include="Views\BargainActive\UpdateBargain.aspx" />
+    <Content Include="Views\Common\NHouseIndex.aspx" />
+    <Content Include="Views\DevelopersAccount\Handle.aspx" />
+    <Content Include="Views\DevelopersAccount\HeadPicture.aspx" />
+    <Content Include="Views\DevelopersAccount\IdentityAuthentication.aspx" />
+    <Content Include="Views\DevelopersAccount\Index.aspx" />
+    <Content Include="Views\DevelopersAccount\Password.aspx" />
+    <Content Include="Views\DevelopersAccount\UpdatePhotoExpert.aspx" />
+    <Content Include="Views\Developers\Handle.aspx" />
+    <Content Include="Views\Developers\Index.aspx" />
+    <Content Include="Views\Discount\Detail.aspx" />
+    <Content Include="Views\Discount\EditDiscount.aspx" />
+    <Content Include="Views\Discount\Index.aspx" />
+    <Content Include="Views\Discount\UserIndex.aspx" />
+    <Content Include="Views\ImgManager\Index.aspx" />
+    <Content Include="Views\ImgManager\_imgList.ascx" />
+    <Content Include="Views\LadderGroup\DetailMessage.aspx" />
+    <Content Include="Views\LadderGroup\EditTuanGou.aspx" />
+    <Content Include="Views\LadderGroup\Index.aspx" />
+    <Content Include="Views\LadderGroup\RegistrationUserIndex.aspx" />
+    <Content Include="Views\NhAdvertise\Index.aspx" />
+    <Content Include="Views\NhAdvertise\_AdList.ascx" />
+    <Content Include="Views\NHBiding\Index.aspx" />
+    <Content Include="Views\NHBiding\Modify.aspx" />
+    <Content Include="Views\NHBiding\UserIndex.aspx" />
+    <Content Include="Views\NhBuilding\AddNewBuilding.aspx" />
+    <Content Include="Views\NhBuilding\EditBuilding.aspx" />
+    <Content Include="Views\NhBuilding\Index.aspx" />
+    <Content Include="Views\NhGuarantee\Index.aspx" />
+    <Content Include="Views\NHouse\Add.aspx" />
+    <Content Include="Views\NHouse\Detail.aspx" />
+    <Content Include="Views\NHouse\Index.aspx" />
+    <Content Include="Views\NHouse\Modify.aspx" />
+    <Content Include="Views\NhWithdrawCash\Index.aspx" />
+    <Content Include="Views\Premises\DevelopRelation.aspx" />
+    <Content Include="Views\Premises\Index.aspx" />
+    <Content Include="Views\Premises\PremisesFeature.aspx" />
+    <Content Include="Views\Premises\PremisesFeatureTable.ascx" />
+    <Content Include="Views\Premises\PremisesImage.aspx" />
+    <Content Include="Views\Premises\PremisesImage10.aspx" />
+    <Content Include="Views\Premises\PublishPremises.aspx" />
+    <Content Include="Views\Premises\UpdatePremises.aspx" />
+    <Content Include="Views\Premises\UploadPremisesPhoto.aspx" />
+    <Content Include="Views\PurchaseHouse\Detail.aspx" />
+    <Content Include="Views\PurchaseHouse\EditPurchaseHouse.aspx" />
+    <Content Include="Views\PurchaseHouse\Index.aspx" />
+    <Content Include="Views\PurchaseHouse\RegistrationUserIndex.aspx" />
+    <Content Include="Views\SecKill\EditActivity.aspx" />
+    <Content Include="Views\SecKill\Index.aspx" />
+    <Content Include="Views\SecKill\UserReportList.aspx" />
+    <Content Include="Views\Shared\MasterFooterContent.ascx" />
+    <Content Include="Views\Shared\MasterFooterScripts.ascx" />
+    <Content Include="Views\Shared\MasterHeaderScripts.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_BargainActiveHouse.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_APrice.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_APriceUserList.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_BargainActive.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_BargainUserList.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_Discount.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_Discount_Edit.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_Discount_Edit_Houses.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_LadderGroup.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_NHBiding.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_NHBidingHouse.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_NHBidingUsers.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_PurchaseHouse.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_PurchaseHouse_Edit_Houses.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_RegistLadderUser.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_RegistPurchaseUser.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_SecKill.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_SecKill_Edit_Houses.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_yaohao.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_yaohaoapproval.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_yaohaousers.ascx" />
+    <Content Include="Views\Shared\PageTables\Activities\_LadderGroup_Edit_Houses.ascx" />
+    <Content Include="Views\Shared\PageTables\Dev\_developers.ascx" />
+    <Content Include="Views\Shared\PageTables\Dev\_developersAccount.ascx" />
+    <Content Include="Views\Shared\PageTables\Dev\_UploadAuthenticationPhoto.ascx" />
+    <Content Include="Views\Shared\PageTables\Dev\_UploadAuthenticationHeTong.ascx" />
+    <Content Include="Views\Shared\PageTables\Financial\_Bond.ascx" />
+    <Content Include="Views\Shared\PageTables\Financial\_WithdrawCash.ascx" />
+    <Content Include="Views\Shared\PageTables\HouseData\Coordinate.ascx" />
+    <Content Include="Views\Shared\PageTables\HouseData\UploadPremisesPhotoLogo.ascx" />
+    <Content Include="Views\Shared\PageTables\HouseData\UploadPremisesPhotoSp.ascx" />
+    <Content Include="Views\Shared\PageTables\HouseData\_Building.ascx" />
+    <Content Include="Views\Shared\PageTables\HouseData\_nhouse.ascx" />
+    <Content Include="Views\Shared\PageTables\HouseData\_Premises.ascx" />
+    <Content Include="Views\Shared\PageTables\HouseData\_PremisesNodevel.ascx" />
+    <Content Include="Views\Shared\PageTables\HouseData\_PremisesPhoto.ascx" />
+    <Content Include="Views\Shared\PageTables\HouseData\_RoomMarked.ascx" />
+    <Content Include="Views\Shared\PageTables\HouseData\_Sandbox.ascx" />
+    <Content Include="Views\Shared\PageTables\HouseData\_Traffic.ascx" />
+    <Content Include="Views\Tools\TestGetCode.aspx" />
+    <Content Include="Views\YaoHao\Add.aspx" />
+    <Content Include="Views\YaoHao\ApplyIndex.aspx" />
+    <Content Include="Views\YaoHao\Index.aspx" />
+    <Content Include="Views\YaoHao\Info.aspx" />
+    <Content Include="Views\YaoHao\Modify.aspx" />
+    <Content Include="Views\YaoHao\UsersIndex.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="js\freeui\skins\rent\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\TXNewHouseManager.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TXBll\TXBll.csproj">
+      <Project>{E299FDB5-DE9A-4F41-9086-D5334E7298E5}</Project>
+      <Name>TXBll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TXCommons\TXCommons.csproj">
+      <Project>{A5057049-32E1-495C-919D-C702B60AFB80}</Project>
+      <Name>TXCommons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TXModel\TXModel.csproj">
+      <Project>{69ADBBB2-5D29-4474-8042-9136CED4AE25}</Project>
+      <Name>TXModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TXOrm\TXOrm.csproj">
+      <Project>{FB2BAEA7-BCA5-4EF8-BACC-5CA76D2F79E6}</Project>
+      <Name>TXOrm</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\TXFinancialManager.Master" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>18659</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://nhmanager.kyjob.com/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://nhmanager.kyjob.com/</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

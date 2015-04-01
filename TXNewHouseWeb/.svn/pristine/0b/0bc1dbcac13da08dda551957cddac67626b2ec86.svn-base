@@ -1,0 +1,11 @@
+[TXPremisesService]
+MQIPAddress="192.168.3.180:61616"
+MQConnectionTimeOut="3"
+MQRetryCount="2"
+
+MQQueueName="fc_premises_test_local"
+PremisesIndexPath="D:\fabu\index\newpremisesindex\"
+RankingIndexPath="D:\fabu\index\rankingindex\"
+
+LogPath="D:\fabu\log\"
+ThreadCount="1"

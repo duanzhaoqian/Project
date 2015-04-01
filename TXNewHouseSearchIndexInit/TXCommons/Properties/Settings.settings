@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TXCommons.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TXCommons_com_w_99bill_sandbox_BatchPayService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.99bill.com/apipay/services/BatchPayWS</Value>
+    </Setting>
+    <Setting Name="TXCommons_bd_cjkjb_webservice_BaseDataWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://webservice.cjkjb.com/BaseDataWebService.asmx</Value>
+    </Setting>
+    <Setting Name="TXCommons_user_cjkjb_webservice_OperaUserService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://userwebservice.cjkjb.com/OperaUser.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

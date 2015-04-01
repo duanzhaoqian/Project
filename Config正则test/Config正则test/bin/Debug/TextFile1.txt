@@ -1,0 +1,656 @@
+﻿
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    <meta name="keywords" content="租房,二手房,新房,快有贷,快来看,房屋出租,二手房买卖,新房新楼盘,租房贷,快来看,生活信息服务,餐饮,KTV,景点,电影院." />
+    <meta name="description" content="泰安快有家房产网是集租房,二手房,新房,房产租售服务平台,租房贷为客户提供不同额度的租房贷款服务,让您快速有家,并推出快来看生活服务,来满足客户的娱乐,休闲需求." />
+    <title>
+        
+    泰安快有家提供租房_二手房_新房_租房贷_生活服务_快有家房产网
+
+    </title>
+    
+    <link href="http://static.kuaiyoujia.com/static_fangchan/static5.0/web/kyj/skins/default/css/index_20140909.css?v=201409111152" rel="stylesheet" type="text/css" />
+    <link href="http://static.kuaiyoujia.com/static_fangchan/static5.0/web/base/js/plugs/autocomplete/jquery.autocomplete.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" href="http://static.kuaiyoujia.com/static_fangchan/static5.0/web/kyj/skins/default/images/jia.ico" type="image/ico" />
+    <link rel="shortcut icon" href="http://static.kuaiyoujia.com/static_fangchan/static5.0/web/kyj/skins/default/images/jia.ico" />
+    <script type="text/javascript">        var domian = ".kuaiyoujia.com", fbfy = 'QM5%2frrlWxwTtupNoT2DSa4iMFiKmG62j', version = "?v=201409111152"; </script>
+    <script src="http://static.kuaiyoujia.com/static_fangchan/static5.0/web/??base/js/jquery-1.6.4.min.js,kyj/js/url.min.js,kyj/js/golbal.min.js?v=201409111152,kyj/js/city.min.js?v=201409111152" type="text/javascript"></script>
+    <script src="http://static.kuaiyoujia.com/static_fangchan/static5.0/web/base/js/zebra_transform.js" type="text/javascript"></script>
+    
+
+</head>
+<body>
+<div class="top_nav">
+  <div class="w1190 clearFix">
+    <div class="fl down_box1"><a href="/login/login" target="_blank">用户登录</a>|<a href="/register/agent" target="_blank">免费注册</a></div>
+    <div class="vipcon">
+       <span class="fl" style=" display:none">您好！</span><a href="" class=""></a>
+      <div id="vipbox" class="vipp_box" style="display: none;">
+                    <i></i>
+                    <h1>
+                        尊敬的用户，感谢您加入<span class="colf30">VIP会员</span>，当前您可尊享以下<span class="colf30">VIP特权</span>：</h1>
+                    <div class="vipp_nav clearFix">
+                        <ul>
+                            <li class="on">房东<span>特权服务</span></li>
+                            <li class="bor">房客<span>特权服务</span></li>
+                        </ul>
+                    </div>
+                    <div class="vipp_nr clearFix">
+                        <dl>
+                            <dt></dt>
+                            <dd class="w180">
+                                <h3>
+                                    房东免费推广</h3>
+                                <div>
+                                    快有家投入大量资金，在百度、360等知名网站及各大报纸、媒体做宣传推广</div>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt class="p2"></dt>
+                            <dd class="w180">
+                                <h3>
+                                    精准客户推荐</h3>
+                                <div>
+                                    加入会员后，快有家给您推荐的都是近期有租房、购房需求的快有家会员客户</div>
+                            </dd>
+                        </dl>
+                        <div class="clear">
+                        </div>
+                        <div class="vipp_line clearFix">
+                            <a  target="_blank" href="/About/VipTopic">查看更多VIP特权</a></div>
+                    </div>
+                    <div class="vipp_nr clearFix" style="display: none;">
+                        <dl>
+                            <dt></dt>
+                            <dd class="w180">
+                                <h3>
+                                    买房享服务得优惠</h3>
+                                <div>
+                                    可为您提供二手房网签、银行按揭过户、物业交割等服务，费用尊享VIP专属折扣</div>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt class="p2"></dt>
+                            <dd class="w180">
+                                <h3>
+                                    租房免佣金</h3>
+                                <div>
+                                    通过快有家，您可直接获得房东联系方式，双方直接沟通，交易透明免佣金</div>
+                            </dd>
+                        </dl>
+                        <div class="clear">
+                        </div>
+                        <div class="vipp_line clearFix">
+                            <a href="/About/VipTopic" target="_blank">查看更多VIP特权</a></div>
+                    </div>
+                    <div class="vipp_bn">
+                        <div class="tac mt10 font12">
+                            <div class="yahei col666">
+                                <span class="font16">您的预存金余额：<span id="VipPrice" class="colf60 font24 mr6">50元</span></span>[<a
+                                    href="/Landlord/ShowYCPrice" class="blue">提取预存金</a>]</div>
+                            <label class="col666">
+                                <input type="checkbox" checked="checked" class="btn_checkbox" />
+                                我已阅读并同意<a target="_blank" href="/about/vipxy" class="blue">《快有家VIP会员服务协议》</a></label>
+                            <div>
+                                <a class="btn_yellow" href="javascript:void(0);" onclick="xufei(this,9)">我要续费预存金</a></div>
+                        </div>
+                    </div>
+                    <div class="vipp_bn">
+                        <div class="tac mt10 font12">
+                            <div class="yahei col666 font14">
+                                支付预存金即可 成为VIP会员，尊享会员特权</div>
+                            <label class="col666">
+                                <input type="checkbox" checked="checked" class="btn_checkbox" />
+                                我已阅读并同意<a target="_blank" href="/about/vipxy" class="blue">《快有家VIP会员服务协议》</a></label>
+                            <div>
+                                <a class="btn_yellow" href="javascript:void(0);" onclick="xufei(this,9)">我要加入VIP会员</a></div>
+                        </div>
+                    </div>
+                </div>
+      
+    </div>
+    
+    <div class="fr w540"> <a class="fl top_kfs" href="http://dev.kuaiyoujia.com/user/login" target="_blank">开发商登录</a> <i class="fl">|</i>
+      <div class="down_box"> <a class="tb_down" href="javascript:void(0)" target="_blank"><span class="top_my">我的快有家</span></a>
+        <div class="tc_box" style="display: none;">
+        <p>
+            您好，请<a href="/login/login">登录</a></p>
+        <ul>
+            <li>
+                <a href="/landlord/mylookhouse">我的看房单</a></li>
+            <li>
+                <a href="/SRent/MyKjwList">我的活动房源</a></li>
+            <li>
+                <a href="/Landlord/MyReleaseHouse">我发布的房源</a></li>
+            <li>
+                <a href="/Landlord/MyHousePgList">我的评估房源</a></li>
+            <li>
+                <a href="/Landlord/SystemMessage">我的消息</a></li>
+            <li>
+                <a href="/About/Entrust" target="_blank">我要发房</a></li>
+            <li style="display: none;"><a href="/Login/LogOut/">退出登录</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="fl"><i class="mr10">|</i>服务热线：<span class="font12 top_phone">400-999-3535<i>9:00-20:00</i></span><i>|</i><a class="link_help" href="/Help/NewbieGuideTab1" target="_blank">帮助中心</a></div>
+    </div>
+  </div>
+</div>
+<!--Top End-->
+
+<div class="header">
+  <div class="w1190 clearFix"> <a class="logo" href=""></a>
+    <div class="city fl">
+      <div class="pos_r">
+        <div class="qh_city"><strong>北京</strong>[<a href="javascript:void(0)">切换城市</a>]</div>
+        <div class="pos_a w430"> 
+          <!--<a href="" class="close"></a>--> 
+          <span class="tc_bj"></span>
+          <div class="citybox">
+            <div class="tjcity">
+              <div class="hd">
+                <h2>推荐站点</h2>
+              </div>
+              <div class="bd">
+                <ul class="clearFix">
+                </ul>
+              </div>
+            </div>
+            <div class="qgcity">
+              <div id="list_title" class="hd">
+                <h2>全国城市列表</h2>
+                <ul class="clearFix">
+                  <li class="out over">按拼音</li>
+                  <li class="out">按省份</li>
+                </ul>
+              </div>
+              <div id="list_cont" class="clearFix">
+                    <span class="dis_b">
+
+                        <div class="scrollContent scroll-pane">
+                            <!--首字母分类-->
+                        </div>
+
+                    </span>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="search_cont">
+      <div  class="key">
+        <select name='type' class="iselect">
+          <option value="nh">新房</option>
+          <option value="esf">二手房</option>
+          <option value="zf">租房</option>
+        </select>
+      </div>
+      <div class="key_input">
+        
+        <input type="text" id="search0" class="seatext" value="请输入关键字（小区名称或地址）" autocomplete="off">
+        <input type="submit" value="搜索" class="seabtn" />
+      </div>
+    </div>
+    <div class="wx_t fr"> <img alt="" src="http://static.kuaiyoujia.com/static_fangchan/static5.0/web/kyj/skins/default/images/index/ft_wx.gif" width="93" height="93" /><br />
+      微信扫一扫，服务都知道
+     </div>
+  </div>
+</div>
+<script src="http://static.kuaiyoujia.com/static_fangchan/static5.0/web/??base/js/plugs/autocomplete/jquery.autocomplete.min.js,kyj/js/autocomplete.min.js" language="javascript" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        autoc($(".i_currentselected").html());
+        $(".i_selectoption dd").each(function(index,item){
+           
+           $(this).click(function(){
+             autoc($(".i_currentselected").html());
+           });
+        });
+        $(".seabtn").click(function(){
+            SearchList($(".i_currentselected").html());
+        });
+
+    });
+    function SearchList(type) {
+        var u = $.trim(FilterSpecialCharacter($("#search0").val()));
+        u= u!="请输入关键字小区名称或地址"&& u!=""? type=="新房"?"-w_"+u:"-K"+u:"";
+        var  url = type=="新房"?"/xinfang/quyu"+u: type=="租房"?"/zufang/house/quyu"+u:"/esf/house/quyu"+u; //w_c
+        if (u != "请输入关键字小区名称或地址") {
+          location.href=url;
+        }else{
+          location.href=url;
+        }
+    }
+    //小区
+    function autoc(type) { 
+        var inputKey = "请输入关键字小区名称或地址";
+    
+        if(type!="新房"){
+            $("#search0").AutoComplete({width:384,dataUrl: "http://searchweb.kuaiyoujia.com/Village/GetVillageIndex.ashx?CityId=265", type: "sq", isAddAtribute: true });}
+        else{
+            $("#search0").unautocomplete();//.unbind('keypress').unbind('keydown').unbind('search');    
+        }
+        $("#search0").focus(function () { if ($.trim(FilterSpecialCharacter( $(this).val())) == inputKey) {$(this).val(""); } }).blur(function () { if ($.trim(FilterSpecialCharacter( $(this).val()))== "") { $(this).val("请输入关键字（小区名称或地址）"); } });   
+   }
+    
+        
+</script>
+
+
+<!--Header End-->
+
+<div class="search_box">
+<div class="search_c">
+    <div class="search_title">
+        <div class="fl">快速搜索</div>
+        <div class="new_nav"><a href="/" class="on">首页</a><a href="/xinfang/quyu">新房</a><a href="/esf/house/quyu">二手房</a><a href="/zufang/house/quyu">租房</a></div>
+    </div>
+    <div class="search_new">
+        <div class="dl_main">
+            <div class="dl_t">
+                <dl>
+                    <dt><a href="/xinfang/quyu" target="_blank">新房</a></dt>
+                    <dd><a target="_blank" href="/xinfang/quyu-o122">打折优惠</a><a  target="_blank" href="/xinfang/quyu-t113">地铁沿线</a><a target="_blank" href="/xinfang/quyu-t115">小户型</a></dd>
+                </dl>
+            </div>
+            
+            <div class="dl_c">
+                <dl>
+                    <dt>[区域]</dt>
+                    <dd>
+                       <a target="_blank" href="/xinfang/quyu-daiyuequ">岱岳区</a>|<a target="_blank" href="/xinfang/quyu-feicheng">肥城</a>|<a target="_blank" href="/xinfang/quyu-taishanqu">泰山区</a> 
+                
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>[价格]</dt>
+                    <dd>
+                     <a target="_blank" href="/xinfang/quyu-p1">1万以下</a>| <a target="_blank" href="/xinfang/quyu-p2">1-1.5万</a>| <a target="_blank" href="/xinfang/quyu-p3">1.5-2万</a>| <a target="_blank" href="/xinfang/quyu-p4">2-3万</a>| <a target="_blank" href="/xinfang/quyu-p5">3-4万</a>| <a target="_blank" href="/xinfang/quyu-p6">4万以上</a>
+                    
+                    </dd>
+                </dl>
+                <dl class="dl_last">
+                    <dt>[户型]</dt>
+                    <dd>
+                         <a target="_blank" href="/xinfang/quyu-r1">1居</a>| <a target="_blank" href="/xinfang/quyu-r2">2居</a>| <a target="_blank" href="/xinfang/quyu-r3">3居</a>| <a target="_blank" href="/xinfang/quyu-r4">4居</a>| <a target="_blank" href="/xinfang/quyu-r5">5居</a>| <a target="_blank" href="/xinfang/quyu-r6">5居以上</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="dl_main">
+            <div class="dl_t">
+                <dl>
+                    <dt><a href="/esf/house/quyu" target="_blank">二手房</a></dt>
+                    <dd><a target="_blank" href="/esf/house/quyu-g15">业主唯一</a><a target="_blank" href="/esf/house/quyu-g14">免税房</a><a target="_blank" href="/esf/house/quyu-g6">学区房</a></dd>
+                </dl>
+            </div>
+            <div class="dl_c">
+                <dl>
+                    <dt>[区域]</dt>
+                    <dd>
+                        <a target="_blank" href="/esf/house/quyu-daiyuequ">岱岳区</a>|<a target="_blank" href="/esf/house/quyu-feicheng">肥城</a>|<a target="_blank" href="/esf/house/quyu-taishanqu">泰山区</a> 
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>[价格]</dt>
+                    <dd>
+                     <a target="_blank" href="/esf/house/quyu-t0-u50">50万元以下</a>| <a target="_blank" href="/esf/house/quyu-t50-u100">50-100万元</a>| <a target="_blank" href="/esf/house/quyu-t100-u200">100-200万元</a>| <a target="_blank" href="/esf/house/quyu-t200-u300">200-300万元</a>| <a target="_blank" href="/esf/house/quyu-t300-u500">300-500万元</a>| <a target="_blank" href="/esf/house/quyu-t500-u800">500-800万元</a>| <a target="_blank" href="/esf/house/quyu-t1000-u0">1000万元以上</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>[户型]</dt>
+                    <dd>
+                      <a target="_blank" href="/esf/house/quyu-r1">1居</a>| <a target="_blank" href="/esf/house/quyu-r2">2居</a>| <a target="_blank" href="/esf/house/quyu-r3">3居</a>| <a target="_blank" href="/esf/house/quyu-r4">4居</a>| <a target="_blank" href="/esf/house/quyu-r5">5居以上</a>
+                    </dd>
+                </dl>
+                <dl class="dl_last">
+                    <dt>[类型]</dt>
+                    <dd>
+                      <a target="_blank" href="/esf/house/quyu">住宅</a>|
+                      <a target="_blank" href="/esf/shop/quyu">商铺</a>|
+                      <a target="_blank" href="/esf/office/quyu">写字楼</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="dl_main">
+            <div class="dl_t">
+                <dl>
+                    <dt><a href="/zufang/house/quyu" target="_blank">租房</a></dt>
+                    <dd><a target="_blank" href="/zufang/house/sub">按地铁找房</a><a target="_blank" href="/zufang/house/sub-v1">整租</a><a target="_blank" href="/zufang/house/sub-v2">合租</a></dd>
+                </dl>
+            </div>
+            <div class="dl_c">
+                <dl>
+                    <dt>[区域]</dt>
+                    <dd>
+                        <a target="_blank" href="/zufang/house/quyu-daiyuequ">岱岳区</a>|<a target="_blank" href="/zufang/house/quyu-feicheng">肥城</a>|<a target="_blank" href="/zufang/house/quyu-taishanqu">泰山区</a> 
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>[价格]</dt>
+                    <dd>
+                     <a target="_blank" href="/zufang/house/quyu-t0-u500">500元以下</a>| <a target="_blank" href="/zufang/house/quyu-t500-u1000">500-1000元</a>| <a target="_blank" href="/zufang/house/quyu-t1000-u2000">1000-2000元</a>| <a target="_blank" href="/zufang/house/quyu-t2000-u3000">2000-3000元</a>| <a target="_blank" href="/zufang/house/quyu-t3000-u5000">3000-5000元</a>| <a target="_blank" href="/zufang/house/quyu-t5000-u8000">5000-8000元</a>| <a target="_blank" href="/zufang/house/quyu-t10000-u0">10000元以上</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>[户型]</dt>
+                    <dd>
+                         <a target="_blank" href="/zufang/house/quyu-r1">1居</a>| <a target="_blank" href="/zufang/house/quyu-r2">2居</a>| <a target="_blank" href="/zufang/house/quyu-r3">3居</a>| <a target="_blank" href="/zufang/house/quyu-r4">4居</a>| <a target="_blank" href="/zufang/house/quyu-r5">5居以上</a>
+                    </dd>
+                </dl>
+                <dl class="dl_last">
+                    <dt>[类型]</dt>
+                    <dd>
+                      <a target="_blank" href="/zufang/house/quyu">住宅</a>|
+                      <a target="_blank" href="/zufang/shop/quyu">商铺</a>|
+                      <a target="_blank" href="/zufang/office/quyu">写字楼</a>
+                       
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="scroll_box"> 
+    <script type="text/javascript">
+        $(function () {
+
+            /*快速搜索*/
+            $(".dl_main").mouseenter(
+                function () {
+	                $(".dl_main .dl_t").removeClass("on");
+	                $(this).children(".dl_t").addClass("dl_t_on");
+	                $(".dl_main .dl_c").hide();
+	                $(this).children(".dl_c").show();
+                }
+            );
+            $(".dl_main").mouseleave(
+                function () {
+	                $(".dl_main .dl_t").removeClass("dl_t_on");
+	                $(".dl_main .dl_c").hide();
+                }
+            );
+            $(window).scroll(function () {
+                var win_scrolls = $(window).scrollTop();
+                var div_top = $(".scroll_box").offset().top;
+                var top = win_scrolls - div_top + 3;
+                if (win_scrolls > div_top) {
+                    $(".dl_c").css({ "position": "absolute", "top": top, "left": "309px" });
+                } else {
+                    $(".dl_c").css({ "position": "absolute", "top": "0px", "left": "309px" });
+                }
+            });
+            //hover效果
+            $(".pos_r_box").hover(
+                function () {
+	                $(this).children(".pos_a_box").show();
+                },
+                function () {
+	                $(this).children(".pos_a_box").hide();
+                }
+            );
+
+           /*----------*/
+            var len = $(".num > span").length;
+            var index = 0;
+            var adTimer;
+            $(".num span").mouseover(function () {
+                index = $(".num span").index(this);
+                showImg(index);
+            }).eq(0).mouseover();
+            $('.ad').hover(function () {
+                clearInterval(adTimer);
+            }, function () {
+                adTimer = setInterval(function () {
+                    showImg(index)
+                    index++;
+                    if (index == len) { index = 0; }
+                }, 3000);
+            }).trigger("mouseleave");
+        })
+        function showImg(index) {
+            $(".slider li").eq(index).fadeIn(500).siblings("li").fadeOut(500);
+            $(".num span").removeClass("on")
+					.eq(index).addClass("on");
+        }
+      </script>
+    <div class="ad">
+      <ul class="slider" >
+        <li style="background:url(http://static.kuaiyoujia.com/static_fangchan/static5.0/web/kyj/skins/default/images/index/img/banner1.jpg?v=111) no-repeat center center;"></li>
+        <li style="background:url(http://static.kuaiyoujia.com/static_fangchan/static5.0/web/kyj/skins/default/images/index/img/banner2.jpg?v=111) no-repeat center center;"><a href="/About/VipTopic" target="_blank"></a></li>
+        <li style="background:url(http://static.kuaiyoujia.com/static_fangchan/static5.0/web/kyj/skins/default/images/index/img/banner3.jpg?v=111) no-repeat center center;"><a href="/juhuasuan" target="_blank"></a></li>
+      </ul>
+      <div class="num_box">
+        <div class="num" ><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--NavMenu End-->
+
+
+    <div class="w1190">
+
+        <div class="main mt20 clearFix">
+            <ul>
+                <li>
+                    <p class="text1">
+                        开发商入驻</p>
+                    <p class="bg bg1">
+                    </p>
+                    <p class="text2">
+                        尊享专属网上售楼部</p>
+                    <p class="zhuce">
+                      <a target="_blank" href="http://dev.kuaiyoujia.com/user/register">立即注册</a>
+                    </p>
+                </li>
+                <li>
+                    <p class="text1">
+                        我是房东</p>
+                    <p class="bg bg2">
+                    </p>
+
+                    <div class="text3 clearFix">
+
+                        <div class="div_li">
+                            <a target="_blank" href="/About/Entrust">发布租房</a></div>
+
+                        <div class="div_li">
+                            <a target="_blank" href="/landlord/memberroom?t=1">发布预租房</a></div>
+
+                        <div class="div_li">
+                            <a target="_blank" href="/About/Entrust">发布二手房</a></div>
+
+                        <div class="div_li pos_r_box zindex1"  style=" margin-left:10px">
+                            微信发房
+
+                            <div class="weifang pos_a_box">
+                                <i></i>
+
+                                <div class="write">
+                                    <img alt="" src="http://static.kuaiyoujia.com/static_fangchan/static5.0/web/kyj/skins/default/images/index/write.png"></div>
+
+                                <div class="wfbox">
+                                    <dl class="clearFix mb10">
+                                        <dt>01</dt>
+                                        <dd>
+                                            扫描二维码或者微信搜索：<br/>
+                                            kuaiyoujia_com关注快有家微信
+                                        </dd>
+                                    </dl>
+                                    <dl class="clearFix">
+                                        <dt>02</dt>
+                                        <dd>
+                                            点击微信界面下方菜单"我是业主"<br/>
+                                            "发布房源"
+                                        </dd>
+                                    </dl>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="pos_r_box div_li w160">
+                            <a target="_blank" href="/Entrust/PhoneEntrust">电话委托发房</a>
+
+                            <div class="tcpbox pos_a_box">
+                                <i></i>
+                                <p class="tel">
+                                    400-999-3535</p>
+                                <p>
+                                    拔打电话即可轻松发布房源</p>
+                                <p>
+                                    <a target="_blank" href="/Entrust/PhoneEntrust">查看电话委托发房规则 &gt;&gt;</a></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </li>
+                <li>
+                    <p class="text1">
+                        我是房客</p>
+                    <p class="bg bg3">
+                    </p>
+                    <p class="text2">
+                        <a target="_blank" href="/fbhouse/zroom">发布求租信息</a><br />
+                        <a target="_blank" href="/fbhouse/groom">发布求购信息</a></p>
+                </li>
+                <li class="last">
+                    <p class="text1">
+                        申请全程购房服务</p>
+                    <p class="bg bg4">
+                    </p>
+                    <p class="text2">
+                       为您提供全程购房服务,<br />
+                       省力更省心 （目前支持北上广深四个城市）</p>
+                    <p class="zhuce">
+                        <a target="_blank" href="http://zufangdai.kuaiyoujia.com/ershoufang">立即申请</a></p>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="link">
+            <h2>
+                友情链接</h2>
+
+            <div class="list">
+            
+                <a target="_blank" target="_blank" href="http://laiwu.ohqly.com/1116.shtml">莱芜二手房</a>
+            
+                <a target="_blank" target="_blank" href="http://hnhouse.16hour.cn/">湖南16小时房产网</a>
+            
+                <a target="_blank" target="_blank" href="http://ta.fcyhw.com/">泰安房产一号网</a>
+            
+            </div>
+        </div>
+        
+    </div>
+
+
+<!--MainContent End-->
+<div class="footer">
+  <div class="footer_dl_box">
+    <div class="w1190 clearFix">
+        <dl class="w180">
+            <dt class="dt1">关于快有家</dt>
+            <dd>
+                <a target="_blank" href="/about/aboutus">关于我们</a></dd>
+            <dd>
+                <a target="_blank" href="/About/WebRreaty">网站协议</a></dd>
+            <dd>
+                <a target="_blank" href="/Comment/Message">金点子赢大奖</a></dd>
+            <dd>
+                <a target="_blank" href="/Help/NewbieGuideTab1">帮助中心</a></dd>
+        </dl>
+        <dl class="w180">
+            <dt class="dt2">用户快速通道</dt>
+            <dd>
+                <a target="_blank" href="/About/Entrust">免费发房</a></dd>
+            <dd>
+                <a target="_blank" href="/Entrust/Add">委托出租</a></dd>
+            <dd>
+                <a target="_blank" href="/Entrust/AddRent">委托出售</a></dd>
+            <dd>
+                <a target="_blank" href="/Entrust/PhoneEntrust">电话委托</a></dd>
+        </dl>
+        <dl class="w300">
+            <dt class="dt3">租房合同下载</dt>
+            <dd>
+                <a target="_blank" href="/doc/房屋租赁合同-通用.doc">房屋租赁合同（快有家通用版）</a></dd>
+            <dd>
+                <a target="_blank" href="/doc/《房屋租赁合同（自行成交版）》.doc">房屋租赁合同（自行成交版）</a></dd>
+            <dd>
+                <a target="_blank" href="/doc/《房屋租赁合同（经纪机构居间成交版）》.doc">房屋租赁合同（经纪机构居间成交版）</a></dd>
+            <dd>
+                <a target="_blank" href="/doc/《房屋租赁合同（经纪机构代理成交版）》.doc">房屋租赁合同（经纪机构代理成交版）</a></dd>
+        </dl>
+        <dl class="w300">
+            <dt class="dt3">二手房合同下载</dt>
+            <dd>
+                <a target="_blank" href="/doc/《存量房屋买卖合同（自行成交版）》（2007年修订版）.doc">存量房屋买卖合同（自行成交版）</a></dd>
+            <dd>
+                <a target="_blank" href="/doc/《存量房屋买卖合同（经纪成交版）》（2007年修订版）.doc">存量房屋买卖合同（经纪成交版）</a></dd>
+            <dd>
+                <a target="_blank" href="/doc/房屋购买委托协议（中介协会推荐文本）.doc">房屋购买委托协议（中介协会推荐文本）</a></dd>
+            <dd>
+                <a target="_blank" href="/doc/房屋出售委托协议（中介协会推荐文本）.doc">房屋出售委托协议（中介协会推荐文本）</a></dd>
+        </dl> 
+      <div class="fr_box">
+        <p><img alt="" src="http://static.kuaiyoujia.com/static_fangchan/static5.0/web/kyj/skins/default/images/index/ft_gg.gif" /></p>
+        <div class="fr_wx clearFix">
+          <div class="fl"><img alt="" src="http://static.kuaiyoujia.com/static_fangchan/static5.0/web/kyj/skins/default/images/index/ft_wx.gif" /></div>
+          <div class="fl ml20" style="margin-top: 20px; line-height: 22px;">
+            <p class="col666">微信扫一扫</p>
+            <p class="col666">服务都知道</p>
+          </div>
+        </div>
+        <div class="jgz"><a href=""><img alt="" src="http://static.kuaiyoujia.com/static_fangchan/static5.0/web/kyj/skins/default/images/index/ft_jgz.gif" /></a><span class="gz_num">147.3万</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="tac">
+        <p>
+            Copyright &copy; 2014
+            <a target="_blank" href="/">www.kuaiyoujia.com</a>
+            All Rights Reserved</p>
+        <p>
+            京公网安备 110105010112<span class="mlr10">京ICP备11027796号-2</span>Email:<a target="_blank" href="mailto:service@kuaiyoujia.com">service@kuaiyoujia.com</a>客服热线：<span class="col333">400-999-3535</span> 9:00-20:00</p>
+        <p class="mt10 mb10">
+            <a target="_blank" href="http://www.kuaiyoujia.com/about/cert">
+                <img title="" alt="" src="http://static.kuaiyoujia.com/static_fangchan/static5.0/web/kyj/skins/default/images/f_cx_1.gif" /></a>&nbsp;&nbsp;<a target="_blank" href="http://www.itrust.org.cn/yz/pjwx.asp?wm=1689221523"><img title="" alt="" src="http://static.kuaiyoujia.com/static_fangchan/static5.0/web/kyj/skins/default/images/f_wx_1.gif" /></a>&nbsp;&nbsp;<a target="_blank" href="http://www.bj.cyberpolice.cn/index.do"><img
+                    title="" alt="" src="http://static.kuaiyoujia.com/static_fangchan/static5.0/web/kyj/skins/default/images/f_bj_1.gif" /></a></p>
+    </div>
+</div>
+<!--Footer End-->
+<script type="text/javascript">
+    islogin("/Login/AjaxIsLogin", false);
+    //首页—头部—vip房东/房客切换
+    $(".vipp_nr").eq(0).show();
+    $(".vipp_nav ul li").hover(function () {
+        var num = $(this).index();
+        $(".vipp_nav ul li").removeClass("on");
+        $(this).addClass("on");
+        $(".vipp_nr").hide();
+        $(".vipp_nr").eq(num).show();
+        return false;
+    });
+    function xufei(e, n) {
+        if ($(e).parent().parent().find(".btn_checkbox:checked").length == 1) {
+            window.location.href = '/Landlord/YCRecharge?type=7';
+            return;
+        }
+        alert('请同意快有家VIP会员服务协议');
+    }
+</script>    
+</body>
+</html>

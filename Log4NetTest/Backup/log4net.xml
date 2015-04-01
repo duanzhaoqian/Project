@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<log4net xsi:noNamespaceSchemaLocation="schema0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <appender name="RollingLogFileAppender" type="log4net.Appender.RollingFileAppender">
+    <file value="C:\Log\logfile.txt" />
+    <appendToFile value="false" />
+    <rollingStyle value="Size" />
+    <countDirection value="1"/>
+    <maxSizeRollBackups value="1000" />
+    <maximumFileSize value="1MB" />
+    <datePattern value="yyyyMMdd-HHmm" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date,[%thread],%-5level,%logger,%message%newline" />
+    </layout>
+  </appender>
+  <appender name="AspNetTraceAppender" type="log4net.Appender.AspNetTraceAppender" >
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%level: %message" />
+      <base64EncodeMessage value="true"/>
+    </layout>
+    <filter type="log4net.Filter.LoggerMatchFilter">
+      <loggerToMatch value="Namespace.ClassName"/>
+      <acceptOnMatch value="false"/>
+    </filter>
+  </appender>
+
+  <root>
+    <level value="DEBUG" />
+    <!-- Set the appenders here depending on where you want the messages to be logged. -->
+    <appender-ref ref="RollingLogFileAppender" />
+    <appender-ref ref="AspNetTraceAppender" />
+  </root>
+
+  <!-- Explicitly allow all audit messages -->
+  <logger name="Namespace.ClassName">
+    <level value="ALL" />
+    <appender-ref ref="RollingLogFileAppender" />
+  </logger>
+
+</log4net>

@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E299FDB5-DE9A-4F41-9086-D5334E7298E5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TXBll</RootNamespace>
+    <AssemblyName>TXBll</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\dll\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Log4netService">
+      <HintPath>..\dll\Log4netService.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\dll\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcPager">
+      <HintPath>..\dll\MvcPager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ajax\StaticDataBll.cs" />
+    <Compile Include="Dev\DeveloperMessageBll.cs" />
+    <Compile Include="Dev\DevelopersBll.cs" />
+    <Compile Include="Dev\Developers_AdminBll.cs" />
+    <Compile Include="Dev\Developer_AccountBll.cs" />
+    <Compile Include="Dev\Developer_AccountLogBll.cs" />
+    <Compile Include="Dev\Developer_Account_AdminBll.cs" />
+    <Compile Include="Dev\Developer_Account_WebBll.cs" />
+    <Compile Include="Dev\Developer_Account_DeveloperBll.cs" />
+    <Compile Include="Dev\Developer_AccountLog_DeveloperBll.cs" />
+    <Compile Include="Dev\Developer_AccountLog_AdminBll.cs" />
+    <Compile Include="Dev\Developers_DeveloperBll.cs" />
+    <Compile Include="Activitys\ActivitysBll.cs" />
+    <Compile Include="FinancialData\BondBll.cs" />
+    <Compile Include="FinancialData\WithdrawCashBll.cs" />
+    <Compile Include="HouseData\BuildingBll.cs" />
+    <Compile Include="HouseData\Building_AdminBll.cs" />
+    <Compile Include="HouseData\Building_DeveloperBll.cs" />
+    <Compile Include="HouseData\Building_WebBll.cs" />
+    <Compile Include="HouseData\HouseBll.cs" />
+    <Compile Include="HouseData\HouseTemplateBll.cs" />
+    <Compile Include="HouseData\House_AdminBll.cs" />
+    <Compile Include="HouseData\House_DeveloperBll.cs" />
+    <Compile Include="HouseData\House_WebBll.cs" />
+    <Compile Include="HouseData\PermitPresaleBll.cs" />
+    <Compile Include="HouseData\PermitPresale_AdminBll.cs" />
+    <Compile Include="HouseData\PremiseImgMapBll.cs" />
+    <Compile Include="HouseData\PremisesBll.cs" />
+    <Compile Include="HouseData\PremisesFeatureBll.cs" />
+    <Compile Include="HouseData\Premises_DeveloperBll.cs" />
+    <Compile Include="HouseData\Premises_OptimizeBll.cs" />
+    <Compile Include="HouseData\Premises_WebBll.cs" />
+    <Compile Include="HouseData\Premises_AdminBll.cs" />
+    <Compile Include="HouseData\SandTableLabelBll.cs" />
+    <Compile Include="HouseData\UnitBll.cs" />
+    <Compile Include="HouseData\Unit_AdminBll.cs" />
+    <Compile Include="NHouseActivies\ActiviesUtilsBll.cs" />
+    <Compile Include="NHouseActivies\Advertise\AdvertiseBll.cs" />
+    <Compile Include="NHouseActivies\Advertise\Advertise_AdminBll.cs" />
+    <Compile Include="NHouseActivies\APrice\APrice_AdminBll.cs" />
+    <Compile Include="NHouseActivies\APrice\APrice_DeveloperBll.cs" />
+    <Compile Include="NHouseActivies\Arranging\Arranging_DeveloperBll.cs" />
+    <Compile Include="NHouseActivies\Bargain\Bargain_AdminBll.cs" />
+    <Compile Include="NHouseActivies\Bargain\Bargain_DeveloperBll.cs" />
+    <Compile Include="NHouseActivies\Biding\BidingBll.cs" />
+    <Compile Include="NHouseActivies\Biding\Biding_AdminBll.cs" />
+    <Compile Include="NHouseActivies\Biding\Biding_DeveloperBll.cs" />
+    <Compile Include="NHouseActivies\Discount\DiscountBll.cs" />
+    <Compile Include="NHouseActivies\Discount\Discount_AdminBll.cs" />
+    <Compile Include="NHouseActivies\Discount\Discount_DeveloperBll.cs" />
+    <Compile Include="NHouseActivies\SecKill\SecKillBll.cs" />
+    <Compile Include="NHouseActivies\SecKill\SecKill_AdminBll.cs" />
+    <Compile Include="NHouseActivies\SecKill\SecKill_DeveloperBll.cs" />
+    <Compile Include="NHouseActivies\TuanGou\TuanGou_AdminBll.cs" />
+    <Compile Include="NHouseActivies\TuanGou\TuanGou_DeveloperBll.cs" />
+    <Compile Include="NHouseActivies\Yaohao\YaohaoBll.cs" />
+    <Compile Include="NHouseActivies\Yaohao\Yaohao_AdminBll.cs" />
+    <Compile Include="NHouseActivies\Yaohao\Yaohao_DeveloperBll.cs" />
+    <Compile Include="NHouseActivies\Yaohao\Yaohao_WebBll.cs" />
+    <Compile Include="NHouseSearch\SearchBll.cs" />
+    <Compile Include="Order\OrderBll.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\MyNewHousesBll.cs" />
+    <Compile Include="WebSite\AdminBll.cs" />
+    <Compile Include="WebSite\AdminLogBll.cs" />
+    <Compile Include="WebSite\AdminService.cs" />
+    <Compile Include="WebSite\GeographyBll.cs" />
+    <Compile Include="WebSite\ModelBll.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dev\Developer_AccountLog_WebBll.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TXCommons\TXCommons.csproj">
+      <Project>{A5057049-32E1-495C-919D-C702B60AFB80}</Project>
+      <Name>TXCommons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TXDal\TXDal.csproj">
+      <Project>{1BDEA151-40A8-46F8-A460-873423BFDED9}</Project>
+      <Name>TXDal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TXModel\TXModel.csproj">
+      <Project>{69ADBBB2-5D29-4474-8042-9136CED4AE25}</Project>
+      <Name>TXModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TXOrm\TXOrm.csproj">
+      <Project>{FB2BAEA7-BCA5-4EF8-BACC-5CA76D2F79E6}</Project>
+      <Name>TXOrm</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dev\Developers_WebBll.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,14 @@
+D:\Visual Studio 2010\Projects\LuceneTest\LuceneTest\bin\LuceneTest.dll
+D:\Visual Studio 2010\Projects\LuceneTest\LuceneTest\bin\LuceneTest.pdb
+D:\Visual Studio 2010\Projects\LuceneTest\LuceneTest\bin\LuceneOpt.dll
+D:\Visual Studio 2010\Projects\LuceneTest\LuceneTest\bin\TXOrm.dll
+D:\Visual Studio 2010\Projects\LuceneTest\LuceneTest\bin\DAL.dll
+D:\Visual Studio 2010\Projects\LuceneTest\LuceneTest\bin\Lucene.Net.dll
+D:\Visual Studio 2010\Projects\LuceneTest\LuceneTest\bin\LuceneOpt.pdb
+D:\Visual Studio 2010\Projects\LuceneTest\LuceneTest\bin\TXOrm.pdb
+D:\Visual Studio 2010\Projects\LuceneTest\LuceneTest\bin\DAL.pdb
+D:\Visual Studio 2010\Projects\LuceneTest\LuceneTest\obj\Debug\LuceneTest.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\LuceneTest\LuceneTest\obj\Debug\LuceneTest.dll
+D:\Visual Studio 2010\Projects\LuceneTest\LuceneTest\obj\Debug\LuceneTest.pdb
+D:\Visual Studio 2010\Projects\LuceneTest\LuceneTest\bin\Command.dll
+D:\Visual Studio 2010\Projects\LuceneTest\LuceneTest\bin\Command.pdb

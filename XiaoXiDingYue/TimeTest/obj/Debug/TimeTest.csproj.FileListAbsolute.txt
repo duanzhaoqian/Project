@@ -1,0 +1,4 @@
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\TimeTest\bin\Debug\TimeTest.dll
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\TimeTest\bin\Debug\TimeTest.pdb
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\TimeTest\obj\Debug\TimeTest.dll
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\TimeTest\obj\Debug\TimeTest.pdb

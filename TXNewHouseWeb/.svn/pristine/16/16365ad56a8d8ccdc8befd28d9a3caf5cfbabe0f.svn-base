@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1BDEA151-40A8-46F8-A460-873423BFDED9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TXDal</RootNamespace>
+    <AssemblyName>TXDal</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Log4netService">
+      <HintPath>..\dll\Log4netService.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseDal_Admin.cs" />
+    <Compile Include="Dev\DeveloperMessageDal.cs" />
+    <Compile Include="Dev\DevelopersDal.cs" />
+    <Compile Include="Dev\Developer_AccountDal.cs" />
+    <Compile Include="Dev\Developer_AccountLogDal.cs" />
+    <Compile Include="Dev\Developer_Account_AdminDal.cs" />
+    <Compile Include="Dev\Developer_AccountLog_AdminDal.cs" />
+    <Compile Include="Dev\Developers_AdminDal.cs" />
+    <Compile Include="Activitys\ActivitysDal.cs" />
+    <Compile Include="FinancialData\BondDal.cs" />
+    <Compile Include="FinancialData\WithdrawCashDal.cs" />
+    <Compile Include="HouseData\BuildingDal.cs" />
+    <Compile Include="HouseData\Building_AdminDal.cs" />
+    <Compile Include="HouseData\Building_DeveloperDal.cs" />
+    <Compile Include="HouseData\Building_WebDal.cs" />
+    <Compile Include="HouseData\HouseDal.cs" />
+    <Compile Include="HouseData\HouseTemplateDal.cs" />
+    <Compile Include="HouseData\House_AdminDal.cs" />
+    <Compile Include="HouseData\House_DeveloperDal.cs" />
+    <Compile Include="HouseData\House_WebDal.cs" />
+    <Compile Include="HouseData\PermitPresaleDal.cs" />
+    <Compile Include="HouseData\PermitPresale_AdminDal.cs" />
+    <Compile Include="HouseData\PremiseImgMapDal.cs" />
+    <Compile Include="HouseData\PremisesDal.cs" />
+    <Compile Include="HouseData\PremisesFeatureDal.cs" />
+    <Compile Include="HouseData\Premises_DeveloperDal.cs" />
+    <Compile Include="HouseData\Premises_OptimizeDal.cs" />
+    <Compile Include="HouseData\Premises_Recomment.cs" />
+    <Compile Include="HouseData\Premises_WebDal.cs" />
+    <Compile Include="HouseData\Premises_AdminDal.cs" />
+    <Compile Include="HouseData\SandTableLabelDal.cs" />
+    <Compile Include="HouseData\UnitDal.cs" />
+    <Compile Include="HouseData\Unit_AdminDal.cs" />
+    <Compile Include="NHouseActivies\ActiviesUtilsDal.cs" />
+    <Compile Include="NHouseActivies\Advertise\AdvertiseDal.cs" />
+    <Compile Include="NHouseActivies\Advertise\Advertise_AdminDal.cs" />
+    <Compile Include="NHouseActivies\APrice\APrice_AdminDal.cs" />
+    <Compile Include="NHouseActivies\APrice\APrice_DeveloperDal.cs" />
+    <Compile Include="NHouseActivies\Arranging\Arranging_DeveloperDal.cs" />
+    <Compile Include="NHouseActivies\Bargain\Bargain_AdminDal.cs" />
+    <Compile Include="NHouseActivies\Bargain\Bargain_DeveloperDal.cs" />
+    <Compile Include="NHouseActivies\Biding\BidingDal.cs" />
+    <Compile Include="NHouseActivies\Biding\Biding_AdminDal.cs" />
+    <Compile Include="NHouseActivies\Biding\Biding_DeveloperDal.cs" />
+    <Compile Include="NHouseActivies\Discount\DiscountDal.cs" />
+    <Compile Include="NHouseActivies\Discount\Discount_AdminDal.cs" />
+    <Compile Include="NHouseActivies\Discount\Discount_DeveloperDal.cs" />
+    <Compile Include="NHouseActivies\SecKill\SecKillDal.cs" />
+    <Compile Include="NHouseActivies\SecKill\SecKill_AdminDal.cs" />
+    <Compile Include="NHouseActivies\SecKill\SecKill_DeveloperDal.cs" />
+    <Compile Include="NHouseActivies\TuanGou\TuanGou_AdminDal.cs" />
+    <Compile Include="NHouseActivies\TuanGou\TuanGou_DeveloperDal.cs" />
+    <Compile Include="NHouseActivies\Yaohao\YaohaoDal.cs" />
+    <Compile Include="NHouseActivies\Yaohao\Yaohao_AdminDal.cs" />
+    <Compile Include="NHouseActivies\Yaohao\Yaohao_DeveloperDal.cs" />
+    <Compile Include="NHouseActivies\Yaohao\Yaohao_WebDal.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\MyNewHousesDal.cs" />
+    <Compile Include="WebSite\AdminDal.cs" />
+    <Compile Include="WebSite\AdminLogDal.cs" />
+    <Compile Include="WebSite\GeographyDal.cs" />
+    <Compile Include="WebSite\ModelDal.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TXCommons\TXCommons.csproj">
+      <Project>{A5057049-32E1-495C-919D-C702B60AFB80}</Project>
+      <Name>TXCommons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TXModel\TXModel.csproj">
+      <Project>{69ADBBB2-5D29-4474-8042-9136CED4AE25}</Project>
+      <Name>TXModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TXOrm\TXOrm.csproj">
+      <Project>{FB2BAEA7-BCA5-4EF8-BACC-5CA76D2F79E6}</Project>
+      <Name>TXOrm</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dev\Developer_Account_DeveloperDal.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dev\Developer_Account_WebDal.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dev\Developer_AccountLog_WebDal.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dev\Developer_AccountLog_DeveloperDal.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dev\Developers_WebDal.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dev\Developers_DeveloperDal.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

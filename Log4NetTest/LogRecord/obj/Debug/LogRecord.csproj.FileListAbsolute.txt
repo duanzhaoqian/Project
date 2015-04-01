@@ -1,0 +1,8 @@
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\公共数据操作工具\图片冗余数据处理\LogRecord\bin\Debug\LogRecord.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\公共数据操作工具\图片冗余数据处理\LogRecord\bin\Debug\LogRecord.pdb
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\公共数据操作工具\图片冗余数据处理\LogRecord\obj\Debug\LogRecord.dll
+D:\kuaiyoujiaPrj\pubPlatform\dotnet\公共数据操作工具\图片冗余数据处理\LogRecord\obj\Debug\LogRecord.pdb
+D:\Visual Studio 2010\Projects\Log4NetTest\LogRecord\bin\Debug\LogRecord.dll
+D:\Visual Studio 2010\Projects\Log4NetTest\LogRecord\bin\Debug\LogRecord.pdb
+D:\Visual Studio 2010\Projects\Log4NetTest\LogRecord\obj\Debug\LogRecord.dll
+D:\Visual Studio 2010\Projects\Log4NetTest\LogRecord\obj\Debug\LogRecord.pdb

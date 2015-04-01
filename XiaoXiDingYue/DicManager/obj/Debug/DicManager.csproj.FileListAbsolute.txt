@@ -1,0 +1,7 @@
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\DicManager\bin\Debug\DicManager.dll
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\DicManager\bin\Debug\DicManager.pdb
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\DicManager\bin\Debug\Data.dll
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\DicManager\bin\Debug\Data.pdb
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\DicManager\obj\Debug\DicManager.dll
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\DicManager\obj\Debug\DicManager.pdb
+D:\Visual Studio 2010\Projects\XiaoXiDingYue\DicManager\obj\Debug\DicManager.csprojResolveAssemblyReference.cache

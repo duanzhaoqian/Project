@@ -1,0 +1,21 @@
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXCommons\bin\Debug\app.config
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXCommons\bin\Debug\TXCommons.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXCommons\bin\Debug\TXCommons.pdb
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXCommons\bin\Debug\Apache.NMS.ActiveMQ.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXCommons\bin\Debug\Apache.NMS.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXCommons\bin\Debug\KYJ.ServiceStack.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXCommons\bin\Debug\Log4netService.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXCommons\bin\Debug\Lucene.Net.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXCommons\bin\Debug\MQ.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXCommons\bin\Debug\Newtonsoft.Json.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXCommons\bin\Debug\ServiceStack.Redis.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXCommons\bin\Debug\log4net.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXCommons\bin\Debug\KYJ.ServiceStack.pdb
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXCommons\obj\Debug\TXCommons.dll
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXCommons\obj\Debug\TXCommons.pdb
+D:\kuaiyoujiaPrj\pc\xinfang\1.0\TXCommons\obj\Debug\TXCommons.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\TXNewHouseSearchIndexInit\TXCommons\bin\Debug\app.config
+D:\Visual Studio 2010\Projects\TXNewHouseSearchIndexInit\TXCommons\bin\Debug\TXCommons.dll
+D:\Visual Studio 2010\Projects\TXNewHouseSearchIndexInit\TXCommons\bin\Debug\TXCommons.pdb
+D:\Visual Studio 2010\Projects\TXNewHouseSearchIndexInit\TXCommons\obj\Debug\TXCommons.dll
+D:\Visual Studio 2010\Projects\TXNewHouseSearchIndexInit\TXCommons\obj\Debug\TXCommons.pdb

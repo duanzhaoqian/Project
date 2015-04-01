@@ -1,0 +1,5 @@
+D:\Visual Studio 2010\Projects\ConsoleApplication1\ClassLibrary1\bin\Debug\ClassLibrary1.dll.config
+D:\Visual Studio 2010\Projects\ConsoleApplication1\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+D:\Visual Studio 2010\Projects\ConsoleApplication1\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+D:\Visual Studio 2010\Projects\ConsoleApplication1\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+D:\Visual Studio 2010\Projects\ConsoleApplication1\ClassLibrary1\obj\Debug\ClassLibrary1.pdb

@@ -1,0 +1,90 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TXImageService", "TXImageService\TXImageService.csproj", "{B9727832-E135-4E8E-BB18-4B0B687DA178}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IService", "IService\IService.csproj", "{8E1EF786-AC11-496F-A1DB-B8427B61327E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicCutImpl", "PicCutImpl\PicCutImpl.csproj", "{C5A9EA6D-B134-4041-BC84-DBD2CC387226}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterMarkImpl", "WaterMarkImpl\WaterMarkImpl.csproj", "{A09B36E9-C980-4C6A-ADE9-9EDA921F1951}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiskDalImpl", "DiskDalImpl\DiskDalImpl.csproj", "{E51E6D70-09C0-4E17-9EA5-DA0F38FE5986}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlDalImpl", "SqlDalImpl\SqlDalImpl.csproj", "{8D62E318-1892-4087-A223-E10523AAA376}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{604004B9-7904-40D9-BE7A-F81D905FB345}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessPicImpl", "ProcessPicImpl\ProcessPicImpl.csproj", "{CB9359EF-813C-4764-9A69-0E5FD4EC992B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Factory", "Factory\Factory.csproj", "{BD118831-1ABD-4CF6-AF77-FC800116B813}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicTest", "PicTest\PicTest.csproj", "{C885578A-262F-44FD-B007-2AFB331AE393}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C83590A4-A687-4EB3-BEAD-3A4507B9CD7D}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+		TXImageService.vsmdi = TXImageService.vsmdi
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{F4A42531-6F53-446E-BF99-5EA95026EEB3}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = TXImageService.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9727832-E135-4E8E-BB18-4B0B687DA178}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9727832-E135-4E8E-BB18-4B0B687DA178}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9727832-E135-4E8E-BB18-4B0B687DA178}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9727832-E135-4E8E-BB18-4B0B687DA178}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E1EF786-AC11-496F-A1DB-B8427B61327E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E1EF786-AC11-496F-A1DB-B8427B61327E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E1EF786-AC11-496F-A1DB-B8427B61327E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E1EF786-AC11-496F-A1DB-B8427B61327E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5A9EA6D-B134-4041-BC84-DBD2CC387226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5A9EA6D-B134-4041-BC84-DBD2CC387226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5A9EA6D-B134-4041-BC84-DBD2CC387226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5A9EA6D-B134-4041-BC84-DBD2CC387226}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A09B36E9-C980-4C6A-ADE9-9EDA921F1951}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A09B36E9-C980-4C6A-ADE9-9EDA921F1951}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A09B36E9-C980-4C6A-ADE9-9EDA921F1951}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A09B36E9-C980-4C6A-ADE9-9EDA921F1951}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E51E6D70-09C0-4E17-9EA5-DA0F38FE5986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E51E6D70-09C0-4E17-9EA5-DA0F38FE5986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E51E6D70-09C0-4E17-9EA5-DA0F38FE5986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E51E6D70-09C0-4E17-9EA5-DA0F38FE5986}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D62E318-1892-4087-A223-E10523AAA376}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D62E318-1892-4087-A223-E10523AAA376}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D62E318-1892-4087-A223-E10523AAA376}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D62E318-1892-4087-A223-E10523AAA376}.Release|Any CPU.Build.0 = Release|Any CPU
+		{604004B9-7904-40D9-BE7A-F81D905FB345}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{604004B9-7904-40D9-BE7A-F81D905FB345}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{604004B9-7904-40D9-BE7A-F81D905FB345}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{604004B9-7904-40D9-BE7A-F81D905FB345}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB9359EF-813C-4764-9A69-0E5FD4EC992B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB9359EF-813C-4764-9A69-0E5FD4EC992B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB9359EF-813C-4764-9A69-0E5FD4EC992B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB9359EF-813C-4764-9A69-0E5FD4EC992B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD118831-1ABD-4CF6-AF77-FC800116B813}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD118831-1ABD-4CF6-AF77-FC800116B813}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD118831-1ABD-4CF6-AF77-FC800116B813}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD118831-1ABD-4CF6-AF77-FC800116B813}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C885578A-262F-44FD-B007-2AFB331AE393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C885578A-262F-44FD-B007-2AFB331AE393}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C885578A-262F-44FD-B007-2AFB331AE393}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C885578A-262F-44FD-B007-2AFB331AE393}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4A42531-6F53-446E-BF99-5EA95026EEB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4A42531-6F53-446E-BF99-5EA95026EEB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4A42531-6F53-446E-BF99-5EA95026EEB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4A42531-6F53-446E-BF99-5EA95026EEB3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,9 @@
+D:\Visual Studio 2010\Projects\NVelocityTest\NVelocityTest\bin\Debug\NVelocityTest.exe.config
+D:\Visual Studio 2010\Projects\NVelocityTest\NVelocityTest\bin\Debug\template.vm
+D:\Visual Studio 2010\Projects\NVelocityTest\NVelocityTest\bin\Debug\NVelocityTest.exe
+D:\Visual Studio 2010\Projects\NVelocityTest\NVelocityTest\bin\Debug\NVelocityTest.pdb
+D:\Visual Studio 2010\Projects\NVelocityTest\NVelocityTest\bin\Debug\NVelocity.dll
+D:\Visual Studio 2010\Projects\NVelocityTest\NVelocityTest\bin\Debug\NVelocity.xml
+D:\Visual Studio 2010\Projects\NVelocityTest\NVelocityTest\obj\x86\Debug\NVelocityTest.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\NVelocityTest\NVelocityTest\obj\x86\Debug\NVelocityTest.exe
+D:\Visual Studio 2010\Projects\NVelocityTest\NVelocityTest\obj\x86\Debug\NVelocityTest.pdb

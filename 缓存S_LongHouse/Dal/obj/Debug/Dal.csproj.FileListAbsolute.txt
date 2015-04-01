@@ -1,0 +1,9 @@
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\Dal\bin\Debug\Dal.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\Dal\bin\Debug\Dal.pdb
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\Dal\bin\Debug\SQLHelp.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\Dal\bin\Debug\SQLHelp.pdb
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\Dal\obj\Debug\Dal.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\Dal\obj\Debug\Dal.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\Dal\obj\Debug\Dal.pdb
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\Dal\bin\Debug\Command.dll
+D:\Visual Studio 2010\Projects\缓存S_LongHouse\Dal\bin\Debug\Command.pdb

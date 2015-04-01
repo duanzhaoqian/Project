@@ -1,0 +1,12 @@
+﻿<Lucenes>
+<Lucene  Id="253" PY="beijing" Name="北京"  MqName="fc_longhousesearch_test191_bj_sh" SearchUrl="search.kuaiyoujia.net/RentHouse/GetLongHouseIndex.ashx"/>
+<Lucene  Id="239"  PY="shanghai" Name="上海"  MqName="fc_longhousesearch_test191_bj_sh" SearchUrl="search.kuaiyoujia.net/RentHouse/GetLongHouseIndex.ashx"/>
+<Lucene  Id="344"  PY="guangzhou" Name="广州"  MqName="fc_longhousesearch_test191_gz_sz_tj" SearchUrl="search.kuaiyoujia.net/RentHouse/GetLongHouseIndex.ashx"/>
+<Lucene  Id="355"  PY="shenzhen" Name="深圳"  MqName="fc_longhousesearch_test191_gz_sz_tj" SearchUrl="search.kuaiyoujia.net/RentHouse/GetLongHouseIndex.ashx"/>
+<Lucene  Id="205"  PY="tianjin" Name="天津"  MqName="fc_longhousesearch_test191_gz_sz_tj" SearchUrl="search.kuaiyoujia.net/RentHouse/GetLongHouseIndex.ashx"/>
+<Lucene  Id="263"  PY="qingdao" Name="青岛"  MqName="fc_longhousesearch_test191_qd_hz_cd_nj_dl" SearchUrl="search.kuaiyoujia.net/RentHouse/GetLongHouseIndex.ashx"/>
+<Lucene  Id="307"  PY="hangzhou" Name="杭州"  MqName="fc_longhousesearch_test191_qd_hz_cd_nj_dl" SearchUrl="search.kuaiyoujia.net/RentHouse/GetLongHouseIndex.ashx"/>
+<Lucene  Id="155"  PY="chengdu" Name="成都"  MqName="fc_longhousesearch_test191_qd_hz_cd_nj_dl" SearchUrl="search.kuaiyoujia.net/RentHouse/GetLongHouseIndex.ashx"/>
+<Lucene  Id="243"  PY="nanjing" Name="南京"  MqName="fc_longhousesearch_test191_qd_hz_cd_nj_dl" SearchUrl="search.kuaiyoujia.net/RentHouse/GetLongHouseIndex.ashx"/>
+<Lucene  Id="296"  PY="dalian" Name="大连"  MqName="fc_longhousesearch_test191_qd_hz_cd_nj_dl" SearchUrl="search.kuaiyoujia.net/RentHouse/GetLongHouseIndex.ashx"/>
+</Lucenes>

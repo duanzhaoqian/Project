@@ -1,0 +1,13 @@
+[TXImageService]
+MQIPAddress="192.168.3.180:61616"
+MQQueueName="fc_renthousepic_test_local"
+MQConnectionTimeOut="3"
+MQRetryCount="2"
+MQShortHouseSearchQueueName="fc_shorthousesearch_test_local"
+MQLongHouseSearchQueueName="fc_longhousesearch_test191"
+
+LogPath="D:\project\pc\fangchan\4.0\TXImage\TXImageService\bin\Debug\TXImageService-{0}_{1}_{2}.txt"
+ThreadCount="1"
+
+WWWDomain=".kyjob.com"
+HtmlBasePath=""

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<configuration>
+  <appSettings>
+    <add key="offerPrice" value="http://redis.cjkjb.com:8080/lua0"/>
+    <add key="LogPath" value="D:\日志\upload\"/>
+  </appSettings>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/>
+  </startup>
+</configuration>
+

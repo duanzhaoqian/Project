@@ -1,0 +1,12 @@
+﻿<Redis  SendTimeout="60" Host="192.168.3.98"  Port="11000" DefaultDB="0" PassWord="" IMGPATH_BASE="E:\www\dz\img\" IMGWEB_BASE="http://img.kuaiyoujia.net/" USER_IMGPATH_BASE="E:\www\dz\img\user\" USER_IMGWEB_BASE="http://img.kuaiyoujia.net/user/"  DOCUMENT_BASE="E:\www\dz\img\document\"  DOCUMENT_WEB_BASE="http://img.kuaiyoujia.net/document/"  VILLAGE_BASE="E:\www\dz\img\village\" VILLAGE_WEB_BASE="http://img.kuaiyoujia.net/village/"  RetryCount="2" RetryTimeout="70"
+HouseImage01="http://redis.cjkjb.com:8080/lua0" 
+HouseImage02="http://redis.cjkjb.com:8080/lua0" 
+       
+UserHeadImage01="http://redis03.kuaiyoujia.com/lua0" 
+BidPrice01="http://redis.cjkjb.com:8080/lua0"
+
+ViewCount01="http://redis.cjkjb.com:8080/lua0"
+NewHouse01="http://redis.cjkjb.com:8080/lua0" 
+KuaiYouDai01="http://redis.cjkjb.com:8080/lua0" 
+RedisServerDefault="http://redis.cjkjb.com:8080/lua0"
+/>

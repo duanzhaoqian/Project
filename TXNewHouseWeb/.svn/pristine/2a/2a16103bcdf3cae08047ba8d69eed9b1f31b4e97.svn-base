@@ -1,0 +1,129 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/TXNewHouseManager.Master"
+    Inherits="WebRentViewPage<TXModel.AdminPVM.PVM_NH_Premises>" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+    <%=AdminPageInfo.PageTitle %>-楼盘相册
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="current">
+        <div class="root">
+            <a href="javascript:void(0);">当前位置</a></div>
+        <span><a href="javascript:void(0);">
+            <%=AdminPageInfo.CardName %></a> <i>&gt;</i><a href="javascript:void(0);"><%=AdminPageInfo.FatherItemName %></a>
+            <i>&gt;</i> <a href="javascript:void(0);">
+                <%=AdminPageInfo.ItemName %></a><i>&gt;</i><a href="javascript:void(0);">发布楼盘</a><i>&gt;</i><a
+                    href="javascript:void(0);">楼盘相册</a></span>
+    </div>
+    <!--//current-->
+    <div class="data">
+        <!-- InstanceBeginEditable name="EditRegion3" -->
+        <div class="outer">
+            <div class="btit clearFix">
+                <div class="tit_font fl">
+                    <h6>
+                        <span class="tex">楼盘相册</span></h6>
+                </div>
+            </div>
+            <div class="choose mt15">
+                <% string tUrl = Auxiliary.Instance.NhManagerUrl + "premises/premisesimage/" + Model.Id + "/0/" + (new Random().Next(9999, 999999)) + ".html?tage="; %>
+                <span><a href="<%=tUrl + "0" %>" class="cur">规划图</a> <a href="<%=tUrl + "1" %>">交通图</a>
+                    <a href="<%=tUrl + "2" %>">位置图</a> <a href="<%=tUrl + "3" %>">实景图</a> <a href="<%=tUrl + "4" %>">
+                        效果图</a> <a href="<%=tUrl + "5" %>">户型图</a> <a href="<%=tUrl + "6" %>">楼栋平面图</a>
+                </span>
+            </div>
+            <div class="loubox clearFix">
+                <!--规划图-->
+                <div class="">
+                    <iframe style="width: 100%;" scrolling="no" frameborder="0" id="Iframe<%=TXCommons.PictureModular.PremisesPictureType.Plan.ToString()%>"
+                        name="frame<%=TXCommons.PictureModular.PremisesPictureType.Plan.ToString()%>"
+                        src="<%=Url.SiteUrl().Common("UploadPremisesPhoto","Premises") %>?guid=<%=Model.InnerCode%>&picturetype=<%=TXCommons.PictureModular.PremisesPictureType.Plan.ToString()%>&cityId=<%=Model.CityId%>&id=<%=Model.Id %>"
+                        allowtransparency="true"></iframe>
+                </div>
+                <!--交通图-->
+                <div style="display: none">
+                    <iframe style="width: 100%;" scrolling="no" frameborder="0" id="Iframe<%=TXCommons.PictureModular.PremisesPictureType.TRAFFIC.ToString()%>"
+                        name="frame<%=TXCommons.PictureModular.PremisesPictureType.TRAFFIC.ToString()%>"
+                        src="<%=Url.SiteUrl().Common("UploadPremisesPhoto","Premises") %>?guid=<%=Model.InnerCode%>&picturetype=<%=TXCommons.PictureModular.PremisesPictureType.TRAFFIC.ToString()%>&cityId=<%=Model.CityId%>&id=<%=Model.Id %>"
+                        allowtransparency="true"></iframe>
+                </div>
+                <!--位置图-->
+                <div style="display: none">
+                    <iframe style="width: 100%;" scrolling="no" frameborder="0" id="Iframe<%=TXCommons.PictureModular.PremisesPictureType.Location.ToString()%>"
+                        name="frame<%=TXCommons.PictureModular.PremisesPictureType.Location.ToString()%>"
+                        src="<%=Url.SiteUrl().Common("UploadPremisesPhoto","Premises") %>?guid=<%=Model.InnerCode%>&picturetype=<%=TXCommons.PictureModular.PremisesPictureType.Location.ToString()%>&cityId=<%=Model.CityId%>&id=<%=Model.Id %>"
+                        allowtransparency="true"></iframe>
+                </div>
+                <!--实景图-->
+                <div style="display: none">
+                    <iframe style="width: 100%;" scrolling="no" frameborder="0" id="Iframe<%=TXCommons.PictureModular.PremisesPictureType.Scene.ToString()%>"
+                        name="frame<%=TXCommons.PictureModular.PremisesPictureType.Scene.ToString()%>"
+                        src="<%=Url.SiteUrl().Common("UploadPremisesPhoto","Premises") %>?guid=<%=Model.InnerCode%>&picturetype=<%=TXCommons.PictureModular.PremisesPictureType.Scene.ToString()%>&cityId=<%=Model.CityId%>&id=<%=Model.Id %>"
+                        allowtransparency="true"></iframe>
+                </div>
+                <!--效果图-->
+                <div style="display: none">
+                    <iframe style="width: 100%;" scrolling="no" frameborder="0" id="Iframe<%=TXCommons.PictureModular.PremisesPictureType.Effect.ToString()%>"
+                        name="frame<%=TXCommons.PictureModular.PremisesPictureType.Effect.ToString()%>"
+                        src="<%=Url.SiteUrl().Common("UploadPremisesPhoto","Premises") %>?guid=<%=Model.InnerCode%>&picturetype=<%=TXCommons.PictureModular.PremisesPictureType.Effect.ToString()%>&cityId=<%=Model.CityId%>&id=<%=Model.Id %>"
+                        allowtransparency="true"></iframe>
+                </div>
+                <!--户型图-->
+                <div style="display: none">
+                    <iframe style="width: 100%;" scrolling="no" frameborder="0" id="Iframe<%=TXCommons.PictureModular.PremisesPictureType.ROOMTYPE.ToString()%>"
+                        name="frame<%=TXCommons.PictureModular.PremisesPictureType.ROOMTYPE.ToString()%>"
+                        src="<%=Url.SiteUrl().Common("UploadPremisesPhoto","Premises") %>?guid=<%=Model.InnerCode%>&picturetype=<%=TXCommons.PictureModular.PremisesPictureType.ROOMTYPE.ToString()%>&cityId=<%=Model.CityId%>&id=<%=Model.Id %>"
+                        allowtransparency="true"></iframe>
+                </div>
+                <!--平面图-->
+                <div style="display: none">
+                    <iframe style="width: 100%;" scrolling="no" frameborder="0" id="Iframe<%=TXCommons.PictureModular.PremisesPictureType.Plane.ToString()%>"
+                        name="frame<%=TXCommons.PictureModular.PremisesPictureType.Plane.ToString()%>"
+                        src="<%=Url.SiteUrl().Common("UploadPremisesPhoto","Premises") %>?guid=<%=Model.InnerCode%>&picturetype=<%=TXCommons.PictureModular.PremisesPictureType.Plane.ToString()%>&cityId=<%=Model.CityId%>&id=<%=Model.Id %>"
+                        allowtransparency="true"></iframe>
+                </div>
+                <!--end7-->
+            </div>
+        </div>
+        <!-- InstanceEndEditable -->
+        <div class="btnDiv tab1" style="display: none;">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb1">
+                <tbody>
+                    <tr class="eqc">
+                        <th width="14%">
+                            &nbsp;
+                        </th>
+                        <td width="86%">
+                            <%Html.BeginForm("UploadPremisesPhotoSub", "Premises", FormMethod.Post);%>
+                            <input type="hidden" value="<%=Model.InnerCode%>" name="innerCode" />
+                            <input type="hidden" value="<%=Model.Id%>" name="pid" />
+                            <%--<input type="submit" name="btn_submit" id="btn_submit" value="发布图片" class="btn3" />--%>
+                            <%Html.EndForm();%>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--//data-->
+    <script type="text/javascript">
+          $(function () {
+              var tage = "<%=ViewData["tage"] %>";
+              if(tage)
+                tabSet(tage);
+              $(".choose.mt15 a").each(function (i) {
+                  $(this).click(function () {
+                      tabSet(i);
+                  });
+              });
+              $(".big_pho").click(function() {
+                  var OImg=$(this).parent().find("img");
+              });
+          });
+          var tabSet = function(i) {
+              $(".choose.mt15 a").eq(i).addClass("cur")
+                  .siblings().removeClass("cur");
+              $(".loubox.clearFix").children("div").eq(i).show()
+                  .siblings().hide();
+          };
+    </script>
+</asp:Content>
