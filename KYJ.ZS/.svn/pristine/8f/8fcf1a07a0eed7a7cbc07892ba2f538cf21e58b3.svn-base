@@ -1,0 +1,182 @@
+﻿@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/Layouts/_WebLayout.cshtml";
+}
+@using KYJ.ZS.Commons.PictureModular;
+@model KYJ.ZS.Models.SaleGoodses.Web_SaleGoodsEntity
+@Html.Partial("RentalGoods/_BreadNavigation", new KYJ.ZS.Models.Common.NavigationEntity() { Content = Model.Title, Type = 1 })
+<div class="cont clearFix">
+    <div class="cont_w">
+        <div class="cont_l col">
+            <div class="cont_lc">
+                <div class="cont_f clearFix">
+                    @{
+                        var picS = GetPicture.GetFirstGoodsPicture(Model.SaleGuid, true, "FREE");
+                        if (string.IsNullOrEmpty(picS))
+                        {
+                            picS = PubConstant.StaticUrl + Url.Content("web/web/images/img/xz_pic.jpg");
+                        }
+                        else
+                        {
+                            picS = picS + ".370_370.jpg";
+                        }
+                    }
+                    <div class="cont_fl col">
+                        <div class="fl_big">
+                            <img data-original="@picS" src=""  />
+                        </div></div>
+                    <div class="cont_fr col">
+                        <div class="cont_frtit">
+                            @Model.Title</div>
+                        <div class="cont_frcc">
+                            <table  width="99%" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="cc_th">
+                                        价　　格：
+                                    </td>
+                                    <td>
+                                        <span class="bigbold fl">￥@Model.Price.ToString("F2")</span>
+                                        @if (Model.IsBargain)
+                                        {
+                                            <span class="fl ts45b12c">拒绝讲价</span> 
+                                        }
+                                    </td>
+                                    <td class="cc_th">
+                                        发布时间：
+                                    </td>
+                                    <td>
+                                        @Model.CreateTime.ToString("yyyy-MM-dd HH:mm")
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="cc_th">
+                                        成　　色：
+                                    </td>
+                                    <td>
+                                        <span class="color45b12c">@(Model.Degree == 10 ? "全" : Model.Degree.ToString() + "成")新</span>
+                                    </td>
+                                    <td class="cc_th">
+                                        浏览次数：
+                                    </td>
+                                    <td>
+                                        @Model.BrowseAmount
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="cc_th">
+                                        交易地点：
+                                    </td>
+                                    <td>
+                                        @Model.Location
+                                    </td>
+                                    <td class="cc_th">
+                                        信息编号：
+                                    </td>
+                                    <td>
+                                        @Model.Id
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="cc_th">
+                                        联&nbsp;&nbsp;系&nbsp;人：
+                                    </td>
+                                    <td>
+                                        @Model.Contact
+                                    </td>
+                                    <td>
+                                        &nbsp;
+                                    </td>
+                                    <td>
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="cc_th">
+                                        联系电话：
+                                    </td>
+                                    <td>
+                                        @Model.ContactPhone
+                                    </td>
+                                    <td>
+                                        &nbsp;
+                                    </td>
+                                    <td>
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="com_tit mt10">
+                    <div class="com_titl">
+                        商品描述</div>
+                </div>
+                <div class="com_conxz">
+                    @Html.Raw(Model.OtherDesc)
+                </div>
+            </div>
+        </div>
+        <div class="cont_rxz">
+            <div class="xz_rtop">
+                <div class=" clearFix">
+                    @{
+                        var pic = GetPicture.GetUserPictureInfo(Model.UserGuid, true, "LOGO").Path;
+                        if (string.IsNullOrEmpty(pic))
+                        {
+                            pic = PubConstant.StaticUrl + Url.Content("web/web/images/img/xztx_pic.jpg");
+                        }
+                        else
+                        {
+                            pic += ".50_50.jpg";
+                        }
+                    }
+                    <div class=" fl xz_tx">
+                        <a href="javascript:return false;">
+                            <img  data-original="@pic" src=""  /></a>
+                    </div>
+                    <div class=" fl ml10 mt5">
+                        <div class=" col333">
+                            @Model.NickName</div>
+                        <div class=" mt10 col999 ">
+                            实名认证&nbsp;<span><img src="@PubConstant.StaticUrl@Url.Content("web/web/images/img/xz_smrzico.jpg")" /></span>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col666 mt10">
+                    在售闲置物品：<span class="col05c blod">@Model.UserSaleGoodsCount</span>件
+                </div>
+            </div>
+            <!--<div class="xz_rpic"> <a href="#"><img src="../images/img/xz_linkpic.jpg"/></a> </div>-->
+            <div class="com_clist">
+                <div class="com_rctit">
+                    卖家其他闲置物品信息</div>
+                <div class="com_rclist clearFix">
+                    <ul id="ul_OtherGoods">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //获取其它商品
+            $.get("@Html.Raw(Url.WebSiteUrl().SaleGoods_OtherGoodsList(Model.Id, Model.UserId, 2))", function (data) {
+                $("#ul_OtherGoods").html(data);
+                //延迟加载图片
+                $("#ul_OtherGoods").find("img").lazyload({ effect: "fadeIn", event: "sporty" });
+                $("#ul_OtherGoods").find("img").trigger("sporty");
+            })
+        })
+    </script>
+    <!--超链接失效-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("a").click(function () {
+                return false;
+            })
+        })
+    </script>
+}

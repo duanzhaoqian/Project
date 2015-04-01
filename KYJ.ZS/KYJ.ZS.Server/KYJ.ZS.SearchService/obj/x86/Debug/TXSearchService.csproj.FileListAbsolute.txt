@@ -1,0 +1,17 @@
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXSearchService\bin\Debug\RedisConfigure.xml
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXSearchService\bin\Debug\TXSearchService.exe.config
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXSearchService\bin\Debug\TXSearchService.exe
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXSearchService\bin\Debug\TXSearchService.pdb
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXSearchService\bin\Debug\Apache.NMS.ActiveMQ.dll
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXSearchService\bin\Debug\Apache.NMS.dll
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXSearchService\bin\Debug\KYJ.ZS.Commons.dll
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXSearchService\bin\Debug\log4net.dll
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXSearchService\bin\Debug\Lucene.Net.dll
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXSearchService\bin\Debug\MQ.dll
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXSearchService\bin\Debug\Newtonsoft.Json.dll
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXSearchService\bin\Debug\ServiceStack.Redis.dll
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXSearchService\bin\Debug\KYJ.ServiceStack.dll
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXSearchService\bin\Debug\KYJ.ZS.Commons.pdb
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXSearchService\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXSearchService\obj\x86\Debug\TXSearchService.exe
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXSearchService\obj\x86\Debug\TXSearchService.pdb

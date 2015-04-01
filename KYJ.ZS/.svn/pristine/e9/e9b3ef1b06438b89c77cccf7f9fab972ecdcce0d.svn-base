@@ -1,0 +1,386 @@
+﻿@using KYJ.ZS.Models.FreightTemplates
+@using KYJ.ZS.Models.DB
+@using KYJ.ZS.Models.Common
+@model FreightTemplateEntity
+@{
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+    ViewBag.Title = (Model == null ? "新增" : "修改") + "运费模板";
+    ViewBag.Navigation = MerchantNavigation.YUNFEIMOBANSHEZHI;
+    // 计价方式
+    int mode=Model==null?1: Model.FreightTemplate.Mode;
+    string firstTitle = mode == 1 ? "首件(个)" : (mode == 2 ? "首重（kg）" : "首体积（m³）");
+    string continuetTitle = mode == 1 ? "续件(个)" : (mode == 2 ? "续重（kg）" : "续体积（m³）");
+    
+    // 本市（同城）
+    FreightCost thisCost = Model == null ? null : Model.FreightCostList.Find(c => c.CityIds != "-1");
+    // 其它省市
+    FreightCost otherCost = Model == null ? null : Model.FreightCostList.Find(c => c.CityIds == "-1");
+    // 国家下拉列表
+    IList<GeographyItemEntity> countryList = ViewData["CountryList"] == null ? null : (IList<GeographyItemEntity>)ViewData["CountryList"];
+}
+
+@section header{
+    <style type="text/css">
+        input.error{ border-color:Red;}
+        label.error{ color:Red; margin-left:10px;}
+    </style>
+}
+<div class="tag">
+        <ul>
+          <li class="cur"><a href="#">@(Model == null ? "新增" : "修改")运费模板</a></li>
+        </ul>
+      </div>
+      <!--修改运费模板开始-->
+      <div class="yf_tep">
+        <form id="frm_yf" name="frm_yf" action="#">
+        <input id="hdn_Id" name="hdn_Id" type="hidden" value="@(Model == null ? null : Model.FreightTemplate.Id.ToString())" />
+        <input id="hdn_MerchantId" name="hdn_MerchantId" type="hidden" value="@CurrentUser.UserID" />
+        <div class="det2 det_2">
+          <ul>
+            <li class="cur1" >模板名称：
+              <input id="txt_title" name="txt_title" value="@(Model == null ? "" : Model.FreightTemplate.Title)" class="intxt" maxlength="30" type="" />
+            </li>
+          </ul>
+        </div>
+        <div class="yunfei1">
+            <span class="col666">发货地址：</span>
+            <select id="sel_country" name="sel_country" class="selcss">
+              <option value='0'>请选择</option>
+              @if (countryList != null && countryList.Count > 0)
+              {
+                  foreach (var country in countryList)
+                  {
+                    <option selected="selected" value="@country.GeographyCode">@country.GeographyName</option>
+                  }
+              }
+            </select>
+            <select id="sel_province" name="sel_province" class="selcss">
+              <option value='0'>请选择</option>
+            </select>
+            <select id="sel_city" name="sel_city" class="selcss">
+              <option value='0'>请选择</option>
+            </select>
+            <select id="sel_district" name="sel_district" class="selcss">
+              <option value='0'>请选择</option>
+            </select>
+        </div>
+        <div class="dxk"> <span>是否包邮： </span>
+        <label class="col333 mr20">
+            <input name="isFreeship" type="radio" class="btn_radio" value="false" @(Model == null ? "checked='checked'" : (Model.FreightTemplate.IsFreeship ? "" : "checked=='checked'")) />
+            买家承担运费</label>
+          <label class="col333 mr20">
+            <input name="isFreeship" type="radio" class="btn_radio" value="true" @(Model == null ? "" : (Model.FreightTemplate.IsFreeship ? "checked='checked'" : "")) />
+            卖家承担运费</label>
+        </div>
+        <div class="dxk"> <span>计价方式：</span>
+        <label class="col333 mr20">
+            <input name="mode" type="radio" class="btn_radio" value="1" @(mode == 1 ? "checked='checked'" : "") />
+            按件数</label>
+          <label class="col333 mr20">
+            <input name="mode" type="radio" class="btn_radio" value="2" @(mode == 2 ? "checked='checked'" : "") />
+            按重量</label>
+          <label class="col333 mr20">
+            <input name="mode" type="radio" class="btn_radio" value="3" @(mode == 3 ? "checked='checked'" : "") />
+            按体积</label>
+        </div>
+        <div class="dxk"> <span>运送方式：</span>
+        <label class="col333 mr20">
+            <input name="type" type="radio" class="btn_radio" value="4" @(Model == null ? "" : (Model.FreightTemplate.IsLogistics ? "checked='checked'" : "")) />
+            物流</label>
+          <label class="col333 mr20">
+            <input name="type" type="radio" class="btn_radio" value="1" @(Model == null ? "" : (Model.FreightTemplate.IsExpress ? "checked='checked'" : "")) />
+            快递</label>
+          <label class="col333 mr20">
+            <input name="type" type="radio" class="btn_radio" value="2" @(Model == null ? "" : (Model.FreightTemplate.IsEms ? "checked='checked'" : "")) />
+            EMS</label>
+          <label class="col333 mr20">
+            <input name="type" type="radio" class="btn_radio" value="3" @(Model == null ? "" : (Model.FreightTemplate.IsSnailmail ? "checked='checked'" : "")) />
+            平邮</label>
+
+            <p id="type_error" style=" display:inline" class="error"></p>
+        </div>
+        <div id="div_yunsong" class="yunsong clearFix">
+          <p>运送费用：</p>
+          <div class="fl" style="width:780px;">
+          <table width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+              <th width="36%">运送到</th>
+              <th width="16%">@firstTitle</th>
+              <th width="16%">运费(元)</th>
+              <th width="16%">@continuetTitle</th>
+              <th width="16%">运费(元)</th>
+            </tr>
+            <tr style="border-left:1px solid #ddd;">
+              <td >本市（同城）<input id="hdn_cityIds" name="hdn_cityIds" value="@(Model == null ? null : Model.FreightTemplate.CityId.ToString())" type="hidden"></td>
+              <td><input data-validate="firstIme" name="txt_firstIme" class="intxt_h24 tac w65" type="" maxlength="10" value="@(thisCost == null ? "" : Convert.ToInt32(thisCost.FirstIme).ToString())"/></td>
+              <td><input data-validate="firstPrice" name="txt_firstPrice" class="intxt_h24 tac w65" type="" maxlength="10" value="@(thisCost == null ? "" : thisCost.FirstPrice.ToString("F2"))"/></td>
+              <td><input data-validate="continuetIme" name="txt_continuetIme" class="intxt_h24 tac w65" type="" maxlength="10" value="@(thisCost == null ? "" : Convert.ToInt32(thisCost.ContinuetIme).ToString())"/></td>
+              <td class="td1"><input data-validate="continuePrice" name="txt_continuePrice" class="intxt_h24 tac w65" type="" maxlength="10" value="@(thisCost == null ? "" : thisCost.ContinuePrice.ToString("F2"))"/></td>
+            </tr>
+            <tr>
+              <td>其它省市 @Html.Hidden("hdn_cityIds", "-1")</td>
+              <td><input data-validate="firstIme" name="txt_firstIme" class="intxt_h24 tac w65" type="" maxlength="10"  value="@(thisCost == null ? "" : Convert.ToInt32(otherCost.FirstIme).ToString())"/></td>
+              <td><input data-validate="firstPrice" name="txt_firstPrice" class="intxt_h24 tac w65" type="" maxlength="10" value="@(thisCost == null ? "" : otherCost.FirstPrice.ToString("F2"))"/></td>
+              <td><input data-validate="continuetIme" name="txt_continuetIme" class="intxt_h24 tac w65" type="" maxlength="10" value="@(thisCost == null ? "" : Convert.ToInt32(otherCost.ContinuetIme).ToString())"/></td>
+              <td class="td1"><input data-validate="continuePrice" name="txt_continuePrice" class="intxt_h24 tac w65" type="" maxlength="10" value="@(thisCost == null ? "" : otherCost.ContinuePrice.ToString("F2"))"/></td>
+        	</tr>
+          </table>
+          </div>
+        </div>
+        <div class="clearFix bbbox"><a id="a_submit" class="btn_blue mr10" href="javascript:void(0);">确认@(Model == null ? "添加" : "修改")</a><a class="btn_grey" href="@Url.MerchantSiteUrl().FreightTemplates_Index">取消</a></div>
+          </form>
+      </div>
+      <!--修改运费模板结束--> 
+
+@section scripts{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/public/common.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.validator.addMethod("isValidateNull", function (value, element) {
+                var isFreeship = $("input[name = 'isFreeship']:checked").val(); //是否包邮
+                // 包邮
+                if (isFreeship.toLowerCase() == 'true') {
+                    return true;
+                }
+                if ($.trim(value) == '') {
+                    return false;
+                }
+                return true;
+            }, "");
+            $.validator.addMethod("isValidateInt", function (value, element) {
+                var isFreeship = $("input[name = 'isFreeship']:checked").val(); //是否包邮
+                // 包邮
+                if (isFreeship.toLowerCase() == 'true') {
+                    return true;
+                }
+                var regex = /^[1-9]\d*$/;
+                return this.optional(element) || (regex.test(value));
+            }, "");
+            $.validator.addMethod("isValidateNumber", function (value, element) {
+                var isFreeship = $("input[name = 'isFreeship']:checked").val(); //是否包邮
+                // 包邮
+                if (isFreeship.toLowerCase() == 'true') {
+                    return true;
+                }
+                var regex = /^[0-9]+\.{0,1}[0-9]{0,2}$/;
+                return this.optional(element) || (regex.test(value));
+            }, "");
+            $("#frm_yf").validate({
+                rules: {
+                    txt_title: { required: true },
+                    sel_district: { min: 1 },
+                    type: { required: true }
+                },
+                messages: {
+                    txt_title: { required: "<span class='no'>请填写模板名称！</span>" },
+                    sel_district: { min: "<span class='no'>请完善发货地址！</span>" },
+                    type: { required: "<p class='no'>请选择运送方式！</p>" }
+                },
+                //errorElement: "i",
+                errorPlacement: function (error, element) {
+                    if (element.is(":radio"))
+                        error.appendTo(element.parent().parent());
+                    else
+                        error.appendTo(element.parent());
+                },
+                submitHandler: function () {
+                    // 运费模板信息
+                    var id = $("#hdn_Id").val(),
+                        merchantId = $("#hdn_MerchantId").val(),
+                        title = $.trim($("#txt_title").val()),
+                        provinceId = $("#sel_province").val(),
+                        provinceName = $("#sel_province option:selected").text(),
+                        cityId = $("#sel_city").val(),
+                        cityName = $("#sel_city option:selected").text(),
+                        districtId = $("#sel_district").val(),
+                        districtName = $("#sel_district option:selected").text(),
+                        isFreeship = $("input[name='isFreeship']:checked").val().toLowerCase(),
+                        mode = $("input[name='mode']:checked").val(),
+                        type = $("input[name='type']:checked").val();
+
+                    // 运送费用Json
+                    var costJson = '',
+                        cityIds = "-1";
+                    // 包邮时默认全国运送费用为0
+                    if (isFreeship == "true") {
+                        costJson = '[{"CityIds":"' + cityIds + '","FirstIme":1,"FirstPrice":0,"ContinuetIme":1,"ContinuePrice":0}]';
+                    }
+                    else {
+                        // 运费计算
+                        var costList = '';
+                        $(".yunsong table tr").each(function (index, value) {
+                            if (index == 0) {
+                                return true;
+                            }
+                            cityIds = $(this).find("#hdn_cityIds").val();
+                            var firstIme = $.trim($(this).find("[data-validate='firstIme']").val()),
+                                firstPrice = $.trim($(this).find("[data-validate='firstPrice']").val()),
+                                continuetIme = $.trim($(this).find("[data-validate='continuetIme']").val()),
+                                continuePrice = $.trim($(this).find("[data-validate='continuePrice']").val());
+
+                            // 若指定城市,去除结尾逗号
+                            if (cityIds != '-1' && cityIds.substr(cityIds.length - 1, 1) == ',')
+                                cityIds = cityIds.substr(0, cityIds.length);
+
+                            costList += '{"CityIds":"' + cityIds + '","FirstIme":"' + firstIme + '","FirstPrice":"' + firstPrice
+                                        + '","ContinuetIme":"' + continuetIme + '","ContinuePrice":"' + continuePrice + '"},';
+                        });
+                        costJson = '[' + costList.substring(0, costList.length - 1) + ']';
+                    }
+
+                    // 运费模板Json
+                    var freigthTemplateJson = '{"Id":"' + id + '","MerchantId":"' + merchantId + '","Title":"' + title
+                                            + '","ProvinceId":"' + provinceId + '","ProvinceName":"' + provinceName
+                                            + '","CityId":"' + cityId + '","CityName":"' + cityName
+                                            + '","DistrictId":"' + districtId + '","DistrictName":"' + districtName
+                                            + '","IsFreeship":"' + isFreeship + '","Mode":"' + mode + '","Type":"' + type
+                                            + '","CostList":' + costJson + '}';
+                    // post提交运费模板Json
+                    $.post('@Url.MerchantSiteUrl().FreightTemplates_Create', { jsonData: freigthTemplateJson },
+                                function (data) {
+                                    var _data = data.toUpperCase();
+                                    // 添加、修改成功
+                                    if (_data.indexOf("TRUE") > -1) {
+                                        window.location = '@Url.MerchantSiteUrl().FreightTemplates_Index';
+                                    }
+                                    else if (_data.indexOf("||") > -1) {
+                                        var erroInfo = data.split('||')[1];
+                                        $.alert(erroInfo);
+                                    }
+                                    else if (_data.indexOf("FALSE") > -1) {
+                                        $.alert('@(Model == null ? "添加" : "修改")' + '失败');
+                                    }
+                                    else {
+                                        $.alert(data);
+                                    }
+                                }
+                            );
+                }
+            });
+
+            $("[data-validate='firstIme'],[data-validate='continuetIme']").each(function (index, value) {
+                var name = $(this).attr("name");
+                $(this).attr("name", name + index);
+                $(this).rules("add", {
+                    isValidateNull: true,
+                    isValidateInt: true
+                })
+            });
+            $("[data-validate='firstPrice'],[data-validate='continuePrice']").each(function (index, value) {
+                var name = $(this).attr("name");
+                $(this).attr("name", name + index);
+                $(this).rules("add", {
+                    isValidateNull: true,
+                    isValidateNumber: true
+                })
+            });
+
+            // 城市下拉改变事件
+            $("#sel_city").change(function () {
+                var cityId = $(this).val();
+                Common.ClearListItems($("#sel_district"));
+                if (cityId > 0) {
+                    Common.LoadGeographyItems('@Url.MerchantSiteUrl().GeographyLocation("districts")?geographyCode=' + cityId + "&ram=" + Math.random(), 0, $("#sel_district"));
+                }
+                // 运送费用中的本市（同城）
+                $("input[name='hdn_cityIds']").eq(0).val(cityId);
+                $("#hdn_yunsongDiv").val($("#div_yunsong").html());
+            });
+            // 省份下拉改变事件
+            $("#sel_province").change(function () {
+                var provinceId = $(this).val();
+                Common.ClearListItems($("#sel_city"));
+                Common.ClearListItems($("#sel_district"));
+                if (provinceId > 0) {
+                    Common.LoadGeographyItems('@Url.MerchantSiteUrl().GeographyLocation("cities")?geographyCode=' + provinceId + "&ram=" + Math.random(), 0, $("#sel_city"));
+                }
+            });
+            // 国家下拉改变事件
+            $("#sel_country").change(function () {
+                var countryId = $(this).val();
+                Common.ClearListItems($("#sel_province"));
+                Common.ClearListItems($("#sel_city"));
+                Common.ClearListItems($("#sel_district"));
+                if (countryId > 0) {
+                    Common.LoadGeographyItems('@Url.MerchantSiteUrl().GeographyLocation("provinces")?geographyCode=' + countryId + "&ram=" + Math.random(), 0, $("#sel_province"));
+                }
+            });
+            var Init = function (intPId, intCId, intDId) {
+                Common.LoadGeographyItems('@Url.MerchantSiteUrl().GeographyLocation("provinces")', intPId, $("#sel_province"));
+                if (intPId > 0) {
+                    Common.LoadGeographyItems('@Url.MerchantSiteUrl().GeographyLocation("cities")?geographyCode=' + intPId, intCId, $("#sel_city"));
+                }
+                if (intCId > 0) {
+                    Common.LoadGeographyItems('@Url.MerchantSiteUrl().GeographyLocation("districts")?geographyCode=' + intCId, intDId, $("#sel_district"));
+                }
+            };
+            // 地区列表初次加载
+            Init('@(Model==null?0:Model.FreightTemplate.ProvinceId)', '@(Model==null?0:Model.FreightTemplate.CityId)', '@(Model==null?0:Model.FreightTemplate.DistrictId)');
+
+            // 是否包邮（隐藏运送费用）
+            $("input[name='isFreeship']").change(function () {
+                //$("i[name='i_free']").remove();
+                var isFreeship = $("input[name = 'isFreeship']:checked").val();
+                if (isFreeship.toLowerCase() == 'true') {
+                    //$(".yunsong.clearFix").hide();
+                    $("#div_yunsong label.error").remove();
+                    $("i[name='i_free']").remove();
+                    $("[data-validate='firstIme'],[data-validate='continuetIme'],[data-validate='firstPrice'],[data-validate='continuePrice']").each(function (index, value) {
+                        $span = $("<i name='i_free' style=' display:inline-block;'>包邮</i>");
+                        $(this).after($span).hide();
+                    });
+                }
+                else {
+                    $("i[name='i_free']").each(function () {
+                        $(this).prev().show();
+                        $(this).remove();
+                    })
+                }
+            });
+            // 初始化是否隐藏运送费用
+            $("input[name='isFreeship']").change();
+
+
+            // 修改计价方式，运费计算初始为空
+            $("input[name='mode']").live("change", function () {
+                // 运费计算清空
+                $("input[data-validate='firstIme']").each(function () {
+                    $(this).val('');
+                })
+                $("input[data-validate='firstPrice']").each(function () {
+                    $(this).val('');
+                })
+                $("input[data-validate='continuetIme']").each(function () {
+                    $(this).val('');
+                })
+                $("input[data-validate='continuePrice']").each(function () {
+                    $(this).val('');
+                })
+                // 修改显示文本
+                var costMode = $("input[name='mode']:checked").val();
+                if (costMode == 1) {
+                    $(".yunsong table th").eq(1).html("首件(个)");
+                    $(".yunsong table th").eq(3).html("续件(个)");
+                }
+                else if (costMode == 2) {
+                    $(".yunsong table th").eq(1).html("首重（kg）");
+                    $(".yunsong table th").eq(3).html("续重（kg）");
+                }
+                else {
+                    $(".yunsong table th").eq(1).html("首体积（m³）");
+                    $(".yunsong table th").eq(3).html("续体积（m³）");
+                }
+
+                // 清除运送费用中的错误记录
+                //$(".yunsong.clearFix").find(".error").remove();
+            })
+
+
+            // 添加、修改
+            $("#a_submit").click(function () {
+                $("#frm_yf").submit();
+            });
+        })
+    </script>
+}

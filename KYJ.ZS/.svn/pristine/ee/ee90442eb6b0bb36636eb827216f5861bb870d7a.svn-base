@@ -1,0 +1,242 @@
+﻿@using KYJ.ZS.Models.DB
+@using KYJ.ZS.Models.Generalizes;
+@using KYJ.ZS.Models.RentalGoodses
+@model  KYJ.ZS.Models.Pages.PageData<Manager_RentalGoodsAduitEntity>
+@{
+    ViewBag.Title = "商品排序详情";
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    bool isAdvert = (bool)ViewData["isAdvert"];
+    if (isAdvert)
+    {
+        ViewBag.Navigation = ManagerNavigation.SHENHESHANGPINPAIXU;
+    }
+    else
+    {
+        ViewBag.Navigation = ManagerNavigation.GUANLISHANGPINPAIXU;
+    }
+
+    Generalize generalize = (Generalize)ViewData["generalize"];
+    Manager_GeneralizeLocationEntity location = (Manager_GeneralizeLocationEntity)ViewData["location"];
+    List<Manager_RentalGoodsAduitEntity> goodsList = (List<Manager_RentalGoodsAduitEntity>)ViewData["goodsList"];
+    List<Category> categoryList = (List<Category>)ViewData["listCategory"];
+  
+}
+<div class="tag_n">
+    <ul>
+        <li>
+            <a href="#">商品排序详情</a></li>
+    </ul>
+</div>
+<div class="part">
+    <h1>基本信息<div class="fr mt5 mr10">
+        <a href="javascript:history.go(-1);" class="link_05c">返回>></a></div>
+    </h1>
+    @if (isAdvert && (generalize.AduitState == 2 || generalize.AduitState == 4 || generalize.AduitState == 3))
+    {
+            
+        <div class="fr mt5 mr10">
+            <input type="button" name="btnBack" class="btn_f65c33"  advertID="@generalize.GeneralizeId" value="返回" /></div>
+        <div class="fr mt5 mr10">
+            <input type="button" name="btnPass" class="btn_f65c33" advertID="@generalize.GeneralizeId" value="通过" /></div>
+        <div class="fr mt5 mr10">
+            <input type="button" name="btnReject" class="btn_f65c33" advertID="@generalize.GeneralizeId" value="驳回" /></div>
+            
+    }
+    <div class="tabbox">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_1">
+            <tr>
+                <th width="12%">页面： </th>
+                <td width="88%">
+                    @location.GeneralizeTypeName
+                </td>
+            </tr>
+            @if (categoryList.Count == 2)
+            {
+                <tr>
+                    <th>分类： </th>
+                    <td><span>@categoryList[0].Name - @categoryList[1].Name</span> </td>
+                </tr>
+            }
+            else if (categoryList.Count == 3)
+            {
+                <tr>
+                    <th>分类： </th>
+                    <td><span>@categoryList[0].Name - @categoryList[1].Name - @categoryList[2].Name</span>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <th>位置： </th>
+                <td>
+                    @location.GeographyName
+                </td>
+            </tr>
+            <tr>
+                <th>排序名称： </th>
+                <td>
+                    @generalize.Name
+                </td>
+            </tr>
+            <tr>
+                <th valign="top">说明： </th>
+                <td>
+                    @generalize.Remark
+                </td>
+            </tr>
+        </table>
+    </div>
+    <h1>方案排期</h1>
+    <div class="tabbox">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_1">
+            <tr>
+                <th width="18%">开始时间： </th>
+                <td width="19%">
+                    @generalize.BeginTime
+                </td>
+                <th width="11%">结束时间： </th>
+                <td width="52%">
+                    @generalize.EndTime
+                </td>
+            </tr>
+        </table>
+    </div>
+    <h1>商品排序<span>数量：<em>@location.Number</em></span></h1>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_2 mt10">
+        <tr>
+            <th width="35%">商品名称 </th>
+            <th width="11%">月租(元) </th>
+            <th width="15%">商户名称 </th>
+            <th width="14%">商家编号 </th>
+            <th width="8%">排序 </th>
+        </tr>
+        @foreach (var item in goodsList)
+        {
+            <tr>
+                <td>
+                    @item.GoodsName
+                </td>
+                <td>
+                    @item.MonthPrice.ToString("F2")
+                </td>
+                <td>
+                    @item.MerchantName
+                </td>
+                <td>
+                    @item.GoodsCode
+                </td>
+                <td>
+                    @item.Sort
+                </td>
+            </tr>
+        }
+    </table>
+    @if (generalize.State == 1 && (!string.IsNullOrEmpty(generalize.AduitRemark)))
+    {
+        // 广告核审状态（0未知1未审核2审核中（初审）3审核中（审核未通过）4审核中（复审）5审核通过（待上线，已上线，已下线））
+        <h1>审核未通过</h1>
+        <div class="tabbox">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_1">
+                <tr>
+                    <th width="12%">原因： </th>
+                    <td width="88%">@generalize.AduitRemark
+                    </td>
+                </tr>
+            </table>
+        </div>
+    }
+</div>
+<div id="hdn_dialog" style="display: none">
+    <div class="layer w400 mt10">
+        <div class="layer_title">
+            驳回</div>
+        <a name="a_close" href="javascript:void(0);" class="close"></a>
+        <div class="layer_box">
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td valign="top">驳回理由： </td>
+                    <td>
+                        <textarea name="area_AuditOpinion" class="area w260 "></textarea><div name="div_error"
+                            class="cold21b1b mt5">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp; </td>
+                    <td>
+                        <input name="btn_violation" advertid="@generalize.GeneralizeId" data-name="" type="button" class="btn_1abc9c mr10"
+                                value="确认" />
+                        <input name="btn_cancel" type="button" class="btn_grey mr10" value="取消" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            //btnBack btnPass  btnReject  返回  通过  驳回
+            //返回
+            $("[name=btnBack]").click(function () {
+                window.location = "javascript:history.go(-1)";
+            });
+            //通过
+            $("[name=btnPass]").click(function () {
+                $.get('@Url.ManagerSiteUrl().Generalize_PassAduit(generalize.GeneralizeId)', { flag: 1 },
+                    function (data) {
+                        // 操作成功
+                        if (data.Success) {
+                            //$.alert("成功！")
+                            window.location = "@Url.ManagerSiteUrl().Generalize_ShowAduitInfo";
+
+                        } else {
+                            $.alert(data.Message);
+                        }
+                    });
+            });
+
+
+            // 商品详情弹窗
+            $("[name='btnReject']").click(function () {
+                //var detailHref = $(this).attr("data-href");
+                var advertId = $(this).attr("advertID");
+                //var goodsName = $(this).attr("data-name");
+                //$("#hdn_dialog").find("[name='a_detailLink']").attr("href", detailHref);
+                $("#hdn_dialog").find("[name='btn_violation']").attr("advertID", advertId); //.attr("data-name", goodsName);
+                $.content($("#hdn_dialog").html(), 400, 0, 0);
+            });
+
+            // 关闭弹窗
+            $("[name='a_close'], [name='btn_cancel']").live("click", function () {
+                $.closeAll();
+            });
+
+            // 确认违规
+            $("[name='btn_violation']").live("click", function () {
+                var $div_error = $(this).closest("table").find("[name='div_error']");
+                // 驳回理由
+                var auditOpinion = $(this).closest("table").find("[name='area_AuditOpinion']").val();
+                if ($.trim(auditOpinion) == '') {
+                    $div_error.html('请填写驳回理由！');
+                    return false;
+                }
+                $.get('@Url.ManagerSiteUrl().Generalize_PassAduit(generalize.GeneralizeId)', { AuditOpinion: auditOpinion, flag: 0 },
+                    function (data) {
+                        // 操作成功
+                        if (data.Success) {
+                            window.location = "@Url.ManagerSiteUrl().Generalize_ShowAduitInfo";
+                        } else {
+                            $div_error.html('操作失败，请重试！');
+                            $.alert(data.Message);
+                        }
+                    }
+                );
+            });
+
+
+
+        });
+
+
+    </script>
+}

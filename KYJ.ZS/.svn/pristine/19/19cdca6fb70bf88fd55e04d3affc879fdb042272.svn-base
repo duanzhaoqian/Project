@@ -1,0 +1,109 @@
+﻿@using KYJ.ZS.Models.OrderGoodses;
+@model Webdiyer.WebControls.Mvc.PagedList<RentalOrderEntity>
+@using Webdiyer.WebControls.Mvc
+@{
+    ViewBag.Title = "代售的订单";
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+    ViewBag.Navigation = MerchantNavigation.DAISHOUDEDINGDAN;
+}
+<div class="rightbox">
+    <!-- InstanceBeginEditable name="EditRegion1" -->
+    <div class="tag">
+        <ul>
+            <li class="cur"><a href="#">代售订单列表</a></li>
+        </ul>
+    </div>
+    <div class="conbox">
+        <div class="serchbox clearFix">
+            <div class="ml17 fl">
+                商品名称：<input type="text" value="" class="intxt_h24 w130" /></div>
+            <div class="ml15 fl">
+                订单编号：
+                <input type="text" value="" class="intxt_h24 w130" /></div>
+            <div class="ml15 fl">
+                买家昵称：
+                <input type="text" value="" class="intxt_h24 w130" /></div>
+            <input type="button" class="btn_red" value="搜索" /></div>
+    </div>
+    <div class="listbox">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab_4">
+            <tr>
+                <th width="31%">
+                    商品
+                </th>
+                <th width="10%">
+                    月租(元)
+                </th>
+                <th width="10%">
+                    数量
+                </th>
+                <th width="13%">
+                    买家
+                </th>
+                <th width="13%">
+                    实收款(元)
+                </th>
+                <th width="13%">
+                    订单状态
+                </th>
+                <th width="10%" class="br_colddd">
+                    操作
+                </th>
+            </tr>
+        </table>
+        @if (Model != null)
+        {
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab_3 nobt">
+                @foreach (RentalOrderEntity m in Model)
+                {
+                    <tr>
+                        <th colspan="7" class="nobb bor_ddd">
+                            <div class="fl normal ml10 col666">
+                                订单编号：@m.Number</div>
+                            <div class="fr col999 normal mr10">
+                                成交时间：@m.UpdateTime</div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td width="31%" class="nobr">
+                            <div class="imgbox ml10">
+                                <img src="http://static.zushou.com/static_v1.0/web/merchant/images/img/img_01.jpg"
+                                    width="50" height="50" /></div>
+                            <div class="sptit">
+                                <a href="#">@m.Title</a></div>
+                            <div class="bian">
+                                @m.Title</div>
+                        </td>
+                        <td width="10%" class="nobr">
+                            @m.Monthprice.ToString("0.00")
+                        </td>
+                        <td width="10%">
+                            @m.Num
+                        </td>
+                        <td width="13%">
+                            @m.NickName
+                        </td>
+                        <td width="13%">
+                            <strong class="cold21b1b">@m.Totalprice.ToString("0.00")</strong><div class="col999">
+                                (含快递：200.00)</div>
+                        </td>
+                        <td width="13%">
+                            <div class="col1d9e08">
+                                @OrderStatus.GetStateExplain(Convert.ToInt32(m.State))</div>
+                        </td>
+                        <td width="10%">
+                            <a href="#" class="col05c mr10" style="display:none">订单详情</a>
+                        </td>
+                    </tr>
+                      
+                }
+            </table>
+            
+            
+            <div class="page mb10">
+                @Html.Pager(Model.TotalItemCount, Model.PageSize, Model.CurrentPageIndex, "bookingorder", "transmanage", new PagerOptions { ShowGoButton = false, SeparatorHtml = " ", ShowFirstLast = true, ShowPageIndexBox = false, FirstPageText = "首页", LastPageText = "尾页", GoButtonText = "跳转", CssClass = "", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + Model.CurrentPageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next", FirstCss = "", LastCss = "", SpanCSS = "col333 font12 mr10", ShowGoButtonCss = "pagetz" }, null, null, null)
+             
+            </div>
+        }
+    </div>
+</div>

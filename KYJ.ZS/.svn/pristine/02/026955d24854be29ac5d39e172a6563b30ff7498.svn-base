@@ -1,0 +1,370 @@
+﻿@{
+    ViewBag.Title = "租用中心-订单详情";
+    Layout = "~/Views/Shared/Layouts/_UserLayout.cshtml";
+    ViewBag.Navigation = UserNavigation.ZUYONGZHONGXIN;
+    var OrderOther = ViewData["OrderOther"] as KYJ.ZS.Models.DB.OrderOther;
+}
+@model KYJ.ZS.Models.OrderGoodses.OrderGoodsEntity
+@section scripts
+{
+    <script type="text/javascript">
+        //确认收货
+        function ConfirmReceipt(id) {
+            $.confirm("是否确认收货？", "提示", function () {
+                $(".xubox_yes").unbind("click");
+                var strUrl = "@Url.UserSiteUrl().ConfirmReceipt";
+                //alert(strUrl)
+                $.post(strUrl, { orderId: id, m: Math.random() }, function (data) {
+                    if (data > 0) {
+                        var strHref = location.href;
+                        location.href = strHref;
+                    } else {
+                        $.alert("确认收货失败，请重试");
+                    }
+                }, "json");
+            });
+        }
+        //确认起租
+        function ConfirmHire(id) {
+            $.confirm("是否确认起租？", "提示", function () {
+                $(".xubox_yes").unbind("click");
+                var strUrl = "@Url.UserSiteUrl().ConfirmHire";
+                $.post(strUrl, { orderId: id, m: Math.random() }, function (data) {
+                    if (data > 0) {
+                        var strHref = location.href;
+                        location.href = strHref;
+                    } else {
+                        $.alert("确认收货失败，请重试");
+                    }
+                }, "json");
+            });
+        }
+        var count = 0;
+        //申请换货
+        function ReturnsGoods(id) {
+            $.confirm("确认申请换货吗？", "提示", function () {
+                if (count == 0) {
+                    count = 1;
+                    //$(".xubox_yes").unbind("click");
+                    var strUrl = "@Url.UserSiteUrl().ReturnsGoods";
+                    $.post(strUrl, { orderId: id, m: Math.random() }, function (data) {
+                        if (data > 0) {
+                            var strHref = location.href;
+                            location.href = strHref;
+                        } else {
+                            count = 0;
+                            $.alert("申请失败，请重试");
+                        }
+                    }, "json");
+                }
+            });
+        }
+        //申请退租
+        function ApplicationSurrender(id) {
+            $.confirm("确认申请退租吗？", "提示", function () {
+                if (count == 0) {
+                    count = 1;
+                    //$(".xubox_yes").unbind("click");
+                    var strUrl = "@Url.UserSiteUrl().ApplicationSurrender";
+                    $.post(strUrl, { orderId: id, m: Math.random() }, function (data) {
+                        if (data > 0) {
+                            var strHref = location.href;
+                            location.href = strHref;
+                        } else {
+                            count = 0;
+                            $.alert("申请失败，请重试");
+                        }
+                    }, "json");
+                }
+            });
+        }
+        //申请退货
+        function ApplicationReturnOfGoods(id) {
+            $.confirm("确认申请退货吗？", "提示", function () {
+                if (count == 0) {
+                    count = 1;
+                    //$(".xubox_yes").unbind("click");
+                    var strUrl = "@Url.UserSiteUrl().ApplicationReturnOfGoods";
+                    $.post(strUrl, { orderId: id, m: Math.random() }, function (data) {
+                        if (data > 0) {
+                            var strHref = location.href;
+                            location.href = strHref;
+                        } else {
+                            count = 0;
+                            $.alert("申请失败，请重试");
+                        }
+                    }, "json");
+                }
+            });
+        }
+        //撤消
+        function CancelOrderOperating(id) {
+            $.confirm("确认撤消退货吗？", "提示", function () {
+                $(".xubox_yes").unbind("click");
+                var strUrl = "@Url.UserSiteUrl().CancelOrderOperating";
+                $.post(strUrl, { orderId: id, m: Math.random() }, function (data) {
+                    if (data > 0) {
+                        var strHref = location.href;
+                        location.href = strHref;
+                    } else {
+                        $.alert("申请失败，请重试");
+                    }
+                }, "json");
+            });
+        }
+        //取消订单
+        function CancelOrders(id) {
+            $.confirm("确认取消订单吗？", "提示", function () {
+                $(".xubox_yes").unbind("click");
+                var strUrl = "@Url.UserSiteUrl().CancelOrders";
+                $.post(strUrl, { orderId: id, m: Math.random() }, function (data) {
+                    if (data > 0) {
+                        var strHref = location.href;
+                        location.href = strHref;
+                    } else {
+                        $.alert("删除订单失败，请重试");
+                    }
+                }, "json");
+            });
+        }
+        //删除订单
+        function DelOrders(id) {
+            $.confirm("确认删除订单吗？", "提示", function () {
+                $(".xubox_yes").unbind("click");
+                var strUrl = "@Url.UserSiteUrl().DelOrders";
+                $.post(strUrl, { orderGoodsId: id, m: Math.random() }, function (data) {
+                    if (data > 0) {
+                        location.href = '@Url.UserSiteUrl().RentOrdersList';
+                    } else {
+                        $.alert("取消订单失败，请重试");
+                    }
+                }, "json");
+            });
+        }
+        function SurrenderPayout(id) {
+            $.confirm("确认扣除赔损金额？", "提示", function () {
+                $(".xubox_yes").unbind("click");
+                var strUrl = "@Url.UserSiteUrl().SurrenderPayout";
+                $.post(strUrl, { orderId: id, m: Math.random() }, function (data) {
+                    if (data > 0) {
+                        var strHref = location.href;
+                        location.href = strHref;
+                    } else {
+                        $.alert("赔损失败，请重试");
+                    }
+                }, "json");
+            });
+        }
+        function ReturnOfGoodsPayout(id) {
+            $.confirm("确认扣除赔损金额？", "提示", function () {
+                $(".xubox_yes").unbind("click");
+                var strUrl = "@Url.UserSiteUrl().ReturnOfGoodsPayout";
+                $.post(strUrl, { orderId: id, m: Math.random() }, function (data) {
+                    if (data > 0) {
+                        var strHref = location.href;
+                        location.href = strHref;
+                    } else {
+                        $.alert("赔损失败，请重试");
+                    }
+                }, "json");
+            });
+        }
+    </script>
+}
+<div class="tag">
+    <ul>
+        <li class="cur"><a href="javascript:void(0);">订单详情</a></li>
+    </ul>
+</div>
+<div class="er_location">
+    <table cellspacing="0" cellpadding="0" border="0" width="85%">
+        @if (Model != null)
+        {
+            var pic = KYJ.ZS.Commons.PictureModular.GetPicture.GetFirstGoodsPicture(Model.OrderGoodsGuid, true, "SHOW");
+            if (string.IsNullOrEmpty(pic))
+            {
+                pic = PubConstant.StaticUrl+Url.Content("web/user/images/pic7.jpg");
+                
+            }
+            else
+            {
+                pic = pic + ".60_60.jpg";
+            }
+            var shenqingtuihuo = "<a href=\"javascript:void(0);\" onclick=\"ApplicationReturnOfGoods(" + Model.OrderId + ")\" class=\"btn_blue ml15\">申请退货</a>";
+            var querenshouhuo = "<a href=\"javascript:void(0);\" class=\"btn_orange\" onclick=\"ConfirmReceipt(" + Model.OrderId + ")\">确认收货</a>";
+            var chexiao = "<a href=\"javascript:void(0);\" onclick=\"CancelOrderOperating(" + Model.OrderId + ")\" class=\"btn_blue ml15\">撤消</a>";
+            var shenqinghuanhuo = "<a href=\"javascript:void(0);\" onclick=\"ReturnsGoods(" + Model.OrderId + ")\" class=\"btn_blue ml15\">申请换货</a>";
+            var querenqizu = "<a href=\"javascript:void(0);\" class=\"btn_orange\" onclick=\"ConfirmHire(" + Model.OrderId + ")\">确认租用</a>";
+            var shenqingtuizu = "<a href=\"javascript:void(0);\" onclick=\"ApplicationSurrender(" + Model.OrderId + ")\" class=\"btn_blue ml15\">申请退租</a>";
+            var quxiaodingdan = "<a href=\"javascript:void(0);\" class=\"btn_blue ml15\" onclick=\"CancelOrders(" + Model.OrderId + ")\">取消订单</a>";
+            var shanchu = "<a href=\"javascript:void(0);\" class=\"btn_blue ml15\" onclick=\"DelOrders(" + Model.ID + ")\">删除</a>";
+            var xuzu = "<a href=\"" + Url.UserSiteUrl().GetNotPayment(Model.ID) + "\"  target=\"_blank\" class=\"btn_orange\">续租</a>";
+            var fukuan = "<a href=\"" + Url.PaySiteUrl().Order(Model.OrderNumber, Url.UserSiteUrl().RentOrdersList) + "\" class=\"btn_orange\">去付款</a>";
+            var tuizujiesuan = "<a href=\"javascript:void(0);\" class=\"btn_blue ml15\" onclick=\"SurrenderPayout(" + Model.OrderId + ")\">确认</a>";
+            var tuihuojiesuan = "<a href=\"javascript:void(0);\" class=\"btn_blue ml15\" onclick=\"ReturnOfGoodsPayout(" + Model.OrderId + ")\">确认</a>";
+
+            var tuizuzhifu = "<a href=\"" + Url.PaySiteUrl().ClaimOrder(Model.OrderNumber, 1, Url.UserSiteUrl().RentOrdersInfo(Model.ID)) + "\" class=\"show col05c\">支付</a>";
+            var tuihuozhifu = "<a href=\"" + Url.PaySiteUrl().ClaimOrder(Model.OrderNumber, 2, Url.UserSiteUrl().RentOrdersInfo(Model.ID)) + "\" class=\"show col05c\">支付</a>";
+            var huanhuozhifu = "<a href=\"" + Url.PaySiteUrl().ClaimOrder(Model.OrderNumber, 3, Url.UserSiteUrl().RentOrdersInfo(Model.ID)) + "\" class=\"show col05c\">支付</a>";
+            
+            <tbody>
+                <tr>
+                    <th>
+                        订单状态：
+                    </th>
+                    <td>
+                        @if (Model.OrderOtherRejectreason != "")
+                        { 
+                            <p>@OrderStatus.GetStateExplain(@Model.OrderState)</p>
+                            <p>
+                                @*因<span class="cold21b1b"> 用户使用操作不当，造成的商品损坏 </span>，商户<span class="cold21b1b">拒绝</span>您的退货申请*@
+                                @Model.OrderOtherRejectreason
+                            </p>
+                        }
+                        else
+                        { 
+                            @OrderStatus.GetStateExplain(@Model.OrderState)
+                        }
+                    </td>
+                    <td>
+                        @switch (@Model.OrderState)
+                        {
+                            case 0: break;
+                            case 1:<span class="fr">@Html.Raw(fukuan) @Html.Raw(quxiaodingdan)</span> break;
+                            case 2:<span class="fr">@Html.Raw(fukuan) @Html.Raw(quxiaodingdan)</span> break;
+                            case 3:<span class="fr">@Html.Raw(shenqingtuihuo)</span> break;
+                            case 4:<span class="fr">@Html.Raw(querenshouhuo) @Html.Raw(shenqingtuihuo)</span> break;
+                            case 5:<span class="fr">@Html.Raw(shenqinghuanhuo) @Html.Raw(shenqingtuihuo)</span> break;
+                            case 6:<span class="fr">@Html.Raw(querenqizu) @Html.Raw(shenqinghuanhuo) @Html.Raw(shenqingtuihuo)</span> break;
+                            case 7:<span class="fr">@Html.Raw(shenqingtuizu) @Html.Raw(shenqinghuanhuo) @Html.Raw(xuzu)</span> break;
+                            case 8:<span class="fr">@Html.Raw(shenqingtuizu) @Html.Raw(xuzu)</span> break;
+                            case 9:<span class="fr">@Html.Raw(chexiao)</span> break;
+                            case 12:<span class="fr">@Html.Raw(chexiao)</span> break;
+                            case 15:<span class="fr">@Html.Raw(chexiao)</span> break;
+                            case 17:<span class="fr">@Html.Raw(shanchu)</span> break;
+                            case 18:<span class="fr">@Html.Raw(shanchu)</span> break;
+                            case 19:<span class="fr">@Html.Raw(shanchu)</span> break;
+                            case 20:<span class="fr">@Html.Raw(shanchu)</span> break;
+                            case 22:<span class="fr">@Html.Raw(tuizujiesuan)</span> break;
+                            case 23:<span class="fr">@Html.Raw(tuizuzhifu)</span> break;
+                            case 24:<span class="fr">@Html.Raw(tuihuojiesuan)</span> break;
+                            case 25:<span class="fr">@Html.Raw(tuihuozhifu)</span> break;
+                            case 26:<span class="fr">@Html.Raw(huanhuozhifu)</span> break;
+                            default: break;
+                        }
+                        @*   <span class="fr"><a href="" class="btn_orange">续租</a><a href="" class="btn_blue ml15">退租</a></span>*@
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        订单编号：
+                    </th>
+                    <td colspan="2">
+                        @Model.OrderNumber
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        收货人信息：
+                    </th>
+                    <td colspan="2">
+                        <span>@Model.OrderTel</span><span class="ml15">@Model.OrderProvinceName - @Model.OrderCityName
+                            - @Model.OrderDistrictName</span><span class="ml15">@Model.OrderAddress</span><span
+                                class="ml15">@Model.OrderCode</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        送货方式：
+                    </th>
+                    <td colspan="2">
+                        @switch (@Model.OrderShipPingMethod)
+                        {
+                            case 0:<span>未知</span>  break;
+                            case 1:<span>工作日或双休日送货</span>  break;
+                            case 2:<span>只工作日送货</span>  break;
+                            case 3:<span>只双休日送货</span> break;
+                        }
+                        @if (Model.OrderIsPhoneConfirm)
+                        { 
+                            <span class=" ml15">|</span><span class="ml15">送货前确认</span>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        商品信息：
+                    </th>
+                    <td colspan="2">
+                        <div class="fl detail_img">
+                            <a href="@Url.WebSiteUrl().RentalGoods_Detail(Model.GoodsId)" target="_blank">
+                                <img src="@pic" width="60"
+                                    height="60" /></a></div>
+                        <div class=" fl ml15">
+                            <p>
+                                <a href="@Url.WebSiteUrl().RentalGoods_Detail(Model.GoodsId)" target="_blank">@Model.OrderGoodsTitle</a></p>
+                            <p class="col666">
+                                @Model.OrderColorName @Model.OrderNormName</p>
+                            <p class="col666">
+                                数量：<span class="col333">@Model.OrderGoodsNum</span></p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        押金：
+                    </th>
+                    <td colspan="2">
+                        @Model.OrderGoodsDeposit.ToString("#0.00")元
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        月租：
+                    </th>
+                    <td colspan="2">
+                        @Model.OrderGoodsMonthPrice.ToString("#0.00")元
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        物流费：
+                    </th>
+                    <td colspan="2">
+                        @Model.OrderFreightCost.ToString("#0.00")元
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        预订租期：
+                    </th>
+                    <td colspan="2">
+                        @Model.OrderGoodsMonth 个月
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        最低起租：
+                    </th>
+                    <td colspan="2">
+                        @Model.OrderGoodsLowestMonth 个月
+                    </td>
+                </tr>
+                @if (OrderOther != null)
+                {
+                    var day = Math.Abs(((TimeSpan)(System.DateTime.Now.Date - OrderOther.RenewTime.Date)).Days);
+                    var money = Model.OrderGoodsLateFees * day;
+                    <tr>
+                        <th>
+                            滞纳金：
+                        </th>
+                        <td colspan="2">
+                            <span class="cold21b1b">@money.ToString("#0.00") 元 </span><span class="col999 ml15">@Model.OrderGoodsLateFees.ToString("#0.00")/日</span><span
+                                class="col999 ml15"> 逾期天数：@day 日 </span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        }
+    </table>
+</div>

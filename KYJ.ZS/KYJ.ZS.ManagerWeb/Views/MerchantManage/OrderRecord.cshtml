@@ -1,0 +1,98 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model IList<KYJ.ZS.Models.Orders.OrderManageEntity>
+@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.GUANLISHANGHU;
+    ViewBag.Title = "企业详情-租售记录";
+
+    // 商户ID
+    int merchantId = Auxiliary.ToInt32(ViewData["merchantId"]);
+
+    int totalItemCount = Auxiliary.ToInt32(ViewData["totalItemCount"]);
+    int pagesize = Auxiliary.ToInt32(ViewData["pagesize"]);
+    int pageIndex = Auxiliary.ToInt32(ViewData["pageIndex"]);
+}
+<div class="tag">
+    <ul id="ul_menu" class="clearFix fl">
+          <li><a href="@Url.ManagerSiteUrl().MerchantManage_BasicInfo(merchantId)">企业基本资料</a></li>
+          <li class="cur"><a href="@Url.ManagerSiteUrl().MerchantManage_OrderRecord(merchantId)">租售记录 </a></li>
+          <li><a href="@Url.ManagerSiteUrl().MerchantManage_CreditRecord(merchantId)">信誉记录 </a></li>
+          <li><a href="@Url.ManagerSiteUrl().MerchantManage_SecurityServices(merchantId)">保障服务 </a></li>
+          <li><a href="@Url.ManagerSiteUrl().MerchantManage_WithdrawalsLog(merchantId)">提现日志 </a></li>
+        </ul><div class="fr mt5 mr10"><a href="@Url.ManagerSiteUrl().MerchantManage_Manage" class="link_05c">返回>></a></div>
+</div>
+<div class="conbox">
+        <div class="serchbox clearFix">
+        <form id="frm_search" action="@Url.ManagerSiteUrl().MerchantManage_OrderRecord(merchantId)" method="get">
+          <div class="fl col666 mr10">商品名称：
+            <input id="txt_title" name="txt_title" value="@ViewData["goodsTitle"]" type="text" class="intxt w200" />
+          </div> <div class="fl col666 mr10">订单编号：
+            <input id="txt_number" name="txt_number" value="@ViewData["number"]" type="text" class="intxt w200" />
+          </div>
+           <div class="fl col666 mr10">买家昵称：
+            <input id="txt_userNikeName" name="txt_userNikeName" value="@ViewData["userNikeName"]" type="text" class="intxt w200" />
+          </div>
+          <div class="">
+            <input id="btn_search" type="button" class="btn_f65c33" value="搜索"  />
+          </div><input type="hidden" id="merchantId" name="merchantId" value="@merchantId" />
+          </form>
+        </div>
+        <div class="list">
+          <table>
+            <tr>
+              <th>订单</th>
+              <th width="30%">商品</th>
+              <th>月租(元) </th>
+              <th >数量</th>
+              <th >买家</th>
+              <th >实收款(元)</th>
+              <th class="tdlast">订单状态</th>
+            </tr>
+            @if (Model != null && Model.Count > 0)
+            {
+                foreach (var item in Model)
+                {
+            <tr>
+              <td><p>@item.Number</p><p>@item.UpdateTime.ToString("yyyy-MM-dd HH:mm")</p></td>
+              <td><a href="@Url.WebSiteUrl().RentalGoods_DetailPreview(item.GoodsId)" target="_blank" class="fl">
+               @{
+                      var pic = KYJ.ZS.Commons.PictureModular.GetPicture.GetFirstGoodsPicture(item.Guid, true, "SHOW");
+                      if (string.IsNullOrEmpty(pic))
+                      {
+                          pic = PubConstant.StaticUrl + Url.Content("web/manager/images/img/sp1.jpg");
+                      }
+                      else
+                      {
+                          pic += ".60_60.jpg";
+                      }
+                   }
+              <img src="@pic" /></a><div class="w200 fl ml10 tal"><p class="line_h"><a href="@Url.WebSiteUrl().RentalGoods_DetailPreview(item.GoodsId)" target="_blank" class="link666">@item.Title</a></p><p class="col999">@item.NormName</p></div></td>
+              <td>@item.MonthPrice.ToString("F2")</td>
+              <td>@item.GoodsNum</td>
+              <td>@item.UserNikeName</td>
+              <td><p class="cold21b1b blod"><span class="bold cold21b1b">@item.TotalPrice.ToString("F2")</span></p>
+              <p class="col999">(含快递 @item.FreightCost.ToString("F2"))</p></td>
+              <td  class="tdlast">@OrderStatus.GetStateExplain(item.State)</td>
+            </tr>
+                }
+            }
+          </table>
+   @Html.Pager(totalItemCount, pagesize, pageIndex, "orderrecord", "merchantmanage", new PagerOptions { AutoHide = false, SeparatorHtml = " ", ShowFirstLast = false, ShowPageIndexBox = false, CssClass = "page", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + pageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next end prev", SpanCSS = "" }, null, null, null)
+    </div>
+      </div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#ul_menu li").click(function () {
+                window.location = $(this).find("a").attr("href");
+            })
+
+            // 搜索
+            $("#btn_search").click(function () {
+                $("#frm_search").submit();
+            })
+        })
+    </script>
+}

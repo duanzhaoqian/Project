@@ -1,0 +1,35 @@
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\JiePan.Ass.Dal.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\JiePan.Ass.Dal.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\obj\Debug\JiePan.Ass.Dal.csprojResolveAssemblyReference.cache
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\obj\Debug\JiePan.Ass.Dal.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\obj\Debug\JiePan.Ass.Dal.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\EntityFramework.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\EntityFramework.SqlServer.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\JiePan.Ass.IDal.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\JiePan.Ass.Model.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\JiePan.Common.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\System.Web.Mvc.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\Autofac.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\System.Web.WebPages.Razor.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\System.Web.WebPages.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\System.Web.WebPages.Deployment.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\JiePan.Ass.IDal.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\JiePan.Ass.Model.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\JiePan.Common.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\EntityFramework.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\EntityFramework.SqlServer.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\System.Web.Mvc.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\Autofac.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\System.Web.WebPages.Razor.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\System.Web.WebPages.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\System.Web.WebPages.Deployment.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.Dal\bin\Debug\Autofac.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Dal.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Dal.pdb
+E:\源代码\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Dal.dll
+E:\源代码\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Dal.pdb
+E:\源代码\ass\Ass\JiePan.Ass.Dal\obj\Debug\JiePan.Ass.Dal.csprojResolveAssemblyReference.cache
+E:\源代码\ass\Ass\JiePan.Ass.Dal\obj\Debug\JiePan.Ass.Dal.dll
+E:\源代码\ass\Ass\JiePan.Ass.Dal\obj\Debug\JiePan.Ass.Dal.pdb
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.Dal\obj\Debug\JiePan.Ass.Dal.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.Dal\obj\Debug\JiePan.Ass.Dal.pdb

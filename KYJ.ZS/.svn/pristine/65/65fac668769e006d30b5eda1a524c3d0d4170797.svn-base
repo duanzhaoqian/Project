@@ -1,0 +1,82 @@
+﻿@model KYJ.ZS.Models.BankAccounts.BankAccountEntity
+@{
+    ViewBag.Title = "冻结账户信息";
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+    ViewBag.Navigation = MerchantNavigation.TIXIANGUANLI;
+
+}
+@Html.Partial("~/Views/Shared/Controls/_AccountManage.cshtml")
+<div class="rightbox">
+    <div class="conbox conbox1">
+        <div class="mingx">
+            <div class="txzl cold21b1b">
+                提现单-处理中</div>
+            <table width="100%" cellspacing="0" cellpadding="0" class="tab_1">
+                <tr>
+                    <th width="19%">
+                       开户名称：
+                    </th>
+                    <td width="81%" class="col333">
+                       @(Model==null?"": Model.Name)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        账户：
+                    </th>
+                    <td class="col333">
+                       @(Model == null ? "" : Model.Number)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                      开户行：
+                    </th>
+                    <td class="col333">
+                       @(Model == null ? "" : Model.BankName)
+                    </td>
+                </tr>
+               
+                <tr>
+                    <th>
+                        提现金额：
+                    </th>
+                    <td class="cold21b1b blod" style="color: #d21b1b;">
+                       @(Model == null ? "" : Model.Price.ToString("0.00"))<label>元</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        账户余额：
+                    </th>
+                    <td class="col333 blod">
+                        @ViewBag.AccountPrice.ToString("0.00")<label>元</label>
+                    </td>
+                </tr>
+               @* <tr>
+                    <th>
+                    </th>
+                    <td>
+                        <input type="button" class="btn_blue mr10 fl" value="确认增加" />
+                        <input type="button" class="fl btn_grey" style="display: block" value="取消" />
+                    </td>
+                </tr>*@
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        //选择当前标签
+        if ("@ViewBag.Tag" != "") {
+            $("li[tag=@ViewBag.Tag]").addClass("cur").siblings().removeClass("cur");
+        }
+        else {
+            $("li[tag=1]").addClass("cur").siblings().removeClass("cur");
+        }
+        $(".tag ul li").click(function () {
+            window.open($(this).attr("attr"), "_self");
+        })
+    });
+</script>

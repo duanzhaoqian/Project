@@ -1,0 +1,76 @@
+﻿@model KYJ.ZS.Models.Common.UpLoadGoodsImageViewModel
+<div class="js_upDiv">
+    @{
+        var upbtn = Model.PictureNo + "_uploadify";
+        var queueId = @Model.PictureNo + "_fileQueue";
+    }
+
+    <input type="file" name='@upbtn' id="@upbtn"
+           value="浏览" class="js_upimage " />
+    @*<div id="@queueId">
+    </div>*@
+</div>
+
+<script type="text/javascript">
+    @{
+        var upid = "#" + Model.PictureNo + "_uploadify";
+        var url = PubConstant.ImgUploadBaseUrl + "/Goods/upload.ashx?para=" + Model._Guid + "^" + Model.PictureType + "^" + Model.Maxnum;
+    }
+    $(document).ready(function () {
+        var isalert = true;
+        var updiv = $("@upid");
+        updiv.uploadify({
+            'uploader': '../../Scripts/uploadify/uploadify.swf',
+            'script': '@url',
+            'cancelImg': '../../Scripts/uploadify/cancel.png',
+            'folder': 'uploads',
+            'queueID': '@queueId',
+            'auto': true,
+            'scriptAccess': 'always',
+            'multi': true,
+            'width': 88,
+            'height': 26,
+            'queueSizeLimit': 5,
+            'wmode': 'opaque',
+            'fileExt': '*.jpg;*.jpeg;*.gif;*.png;',
+            'fileDesc': '请选择图片文件:*.jpg;*.jpeg;*.gif;*.png;',
+            'buttonText': '点击上传',
+            'buttonImg': '../../Scripts/uploadify/upbtn.gif',
+            'sizeLimit': 2 * 1024 * 1024,
+            'removeCompleted': false,
+            onComplete: function(event, queueId, fileObj, response, data) {
+                if (response == "exceedmaxnum") {
+                    if (isalert) {
+                        alert("超出最大上传照片数量。");
+                    } else {
+                        isalert = true;
+                    }
+                    updiv.uploadifyClearQueue();
+                    return;
+                }
+                if (response != "error") {
+                    var rongqi = $("#sortable1");
+                    var img = response.split(",")[0];
+                    var id = response.split(",")[1];
+                    var html = "<li class='js_sort' data_imageid='" + id + "'>";
+                    html = html + "<img src='" + img + "' />";
+                    html = html + "<span class='close js_deleteShow' dataurl='@PubConstant.ImgUploadBaseUrl/Goods/Delete.ashx?para=@Model._Guid^" + id + "^SHOW'></span>";
+                    html = html + "</li>";
+                    rongqi.append(html);
+
+                }
+            },
+            onQueueFull: function(event, queueSizeLimit) {
+                alert("每次最多上传" + queueSizeLimit + "张");
+                isalert = false;
+            },
+            onError: function(event, queueId, fileObj, errorObj) {
+                if (errorObj) {
+                    if (errorObj.type == "File Size") {
+                        alert("上传文件不能超过2M！");
+                    }
+                }
+            }
+        });
+    });
+</script>

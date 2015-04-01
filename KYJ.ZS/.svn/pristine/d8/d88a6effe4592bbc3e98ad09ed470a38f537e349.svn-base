@@ -1,0 +1,181 @@
+﻿@{
+    ViewBag.Title = "租用中心-续租";
+    Layout = "~/Views/Shared/Layouts/_UserLayout.cshtml";
+    ViewBag.Navigation = UserNavigation.ZUYONGZHONGXIN;
+    var UserRentOrdersInfo = ViewData["UserRentOrdersInfo"] as KYJ.ZS.Models.OrderGoodses.OrderGoodsEntity;
+    var Payment = ViewData["Payment"] as List<KYJ.ZS.Models.DB.GoodsTenanci>;
+    var NotPayment = ViewData["NotPayment"] as KYJ.ZS.Models.DB.GoodsTenanci;
+    var OrderOther = ViewData["OrderOther"] as KYJ.ZS.Models.DB.OrderOther;
+}
+@section scripts{
+    <script type="text/javascript">
+        function Payment(id) {
+            var strUrl = "@Url.UserSiteUrl().Payment";
+            $.post(strUrl, { tenancyId: id, m: Math.random() }, function (data) {
+                if (data == 0) {
+                    $.alert("付款失败");
+                } else {
+                    var strHref = location.href;
+                    location.href = strHref;
+                }
+            }, "json");
+        }
+        function Buyout(id) {
+            var strUrl = "@Url.UserSiteUrl().Buyout";
+            $.post(strUrl, { orderGoodsId: id, m: Math.random() }, function (data) {
+                if (data == 0) {
+                    $.alert("付款失败");
+                } else {
+                    var strHref = location.href;
+                    location.href = strHref;
+                }
+            }, "json");
+        }
+    </script>
+}
+<div class="tag">
+    <ul>
+        <li class="cur"><a href="javascript:void(0);">续租</a></li>
+    </ul>
+</div>
+<!--租用中心-续租开始-->
+<div class="conbox">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="mytab">
+        <tr>
+            <th colspan="3" class="col666 blod tac">
+                商品
+            </th>
+        </tr>
+        @if (UserRentOrdersInfo != null)
+        {
+            var pic = KYJ.ZS.Commons.PictureModular.GetPicture.GetFirstGoodsPicture(UserRentOrdersInfo.OrderGoodsGuid, true, "SHOW");
+            if (string.IsNullOrEmpty(pic))
+            {
+                pic = PubConstant.StaticUrl + Url.Content("web/user/images/pic7.jpg");
+            }
+            else
+            {
+                pic = pic + ".60_60.jpg";
+            }
+            <tr>
+                <td width="66%" class="col333 pl20 pt22">
+                    <span class="col666">订单编号：</span>@UserRentOrdersInfo.OrderNumber
+                </td>
+            </tr>
+            <tr>
+                <td class="pl80 pt16">
+                    <div class="mytd">
+                        <a href="@Url.WebSiteUrl().RentalGoods_Detail(UserRentOrdersInfo.GoodsId)" target="_blank">
+                            <img src="@pic" width="60"
+                                height="60" class="fl" />
+                        </a>
+                        <p class="fl pl10">
+                            <a class="col333" href="@Url.WebSiteUrl().RentalGoods_Detail(UserRentOrdersInfo.GoodsId)" target="_blank">@UserRentOrdersInfo.OrderGoodsTitle</a><br />
+                            <span class="col666">@UserRentOrdersInfo.OrderColorName @UserRentOrdersInfo.OrderNormName</span><br />
+                            <span class="col666">数量：</span><span class="col333">@UserRentOrdersInfo.OrderGoodsNum</span></p>
+                    </div>
+                </td>
+                <td width="18%" class="col666">
+                    押金：<strong class="col333">@UserRentOrdersInfo.OrderGoodsDeposit.ToString("#0.00")</strong><p>
+                        &nbsp;</p>
+                </td>
+                <td width="16%" class="col666">
+                    租金：<strong class="cold21b1b">@UserRentOrdersInfo.OrderGoodsMonthPrice.ToString("#0.00")</strong><p>
+                        &nbsp;</p>
+                </td>
+            </tr>
+                    
+        }
+    </table>
+    @if (OrderOther != null)
+    {
+        if (NotPayment != null)
+        {
+            var money = UserRentOrdersInfo.OrderGoodsLateFees * (Math.Abs(((TimeSpan)(System.DateTime.Now.Date - OrderOther.RenewTime.Date)).Days));
+            var summoney = NotPayment.Price + money;
+         <table width="100%" border="0" cellspacing="0" cellpadding="0" class="mytab">
+        		<tr>
+        			<th colspan="3" class="col666 blod tac">付款</th>
+        		</tr>
+                <tr>
+                  <td class=" pl15 pt15  w140" valign="top" align="right">@NotPayment.MonthTime.ToString("yyyy年MM月")租金</td> 
+                	<td>
+                        <div class="mytd mytd1  pl20 ">
+                   	    <p class="col333"><span> 需缴纳</span><span class="font18 cold21b1b"> @summoney.ToString("#0.00")</span>元</p>
+                        <p>租金  @NotPayment.Price.ToString("#0.00") 元  ，滞纳金  <span class="bold cold21b1b">@money.ToString("#0.00")</span> 元 </p></div>
+                  </td>
+                    <td class="col666 pt16">
+                    @if(UserRentOrdersInfo!=null){
+                        var fukuan = Url.PaySiteUrl().TenancyOrder(UserRentOrdersInfo.OrderNumber,1, Url.UserSiteUrl().GetNotPayment(UserRentOrdersInfo.ID));
+                        var goumai=Url.PaySiteUrl().TenancyOrder(UserRentOrdersInfo.OrderNumber,2,Url.UserSiteUrl().GetNotPayment(UserRentOrdersInfo.ID));
+                    <a href="@fukuan" class="btn_orange mr10" name="btnPayment">付款</a> 
+                    <a href="@goumai" class="btn_red" name="btnBuyout">购买</a>
+                    }
+     @*               
+<a href="javascript:void(0);" class="btn_orange mr10" name="btnPayment"  onclick="Payment(@NotPayment.Id)">付款</a> 
+                    <a href="javascript:void(0);" class="btn_red" name="btnBuyout" onclick="Buyout(@NotPayment.OrderGoodsId)">购买</a>*@
+
+
+
+                    </td>
+           </tr>
+         </table>
+        }
+    }
+    else
+    {
+        if (NotPayment != null)
+        { 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="mytab">
+            <tr>
+                <th colspan="2" class="col666 blod tac">
+                    付款
+                </th>
+            </tr>
+            <tr>
+                <td class="pl80">
+                    <div class="mytd mytd1 pt22">
+                        <p class="col333">
+                            @NotPayment.MonthTime.ToString("yyyy年MM月")租金</p>
+                        <p class="col333">
+                            需缴纳<span class="font18 cold21b1b"> @NotPayment.Price.ToString("#0.00")</span>元</p>
+                    </div>
+                </td>
+                <td class="col666 pt16">
+                @if(UserRentOrdersInfo!=null){
+                    var fukuan = Url.PaySiteUrl().TenancyOrder(UserRentOrdersInfo.OrderNumber, 1, Url.UserSiteUrl().GetNotPayment(UserRentOrdersInfo.ID));
+                    var goumai = Url.PaySiteUrl().TenancyOrder(UserRentOrdersInfo.OrderNumber, 2, Url.UserSiteUrl().GetNotPayment(UserRentOrdersInfo.ID));
+                    <a href="@fukuan" class="btn_orange mr10" name="btnPayment">付款</a> 
+                    <a href="@goumai" class="btn_red" name="btnBuyout">购买</a>
+                    }@*
+                    <a href="javascript:void(0);" class="btn_orange mr10" name="btnPayment"  onclick="Payment(@NotPayment.Id)">付款</a> 
+                    <a href="javascript:void(0);" class="btn_red" name="btnBuyout" onclick="Buyout(@NotPayment.OrderGoodsId)">购买</a>*@
+                </td>
+            </tr>
+        </table>
+        }
+    }
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab_2 mytab">
+        <tr>
+            <th colspan="3" class="col666 blod tac">
+                历史记录
+            </th>
+        </tr>
+        @if (Payment != null && Payment.Count > 0)
+        {
+            foreach (var item in Payment)
+            {
+            <tr>
+                <td class="td1">
+                    @item.MonthTime.ToString("yyyy年 - MM月")&nbsp;&nbsp;&nbsp;缴纳<span class="cold21b1b">
+                        @item.Price.ToString("#0.00")</span>元
+                </td>
+                <td class="td2">
+                    @item.UpdateTime.ToString("yyyy-MM-dd HH:mm")
+                </td>
+            </tr>
+            }
+        }
+    </table>
+</div>
+<!--租用中心-续租结束-->

@@ -1,0 +1,46 @@
+﻿@using KYJ.ZS.Models.Search
+@model List<CategoryAttr>
+
+@foreach (var i in Model)
+{
+     <div>
+     <p>@i.AttributeName.Name: 
+     @foreach (var v in i.AttributeValues)
+     {
+         var val=i.AttributeName.CategoryAttrId+"_"+v.AttributeValueId;
+          <a  class="attrname" value="@val" href="#" prefix="o">@v.Name </a> 
+     } </p> 
+    
+     </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $$ = KYJ.CORE.URL;
+        jQuery.extend({ kyj: $$, hx: $$.qArray[0], wy: $$.qArray[1], ss: $$.query[0] });
+
+        $(".attrname").each(function (index) {
+            var param = Param($(this).attr("prefix"), $(this).attr("value"))
+
+
+            var url = $.kyj.set(null, null, $(this).attr("value"), 1, $(this).attr("prefix"))
+            $(this).attr("href", url)
+        }
+        );
+
+
+    });
+ function Param(prefix, value) {
+     if (value == "") {
+         return null;
+     } else {
+         if (prefix.length == 1) {
+             return prefix + value;
+         }
+         if (prefix.length == 2) {
+             return prefix[0] + value[0] + "-" + prefix[1] + value[1];
+         }
+     }
+ }
+</script>
+

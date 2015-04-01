@@ -1,0 +1,383 @@
+﻿@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/Layouts/_WebLayout.cshtml";
+}
+@using KYJ.ZS.Commons.PictureModular;
+@model KYJ.ZS.Models.RentalGoodses.Web_RentalGoodsEntity
+<div class="detail_body">
+    <div class="cont">
+        <div class="cont_w clearFix">
+            <div class="cont_l col">
+                <div class="cont_lc">
+                    @Html.Partial("RentalGoods/_BreadNavigation", new KYJ.ZS.Models.Common.NavigationEntity() { CategoryId = Model.CategoryId, Content = Model.Title, Type = 0 })
+                    <div class="cont_f clearFix">
+                        @{
+                            var picList = GetPicture.GetGoodsPictureListNoFilter(Model.RentalGuid, true, "SHOW");   
+                        }
+                        @if (picList != null)
+                        {
+                            if (picList.Count > 0)
+                            {
+                                var picD = picList[0].Path + ".360_360.jpg";
+                            <div class="cont_fl col">
+                                <div class="fl_big">
+                                    <a href="javascript:return false;">
+                                        <img data-original="@picD" src="" /></a></div>
+                                <div class="fl_piclist">
+                                    <ul>
+                                        @foreach (var entity in picList)
+                                        {
+                                            var picX = entity.Path + ".60_60show.jpg";
+                                            <li><a href="javascript:return false;">
+                                                <img data-original="@picX" src="" /></a></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div> 
+                            }
+                        }
+                        else
+                        {
+                            <div class="cont_fl col">
+                                <div class="fl_big">
+                                    <a href="javascript:return false;">
+                                        <img src="@PubConstant.StaticUrl@Url.Content("web/web/images/img/detail_pic1.jpg")" width="360px" height="360px" /></a></div>
+                                <div class="fl_piclist">
+                                    <ul>
+                                        <li><a href="javascript:return false;">
+                                            <img src="@PubConstant.StaticUrl@Url.Content("web/web/images/img/detail_pic1.jpg")" width="60px" height="60px" /></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        }
+                        <div class="cont_fr col">
+                            <div class="cont_frtit">
+                                @Model.Title</div>
+                            <div class="cont_frcc">
+                                <table border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td class="cc_th" >
+                                            月　　租：
+                                        </td>
+                                        <td >
+                                            <span class="bigbold">￥<label id="lab_MothPrice">@Model.MothPrice</label></span>
+                                        </td>
+                                        <td class="cc_th" >
+                                            商品编号：
+                                        </td>
+                                        <td>
+                                            @Model.Code
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cc_th">
+                                            市&nbsp;&nbsp;场&nbsp;价：
+                                        </td>
+                                        <td>
+                                            ￥@Model.Price.ToString("F2")
+                                        </td>
+                                        <td class="cc_th">
+                                            所&nbsp;&nbsp;在&nbsp;地：
+                                        </td>
+                                        <td>
+                                            @Model.Location
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cc_th">
+                                            押　　金：
+                                        </td>
+                                        <td>
+                                            ￥@Model.Deposit.ToString("F2")
+                                        </td>
+                                        <td class="cc_th">
+                                            
+                                        </td>
+                                        <td>
+                                   
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <td class="cc_th">
+                                            配送运费：
+                                        </td>
+                                        <td colspan="3">
+                                            <label id="lab_Freight">
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cc_th">
+                                            请&nbsp;&nbsp;选&nbsp;择：
+                                        </td>
+                                        <td>
+                                            <select name="select5" class=" con_select w200" id="sel_GoodsColor">
+                                                <option value="0">请选择颜色</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cc_th">
+                                            @if ((Model.OtherColors != null ? Model.OtherColors.Length : 0) == 0)
+                                            {
+                                                <label>
+                                                    请&nbsp;&nbsp;选&nbsp;择：</label>
+                                            }
+                                        </td>
+                                        <td>
+                                            <select name="select" class="con_select w200" id="sel_GoodsNorm">
+                                                <option value="0">请选择尺码</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cc_th">
+                                            预定租期：
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="reserv" id="div_GoodsMonth">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cc_th">
+                                            租用数量：
+                                        </td>
+                                        <td colspan="2">
+                                            <a href="javascript:return false;" class="pluslink" id="minNum">
+                                                <img src="@PubConstant.StaticUrl@Url.Content("web/web/images/minus.jpg")" ></a>
+                                            <input name="input2" type="text" class="inp_txt w40 tac" value="1" id="txt_GoodsNum" />
+                                            <a href="javascript:return false;" class="pluslink" id="addNum">
+                                                <img src="@PubConstant.StaticUrl@Url.Content("web/web/images/plus.jpg")" ></a>
+                                            <span class="col666 ml30">库存:
+                                                <label id="lab_StockNum">@Model.Number</label>件</span>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="com_tit mt10">
+                        <div class="com_titl">
+                            商品详情</div>
+                    </div>
+                    <div class="com_c ">
+                        <ul id="ul_GoodsAttrs" class="clearFix">
+                            @if (Model.BrandName != null && Model.BrandName.Trim().Length > 0)
+                           {
+                            <li>品牌：<span class="col333">@Model.BrandName</span></li>
+                           }
+                        </ul>
+                    </div>
+                    <div class="com_con">
+                        <div class="com_ctit">
+                            商品描述</div>
+                        @Html.Raw(Model.OtherDesc)
+                    </div>
+                </div>
+            </div>
+            <div class="cont_r col">
+                <div class="cont_rc">
+                    @{
+                        var picM = GetPicture.GetUserPictureInfo(Model.MerchantGuid, true, "MERCHANTLOGO").Path;
+                        if (string.IsNullOrEmpty(picM))
+                        {
+                            picM = PubConstant.StaticUrl + Url.Content("web/web/images/img/con_logo.jpg");
+                        }
+                        else
+                        {
+                            picM += ".98_34.jpg";
+                        }
+                    }
+                    <div class="rc_top clearFix">
+                        <span class="fl"><a href="javascript:return false;">
+                            <img data-original="@picM" src="" /></a></span> <span class=" fl ml10 mt10"><a href="javascript:return false;" class="link25d">@Model.MerchantName</a></span>
+                    </div>
+                    <div class="rc_serv">
+                        <span class="fl">服务认证：</span><span class="fl mt10 mr5"><img src="@PubConstant.StaticUrl@Url.Content("web/web/images/img/sevenico.jpg")" /></span><span
+                            class="fl">7天退货</span><span class="ml30 fl mt10 mr5"><img src="@PubConstant.StaticUrl@Url.Content("web/web/images/img/freightico.jpg")" /></span><span
+                                class="fl">运费险</span></div>
+                    <div class="com_clist">
+                        <div class="com_rctit mt20">
+                            卖家其它商品</div>
+                        <div class="com_rclist clearFix">
+                            <ul id="ul_OtherGoods">
+                            </ul>
+                        </div>
+                        <div class="com_rctit mt20">
+                            推荐同类商品</div>
+                        <div class="com_rclist clearFix">
+                            <ul id="ul_SimilarGoods">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function(){
+            //获取颜色和规格、属性赋值
+            function GetOtherColorNormAttr()
+            {
+                var clen=@(Model.OtherColors != null ? Model.OtherColors.Length : 0)
+                //获取商品颜色赋值
+                if(clen>0)
+                {
+                    $.each(eval(@Html.Raw(Model.OtherColors)),function (index, item) {
+                          //商品颜色添加一项option
+                          $("#sel_GoodsColor").append('<option value="' + item.Id + '">' + item.ColorName + '</option>'); 
+                    })
+                }
+                else
+                {
+                    $("#sel_GoodsColor").hide();
+                    $("#sel_GoodsColor").parent().parent().hide();
+                }
+                var nlen=@(Model.OtherNorms != null ? Model.OtherNorms.Length : 0)
+                //获取商品规格赋值
+                if(nlen>0) 
+                {  
+                   $.each(eval(@Html.Raw(Model.OtherNorms)),function (index, item) {
+                          //商品规格添加一项option
+                          $("#sel_GoodsNorm").append('<option value="' + item.Id + '">' + item.NormName + '</option>'); 
+                   })
+                }
+                else
+                {
+                    $("#sel_GoodsNorm").hide();
+                    $("#sel_GoodsNorm").parent().parent().hide();
+                }
+             
+                var alen=@(Model.OtherAttrs != null ? Model.OtherAttrs.Length : 0)
+                //获取商品属性赋值
+                if(alen>0)
+                {
+                    $.each(eval(@Html.Raw(Model.OtherAttrs)),function (index, item) {
+                       $.each(eval(@Html.Raw(Model.OtherAttrName)),function (index, itemN){
+                          if( item.CategoryAttrId==itemN.Id)
+                          {
+                            $("#ul_GoodsAttrs").append('<li>' + itemN.AttributeName + '：<span class="col333">' + item.GoodsAttrVal + '</span></li>'); 
+                          }
+                       })
+                    })
+                }
+                       
+            }
+            //获取颜色和规格赋值、属性
+            GetOtherColorNormAttr();
+
+            //获取租期模版赋值
+            $("#div_GoodsMonth").html(function () {
+                var strTenancyTemplate = "";
+                var result = "@Html.Raw(Model.TempMonths)";
+                if (result.length > 0) {
+                    $.each(result.split(","), function (index, item) {
+                        strTenancyTemplate = strTenancyTemplate + '<a href="javascript:return false;">' + item + '</a>';
+                    })
+                }
+                else {
+                    strTenancyTemplate = "没有需要的预定租期！"
+                }
+                return strTenancyTemplate;
+            })
+        })  
+        $(document).ready(function () {
+            //运费计算
+            function FreightCost() {
+                var strFreightCost = ""; //运费结果
+                var intGoodsNum = $("#txt_GoodsNum").val();  //获取购买数量
+                var dblGoodsTotal = 0; //商品总数（件数，重量数，体积数）
+                $.each(eval(@Html.Raw(Model.OtherFreightTemplate)), function (index, item) {
+                    if (item.IsFreeship) //包邮 
+                    {
+                        strFreightCost = "商家包邮";
+                    }
+                    else //不包邮 
+                    {
+                        //计算出总数（件数，重量数，体积数）
+                        var dblWeight=@Model.Weight; 
+                        var dblVolume=@Model.Volume;
+                        switch (item.Mode) {
+                            case 1: dblGoodsTotal = intGoodsNum; break; //按件
+                            case 2: dblGoodsTotal = intGoodsNum*dblWeight; break; //按重量
+                            case 3: dblGoodsTotal = intGoodsNum*dblVolume; break; //按体积
+                        }
+                        var dblMoney=0;
+                        if(dblGoodsTotal>item.FirsTime)
+                        {
+                           dblMoney=item.FirstPrice  //首次费用
+                                   +(parseInt((dblGoodsTotal-item.FirsTime) / item.ContinueTime) * item.ContinuePrice)  //续次取整费用
+                                   +(((dblGoodsTotal-item.FirsTime) % item.ContinueTime)>0 ? item.ContinuePrice:0); //续次取余费用
+                        }
+                        else
+                        {
+                            dblMoney=item.FirstPrice;  //首次费用
+                        }
+                        //计算运费
+                        if (item.CityIds != -1)//本市运费  
+                        {
+                            strFreightCost = strFreightCost + item.CityName + "（" + dblMoney.toFixed(2) + "元）"; 
+                        }
+                        else //其它运费
+                        {
+                            strFreightCost = strFreightCost + "| 其它城市（" + dblMoney.toFixed(2) + "元）";
+                        }
+                    }
+                })
+                $("#lab_Freight").text(strFreightCost);
+            }
+            //运费计算
+            FreightCost()
+        })
+        $(document).ready(function(){
+           $.get("@Html.Raw(Url.WebSiteUrl().RentalGoods_OtherGoodsList(Model.Id, Model.MerchantId, 2))",function(data){
+                 $("#ul_OtherGoods").html(data)
+                 //延迟加载图片
+                 $("#ul_OtherGoods").find("img").lazyload({ effect: "fadeIn", event: "sporty" });
+                 $("#ul_OtherGoods").find("img").trigger("sporty");
+           })
+           $.get("@Html.Raw(Url.WebSiteUrl().RentalGoods_SimilarGoodsList(Model.Id, Model.CategoryId, 2))",function(data){
+                 $("#ul_SimilarGoods").html(data)
+                 //延迟加载图片
+                 $("#ul_SimilarGoods").find("img").lazyload({ effect: "fadeIn", event: "sporty" });
+                 $("#ul_SimilarGoods").find("img").trigger("sporty");
+           })
+        })
+
+    </script>
+    <!--鼠标移到图片事件-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("[class=fl_piclist]>ul>li>a>img").live("mouseover", function () {
+                $("[class=fl_big]>a>img").attr("data-original", $(this).attr("data-original").replace(".60_60show.jpg", ".360_360.jpg"))
+                $("[class=fl_big]>a>img").attr("src", $(this).attr("data-original").replace(".60_60show.jpg", ".360_360.jpg"))
+            })
+        })
+    </script>
+    <!--超链接失效-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("a").click(function () {
+                return false;
+            })
+        })
+    </script>
+}

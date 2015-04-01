@@ -1,0 +1,210 @@
+﻿@using KYJ.ZS.Commons.PictureModular
+@model KYJ.ZS.Models.LocalUsers.LocalUserEntity
+@{
+    ViewBag.Title = "账号管理-头像照片";
+    Layout = "~/Views/Shared/Layouts/_UserLayout.cshtml";
+    ViewBag.Navigation = UserNavigation.JIBENZILIAO;
+    var r = new Random();
+    var info = GetPicture.GetUserPictureInfo(CurrentUser._Guid, true, UserPictureType.LOGO.ToString());
+    var imgurl = string.IsNullOrWhiteSpace(info.Path) ? PubConstant.StaticUrl + Url.Content("web/user/images/smalltx.gif") : info.Path + ".115_115.jpg?r=" + r.NextDouble();
+    var imgurl260 = string.IsNullOrWhiteSpace(info.Path) ? PubConstant.StaticUrl + Url.Content("web/user/images/smalltx.gif") : info.Path + ".260_260.jpg?r=" + r.NextDouble();
+}
+<div class="nTab">
+    <div class="TabTitle">
+        <ul id="myTab">
+            <li class="normal">
+                <a href="@Url.UserSiteUrl().Information">基本资料</a></li>
+            <li class="active">
+                <a href="@Url.UserSiteUrl().Avatar">头像照片</a></li>
+            <li class="normal">
+                <a href="@Url.UserSiteUrl().Education">教育情况</a></li>
+            <li class="normal">
+                <a href="@Url.UserSiteUrl().Card">工作名片</a></li>
+            <li class="normal">
+                <a href="@Url.UserSiteUrl().Password">修改密码</a></li>
+        </ul>
+    </div>
+    <div class="TabContent">
+        <div id="myTab_Content1">
+            <!--开始2-->
+            <div class="er_location ml75">
+                <form action="" method="post">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="fl">
+                                    @*<a href="#">
+                                        <img src="@PubConstant.StaticUrl@Url.Content("web/user/images/uploadbtn.gif")" /></a>*@
+                                    <input type="file" name='userupload' id="userupload" value="浏览" class="js_upimage " />
+                                </div>
+                                @*<div id="user_fileQueue">
+                                </div>*@
+                                <div class="ml17 fl  col999 ">
+                                    仅支持JPG、GIF、PNG图片文件，且小于<span class="cold21b1b">2M</span></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class=" bigdiv clearFix">
+                                    <span class="bigtx" id="b_infoimage">
+                                        <img id="imgAdvanced" alt="[Jcrop Example]" width="260" height="260" src="@imgurl260" />
+                                    </span>
+                                </div>
+                                <div class=" smalldiv">
+                                    <img id="handpic" src="@imgurl" width="115" height="115" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="col666">您上传的头像会自动生成三种尺寸,请注意中小尺寸的头像是否清晰</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="button" id="savecommon" class="btn_yellow ml75" value="确认修改" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </form>
+            </div>
+            <!--结束2-->
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/uploadify/swfobject.js")" type="text/javascript"></script>
+    <link href="@PubConstant.StaticUrl@Url.Content("base/js/uploadify/uploadify.css")" rel="stylesheet" type="text/css" />
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/uploadify/jquery.uploadify.v2.1.4.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/Jcrop/jquery.Jcrop.min.js")" type="text/javascript"></script>
+    <link href="@PubConstant.StaticUrl@Url.Content("base/js/Jcrop/jquery.Jcrop.min.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        var $x, $y, $w, $h, $ow, $oh;
+        $(document).ready(function() {
+            $("#myTab li").on("click", function() {
+                var num = $(this).find("a");
+                window.location.href = num.attr("href");
+            });
+            
+            @{
+                var url = PubConstant.ImgUploadBaseUrl + "/User/UploadCommon.ashx?para=" + CurrentUser._Guid;
+                var cancelImgurl = PubConstant.StaticUrl + Url.Content("web/user/images/uploadbtn.gif");
+            }
+            var imgAdvanced = $("#imgAdvanced");
+            var filename = '@info.FileName';
+            $("#userupload").uploadify({
+                'uploader': '../../Scripts/uploadify/uploadify.swf',
+                'script': '@url',
+                'cancelImg': '../../Scripts/uploadify/cancel.png',
+                'folder': 'uploads',
+                'queueID': 'user_fileQueue',
+                'auto': true,
+                'scriptAccess': 'always',
+                'multi': true,
+                'width': 88,
+                'height': 26,
+                'queueSizeLimit': 1,
+                'wmode': 'opaque',
+                'fileExt': '*.jpg;*.jpeg;*.gif;*.png;',
+                'fileDesc': '请选择图片文件:*.jpg;*.jpeg;*.gif;*.png;',
+                'buttonText': '点击上传',
+                'buttonImg': '@cancelImgurl',
+                'sizeLimit': 2 * 1024 * 1024,
+                'removeCompleted': false,
+                onComplete: function(event, queueId, fileObj, response, data) {
+                    if (response != "error") {
+                        var data = response.split(',');
+                        $("#handpic").attr('src', data[0] + ".115_115.jpg");
+                        $("#b_infoimage").html("<img id=\"imgAdvanced\" height='260px' width='260px' alt=\"[Jcrop Example]\"  src=\"" + data[0] + ".260_260.jpg?url=" + Math.random() + "\" />");
+                        filename = data[1];
+                        //加载截图工具
+                        Init();
+                    }
+                },
+                onQueueFull: function(event, queueSizeLimit) {
+
+                },
+                onError: function(event, queueId, fileObj, errorObj) {
+                    if (errorObj) {
+                        if (errorObj.type == "File Size") {
+                            $.alert("上传文件不能超过2M！");
+                        }
+                    }
+                }
+            });
+
+
+            $("#savecommon").bind('click', function() {
+                if (filename != '') {
+                    $ow = imgAdvanced.width();
+                    $oh = imgAdvanced.height();
+                    var qieurl = "@PubConstant.ImgUploadBaseUrl"+ "/User/SaveSettingAdvanced.ashx?guid=@CurrentUser._Guid&x=" + $x + "&y=" + $y + "&w=" + $w + "&h=" + $h + "&ow=" + $ow + "&oh=" + $oh + "&filename=" + filename;
+                    $.ajax({
+                        url: qieurl,
+                        type: "get",
+                        dataType: "jsonp",
+                        jsonp: "callbackparam",
+                        jsonpCallback: "success_jsonpCallback",
+                        success: function (data) {
+                            $.map(data, function (item) {
+                                if (item.result != "false") {
+                                    var newpicname = item.result;
+                                    var img_url = $("#imgAdvanced").attr("src");
+                                    img_url = img_url.replace(filename, newpicname);
+                                    filename = newpicname;
+                                    $("#handpic").attr('src', img_url + ".115_115.jpg");
+                                    $("#b_infoimage").html("<img id=\"imgAdvanced\" height='260px' width='260px'  alt=\"[Jcrop Example]\"  src=\"" + img_url + ".260_260.jpg?url=" + Math.random() + "\" />");
+                                    $.alert("保存成功！",null, null,1);
+                                    Init();
+                                }
+                                else {
+
+                                    if (item.result != "false") {
+                                       $.alert(item.result);
+                                    }
+                                    else {
+                                        $.alert("保存出错！");
+                                    }
+                                }
+                            });
+                        },
+                        error: function () { $.alert("保存出错！"); }
+                    });
+
+
+                }
+            });
+
+            var path = "@info.Path";
+            if (path != '') {
+                Init();
+            }
+
+
+        });
+
+        var Init = function() {
+            $("#imgAdvanced").Jcrop({
+                onChange: showPreview,
+                onSelect: showPreview,
+                aspectRatio: 1,
+                setSelect: [0, 0, 260, 260],
+                minSize: [50, 50]
+            });
+        }
+
+        //简单的事件处理程序，响应自onChange,onSelect事件，按照上面的Jcrop调用
+        function showPreview(coords) {
+            if (parseInt(coords.w) > 0) {
+
+                $x = coords.x;
+                $y = coords.y;
+
+                $w = coords.w;
+                $h = coords.h;
+
+            }
+        }
+
+    </script>
+}

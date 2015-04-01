@@ -1,0 +1,151 @@
+﻿@using KYJ.ZS.Models.Collections;
+@using KYJ.ZS.Commons.Web;
+@model Webdiyer.WebControls.Mvc.PagedList<CollectionEntity>
+@using Webdiyer.WebControls.Mvc
+@{
+    ViewBag.Title = "租用中心-收藏夹";
+    Layout = "~/Views/Shared/Layouts/_UserLayout.cshtml";
+    ViewBag.Navigation = UserNavigation.SHOUCANGJIA;
+}
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+//            var arrdom = $("[name=goodsPic]");
+//            for (var i = 0; i < arrdom.length; i++) {
+//                var guid = $(arrdom[i]).attr("guid");
+//                $.get("@Url.UserSiteUrl().GetGoodsPic?guid=" + guid, function (data) {
+//                    var dom = $("[guid=" + data.guid + "]");
+//                    $(dom).prop("src", data.url == "" ? '@PubConstant.StaticUrl@Url.Content("web/user/images/pic7.jpg")' : data.url + ".360_360.jpg");
+//                }, "json");
+//            }
+
+            //全选或者全不选
+            $("[name=chkSelectAll]").click(function () {
+                var strState = $(this).attr("checked");
+                if (strState) {
+                    $("[name=chkSel]").attr("checked", strState);
+                    $("[name=chkSelectAll]").attr("checked", strState);
+                } else {
+                    $("[name=chkSel]").attr("checked", false);
+                    $("[name=chkSelectAll]").attr("checked", false);
+                }
+            });
+            //删除
+            $("[name=btnDelete]").click(function () {
+                Del();
+            });
+            $("[name=chkSel]").click(function () {
+                var checkboxLength = $("#list input[type='checkbox']").length
+                var checkboxChecked = $("#list input:checked").length;
+                if (checkboxChecked == checkboxLength) {
+                    $("[name=chkSelectAll]").attr("checked", true);
+                } else {
+                    $("[name=chkSelectAll]").attr("checked", false);
+                }
+            });
+        });
+
+        //删除操作
+        function Del() {
+            var strIdList = GetCheckedIdList();
+            if (strIdList.length == 0) {
+                dialog.alert("请您选择商品后在进行操作！");
+                return false;
+            }
+            $.confirm("确认删除吗？", "提示", function () {
+                var strUrl = "@Url.UserSiteUrl().DelCollection";
+                $.post(strUrl, { collId: strIdList,m:Math.random() }, function (data) {
+                    if (data == 0) {
+                        dialog.alert("删除失败！", "信息", 1);
+                    } else {
+                        var strHref = location.href;
+                        location.href = strHref;
+                    }
+                }, "json");
+            });
+        }
+
+        //得到选择的id列表
+        function GetCheckedIdList() {
+            var dom = $("#list input:checked");
+            var strIdList = "";
+            for (var i = 0; i < dom.length; i++) {
+                strIdList += $(dom[i]).attr("value") + ",";
+            }
+            strIdList = strIdList.substr(0, strIdList.length - 1);
+            return strIdList;
+        }
+    </script>
+}
+<div class="tag">
+        <ul>
+          <li class="cur"><a href="javascript:void(0);">收藏夹</a></li>
+        </ul>
+      </div>
+<div class="conbox">
+    <div class="shouc col333">
+        @if (Model != null)
+        {
+            <div class="shouc_t mt26"><input type="checkbox"  name="chkSelectAll" /> 全选<a href="javascript:void(0);" class="inp ml10 col666 "  name="btnDelete">删除</a></div>
+            <div class="shouc_c" id="list">
+                @foreach (CollectionEntity item in Model)
+                {
+                   var title = item.Title.Length > 20 ? item.Title.ToString().Substring(0, 20) + "..." : item.Title;
+
+                   var pic = KYJ.ZS.Commons.PictureModular.GetPicture.GetFirstGoodsPicture(@item.Guid, true, "SHOW");
+                   if (string.IsNullOrEmpty(pic))
+                   {
+                       pic = PubConstant.StaticUrl + Url.Content("web/user/images/pic7.jpg");
+                   }
+                   else
+                   {
+                       pic = pic + ".130_130.jpg";
+                   }
+                    if (@item.Number==0)
+                    { 
+                     <dl>
+            		<dt class="pos_r dt1">
+                         <a href="@Url.WebSiteUrl().RentalGoods_Detail(item.GoodsId)" target="_blank"><img src="@pic" width="164" height="164" name="goodsPic" @*guid="@item.Guid"*@ /></a>
+                        <!--阴影背景开始-->
+                        <span></span>
+                        <div class="dt1"></div>
+                        <p class="col000 blod tac">商品已售空</p> 
+                        <!--阴影背景结束--> 
+                    </dt>
+            		<dd>
+                    	<input type="checkbox" name="chkSel"  value="@item.CollId" class="fl chec mt4"/>
+                        <p class="fl"><a href="@Url.WebSiteUrl().RentalGoods_Detail(item.GoodsId)" class="col333"  target="_blank" title="@item.Title">@title</a><br /><span class="col666">月租：<strong class="cold21b1b">@item.MonthPrice.ToString("#0.00")</strong> 元</span></p>
+                    </dd>
+            	</dl>
+                    }
+                    else
+                    { 
+                    <dl>
+            		<dt><a href="@Url.WebSiteUrl().RentalGoods_Detail(item.GoodsId)"  target="_blank"><img src="@pic" width="164" height="164"  name="goodsPic" @*guid="@item.Guid"*@ /></a></dt>
+            		<dd>
+                    	<input type="checkbox" name="chkSel"  value="@item.CollId"  class="fl chec mt4"/>
+                        <p class="fl"><a href="@Url.WebSiteUrl().RentalGoods_Detail(item.GoodsId)" class="col333"  target="_blank" title="@item.Title">@title</a><br /><span class="col666">月租：<strong class="cold21b1b">@item.MonthPrice.ToString("#0.00")</strong> 元</span></p>
+                    </dd>
+            	</dl>
+                    
+                    }
+                }
+            </div>
+            <div class="shouc_t"><input type="checkbox"  name="chkSelectAll" /> 全选<a href="javascript:void(0);" class="inp ml10 col666 "  name="btnDelete">删除</a></div>
+            <div class="page">
+                @Html.Pager(Model.TotalItemCount, Model.PageSize, Model.CurrentPageIndex, "List", "Collect", new PagerOptions { ShowGoButton = false, SeparatorHtml = "", ShowFirstLast = false, ShowPageIndexBox = false, GoButtonText = "跳转", CssClass = "", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + Model.CurrentPageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next end prev", FirstCss = "", LastCss = "", SpanCSS = "col333 font12 mr10", ShowGoButtonCss = "pagetz", AlwaysShowFirstLastPageNumber = true, NumericPagerItemCount = 4 }, null, null, null)
+            </div>
+            @*<div class="page"><a href="#" class="prev"> 上一页</a><a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#" class="end active">4</a> <span class="fl">...</span> <a href="#">100</a><a href="#" class="next end prev">下一页 </a></div>*@
+        }
+    </div>
+</div>
+
+    
+      
+            	
+               
+           
+            
+
+     

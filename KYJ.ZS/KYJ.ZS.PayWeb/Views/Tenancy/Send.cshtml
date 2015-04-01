@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/Layouts/_Layout.cshtml";
+}
+@{
+    if (ViewData["sHtmlText"] != null)
+    {
+    @Html.Raw(ViewData["sHtmlText"].ToString())
+    }
+}

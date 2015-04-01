@@ -1,0 +1,229 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using KYJ.ZS.Models.RentalGoodses
+@model IList<KYJ.ZS.Models.RentalGoodses.RentalGoodsIndexEntity>
+@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.WEIGUISHANGPIN;
+    ViewBag.Title = "违规商品";
+
+    RentalGoodsAreaEnum goodsAreaEnum = (RentalGoodsAreaEnum)ViewData["area"];
+
+    // 类目
+    int firstCategory = Auxiliary.ToInt32(ViewData["firstCategory"]);
+    int secondCategory = Auxiliary.ToInt32(ViewData["secondCategory"]);
+    int thirdCategory = Auxiliary.ToInt32(ViewData["thirdCategory"]);
+
+    int totalItemCount = Auxiliary.ToInt32(ViewData["totalItemCount"]);
+    int pagesize = Auxiliary.ToInt32(ViewData["pagesize"]);
+    int pageIndex = Auxiliary.ToInt32(ViewData["pageIndex"]);
+}
+<div class="tag">
+    <ul id="ul_menu" class="clearFix">
+        <li @(goodsAreaEnum == RentalGoodsAreaEnum.Pending ? "class=cur" : "") data-area="@((int)RentalGoodsAreaEnum.Pending)"><a href="javascript:void(0);">待审核</a></li>
+        <li @(goodsAreaEnum == RentalGoodsAreaEnum.ViolationGoods ? "class=cur" : "") data-area="@((int)RentalGoodsAreaEnum.ViolationGoods)"><a href="javascript:void(0);">违规商品 </a></li>
+    </ul>
+</div>
+<div class="conbox" >
+        <div class="serchbox clearFix">
+        <form id="frm_search" action="@Url.ManagerSiteUrl().RentalGoods_ViolationGoods" method="get">
+          <div class="clearFix">
+            <div class="fl col666 mr10">商品名称：
+              <input name="txt_title" type="text" value="@(ViewData["merchantTitle"] as string)" maxlength="30" class="intxt w200" />
+            </div>
+            <div class="fl col666 mr10">商户名称：
+              <input name="txt_merchantName" type="text" value="@(ViewData["merchantName"] as string)" maxlength="30" class="intxt w200" />
+            </div>
+            <div class="fl col666   mr10">商家编号：
+              <input name="txt_code" type="text" value="@(ViewData["code"] as string)" maxlength="30" class="intxt w200" />
+            </div>
+          </div>
+          <div class=" mt10 clearFix">
+            <div class="fl col666 mr10">商品类别：
+              <select id="sel_firstCategory" name="sel_firstCategory" class="formselect w200">
+                <option>全部</option>
+              </select>
+              <select id="sel_secondCategory" name="sel_secondCategory"  class="formselect w200">
+                <option>全部</option>
+              </select>
+              <select id="sel_thirdCategory" name="sel_thirdCategory"  class="formselect w200">
+                <option>全部</option>
+              </select>
+            </div>
+            <div class="">
+              <input id="btn_search" type="button" class="btn_f65c33" value="搜索"  />
+            </div><input id="hdn_area" name="hdn_area" value="@((int)goodsAreaEnum)" type="hidden" />
+          </div>
+          </form>
+        </div>
+        <div class="list">
+          <table>
+            <tr>
+              <th>商品名称</th>
+              <th>商品类别 </th>
+              <th >商户名称</th>
+              <th>商家编号</th>
+              <th > 月租（元） </th>
+              <th >上架状态</th>
+              <th class="tdlast">操作</th>
+            </tr>
+            @if (Model != null && Model.Count > 0)
+            {
+                foreach (var goods in Model)
+                {
+                <tr>
+                    <td>@goods.Title</td>
+                    <td>@goods.CategoryName</td>
+                    <td>@goods.MerchantName</td>                                                                                        
+                    <td>@goods.Code</td>
+                    <td>@goods.MonthPrice.ToString("F2")</td>
+                    <td >@(goods.Status == 1 ? "已上架" : "未上架")</td>
+                    <td  class="tdlast"><p><a name="a_detail" data-id="@goods.Id" data-name="@goods.Title" data-shelfreason="@goods.ShelfReason" data-href="@Url.WebSiteUrl().RentalGoods_DetailPreview(goods.Id)" href="javascript:void(0);">详情 </a></p>
+                    </td>
+                </tr>
+                }
+            }
+          </table>
+   @Html.Pager(totalItemCount, pagesize, pageIndex, "violationgoods", "rentalgoods", new PagerOptions { AutoHide = false, SeparatorHtml = " ", ShowFirstLast = false, ShowPageIndexBox = false, CssClass = "page", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + pageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next end prev", SpanCSS = "" }, null, null, null)
+        </div>
+      </div>
+
+<div id="hdn_dialog" style=" display:none">
+<div class="layer w400 mt10">
+  <div class="layer_title">详情</div>
+    <a name="a_close" href="javascript:void(0);" class="close"></a>
+  <div class="layer_box">
+    <table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>查看详情：</td>
+        <td><a name="a_detailLink" href="javascript:void(0);" target="_blank" class="link_05c">预览</a></td>
+      </tr>
+      <tr>
+        <td valign="top">违规原因：</td>
+        <td><textarea name="area_AuditOpinion" class="area w260 "></textarea><div name="div_error" class="cold21b1b mt5"></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+        @if (goodsAreaEnum == RentalGoodsAreaEnum.Pending)
+        {
+        <input name="btn_violation" data-id="" data-name="" type="button" class="btn_1abc9c mr5" value="确认违规" />
+        }
+        <input name="btn_pass" data-id="" data-name="" type="button" class="btn_1abc9c mr5" value="解除违规" />
+        <input name="btn_cancel" type="button" class="btn_grey" value="取消" /></td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+
+@section scripts{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/public/common.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            // 二级类目下拉改变事件
+            $("#sel_secondCategory").change(function () {
+                var categoryId = $(this).val();
+                Common.ClearListItems($("#sel_thirdCategory"));
+                if (categoryId > 0) {
+                    Common.LoadGeographyItems('@Url.ManagerSiteUrl().CategoryLocation("secondthirdcategory")?categoryCode=' + categoryId + "&ram=" + Math.random(), 0, $("#sel_thirdCategory"));
+                }
+            });
+            // 一级类目下拉改变事件
+            $("#sel_firstCategory").change(function () {
+                var categoryId = $(this).val();
+                Common.ClearListItems($("#sel_secondCategory"));
+                Common.ClearListItems($("#sel_thirdCategory"));
+                if (categoryId > 0) {
+                    Common.LoadGeographyItems('@Url.ManagerSiteUrl().CategoryLocation("secondthirdcategory")?categoryCode=' + categoryId + "&ram=" + Math.random(), 0, $("#sel_secondCategory"));
+                }
+            });
+            var Init = function (intFId, intSId, intTId) {
+                Common.LoadGeographyItems('@Url.ManagerSiteUrl().CategoryLocation("firstcategory")' + "?ram=" + Math.random(), intFId, $("#sel_firstCategory"));
+                if (intFId > 0) {
+                    Common.LoadGeographyItems('@Url.ManagerSiteUrl().CategoryLocation("secondthirdcategory")?categoryCode=' + intFId + "&ram=" + Math.random(), intSId, $("#sel_secondCategory"));
+                }
+                if (intSId > 0) {
+                    Common.LoadGeographyItems('@Url.ManagerSiteUrl().CategoryLocation("secondthirdcategory")?categoryCode=' + intSId + "&ram=" + Math.random(), intTId, $("#sel_thirdCategory"));
+                }
+            };
+            // 类目列表初次加载
+            Init('@firstCategory', '@secondCategory', '@thirdCategory');
+
+            // 商品区域选择
+            $("#ul_menu li").click(function () {
+                var areaId = $(this).attr("data-area");
+                $("#hdn_area").val(areaId);
+                $("#frm_search").submit();
+            })
+
+            // 搜索
+            $("#btn_search").click(function () {
+                $("#frm_search").submit();
+            })
+
+            // 商品详情弹窗
+            $("[name='a_detail']").click(function () {
+                var detailHref = $(this).attr("data-href"),
+                    goodsId = $(this).attr("data-id"),
+                    goodsName = $(this).attr("data-name"),
+                    shelfreason = $(this).attr("data-shelfreason");
+                $("#hdn_dialog").find("[name='a_detailLink']").attr("href", detailHref);
+                $("#hdn_dialog").find("[name='btn_violation']").attr("data-id", goodsId).attr("data-name", goodsName);
+                $("#hdn_dialog").find("[name='btn_pass']").attr("data-id", goodsId).attr("data-name", goodsName);
+                $("#hdn_dialog").find("[name='area_AuditOpinion']").html(shelfreason);
+                $.content($("#hdn_dialog").html(), 400, 0, 0);
+            })
+
+            // 关闭弹窗
+            $("[name='a_close'],[name='btn_cancel']").live("click", function () {
+                $.closeAll();
+            })
+
+            // 确认违规
+            $("[name='btn_violation']").live("click", function () {
+                var $div_error = $(this).closest("table").find("[name='div_error']");
+                // 审核意见
+                var auditOpinion = $(this).closest("table").find("[name='area_AuditOpinion']").val();
+                if ($.trim(auditOpinion) == '') {
+                    $div_error.html('请填写违规原因！');
+                    return false;
+                }
+                if (auditOpinion.length > 200) {
+                    $div_error.html('违规原因不能超过200个字！');
+                    return false;
+                }
+                AuditRentalGoods($(this).attr("data-id"), $(this).attr("data-name"), auditOpinion, false, $div_error);
+            })
+
+            // 解除违规
+            $("[name='btn_pass']").live("click", function () {
+                var $div_error = $(this).closest("table").find("[name='div_error']");
+                // 审核意见
+                var auditOpinion = $(this).closest("table").find("[name='area_AuditOpinion']").val();
+                AuditRentalGoods($(this).attr("data-id"), $(this).attr("data-name"), auditOpinion, true, $div_error);
+            })
+
+            function AuditRentalGoods(rentalGoodsId, rentalGoodsName, auditOpinion, isValidate, $div_error) {
+                $.post('@Url.ManagerSiteUrl().RentalGoods_AuditRentalGoods', { modelMark: 2, rentalGoodsId: rentalGoodsId, rentalGoodsName: rentalGoodsName, AuditOpinion: auditOpinion, isValidate: isValidate },
+                                function (data) {
+                                    var _data = data.toUpperCase();
+                                    // 操作成功
+                                    if (_data.indexOf("TRUE") > -1) {
+                                        location.reload();
+                                    }
+                                    else if (_data.indexOf("||") > -1) {
+                                        var erroInfo = data.split('||')[1];
+                                        $div_error.html(erroInfo);
+                                    }
+                                    else if (_data.indexOf("FALSE") > -1) {
+                                        $div_error.html('操作失败，请重试！');
+                                    }
+                                    else {
+                                        $.alert(data);
+                                    }
+                                }
+                            );
+            }
+        });
+    </script>
+}

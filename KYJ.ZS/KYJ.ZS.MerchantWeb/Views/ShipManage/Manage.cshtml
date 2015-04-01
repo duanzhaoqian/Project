@@ -1,0 +1,307 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using KYJ.ZS.Models.Orders
+@model IList<OrderEntity>
+@{
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+    ViewBag.Navigation = MerchantNavigation.FAHUOGUANLI;
+    
+    // 分页
+    int totalItemCount = Auxiliary.ToInt32(ViewData["totalItemCount"]);
+    int pagesize = Auxiliary.ToInt32(ViewData["pagesize"]);
+    int pageIndex = Auxiliary.ToInt32(ViewData["pageIndex"]);
+    
+    // 查询条件
+    OrderSearchEntity searchEntity = (OrderSearchEntity)ViewData["SearchEntity"];
+    // 是否发货
+    bool isSend = searchEntity == null ? false : searchEntity.IsSend;
+
+    ViewBag.Title = (isSend ? "已" : "待") + "发货的订单";
+}
+@section header{
+    <link href="@PubConstant.StaticUrl@Url.Content("base/plug/datepicker/css/jquery.datepicker.css")" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        .error{ border-color:Red;}
+    </style>
+}
+<div class="tag">
+    <ul>
+        <li class="@(isSend ? "" : "cur")" data-isSend="false"><a href="javascript:void(0);">待发货订单</a></li>
+        <li class="@(isSend ? "cur" : "")" data-isSend="true"><a href="javascript:void(0);">已发货订单 </a></li>
+    </ul>
+</div>
+<div class="conbox">
+    <div class="serchbox clearFix">
+        <form id="frm_searchorder" name="frm_searchorder" action="@Url.MerchantSiteUrl().ShipManage_Manage" method="get">
+            <input id="hdn_isSend" name="hdn_isSend" type="hidden" value="@isSend" />
+            <div class="fl">收件人名称：<input id="txt_Name" name="txt_Name" type="text" value="@(searchEntity == null ? "" : searchEntity.RecipientName)" maxlength="30" class="intxt_h24 w116" /></div>
+             <div class="pl15 fl">订单编号：<input id="txt_Number" name="txt_Number" type="text" value="@(searchEntity == null ? "" : searchEntity.OrderNumber)" maxlength="30" class="intxt_h24 w116" /></div>
+             <div class="pl15 fl">买家昵称：<input id="txt_nickName" name="txt_nickName" type="text" value="@(searchEntity == null ? "" : searchEntity.NickName)" maxlength="30" class="intxt_h24 w116" /></div>
+             <div class="pl15 fl">创建时间：<input id="txt_startDate" name="txt_startDate" type="text" value="@(searchEntity == null ? "" : (searchEntity.startDate.HasValue ? searchEntity.startDate.Value.ToString("yyyy-MM-dd") : ""))" class="intxt_h24 w85 text_bg" />&nbsp;-&nbsp;<input id="txt_endDate" name="txt_endDate" type="text" value="@(searchEntity == null ? "" : (searchEntity.endDate.HasValue ? searchEntity.endDate.Value.ToString("yyyy-MM-dd") : ""))" class="intxt_h24 w85 text_bg" /></div>
+             <div class="fl pl12"><input id="btn_search" type="button" class="btn_red" value="搜索" /></div>
+        </form>
+    </div>
+        @if (Model != null && Model.Count > 0)
+        {
+    <!--订单编号开始-->
+    <div class="g_dingd">
+            @foreach (var order in Model)
+            {
+            <div class="g_dingd1">
+                <div class="g_dingd11">
+                    <p>订单编号：@order.Number</p>
+                    <span>创建时间：@order.CreateTime.ToString("yyyy-MM-dd HH:mm")</span>
+                </div>
+                <ul>
+                    <li class="cu1">
+                    @{
+                var pic = KYJ.ZS.Commons.PictureModular.GetPicture.GetFirstGoodsPicture(order.Guid, true, "SHOW");
+                if(string.IsNullOrEmpty(pic))
+                {
+                    pic = PubConstant.StaticUrl + Url.Content("web/merchant/images/img/images.jpg");
+                }
+                else
+                {
+                    pic += ".60_60.jpg";
+                }
+                        }
+                        <img src="@pic" width="50" height="50" />
+                        <div class="cu1_1">
+                            <p><a href="@Url.WebSiteUrl().RentalGoods_Detail(order.GoodsId)" target="_blank">@order.Title</a></p>
+                            <strong>颜色分类:@order.ColorName</strong>
+                            <span>@order.MonthPrice.ToString("F2") x @order.GoodsNum</span>
+                        </div>
+                    </li>
+                    <li class="cu2">
+                        <p>收货人姓名：<span>@order.DeliveryRealName</span></p>
+                        <p class="cup1">联系电话：<span>@order.DeliveryTel</span></p>
+                        <p class="cup2">邮编：<span>@order.DeliveryCode</span></p>
+                        <p class="cup2">地址：<span>@order.Address</span></p>
+                    </li>
+                    @if (!isSend)
+                    {
+                        <li class="cu3 cu4">
+                            <input id="txt_Company" defValue="请输入物流/快递公司" class="intxt_h24" type="" style=" color:Gray;" maxlength="30" value="请输入物流/快递公司" />
+                            <input id="txt_expressNum" defValue="请输入物流/快递单号" class="intxt_h24" type="" style=" color:Gray;" maxlength="30" value="请输入物流/快递单号" />
+                            <p><a class="btn_orange" data-id="@order.OrderId" href="javascript:void(0);">确定发货</a></p>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="cu3">
+                            <p>@order.ExpressCompany</p>
+                            <p><strong>单号：</strong>@order.ExpressNum</p>
+                            <span><a id="btn_edit" name="btn_edit" class="btn_blue" href="javascript:void(0);">修改</a></span>
+                        </li>
+                        <li class="cu3 cu31" style="display:none;">
+                  	        <input id="txt_Company" data="@order.ExpressCompany" defValue="请输入物流/快递公司" class="intxt_h24" type="" maxlength="30" value="@order.ExpressCompany"/>
+                            <input id="txt_expressNum" data="@order.ExpressNum" defValue="请输入物流/快递单号" class="intxt_h24 mb10" type="" maxlength="30" value="@order.ExpressNum"/>
+                            <span class="mr8"><a id="btn_editSubmit" name="btn_editSubmit" class="btn_blue" data-id="@order.OrderId" href="javascript:void(0);">修改</a></span>
+                            <span class="mr8"><a id="btn_cancel" name="btn_cancel" class="btn_ccc" href="javascript:void(0);">取消</a></span>
+                        </li>
+                    }
+                </ul>
+            </div>
+            }
+    </div>
+        <!--订单编号结束-->
+        }
+        @Html.Pager(totalItemCount, pagesize, pageIndex, "manage", "shipmanage", new PagerOptions { AutoHide = false, SeparatorHtml = " ", ShowFirstLast = false, ShowPageIndexBox = false, CssClass = "page mr", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next", SpanCSS = "active" }, null, null, null)
+</div>
+
+@section scripts{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/plug/datepicker/jquery.datepicker.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            // 创建日期
+            var dates = $("#txt_startDate,#txt_endDate").datepicker({
+                defaultDate: "+1w",
+                minDate: (this.id == "txt_endDate" ? $("#txt_startDate").datepicker("getDate") : null),
+                maxDate: (this.id == "txt_startDate" ? $("#txt_endDate").datepicker("getDate") : '+0d'),
+                onSelect: function (selectedDate) {
+                    var option = this.id == "txt_startDate" ? "minDate" : "maxDate",
+					instance = $(this).data("datepicker"),
+					date = $.datepicker.parseDate(
+						instance.settings.dateFormat ||
+						$.datepicker._defaults.dateFormat,
+						selectedDate, instance.settings);
+                    dates.not(this).datepicker("option", option, date);
+                }
+            }).attr("readonly", "readonly");
+
+            $("#txt_startDate,#txt_endDate").keydown(function (e) {
+                e.preventDefault();
+                if (e.keyCode == 8) {
+                    $(this).val('');
+                }
+            });
+
+            // 物流公司、物流单号提示输入
+            $("input[id='txt_Company'],input[id='txt_expressNum']").live("focus", function () {
+                var defValue = $(this).attr("defValue");
+                if ($(this).val() == defValue) {
+                    $(this).val('');
+                    $(this).css('color', 'Black');
+                }
+            }).live("blur", function () {
+                var defValue = $(this).attr("defValue");
+                if ($.trim($(this).val()) == '') {
+                    $(this).val(defValue);
+                    $(this).css('color', 'Gray');
+                }
+            });
+
+
+            // 待发货、已发货点击事件
+            $(".tag li").click(function () {
+                // 是否发货
+                var isSend = $(this).attr("data-isSend");
+                $("#hdn_isSend").val(isSend);
+                // 搜索表单提交
+                $("#frm_searchorder").submit();
+            })
+
+            // 搜索
+            $("#btn_search").click(function () {
+                $("#frm_searchorder").submit();
+            })
+
+            // 确定发货
+            $(".btn_orange").click(function () {
+                //当前发货信息的li
+                $infoLi = $(this).closest('.cu3.cu4');
+
+                // 清除错误信息
+                $infoLi.find("#txt_Company").removeClass("error");
+                $infoLi.find("#txt_expressNum").removeClass("error");
+
+                var orderId = $(this).attr("data-id"),
+                    //type = $(this).attr("data-type"),
+                    company = $.trim($infoLi.find("#txt_Company").val()),
+                    expressNum = $.trim($infoLi.find("#txt_expressNum").val()),
+                    defCompany = $infoLi.find("#txt_Company").attr("defValue"),
+                    defExpressNum = $infoLi.find("#txt_expressNum").attr("defValue");
+
+                var result = true;
+                if (company == defCompany || company == '') {
+                    $infoLi.find("#txt_Company").addClass("error");
+                    $infoLi.find("#txt_Company").css("color","Red");
+                    //$("#company_error").html('请填写物流公司名称！');
+                    result = false;
+                }
+                if (expressNum == defExpressNum || expressNum == '') {
+                    $infoLi.find("#txt_expressNum").addClass("error");
+                    $infoLi.find("#txt_expressNum").css("color", "Red");
+                    //$.alert('请填写快递单号！');
+                    result = false;
+                }
+                if (result == false) return false;
+
+                $.post('@Url.MerchantSiteUrl().ShipManage_Edit', { orderId: orderId, company: company, expressNum: expressNum },
+                            function (data) {
+                                var _data = data.toUpperCase();
+                                // 发货成功
+                                if (_data.indexOf("TRUE") > -1) {
+                                    //$infoLi.closest(".g_dingd1").remove();
+                                    //$.msg('已发货', 1, -1);
+
+                                    // 搜索表单提交
+                                    $("#frm_searchorder").submit();
+                                }
+                                else if (_data.indexOf("FALSE") > -1) {
+                                    $.alert('发货失败，请重试！');
+                                }
+                                else {
+                                    $.alert(data);
+                                }
+                            }
+                        );
+            })
+
+            // 修改发货信息
+            $("a[name='btn_edit']").click(function () {
+                $infoLi = $(this).closest('.cu3'); //展示
+                $editLi = $infoLi.next(); //修改
+
+                // 修改编辑的发货信息
+                var company = $editLi.find("#txt_Company").attr("data");
+                $editLi.find("#txt_Company").val(company);
+                var expressNum = $editLi.find("#txt_expressNum").attr("data");
+                $editLi.find("#txt_expressNum").val(expressNum);
+
+                $infoLi.hide();
+                $editLi.show();
+            })
+
+            // 确认修改发货信息
+            $("a[name='btn_editSubmit']").click(function () {
+                //编辑发货信息的li
+                $infoLi = $(this).closest('.cu3.cu31');
+
+                // 清除错误信息
+                $infoLi.find("#txt_Company").removeClass("error");
+                $infoLi.find("#txt_expressNum").removeClass("error");
+
+                var orderId = $(this).attr("data-id"),
+                    //type = $(this).attr("data-type"),
+                    company = $.trim($infoLi.find("#txt_Company").val()),
+                    expressNum = $.trim($infoLi.find("#txt_expressNum").val()),
+                    defCompany = $infoLi.find("#txt_Company").attr("defValue"),
+                    defExpressNum = $infoLi.find("#txt_expressNum").attr("defValue");
+
+                var result = true;
+                if (company == defCompany || company == '') {
+                    $infoLi.find("#txt_Company").addClass("error");
+                    $infoLi.find("#txt_Company").css("color", "Red");
+                    //$("#company_error").html('请填写物流公司名称！');
+                    result = false;
+                }
+                if (expressNum == defExpressNum || expressNum == '') {
+                    $infoLi.find("#txt_expressNum").addClass("error");
+                    $infoLi.find("#txt_expressNum").css("color", "Red");
+                    //$.alert('请填写快递单号！');
+                    result = false;
+                }
+                if (result == false) return false;
+
+                $.post('@Url.MerchantSiteUrl().ShipManage_Edit', { orderId: orderId, company: company, expressNum: expressNum },
+                            function (data) {
+                                var _data = data.toUpperCase();
+                                // 修改成功
+                                if (_data.indexOf("TRUE") > -1) {
+                                    $prevLi = $infoLi.prev(); //信息展示的li
+
+                                    // 修改后的展示订单信息
+                                    $prevLi.find("p").eq(0).html(company);
+                                    $prevLi.find("p").eq(1).html("<strong>单号：</strong>" + expressNum);
+
+                                    // 更新文本框的data
+                                    $infoLi.find("#txt_Company").attr("data", company);
+                                    $infoLi.find("#txt_expressNum").attr("data", expressNum);
+
+                                    $infoLi.hide();
+                                    $prevLi.show();
+                                }
+                                else if (_data.indexOf("FALSE") > -1) {
+                                    $.alert('发货失败，请重试！');
+                                }
+                                else {
+                                    $.alert(data);
+                                }
+                            }
+                        );
+            })
+
+            // 取消修改
+            $("a[name='btn_cancel']").click(function () {
+                $infoLi = $(this).closest('.cu3.cu31');
+
+                // 清除错误信息
+                $infoLi.find("#txt_Company").removeClass("error");
+                $infoLi.find("#txt_expressNum").removeClass("error");
+
+                $infoLi.hide();
+                $infoLi.prev().show();
+            })
+        })
+    </script>
+}

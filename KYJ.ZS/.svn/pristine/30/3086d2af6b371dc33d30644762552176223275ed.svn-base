@@ -1,0 +1,124 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using KYJ.ZS.Models.Pages
+@using KYJ.ZS.Models.DB
+@{
+    ViewBag.Title = "审核广告";
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.HESHENGUANGGAO;
+    //获取视图传过来的参数
+    PageData<Advert> pagedate = (PageData<Advert>)ViewData["pageData"];
+    GeneralizeSate generalizeSate = (GeneralizeSate)ViewData["State"];
+    string name = ViewData["name"] == null ? "" : ViewData["name"].ToString();
+    DateTime? begintime = (DateTime?)ViewData["beginTime"];
+    DateTime? endtime = (DateTime?)ViewData["endTime"];
+}
+@section header{
+    <link href="@PubConstant.StaticUrl@Url.Content("base/plug/datepicker/css/jquery.datepicker.css")" type="text/css" rel="stylesheet" />
+}
+<div class="tag">
+    <ul id="ul_menu" class="clearFix">
+        <li class="cur"><a href="javascript:void(0);">审核广告 </a></li>
+    </ul>
+</div>
+<div class="conbox" style="display: none;">
+    <form action="" method="get" id="frm_search">
+    <div class="serchbox clearFix">
+        <div class="fl col666 mr10">
+            广告名称：
+            <input type="text" value="@name" name="name" class="intxt w260" />
+        </div>
+        <div class=" fl col666 mr10">
+            排序时间：
+            <input type="text" value="@(begintime.HasValue ? begintime.Value.ToString("yyyy-MM-dd") : "")" id="text_beginTime" name="beginTime" class="intxt" />
+            &nbsp;-&nbsp;
+            <input type="text" value="@(endtime.HasValue ? endtime.Value.ToString("yyyy-MM-dd") : "")" id="text_endTime" name="endTime" class="intxt" />
+        </div>
+        <div class="">
+            <input type="button" id="btn_search" class="btn_f65c33" state_value="2" value="搜索" />
+        </div>
+    </div>
+    </form>
+    <div class="list">
+        <table>
+            <tr>
+                <th>
+                    广告名称
+                </th>
+                <th>
+                    开始时间
+                </th>
+                <th>
+                    结束时间
+                </th>
+                <th width="40%">
+                    说明
+                </th>
+                <th>
+                    状态
+                </th>
+                <th class="tdlast">
+                    操作
+                </th>
+            </tr>
+            @foreach (var item in pagedate.DataList)
+            {
+                <tr>
+                    <td>@item.Name
+                    </td>
+                    <td>@item.BeginTime.ToString("yyyy-MM-dd HH:mm")
+                    </td>
+                    <td>@item.EndTime.ToString("yyyy-MM-dd HH:mm")
+                    </td>
+                    <td>@item.Remark
+                    </td>
+                    <td>
+                        审核中
+                    </td>
+                    <td class="tdlast">
+                        <p>
+                            <a name="btnDetail"  advertID="@item.AdvertId" href="@Url.ManagerSiteUrl().AdvertManage_Detail(@item.AdvertId, true)">查看详情 </a>
+                        </p>
+                    </td>
+                </tr>
+            }
+        </table>
+        <div class="page">
+            @Html.Pager(pagedate.RecordCount, pagedate.PageSize, pagedate.PageIndex, "manage", "advertmanage", new PagerOptions { AutoHide = false, SeparatorHtml = " ", ShowFirstLast = false, ShowPageIndexBox = false, CssClass = "page", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + pagedate.PageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next end prev", SpanCSS = "col333 font12 mr10" }, null, null, null)
+        </div>
+    </div>
+</div>
+@section scripts{
+<script src="@PubConstant.StaticUrl@Url.Content("base/plug/datepicker/jquery.datepicker.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btn_search").click(function () {
+                $("#frm_search").attr("action", "@Url.ManagerSiteUrl().AdvertManage_CheckAdvert?stateId=2");
+                $("#frm_search").submit();
+            });
+
+            //时间
+            var dates = $("#text_beginTime,#text_endTime").datepicker({
+                defaultDate: "+1w",
+                minDate: (this.id == "text_endTime" ? $("#text_beginTime").datepicker("getDate") : null),
+                maxDate: (this.id == "text_beginTime" ? $("#text_endTime").datepicker("getDate") : ''),
+                onSelect: function (selectedDate) {
+                    var option = this.id == "text_beginTime" ? "minDate" : "maxDate",
+        					instance = $(this).data("datepicker"),
+        					date = $.datepicker.parseDate(
+        						instance.settings.dateFormat ||
+        						$.datepicker._defaults.dateFormat,
+        						selectedDate, instance.settings);
+                    dates.not(this).datepicker("option", option, date);
+                }
+            }).attr("readonly", "readonly");
+            $("#text_beginTime,#text_endTime").keydown(function (e) {
+                e.preventDefault();
+                if (e.keyCode == 8) {
+                    $(this).val('');
+                }
+            });
+
+        })
+
+    </script>
+}

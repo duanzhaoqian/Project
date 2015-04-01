@@ -1,0 +1,379 @@
+﻿@model KYJ.ZS.Models.LocalUsers.LocalUserEntity
+@{
+    ViewBag.Title = "账号管理-基本资料";
+    Layout = "~/Views/Shared/Layouts/_UserLayout.cshtml";
+    ViewBag.Navigation = UserNavigation.JIBENZILIAO;
+}
+@section header{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery.validate.min.js")" type="text/javascript"></script>
+}
+<div class="nTab">
+    <div class="TabTitle">
+        <ul id="myTab">
+            <li class="active"><a href="@Url.UserSiteUrl().Information">基本资料</a></li>
+            <li class="normal"><a href="@Url.UserSiteUrl().Avatar">头像照片</a></li>
+            <li class="normal"><a href="@Url.UserSiteUrl().Education">教育情况</a></li>
+            <li class="normal"><a href="@Url.UserSiteUrl().Card">工作名片</a></li>
+            <li class="normal"><a href="@Url.UserSiteUrl().Password">修改密码</a></li>
+        </ul>
+    </div>
+    <div class="TabContent">
+        <div id="myTab_Content0">
+            <div class="er_location">
+                <form action="@Url.UserSiteUrl().ResetInformation" id="ResetForm" name="ResetForm" method="post">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <th>
+                                昵称：
+                            </th>
+                            <td>
+                                <input type="text" id="NickName" name="NickName" class="input_txt w248" value="@Model.NickName" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                真实姓名：
+                            </th>
+                            <td>
+                                <input type="text" id="RealName" name="RealName" class="input_txt w248" value="@Model.RealName" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                性别：
+                            </th>
+                            <td>
+                                <span>@*<input type="radio" name="1" checked="@Model.Sex==1?"":""" value="1" class="btn_radio" />*@
+                                    @Html.RadioButtonFor(it => it.Sex, "1", new { id = "", name = "sex", @class = "btn_radio" })
+                                    男</span><span class="ml15">
+                                        @Html.RadioButtonFor(it => it.Sex, "2", new { id = "", name = "sex", @class = "btn_radio" })
+                                        女</span><span class="ml15">
+                                            @Html.RadioButtonFor(it => it.Sex, "0", new { id = "", name = "sex", @class = "btn_radio" })
+                                            保密</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                生日：
+                            </th>
+                            <td>
+                                <select id="BirthdayYear" name="BirthdayYear" class="w100 select_birthday">
+                                </select>
+                                <select name="BirthdayMonth" id="BirthdayMonth" class="w58 select_birthday">
+                                </select>
+                                <select name="BirthdayDay" id="BirthdayDay" class="w58">
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                星座：
+                            </th>
+                            <td>
+                                <select id="Constellation" name="Constellation" class="w100">
+                                    <option>天秤座</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                居住地：
+                            </th>
+                            <td>
+                                <label>
+                                    <select id="LiveProvinceId" name="LiveProvinceId" class="w100">
+                                        <option value="0">请选择</option>
+                                    </select>
+                                    <input type="hidden" id="LiveProvinceName" name="LiveProvinceName" value="@Model.LiveProvinceName" /></label>
+                                <label>
+                                    <select id="LiveCityId" name="LiveCityId" class="w100">
+                                        <option value="0">请选择</option>
+                                    </select>
+                                    <input type="hidden" id="LiveCityName" name="LiveCityName" value="@Model.LiveCityName" /></label>
+                                <label>
+                                    <select id="LiveDistrictId" name="LiveDistrictId" class="w100">
+                                        <option value="0">请选择</option>
+                                    </select>
+                                    <input type="hidden" id="LiveDistrictName" name="LiveDistrictName" value="@Model.LiveDistrictName" /></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                家乡：
+                            </th>
+                            <td>
+                                <label>
+                                    <select id="HomeProvinceId" name="HomeProvinceId" class="w100">
+                                        <option value="0">请选择</option>
+                                    </select>
+                                    <input type="hidden" id="HomeProvinceName" name="HomeProvinceName" value="@Model.HomeProvinceName" />
+                                </label>
+                                <label>
+                                    <select id="HomeCityId" name="HomeCityId" class="w100">
+                                        <option value="0">请选择</option>
+                                    </select>
+                                    <input type="hidden" id="HomeCityName" name="HomeCityName" value="@Model.HomeCityName" />
+                                </label>
+                                <label>
+                                    <select id="HomeDistrictId" name="HomeDistrictId" class="w100">
+                                        <option value="0">请选择</option>
+                                    </select>
+                                    <input type="hidden" id="HomeDistrictName" name="HomeDistrictName" value="@Model.HomeDistrictName" />
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                &nbsp;
+                            </th>
+                            <td>
+                                <input type="button" id="sub_button" class="btn_yellow" value="保 存" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("#myTab li").on("click", function () {
+                var num = $(this).find("a");
+                window.location.href = num.attr("href");
+        });
+//        $("#sub_button").on("click",function(){
+//            $.ajax({ url: "@Url.UserSiteUrl().ResetInformation",type: "post",
+//                        dataType: "json", data: $("#ResetForm").serialize(), success: function(response){
+//                        if (response.result) {
+//                            $.alert("修改成功！",null, null, 1);
+//                        }else{
+//                            $.alert(response.message);
+//                        }
+//            }});
+//        });
+        $("#sub_button").on("click",function(){
+            $("#ResetForm").submit();
+        });
+
+        jQuery.validator.addMethod("txtlength", function (value, element) {
+                var num=value.replace(/[^\x00-\xff]/g, "**").length
+                if(num>10){
+                return false;
+                }
+                return true;
+            }, "");
+        $("#ResetForm").validate({
+                rules: {
+                    NickName: {
+                        required: true,
+                        txtlength: true
+                    },
+                    RealName: {
+                        required: true,
+                        txtlength: true
+                    },
+                     LiveDistrictId: {
+                        min: 1
+                    },
+                    HomeDistrictId: {
+                        min: 1
+                    }
+                },
+                messages: {
+                    NickName: {
+                        required: "<span class='no'>请填写正确信息！</span>",
+                        txtlength: jQuery.format("<span class='no'>昵称不能大于10个字符！</span>")
+                    },
+                    RealName: {
+                        required: "<span class='no'>请填写正确信息！</span>",
+                        txtlength: jQuery.format("<span class='no'>姓名不能大于10个字符！</span>")
+                    },
+                     LiveDistrictId: {
+                        min: "<span class='no'>请填写正确信息！</span>"
+                    },
+                    HomeDistrictId: {
+                        min: "<span class='no'>请填写正确信息！</span>"
+                    }
+                },
+                success: function (element) {
+                    element.parent().find("span").html("<span class='yes'>&nbsp;</span>");
+                },
+                submitHandler: function (form) {
+           
+                    $.ajax({ 
+                        url: "@Url.UserSiteUrl().ResetInformation",
+                        type: "post",
+                        dataType: "json", 
+                        data: $("#ResetForm").serialize(),
+                        success: function(response){
+                             if (response.result) {
+                                 $.alert("修改成功！",null, null, 1);
+                             }else{
+                                 $.alert(response.message);
+                              }
+                        }
+                    });
+       
+                },
+                onkeyup: false,
+                errorElement: "span",
+                errorPlacement: function (error, element) {
+                    element.parent().find("span").remove();
+                    error.appendTo(element.parent());
+                }
+            });
+    });
+        $(function () {
+            var InitBirthday = function () {
+                var year = $("#BirthdayYear").val();
+                var month = $("#BirthdayMonth").val();
+                var day = parseInt($("#BirthdayDay").val());
+                var beginDate = new Date('' + year + '/' + month + '/1 0:00:00');
+                var endMonth = parseInt(month) + 1 > 12 ? 1 : parseInt(month) + 1;
+                var endYear = parseInt(month) + 1 > 12 ? parseInt(year) + 1 : year;
+                var endDate = new Date('' + endYear + '/' + endMonth + '/1 0:00:00');
+                var num = parseInt((endDate - beginDate) / (24 * 60 * 60 * 1000));
+                if (num > 0) {
+                    $("#BirthdayDay").html("");
+                    for (var i = 1; i <= num; i++) {
+                        var strData = (day == i ? "selected=selected" : "");
+                        $("#BirthdayDay").append("<option value=" + i + " " + strData + ">" + i + "</option>");
+                    }
+                    Constellation(month, parseInt($("#BirthdayDay").val()), 'Constellation');
+                }
+            };
+            var constellations = [{ id: 1, begin: 1222, end: 119, name: "魔羯座" }, { id: 2, begin: 120, end: 218, name: "水瓶座" }, { id: 3, begin: 219, end: 320, name: "双鱼座" }
+                                , { id: 4, begin: 321, end: 419, name: "白羊座" }, { id: 5, begin: 420, end: 520, name: "金牛座" }, { id: 6, begin: 521, end: 621, name: "双子座" }
+                                , { id: 7, begin: 622, end: 722, name: "巨蟹座" }, { id: 8, begin: 723, end: 822, name: "狮子座" }, { id: 9, begin: 823, end: 922, name: "处女座" }
+                                , { id: 10, begin: 923, end: 1023, name: "天秤座" }, { id: 11, begin: 1024, end: 1122, name: "天蝎座" }, { id: 12, begin: 1123, end: 1221, name: "射手座"}];
+            var Constellation = function (month, day, id) {
+                $("#Constellation").html("");
+                var date = parseInt(month + "" + (day >= 10 ? day : "0" + day));
+                $.each(constellations, function (key, val) {
+                    if (date >= val.begin && date <= val.end) {
+                        $("#" + id).append("<option value=" + val.id + ">" + val.name + "</option>");
+                    }
+                    else if (date >= 1222 || date <= 119) {
+                        $("#" + id).append("<option value=" + val.id + ">" + val.name + "</option>");
+                    }
+                });
+            }
+
+            $(".select_birthday").on("change", function () {
+                InitBirthday();
+            });
+
+            $("#BirthdayDay").on("change", function () {
+                var month = parseInt($("#BirthdayMonth").val());
+                var day = parseInt($("#BirthdayDay").val());
+                Constellation(month, day, 'Constellation');
+            });
+
+            var Init = function (year, month, day) {
+                for (var i = 2014; i >= 1930; i--) {
+                    var strData = (parseInt(year) == i ? "selected=selected" : "");
+                    $("#BirthdayYear").append("<option value=" + i + " " + strData + ">" + i + "</option>");
+                }
+                for (var i = 1; i <= 12; i++) {
+                    var strData = (parseInt(month) == i ? "selected=selected" : "");
+                    $("#BirthdayMonth").append("<option value=" + i + " " + strData + ">" + i + "</option>");
+                }
+                var beginDate = new Date('' + year + '/' + month + '/1 0:00:00');
+                var endMonth = parseInt(month) + 1 > 12 ? 1 : parseInt(month) + 1;
+                var endYear = parseInt(month) + 1 > 12 ? parseInt(year) + 1 : year;
+                var endDate = new Date('' + endYear + '/' + endMonth + '/1 0:00:00');
+                var num = parseInt((endDate - beginDate) / (24 * 60 * 60 * 1000));
+                for (var i = 1; i <= num; i++) {
+                    var strData = (day == i ? "selected=selected" : "");
+                    $("#BirthdayDay").append("<option value=" + i + " " + strData + ">" + i + "</option>");
+                }
+            };
+            Init('@Model.BirthdayYear', '@Model.BirthdayMonth', '@Model.BirthdayDay');
+            Constellation('@Model.BirthdayMonth', '@Model.BirthdayDay', 'Constellation');
+        });
+        $(function () {
+            var selectProvinces = $("#LiveProvinceId");
+            var selectCities = $("#LiveCityId");
+            var selectDistricts = $("#LiveDistrictId");
+            $(selectProvinces).change(function () {
+                $ProvinceID = parseInt($(this).val());
+                $ProvinceName=$(this).find("option:selected").text();
+                $(this).closest("label").find("input").val($ProvinceName);
+                Common.ClearListItems(selectCities);
+                Common.ClearListItems(selectDistricts);
+                if ($ProvinceID > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("cities")?geographyCode=' + this.value + "&ram=" + Math.random(),0, selectCities);
+                }
+            });
+            $(selectCities).change(function () {
+                $CityID = parseInt($(this).val());
+                $CityName=$(this).find("option:selected").text();
+                $(this).closest("label").find("input").val($CityName);
+                Common.ClearListItems(selectDistricts);
+                if ($CityID > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("districts")?geographyCode=' + this.value + "&ram=" + Math.random(),0, selectDistricts);
+                }
+            });
+            $(selectDistricts).change(function () {
+                $DistrictName=$(this).find("option:selected").text();
+                $(this).closest("label").find("input").val($DistrictName);
+            });
+            var Init = function (intPId, intCId, intDId) {
+                Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("provinces")',intPId, selectProvinces);
+                if (intPId > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("cities")?geographyCode=' + intPId + "&ram=" + Math.random(),intCId, selectCities);
+                }
+                if (intCId > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("districts")?geographyCode=' + intCId + "&ram=" + Math.random(),intDId, selectDistricts);
+                }
+            };
+
+            Init(@Model.LiveProvinceId,@Model.LiveCityId,@Model.LiveDistrictId);
+        });
+        $(function () {
+            var selectProvinces = $("#HomeProvinceId");
+            var selectCities = $("#HomeCityId");
+            var selectDistricts = $("#HomeDistrictId");
+            $(selectProvinces).change(function () {
+                $ProvinceID = parseInt($(this).val());
+                $ProvinceName=$(this).find("option:selected").text();
+                $(this).closest("label").find("input").val($ProvinceName);
+                Common.ClearListItems(selectCities);
+                Common.ClearListItems(selectDistricts);
+                if ($ProvinceID > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("cities")?geographyCode=' + this.value + "&ram=" + Math.random(),0, selectCities);
+                }
+            });
+            $(selectCities).change(function () {
+                $CityID = parseInt($(this).val());
+                $CityName=$(this).find("option:selected").text();
+                $(this).closest("label").find("input").val($CityName);
+                Common.ClearListItems(selectDistricts);
+                if ($CityID > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("districts")?geographyCode=' + this.value + "&ram=" + Math.random(),0, selectDistricts);
+                }
+            });
+            $(selectDistricts).change(function () {
+                $DistrictName=$(this).find("option:selected").text();
+                $(this).closest("label").find("input").val($DistrictName);
+            });
+            var Init = function (intPId, intCId, intDId) {
+                Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("provinces")',intPId, selectProvinces);
+                if (intPId > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("cities")?geographyCode=' + intPId + "&ram=" + Math.random(),intCId, selectCities);
+                }
+                if (intCId > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("districts")?geographyCode=' + intCId + "&ram=" + Math.random(),intDId, selectDistricts);
+                }
+            };
+
+            Init(@Model.HomeProvinceId,@Model.HomeCityId,@Model.HomeDistrictId);
+        });
+
+       
+    </script>
+}

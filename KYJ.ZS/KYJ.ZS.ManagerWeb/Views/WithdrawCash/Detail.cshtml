@@ -1,0 +1,179 @@
+﻿@using KYJ.ZS.Models.WithdrawCashs
+@model KYJ.ZS.Models.DB.WithdrawCash
+@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.GUANLISHANGHUTIXIAN;
+    ViewBag.Title = "提现详情页";
+
+    string divClass = "tix";
+    string tableClass = "table_1";
+    if (Model.State == (int)WithdrawCashEnum.NotPassApproval)
+    {
+        divClass += " boh";
+        tableClass += " nobg";
+    }
+    else if(Model.State == (int)WithdrawCashEnum.PlayMoneySuccessed)
+    {
+        divClass += " txbg";
+        tableClass += " nobg";
+    }
+}
+@section header{
+    <style type="text/css">
+        .error{ border-color:Red;}
+    </style>
+}
+<div class="tag_n">
+    <ul>
+        <li><a href="javascript:void(0);">处理提现单</a></li>
+    </ul>
+</div>
+<div class="part">
+    <h1>提现单</h1>
+    <div class="tabbox clearFix">
+        <div class="@divClass">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="@tableClass">
+                <tr>
+                <th width="30%">开户名称：</th>
+                <td width="70%">@Model.Name</td>
+                </tr>
+                <tr>
+                <th>银行账户：</th>
+                <td>@Model.BandNumber</td>
+                </tr>
+                <tr>
+                <th>开户行：</th>
+                <td>@Model.BankName</td>
+                </tr>
+                <tr>
+                <th>提现金额：</th>
+                <td><strong class="cold21b1b">@Model.Price.ToString("F2")</strong> 元</td>
+                </tr>
+                <tr>
+                <th valign="top">账户余额：</th>
+                <td><strong>@Model.Balance.ToString("F2")</strong> 元</td>
+                </tr>
+                <tr>
+                <th valign="top">提现日期：</th>
+                <td>@Model.CreateTime.ToString("yyyy-MM-dd HH:mm")</td>
+                </tr>
+                <tr>
+                <th valign="top">备注：</th>
+                <td>@Model.Remark</td>
+                </tr>
+            </table>
+        </div>
+        <div class="tix_r">
+        @if (Model.State == (int)WithdrawCashEnum.WaitApproval)
+        {
+            <input name="btn_return" type="button" class="btn_gr80" value="返回" />
+            <div class="mt40"><input id="btn_confirm" data-id="@Model.Id" data-number="@Model.Number" type="button" class="btn_or80" value="确认提现" /></div>
+            <div class="mt180"><input id="brn_reject" data-id="@Model.Id" data-number="@Model.Number" type="button" class="btn_h80 mr5" value="驳回" /><input id="txt_reason" type="text" class="intxt_h24 w320 col999" defValue="驳回理由" maxlength="30" value="驳回理由" /></div>
+        }
+        else if (Model.State == (int)WithdrawCashEnum.NotPassApproval)
+        {
+            <input name="btn_return" type="button" class="btn_gr80" value="返回" />
+            <div class="mt242"><span class="col666">理由：</span>@Model.Rejectreason</div>
+        }
+        else if (Model.State == (int)WithdrawCashEnum.PlayMoneySuccessed)
+        {
+            <input name="btn_return" type="button" class="btn_gr80" value="返回" />
+        }
+        </div>
+    </div>
+</div>
+
+<div id="hdn_dialog" style=" display:none">
+<div class="layer w320 mt10">
+  <a name="a_close" href="javascript:void(0);" class="close"></a>
+  <div class="layer_box">
+    <div class="ptb20 tac">是否确认提现？</div>
+    <div class="tac"><input name="btn_withdrawCash" data-id="" type="button" class="btn_1abc9c mr10" value="确认提现" /><input name="btn_close" type="button" class="btn_grey" value="取消" /></div>
+  </div>
+</div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            // 返回
+            $("[name='btn_return']").click(function () {
+                location.href = '@Url.ManagerSiteUrl().WithdrawCash_Manage';
+            })
+
+            // 驳回
+            $("#brn_reject").click(function () {
+                var id = $(this).attr("data-id"),
+                    number = $(this).attr("data-number"),
+                    reason = $("#txt_reason").val();
+                if ($.trim(reason) == '' || reason == $("#txt_reason").attr("defValue")) {
+                    $("#txt_reason").addClass("error")
+                    return false;
+                }
+                $.get('@Url.ManagerSiteUrl().WithdrawCash_Reject', { id: id, reason: reason, number: number },
+                                function (data) {
+                                    var _data = data.toUpperCase();
+                                    // 驳回成功
+                                    if (_data.indexOf("TRUE") > -1) {
+                                        location.href = '@Url.ManagerSiteUrl().WithdrawCash_Manage';
+                                    }
+                                    else if (_data.indexOf("FALSE") > -1) {
+                                        $.alert('操作失败，请重试！');
+                                    }
+                                    else {
+                                        $.alert(data);
+                                    }
+                                }
+                            );
+            })
+
+            // 驳回理由
+            $("#txt_reason").focus(function () {
+                var defValue = $(this).attr("defValue");
+                if ($(this).val() == defValue) {
+                    $(this).val('');
+                    $(this).removeClass("col999");
+                }
+            }).blur(function () {
+                var defValue = $(this).attr("defValue");
+                if ($.trim($(this).val()) == '') {
+                    $(this).val(defValue);
+                    $(this).addClass("col999");
+                }
+            });
+
+            // 确认提现提示框
+            $("#btn_confirm").click(function () {
+                var id = $(this).attr("data-id"),
+                    number = $(this).attr("data-number");
+                $("#hdn_dialog").find("input[name='btn_withdrawCash']").attr("data-id", id).attr("data-number", number);
+                $.content($("#hdn_dialog").html(), 320, 0, 0);
+            })
+
+            // 确认提现
+            $("input[name='btn_withdrawCash']").live("click", function () {
+                var id = $(this).attr("data-id"),
+                    number = $(this).attr("data-number");
+                $.get('@Url.ManagerSiteUrl().WithdrawCash_ConfirmWithdrawal', { id: id, number: number },
+                                function (data) {
+                                    var _data = data.toUpperCase();
+                                    // 提现成功
+                                    if (_data.indexOf("TRUE") > -1) {
+                                        location.href = '@Url.ManagerSiteUrl().WithdrawCash_Manage';
+                                    }
+                                    else if (_data.indexOf("FALSE") > -1) {
+                                        $.alert('操作失败，请重试！');
+                                    }
+                                    else {
+                                        $.alert(data);
+                                    }
+                                });
+            });
+
+            // 取消提现
+            $("input[name='btn_close'],a[name='a_close']").live("click", function () {
+                $.closeAll();
+            });
+        })
+    </script>
+}

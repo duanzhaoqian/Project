@@ -1,0 +1,24 @@
+﻿.Btn {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+    .Btn img {
+        width: 64px;
+        height: 64px;
+    }
+
+    .Btn span {
+        color: #0284C3;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+.HightLight {
+    background-color: #FFE58E;
+    border: 1px solid #ffc400;
+}

@@ -1,0 +1,91 @@
+﻿@model List<KYJ.ZS.Models.DB.Category>
+@{
+    ViewBag.Title = "发布商品";
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+    ViewBag.Navigation = MerchantNavigation.FABUSHANGPIN;
+}
+
+@*@section header{
+    
+}*@
+
+<div class="tag">
+<ul>
+    <li class="cur"><a href="#">发布商品</a></li>
+    <li><a href="#"></a></li>
+</ul>
+</div>
+<div class="sortbox">
+    <ul id="ul_0" style="overflow:auto;">
+        @foreach (var item in Model)
+        {
+            <li><a href="javascript:;" to="@Url.MerchantSiteUrl().Category_GetSonCategory(@item.Id)" level="@item.Level" value="@item.Id">@item.Name</a></li>
+        }
+    </ul>
+    <ul id="ul_1"></ul>
+    <ul id="ul_2"></ul>
+    <div class="clear"></div>
+    <div class="wxt mbt25">@*温馨提示：最多可上传<span class="cold21b1b"> 5 </span>张商品图片，单张小于<span>2M</span>。*@</div>
+    <div class="tac"><input type="button" value="我已阅读并接受以下协议，现在发布商品" class="btn_w250_blue" /></div>
+    <div class="pactbox">
+        <h1>租售协议</h1>
+        <p>受够了收购价受够了收购价受够了收购价受够了收购价受够了收购价受够了收购价受够了收购价受够了收购价受够了收购价受够了收购价受够了收购价受够了收购价受够了收购价受够了收购价受够了收购价受够了收购价受够了收购价受够了收购价受够了收购价受够了收购价受够了收购价受够了收购价</p>
+    </div>
+</div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            var level = 0;
+            var cid = 0;
+
+            var $btn_w250_blue = $(".btn_w250_blue");
+
+            if (level < 2) {
+                $btn_w250_blue.attr('disabled', true);
+            }
+
+            $(".sortbox ul li a").live("click", function () {
+
+                if ($(this).parent().parent().find("li").is(".over")) {
+                    $(this).parent().parent().find("li").removeClass("over");
+                    $(this).parent().addClass("over");
+                } else {
+                    $(this).parent().addClass("over");
+                }
+                level = $(this).attr("level");
+                cid = $(this).attr("value");
+                if (level == 2) {
+                    $btn_w250_blue.attr('disabled', false);
+                    return;
+                }
+
+                var url = $(this).attr("to");
+                switch (level) {
+                    case "0":
+                        $('#ul_1').load(url);
+                        $('#ul_2').html("");
+                        break;
+                    case "1":
+                        $('#ul_2').load(url);
+                        break;
+                    default:
+                        return;
+                }
+
+            });
+
+            $btn_w250_blue.click(function () {
+                var url = "@(Url.MerchantSiteUrl().RentalGoodses_PublishGoods)";
+                if (level != 2) {
+                    return;
+                }
+                location.href = url + "?id=" + cid;
+            });
+
+        });
+    </script>
+}
+
+

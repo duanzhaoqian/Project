@@ -1,0 +1,411 @@
+﻿@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.SHUXINGGUIGEGUANLI;
+    ViewBag.Title = "属性规格管理";
+
+    // 权限
+    string userPermission = KYJ.ZS.Commons.Common.CookieTool.GetCookie("userPermission");
+    List<KYJ.ZS.Models.DB.RoleManagement> list = Auxiliary.FromJsonTo<List<KYJ.ZS.Models.DB.RoleManagement>>(userPermission);
+
+    string permissions = list.Find(c => c.ModuleId == (int)ManagerNavigation.SHUXINGGUIGEGUANLI).Permission;
+    
+}
+@section header{
+    <style type="text/css">
+        .selectedLi{ background-color:rgb(252, 245, 204);}
+        .error{ border-color:Red;}
+        .sort ul li .error{ border-color:Red;}
+        .sort .in26.error{ border:solid 1px Red;}
+        span.error{ color:Red; margin-left:10px;}
+        select.error{ border-color:Red;}
+    </style>
+}
+ <div class="tag_n">
+        <ul>
+          <li><a href="javascript:void(0);">属性规格管理</a></li>
+        </ul>
+      </div>
+      <div class="assort clearFix">
+        <div class="clearFix mb20 col666"> 选择分类：
+          <select id="sel_firstCategory" name="sel_firstCategory" class="selcss w200">
+            <option value="0">请选择</option>
+          </select>
+          <select id="sel_secondCategory" name="sel_secondCategory" class="selcss w200">
+            <option value="0">请选择</option>
+          </select>
+          <select id="sel_thirdCategory" name="sel_thirdCategory" class="selcss w200">
+            <option value="0">请选择</option>
+          </select>
+          <span id="category_error" class="error"></span>
+        </div>
+        <div class="sort">
+          <h1>属性</h1>
+          <ul id="ul_attr">
+          </ul>
+          @if (permissions.IndexOf('1') >= 0)
+          {
+          <div class="bdbox">
+            <input type="text" value="" maxlength="50" class="in26" />
+            <input name="btn_Add" data-type="attr" type="button" value="添加" class="btn_or56 mt8" />
+          </div>
+          }
+        <input id="hdn_attrId" type="hidden" />
+        </div>
+        <div class="sort">
+          <h1>属性值</h1>
+          <ul id="ul_attrValue">
+          </ul>
+          @if (permissions.IndexOf('1') >= 0)
+          {
+          <div class="bdbox">
+            <input type="text" value="" maxlength="50" class="in26" />
+            <input name="btn_Add" data-type="attrValue" type="button" value="添加" class="btn_or56 mt8" />
+          </div>
+          }
+        </div>
+        <div class="sort nomr">
+          <h1><input id="ck_color" type="checkbox" />颜色</h1>
+          <ul id="ul_color">
+          </ul>
+          @if (permissions.IndexOf('1') >= 0)
+          {
+          <div class="bdbox">
+            <input type="text" value="" maxlength="50" class="in26" />
+            <input name="btn_Add" data-type="color" type="button" value="添加" class="btn_or56 mt8" />
+          </div>
+          }
+        </div>
+        <div class="sort">
+          <h1><input id="ck_norm" type="checkbox" />尺码</h1>
+          <ul id="ul_norm">
+          </ul>
+          @if (permissions.IndexOf('1') >= 0)
+          {
+          <div class="bdbox">
+            <input type="text" value="" maxlength="50" class="in26" />
+            <input name="btn_Add" data-type="norm" type="button" value="添加" class="btn_or56 mt8" />
+          </div>
+          }
+        </div>
+      </div>
+
+@section scripts{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/public/common.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            // 二级类目下拉改变事件
+            $("#sel_secondCategory").change(function () {
+                ClearItems();
+                var categoryId = $(this).val();
+                Common.ClearListItems($("#sel_thirdCategory"));
+                if (categoryId > 0) {
+                    Common.LoadGeographyItems('@Url.ManagerSiteUrl().CategoryLocation("secondthirdcategory")?categoryCode=' + categoryId + "&ram=" + Math.random(), 0, $("#sel_thirdCategory"));
+                }
+            });
+            // 一级类目下拉改变事件
+            $("#sel_firstCategory").change(function () {
+                ClearItems();
+                var categoryId = $(this).val();
+                Common.ClearListItems($("#sel_secondCategory"));
+                Common.ClearListItems($("#sel_thirdCategory"));
+                if (categoryId > 0) {
+                    Common.LoadGeographyItems('@Url.ManagerSiteUrl().CategoryLocation("secondthirdcategory")?categoryCode=' + categoryId + "&ram=" + Math.random(), 0, $("#sel_secondCategory"));
+                }
+            });
+            var Init = function (intFId, intSId, intTId) {
+                Common.LoadGeographyItems('@Url.ManagerSiteUrl().CategoryLocation("firstcategory")' + "?ram=" + Math.random(), intFId, $("#sel_firstCategory"));
+                if (intFId > 0) {
+                    Common.LoadGeographyItems('@Url.ManagerSiteUrl().CategoryLocation("secondthirdcategory")?categoryCode=' + intFId + "&ram=" + Math.random(), intSId, $("#sel_secondCategory"));
+                }
+                if (intSId > 0) {
+                    Common.LoadGeographyItems('@Url.ManagerSiteUrl().CategoryLocation("secondthirdcategory")?categoryCode=' + intSId + "&ram=" + Math.random(), intTId, $("#sel_thirdCategory"));
+                }
+            };
+            // 类目列表初次加载
+            Init(0, 0, 0);
+
+            // 三级类目下拉改变事件
+            $("#sel_thirdCategory").change(function () {
+                $("#sel_thirdCategory").removeClass("error");
+                $("#category_error").html("");
+
+                ClearItems();
+                var categoryId = $(this).val();
+                // 加载属性列表
+                LoadAttrItems('@Url.ManagerSiteUrl().AttrCategory_GetAttrCategories("getattrs")?categoryId=' + categoryId + "&ram=" + Math.random(), $("#ul_attr"), "attr");
+                // 加载颜色列表
+                LoadAttrItems('@Url.ManagerSiteUrl().AttrCategory_GetAttrCategories("getcolors")?categoryId=' + categoryId + "&ram=" + Math.random(), $("#ul_color"), "color");
+                // 加载尺码列表
+                LoadAttrItems('@Url.ManagerSiteUrl().AttrCategory_GetAttrCategories("getnorms")?categoryId=' + categoryId + "&ram=" + Math.random(), $("#ul_norm"), "norm");
+
+                // 是否显示颜色
+                LoadIsShow('@Url.ManagerSiteUrl().AttrCategory_IsShow("colorisshow")?categoryId=' + categoryId + "&ram=" + Math.random(), $("#ck_color"));
+                // 是否显示规格
+                LoadIsShow('@Url.ManagerSiteUrl().AttrCategory_IsShow("normisshow")?categoryId=' + categoryId + "&ram=" + Math.random(), $("#ck_norm"));
+            });
+
+            // 属性选择
+            $("#ul_attr div").live("click", function () {
+                $("#ul_attr").parent().removeClass("error");
+
+                var categoryCode = $(this).attr("data-id");
+                $("#hdn_attrId").val(categoryCode);
+
+                $(this).closest("ul").find("li.selectedLi").attr("class", "");
+                $(this).parent().attr("class", "selectedLi");
+
+                // 加载属性值列表
+                LoadAttrItems('@Url.ManagerSiteUrl().AttrCategory_GetAttrCategories("getattrvalues")?categoryId=' + $("#sel_thirdCategory").val() + '&attrId=' + categoryCode + "&ram=" + Math.random(), $("#ul_attrValue"), "attrValue");
+            });
+
+            // 更改显示状态
+            $("#ck_color,#ck_norm").change(function () {
+                var url = '',
+                    categoryId = $("#sel_thirdCategory").val(),
+                    isShow = false;
+                if ($(this).attr("checked")) {
+                    isShow = true;
+                }
+                if (categoryId > 0) {
+                    url = ($(this).attr("id") == "ck_color" ? '@Url.ManagerSiteUrl().AttrCategory_ChangeShow("changecolorshow")' : '@Url.ManagerSiteUrl().AttrCategory_ChangeShow("changenormshow")');
+                    url += '?categoryId=' + categoryId + '&isShow=' + isShow + "&ram=" + Math.random();
+                    ChangeIsShow(url);
+                }
+            })
+
+            // 添加
+            $("input[name='btn_Add']").click(function () {
+                var type = $(this).attr("data-type").toUpperCase(),
+                    $ul = $(this).parent().prev(), //添加的UL
+                    $addText = $(this).prev(),
+                    name = $(this).prev().val(), //名称
+                    categoryId = $("#sel_thirdCategory").val(), //分类ID
+                    attrId = $("#hdn_attrId").val(), //属性ID
+                    colorIsShow = false,
+                    normIsShow = false;
+
+                $("#sel_thirdCategory").removeClass("error");
+                $("#category_error").html("");
+                $("#ul_attr").parent().removeClass("error");
+
+                if (categoryId <= 0) {
+                    //$.alert("请选择分类！");
+                    $("#category_error").html("请选择分类！");
+                    $("#sel_thirdCategory").addClass("error");
+                    return false;
+                }
+                if (type == 'ATTRVALUE' && $.trim(attrId) == '') {
+                    //$.alert("请选择属性！");
+                    $("#ul_attr").parent().addClass("error");
+                    return false;
+                }
+                if ($.trim(name) == '') {
+                    $.alert("请填写名称！");
+                    //$addText.addClass("error");
+                    return false;
+                }
+
+                if ($("#ck_color").attr("checked")) {
+                    colorIsShow = true;
+                }
+                if ($("#ck_norm").attr("checked")) {
+                    normIsShow = true;
+                }
+
+                var url = '';
+                if (type == 'ATTR')
+                    url = '@Url.ManagerSiteUrl().AttrCategory_Create("attr")';
+                else if (type == 'ATTRVALUE')
+                    url = '@Url.ManagerSiteUrl().AttrCategory_Create("attrvalue")'
+                else if (type == 'COLOR')
+                    url = '@Url.ManagerSiteUrl().AttrCategory_Create("color")'
+                else if (type == 'NORM')
+                    url = '@Url.ManagerSiteUrl().AttrCategory_Create("norm")'
+
+                $.post(url, { categoryId: categoryId, name: name, attrId: attrId, colorIsShow: colorIsShow, normIsShow: normIsShow }, function (data) {
+                    var _data = data.toUpperCase();
+                    // 添加成功
+                    if (_data.indexOf("TRUE") > -1) {
+                        var addId = data.split('||')[1];
+                        var $addLi = $("<li class=last><div data-id='" + addId + "' class=tl><em>" + name + "</em></div></li>")
+                        if ('@permissions.IndexOf("3")' >= 0) {
+                            $aEdit = $("<a name='a_edit' data-type='" + type + "' data-id='" + addId + "' data-name='" + name + "' href='javascript:void(0);'>修改</a>");
+                            $addLi.append($aEdit);
+                        }
+                        if ('@permissions.IndexOf("2")' >= 0) {
+                            $aDelete = "<a name='a_delete' data-type='" + type + "' data-id='" + addId + "' href='javascript:void(0);'>删除</a>";
+                            $addLi.append($aDelete);
+                        }
+                        $ul.find("li:last").removeClass("last");
+                        $ul.append($addLi);
+                        $addText.val('');
+                    }
+                    else if (_data.indexOf("||") > -1) {
+                        var erroInfo = data.split('||')[1];
+                        $.alert(erroInfo);
+                    }
+                    else if (_data.indexOf("FALSE") > -1) {
+                        $.alert('添加失败，请重试！');
+                    }
+                });
+            })
+            // 修改属性
+            $("a[name='a_edit']").live("click", function () {
+                var $editLi = $("<li><div class=tl><input type='text' maxlength='50' class=txtbox value='" + $(this).attr("data-name") + "' /></div><a name='a_comitEdit' data-type='" + $(this).attr("data-type") + "' data-id='" + $(this).attr("data-id") + "' href='javascript:void(0);'>修改</a><a name='a_cancel' href='javascript:void(0);'>取消</a></li>");
+                $(this).closest("li").after($editLi).hide();
+            })
+            // 确认修改
+            $("a[name='a_comitEdit']").live("click", function () {
+                var $editLi = $(this).closest("li"),
+                    $infoLi = $editLi.prev(),
+                    id = $(this).attr("data-id"),
+                    name = $(this).prev().find("input.txtbox").val(),
+                    oldName = $infoLi.find("em").html(),
+                    type = $(this).attr("data-type").toUpperCase();
+
+                $(this).prev().find("input.txtbox").removeClass("error");
+
+                if ($.trim(name) == '') {
+                    //$.alert("请填写名称！");
+                    $(this).prev().find("input.txtbox").addClass("error");
+                    return false;
+                }
+
+                var url = '';
+                if (type == 'ATTR')
+                    url = '@Url.ManagerSiteUrl().AttrCategory_Edit("attr")';
+                else if (type == 'ATTRVALUE')
+                    url = '@Url.ManagerSiteUrl().AttrCategory_Edit("attrvalue")'
+                else if (type == 'COLOR')
+                    url = '@Url.ManagerSiteUrl().AttrCategory_Edit("color")'
+                else if (type == 'NORM')
+                    url = '@Url.ManagerSiteUrl().AttrCategory_Edit("norm")'
+                $.post(url, { id: id, name: name, oldName: oldName },
+                                function (data) {
+                                    var _data = data.toUpperCase();
+                                    // 修改成功
+                                    if (_data.indexOf("TRUE") > -1) {
+                                        $infoLi.find("em").html($.trim(name));
+                                        $infoLi.find("a[name='a_edit']").attr("data-name", $.trim(name));
+                                        $infoLi.show();
+                                        $editLi.remove();
+                                    }
+                                    else if (_data.indexOf("||") > -1) {
+                                        var erroInfo = data.split('||')[1];
+                                        $.alert(erroInfo);
+                                    }
+                                    else if (_data.indexOf("FALSE") > -1) {
+                                        $.alert('修改失败，请重试！');
+                                    }
+                                }
+                            );
+            })
+            // 取消修改
+            $("a[name='a_cancel']").live("click", function () {
+                $(this).closest("li").prev().show();
+                $(this).closest("li").remove();
+            })
+            // 删除
+            $("a[name='a_delete']").live("click", function () {
+                var categoryId = $("#sel_thirdCategory").val(),
+                    id = $(this).attr("data-id"),
+                    type = $(this).attr("data-type").toUpperCase(),
+                    $removeli = $(this).closest("li"),
+                    name = $removeli.find("em").html();
+
+                var url = '';
+                if (type == 'ATTR')
+                    url = '@Url.ManagerSiteUrl().AttrCategory_Delete("attr")';
+                else if (type == 'ATTRVALUE')
+                    url = '@Url.ManagerSiteUrl().AttrCategory_Delete("attrvalue")'
+                else if (type == 'COLOR')
+                    url = '@Url.ManagerSiteUrl().AttrCategory_Delete("color")'
+                else if (type == 'NORM')
+                    url = '@Url.ManagerSiteUrl().AttrCategory_Delete("norm")'
+
+                $.get(url, { categoryId: categoryId, id: id, name: name },
+                                function (data) {
+                                    var _data = data.toUpperCase();
+                                    // 删除成功
+                                    if (_data.indexOf("TRUE") > -1) {
+                                        $removeli.remove();
+                                    }
+                                    else if (_data.indexOf("||") > -1) {
+                                        var erroInfo = data.split('||')[1];
+                                        $.alert(erroInfo, 320);
+                                    }
+                                    else if (_data.indexOf("FALSE") > -1) {
+                                        $.alert('删除失败，请重试！');
+                                    }
+                                }
+                            );
+            });
+
+            //加载属性规格列表信息，url:请求路径，container：需要加载的jquery对象
+            function LoadAttrItems(url, container, type) {
+                container.html('');
+                $.getJSON(url, function (response) {
+                    if (response && response.success) {
+                        var categoryList = "";
+                        $.each(response.items, function () {
+                            categoryList += "<li><div data-id='" + this.Code + "' class=tl><em>" + this.Name + "</em></div>";
+                            if ('@permissions.IndexOf("3")' >= 0) {
+                                categoryList += "<a name='a_edit' data-type='" + type + "' data-id='" + this.Code + "' data-name='" + this.Name + "' href='javascript:void(0);'>修改</a>";
+                            }
+                            if ('@permissions.IndexOf("2")' >= 0) {
+                                categoryList += "<a name='a_delete' data-type='" + type + "' data-id='" + this.Code + "' href='javascript:void(0);'>删除</a>";
+                            }
+                            categoryList += "</li>";
+                        });
+                        container.html(categoryList);
+                        container.find("li:last").attr("class", "last");
+                    }
+                });
+            }
+
+            // 加载是否显示
+            function LoadIsShow(url, container) {
+                $.get(url, function (data) {
+                    var _data = data.toUpperCase();
+                    // 显示
+                    if (_data.indexOf("TRUE") > -1) {
+                        container.attr("checked", "checked")
+                    }
+                    else {
+                        container.removeAttr("checked")
+                    }
+                });
+            }
+
+            // 更改显示状态
+            function ChangeIsShow(url) {
+                $.get(url, function (data) {
+                    var _data = data.toUpperCase();
+                    // 成功
+                    if (_data.indexOf("TRUE") > -1) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                });
+            }
+
+            // 清除信息
+            function ClearItems() {
+                $("#ul_attr").html('');
+                $("#ul_attrValue").html('');
+                $("#ul_color").html('');
+                $("#ul_norm").html('');
+                $("#hdn_attrId").val('');
+                $("#ck_color").removeAttr("checked");
+                $("#ck_norm").removeAttr("checked");
+            }
+
+            // 清除错误信息
+            function ClearError() {
+            }
+        })
+    </script>
+}
+

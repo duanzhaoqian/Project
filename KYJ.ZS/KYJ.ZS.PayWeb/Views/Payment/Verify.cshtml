@@ -1,0 +1,72 @@
+﻿@model KYJ.ZS.Models.Payments.PaymentEntity
+@{
+    ViewBag.Title = "核对信息";
+    Layout = "~/Views/Shared/Layouts/_PayLayout.cshtml";
+}
+@{
+    var bank = Model.Mode.ToString();
+}
+<div class="w1190">
+    <ul class="flowbar">
+        <li class="active">确认订单</li>
+        <li class="active">网络支付</li>
+        <li>发货中</li>
+        <li>确认收货</li>
+        <li>确认起租</li>
+    </ul>
+    <div class="yeltis clearFix">
+        <span class="suc">订单提交成功,请您尽快付款!</span> <span class="t_1">订单号：@Model.OrderNum</span>
+        <span class="t_2">应付金额：<strong class="cold21b1b">@Model.TotalPrice.ToString("#0.00")</strong>元</span>
+        <span class="t_3">请您在提交订单后24小时内完成支付,否则订单会自动取消</span>
+    </div>
+    <div class="paybox clearFix pad_1">
+        <form action="@Url.PaySiteUrl().Send" id="SendForm" target="_blank" name="SendForm" method="get">
+        <h5>网上银行<span>付款时需跳转至银行支付</span></h5>
+        <input type="hidden" name="ordernum" value="@Model.OrderNum" />
+        <input type="hidden" name="mode" value="@Model.Mode.ToString()" />
+        <div class="pb_1">
+            <span>付款银行</span><span class="bkimg"><a href=""><img src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/" + bank + ".jpg")" /></a></span></div>
+        <div class="tab_py">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th width="14%">单笔限额（元）</th>
+                    <th width="14%">单日限额（元）</th>
+                    <th width="26%">需要满足条件</th>
+                    <th width="46%">备注</th>
+                </tr>
+                <tr>
+                    <td><strong>￥500.00</strong></td>
+                    <td><strong>￥900.00</strong></td>
+                    <td>电子口令卡-未开通手机验证</td>
+                    <td rowspan="3">实际支付限额以在银行柜台设置为准,工行热线:95588</td>
+                </tr>
+                <tr>
+                    <td><strong>￥500.00</strong></td>
+                    <td><strong>￥900.00</strong></td>
+                    <td>电子口令卡-未开通手机验证</td>
+                </tr>
+                <tr>
+                    <td>无限额</td>
+                    <td>无限额</td>
+                    <td>U盾用户</td>
+                </tr>
+            </table>
+        </div>
+        <div class="pb_2">
+            <input type="button" id="sub_button" class="btn_py" value="确认支付" />
+            <span class="price">@Model.TotalPrice.ToString("#0.00")</span>元</div>
+        <div class="pb_1 pb0">
+            <span>您还可以选择</span><a href="@Url.PaySiteUrl().Order(Model.OrderNum, Model.CallBackUrl)" class="other">其他支付方式</a></div>
+        </form>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#sub_button").on("click", function () {
+                $.content("<div class=\"layer w520\"><div class=\"layer_title\">支付</div><a href=\"javascript:void(0);\" onclick=\"javascript:$.closeAll();\" class=\"close\"></a><div class=\"layer_box\"><div class=\"tac col333 mb20\">请您在新打开的网上银行页面进行支付,支付完成前请不要关闭该窗口</div><div class=\"tac\"><input type=\"button\" class=\"btn_red mr10\" onclick=\"javascript:window.location.href='@Model.CallBackUrl';\" value=\"已完成支付\"><input type=\"button\" class=\"btn_grey\" value=\"支付遇到问题\"></div><div class=\"tka\"><a href=\"@Url.PaySiteUrl().Order(Model.OrderNum, Model.CallBackUrl)\">返回重新选择银行</a></div></div></div>", 520, 220);
+                $("#SendForm").submit();
+            });
+        });
+    </script>
+}

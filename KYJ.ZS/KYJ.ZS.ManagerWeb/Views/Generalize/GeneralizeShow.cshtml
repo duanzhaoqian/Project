@@ -1,0 +1,198 @@
+﻿@using KYJ.ZS.Models.DB
+@using KYJ.ZS.Models.Pages;
+@using Webdiyer.WebControls.Mvc;
+@{
+    ViewBag.Title = "管理商品排序";
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.GUANLISHANGPINPAIXU;
+
+    PageData<Generalize> pagedate = (PageData<Generalize>)ViewData["pageData"];
+    GeneralizeSate generalizeSate = (GeneralizeSate)ViewData["State"];
+    string name = ViewData["name"]==null?"":ViewData["name"].ToString();
+    DateTime? begintime =(DateTime?)ViewData["beginTime"];
+    DateTime? endtime = (DateTime?) ViewData["endTime"];
+}
+@section header{
+    <link href="@PubConstant.StaticUrl@Url.Content("base/plug/datepicker/css/jquery.datepicker.css")" type="text/css" rel="stylesheet" />
+}
+<div class="tag">
+    <ul id="ul_menu" class="clearFix">
+        <li @(generalizeSate == GeneralizeSate.NoAduit ? "class=cur" : "") date-area="@((int)GeneralizeSate.NoAduit)">
+            <a href="javascript:void(0);">未审核</a></li>
+        <li @(generalizeSate == GeneralizeSate.Aduit ? "class=cur" : "") date-area="@((int)GeneralizeSate.Aduit)">
+            <a href="javascript:void(0);">审核中 </a></li>
+        <li @(generalizeSate == GeneralizeSate.NoLine ? "class=cur" : "") date-area="@((int)GeneralizeSate.NoLine)">
+            <a href="javascript:void(0);">待上线 </a></li>
+        <li @(generalizeSate == GeneralizeSate.OnLine ? "class=cur" : "") date-area="@((int)GeneralizeSate.OnLine)">
+            <a href="javascript:void(0);">已上线 </a></li>
+        <li @(generalizeSate == GeneralizeSate.DownLine ? "class=cur" : "") date-area="@((int)GeneralizeSate.DownLine)">
+            <a href="javascript:void(0);">已下线 </a></li>
+    </ul>
+</div>
+<div class="conbox" style="display: none;">
+    <form action="" method="get" id="frm_search">
+    <input type="hidden" name="stateId" value="@((int)generalizeSate)" />
+        <div class="serchbox clearFix">
+            <div class="fl col666 mr10">
+                排序名称：
+                <input type="text" value="@name" name="name" id="text_name" class="intxt w260" />
+            </div>
+            <div class=" fl col666 mr10">
+                排序时间：
+                <input type="text" value="@(begintime.HasValue ? begintime.Value.ToString("yyyy-MM-dd") : "")" id="text_beginTime" name="beginTime" class="intxt" />
+                &nbsp;-&nbsp;
+                <input type="text" value="@(endtime.HasValue ? endtime.Value.ToString("yyyy-MM-dd") : "")" id="text_endTime" name="endTime" class="intxt" />
+            </div>
+            <div class="">
+                <input type="button" id="btn_search" class="btn_f65c33" value="搜索" />
+            </div>
+        </div>
+    </form>
+    <div class="list">
+        <table>
+            <tr>
+                <th>
+                    商品排序名称
+                </th>
+                <th>
+                    开始时间
+                </th>
+                <th>
+                    结束时间
+                </th>
+                <th width="40%">
+                    说明
+                </th>
+                <th>
+                    状态
+                </th>
+                <th class="tdlast">
+                    操作
+                </th>
+            </tr>
+            @foreach (var item in pagedate.DataList)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.BeginTime.ToString("yyyy-MM-dd HH:mm")
+                    </td>
+                    <td>
+                        @item.EndTime.ToString("yyyy-MM-dd HH:mm")
+                    </td>
+                    <td>
+                        @item.Remark
+                    </td>
+                    @switch (generalizeSate)
+                    {
+                        case GeneralizeSate.NoAduit:<td>
+                                                        @if (!string.IsNullOrEmpty(item.AduitRemark))
+                                                        {
+                                                            <span>核审未通过</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>未核审</span>
+                                                        }
+                                                        
+                                                    </td>
+                                                        break;
+                        case GeneralizeSate.Aduit:<td>
+                            审核中
+                        </td>
+                                                        break;
+                        case GeneralizeSate.NoLine:<td>
+                            待上线
+                        </td>
+                                                        break;
+                        case GeneralizeSate.OnLine:<td>
+                            已上线
+                        </td>
+                                                        break;
+                        case GeneralizeSate.DownLine:<td>
+                            已下线
+                        </td>
+                                                        break;
+                    }
+                    <td class="tdlast">
+                        @switch (generalizeSate)
+                        {
+                            case GeneralizeSate.NoAduit:<p>
+                                <a href="@Url.ManagerSiteUrl().Generalize_ShowInfo(item.GeneralizeId, false)">查看详情 </a>
+                                | <a href="@Url.ManagerSiteUrl().Generalize_GeneralizeApply(item.GeneralizeId, (int)generalizeSate, pagedate.PageIndex)">提交审核</a></p>
+                            <p>
+                                <a href="@Url.ManagerSiteUrl().Generalize_GeneralizeUpdate(item.GeneralizeId)">编辑修改</a>
+                                | <a id="a_delete" generalizeId="@item.GeneralizeId" href="@Url.ManagerSiteUrl().Generalize_GeneralizeDelete(item.GeneralizeId, pagedate.PageIndex, (int)generalizeSate)">删除排序</a></p>
+                                      break;
+                            case GeneralizeSate.Aduit:<p>
+                                <a href="@Url.ManagerSiteUrl().Generalize_ShowInfo(item.GeneralizeId, false)">查看详情 </a>
+                            </p>
+                                    break;
+                            case GeneralizeSate.NoLine:<p>
+                                <a href="@Url.ManagerSiteUrl().Generalize_ShowInfo(item.GeneralizeId, false)">查看详情 </a>
+                            </p>
+                            <p>
+                                <a href="@Url.ManagerSiteUrl().Generalize_GeneralizeUpdate(item.GeneralizeId)">编辑修改</a>
+                                | <a href="@Url.ManagerSiteUrl().Generalize_GeneralizeDelete(item.GeneralizeId, pagedate.PageIndex, (int)generalizeSate)">删除排序</a></p>
+                                      break;
+                            case GeneralizeSate.OnLine:<p>
+                                <a href="@Url.ManagerSiteUrl().Generalize_ShowInfo(item.GeneralizeId, false)">查看详情 </a>
+                                | <a href="@Url.ManagerSiteUrl().Generalize_GeneralizeDownLine(item.GeneralizeId,(int)generalizeSate, pagedate.PageIndex)">强制下线</a></p>
+                                      break;
+                            case GeneralizeSate.DownLine:<p>
+                                <a href="@Url.ManagerSiteUrl().Generalize_ShowInfo(item.GeneralizeId, false)">查看详情 </a>
+                            </p>
+                            <p>
+                                <a href="@Url.ManagerSiteUrl().Generalize_GeneralizeUpdate(item.GeneralizeId)">编辑修改</a>
+                                | <a href="@Url.ManagerSiteUrl().Generalize_GeneralizeDelete(item.GeneralizeId, pagedate.PageIndex, (int)generalizeSate)">删除排序</a></p>
+                                      break;
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+        <div class="page">
+            @Html.Pager(pagedate.RecordCount, pagedate.PageSize, pagedate.PageIndex, "generalizeshow", "generalize", new PagerOptions { AutoHide = false, SeparatorHtml = " ", ShowFirstLast = false, ShowPageIndexBox = false, CssClass = "page", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + pagedate.PageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next end prev", SpanCSS = "col333 font12 mr10" }, null, null, null)
+        </div>
+    </div>
+</div>
+@section scripts{
+<script src="@PubConstant.StaticUrl@Url.Content("base/plug/datepicker/jquery.datepicker.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+             //获取状态Id
+            $("#ul_menu li").click(function () {
+                window.location = '@Url.ManagerSiteUrl().Generalize_GeneralizeShow?stateId=' + $(this).attr("date-area");
+            });
+            //搜索条件
+            $("#btn_search").click(function () {
+                $("#frm_search").attr("action","@Url.ManagerSiteUrl().Generalize_GeneralizeShow");
+                $("#frm_search").submit();
+            });
+             //发布时间
+            var dates = $("#text_beginTime,#text_endTime").datepicker({
+                defaultDate: "+1w",
+                minDate: (this.id == "text_endTime" ? $("#text_beginTime").datepicker("getDate") : null),
+                maxDate: (this.id == "text_beginTime" ? $("#text_endTime").datepicker("getDate") : '+12m'),
+                onSelect: function (selectedDate) {
+                    var option = this.id == "text_beginTime" ? "minDate" : "maxDate",
+					instance = $(this).data("datepicker"),
+					date = $.datepicker.parseDate(
+						instance.settings.dateFormat ||
+						$.datepicker._defaults.dateFormat,
+						selectedDate, instance.settings);
+                    dates.not(this).datepicker("option", option, date);
+                }
+            }).attr("readonly", "readonly");
+            $("#text_beginTime,#text_endTime").keydown(function (e) {
+                e.preventDefault();
+                if (e.keyCode == 8) {
+                    $(this).val('');
+                }
+            });
+
+        })
+    </script>
+}

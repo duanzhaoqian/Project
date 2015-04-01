@@ -1,0 +1,187 @@
+﻿@using KYJ.ZS.BLL.Merchants
+@using KYJ.ZS.BLL.Messages
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>@ViewBag.Title</title>
+    <!-- InstanceEndEditable -->
+    <link href="@PubConstant.StaticUrl@Url.Content("web/merchant/css/global.css")" type="text/css" rel="stylesheet" />
+    <link href="@PubConstant.StaticUrl@Url.Content("web/merchant/css/page.css")" type="text/css" rel="stylesheet" />
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery-1.8.3.min.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/public/config.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("web/merchant/js/web.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/plug/layer/layer.dialog.js")" type="text/javascript"></script>
+    <!--[if IE 6]>
+<script src="@PubConstant.StaticUrl@Url.Content("base/js/public/DD_belatedPNG_0.0.8a.js")"  language="javascript" type="text/javascript">
+</script>
+<script type="text/javascript">
+    DD_belatedPNG.fix('*');
+</script>
+<![endif]-->
+    <!-- InstanceBeginEditable name="head" -->
+    @RenderSection("header", false)
+    <!-- InstanceEndEditable -->
+    @{
+        int noReadMessage=new MessageBll().GetShortMessage(CurrentUser.UserID);
+    }
+</head>
+<body>
+    @helper Navigation(MerchantNavigation navigation)
+        {
+            if (ViewBag.Navigation != null)
+            {
+                var result = navigation == (MerchantNavigation)ViewBag.Navigation ? "class=hover" : "";
+        @result
+            }
+    }
+    <div class="header">
+        <div class="w1190">
+            <a href="@Url.WebSiteUrl().Index" class="logo"></a>
+            <div class="inf_r">
+                <a href="@Url.MerchantSiteUrl().Order_Main()">@CurrentUser.NickName</a><i>|</i><a href="@Url.MerchantSiteUrl().SiteNotice" class="email">站内信<span
+                    class="num" id="spnNum">@(new MessageBll().GetShortMessage(CurrentUser.UserID))</span></a><i>|</i><a
+                        id="btn_loginout" href="javascript:void(0);">退出</a></div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="w1190 clearFix">
+            <div class="slider">
+                <h1>
+                    商户管理中心</h1>
+                <div>
+                    <h2 class="on">
+                        <a href="javascript:void(0);">交易管理</a></h2>
+                    <ul>
+                        <li @Navigation(MerchantNavigation.CHUZUDEDINGDAN)><a href="@Url.MerchantSiteUrl().OrderManager(1)">
+                            出租的订单</a></li>
+                        @* <li @Navigation(MerchantNavigation.PINGJIAGUANLI)><a href="#">评价管理</a></li>*@
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="on">
+                        <a href="javascript:void(0);">物流管理</a></h2>
+                    <ul>
+                        <li @Navigation(MerchantNavigation.FAHUOGUANLI)><a href="@Url.MerchantSiteUrl().ShipManage_Manage">
+                            发货管理</a></li>
+                        <li @Navigation(MerchantNavigation.YUNFEIMOBANSHEZHI)><a href="@Url.MerchantSiteUrl().FreightTemplates_Index">
+                            运费模板设置</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="on">
+                        <a href="javascript:void(0);">商品管理</a></h2>
+                    <ul>
+                        <li @Navigation(MerchantNavigation.SHANGPINGUANLI)><a href="@Url.MerchantSiteUrl().RentalGoodses_Index()">
+                            商品管理</a></li>
+                        <li @Navigation(MerchantNavigation.FABUSHANGPIN)><a href="@Url.MerchantSiteUrl().Category_Index">
+                            发布商品</a></li>
+                        <li @Navigation(MerchantNavigation.ZUQIMOBANSHEZHI)><a href="@Url.MerchantSiteUrl().TenancyTemplate_Index">
+                            租期模板设置</a></li>
+                        @*  <li @Navigation(MerchantNavigation.TUPIANGUANLI)><a href="#">图片管理</a></li>*@
+                        @* <li @Navigation(MerchantNavigation.XIAOFEIZHEBAOZHANGFUWU)><a href="#">消费者保障服务</a></li>*@
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="on">
+                        <a href="javascript:void(0);">账户管理</a></h2>
+                    <ul>
+                        <li @Navigation(MerchantNavigation.ZHANNEITONGZHI)><a href="@Url.MerchantSiteUrl().SiteNotice">
+                            站内通知</a></li>
+                        <li @Navigation(MerchantNavigation.TIXIANGUANLI)><a href="@Url.MerchantSiteUrl().ApplyFor">
+                            账户金额</a></li>
+                        <li @Navigation(MerchantNavigation.XIUGAIDENGLUMIMA)><a href="@Url.MerchantSiteUrl().ModifyPwd">
+                            修改登录密码</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="rightbox">
+                <!-- InstanceBeginEditable name="EditRegion1" -->
+                @RenderBody()
+                <!-- InstanceEndEditable -->
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="w1190 clearFix">
+            <dl>
+                <dt>快有租</dt>
+                <dd>
+                    <a href="#">关于我们</a></dd>
+                <dd>
+                    <a href="#">商家入驻</a></dd>
+                <dd>
+                    <a href="#">广告服务</a></dd>
+                <dd>
+                    <a href="#">客服中心</a></dd>
+                <dd>
+                    <a href="#">人才招聘</a></dd>
+            </dl>
+            <dl>
+                <dt>快有家旗下</dt>
+                <dd>
+                    <a href="#">房产信息</a></dd>
+                <dd>
+                    <a href="#">服务平台</a></dd>
+            </dl>
+            <dl>
+                <dt>合作伙伴</dt>
+                <dd>
+                    <a href="#">连接地产</a></dd>
+                <dd>
+                    <a href="#">公司公司</a></dd>
+                <dd>
+                    <a href="#">公司公司</a></dd>
+                <dd>
+                    <a href="#">公司公司</a></dd>
+                <dd>
+                    <a href="#">公司公司</a></dd>
+            </dl>
+            <dl class="w300">
+                <dd>
+                    微信公众平台：搜索“快有租”<br />
+                    或扫描下面的二维码：</dd>
+                <dd class="mt10">
+                    <a href="#">
+                        <img src="@PubConstant.StaticUrl@Url.Content("web/merchant/images/code.gif")"
+    /></a></dd>
+            </dl>
+            <dl class="nobg w280">
+                <dd>
+                    Copyright © 2014 kuaiyoujia.com<br />
+                    All Rights Reserved. 版权声明<br />
+                    京ICP备11027796号-2<br />
+                    客服热线：400-999-3535<br />
+                    邮：service@kuaiyoujia.com</dd>
+            </dl>
+            <div class="clear">
+            </div>
+            <div class="describe
+    clearFix">
+                无论你多么讨厌你的旧家具，当你离开久了，<a href="#">www.kuaiyoujia.com</a>&nbsp;还是会想念它。
+            </div>
+        </div>
+    </div>
+    @RenderSection("scripts", false)
+    <script type="text/javascript">
+        $("#btn_loginout").click(function () {
+            $.confirm("您确认要退出么？", "询问", function () {
+                location.href = "@Url.MerchantSiteUrl().Common_LoginOut";
+            });
+        });
+
+        $(function () {
+            if ('@noReadMessage' == 0) {
+                $("#spnNum").hide();
+                $('a[class="email"]').removeClass("email");
+            }
+            else {
+                $("#spnNum").show();
+            }
+        });
+    </script>
+   
+</body>
+<!-- InstanceEnd -->
+</html>

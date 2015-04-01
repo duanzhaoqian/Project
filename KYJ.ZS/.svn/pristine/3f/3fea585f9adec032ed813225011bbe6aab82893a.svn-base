@@ -1,0 +1,155 @@
+﻿@using KYJ.ZS.Models.RentalGoodses
+@model RentalGoodsSearchMenuEntity
+<div class="search">
+    <div class="search_bread">
+        <span class="cold21b1b">@ViewBag.ThirdlyName</span>&nbsp;&gt;&nbsp;商品筛选</div>
+    <div class="search_box">
+      @if (Model.BrandList != null && Model.BrandList.Count>0)
+      {
+        <dl>
+      
+            <dt>品牌：</dt>
+            <dd>
+              <a href="javascript:void(0)" class="cur" vlaue="">全部</a>
+                @foreach (var i in Model.BrandList)
+                {
+
+                    <a href="#" name="otherattr" prefix="r" value="@i.Id">@i.Name</a>
+                }</dd>
+        </dl>
+      }
+  
+        @for (int i = 0; i < Model.Attrs.Count; i++)
+        {
+            <dl>
+                <dt>@Model.Attrs[i].AttributeName.Name：</dt>
+                <dd>
+                 <a href="javascript:void(0)" class="cur" vlaue="">全部</a>
+                    @foreach (var v in Model.Attrs[i].AttributeValues)
+                    {
+                        var val = Model.Attrs[i].AttributeName.CategoryAttrId + "_" + v.AttributeValueId;
+
+                        <a href="" value="@val" name="attr" prefix="o">@v.Name</a>
+                    }
+                </dd>
+            </dl>
+        }
+     @if (Model.CategoryNorms != null && Model.CategoryNorms.Count > 0)
+      {
+        <dl>
+      
+            <dt>规格：</dt>
+            <dd>
+              <a href="javascript:void(0)" class="cur" vlaue="">全部</a>
+                @foreach (var i in Model.CategoryNorms)
+                {
+
+                    <a href="#" name="otherattr" prefix="f" value="@i.Id">@i.Name</a>
+                }</dd>
+        </dl>
+      }
+        <dl class="last">
+            <dt>价格：</dt>
+            <dd class="last">
+            <a href="javascript:void(0)" class="cur" vlaue="">全部</a>
+                 <a value="1" name="otherattr" prefix="p">0-599</a>
+                 <a value="2" name="otherattr" prefix="p">600-1099</a>
+                 <a value="3" name="otherattr" prefix="p">1100-1699</a>
+                 <a value="4" name="otherattr" prefix="p">1700-2599</a>
+                 <a value="5" name="otherattr" prefix="p">2600-4199</a>
+                 <a value="6" name="otherattr" prefix="p">4200-7999</a>
+                 <a value="7" name="otherattr" prefix="p">8000-89999</a>
+                    </dd>
+        </dl>
+    </div>
+    <div class="search_arrow">
+        <a class="up" href="#">更多选项</a></div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var $$ = KYJ.CORE.URL;
+        jQuery.extend({ kyj: $$ });
+
+        //隐藏多余条件
+        $(".search_box").find("dl").each(function (index) {
+            if (index > 2 && index < $(".search_box").find("dl").length-1) {
+                $(this).addClass("last");
+                $(this).wrap("<div class='aa' style='display: none;'></div>");
+            }
+
+        });
+        //控制更多选项显示隐藏
+        if ($(".aa").length > 0)
+            $(".search_arrow").show();
+        else
+            $(".search_arrow").hide();
+
+        $("a[name='attr']").each(function (index) {
+            var prefix = $(this).attr("prefix");
+            var value = $(this).attr("value");
+            var reg = RegExp(prefix + "(\\d{1,}[_]\\d{1,}[,]{0,1})+", "g");
+            var url = $.kyj.set(null, null, value, 1, prefix)
+
+            $(this).attr("href", url)
+            var str = $.kyj.pathname.match(reg);
+            if (str != null)
+                for (var i = 0; i < str.length; i++) {
+                    if (str[i] == prefix + value) {
+                        $(this).parent().find("a").first().attr("href", RemoveAttr(prefix, value))
+                        $(this).parent().find("a").removeClass("cur");
+                        $(this).addClass("cur");
+                    }
+
+                }
+        });
+
+        $("a[name='otherattr']").each(function (index) {
+            var prefix = $(this).attr("prefix");
+            var value = $(this).attr("value");
+            var url = $.kyj.set(null, null, value, 3, prefix)
+            $(this).attr("href", url)
+            var reg = RegExp(prefix + "(\\d{1,})", "g");
+            var str = $.kyj.pathname.match(reg);
+            if (str != null)
+                for (var i = 0; i < str.length; i++) {
+                    if (str[i] == prefix + value) {
+                        $(this).parent().find("a").first().attr("href", RemoveAttr(prefix, value))
+                        $(this).parent().find("a").removeClass("cur");
+                        $(this).addClass("cur");
+                    }
+                }
+        });
+    });
+    function RemoveAttr(prefix, value) {
+
+        var pathname = location.pathname.substr(1, location.pathname.length);
+        var qArray = location.pathname.substr(1, location.pathname.length).split("/");
+        var query = new Array();
+        if (qArray == undefined || qArray == "") { return; }
+        qArray = pathname.split('/'); //xf,sub
+        var lastArr = qArray[qArray.length - 1]; //qy
+        query = lastArr.split('-'); //qy
+        var q = query.join('-').split('-');
+
+        var a = qArray[0];
+
+        var str = q.join('-');
+        var reg = RegExp(prefix + "(\\d{1,}[_]\\d{1,})|" + prefix + "(\\d{1,})");
+        if (str.match(reg) == null) {
+        }
+        else {
+
+            for (var i = 0; i < q.length; i++) {
+                if (reg.test(q[i])) {
+                    var flat = (q[i] == prefix + value);
+                    if (flat) {
+                        q.splice(i, 1);
+                    }
+                }
+            }
+            var page = q.join('-').match(/-i\d{1,}/g); //分页
+            return "/" + a + "/" + q.join('-').replace(page, "");
+        }
+    }
+</script>

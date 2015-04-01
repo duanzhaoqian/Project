@@ -1,0 +1,202 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using KYJ.ZS.Models.FreightTemplates
+@model IList<FreightIndexEntity>
+@{
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+    ViewBag.Title = "运费模板设置";
+    ViewBag.Navigation = MerchantNavigation.YUNFEIMOBANSHEZHI;
+
+    int totalItemCount = Auxiliary.ToInt32(ViewData["totalItemCount"]);
+    int pagesize = Auxiliary.ToInt32(ViewData["pagesize"]);
+    int pageIndex = Auxiliary.ToInt32(ViewData["pageIndex"]);
+}
+<div class="tag">
+    <ul>
+        <li class="cur"><a href="#">运费模板设置</a></li>
+    </ul>
+</div>
+<!--运费模板设置开始-->
+@if (Model == null || Model.Count == 0)
+{
+    <div class="yf_tep yf_tep1">
+      	<div class="yf_tit">
+        	<p>参考范例：(以下模板仅供参考)</p>
+            <span><a href="@Url.MerchantSiteUrl().FreightTemplates_Create" class="btn_blue">新增运费模板</a></span>
+        </div>
+        <div class="yf_tab mb10">
+        	<div class="yf_tit2">
+            	<p>小物件模板案例</p>
+            </div>
+        	<table width="100%" cellpadding="0" cellspacing="0">
+              <tbody>
+                  <tr>
+                    <th width="16%">运送方式</th>
+                    <th width="36%">运送到</th>
+                    <th width="12%">首件(个)</th>
+                    <th width="12%"> 运费(元)</th>
+                    <th width="12%">续件(个) </th>
+                    <th width="12%" class="bdr">运费(元)</th>
+                  </tr>
+                <tr>
+                    <td><div class="tal pl20">快递公司</div></td>
+                    <td><div class="tal pl20">北京市</div></td>
+                    <td>999.00</td>
+                    <td>999.00</td>
+                    <td>999.00</td>
+                    <td>999.00</td>
+                </tr>
+                <tr>
+                    <td><div class="tal pl20">物流公司</div></td>
+                    <td><div class="tal pl20">其它市</div></td>
+                    <td>999.00</td>
+                    <td>999.00</td>
+                    <td>999.00</td>
+                    <td>999.00</td>
+                </tr>
+        	</tbody>
+        </table>
+        </div>
+        <div class="yf_tab mb10">
+        	<div class="yf_tit2">
+            	<p>小物件模板案例</p>
+            </div>
+        	<table width="100%" cellpadding="0" cellspacing="0">
+              <tbody>
+                  <tr>
+                    <th width="16%">运送方式</th>
+                    <th width="36%">运送到</th>
+                    <th width="12%">首件(个)</th>
+                    <th width="12%"> 运费(元)</th>
+                    <th width="12%">续件(个) </th>
+                    <th width="12%" class="bdr">运费(元)</th>
+                  </tr>
+                <tr>
+                    <td><div class="tal pl20">快递公司</div></td>
+                    <td><div class="tal pl20">北京市</div></td>
+                    <td>999.00</td>
+                    <td>999.00</td>
+                    <td>999.00</td>
+                    <td>999.00</td>
+                </tr>
+                <tr>
+                    <td><div class="tal pl20">物流公司</div></td>
+                    <td><div class="tal pl20">其它市</div></td>
+                    <td>999.00</td>
+                    <td>999.00</td>
+                    <td>999.00</td>
+                    <td>999.00</td>
+                </tr>
+        	</tbody>
+        </table>
+        </div>
+    </div>
+}
+else
+{
+<!--物流管理-运费模板有自定义开始-->
+<div class="yf_tep">
+    <div class="yf_tit">
+        <p>温馨提示：修改或删除物流模板会直接影响到使用此模板的商品，请谨慎操作。</p>
+        <span><a href="@Url.MerchantSiteUrl().FreightTemplates_Create" class="btn_blue">新增运费模板</a></span>
+    </div>
+    @foreach (var entity in Model)
+    {
+    <div class="yf_tab mb10">
+        <div class="yf_tit2">
+            <p>@entity.Title</p>
+            <div class="fr col999 mr10">
+                最后编辑时间：@entity.UpdateTime.ToString("yyyy-MM-dd HH:mm")
+                <a href="@Url.MerchantSiteUrl().FreightTemplates_Create?id=@entity.Id" class="blue ml15 mr10">修改</a>|<a href="javascript:void(0);" data-id="@entity.Id" class="blue ml10">删除</a>
+            </div>
+        </div>
+        <table width="100%" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <th width="14%">运送方式</th>
+                    <th width="34%">运送到</th>
+                    <th width="13%">@(entity.Mode == 1 ? "首件（个）" : (entity.Mode == 2 ? "首重（kg）" : "首体积（m³）"))</th>
+                    <th width="13%">运费(元)</th>
+                    <th width="13%">@(entity.Mode == 1 ? "续件（个）" : (entity.Mode == 2 ? "续重（kg）" : "续体积（m³）"))</th>
+                    <th class="bdr" width="13%">运费(元)</th>
+                </tr>
+                @if (entity.IsFreeship)
+                {
+                    <tr>
+                        <td><div class="tal pl20">@((entity.IsExpress ? "快递 " : "") + (entity.IsEms ? "EMS " : "") + (entity.IsSnailmail ? "平邮 " : "") + (entity.IsLogistics ? "物流" : ""))</div></td>
+                        <td><div id="div_cityName" class="tal pl20">@entity.CityName</div></td>
+                        <td>包邮</td>
+                        <td>包邮</td>
+                        <td>包邮</td>
+                        <td class="tds">包邮</td>
+                    </tr>
+                    <tr>
+                        <td><div class="tal pl20">@((entity.IsExpress ? "快递 " : "") + (entity.IsEms ? "EMS " : "") + (entity.IsSnailmail ? "平邮 " : "") + (entity.IsLogistics ? "物流" : ""))</div></td>
+                        <td><div id="div_cityName" class="tal pl20">其它省市</div></td>
+                        <td>包邮</td>
+                        <td>包邮</td>
+                        <td>包邮</td>
+                        <td class="tds">包邮</td>
+                    </tr>
+                }
+                else
+                {
+                    foreach (var freightCost in entity.FreightCostList)
+                    {
+                    <tr>
+                        <td><div class="tal pl20">@(freightCost.Type == 1 ? "快递" : freightCost.Type == 2 ? "EMS" : freightCost.Type == 3 ? "平邮" : freightCost.Type == 4 ? "物流" : "未知")</div></td>
+                        <td><div id="div_cityName" class="tal pl20">@(freightCost.CityIds == "-1" ? "其它省市" : entity.CityName)</div></td>
+                        <td>@Convert.ToInt32(freightCost.FirstIme).ToString()</td>
+                        <td>@freightCost.FirstPrice.ToString("F2")</td>
+                        <td>@Convert.ToInt32(freightCost.ContinuetIme).ToString()</td>
+                        <td class="tds">@freightCost.ContinuePrice.ToString("F2")</td>
+                    </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    }
+    @Html.Pager(totalItemCount, pagesize, pageIndex, "index", "freighttemplates", new PagerOptions { AutoHide = false, SeparatorHtml = " ", ShowFirstLast = false, ShowPageIndexBox = false, CssClass = "page", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + pageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next", SpanCSS = "" }, null, null, null)
+</div>
+<!--物流管理-运费模板有自定义结束-->
+}
+<!--运费模板设置结束-->
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+
+            // 删除模板
+            $(".blue.ml10").click(function () {
+                $delBtn = $(this);
+                $.confirm('是否确认删除此模板？', '询问', function () {
+                    // 当前删除的模板div
+                    $tab = $delBtn.parents(".yf_tab.mb10");
+
+                    var ajaxUrl = '@Url.MerchantSiteUrl().FreightTemplates_Delete?id=' + $delBtn.attr("data-id");
+
+                    $.ajax({ url: ajaxUrl, type: "GET", dataType: "text",
+                        success: function (data) {
+                            var _data = data.toUpperCase();
+                            if (_data.indexOf("TRUE") > -1) {
+                                //$tab.remove();
+                                //$.msg('删除成功', 1, -1);
+                                location.reload();
+                            }
+                            else if (_data.indexOf("||") > -1) {
+                                var erroInfo = data.split('||')[1];
+                                $.alert(erroInfo,320);
+                            }
+                            else {
+                                $.alert('删除失败，请重试！');
+                            }
+                        }, error: function () {
+                            $.alert("删除失败，请重试！");
+                        }
+                    });
+                })
+            })
+
+        })
+    </script>
+}

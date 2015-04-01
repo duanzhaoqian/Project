@@ -1,0 +1,323 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using KYJ.ZS.Models.Authority
+@model IList<AdminsEntity>
+@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.GUANLIZHIYUANQUANXIAN;
+    ViewBag.Title = "管理职员权限";
+
+    AdminSearchEntity entity = (AdminSearchEntity)ViewData["searchEntity"];
+
+    int totalItemCount = Auxiliary.ToInt32(ViewData["totalItemCount"]);
+    int pagesize = Auxiliary.ToInt32(ViewData["pagesize"]);
+    int pageIndex = Auxiliary.ToInt32(ViewData["pageIndex"]);
+
+    // 权限
+    string userPermission = KYJ.ZS.Commons.Common.CookieTool.GetCookie("userPermission");
+    List<KYJ.ZS.Models.DB.RoleManagement> list = Auxiliary.FromJsonTo<List<KYJ.ZS.Models.DB.RoleManagement>>(userPermission);
+
+    string permissions = list.Find(c => c.ModuleId == (int)ManagerNavigation.GUANLIZHIYUANQUANXIAN).Permission;
+}
+@section header{
+    <style type="text/css">
+        .error{ border-color:Red;}
+    </style>
+}
+
+<div class="tag_n">
+            <ul>
+                <li><a href="javascript:void(0);">管理账号</a></li>
+            </ul>
+        </div>
+      <div class="conbox" >
+        <div class="serchbox clearFix">
+        <form id="frm_search" action="@Url.ManagerSiteUrl().Admin_Manage" method="get">
+        <div class="clearFix">
+          <div class="fl col666 mr10">登录账号： 
+            <input name="txt_loginname" type="text" value="@(entity.AdminName)" maxlength="30" class="intxt w200" />
+          </div>
+            <div class="fl col666 mr10">权限角色：
+                <select id="sel_role" name="sel_role" class="formselect w200">
+                <option value="0">请选择</option>
+            </select>
+            </div>
+        </div>
+        <div class=" mt10 clearFix">
+          <div class="fl col666 mr10">职员姓名：
+            <input name="txt_realname" type="text" value="@(entity.RealName)" maxlength="30" class="intxt w200" />
+          </div>
+          <div class="fl col666   mr10">联系电话：
+            <input name="txt_mobile" type="text" value="@(entity.Mobile)" maxlength="30" class="intxt w200" />
+          </div>
+          <div class="">
+            <input id="btn_search" type="button" class="btn_f65c33" value="搜索"  />
+          </div></div>
+          </form>
+        </div>
+        <div class="list">
+          <table>
+            <tr>
+              <th>登录账号</th>
+              <th>职员姓名</th>
+              <th>权限角色</th>
+              <th>联系电话</th>
+              <th>最后一次登录</th>
+              <th class="tdlast">操作</th>
+            </tr>
+            @if (Model != null && Model.Count > 0)
+            {
+                foreach (var admin in Model)
+                {
+            <tr>
+              <td>@admin.AdminName</td>
+              <td>@admin.RealName</td>
+              <td>@admin.RoleName</td>
+              <td>@admin.Mobile</td>
+              <td>@admin.LastLoginTime.ToString("yyyy-MM-dd HH:mm")</td>
+              <td  class="tdlast">
+                <p>
+          @if (permissions.IndexOf('3') >= 0)
+          {
+                    <div name="hdn_dialog" style=" display:none">
+                    <div class="layer w400 mt10">
+                      <a name="a_close" href="javascript:void(0);" class="close"></a>
+                      <div class="layer_box">
+                      <form name="frm_edit1" action="@Url.ManagerSiteUrl().Admin_Create" method="post">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_1">
+                                <tr>
+                                  <th width="27%" >登录账号：</th>
+                                  <td><input name="hdn_id" type="hidden" value="@admin.AdminId" />
+                                    <input name="txt_loginName1" value="@admin.AdminName" data-name="@admin.AdminName" type="text" maxlength="50" class="intxt w200" />
+                                    <p style=" display:none; color:Red;">账户已存在！</p>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <th>登录密码：</th>
+                                  <td>
+                                    <input name="txt_pwd1" value="@admin.PassWord" type="password" maxlength="50" class="intxt w200" /></td>
+                                </tr>
+                                <tr>
+                                  <th>确认密码：</th>
+                                  <td>
+                                    <input name="txt_pwdTwo1" value="@admin.PassWord" type="password" maxlength="50" class="intxt w200" /></td>
+                                </tr>
+                                <tr>
+                                  <th>真实姓名：</th>
+                                  <td>
+                                    <input name="txt_realName1" value="@admin.RealName" type="text" maxlength="50" class="intxt w200" /></td>
+                                </tr>
+                                <tr>
+                                  <th>联系电话：</th>
+                                  <td>
+                                    <input name="txt_phone1" value="@admin.Mobile" type="text" maxlength="50" class="intxt w200" /></td>
+                                </tr>
+                                <tr>
+                                  <th>权限角色：</th>
+                                  <td><input name="hdn_roleId" value="@admin.RoleId" type="hidden" />
+                                    <select name="sel_role1" class="formselect w200">
+                                    <option value="0">请选择</option>
+                                </select></td>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <td><input name="btn_submit" data-id="" data-name="" type="button" class="btn_1abc9c mr10" value="确认修改" />
+                            <input name="btn_cancel" type="button" class="btn_grey mr10" value="取消" /></td>
+                                </tr>
+                        </table>
+                        </form>
+                      </div>
+                    </div>
+                    </div>
+            <a name="a_edit" href="javascript:void(0);">修改 </a>
+          }&nbsp;&nbsp;
+          @if (permissions.IndexOf('2') >= 0)
+          {
+            <a name="a_delete" data-id="@admin.AdminId" data-name="@admin.RealName" href="javascript:void(0);">删除 </a>
+          }
+        </p>
+              </td>
+            </tr>
+                }
+            }
+          </table>
+   @Html.Pager(totalItemCount, pagesize, pageIndex, "manage", "admin", new PagerOptions { AutoHide = false, SeparatorHtml = " ", ShowFirstLast = false, ShowPageIndexBox = false, CssClass = "page", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + pageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next end prev", SpanCSS = "" }, null, null, null)
+    </div>
+      </div>
+
+<div id="hdn_dialogDelete" style=" display:none">
+<div class="layer w320 mt10">
+  <a name="a_close" href="javascript:void(0);" class="close"></a>
+  <div class="layer_box">
+    <div class="ptb20 tac">是否删除账号？</div>
+    <div class="tac"><input name="btn_delete" data-id="" data-name="" type="button" class="btn_1abc9c mr10" value="确认" /><input name="btn_close" type="button" class="btn_grey" value="取消" /></div>
+  </div>
+</div>
+</div>
+
+@section scripts{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery.validate.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.validator.addMethod("Validatepwdtwo", function (value, element) {
+                var pwd = $("input[name='txt_pwd']").val(), //密码
+                    pwdtwo = $(element).val(); //确认密码
+                if (pwd != pwdtwo) {
+                    return false;
+                }
+                return true;
+            }, "");
+            $.validator.addMethod("tel", function (value, element) {
+                var tel = /^((13[0-9]|15[012356789]|18[0-9]|14[57])[0-9]{8})$/;
+                var tel1 = /^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$/;
+                return this.optional(element) || (tel.test(value)) || (tel1.test(value));
+            }, "");
+
+            BindRole($("#sel_role"), '@entity.RoleId');
+
+            // 搜索
+            $("#btn_search").click(function () {
+                $("#frm_search").submit();
+            })
+
+            // 修改
+            $("a[name='a_edit']").click(function () {
+                $.content($(this).prev().html(), 320, 0, 0);
+                $(".xubox_layer").css("top", "70px");
+
+                $("div.xuboxPageHtml").find("form[name='frm_edit1']").attr("name", "frm_edit");
+                $("div.xuboxPageHtml").find("input[name='txt_loginName1']").attr("name", "txt_loginName");
+                $("div.xuboxPageHtml").find("input[name='txt_pwd1']").attr("name", "txt_pwd");
+                $("div.xuboxPageHtml").find("input[name='txt_pwdTwo1']").attr("name", "txt_pwdTwo");
+                $("div.xuboxPageHtml").find("input[name='txt_realName1']").attr("name", "txt_realName");
+                $("div.xuboxPageHtml").find("input[name='txt_phone1']").attr("name", "txt_phone");
+                $("div.xuboxPageHtml").find("select[name='sel_role1']").attr("name", "sel_role");
+
+                var $sel_Role = $("div.xuboxPageHtml").find("select[name='sel_role']"),
+                    intId = $sel_Role.prev().val();
+                BindRole($sel_Role, intId);
+
+
+                $("form[name='frm_edit']").validate({
+                    rules: {
+                        txt_loginName: { required: true },
+                        txt_pwd: { required: true },
+                        txt_pwdTwo: { required: true, Validatepwdtwo: true },
+                        txt_realName: { required: true },
+                        txt_phone: { required: true, tel: true },
+                        sel_role: { min: 1 }
+                    },
+                    messages: {
+                        txt_loginName: { required: "" },
+                        txt_pwd: { required: "" },
+                        txt_pwdTwo: { required: "" },
+                        txt_realName: { required: "" },
+                        txt_phone: { required: "", tel: "" },
+                        sel_role: { min: "" }
+                    },
+                    submitHandler: function () {
+                        $.ajax({
+                            url: '@Url.ManagerSiteUrl().Admin_ValidateLoginName?name=' + $("input[name='txt_loginName']").val() + '&oldName=' + $("input[name='txt_loginName']").attr("data-name"),
+                            type: "get",
+                            dataType: "text",
+                            success: function (data) {
+                                var _data = data.toUpperCase();
+                                if (_data.indexOf("FALSE") > -1) {
+                                    $("input[name='txt_loginName']").next().show();
+                                    return false;
+                                }
+                                else {
+                                    $.post('@Url.ManagerSiteUrl().Admin_Create',
+                                        { txt_loginName: $("input[name='txt_loginName']").val(), txt_pwd: $("input[name='txt_pwd']").val()
+                                        , txt_realName: $("input[name='txt_realName']").val(), hdn_id: $("input[name='txt_loginName']").prev().val()
+                                        , txt_phone: $("input[name='txt_phone']").val(), sel_role: $("form[name='frm_edit']").find("select[name='sel_role']").val()
+                                        },
+                                    function (data) {
+                                        var _data = data.toUpperCase();
+                                        // 添加、修改成功
+                                        if (_data.indexOf("TRUE") > -1) {
+                                            location.reload();
+                                        }
+                                        else if (_data.indexOf("||") > -1) {
+                                            var erroInfo = data.split('||')[1];
+                                            $.alert(erroInfo);
+                                        }
+                                        else if (_data.indexOf("FALSE") > -1) {
+                                            $.alert('修改失败，请重试！');
+                                        }
+                                        else {
+                                            $.alert(data);
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+            })
+
+            // 确认修改
+            $("input[name='btn_submit']").live("click", function () {
+                $(this).closest("form[name='frm_edit']").submit();
+            })
+
+            // 删除提示框
+            $("a[name='a_delete']").click(function () {
+                var id = $(this).attr("data-id"),
+                    name = $(this).attr("data-name");
+                $("#hdn_dialogDelete").find("input[name='btn_delete']").attr("data-id", id).attr("data-name", name);
+                $.content($("#hdn_dialogDelete").html(), 320, 0, 0);
+            })
+
+            // 确认删除
+            $("input[name='btn_delete']").live("click", function () {
+                var id = $(this).attr("data-id"),
+                    name = $(this).attr("data-name");
+                $.get('@Url.ManagerSiteUrl().Admin_Delete', { id: id, name: name },
+                                function (data) {
+                                    var _data = data.toUpperCase();
+                                    // 删除成功
+                                    if (_data.indexOf("TRUE") > -1) {
+                                        location.reload();
+                                    }
+                                    else if (_data.indexOf("FALSE") > -1) {
+                                        $.alert('删除失败，请重试！');
+                                    }
+                                    else {
+                                        $.alert(data);
+                                    }
+                                });
+            });
+
+            // 关闭弹窗
+            $("a[name='a_close'],input[name='btn_cancel'],input[name='btn_close']").live("click", function () {
+                $.closeAll();
+            });
+
+            // 权限角色绑定intId：当前选择ID，container：需要加载的jquery对象
+            function BindRole(container, intId) {
+                $.ajax({
+                    url: '@Url.ManagerSiteUrl().Log_GetRoles' + "?ram=" + Math.random(),
+                    type: "GET",
+                    async: false,
+                    dataType: "json",
+                    success: function (response) {
+                        if (response && response.success) {
+                            if (response.items) {
+                                var strStmp = "";
+                                $.each(response.items, function () {
+                                    if (intId == this.RoleCode) {
+                                        strStmp = "selected=selected";
+                                    } else {
+                                        strStmp = "";
+                                    }
+                                    $("<option value='" + this.RoleCode + "' " + strStmp + " >" + this.RoleName + "</option>").appendTo(container);
+                                });
+                            }
+                        }
+                    }
+                });
+            }
+        })
+    </script>
+}
+

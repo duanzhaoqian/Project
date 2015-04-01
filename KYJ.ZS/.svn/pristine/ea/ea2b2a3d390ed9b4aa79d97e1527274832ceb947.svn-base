@@ -1,0 +1,103 @@
+﻿@using KYJ.ZS.Models.DB;
+@using KYJ.ZS.Commons.Web;
+@model Webdiyer.WebControls.Mvc.PagedList<CollectionGoods>
+@using Webdiyer.WebControls.Mvc
+@{
+    ViewBag.Title = "用户后台";
+    Layout = "~/Views/Shared/Layouts/_UserLayout.cshtml";
+    ViewBag.Navigation = UserNavigation.SHOUCANGJIA;
+}
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            //全选或者全不选
+            $("[name=chkSelectAll]").click(function () {
+                var strState = $(this).attr("checked");
+                if (strState) {
+                    $("[name=chkSel]").attr("checked", strState);
+                } else {
+                    $("[name=chkSel]").attr("checked", false);
+                }
+            });
+            //删除
+            $("[name=btnDelete]").click(function () {
+                Del();
+            });
+            $("[name=chkSel]").click(function () {
+                var checkboxLength = $("#tabList input[type='checkbox']").length
+                var checkboxChecked = $("#tabList input:checked").length;
+                if (checkboxChecked == checkboxLength) {
+                    $("[name=chkSelectAll]").attr("checked", true);
+                } else {
+                    $("[name=chkSelectAll]").attr("checked", false);
+                }
+            });
+        });
+
+        //删除操作
+        function Del() {
+            var strIdList = GetCheckedIdList();
+            if (strIdList.length == 0) {
+                dialog.alert("请您选择商品后在进行操作！");
+                return false;
+            }
+
+            var strUrl = "@Url.UserSiteUrl().DelCollection";
+            $.post(strUrl, { collId: strIdList }, function (data) {
+                if (data == 0) {
+                    dialog.alert("删除失败！", "信息", 1);
+                }
+            }, "json");
+
+        }
+
+        //得到选择的id列表
+        function GetCheckedIdList() {
+            var dom = $("#tabList input:checked");
+            var strIdList = "";
+            for (var i = 0; i < dom.length; i++) {
+                strIdList += $(dom[i]).attr("value") + ",";
+            }
+            strIdList = strIdList.substr(0, strIdList.length - 1);
+            return strIdList;
+        }
+    </script>
+}
+<table>
+    <tr>
+        <td>
+            全选：<input type="checkbox" name="chkSelectAll" />
+        </td>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (CollectionGoods item in Model)
+        {
+        <tr>
+            <table id="tabList">
+                <tr>
+                    <td>
+                        <input type="checkbox" name="chkSel" value="@item.Id" />图片
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        标题： @item.Title
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        月租：@item.MonthPrice
+                    </td>
+                </tr>
+            </table>
+        </tr>
+        }
+    }
+    <tr>
+        <td>
+            <a href="javascript:void(0)" name="btnDelete">删除</a>
+        </td>
+    </tr>
+</table>

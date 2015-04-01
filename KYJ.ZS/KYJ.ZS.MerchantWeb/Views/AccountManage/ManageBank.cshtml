@@ -1,0 +1,93 @@
+﻿@model IEnumerable<KYJ.ZS.Models.DB.BankAccount>
+@{
+    ViewBag.Title = "管理银行账户";
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+    ViewBag.Navigation = MerchantNavigation.TIXIANGUANLI;
+}
+@Html.Partial("~/Views/Shared/Controls/_AccountManage.cshtml")
+ <div class="rightbox">
+<div class="conbox">
+    <div class="mingx">
+        <table class="tab_3" width="100%" cellspacing="0" cellpadding="0">
+            <tr class="br_colddd">
+                <th width="20%">
+                    开户名称
+                </th>
+                <th width="20%">
+                    帐户
+                </th>
+                <th width="20%">
+                    开户行
+                </th>
+                <th width="26%">
+                    备注
+                </th>
+                <th width="14%">
+                    操作
+                </th>
+            </tr>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Number.Replace(" ","")
+                    </td>
+                    <td>
+                        @item.BankName
+                    </td>
+                    <td>
+                        @item.Remark
+                    </td>
+                    <td>
+                        <div class="col999 mr10">
+                            <a class="blue ml15 mr10" href="@Url.MerchantSiteUrl().EditBankAccount?id=@item.Id">修改</a>|
+                            <a href="javascript:void(0)" class="blue ml10" data-id="@item.Id" >删除</a></div>
+                    </td>
+                </tr>
+  
+                }
+            }
+        </table>
+    </div>
+</div>
+</div>
+@section scripts
+{
+<script type="text/javascript">
+    $(function () {
+
+        //选择当前标签
+        if ("@ViewBag.Tag" != "") {
+            $("li[tag=@ViewBag.Tag]").addClass("cur").siblings().removeClass("cur");
+        }
+        else {
+            $("li[tag=1]").addClass("cur").siblings().removeClass("cur");
+        }
+        $(".tag ul li").click(function () {
+
+            window.open($(this).attr("attr"), "_self");
+        })
+        $(".blue.ml10").click(function () {
+            var $obj = $(this);
+            $.confirm("您确定要进行<span style='color:red'>删除</span>操作吗？", "询问", function () {
+                var id = $obj.attr("data-id");
+                $.post("@Url.MerchantSiteUrl().DelBankAccount", { "id": id }, function (data) {
+                    var intIcon = 1;
+                    if (!data.Success) {
+                        $.alert(data.Message);
+                    } else {
+                        location.href = "@Url.MerchantSiteUrl().ManageBank";
+                    }
+
+                });
+
+            });
+        });
+    });
+</script>
+}

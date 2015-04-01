@@ -1,0 +1,333 @@
+﻿@using System.Security.Policy
+@using KYJ.ZS.Models.DB
+@using KYJ.ZS.Models.Generalizes;
+@using KYJ.ZS.Models.RentalGoodses
+@model  KYJ.ZS.Models.Pages.PageData<Manager_RentalGoodsAduitEntity>
+@{
+    ViewBag.Title = "修改商品排序";
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.GUANLISHANGPINPAIXU;
+    Generalize generalize = (Generalize)ViewData["generalize"];
+    Manager_GeneralizeLocationEntity location = (Manager_GeneralizeLocationEntity)ViewData["location"];
+    List<Manager_RentalGoodsAduitEntity> goodsList = (List<Manager_RentalGoodsAduitEntity>)ViewData["goodsList"];
+    List<Category> categoryList = (List<Category>)ViewData["listCategory"];
+}
+@section header{
+    <link href="@PubConstant.StaticUrl@Url.Content("base/plug/datepicker/css/jquery.datepicker.css")" type="text/css" rel="stylesheet" />
+}
+<div class="tag_n">
+    <ul>
+        <li>
+            <a href="#">修改商品排序</a></li>
+    </ul>
+</div>
+<div class="part">
+    <h1>基本信息</h1>
+    <div class="tabbox">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_1">
+            <tr>
+                <th width="12%">页面： </th>
+                <td width="88%">@location.GeneralizeTypeName
+                </td>
+            </tr>
+            @if (categoryList.Count == 2)
+            {<tr>
+                    <th>分类： </th>
+                    <td><span>@categoryList[0].Name - @categoryList[1].Name;</span> </td>
+                </tr>
+            }
+            else if (categoryList.Count == 3)
+            {<tr>
+                    <th>分类： </th>
+                    <td><span>@categoryList[0].Name - @categoryList[1].Name - @categoryList[2].Name;</span>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <th>位置： </th>
+                <td>@location.GeographyName
+                </td>
+            </tr>
+            <tr>
+                <th>排序名称：
+                    <td>
+                        <input type="text" id="txt_title" class="intxt_h24 w670" value="@generalize.Name" />
+                    </td>
+            </tr>
+            <tr>
+                <th valign="top">说明： </th>
+                <td>
+                    <textarea class="area w670" id="text_remark">@generalize.Remark</textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <h1>方案排期</h1>
+    <div class="tabbox">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_1">
+            <tr>
+                <th width="13%">开始时间： </th>
+                <td width="38%">
+                    <input type="text" class="intxt_h24 w70 mr5"  id="text_beginTime" value="@generalize.BeginTime.ToString("yyyy-MM-dd")" />
+                    <select id="beginTime_HH" class="selcss w60 mr5">
+                        @for (int i = 0; i < 24; i++)
+                        {
+                            if (i < 10)
+                            {
+                                string value = "0" + i;
+                            <option value="@value" @(generalize.EndTime.ToString("HH") == value ? "selected=selected" : "")>@value</option>
+                            }
+                            else
+                            {
+  
+                            <option value="@i" @(generalize.EndTime.ToString("HH") == i.ToString() ? "selected=selected" : "")>@i</option> 
+                            }
+
+                        }
+                    </select>：<select id="beginTime_MM" class="selcss w60">
+                        @for (int i = 0; i < 60; i++)
+                        {
+                            if (i < 10)
+                            {
+                                string value = "0" + i;
+                            <option value="@value" @(generalize.EndTime.ToString("HH") == value ? "selected=selected" : "")>@value</option>
+                            }
+                            else
+                            {
+                            <option value="@i" @(generalize.EndTime.ToString("HH") == i.ToString() ? "selected=selected" : "")>@i</option>
+                            }
+                        }
+                    </select><span class="cold21b1b pl10"></span> </td>
+                <th width="8%">结束时间： </th>
+                <td width="41%">
+                    <input type="text" class="intxt_h24 w70 mr5" id="text_endTime" value="@generalize.EndTime.ToString("yyyy-MM-dd")" />
+                    <select id="endTime_HH" class="selcss w60 mr5">
+                        @for (int i = 0; i < 24; i++)
+                        {
+                            if (i < 10)
+                            {
+                                string value = "0" + i;
+                            <option value="@value" @(generalize.EndTime.ToString("HH") == value ? "selected=selected" : "")>@value</option>
+                            }
+                            else
+                            {
+  
+                            <option value="@i" @(generalize.EndTime.ToString("HH") == i.ToString() ? "selected=selected" : "")>@i</option> 
+                            }
+
+                        }
+                    </select>：<select id="endTime_MM" class="selcss w60">
+                        @for (int i = 0; i < 60; i++)
+                        {
+                            if (i < 10)
+                            {
+                                string value = "0" + i;
+                            <option value="@value" @(generalize.EndTime.ToString("mm") == value ? "selected=selected" : "")>@value</option>
+                            }
+                            else
+                            {
+                            <option value="@i" @(generalize.EndTime.ToString("mm") == i.ToString() ? "selected=selected" : "")>@i</option>
+                            }
+                        }
+                    </select><span class="cold21b1b pl10"></span> </td>
+            </tr>
+        </table>
+    </div>
+    <h1>商品搜索</h1>
+    <div class="tabbox clearFix col666">
+        @using (Ajax.BeginForm("AjaxSearchGet", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "articles", HttpMethod = "Get", InsertionMode = InsertionMode.Replace }, new RouteValueDictionary { { "id", "searchForm" } }))
+        {
+            <span class="pl20">商品名称：</span>
+            <input type="text" class="intxt w220 mr15" name="title" id="title" />
+            <span>商家名称：</span> <input type="text" class="intxt w220 mr15" name="name" id="name" />
+            <span>商家编号：</span> <input type="text" class="intxt w220 mr15" name="code" id="caode" />
+            <input type="submit" value="搜索" class="btn_f65c33" accesskey="S" />
+        }
+    </div>
+    <div id="articles">
+        @Html.Partial("~/Views/Shared/_AjaxSearchGet.cshtml", Model)
+    </div>
+    <div class="clear">
+    </div>
+    <h1>商品排序<span>数量：<em id="em_number">@location.Number</em></span></h1>
+    <form id="frm_data" action="@Url.ManagerSiteUrl().Generalize_GeneralizeUpdate(generalize.GeneralizeId)" method="post">
+    <input id="hid_title" type="hidden" name="title" />
+    <input id="hid_remark" type="hidden" name="remark" />
+    <input id="hid_BeginTime" type="hidden" name="beginTime" />
+    <input id="hid_EndTime" type="hidden" name="endTime" />
+    <input id="state" type="hidden" name="state" />
+    <table id="table_selectGoods" width="100%" border="0" cellspacing="0" cellpadding="0"
+        class="table_2 mt10">
+        <tr>
+            <th width="35%">商品名称 </th>
+            <th width="11%">月租(元) </th>
+            <th width="15%">商户名称 </th>
+            <th width="14%">商家编号 </th>
+            <th width="8%">排序 </th>
+            <th width="6%">操作 </th>
+            <th width="11%" class="nnbor"></th>
+        </tr>
+        @foreach (var item in goodsList)
+        {
+            <tr name="">
+                <td>
+                    @item.GoodsName
+                </td>
+                <td>
+                    @item.MonthPrice.ToString("F2")
+                </td>
+                <td>
+                    @item.MerchantName
+                </td>
+                <td>
+                    @item.GoodsCode
+                </td>
+                <td>
+                    <select class="selcss w60 mr5" name="goodssort">
+                        @for (int i = 1; i < location.Number + 1; i++)
+                        {
+                            <option value="@(item.GoodsId + "|" + i)" @(item.Sort == i ? "selected=selected" : "")>@i</option>
+                        }
+                    </select>
+                </td>
+                <td>
+                    <a name='a_delete' href='javascript:void(0);' data-id='@item.GoodsId' class='link_05c'>
+                        删除</a>
+                </td>
+                <td class="nnbor"><span class="cold21b1b" style="display: none">排序录入错误</span> </td>
+            </tr>
+        }
+    </table>
+    </form>
+    <div class="mt20">
+        <input type="button" class="btn_gr mr10" id="btn_Apply" value="申请审核" /><input type="button"
+            id="btn_Save" class="btn_or" value="保存" /></div>
+</div>
+@section scripts{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/plug/datepicker/jquery.datepicker.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            //发布时间
+            var dates = $("#text_beginTime, #text_endTime").datepicker({
+                defaultDate: "+1w",
+                minDate: (this.id == "text_endTime" ? $("#text_beginTime").datepicker("getDate") : '+0d'),
+                maxDate: (this.id == "text_beginTime" ? $("#text_endTime").datepicker("getDate") : '+12m'),
+                onSelect: function (selectedDate) {
+                    var option = this.id == "text_beginTime" ? "minDate" : "maxDate",
+                        instance = $(this).data("datepicker"),
+                        date = $.datepicker.parseDate(
+                            instance.settings.dateFormat ||
+                            $.datepicker._defaults.dateFormat,
+                            selectedDate, instance.settings);
+                    dates.not(this).datepicker("option", option, date);
+                }
+            }).attr("readonly", "readonly");
+            //单击申请审核
+            $("#btn_Apply").bind("click", function () {
+                $("#state").val(1);
+                $("#hid_title").val($("#txt_title").val());
+                $("#hid_remark").val($("#text_remark").val());
+                $("#hid_BeginTime").val($("#text_beginTime").val() + " " + $("#beginTime_HH").val() + ":" + $("#beginTime_MM").val() + ":00");
+                $("#hid_EndTime").val($("#text_endTime").val() + " " + $("#endTime_HH").val() + ":" + $("#endTime_MM").val() + ":00");
+                if (!valitdateTitle() || !valitdateTime()) {
+                    return false;
+                }
+                if ($("#frm_data tr").length > 1) {
+                    if (ValidateNumber()) {
+                        $("#frm_data").submit();
+                    }
+                } else {
+                    $.alert("未添加任何排序商品");
+                }
+            });
+            //单击保存
+            $("#btn_Save").bind("click", function () {
+                $("#state").val(0);
+                $("#hid_title").val($("#txt_title").val());
+                $("#hid_remark").val($("#text_remark").val());
+                $("#hid_BeginTime").val($("#text_beginTime").val() + " " + $("#beginTime_HH").val() + ":" + $("#beginTime_MM").val() + ":00");
+                $("#hid_EndTime").val($("#text_endTime").val() + " " + $("#endTime_HH").val() + ":" + $("#endTime_MM").val() + ":00");
+                if (!valitdateTitle() || !valitdateTime()) {
+                    return false;
+                }
+                if ($("#frm_data tr").length > 1) {
+                    if (ValidateNumber()) {
+                        $("#frm_data").submit();
+                    }
+                } else {
+                    $.alert("未添加任何排序商品");
+                }
+
+
+
+            });
+
+            function ValidateNumber() {
+                $("#table_selectGoods").find("span.cold21b1b").remove();
+                var result = true;
+                $("select[name='goodssort']").each(function () {
+                    var number = $(this).find("option:selected").text(),
+                        $td = $(this).closest("tr").find("td.nnbor");
+                    $("select[name='goodssort']").not($(this)).each(function () {
+                        if ($(this).find("option:selected").text() == number) {
+                            $td.html("<span class='cold21b1b'>排序重复！</span>");
+                            result = false;
+                            return false;
+                        }
+                    });
+                });
+                return result;
+            }
+            //验证排序名称
+            function valitdateTitle() {
+                var value = $('#txt_title').val();
+                var result = true;
+                if (value.trim() == "") {
+                    $('#msg_title').text("排序名称不能为空！");
+                    result = false;
+                }
+                if (value.trim().length > 30) {
+                    $('#msg_title').text("排序名称不能超过30个字符！");
+                    result = false;
+                }
+                return result;
+            }
+
+            //验证时间
+            function valitdateTime() {
+                $('#msg_beginTime').text("");
+                $('#msg_endTime').text("");
+                var beginTime = $("#text_beginTime").val() + " " + $("#beginTime_HH").val() + ":" + $("#beginTime_MM").val() + ":00";
+                var endTime = $("#text_endTime").val() + " " + $("#endTime_HH").val() + ":" + $("#endTime_MM").val() + ":00";
+                var result = true;
+                if (beginTime == endTime) {
+                    $('#msg_beginTime').text("时间录入错误！");
+                    $('#msg_endTime').text("时间录入错误！");
+                    result = false;
+                }
+                return result;
+            }
+
+            $('#text_beginTime').on("change", function () {
+                valitdateTime();
+            });
+            $('#beginTime_HH').on("change", function () {
+                valitdateTime();
+            });
+            $('#beginTime_MM').on("change", function () {
+                valitdateTime();
+            });
+            $('#text_endTime').on("change", function () {
+                valitdateTime();
+            });
+            $('#endTime_HH').on("change", function () {
+                valitdateTime();
+            });
+            $('#endTime_MM').on("change", function () {
+                valitdateTime();
+            });
+
+        })
+    </script>
+}

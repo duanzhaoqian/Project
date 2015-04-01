@@ -1,0 +1,23 @@
+F:\项目\2014\ASS\Ass\JiePan.Ass.Model\bin\Debug\JiePan.Ass.Model.dll.config
+F:\项目\2014\ASS\Ass\JiePan.Ass.Model\bin\Debug\JiePan.Ass.Model.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Model\bin\Debug\JiePan.Ass.Model.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.Model\bin\Debug\EntityFramework.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Model\bin\Debug\EntityFramework.SqlServer.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Model\bin\Debug\EntityFramework.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.Model\bin\Debug\EntityFramework.SqlServer.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.Model\obj\Debug\JiePan.Ass.Model.csprojResolveAssemblyReference.cache
+F:\项目\2014\ASS\Ass\JiePan.Ass.Model\obj\Debug\JiePan.Ass.Model.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Model\obj\Debug\JiePan.Ass.Model.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Model.dll.config
+F:\项目\2014\ASS\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Model.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Model.pdb
+E:\源代码\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Model.dll.config
+E:\源代码\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Model.dll
+E:\源代码\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Model.pdb
+E:\源代码\ass\Ass\JiePan.Ass.Model\obj\Debug\JiePan.Ass.Model.dll
+E:\源代码\ass\Ass\JiePan.Ass.Model\obj\Debug\JiePan.Ass.Model.pdb
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.Model\obj\Debug\JiePan.Ass.Model.pdb
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Model.dll.config
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Model.dll
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Model.pdb
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.Model\obj\Debug\JiePan.Ass.Model.dll

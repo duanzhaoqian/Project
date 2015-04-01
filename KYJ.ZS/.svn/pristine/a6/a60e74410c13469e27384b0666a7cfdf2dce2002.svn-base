@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C577F43B-6ACF-45F9-9264-6786E9389A09}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KYJ.ZS.DAL</RootNamespace>
+    <AssemblyName>KYJ.ZS.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountLogs\AccountLogDal.cs" />
+    <Compile Include="Accounts\AccountDal.cs" />
+    <Compile Include="Adverts\AdvertDal.cs" />
+    <Compile Include="Adverts\AdvertManageDal.cs" />
+    <Compile Include="Attributes\AttributeValueDal.cs" />
+    <Compile Include="Authority\AdminsDal.cs" />
+    <Compile Include="Authority\LoginFilterDal.cs" />
+    <Compile Include="Authority\RoleModulesDal.cs" />
+    <Compile Include="BankAccounts\BankAccountDal.cs" />
+    <Compile Include="Brands\BrandDal.cs" />
+    <Compile Include="Carts\CartDal.cs" />
+    <Compile Include="Attributes\AttributeDal.cs" />
+    <Compile Include="Categories\CategoryAttributeDal.cs" />
+    <Compile Include="Categories\CategoryColorDal.cs" />
+    <Compile Include="Categories\CategoryDal.cs" />
+    <Compile Include="Categories\CategoryNormDal.cs" />
+    <Compile Include="Collections\CollectionDal.cs" />
+    <Compile Include="DB\PagePmsDal.cs" />
+    <Compile Include="DB\ToolHelper.cs" />
+    <Compile Include="DB\ConvertDB.cs" />
+    <Compile Include="DB\SqlHelper.cs" />
+    <Compile Include="DB\DBHelper.cs" />
+    <Compile Include="DB\PageInfo.cs" />
+    <Compile Include="DB\SqlParam.cs" />
+    <Compile Include="DeliveryAddresses\DeliveryAddressDal.cs" />
+    <Compile Include="FreightCosts\FreightCostDal.cs" />
+    <Compile Include="FreightTemplates\FreightTemplateDal.cs" />
+    <Compile Include="Generalizes\GeneralizeDal.cs" />
+    <Compile Include="Generalizes\GeneralizeManageDal.cs" />
+    <Compile Include="Geographies\GeographyDal.cs" />
+    <Compile Include="GoodsAttributes\GoodsAttributeDal.cs" />
+    <Compile Include="GoodsColors\GoodsColorDal.cs" />
+    <Compile Include="GoodsNorms\GoodsNormDal.cs" />
+    <Compile Include="GoodsPrices\GoodsPriceDal.cs" />
+    <Compile Include="Indexs\SearchDal.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LocalUsers\LocalUserDal.cs" />
+    <Compile Include="Logs\LogDal.cs" />
+    <Compile Include="Manager\ManagerDal.cs" />
+    <Compile Include="Merchants\MerchantDal.cs" />
+    <Compile Include="Messages\MessagesDal.cs" />
+    <Compile Include="Module\ModuleDal.cs" />
+    <Compile Include="OrderGoodses\OrderGoodsDal.cs" />
+    <Compile Include="OrderGoodses\OrderGoodsListDal.cs" />
+    <Compile Include="Orders\OrderDal.cs" />
+    <Compile Include="Payments\PaymentDal.cs" />
+    <Compile Include="PictureFolders\PictureFolderDal.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RentalGoodses\GetRentalGoodsListDal.cs" />
+    <Compile Include="RentalGoodses\RentalGoodsDal.cs" />
+    <Compile Include="RentalGoodses\RentalOtherDal.cs" />
+    <Compile Include="Role\RoleDal.cs" />
+    <Compile Include="SaleGoodses\SaleGoodsDal.cs" />
+    <Compile Include="SaleGoodses\SaleGoods_InformationManagementDal.cs" />
+    <Compile Include="SaleGoodses\SaleOtherDal.cs" />
+    <Compile Include="Service References\BaseDataWebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\UserWebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Tags\TagCategoryDal.cs" />
+    <Compile Include="Tags\TagDal.cs" />
+    <Compile Include="TenancyTemplates\TenancyTemplateDal.cs" />
+    <Compile Include="WithdrawCashs\WithdrawCashDal.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KYJ.ZS.Commons\KYJ.ZS.Commons.csproj">
+      <Project>{12EE7E48-1322-466D-BD65-B35F871CAB06}</Project>
+      <Name>KYJ.ZS.Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KYJ.ZS.Log4net\KYJ.ZS.Log4net.csproj">
+      <Project>{2D962696-53CF-4030-9363-612F08563716}</Project>
+      <Name>KYJ.ZS.Log4net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KYJ.ZS.Models\KYJ.ZS.Models.csproj">
+      <Project>{7FF678B1-4C6E-4A2B-AB6E-BA3928450E12}</Project>
+      <Name>KYJ.ZS.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Service References\BaseDataWebService\BaseDataWebService.wsdl" />
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.Agent.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.Area.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.Bank.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.Business.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.City.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.CityIP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.District.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.Hospital.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.HotModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.PostOffice.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.Scenic.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.School.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.SchoolLevel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.SchoolNature.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.SchoolType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.Shop.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.StationAndAirport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.Traffic.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.TrafficVillage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.Village.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BaseDataWebService\KYJ.ZS.DAL.BaseDataWebService.VillagePage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserWebService\KYJ.ZS.DAL.UserWebService.AccountLog.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserWebService\KYJ.ZS.DAL.UserWebService.ARentContractInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserWebService\KYJ.ZS.DAL.UserWebService.BlackUserPage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserWebService\KYJ.ZS.DAL.UserWebService.RechargeInfoPage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserWebService\KYJ.ZS.DAL.UserWebService.SystemMessagePage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserWebService\KYJ.ZS.DAL.UserWebService.UserAccountInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserWebService\KYJ.ZS.DAL.UserWebService.UserAddress.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserWebService\KYJ.ZS.DAL.UserWebService.UserAddressPage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserWebService\KYJ.ZS.DAL.UserWebService.UserFavoritePage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserWebService\KYJ.ZS.DAL.UserWebService.UserInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserWebService\KYJ.ZS.DAL.UserWebService.UserInfoCallTemp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserWebService\KYJ.ZS.DAL.UserWebService.UserMessageInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserWebService\KYJ.ZS.DAL.UserWebService.UserMessagePage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserWebService\KYJ.ZS.DAL.UserWebService.UserPictureInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserWebService\KYJ.ZS.DAL.UserWebService.WithdrawalInfoPage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserWebService\operauser.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\BaseDataWebService\" />
+    <WCFMetadataStorage Include="Service References\UserWebService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BaseDataWebService\BaseDataWebService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BaseDataWebService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BaseDataWebService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BaseDataWebService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserWebService\operauser.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserWebService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserWebService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserWebService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

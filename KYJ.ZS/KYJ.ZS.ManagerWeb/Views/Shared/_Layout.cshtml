@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="@PubConstant.StaticUrl@Url.Content("web/manager/css/global.css")" type="text/css" rel="stylesheet" />
+    <link href="@PubConstant.StaticUrl@Url.Content("web/manager/css/admin.css")" type="text/css" rel="stylesheet" />
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery-1.8.3.min.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("web/manager/js/web.js")" type="text/javascript"></script>
+</head>
+<body>
+<!--top-->
+
+<div class="admin_top font12">
+<div class=" fl pl20 mr20 "><a href="#"><img src="@PubConstant.StaticUrl@Url.Content("web/manager/images/logo.jpg")" /></a></div><div class="fl logo_r ">平台管理中心</div>
+  <div class="fr pr5 mr20 colorfff"><div class=" mt15">您好，欢迎<span><a href="#" class="linkfff arialfont">admin</a></span>的到来<a href="#" class="linke6ff59 ml10">退出</a></div>
+<div >上次登录时间：2014-05-15 15：30  </div> </div>
+</div>
+<!--top--end-->
+<!--content-->
+<div class="content">
+  <div class="con_cc clearFix">
+    <div class="slider">
+      <h1></h1>
+      <div>
+        <h2><a href="#">商品排序管理</a></h2>
+        <ul>
+          <li class="hover"><a href="#">管理商品排序</a></li>
+          <li><a href="#">审核商品排序</a></li>
+          <li class="last"><a href="#">添加商品排序</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 ><a href="#">广告管理</a></h2>
+        <ul>
+          <li><a href="#">管理广告</a></li>
+          <li><a href="#">审核广告</a></li>
+          <li class="last"><a href="#">发布广告</a></li>
+        </ul>
+      </div>
+    <div>
+        <h2 ><a href="#">商户管理</a></h2>
+        <ul>
+          <li ><a href="@Url.ManagerSiteUrl().MerchantManage_Manage">管理商户</a></li>
+          <li class="last"><a href="#">添加商户</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 ><a href="#">商品管理</a></h2>
+        <ul>
+          <li><a href="@Url.ManagerSiteUrl().RentalGoods_Manage">商品列表</a></li>
+          <li class="last"><a href="#">违规商品</a></li>
+        </ul>
+      </div>
+        <div>
+        <h2><a href="#">订单管理</a></h2>
+        <ul>
+          <li class="last"><a href="#">管理订单</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 ><a href="#">商户提现管理</a></h2>
+        <ul>
+     
+          <li class="last"><a href="#">管理商户提现单</a></li>
+        </ul>
+      </div>
+    <div>
+        <h2 ><a href="#">普通用户管理</a></h2>
+        <ul>
+          <li class="last"><a href="#">管理普通用户</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 ><a href="#">闲置物品信息管理</a></h2>
+        <ul>
+          <li><a href="#">管理信息</a></li>
+          <li class="last"><a href="#">违规信息</a></li>
+        </ul>
+      </div>
+       <div>
+        <h2 ><a href="#">职员管理</a></h2>
+        <ul>
+         <li><a href="#">管理职员权限</a></li>
+          <li class="last"><a href="#">添加职员账号</a></li>
+        </ul>
+      </div>
+      <div class="ullast">
+        <h2 ><a href="#">基础数据</a></h2>
+        <ul >
+          <li><a href="#">商品类目管理</a></li>
+           <li><a href="#">信息标签管理</a></li>
+            <li><a href="#">管理权限角色</a></li>
+          <li class="last"><a href="#">日志查阅</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rightbox"><!-- InstanceBeginEditable name="EditRegion1" -->
+    @RenderBody()
+    <!-- InstanceEndEditable --></div>
+  </div>
+</div>
+<!--content--end-->
+<!--footer--> 
+<div class="admin_footer">
+  <div class="font12 color646464">
+    <p class=" pt20">Copyright © 2013 &nbsp;&nbsp;www.kuaiyoujia.com&nbsp;&nbsp; All Rights Reserved. 版权声明 京ICP备11027796号-2</p>
+    <p> 客服热线:400-999-3535  Email:&nbsp;service@kuaiyoujia.com&nbsp;</p>
+  </div>
+</div>
+<!--footer-end-->
+@RenderSection("scripts", false)
+</body>
+<!-- InstanceEnd --></html>

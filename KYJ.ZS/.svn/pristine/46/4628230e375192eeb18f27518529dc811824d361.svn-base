@@ -1,0 +1,335 @@
+﻿@{
+    ViewBag.Title = "快有家租售";
+    Layout = "~/Views/Shared/Layouts/_IndexLayout.cshtml";
+}
+@using KYJ.ZS.BLL.Generalizes
+@using KYJ.ZS.BLL.Adverts
+@using KYJ.ZS.Models.RentalGoodses;
+@using KYJ.ZS.Commons.PictureModular;
+@{
+    AdvertBll advertBll = new AdvertBll();
+    GeneralizeBll generalzeBll = new GeneralizeBll();
+
+    var middletoplocationA = advertBll.Web_GetAdvertLocationEntity(0, 2); //中上广告
+    var lefttoplocationA = advertBll.Web_GetAdvertLocationEntity(0, 3); //右上广告
+    var leftlocationA = advertBll.Web_GetAdvertLocationEntity(0, 4); //左广告
+    var leftbottomlocationA = advertBll.Web_GetAdvertLocationEntity(0, 7); //左下广告
+
+    var middletoplocationsG = generalzeBll.Web_GetGeneralizeLocationEntity(0, 2);//中上推广
+    var middlelocationsG = generalzeBll.Web_GetGeneralizeLocationEntity(0, 5);//中推广
+    var middlebottomlocationsG = generalzeBll.Web_GetGeneralizeLocationEntity(0, 8);//中下推广
+}
+<div class="container clearFix">
+    <div class="nav">
+        <div class="w1190">
+            @Html.Partial("RentalGoods/_CategoryMenu")
+           <ul>
+                    <li><a href="@Url.WebSiteUrl().Index">首页</a></li>
+                   @* <li><a href="javascript:void(0)">品牌中心</a></li>*@
+                    <li><a href="@Url.WebSiteUrl().SaleGoods_Index">闲置物品</a></li>
+                  @*  <li><a href="javascript:void(0)">公益平台</a></li>*@
+                </ul>
+        </div>
+    </div>
+    <div class="w1190 clearFix mt10">
+        <div class="adbox">
+            @if (lefttoplocationA != null)
+            {
+                <ul>
+                    @foreach (var location in lefttoplocationA)
+                    {
+                        var list = advertBll.Web_GetAdvertEntity(location.Id);
+                        if (list != null)
+                        {
+                            for (int i = 0; i < list.Count; i++)
+                            {
+                                var advert = list[i];
+                                var piclist = GetPicture.GetAdvertisementPictureListNoFilter(advert.AdvertGuid, true);
+                                var pic = PubConstant.StaticUrl + Url.Content("web/web/images/img/img_03.jpg");
+                                if (piclist != null && piclist.Count >0)
+                                {
+                                   pic =piclist[0].Path;
+                                }
+                        <li class="@((i + 1) == list.Count ? "nob" : "")"><a href="@advert.Url">
+                            <img data-original="@pic" width="@location.Width" height="@location.Height" src="" >
+                        </a></li>
+                            }
+                        }
+                    }
+                </ul>
+            }
+        </div>
+        <div class="scrool">
+            @{ 
+                int advertcount = 0;
+            }
+            @if (middletoplocationA != null)
+            {
+                <ul class="slider">
+                    @foreach (var location in middletoplocationA)
+                    {
+                        var list = advertBll.Web_GetAdvertEntity(location.Id);
+                        
+                        if (list != null)
+                        {
+                            advertcount = list.Count;
+                            foreach (var advert in list)
+                            {
+
+                                var piclist = GetPicture.GetAdvertisementPictureListNoFilter(advert.AdvertGuid, true);
+                                var pic = PubConstant.StaticUrl + Url.Content("web/web/images/img/img_w698h278_01.jpg");
+                                if (piclist != null && piclist.Count > 0)
+                                {
+                                    pic = piclist[0].Path;
+                                }
+                        <li><a href="@advert.Url">
+                            <img data-original="@pic" width="@location.Width" height="@location.Height" src=""  >
+                        </a></li>
+                            }
+                        }
+                    }
+                </ul>
+            }
+            <ul class="num">
+                @for (int i = 1; i <= advertcount; i++)
+                {
+                    if (i == 1)
+                    {
+                    <li class="on">1</li>
+                    }
+                    else
+                    {
+                    <li>@i</li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="w1190 clearFix">
+        <div class="classify_tit">
+            <h2>
+                家具租售</h2>
+            @if (middletoplocationsG != null)
+            {
+                <ul>
+                    @for (int i = 0; i < middletoplocationsG.Count; i++)
+                    {
+                        <li class="@(i == 0 ? "cur" : "")"><a href="javascript:return false;">@middletoplocationsG[i].GLocationName</a></li>
+                    }
+                </ul>
+            }
+        </div>
+        <div class="classifybody">
+            <div class="clearFix">
+                <div class="brand">
+                    @if (leftlocationA != null)
+                    {
+                        <ul>
+                            @foreach (var location in leftlocationA)
+                            {
+                                var list = advertBll.Web_GetAdvertEntity(location.Id);
+                                if (list != null)
+                                {
+                                    for (int i = 0; i < list.Count; i++)
+                                    {
+                                        var advert = list[i];
+                                        var piclist = GetPicture.GetAdvertisementPictureListNoFilter(advert.AdvertGuid, true);
+                                        var pic = PubConstant.StaticUrl + Url.Content("web/web/images/img/img_w98h34_05.jpg");
+                                        if (piclist != null && piclist.Count > 0)
+                                        {
+                                            pic = piclist[0].Path;
+                                        }
+                                        
+                                        
+                                <li><a href="@advert.Url">
+                                    <img data-original="@pic" width="@location.Width" height="@location.Height" src=""  />
+                                </a></li>
+                                    }
+                                }
+                            }
+                        </ul>
+                    }
+                    <div class="brand_ad">
+                        <a href="javascript:return false;">
+                            <img src="@PubConstant.StaticUrl@Url.Content("web/web/images/img/img_w218h234_jj.jpg")" /></a>
+                    </div>
+                </div>
+                <div class="classify_box">
+                    @if (middletoplocationsG != null)
+                    {
+                        for (int i = 0; i < middletoplocationsG.Count;i++ )
+                        {
+                            var list = generalzeBll.Web_GetGeneralizeGoodsEntity(middletoplocationsG[i].Id);
+                        <div class="clearFix" style="display: @(i == 0 ? "block" : "none");">
+                            @if (list != null)
+                            {
+                                for (int j = 0; j < list.Count; j++)
+                                {
+                                    var generalze = list[j];
+                                    var pic = GetPicture.GetFirstGoodsPicture(generalze.Guid, true, "SHOW");
+                                    if (string.IsNullOrEmpty(pic))
+                                    {
+                                        pic = PubConstant.StaticUrl + Url.Content("web/web/images/img/img_wh130_05.jpg");
+                                    }
+                                    else
+                                    {
+                                        pic = pic + ".130_130.jpg";
+                                    }   
+                                <dl>
+                                    <dt><a href="@Url.WebSiteUrl().RentalGoods_Detail(generalze.GoodsId)">
+                                        <img data-original="@pic" src=""  /></a></dt>
+                                    <dd>
+                                        <p>
+                                            <a href="@Url.WebSiteUrl().RentalGoods_Detail(generalze.GoodsId)">@generalze.GoodsName</a></p>
+                                        <div class="price">
+                                            <i>¥</i><em>@generalze.MonthPrice.ToString("F2")</em>/月</div>
+                                    </dd>
+                                </dl>
+                                }
+                            }
+                        </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end jiaju-->
+<div class="w1190 clearFix">
+    <div class="classify_tit">
+        <h2 class="blue">
+            家电租售</h2>
+        @if (middlelocationsG != null)
+        {
+            <ul>
+                @for (int i = 0; i < middlelocationsG.Count; i++)
+                {
+                    <li class="@(i == 0 ? "cur" : "")"><a href="javascript:return false;">@middlelocationsG[i].GLocationName</a></li>
+                }
+            </ul>
+        }
+    </div>
+    <div class="classifybody">
+        <div class="clearFix">
+            <div class="brand">
+                @if (leftbottomlocationA != null)
+                {
+                    <ul>
+                        @foreach (var location in leftbottomlocationA)
+                        {
+                            var list = advertBll.Web_GetAdvertEntity(location.Id);
+                            if (list != null)
+                            {
+                                for (int i = 0; i < list.Count; i++)
+                                {
+                                    var advert = list[i];
+                                    var piclist = GetPicture.GetAdvertisementPictureListNoFilter(advert.AdvertGuid, true);
+                                    var pic = PubConstant.StaticUrl + Url.Content("web/web/images/img/img_w98h34_08.jpg");
+                                    if (piclist != null && piclist.Count > 0)
+                                    {
+                                        pic = piclist[0].Path;
+                                    }
+                                    
+                            <li ><a href="@advert.Url">
+                                <img data-original="@pic" width="@location.Width" height="@location.Height" src=""  />
+                            </a></li>
+                                }
+                            }
+                        }
+                    </ul>
+                }
+                <div class="brand_ad">
+                    <a href="javascript:return false;">
+                        <img src="@PubConstant.StaticUrl@Url.Content("web/web/images/img/img_w218h234_jd.jpg")" /></a>
+                </div>
+            </div>
+            <div class="classify_box">
+                @if (middlelocationsG != null)
+                {
+                    for (int i=0; i<middlelocationsG.Count;i++)
+                    {
+                        var list = generalzeBll.Web_GetGeneralizeGoodsEntity(middlelocationsG[i].Id);
+                    <div class="clearFix" style="display: @(i == 0 ? "block" : "none"); ">
+                        @if (list != null)
+                        {
+                            for (int j = 0; j < list.Count; j++)
+                            {
+                                var generalze = list[j];
+                                var pic = GetPicture.GetFirstGoodsPicture(generalze.Guid, true, "SHOW");
+                                if (string.IsNullOrEmpty(pic))
+                                {
+                                    pic = PubConstant.StaticUrl + Url.Content("web/web/images/img/img_wh130_04.jpg");
+                                }
+                                else
+                                {
+                                    pic = pic + ".130_130.jpg";
+                                }   
+                            <dl >
+                                <dt><a href="@Url.WebSiteUrl().RentalGoods_Detail(generalze.GoodsId)">
+                                    <img data-original="@pic" src=""  /></a></dt>
+                                <dd>
+                                    <p>
+                                        <a href="@Url.WebSiteUrl().RentalGoods_Detail(generalze.GoodsId)">@generalze.GoodsName</a></p>
+                                    <div class="price">
+                                        <i>¥</i><em>@generalze.MonthPrice.ToString("F2")</em>/月</div>
+                                </dd>
+                            </dl>
+                            
+                            }
+                        }
+                    </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!--end jiadian-->
+<div class="w1190 clearFix">
+    @if (middlebottomlocationsG != null)
+    {
+        foreach (var location in middlebottomlocationsG)
+        {
+            var list = generalzeBll.Web_GetGeneralizeGoodsEntity(location.Id);
+        <div class="hotstro_tit">@location.GLocationName</div>
+        <div class="hotstro_box clearFix">
+            @if (list != null)
+            {
+                foreach (var generalze in list)
+                {
+                    var pic = GetPicture.GetFirstGoodsPicture(generalze.Guid, true, "SHOW");
+                    if (string.IsNullOrEmpty(pic))
+                    {
+                        pic = PubConstant.StaticUrl + Url.Content("web/web/images/img/img_wh110_03.jpg");
+                    }
+                    else
+                    {
+                        pic = pic + ".110_110.jpg";
+                    }  
+                <dl>
+                    <dt><a href="@Url.WebSiteUrl().RentalGoods_Detail(generalze.GoodsId)">
+                        <img data-original="@pic" src=""  /></a></dt>
+                    <dd>
+                        <p>
+                            <a href="@Url.WebSiteUrl().RentalGoods_Detail(generalze.GoodsId)">@generalze.GoodsName</a></p>
+                        <div class="price">
+                            <i>¥</i><em>@generalze.MonthPrice.ToString("F2")</em>/月</div>
+                    </dd>
+                </dl>
+                }
+            }
+        </div>
+        }
+    }
+</div>
+@section scripts{
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //菜单导航栏始终显示，并去除它js效果
+            $("#category").show();
+            $("#sort").unbind("mouseenter").unbind("mouseleave");
+        })
+    </script>
+}

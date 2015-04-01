@@ -1,0 +1,301 @@
+﻿@{
+    ViewBag.Title = "充值";
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+    ViewBag.Navigation = MerchantNavigation.TIXIANGUANLI;
+    string tmp = ViewBag.totalAmount as string;
+    decimal totalAmount = Auxiliary.ToDecimal(tmp);
+}
+@section header
+{
+    <link href="@PubConstant.StaticUrl@Url.Content("web/web/css/global.css")" type="text/css" rel="stylesheet" />
+}
+<div class="rightbox">
+    @Html.Partial("~/Views/Shared/Controls/_AccountManage.cshtml")
+    <form action="@Url.MerchantSiteUrl().Send" id="SendForm" name="SendForm" target="_blank" method="get">
+    <div class="conbox conbox1" style="display: none;">
+        <div class="pb_5 clearFix mt18">
+            <div class="price">
+                账户余额：<span id="lblAccountPrice">@totalAmount.ToString("#0.00")</span>元 <i class=" ml30 ">
+                    充值金额：</i><input id="txtRechargeMoney" name="rechargeMoney" class="intxt w187 ml10 mr10"
+                        type="" />元
+            </div>
+        </div>
+        <div class="pb_4 clearFix">
+            温馨提示:建议使用IE浏览器进行支付,非IE浏览器可能会导致支付失败!</div>
+        <div class="paybox">
+            <div class="pb_3 clearFix">
+                <span>网上银行</span>
+                <ul>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="ICBC" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/icbc.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="CCB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/ccb.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="ABC" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/abc.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="CMB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/cmb.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="BOC" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/boc.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="SPDB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/spdb.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="BCOM" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/bcom.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="GDB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/gdb.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="CMBC" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/cmbc.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="CIB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/cib.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="CEB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/ceb.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="CITIC" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/citic.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="PSBC" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/psbc.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="PAB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/pab.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="SHB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/shb.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="SDB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/sdb.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="UPOP" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/upop.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="HSB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/hsb.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="HXB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/hxb.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="GZCB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/gzcb.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="NJCB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/njcb.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="CBHB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/cbhb.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="HZB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/hzb.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="BEA" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/bea.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="SRCB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/srcb.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="CZB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/czb.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="POST" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/post.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="BJRCB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/bjrcb.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="BOB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/bob.jpg")" /></i></label></li>
+                    <li>
+                        <label>
+                            <input type="radio" name="mode" value="NBCB" />
+                            <i>
+                                <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/nbcb.jpg")" src="" /></i></label></li>
+                </ul>
+            </div>
+            <div class="pb_6 clearFix pb35">
+                <span>第三方支付</span>
+                <label>
+                    <input type="radio" name="mode" value="KQ" />
+                    <i class="bkimg">
+                        <img alt="" src="@PubConstant.StaticUrl@Url.Content("web/web/images/bank/kq.jpg")" /></i>
+                </lable>
+            </div>
+            <div class="clearFix">
+                <table width="100%" cellspacing="0" cellpadding="0" class="tab_1">
+                    <td>
+                        <input type="button" id="btnPay" name="btnPay" class="btn_blue mr85 fr" value="确认支付" />
+                    </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            //选择当前标签
+            if ("@ViewBag.Tag" != "") {
+                $("li[tag=@ViewBag.Tag]").addClass("cur").siblings().removeClass("cur");
+            }
+            else {
+                $("li[tag=1]").addClass("cur").siblings().removeClass("cur");
+            }
+            $(".tag ul li").click(function () {
+                window.open($(this).attr("attr"), "_self");
+            })
+
+            //            $("input[name='txtRechargeMoney']").keyup(function () {
+            //                var tmptxt = $(this).val();
+            //                $(this).val(tmptxt.replace(/\D|^0/g, ''));
+            //            }).bind("paste", function () {
+            //                var tmptxt = $(this).val();
+            //                $(this).val(tmptxt.replace(/\D|^0/g, ''));
+            //            }).css("ime-mode", "disabled"); 
+
+            //限制用户只能输入数字
+            $("#txtRechargeMoney").keypress(function (event) {
+                var keyCode = event.which;
+                //var keyCode = event.keyCode;    //20140616 注释
+                if (keyCode == 46 || (keyCode >= 48 && keyCode <= 57) || keyCode == 8)
+                    return true;
+                else
+                    return false;
+            }).focus(function () {
+                this.style.imeMode = 'disabled';
+            });
+            $("#btnPay").on("click", function () {
+                var bank = $("input[type='radio']:checked").val();
+                if (Check()) {
+                    if (bank) {
+                        //手动修改了样式
+                        $.content("<div class=\"layer w520\" style='height:220px;'><div class=\"layer_title\">支付</div><a href=\"javascript:void(0);\" onclick=\"javascript:$.closeAll();\" class=\"close\"></a><div class=\"layer_box\"><div class=\"tac col333 mb20\">请您在新打开的网上银行页面进行支付,支付完成前请不要关闭该窗口</div><div class=\"tac\"><input type=\"button\" class=\"btn_red mr10\" onclick=\"javascript:window.location.href='@Url.MerchantSiteUrl().ApplyFor';\" value=\"已完成支付\"><input type=\"button\" class=\"btn_grey\" onclick=\"javascript:$.closeAll();\" value=\"支付遇到问题\"></div><div class=\"tka\" style='margin-left: 68px;margin-top: 43px;'><a style='color:blue;' href=\"@Url.MerchantSiteUrl().Recharge\">返回重新选择银行</a></div></div></div>", 520, 220);
+                        $("#SendForm").submit();
+                    } else {
+                        $.alert("请选择支付银行！");
+                    }
+                }
+            });
+
+            //            //提现操作
+            //            $("#btnPay").click(function () {
+            //                if (Check()) {
+            //                    $.confirm("您确定要进行<span style='color:red'>支付</span>操作吗？", "询问", function () {
+            //                        //获取用户输入的充值金额
+            //                        var rechargeAmount = $("#txtRechargeMoney").val();
+            //                        //获取用户选择的支付方式
+            //                        var mode = $("input:radio[name='mode'][checked]").val();
+            //                        //alert(mode);
+
+            //                        $.post("@Url.MerchantSiteUrl().Recharge", { "totalAmount":@totalAmount,"rechargeAmount": rechargeAmount, "mode": mode });
+            //                    });
+
+            //                }
+
+
+            //            });
+
+        });
+
+        function Check() {
+            var flag = true;
+            //验证用户输入的充值金额
+            var rechargeMoney = $("#txtRechargeMoney").val();
+            if (rechargeMoney == "") {
+                $.alert("请输入充值金额！");
+                flag = false;
+            }
+            else {
+                var re = /^\d+(?=\.{0,1}\d+$|$)/;
+                if (parseFloat(rechargeMoney) == "undifine") {
+                    $.alert("请正确输入提现金额！");
+                    flag = false;
+                }
+                else if (rechargeMoney == "0") {
+                    $.alert("提现金额不能为0！");
+                    flag = false;
+                }
+                else if (!re.test(rechargeMoney)) {
+                    $.alert("请正确输入提现金额！");
+                    $("#txtRechargeMoney").select();
+                    flag = false;
+                }
+            }
+            //验证用户所选的充值方式
+            var count = $('input:checked').length;
+            if (count == 0) {
+                $.alert("请选择支付方式！");
+                flag = false;
+            }
+            return flag;
+        }
+    </script>
+}

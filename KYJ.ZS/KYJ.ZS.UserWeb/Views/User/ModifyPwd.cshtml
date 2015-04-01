@@ -1,0 +1,204 @@
+﻿@model KYJ.ZS.Models.LocalUsers.LocalUserEntity
+@{
+    ViewBag.Title = "账号管理-修改密码";
+    Layout = "~/Views/Shared/Layouts/_UserLayout.cshtml";
+    ViewBag.Navigation = UserNavigation.JIBENZILIAO;
+}
+@section header{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery.validate.min.js")" type="text/javascript"></script>
+}
+<div class="nTab">
+    <div class="TabTitle">
+        <ul id="myTab">
+            <li class="normal">
+                <a href="@Url.UserSiteUrl().Information">基本资料</a></li>
+            <li class="normal">
+                <a href="@Url.UserSiteUrl().Avatar">头像照片</a></li>
+            <li class="normal">
+                <a href="@Url.UserSiteUrl().Education">教育情况</a></li>
+            <li class="normal">
+                <a href="@Url.UserSiteUrl().Card">工作名片</a></li>
+            <li class="active">
+                <a href="@Url.UserSiteUrl().Password">修改密码</a></li>
+        </ul>
+    </div>
+    <div class="TabContent">
+        <div id="myTab_Content4">
+            <!--开始5-->
+            <div class="er_location">
+                <form id="ResetForm" name="ResetForm" action="@Url.UserSiteUrl().ResetPassword" method="post">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <th><span class="cold21b1b">*</span>原密码：</th>
+                            <td>
+                                <input type="password" id="oldpassword" name="oldpassword" class="input_txt w248" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><span class="cold21b1b">*</span>新密码：</th>
+                            <td>
+                                <input id="newpassword" name="newpassword" type="password" class="input_txt w248"
+                                    value="" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <td>
+                                <div id="pwd_intension">
+                                    <span class="bg0_e7e7e7">弱</span><span class="bg0_e7e7e7">中</span><span class="bg0_e7e7e7">强</span></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><span class="cold21b1b">* </span>确认密码：</th>
+                            <td>
+                                <input id="repassword" name="repassword" type="password" class="input_txt w248" value="" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <td><span class=" col999">温馨提示：定期更换密码对账户安全有利</span></td>
+                        </tr>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <td>
+                                <input type="button" data="on" id="sub_button" class="btn_yellow btnoper" value="确认修改" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </form>
+            </div>
+            <!--结束5-->
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        //定义检测函数,返回0/1/2/3分别代表无效/差/一般/强
+        function getResult(s) {
+            if (s.length < 6) {
+                return 0;
+            }
+            var ls = 0;
+            if (s.match(/[a-z]/ig)) {
+                ls++;
+            }
+            if (s.match(/[0-9]/ig)) {
+                ls++;
+            }
+            if (s.match(/(.[^a-z0-9])/ig)) {
+                ls++;
+            }
+            return ls;
+        }
+        $(document).ready(function () {
+            $("#ResetForm").validate({
+                rules: {
+                    oldpassword: {
+                        required: true
+                    },
+                    newpassword: {
+                        required: true,
+                        minlength: 6
+                    },
+                    repassword: {
+                        required: true,
+                        minlength: 6,
+                        equalTo: "#newpassword"
+                    }
+                },
+                messages: {
+                    oldpassword: {
+                        required: "<span class='no'>请填写正确信息！</span>"
+                    },
+                    newpassword: {
+                        required: "<span class='no'>请填写正确信息！</span>",
+                        minlength: jQuery.format("<span class='no'>密码不能小于{0}个字符！</span>")
+                    },
+                    repassword: {
+                        required: "<span class='no'>请填写正确信息！</span>",
+                        minlength: jQuery.format("<span class='no'>确认密码不能小于{0}个字符！</span>"),
+                        equalTo: "<span class='no'>两次输入密码不一致！</span>"
+                    }
+                },
+                success: function (element) {
+                    element.parent().find("span").html("<span class='yes'>&nbsp;</span>");
+                },
+                submitHandler: function (form) {
+
+                    $(".btnoper").attr("data", "off");
+                    var parm = $("#ResetForm").serialize();
+
+                    var url = $("#ResetForm").attr("action");
+
+                    $.post(url, parm, function (response) {
+                        if (response.result) {
+                            //window.location.href = response.message;
+                            $.alert(response.message, null, null, 1, function () {
+                                window.location.href = "@Url.UserSiteUrl().Login";
+                            });
+                        } else {
+                            $.alert(response.message);
+                            $(".btnoper").attr("data", "on");
+                            return;
+                        }
+                    });
+                },
+                onkeyup: false,
+                errorElement: "span",
+                errorPlacement: function (error, element) {
+                    element.parent().find("span").remove();
+                    error.appendTo(element.parent());
+                }
+            });
+
+            $("#myTab li").on("click", function () {
+                var num = $(this).find("a");
+                window.location.href = num.attr("href");
+            });
+
+            $("#sub_button").on("click", function () {
+                var data = $(this).attr("data");
+                if ("on" == data) {
+                    $("#ResetForm").submit();
+                }
+            });
+
+            $("#newpassword").on("keyup", function () {
+                var data = $(this).val();
+                if (data) {
+                    var result = getResult(data);
+                    switch (result) {
+                        case 1:
+                            $("#pwd_intension").find("span").eq(0).attr("class", "bg_df2727")
+                            $("#pwd_intension").find("span").eq(0).html("弱");
+                            $("#pwd_intension").find("span").eq(1).attr("class", "bg0_e7e7e7");
+                            $("#pwd_intension").find("span").eq(1).html("中");
+                            $("#pwd_intension").find("span").eq(2).attr("class", "bg0_e7e7e7");
+                            $("#pwd_intension").find("span").eq(2).html("强");
+                            break;
+                        case 2:
+                            $("#pwd_intension").find("span").eq(0).attr("class", "bg_ff7200");
+                            $("#pwd_intension").find("span").eq(0).html("&nbsp;");
+                            $("#pwd_intension").find("span").eq(1).attr("class", "bg_ff7200");
+                            $("#pwd_intension").find("span").eq(1).html("中");
+                            $("#pwd_intension").find("span").eq(2).attr("class", "bg0_e7e7e7");
+                            break;
+                        case 3:
+                            $("#pwd_intension").find("span").eq(0).attr("class", "bg_46d21b");
+                            $("#pwd_intension").find("span").eq(0).html("&nbsp;");
+                            $("#pwd_intension").find("span").eq(1).attr("class", "bg_46d21b");
+                            $("#pwd_intension").find("span").eq(1).html("&nbsp;");
+                            $("#pwd_intension").find("span").eq(2).attr("class", "bg_46d21b");
+                            $("#pwd_intension").find("span").eq(2).html("强");
+                            break;
+                        default:
+                            $("#pwd_intension").find("span").attr("class", "bg0_e7e7e7");
+                            break;
+                    }
+                }
+            });
+        });
+    </script>
+}

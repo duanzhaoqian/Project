@@ -1,0 +1,36 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model IList<KYJ.ZS.Models.Logs.LogIndexEntity>
+@{
+    ViewBag.Title = "平台管理中心";
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+
+    int totalItemCount = Auxiliary.ToInt32(ViewData["totalItemCount"]);
+    int pagesize = Auxiliary.ToInt32(ViewData["pagesize"]);
+    int pageIndex = Auxiliary.ToInt32(ViewData["pageIndex"]);
+}
+<div class="bg_fdfcf2 clearFix">
+        <span class=" colf65c33 font14 mr20 ">欢迎回到平台登录中心</span></div> 
+        <div class="tag_n ml10 mr10">
+            <ul>
+                <li><a href="javascript:void(0);">操作日志</a></li>
+            </ul>
+        </div> 
+      <div class="conbox" >
+      
+        <div class="mang_list">
+        @if (Model != null && Model.Count > 0)
+        {
+          <table>
+          @foreach (var item in Model)
+          {
+            <tr>
+              <td><span  class=" mr20">@item.CreateTime.ToString("yyyy - MM - dd  HH:mm") </span><span  class="mr20">@item.ModuleName</span><span>@item.Remark</span></td>
+            </tr>
+          }
+          </table>
+     @Html.Pager(totalItemCount, pagesize, pageIndex, "index", "home", new PagerOptions { AutoHide = false, SeparatorHtml = " ", ShowFirstLast = false, ShowPageIndexBox = false, CssClass = "page", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + pageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next end prev", SpanCSS = "" }, null, null, null)
+        }
+            </div>
+      </div>
+
+

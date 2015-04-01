@@ -1,0 +1,107 @@
+﻿@model IList<KYJ.ZS.Models.Authority.RoleShowEntity>
+@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.GUANLIQUANXIANJUESE;
+    ViewBag.Title = "管理权限角色";
+
+    // 权限
+    string userPermission = KYJ.ZS.Commons.Common.CookieTool.GetCookie("userPermission");
+    List<KYJ.ZS.Models.DB.RoleManagement> list = Auxiliary.FromJsonTo<List<KYJ.ZS.Models.DB.RoleManagement>>(userPermission);
+
+    string permissions = list.Find(c => c.ModuleId == (int)ManagerNavigation.GUANLIQUANXIANJUESE).Permission;
+}
+@section header{
+    <style type="text/css">
+    .list a{ margin-left:10px;}
+    </style>
+}
+<div class="tag_n">
+        <ul>
+          <li><a href="javascript:void(0);">管理角色</a></li>
+        </ul>
+      </div>
+          @if (permissions.IndexOf('1') >= 0)
+          {
+      <div class="serchbox  tar">
+            <input id="btn_addRole" type="button" class="btn_f65c33" value="添加角色"  />
+        </div>
+          }
+<div class="list">
+    <table>
+    <tr>
+        <th>角色名</th>
+        <th>赋予人数</th>
+        <th class="tdlast">操作</th>
+    </tr>
+    @if (Model != null && Model.Count > 0)
+    {
+        foreach (var role in Model)
+        {
+    <tr>
+        <td>@role.RoleName</td>
+        <td>@role.RoleNum</td>
+        <td  class="tdlast">
+        <p>
+            <a href="@Url.ManagerSiteUrl().RoleManager_RoleAdd(role.Id, "show")">查看权限 </a>
+          @if (permissions.IndexOf('3') >= 0)
+          {
+            <a href="@Url.ManagerSiteUrl().RoleManager_RoleAdd(role.Id, null)">修改权限 </a>
+              }
+          @if (permissions.IndexOf('2') >= 0)
+          {
+            <a name="a_delete" data-id="@role.Id" data-name="@role.RoleName" href="javascript:void(0);">删除角色 </a>
+              }
+        </p></td>
+    </tr>
+        }
+    }
+    </table>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#btn_addRole").click(function () {
+                location.href = '@Url.ManagerSiteUrl().RoleManager_RoleAdd(null,null)';
+            })
+
+            $("[name='a_delete']").click(function () {
+                var roleId = $(this).attr("data-id"),
+                    roleName = $(this).attr("data-name");
+                $.get('@Url.ManagerSiteUrl().RoleManager_DeleteValidate', { roleId: roleId },
+                        function (data) {
+                            var _data = data.toUpperCase();
+                            // 删除成功
+                            if (_data.indexOf("TRUE") > -1) {
+                                $.confirm("是否确认删除权限角色？", '询问', function () {
+                                    $.get('@Url.ManagerSiteUrl().RoleManager_Delete', { roleId: roleId, roleName: roleName },
+                                        function (data) {
+                                            var _data = data.toUpperCase();
+                                            // 删除成功
+                                            if (_data.indexOf("TRUE") > -1) {
+                                                location.reload();
+                                            }
+                                            else if (_data.indexOf("||") > -1) {
+                                                var erroInfo = data.split('||')[1];
+                                                $.alert(erroInfo, 300);
+                                            }
+                                            else if (_data.indexOf("FALSE") > -1) {
+                                                $.alert('删除失败，请重试！');
+                                            }
+                                            else {
+                                                $.alert(data);
+                                            }
+                                        });
+                                });
+                            }
+                            else if (_data.indexOf("FALSE") > -1) {
+                                $.alert("此权限角色已在使用，无法删除！", 300);
+                            }
+                            else {
+                                $.alert(data);
+                            }
+                        });
+            })
+        })
+    </script>
+}

@@ -1,0 +1,164 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model IList<KYJ.ZS.Models.Tags.TagEntity>
+@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.XINXIBIAOQIANGUANLI;
+    ViewBag.Title = "信息标签管理";
+
+    int totalItemCount = Auxiliary.ToInt32(ViewData["totalItemCount"]);
+    int pagesize = Auxiliary.ToInt32(ViewData["pagesize"]);
+    int pageIndex = Auxiliary.ToInt32(ViewData["pageIndex"]);
+
+    // 权限
+    string userPermission = KYJ.ZS.Commons.Common.CookieTool.GetCookie("userPermission");
+    List<KYJ.ZS.Models.DB.RoleManagement> list = Auxiliary.FromJsonTo<List<KYJ.ZS.Models.DB.RoleManagement>>(userPermission);
+
+    string permissions = list.Find(c => c.ModuleId == (int)ManagerNavigation.XINXIBIAOQIANGUANLI).Permission;
+}
+<div class="tag_n">
+        <ul>
+          <li><a href="javascript:void(0);">标签管理</a></li>
+        </ul>
+      </div>
+          @if (permissions.IndexOf('1') >= 0)
+          {
+      <div class="serchbox  tar">
+            <input id="btn_addTag" type="button" class="btn_f65c33" value="添加标签"  />
+        </div>
+          }
+      <div class="part">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_2">
+          <tr>
+            <th width="48%">标签</th>
+            <th width="44%">信息数</th>
+            <th width="8%">操作</th>
+          </tr>
+          @if (Model != null && Model.Count > 0)
+          {
+              foreach (var item in Model)
+              {
+          <tr>
+            <td>@item.Name</td>
+            <td>@item.GoodsCount</td>
+            <td class="nnbor">
+              @if (permissions.IndexOf('2') >= 0)
+              {
+                <a name="a_delete" href="javascript:void(0);" data-id="@item.Id" data-name="@item.Name" class="link_05c">删除</a>
+              }
+            </td>
+          </tr>
+              }
+          }
+        </table>
+   @Html.Pager(totalItemCount, pagesize, pageIndex, "manage", "tag", new PagerOptions { AutoHide = false, SeparatorHtml = " ", ShowFirstLast = false, ShowPageIndexBox = false, CssClass = "page clearFix", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + pageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next end prev", SpanCSS = "" }, null, null, null)
+        <div class="clear"></div>
+      </div>
+
+<div id="hdn_dialog" style=" display:none">
+<div class="layer w400 mt10">
+  <div class="layer_title">添加标签</div>
+  <a name="a_close" href="javascript:void(0);" class="close"></a>
+  <div class="layer_box">
+    <table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td valign="top">添加标签：</td>
+        <td><div><textarea name="area_name" class="area w260 "></textarea></div>
+        <div name="div_error" class="cold21b1b mt5"></div></td>
+      </tr>
+     
+      <tr>
+        <td>&nbsp;</td>
+        <td><input name="btn_addSumbit" type="button" class="btn_1abc9c mr10" value="确认" /></td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            // 添加标签按钮弹窗
+            $("#btn_addTag").click(function () {
+                $.content($("#hdn_dialog").html(), 400, 0, 0);
+            })
+
+            // 关闭弹窗
+            $("[name='a_close']").live("click", function () {
+                $.closeAll();
+            })
+
+            // 删除标签
+            $("[name='a_delete']").click(function () {
+                var tagId = $(this).attr("data-id"),
+                    tagName = $(this).attr("data-name");
+                $.get('@Url.ManagerSiteUrl().Tag_DeleteValidate', { tagId: tagId },
+                        function (data) {
+                            var _data = data.toUpperCase();
+                            // 删除成功
+                            if (_data.indexOf("TRUE") > -1) {
+                                $.confirm('是否确认删除此标签？', '询问', function () {
+                                    $.get('@Url.ManagerSiteUrl().Tag_DeleteTag', { tagId: tagId, name: tagName },
+                                        function (data) {
+                                            var _data = data.toUpperCase();
+                                            // 删除成功
+                                            if (_data.indexOf("TRUE") > -1) {
+                                                location.reload();
+                                            }
+                                            else if (_data.indexOf("||") > -1) {
+                                                var erroInfo = data.split('||')[1];
+                                                $.alert(erroInfo, 400);
+                                            }
+                                            else if (_data.indexOf("FALSE") > -1) {
+                                                $.alert('删除失败，请重试！');
+                                            }
+                                            else {
+                                                $.alert(data);
+                                            }
+                                        });
+                                });
+                            }
+                            else if (_data.indexOf("FALSE") > -1) {
+                                $.alert("此标签下有用户发布的闲置商品信息，无法删除！", 400);
+                            }
+                            else {
+                                $.alert(data);
+                            }
+                        });
+            });
+
+            // 确认添加
+            $("[name='btn_addSumbit']").live("click", function () {
+                var $div_error = $(this).closest("table").find("[name='div_error']");
+                var name = $(this).closest("table").find("[name='area_name']").val();
+                if ($.trim(name) == '') {
+                    $div_error.html('请填写标签名称！');
+                    return false;
+                }
+                if (name.length > 50) {
+                    $div_error.html('标签名称不能超过50个字！');
+                    return false;
+                }
+                $.get('@Url.ManagerSiteUrl().Tag_CreateTag', { name: $.trim(name) },
+                                function (data) {
+                                    var _data = data.toUpperCase();
+                                    // 添加成功
+                                    if (_data.indexOf("TRUE") > -1) {
+                                        location.reload();
+                                    }
+                                    else if (_data.indexOf("||") > -1) {
+                                        var erroInfo = data.split('||')[1];
+                                        $div_error.html(erroInfo);
+                                    }
+                                    else if (_data.indexOf("FALSE") > -1) {
+                                        $div_error.html('添加失败，请重试！');
+                                    }
+                                    else {
+                                        $.alert(data);
+                                    }
+                                }
+                            );
+            })
+        })
+    </script>
+}

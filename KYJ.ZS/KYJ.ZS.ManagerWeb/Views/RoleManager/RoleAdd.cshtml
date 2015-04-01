@@ -1,0 +1,145 @@
+﻿@using KYJ.ZS.Models.DB;
+@model IEnumerable<Modules>
+@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.GUANLIQUANXIANJUESE;
+
+    int? roleId = (int?)ViewData["roleId"];
+    string type = ViewData["type"] as string;
+    string typeDesc = string.IsNullOrEmpty(type) ? (roleId.HasValue ? "修改" : "添加") : "查看";
+    ViewBag.Title = "管理权限角色-" + typeDesc + "权限角色";
+
+    List<RoleManagement> permissionList = (List<RoleManagement>)ViewData["permissionList"];
+    if (permissionList == null || permissionList.Count <= 0)
+    {
+        permissionList = new List<RoleManagement>();
+    }
+}
+@section header{
+    <style type="text/css">
+        .w100{ width:100px;}
+        .error{ border-color:Red;}
+    </style>
+}
+<div class="tag_n">
+    <ul>
+        <li><a href="javascript:void(0);">@(typeDesc)角色</a></li>
+    </ul>
+</div>
+<div class="part">
+    <div class="tabbox">
+        <form id="frm_role" action="@Url.ManagerSiteUrl().RoleManager_RoleUpdate" method="post">
+        <input type="hidden" id="hdn_roleId" name="hdn_roleId" value="@roleId" />
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_1">
+            <tr>
+                <th width="12%">
+                    角色名称：
+                </th>
+                <td width="88%">
+                @if (typeDesc != "查看")
+                {
+                    <input name="txt_roleName" type="text" value="@ViewData["roleName"]" maxlength="30" class="intxt_h24 w830" />
+                }
+                else
+                {
+                   <span>@ViewData["roleName"]</span>
+                }
+                </td>
+            </tr>
+            <tr>
+                <th valign="top">
+                    功能权限：
+                </th>
+                <td>
+                    <div class="adrot">
+                        <ul>
+                            @foreach (var item in Model)
+                            {
+                                if (item.Permission.IndexOf('4') >= 0)
+                                {
+                                    RoleManagement roleManagement = permissionList.Find(c => c.ModuleId == item.ModuleId);
+                                    string permission = roleManagement == null ? string.Empty : roleManagement.Permission;
+                                <li>
+                                    <label class="w400">
+                                        <input class="chk_all" name="chk_per" value ="@item.ModuleId|4" type="checkbox" @(permission.IndexOf('4') >= 0 ? "checked=checked" : "") />@item.ModuleName</label>
+                                    <label class="w100">
+                                    @if (item.Permission.IndexOf('1') >= 0)
+                                    {
+                                        <input class="chk_item" name="chk_per" type="checkbox" value="@item.ModuleId|1" @(permission.IndexOf('1') >= 0 ? "checked=checked" : "") />@Html.Raw("添加")
+                                    }
+                                    </label>
+                                    <label class="w100">
+                                    @if (item.Permission.IndexOf('3') >= 0)
+                                    {
+                                        <input class="chk_item" name="chk_per" type="checkbox" value="@item.ModuleId|3" @(permission.IndexOf('3') >= 0 ? "checked=checked" : "") />@Html.Raw("修改")
+                                    }
+                                    </label>
+                                    <label class="w100">
+                                    @if (item.Permission.IndexOf('2') >= 0)
+                                    {
+                                        <input class="chk_item" name="chk_per" type="checkbox" value="@item.ModuleId|2" @(permission.IndexOf('2') >= 0 ? "checked=checked" : "") />@Html.Raw("删除")
+                                    }
+                                    </label>
+                                </li>
+                                }
+                            }
+                        </ul>
+                        @if (typeDesc != "查看")
+                        {
+                        <div class="mt20">
+                            <input type="button" class="btn_gr mr10" id="btn_submit" value="确认@(typeDesc)" /><input type="button" class="btn_or" id="btn_cancle"
+                                value="取消并返回" /></div>
+                        }
+                        else
+                        { 
+                        <div class="mt20">
+                            <input type="button" class="btn_or" id="btn_cancle" value="返回" /></div>
+                        }
+                    </div>
+                </td>
+            </tr>
+        </table>
+        </form>
+    </div>
+</div>
+@section scripts{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery.validate.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#frm_role").validate({
+                rules: {
+                    txt_roleName: { required: true }
+                },
+                messages: {
+                    txt_roleName: { required: "" }
+                }
+            });
+
+            if ('@typeDesc' == '查看') {
+                $("input[type='checkbox']").prop("disabled", true);
+            }
+
+            // 全选
+            $(".chk_all").click(function () {
+                $(this).closest("li").find(".chk_item").prop("checked", $(this).prop("checked"));
+            });
+
+            $(".chk_item").click(function () {
+                var isChecked = $(this).prop("checked");
+                if (isChecked) {
+                    $(this).closest("li").find(".chk_all").prop("checked", true);
+                }
+            });
+
+            // 取消
+            $("#btn_cancle").click(function () {
+                location.href = '@Url.ManagerSiteUrl().RoleManager_Manage';
+            })
+
+            // 确认添加
+            $("#btn_submit").click(function () {
+                $("#frm_role").submit();
+            });
+        });
+    </script>
+}

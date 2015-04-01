@@ -1,0 +1,15 @@
+﻿@model List<KYJ.ZS.Models.DB.Category>
+@{
+
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    <li><a href="javascript:;" to="@Url.MerchantSiteUrl().Category_GetSonCategory(@item.Id)" level="@item.Level"  value="@item.Id">@item.Name</a></li>
+}
+
+
+
+
+

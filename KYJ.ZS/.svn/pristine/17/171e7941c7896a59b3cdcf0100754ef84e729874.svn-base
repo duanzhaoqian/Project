@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- InstanceBegin template="/Templates/后台-模板.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="@PubConstant.StaticUrl@Url.Content("web/manager/css/global.css")" rel="stylesheet" type="text/css" />
+    <link href="@PubConstant.StaticUrl@Url.Content("web/manager/css/admin.css")" rel="stylesheet" type="text/css" />
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery-1.8.3.min.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("web/manager/js/web.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/public/config.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/plug/layer/layer.dialog.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/public/common.js")" type="text/javascript"></script>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <!-- InstanceEndEditable -->
+    <!-- InstanceBeginEditable name="head" -->
+    @RenderSection("header", false)
+    <!-- InstanceEndEditable -->
+</head>
+@{
+    string userPermission = KYJ.ZS.Commons.Common.CookieTool.GetCookie("userPermission");
+    List<KYJ.ZS.Models.DB.RoleManagement> list = Auxiliary.FromJsonTo<List<KYJ.ZS.Models.DB.RoleManagement>>(userPermission);
+}
+<body>
+    @helper Navigation(ManagerNavigation navigation)
+        {
+            if (ViewBag.Navigation != null)
+            {
+                var result = navigation == (ManagerNavigation)ViewBag.Navigation ? "class=hover" : "";
+        @result
+            }
+           
+    }
+    <!--top-->
+    <div class="admin_top font12">
+        <div class=" fl pl20 mr20 ">
+            <a href="@Url.ManagerSiteUrl().Home_Index">
+                <img src="@PubConstant.StaticUrl@Url.Content("web/manager/images/logo.jpg")" /></a></div>
+        <div class="fl logo_r ">
+            平台管理中心</div>
+        <div class="fr pr5 mr20 colorfff">
+            <div class=" mt15">
+                您好，欢迎<span><a href="@Url.ManagerSiteUrl().Home_Index" class="linkfff arialfont">@CurrentUser.RealName</a></span>的到来<a id="btn_loginout"
+                    href="javascript:void(0);" class="linke6ff59 ml10">退出</a></div>
+            <div>
+                上次登录时间：@CurrentUser.LastLoginTime
+            </div>
+        </div>
+    </div>
+    <!--top--end-->
+    <!--content-->
+    <div class="content">
+        <div class="con_cc clearFix">
+            <div id="div_menu" class="slider">
+                <h1>
+                </h1>
+                <div>
+                    <h2>
+                        <a href="javascript:void(0);">商品排序管理</a></h2>
+                    <ul>
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.GUANLISHANGPINPAIXU) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.GUANLISHANGPINPAIXU)><a href="@Url.ManagerSiteUrl().Generalize_GeneralizeShow">管理商品排序</a></li>
+                    }
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.SHENHESHANGPINPAIXU) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.SHENHESHANGPINPAIXU)><a href="@Url.ManagerSiteUrl().Generalize_ShowAduitInfo">审核商品排序</a></li>
+                    }
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.TIANJIASHANGPINPAIXU) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.TIANJIASHANGPINPAIXU) class="last"><a href="@Url.ManagerSiteUrl().Generalize_GeneralizeAdd">添加商品排序</a></li>
+                    }
+                    </ul>
+                </div>
+                <div>
+                    <h2>
+                        <a href="javascript:void(0);">广告管理</a></h2>
+                    <ul>
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.GUANLIGUANGGAO) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.GUANLIGUANGGAO)><a href="@Url.ManagerSiteUrl().AdvertManage_Manage">管理广告</a></li>
+                    }
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.HESHENGUANGGAO) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.HESHENGUANGGAO)><a href="@Url.ManagerSiteUrl().AdvertManage_CheckAdvert">审核广告</a></li>
+                    }
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.FABUGUANGGAO) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.FABUGUANGGAO)><a href="@Url.ManagerSiteUrl().AdvertManage_Publish(true)">发布广告</a></li>
+                    }
+                    </ul>
+                </div>
+                <div>
+                    <h2>
+                        <a href="javascript:void(0);">商户管理</a></h2>
+                    <ul>
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.GUANLISHANGHU) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.GUANLISHANGHU)><a href="@Url.ManagerSiteUrl().MerchantManage_Manage">管理商户</a></li>
+                    }
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.TIANJIASHANGHU) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.TIANJIASHANGHU)><a href="@Url.ManagerSiteUrl().MerchantManage_Create">添加商户</a></li>
+                    }
+                    </ul>
+                </div>
+                <div>
+                    <h2>
+                        <a href="javascript:void(0);">商品管理</a></h2>
+                    <ul>
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.SHANGPINLIEBIAO) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.SHANGPINLIEBIAO)><a href="@Url.ManagerSiteUrl().RentalGoods_Manage">管理商品</a></li>
+                    }
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.WEIGUISHANGPIN) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.WEIGUISHANGPIN)><a href="@Url.ManagerSiteUrl().RentalGoods_ViolationGoods">违规商品</a></li>
+                    }
+                    </ul>
+                </div>
+                <div>
+                    <h2>
+                        <a href="javascript:void(0);">订单管理</a></h2>
+                    <ul>
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.GUANLIDINGDAN) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.GUANLIDINGDAN)><a href="@Url.ManagerSiteUrl().Order_Manage">管理订单</a></li>
+                    }
+                    </ul>
+                </div>
+                <div>
+                    <h2>
+                        <a href="javascript:void(0);">商户提现管理</a></h2>
+                    <ul>
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.GUANLISHANGHUTIXIAN) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.GUANLISHANGHUTIXIAN)><a href="@Url.ManagerSiteUrl().WithdrawCash_Manage">管理商户提现</a></li>
+                    }
+                    </ul>
+                </div>
+                <div>
+                    <h2>
+                        <a href="javascript:void(0);">普通用户管理</a></h2>
+                    <ul>
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.GUANLIPUTONGYONGHU) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.GUANLIPUTONGYONGHU)><a href="@Url.ManagerSiteUrl().LocalUser_Manage">管理普通用户</a></li>
+                    }
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.RENZHENGSHENHE) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.RENZHENGSHENHE)><a href="@Url.ManagerSiteUrl().LocalUser_AuditManage">认证审核</a></li>
+                    }
+                    </ul>
+                </div>
+                <div>
+                    <h2>
+                        <a href="javascript:void(0);">闲置物品信息管理</a></h2>
+                    <ul>
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.GUANLIXINXI) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.GUANLIXINXI)><a href="@Url.ManagerSiteUrl().SaleGoods_Manage">管理信息</a></li>
+                    }
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.WEIGUIXINXI) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.WEIGUIXINXI)><a href="@Url.ManagerSiteUrl().SaleGoods_ViolationGoods">违规信息</a></li>
+                    }
+                    </ul>
+                </div>
+                <div>
+                    <h2>
+                        <a href="javascript:void(0);">职员管理</a></h2>
+                    <ul>
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.GUANLIZHIYUANQUANXIAN) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.GUANLIZHIYUANQUANXIAN)><a href="@Url.ManagerSiteUrl().Admin_Manage">管理职员权限</a></li>
+                    }
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.TIANJIAZHIYUANZHANGHAO) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.TIANJIAZHIYUANZHANGHAO)><a href="@Url.ManagerSiteUrl().Admin_CreateAdmin">添加职员账号</a></li>
+                    }
+                    </ul>
+                </div>
+                <div class="ullast">
+                    <h2>
+                        <a href="javascript:void(0);">基础数据</a></h2>
+                    <ul>
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.SHANGPINFENLEIGUANLI) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.SHANGPINFENLEIGUANLI)><a href="@Url.ManagerSiteUrl().Category_Manage">商品分类管理</a></li>
+                    }
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.SHUXINGGUIGEGUANLI) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.SHUXINGGUIGEGUANLI)><a href="@Url.ManagerSiteUrl().AttrCategory_Manage">属性规格管理</a></li>
+                    }
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.XINXIBIAOQIANGUANLI) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.XINXIBIAOQIANGUANLI)><a href="@Url.ManagerSiteUrl().Tag_Manage">信息标签管理</a></li>
+                    }
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.GUANLIQUANXIANJUESE) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.GUANLIQUANXIANJUESE)><a href="@Url.ManagerSiteUrl().RoleManager_Manage">管理权限角色</a></li>
+                    }
+                    @if (list.Find(c => c.ModuleId == (int)ManagerNavigation.RIZHICHAYUE) != null)
+                    {
+                        <li @Navigation(ManagerNavigation.RIZHICHAYUE)><a href="@Url.ManagerSiteUrl().Log_Manage">日志查阅</a></li>
+                    }
+                    </ul>
+                </div>
+            </div>
+            <div class="rightbox">
+                <!-- InstanceBeginEditable name="EditRegion1" -->
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <!--content--end-->
+    <!--footer-->
+    <div class="admin_footer">
+        <div class="font12 color646464">
+            <p class=" pt20">
+                Copyright © 2013 &nbsp;&nbsp;www.kuaiyoujia.com&nbsp;&nbsp; All Rights Reserved.
+                版权声明 京ICP备11027796号-2</p>
+            <p>
+                客服热线:400-999-3535 Email:&nbsp;service@kuaiyoujia.com&nbsp;</p>
+        </div>
+    </div>
+    <!--footer-end-->
+<!-- InstanceEnd -->
+@RenderSection("scripts", false)
+<script type="text/javascript">
+    $("#btn_loginout").click(function () {
+        $.confirm("您确认要退出么？", "询问", function () {
+            location.href = "@Url.ManagerSiteUrl().Common_LoginOut";
+        });
+    });
+    $(function () {
+        // 删除没有权限的模块
+        $("#div_menu h2").each(function () {
+            if ($.trim($(this).next("ul").html()) == '') {
+                $(this).closest("div").remove();
+            }
+        })
+        $("#div_menu div:last").attr("class", "ullast");
+
+        // 默认展开父模块节点
+        $("#div_menu li").each(function () {
+            if ($(this).attr("class") == "hover") {
+                $(this).closest("div").find("h2").attr("class", "on");
+                $(this).closest("ul").css("display", "block");
+                return false;
+            }
+        })
+    });
+</script>
+</body>
+</html>

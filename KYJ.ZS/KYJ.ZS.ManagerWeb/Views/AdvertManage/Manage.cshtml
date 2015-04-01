@@ -1,0 +1,269 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using KYJ.ZS.Models.Pages
+@using KYJ.ZS.Models.DB
+@{
+    ViewBag.Title = "管理广告";
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.GUANLIGUANGGAO;
+    //获取视图传过来的参数
+
+    PageData<Advert> pagedate = (PageData<Advert>)ViewData["pageData"];
+    GeneralizeSate generalizeSate = (GeneralizeSate)ViewData["State"];
+    string name = ViewData["name"] == null ? "" : ViewData["name"].ToString();
+    DateTime? begintime = (DateTime?)ViewData["beginTime"];
+    DateTime? endtime = (DateTime?)ViewData["endTime"];
+
+    // 权限
+    string userPermission = KYJ.ZS.Commons.Common.CookieTool.GetCookie("userPermission");
+    List<KYJ.ZS.Models.DB.RoleManagement> list = Auxiliary.FromJsonTo<List<KYJ.ZS.Models.DB.RoleManagement>>(userPermission);
+    string permissions = list.Find(c => c.ModuleId == (int)ManagerNavigation.GUANLIGUANGGAO).Permission;
+}
+@section header{
+    <link href="@PubConstant.StaticUrl@Url.Content("base/plug/datepicker/css/jquery.datepicker.css")" type="text/css" rel="stylesheet" />
+}
+<div class="tag">
+    <ul id="ul_menu" class="clearFix">
+        <li @(generalizeSate == GeneralizeSate.NoAduit ? "class=cur" : "") date-area="@((int)GeneralizeSate.NoAduit)">
+            <a href="javascript:void(0);">未审核</a></li>
+        <li @(generalizeSate == GeneralizeSate.Aduit ? "class=cur" : "") date-area="@((int)GeneralizeSate.Aduit)">
+            <a href="javascript:void(0);">审核中 </a></li>
+        <li @(generalizeSate == GeneralizeSate.NoLine ? "class=cur" : "") date-area="@((int)GeneralizeSate.NoLine)">
+            <a href="javascript:void(0);">待上线 </a></li>
+        <li @(generalizeSate == GeneralizeSate.OnLine ? "class=cur" : "") date-area="@((int)GeneralizeSate.OnLine)">
+            <a href="javascript:void(0);">已上线 </a></li>
+        <li @(generalizeSate == GeneralizeSate.DownLine ? "class=cur" : "") date-area="@((int)GeneralizeSate.DownLine)">
+            <a href="javascript:void(0);">已下线 </a></li>
+    </ul>
+</div>
+<div class="conbox" style="display: none;">
+    <form action="" method="get" id="frm_search">
+    <div class="serchbox clearFix">
+        <div class="fl col666 mr10">
+            广告名称：
+            <input type="text" value="@name" name="name" class="intxt w260" />
+        </div>
+        <div class=" fl col666 mr10">
+            排序时间：
+            <input type="text" value="@(begintime.HasValue ? begintime.Value.ToString("yyyy-MM-dd") : "")" id="text_beginTime" name="beginTime" class="intxt" />
+            &nbsp;-&nbsp;
+            <input type="text" value="@(endtime.HasValue ? endtime.Value.ToString("yyyy-MM-dd") : "")" id="text_endTime" name="endTime" class="intxt" />
+        </div>
+        <div class="">
+            <input type="hidden" name="stateId" value="@((int)generalizeSate)" />
+            <input type="button" id="btn_search" class="btn_f65c33" value="搜索" />
+        </div>
+    </div>
+    </form>
+    <div class="list">
+        <table>
+            <tr>
+                <th>
+                    广告名称
+                </th>
+                <th>
+                    开始时间
+                </th>
+                <th>
+                    结束时间
+                </th>
+                <th width="40%">
+                    说明
+                </th>
+                <th>
+                    状态
+                </th>
+                <th class="tdlast">
+                    操作
+                </th>
+            </tr>
+            @foreach (var item in pagedate.DataList)
+            {
+                <tr>
+                    <td>@item.Name
+                    </td>
+                    <td>@item.BeginTime.ToString("yyyy-MM-dd HH:mm")
+                    </td>
+                    <td>@item.EndTime.ToString("yyyy-MM-dd HH:mm")
+                    </td>
+                    <td>@item.Remark
+                    </td>
+                    @switch (generalizeSate)
+                    {
+                        case GeneralizeSate.NoAduit:
+                            if (string.IsNullOrEmpty(item.AduitRemark))
+                            {
+                        <td>
+                            未审核
+                        </td>
+                            }
+                            else
+                            {
+                        <td>
+                            审核未通过
+                        </td>
+                            }
+                            break;
+                        case GeneralizeSate.Aduit:<td>
+                            审核中
+                        </td>
+                            break;
+                        case GeneralizeSate.NoLine:<td>
+                            待上线
+                        </td>
+                            break;
+                        case GeneralizeSate.OnLine:<td>
+                            已上线
+                        </td>
+                            break;
+                        case GeneralizeSate.DownLine:<td>
+                            已下线
+                        </td>
+                            break;
+                    }
+                    <td class="tdlast">
+                        @switch (generalizeSate)
+                        {
+                            case GeneralizeSate.NoAduit:<p>
+                                <a name="btnDetail" href="@Url.ManagerSiteUrl().AdvertManage_Detail(@item.AdvertId, false)">
+                                    查看详情 </a>|
+                                @if (permissions.IndexOf('3') >= 0)
+                                { <a href="#"  name="btnApply" advertID="@item.AdvertId">提交审核</a>}</p>
+                            <p>
+                                @if (permissions.IndexOf('3') >= 0)
+                                { 
+                                    <a name="btnModify" href="@Url.ManagerSiteUrl().AdvertManage_Publish(true)&id=@item.AdvertId&stateId=1">
+                                        编辑修改</a> }
+                                |
+                                @if (permissions.IndexOf('2') >= 0)
+                                { 
+                                    <a
+                                    name="btnDelete" advertID="@item.AdvertId" href="#">删除广告</a>}</p>
+                                break;
+                            case GeneralizeSate.Aduit:<p>
+                                <a name="btnDetail" advertID="@item.AdvertId"  href="@Url.ManagerSiteUrl().AdvertManage_Detail(@item.AdvertId, false)">
+                                    查看详情 </a>
+                            </p>
+                                                                                break;
+                            case GeneralizeSate.NoLine:<p>
+                                <a name="btnDetail" advertID="@item.AdvertId"  href="@Url.ManagerSiteUrl().AdvertManage_Detail(@item.AdvertId, false)">
+                                    查看详情 </a>
+                            </p>
+                            <p>
+                                @if (permissions.IndexOf('3') >= 0)
+                                { 
+                                    <a name="btnModify" href="@Url.ManagerSiteUrl().AdvertManage_Publish(true)&id=@item.AdvertId&stateId=3">
+                                        编辑修改</a> }|@if (permissions.IndexOf('2') >= 0)
+                                                   {  <a name="btnDelete"  advertID="@item.AdvertId" href="#">删除广告</a>}</p>
+                                                   break;
+                            case GeneralizeSate.OnLine:<p>
+                                <a  name="btnDetail" advertID="@item.AdvertId" href="@Url.ManagerSiteUrl().AdvertManage_Detail(@item.AdvertId, false)">
+                                    查看详情 </a>|
+                                @if (permissions.IndexOf('3') >= 0)
+                                { <a
+                                    href="#" name="btnDownline" advertID="@item.AdvertId">强制下线</a>}</p>
+                                break;
+                            case GeneralizeSate.DownLine:<p>
+                                <a name="btnDetail" advertID="@item.AdvertId" href="@Url.ManagerSiteUrl().AdvertManage_Detail(@item.AdvertId, false)">
+                                    查看详情 </a>
+                            </p>
+                            <p>
+                                @if (permissions.IndexOf('3') >= 0)
+                                { 
+                                    <a name="btnModify" href="@Url.ManagerSiteUrl().AdvertManage_Publish(true)&id=@item.AdvertId">
+                                        编辑修改</a> }|
+                                @if (permissions.IndexOf('2') >= 0)
+                                { <a name="btnDelete" advertID="@item.AdvertId" href="#">删除广告</a>}</p>
+                                break;
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+        <div class="page">
+            @Html.Pager(pagedate.RecordCount, pagedate.PageSize, pagedate.PageIndex, "manage", "advertmanage", new PagerOptions { AutoHide = false, SeparatorHtml = " ", ShowFirstLast=false, ShowPageIndexBox = false, CssClass = "page", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + pagedate.PageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next end prev", SpanCSS = "col333 font12 mr10" }, null, null, null)
+        </div>
+    </div>
+</div>
+<!-- InstanceEndEditable -->
+@section scripts{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/plug/datepicker/jquery.datepicker.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#ul_menu li").click(function () {
+                window.location = '@Url.ManagerSiteUrl().AdvertManage_Manage?stateId=' + $(this).attr("date-area");
+            });
+            $("#btn_search").click(function () {
+                $("#frm_search").submit();
+            });
+
+            //时间
+            var dates = $("#text_beginTime,#text_endTime").datepicker({
+                defaultDate: "+1w",
+                minDate: (this.id == "text_endTime" ? $("#text_beginTime").datepicker("getDate") : null),
+                maxDate: (this.id == "text_beginTime" ? $("#text_endTime").datepicker("getDate") : ''),
+                onSelect: function (selectedDate) {
+                    var option = this.id == "text_beginTime" ? "minDate" : "maxDate",
+        					instance = $(this).data("datepicker"),
+        					date = $.datepicker.parseDate(
+        						instance.settings.dateFormat ||
+        						$.datepicker._defaults.dateFormat,
+        						selectedDate, instance.settings);
+                    dates.not(this).datepicker("option", option, date);
+                }
+            }).attr("readonly", "readonly");
+
+            $("#text_beginTime,#text_endTime").keydown(function (e) {
+                e.preventDefault();
+                if (e.keyCode == 8) {
+                    $(this).val('');
+                }
+            });
+
+
+            //删除
+            $("[name=btnDelete]").click(function () {
+                var advertID = $(this).attr("advertID");
+                Curd("del", "删除", advertID);
+            });
+            //提交审核
+            $("[name=btnApply]").click(function () {
+                var advertID = $(this).attr("advertID");
+                Curd("apply", "提交审核", advertID);
+            });
+            //强制下线
+            $("[name=btnDownline]").click(function () {
+                var advertID = $(this).attr("advertID");
+                Curd("downline", "强制下线", advertID);
+            });
+
+        });
+        $("#text_beginTime,#text_endTime").keydown(function (e) {
+            e.preventDefault();
+            if (e.keyCode == 8) {
+                $(this).val('');
+            }
+        });
+        function Curd(type, msg, id) {
+            $.confirm("您确定要对此广告进行<span style='color:red'>" + msg + "</span>操作吗？", "询问", function () {
+                var strUrl = "";
+                if (type == "del") {
+                    strUrl = "@Url.ManagerSiteUrl().AdvertManage_Delete";
+                } else if (type == "apply") {
+                    strUrl = "@Url.ManagerSiteUrl().AdvertManage_Apply";
+                } else if (type == "downline") {
+                    strUrl = "@Url.ManagerSiteUrl().AdvertManage_DownLine";
+                }
+                $.post(strUrl, { id: id }, function (data) {
+                    var intIcon = -1;
+                    if (!data.Success) {
+                        intIcon = -1;
+                    } else {
+                        location.href = "@Url.ManagerSiteUrl().AdvertManage_Manage";
+                    }
+                    $.alert(data.Message, 200, 150, intIcon);
+                }, "json");
+            });
+        };
+
+    </script>
+}

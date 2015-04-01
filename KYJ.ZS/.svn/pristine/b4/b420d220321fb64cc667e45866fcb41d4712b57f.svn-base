@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<configuration>
+  <appSettings>
+    <add key="kyj.zushourdb" value="Data Source=192.168.3.156;Initial Catalog=Kyj_ZushouDB;user id=sa;pwd=110"/>
+    <add key="GoodsIndexPath" value="D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\LongHouseIndex"/>
+    <add key="LogPath" value="D:\kuaiyoujiaPrj\pc\fangchan\5.0\TxServer\TXSearch\TXGoodsService.txt"/>
+
+    <add key="HouseMQQueueName" value="zsgoodsmsg"/>
+  </appSettings>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/>
+  </startup>
+</configuration>

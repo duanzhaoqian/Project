@@ -1,0 +1,388 @@
+﻿@using KYJ.ZS.Models.Collections;
+@using KYJ.ZS.Models.LocalUsers;
+@using KYJ.ZS.Models.OrderGoodses;
+@using KYJ.ZS.Models.BrowseHistorys;
+@model Webdiyer.WebControls.Mvc.PagedList<OrderGoodsEntity>
+@using Webdiyer.WebControls.Mvc
+@{
+    ViewBag.Title = "用户中心";
+    Layout = "~/Views/Shared/Layouts/_UserLayout.cshtml";
+    var Collection = ViewData["Collection"] as List<CollectionEntity>;
+    var LocalUser = ViewData["LocalUser"] as LocalUserEntity;
+    var History = ViewData["History"] as List<BrowseHistoryEntity>;
+    var OrderGoods = ViewData["OrderGoods"] as List<OrderGoodsEntity>;
+    var SaleGoodsCount = ViewData["SaleGoodsCount"];
+    var UserAccountPrice = ViewData["UserAccountPrice"];
+}
+@section scripts
+{
+    <script type="text/javascript">
+        //        $(function () {
+        //            var arrdom = $("[name=goodsPic]");
+        //            for (var i = 0; i < arrdom.length; i++) {
+        //                var guid = $(arrdom[i]).attr("guid");
+        //                $.get("@Url.UserSiteUrl().GetGoodsPic?guid=" + guid, function (data) {
+        //                    var dom = $("[guid=" + data.guid + "]");
+        //                    $(dom).prop("src", data.url == "" ? '@PubConstant.StaticUrl@Url.Content("web/user/images/pic7.jpg")' : data.url + ".60_60.jpg");
+        //                }, "json");
+        //            }
+        //        });
+        //确认收货
+        function ConfirmReceipt(id) {
+            $.confirm("是否确认收货？", "提示", function () {
+                $(".xubox_yes").unbind("click");
+                var strUrl = "@Url.UserSiteUrl().ConfirmReceipt";
+                $.post(strUrl, { orderId: id, m: Math.random() }, function (data) {
+                    if (data > 0) {
+                        var strHref = location.href;
+                        location.href = strHref;
+                    } else {
+                        $.alert("确认收货失败，请重试");
+                    }
+                }, "json");
+            });
+        }
+        //确认起租
+        function ConfirmHire(id) {
+            $.confirm("是否确认起租？", "提示", function () {
+                $(".xubox_yes").unbind("click");
+                var strUrl = "@Url.UserSiteUrl().ConfirmHire";
+                $.post(strUrl, { orderId: id, m: Math.random() }, function (data) {
+                    if (data > 0) {
+                        var strHref = location.href;
+                        location.href = strHref;
+                    } else {
+                        $.alert("确认收货失败，请重试");
+                    }
+                }, "json");
+            });
+        }
+        //取消订单
+        function CancelOrders(id) {
+            $.confirm("确认取消订单吗？", "提示", function () {
+                $(".xubox_yes").unbind("click");
+                var strUrl = "@Url.UserSiteUrl().CancelOrders";
+                $.post(strUrl, { orderId: id, m: Math.random() }, function (data) {
+                    if (data > 0) {
+                        var strHref = location.href;
+                        location.href = strHref;
+                    } else {
+                        $.alert("取消订单失败，请重试");
+                    }
+                }, "json");
+            });
+        }
+        var count = 0;
+        //申请换货
+        function ReturnsGoods(id) {
+            $.confirm("确认申请换货吗？", "提示", function () {
+                if (count == 0) {
+                    count = 1;
+                    // $(".xubox_yes").unbind("click");
+                    var strUrl = "@Url.UserSiteUrl().ReturnsGoods";
+                    $.post(strUrl, { orderId: id, m: Math.random() }, function (data) {
+                        if (data > 0) {
+                            var strHref = location.href;
+                            location.href = strHref;
+                        } else {
+                            count = 0;
+                            $.alert("申请失败，请重试");
+                        }
+                    }, "json");
+                }
+            });
+        }
+        //申请退租
+        function ApplicationSurrender(id) {
+            $.confirm("确认申请退租吗？", "提示", function () {
+                if (count == 0) {
+                    count = 1;
+                    // $(".xubox_yes").unbind("click");
+                    var strUrl = "@Url.UserSiteUrl().ApplicationSurrender";
+                    $.post(strUrl, { orderId: id, m: Math.random() }, function (data) {
+                        if (data > 0) {
+                            var strHref = location.href;
+                            location.href = strHref;
+                        } else {
+                            count = 0;
+                            $.alert("申请失败，请重试");
+                        }
+                    }, "json");
+                }
+            });
+        }
+        //申请退货
+        function ApplicationReturnOfGoods(id) {
+            $.confirm("确认申请退货吗？", "提示", function () {
+                if (count == 0) {
+                    count = 1;
+                    //$(".xubox_yes").unbind("click");
+                    var strUrl = "@Url.UserSiteUrl().ApplicationReturnOfGoods";
+                    $.post(strUrl, { orderId: id, m: Math.random() }, function (data) {
+                        if (data > 0) {
+                            var strHref = location.href;
+                            location.href = strHref;
+                        } else {
+                            count = 0;
+                            $.alert("申请失败，请重试");
+                        }
+                    }, "json");
+                }
+            });
+        }
+    </script>
+}
+<!--用户中心开始-->
+<div class="use1">
+    <table cellpadding="0" cellspacing="0" width="100%" class="mytab mytab1">
+        <tr>
+            @if (LocalUser != null)
+            {
+                var userpic = KYJ.ZS.Commons.PictureModular.GetPicture.GetUserPictureInfo(LocalUser.Guid, true, "LOGO");
+                var pic = PubConstant.StaticUrl + Url.Content("web/user/images/smalltx.gif");
+                if (userpic.Path != null)
+                {
+                    pic = userpic.Path + ".115_115.jpg";
+                }
+                <td width="51%" class="td3">
+                    <div class="toux fl">
+                        <a href="javascript:void(0);">
+                            <img src="@pic" width="115" height="115">
+                            <i class="bg-operation"></i><em class="bg-circle"></em></a><a class="touxfont" href="@Url.UserSiteUrl().Avatar" >
+                                上传头像</a>
+                    </div>
+                    <div class="use2 fl pt15 pl2">
+                        <p class="font18 col333 mb12 blod">
+                            @if (string.IsNullOrEmpty(LocalUser.NickName))
+                            { 
+                                @LocalUser.LoginName
+                            }
+                            else
+                            {
+                                @LocalUser.NickName
+                            }
+                        </p>
+                        <p class="col333">
+                            <span class="blue">
+                                @if (LocalUser.Constellation != 0)
+                                {
+                                    @Constellation.GetConstellation(@LocalUser.Constellation)
+                                }
+                            </span>&nbsp;&nbsp;&nbsp;&nbsp;
+                            @if (!string.IsNullOrEmpty(LocalUser.LiveProvinceName) && LocalUser.LiveProvinceName != "请选择")
+                            {
+                                <span>来自</span> @LocalUser.LiveProvinceName  
+                            }
+                            @if (!string.IsNullOrEmpty(LocalUser.LiveCityName) && LocalUser.LiveCityName != "请选择")
+                            {
+                                <span>-</span> @LocalUser.LiveCityName
+                            }
+                            @if (!string.IsNullOrEmpty(LocalUser.LiveDistrictName) && LocalUser.LiveDistrictName != "请选择")
+                            {
+                                <span>-</span> @LocalUser.LiveDistrictName
+                            }
+                        </p>
+                        <p class="col999">
+                            这个家伙很懒，什么也没有留下…</p>
+                    </div>
+                </td>
+            }
+            <td class="tal td3 pl72">
+                <p class="col666">
+                    账户余额：<strong class="cold21b1b font18">@UserAccountPrice </strong>元</p>
+                <p class="col666">
+                    已发布信息：<strong class="cold21b1b font18">@SaleGoodsCount</strong></p>
+            </td>
+            @if (CurrentUser != null)
+            { 
+                <td class="tal td3 pl72" style="border: none;">
+                    <span class="col999 line_sp">上次登录时间<br />
+                        @CurrentUser.LastLoginTime</span>
+                </td>
+            }
+        </tr>
+    </table>
+</div>
+<!--用户中心结束-->
+<div class="tag tag1">
+    <ul>
+        <li class="cur"><a href="javascript:void(0);">租用的商品</a></li>
+    </ul>
+    <p class="fr pr24">
+        <a href="@Url.UserSiteUrl().RentOrdersList" class="blue">全部订单 >></a></p>
+</div>
+<!--租用商品开始-->
+<div class="listbox">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab_bg tab_1">
+        <tr class="tr1">
+            <th>
+                商品
+            </th>
+            <th>
+                月租(元)
+            </th>
+            <th>
+                数量
+            </th>
+            <th>
+                商户
+            </th>
+            <th>
+                <div id="u300">
+                    <p>
+                        实收款(元)</p>
+                </div>
+            </th>
+            <th>
+                订单状态
+            </th>
+            <th class="thbg">
+                操作
+            </th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (OrderGoodsEntity item in Model)
+            {
+                var pic = KYJ.ZS.Commons.PictureModular.GetPicture.GetFirstGoodsPicture(@item.OrderGoodsGuid, true, "Show");
+                if (string.IsNullOrEmpty(pic))
+                {
+                    pic = PubConstant.StaticUrl + Url.Content("web/user/images/img/sp1.jpg");
+                }
+                else
+                {
+                    pic = pic + ".60_60.jpg";
+                }
+                var shenqingtuihuo = "<a href=\"javascript:void(0);\" onclick=\"ApplicationReturnOfGoods(" + item.OrderId + ")\" class=\"show col05c\">申请退货</a>";
+                var querenshouhuo = "<a href=\"javascript:void(0);\" class=\"show col05c btn_orange td_a\" onclick=\"ConfirmReceipt(" + item.OrderId + ")\">确认收货</a>";
+                var shenqinghuanhuo = "<a href=\"javascript:void(0);\" onclick=\"ReturnsGoods(" + item.OrderId + ")\" class=\"show col05c\">申请换货</a>";
+                var querenqizu = "<a href=\"javascript:void(0);\" class=\"show col05c\" onclick=\"ConfirmHire(" + @item.OrderId + ")\">确认租用</a>";
+                var quxiaodingdan = "<a href=\"javascript:void(0);\" class=\"show col05c\" onclick=\"CancelOrders(" + item.OrderId + ")\">取消订单</a>";
+                var fukuan = "<a href=\"" + Url.PaySiteUrl().Order(@item.OrderNumber, Url.UserSiteUrl().RentOrdersList) + "\" class=\"show col05c\">去付款</a>";
+                
+                
+                
+                
+                
+                
+            <tr class="bg_f8">
+                <td colspan="2">
+                    <div class="tal pl20">
+                        订单编号：@item.OrderNumber</div>
+                </td>
+                <td colspan="4">
+                    <div class="tal col999">
+                        @OrderStatus.GetOrderShowTime(@item.OrderState)：@item.OrderUpdateTime.Value.ToString("yyyy-MM-dd HH:mm")</div>
+                </td>
+                <td>
+                    <a href="@Url.UserSiteUrl().RentOrdersInfo(item.ID)"  target="_blank" class="col05c">
+                        订单详情</a>
+                </td>
+            </tr>
+            <tr class="tr2">
+                <td class="td1">
+                    <a href="@Url.WebSiteUrl().RentalGoods_Detail(item.GoodsId)" target="_blank" class="fl">
+                        <img src="@pic" name="goodsPic" @*guid="@item.OrderGoodsGuid"*@ /></a>
+                    <div class="w220 fl ml10 tal">
+                        <p class="line_h">
+                            <a href="@Url.WebSiteUrl().RentalGoods_Detail(item.GoodsId)" target="_blank">@item.OrderGoodsTitle</a></p>
+                        <p class="col999">
+                            @item.OrderColorName @item.OrderNormName</p>
+                    </div>
+                </td>
+                <td>
+                    <span class="bold col333">@item.OrderGoodsMonthPrice.ToString("#0.00")</span>
+                </td>
+                <td>
+                    @item.OrderGoodsNum
+                </td>
+                <td>
+                    <span class=" col666">@item.MerchantName</span>
+                </td>
+                <td>
+                    <p class="cold21b1b blod">
+                        <span class="bold cold21b1b">
+                            @item.OrderTotalPrice.ToString("#0.00")
+                        </span>
+                    </p>
+                    <p class="col999">
+                        (含快递 @item.OrderFreightCost.ToString("#0.00"))</p>
+                </td>
+                <td>
+                    <span class="colf30">@OrderStatus.GetStateExplain(@item.OrderState)</span>
+                </td>
+                <td class="tr2">
+                    @switch (@item.OrderState)
+                    {
+                        case 0: break;
+                        case 1:@Html.Raw(fukuan) @Html.Raw(quxiaodingdan) break;
+                        case 2:@Html.Raw(fukuan) @Html.Raw(quxiaodingdan) break;
+                        case 4:@Html.Raw(querenshouhuo) @Html.Raw(shenqingtuihuo) break;
+                        case 6:@Html.Raw(querenqizu) @Html.Raw(shenqinghuanhuo) @Html.Raw(shenqingtuihuo) break;
+                        default: break;
+                    }
+                </td>
+            </tr>
+            }
+        }
+    </table>
+    @if (Model != null)
+    { 
+        <div class="page" style="margin-bottom: 5px;">
+            @Html.Pager(Model.TotalItemCount, Model.PageSize, Model.CurrentPageIndex, "index", "user", new PagerOptions { ShowGoButton = false, SeparatorHtml = "", ShowFirstLast = false, ShowPageIndexBox = false, GoButtonText = "跳转", CssClass = "", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + Model.CurrentPageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next end prev", FirstCss = "", LastCss = "", SpanCSS = "col333 font12 mr10", ShowGoButtonCss = "pagetz", AlwaysShowFirstLastPageNumber = true, NumericPagerItemCount = 4 }, null, null, null)
+        </div>
+    }
+    <div class="use3 mt20" style="margin-top: 90px;">
+        <div class="use31">
+            <p class="col333 blod font14">
+                浏览历史</p>
+            @if (History != null)
+            {
+                foreach (var item in History)
+                {
+                    var pic = KYJ.ZS.Commons.PictureModular.GetPicture.GetFirstGoodsPicture(item.GoodsGuid, true, "SHOW");
+                    if (string.IsNullOrEmpty(pic))
+                    {
+                        pic = PubConstant.StaticUrl + Url.Content("web/user/images/pic5.jpg");
+                    }
+                    else
+                    {
+                        pic = pic + ".130_130.jpg";
+                    }
+                <dl>
+                    <dt><a href="@Url.WebSiteUrl().RentalGoods_Detail(item.GoodsId)" target="_blank">
+                        <img src="@pic"  name="goodsPic" @*guid="@item.GoodsGuid"*@ width="103"  height="103" /></a></dt>
+                    <dd class="cold21b1b blod">
+                        ￥@item.GoodsPrice.ToString("#0.00")</dd>
+                </dl> 
+                }
+            }
+        </div>
+        <div class="use31 use32">
+            <p class="col333 blod font14">
+                我收藏的商品</p>
+            @if (Collection != null)
+            {
+                foreach (var item in Collection)
+                {
+                    var pic = KYJ.ZS.Commons.PictureModular.GetPicture.GetFirstGoodsPicture(@item.Guid, true, "SHOW");
+                    if (string.IsNullOrEmpty(pic))
+                    {
+                        pic = PubConstant.StaticUrl + Url.Content("web/user/images/pic7.jpg");
+                    }
+                    else
+                    {
+                        pic = pic + ".130_130.jpg";
+                    }
+                <dl>
+                    <dt><a href="@Url.WebSiteUrl().RentalGoods_Detail(item.GoodsId)" target="_blank">
+                        <img src="@pic"  name="goodsPic"  @*guid="@item.Guid"*@ width="103"   height="103" /></a></dt>
+                    <dd class="cold21b1b blod">
+                        ￥@item.MonthPrice.ToString("#0.00")</dd>
+                </dl>
+                }
+            }
+        </div>
+    </div>
+</div>
+<!--租用商品结束-->

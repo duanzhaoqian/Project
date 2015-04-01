@@ -1,0 +1,181 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model IList<KYJ.ZS.Models.LocalUsers.LocalUserManageEntity>
+@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.RENZHENGSHENHE;
+    ViewBag.Title = "认证审核";
+
+    int totalItemCount = Auxiliary.ToInt32(ViewData["totalItemCount"]);
+    int pagesize = Auxiliary.ToInt32(ViewData["pagesize"]);
+    int pageIndex = Auxiliary.ToInt32(ViewData["pageIndex"]);
+}
+@section header{
+    <style type="text/css">
+        .error{ border-color:Red;}
+    </style>
+}
+<div class="tag_n">
+            <ul>
+                <li><a href="javascript:void(0);">身份认证审核</a></li>
+            </ul>
+        </div>
+      <div class="conbox" >
+        <div class="serchbox clearFix">
+        <form id="frm_search" action="@Url.ManagerSiteUrl().LocalUser_AuditManage" method="get">
+        <div class="clearFix">
+          <div class="fl col666 mr10">账号： 
+            <input name="txt_loginName" type="text" value="@(ViewData["loginName"] as string)" maxlength="30" class="intxt w200" />
+          </div>
+          <div class="fl col666 mr10">姓名：
+            <input name="txt_realName" type="text" value="@(ViewData["realName"] as string)" maxlength="30" class="intxt w200" />
+          </div>
+          <div class="">
+            <input id="btn_search" type="button" class="btn_f65c33" value="搜索"  />
+          </div>
+        </div>
+          </form>
+        </div>
+        <div class="list">
+          <table>
+            <tr>
+              <th>账号</th>
+              <th>姓名</th>
+              <th>性别</th>
+              <th>提交时间</th>
+              <th class="tdlast">操作</th>
+            </tr>
+            @if (Model != null && Model.Count > 0)
+            {
+                foreach (var user in Model)
+                {
+            <tr>
+              <td>@user.LoginName</td>
+              <td>@user.RealName</td>
+              <td>@(user.Sex == 0 ? "保密" : (user.Sex == 1 ? "男" : "女"))</td>
+              <td>@user.PapersTime.ToString("yyyy-MM-dd HH:mm")</td>
+              <td class="tdlast"><p>
+              @{
+                    var pic = KYJ.ZS.Commons.PictureModular.GetPicture.GetUserPictureInfo(user.Guid, true, KYJ.ZS.Commons.PictureModular.UserPictureType.PASSPORT.ToString()).Path;
+                    if (string.IsNullOrEmpty(pic))
+                    {
+                        pic = PubConstant.StaticUrl + Url.Content("web/manager/images/img/col_bigpic.jpg");
+                    }
+                    else
+                    {
+                        pic += ".300_300.jpg";
+                    }
+                  }
+              <a name="a_detail" data-pic="@pic" data-id="@user.Id" data-loginName="@user.LoginName" href="javascript:void(0);">详情 </a>
+              </p></td>
+            </tr>
+                }
+            }
+          </table>
+   @Html.Pager(totalItemCount, pagesize, pageIndex, "auditmanage", "localuser", new PagerOptions { AutoHide = false, SeparatorHtml = " ", ShowFirstLast = false, ShowPageIndexBox = false, CssClass = "page", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + pageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next end prev", SpanCSS = "" }, null, null, null)
+    </div>
+      </div>
+
+<div id="hdn_dialog" style=" display:none">
+<div class="layer w400 mt10">
+  <div class="layer_title"></div>
+  <a name="a_close" href="javascript:void(0);" class="close"></a>
+  <div class="layer_box">
+   <div class="tac"><img src="" width="300" height="300" /></div>
+    <div class="tac mt10" ><span class="tac">
+      <input name="btn_pass" type="button" class="btn_1abc9c mr20" value="审核通过" />
+      <input name="btn_violation" type="button" class="btn_1abc9c mr20" value="审核驳回" />
+      <input name="btn_cancel" type="button" class="btn_grey  " value="取消" />
+      </span></div>
+    <div class="tac col333 mt10">
+      <textarea name="area_papersRemark" name="textarea4" defValue="请填写驳回理由" class="area w286 col999">请填写驳回理由</textarea>
+      </div>
+  </div>
+</div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            // 搜索
+            $("#btn_search").click(function () {
+                $("#frm_search").submit();
+            });
+
+            // 弹窗
+            $("a[name='a_detail']").click(function () {
+                var picSrc = $(this).attr("data-pic"),
+                    id = $(this).attr("data-id"),
+                    name = $(this).attr("data-loginName");
+                $("#hdn_dialog").find("img").attr("src", picSrc);
+                $("#hdn_dialog").find("[name='btn_violation']").attr("data-id", id).attr("data-loginName", name);
+                $("#hdn_dialog").find("[name='btn_pass']").attr("data-id", id).attr("data-loginName", name);
+                $.content($("#hdn_dialog").html(), 400, 0, 0);
+                $(".xubox_layer").css("top", "70px");
+            })
+
+            // 关闭弹窗
+            $("a[name='a_close'],input[name='btn_cancel']").live("click", function () {
+                $.closeAll();
+            })
+
+            // 驳回理由
+            $("[name='area_papersRemark']").live("focus", function () {
+                var defValue = $(this).attr("defValue");
+                if ($.trim($(this).val()) == defValue) {
+                    $(this).html('');
+                    $(this).removeClass("col999");
+                }
+            }).live("blur", function () {
+                var defValue = $(this).attr("defValue");
+                if ($.trim($(this).val()) == '') {
+                    $(this).html(defValue);
+                    $(this).addClass("col999");
+                }
+            });
+
+            // 审核驳回
+            $("input[name='btn_violation']").live("click", function () {
+                var $areaRemark = $(this).closest("div").next().find("[name='area_papersRemark']"),
+                    papersRemark = $areaRemark.val(),
+                    defValue = $areaRemark.attr("defValue");
+                if ($.trim(papersRemark) == '' || $.trim(papersRemark) == defValue) {
+                    $areaRemark.addClass("error");
+                    return false;
+                }
+                if (papersRemark.length > 1000) {
+                    $areaRemark.addClass("error");
+                    return false;
+                }
+                Audit($(this).attr("data-id"), $(this).attr("data-loginName"), papersRemark, false);
+            })
+
+            // 审核通过
+            $("input[name='btn_pass']").live("click", function () {
+                Audit($(this).attr("data-id"), $(this).attr("data-loginName"), null, true);
+            })
+
+            function Audit(id, loginName, papersRemark, isValidate) {
+                $.post('@Url.ManagerSiteUrl().LocalUser_Audit', { id: id, loginName: loginName, papersRemark: papersRemark, isValidate: isValidate },
+                                function (data) {
+                                    var _data = data.toUpperCase();
+                                    // 操作成功
+                                    if (_data.indexOf("TRUE") > -1) {
+                                        location.reload();
+                                    }
+                                    else if (_data.indexOf("||") > -1) {
+                                        var erroInfo = data.split('||')[1];
+                                        $.alert(erroInfo);
+                                    }
+                                    else if (_data.indexOf("FALSE") > -1) {
+                                        $.alert('操作失败，请重试！');
+                                    }
+                                    else {
+                                        $.alert(data);
+                                    }
+                                }
+                            );
+            }
+        })
+    </script>
+}
+

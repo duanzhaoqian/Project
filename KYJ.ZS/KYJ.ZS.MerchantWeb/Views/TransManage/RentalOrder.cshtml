@@ -1,0 +1,441 @@
+﻿@using KYJ.ZS.Models.OrderGoodses;
+@model Webdiyer.WebControls.Mvc.PagedList<RentalOrderEntity>
+@using Webdiyer.WebControls.Mvc
+@using KYJ.ZS.Commons.Web
+@using KYJ.ZS.Commons.PictureModular
+@{
+    ViewBag.Title = "出租的订单";
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+    ViewBag.Navigation = MerchantNavigation.CHUZUDEDINGDAN;
+}
+<div class="rightbox">
+    <!-- InstanceBeginEditable name="EditRegion1" -->
+    <div class="tag">
+        <ul>
+            <li class="cur" attr="@Url.MerchantSiteUrl().RentalOrder" tag="0"><a href="javascript:void(0)">
+                全部订单</a></li>
+            <li attr="@Url.MerchantSiteUrl().RentalOrder?state=912" tag="1"><a href="javascript:void(0)">
+                待付款区</a></li>
+            <li attr="@Url.MerchantSiteUrl().RentalOrder?state=345" tag="2"><a href="javascript:void(0)">
+                发货区</a></li>
+            <li attr="@Url.MerchantSiteUrl().RentalOrder?state=678" tag="3"><a href="javascript:void(0)">
+                租用区</a></li>
+            <li attr="@Url.MerchantSiteUrl().RentalOrder?state=999" tag="4"><a href="javascript:void(0)">
+                退租及退换货区</a></li>
+            <li attr="@Url.MerchantSiteUrl().RentalOrder?state=141" tag="5"><a href="javascript:void(0)">
+                结算区</a></li>
+            <li attr="@Url.MerchantSiteUrl().RentalOrder?state=78" tag="6"><a href="javascript:void(0)">
+                成功订单</a></li>
+            <li attr="@Url.MerchantSiteUrl().RentalOrder?state=90" tag="7"><a href="javascript:void(0)">
+                关闭订单</a></li>
+        </ul>
+    </div>
+    <div class="conbox">
+        <div class="serchbox clearFix">
+            <div class="ml17 fl">
+                商品名称：<input type="text" id="txt_name" value="" class="intxt_h24 w130" /></div>
+            <div class="ml15 fl">
+                订单编号：
+                <input type="text" id="txt_number" value="" class="intxt_h24 w130" /></div>
+            <div class="ml15 fl">
+                买家昵称：
+                <input type="text" id="txt_nicknanme" value="" class="intxt_h24 w130" /></div>
+            <div class="fl ml15">
+                <input type="button" id="btn_search" class="btn_red" value="搜索" /></div>
+        </div>
+        <div class="listbox">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab_4">
+                <tr>
+                    <th width="31%">
+                        商品
+                    </th>
+                    <th width="10%">
+                        月租(元)
+                    </th>
+                    <th width="10%">
+                        数量
+                    </th>
+                    <th width="13%">
+                        买家
+                    </th>
+                    <th width="13%">
+                        实收款(元)
+                    </th>
+                    <th width="13%" id="th_OrderType">
+                        @if (@ViewBag.state == null || @ViewBag.state == 0)
+                        {
+                            <span>订单状态</span>
+                        }
+                        else if (@ViewBag.state == 912 || @ViewBag.State == 1 || @ViewBag.State == 2)
+                        {
+                            <select id="slt_OrderType" class="selcss">
+                                <option tag="912"  attr="@Url.MerchantSiteUrl().RentalOrder?state=912">全部订单状态</option>
+                                <option tag="1" attr="@Url.MerchantSiteUrl().RentalOrder?state=1">待付款</option>
+                                <option tag="2" attr="@Url.MerchantSiteUrl().RentalOrder?state=2">付款失败</option>
+                            </select>
+                        }
+                        else if (@ViewBag.state == 345 || @ViewBag.State == 3 || @ViewBag.State == 4 || @ViewBag.State == 5)
+                        {
+                            <select id="slt_OrderType" class="selcss">
+                                <option tag="345" attr="@Url.MerchantSiteUrl().RentalOrder?state=345">全部订单状态</option>
+                                <option tag="3" attr="@Url.MerchantSiteUrl().RentalOrder?state=3">待发货</option>
+                                <option tag="4" attr="@Url.MerchantSiteUrl().RentalOrder?state=4">已发货</option>
+                                <option tag="5" attr="@Url.MerchantSiteUrl().RentalOrder?state=5">已收货</option>
+                            </select>
+                        }
+                        else if (@ViewBag.state == 678 || @ViewBag.State == 6 || @ViewBag.State == 7 || @ViewBag.State == 8)
+                        {
+                            <select id="slt_OrderType" class="selcss">
+                                <option tag="678" attr="@Url.MerchantSiteUrl().RentalOrder?state=678">全部订单状态</option>
+                                <option tag="7" attr="@Url.MerchantSiteUrl().RentalOrder?state=7">租用中</option>
+                                <option tag="6" attr="@Url.MerchantSiteUrl().RentalOrder?state=6">待确认起租</option>
+                                <option tag="8" attr="@Url.MerchantSiteUrl().RentalOrder?state=8">待续组</option>
+                            </select>
+                        }
+                        else if (@ViewBag.state == 999 || @ViewBag.State == 9 || @ViewBag.State == 12 || @ViewBag.State == 15 || @ViewBag.State == 13 || @ViewBag.State == 10 || @ViewBag.State == 16 || @ViewBag.State == 234 || @ViewBag.State == 25)
+                        {
+                            <select id="slt_OrderType" class="selcss">
+                                <option tag="999" attr="@Url.MerchantSiteUrl().RentalOrder?state=999">全部订单状态</option>
+                                <option tag="9" attr="@Url.MerchantSiteUrl().RentalOrder?state=12">申请退货</option>
+                                <option tag="12" attr="@Url.MerchantSiteUrl().RentalOrder?state=9">申请退租</option>
+                                <option tag="15" attr="@Url.MerchantSiteUrl().RentalOrder?state=15">申请换货</option>
+                                <option tag="13" attr="@Url.MerchantSiteUrl().RentalOrder?state=13">退货验收</option>
+                                <option tag="10" attr="@Url.MerchantSiteUrl().RentalOrder?state=10">退租验收</option>
+                                <option tag="16" attr="@Url.MerchantSiteUrl().RentalOrder?state=16">换货验收</option>
+                                <option tag="234" attr="@Url.MerchantSiteUrl().RentalOrder?state=234">等待买家支付赔损金额</option>
+                                <option tag="25" attr="@Url.MerchantSiteUrl().RentalOrder?state=25">买家已支付赔损金额</option>
+                            </select>
+                        }
+                        else if (@ViewBag.state == 141 || @ViewBag.State == 11 || @ViewBag.State == 14 || @ViewBag.State == 21)
+                        {
+                            <select id="slt_OrderType" class="selcss">
+                                <option tag="141" attr="@Url.MerchantSiteUrl().RentalOrder?state=141">全部订单状态</option>
+                                <option tag="11" attr="@Url.MerchantSiteUrl().RentalOrder?state=11">退货结算</option>
+                                <option tag="14" attr="@Url.MerchantSiteUrl().RentalOrder?state=14">退租结算</option>
+                                <option tag="21" attr="@Url.MerchantSiteUrl().RentalOrder?state=21">代售结算</option>
+                            </select>
+                        }
+                        else if (@ViewBag.state == 78 || @ViewBag.State == 18 || @ViewBag.State == 17)
+                        {
+                            <select id="slt_OrderType" class="selcss">
+                                <option tag="78" attr="@Url.MerchantSiteUrl().RentalOrder?state=78">全部订单状态</option>
+                                <option tag="18" attr="@Url.MerchantSiteUrl().RentalOrder?state=18">代售成功</option>
+                                <option tag="17" attr="@Url.MerchantSiteUrl().RentalOrder?state=17">退租成功</option>
+                            </select>
+                        }
+                        else if (@ViewBag.state == 90 || @ViewBag.State == 19 || @ViewBag.State == 20)
+                        {
+                            <select id="slt_OrderType" class="selcss">
+                                <option tag="90" attr="@Url.MerchantSiteUrl().RentalOrder?state=90">全部订单状态</option>
+                                <option tag="19"  attr="@Url.MerchantSiteUrl().RentalOrder?state=19">订单关闭</option>
+                                <option tag="20" attr="@Url.MerchantSiteUrl().RentalOrder?state=20">退货关闭</option>
+                            </select>
+                        }
+                        else
+                        {
+                            <span>订单状态</span>    
+                        }
+                    </th>
+                    <th width="10%" class="br_colddd">
+                        操作
+                    </th>
+                </tr>
+            </table>
+            @if (Model != null)
+            {       
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab_3 nobt">
+                    @foreach (RentalOrderEntity m in Model)
+                    {
+                        var pic = GetPicture.GetFirstGoodsPicture(m.Guid, true, "SHOW");
+                        if (string.IsNullOrEmpty(pic))
+                        {
+                            pic = "http://static.zushou.com/static_v1.0/web/merchant/images/img/img_01.jpg";
+                        }
+                        else
+                        {
+                            pic = "http://static.zushou.com/static_v1.0/web/merchant/images/img/img_01.jpg";
+                        }
+                        <tr>
+                            <th colspan="7" class="nobb bor_ddd">
+                                <div class="fl normal ml10 col666 w260 tal">
+                                    订单编号：@m.Number</div>
+                                <div class="fl col999 normal mr10">
+                                    @OrderStatus.GetStateTime(Convert.ToInt32(m.State))时间：@m.UpdateTime</div>
+                                <a href="#" class="fr mr20 col05c normal">订单详情</a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td width="31%" class="nobr">
+                                <div class="imgbox ml10">
+                                    <img src="@pic" width="50" height="50" /></div>
+                                <div class="sptit">
+                                    <a href="javascript:void(0);">@m.Title</a></div>
+                                <div class="bian">
+                                    颜色分类：黄色</div>
+                            </td>
+                            <td width="10%" class="nobr">
+                                @m.Monthprice.ToString("0.00")
+                            </td>
+                            <td width="10%">
+                                @m.Num
+                            </td>
+                            <td width="13%">
+                                @m.NickName
+                            </td>
+                            <td width="13%">
+                                <strong class="cold21b1b">@m.Totalprice.ToString("0.00")</strong><div class="col999">
+                                    (含快递：@m.Freightcost)</div>
+                            </td>
+                            @if (m.State == 1)
+                            {
+                                <td width="13%">
+                                    <span class="colf30">@OrderStatus.GetStateExplain(Convert.ToInt32(m.State))</span>
+                                </td>
+                            }
+                            else if (m.State == 17 || m.State == 18)
+                            {
+                                <td width="13%">
+                                    <span class="col1d9e08">@OrderStatus.GetStateExplain(Convert.ToInt32(m.State))</span>
+                                </td>
+                            }
+                            else
+                            {
+                                <td width="13%">
+                                    @OrderStatus.GetStateExplain(Convert.ToInt32(m.State))
+                                </td>
+                            }
+                            <td width="10%">
+                                @if (Convert.ToInt32(m.State) == 3)
+                                {
+                                    
+                                    <a href="@Url.MerchantSiteUrl().ShipManage_Manage?id=@m.Id" id="btn_consignment" class="col05c mr10">
+                                        发货</a>
+                                }
+                                //发送起租协议
+                                else if (Convert.ToInt32(m.State) == 5)
+                                {
+                                    <a href="javascript:void(0)"  data-id="@m.Id" data-state="@m.State" data-option="6" id="btn_agreement" class="col05c mr10">
+                                        发送起租协议</a>
+                                    
+                                }
+                                else if (Convert.ToInt32(m.State) == 8)
+                                {
+                                    <a href="javascript:void(0)" id="btn_smsreminder-@m.Id"  data-id="@m.Id" data-state="@m.State" data-option="7" class="col05c mr10">
+                                        发送短信提醒</a>
+                                 
+		 
+                                }
+@*退租申请*@
+                                else if (Convert.ToInt32(m.State) == 9)
+                                {
+                                    
+                                    <a href="javascript:void(0)"  id="btn_hireagreed-@m.Id" tip="退租"  data-id="@m.Id" data-state="@m.State" data-option="10" class="col05c mr10">
+                                        同意</a>
+                                    <a href="javascript:void(0)" id="btn_hirreject-@m.Id"  data-id="@m.Id" data-state="@m.State" data-option="1111"   class="col05c mr10">
+                                        驳回</a>
+                                   
+                                }
+@*退租验收*@
+                                else if (Convert.ToInt32(m.State) == 10)
+                                {
+                                                     
+                                    <a href="javascript:void(0)" id="btn_acceptagreed-@m.Id"  data-id="@m.Id" data-state="@m.State" data-option="14" class="col05c mr10">
+                                        赔损</a>
+                                    <a href="javascript:void(0)" id="btn_acceptanceject-@m.Id"  data-id="@m.Id" data-state="@m.State" data-option="2222" class="col05c mr10">
+                                        撤销</a>
+                                   
+                                }
+@*退货申请*@
+                                else if (Convert.ToInt32(m.State) == 12)
+                                {
+                                    <a href="javascript:void(0)" id="btn_backagreed-@m.Id" tip="退货"  data-id="@m.Id" data-state="@m.State" data-option="13" class="col05c mr10">
+                                        同意</a>
+                                    <a href="javascript:void(0)" id="btn_backreject-@m.Id"  data-id="@m.Id" data-state="@m.State" data-option="1111" class="col05c mr10">
+                                        驳回</a>
+                                   
+                                }
+@*退货验收*@
+                                else if (Convert.ToInt32(m.State) == 13)
+                                {
+                                   
+                                    <a href="javascript:void(0)" id="btn_acpagreed-@m.Id"  data-id="@m.Id" data-state="@m.State" data-option="14" class="col05c mr10">
+                                        赔损</a>
+                                    <a href="javascript:void(0)" id="btn_acpreject-@m.Id"  data-id="@m.Id" data-state="@m.State" data-option="2222" class="col05c mr10">
+                                        撤销</a>
+                                   
+                                }
+@*换货申请*@
+                                else if (Convert.ToInt32(m.State) == 15)
+                                {
+                                    <a href="javascript:void(0)" id="btn_backagreed-@m.Id"  tip="换货"  data-id="@m.Id" data-state="@m.State" data-option="16" class="col05c mr10">
+                                        同意</a>
+                                    <a href="javascript:void(0)" id="btn_backreject-@m.Id"  data-id="@m.Id" data-state="@m.State" data-option="1111" class="col05c mr10">
+                                        驳回</a>
+                                   
+                                }
+@*换货验收*@
+                                else if (Convert.ToInt32(m.State) == 16)
+                                {
+                                   
+                                    <a href="javascript:void(0)" id="btn_acpagreed-@m.Id"  data-id="@m.Id" data-state="@m.State" data-option="14" class="col05c mr10">
+                                        赔损</a>
+                                    <a href="#" id="btn_acpreject-@m.Id"  data-id="@m.Id" data-state="@m.State" data-option="2222" class="col05c mr10">
+                                        撤销</a>
+                                   
+                                }
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <div class="page mb10">
+                    @Html.Pager(Model.TotalItemCount, Model.PageSize, Model.CurrentPageIndex, "rentalorder", "transmanage", new PagerOptions { ShowGoButton = false, SeparatorHtml = " ", ShowFirstLast = true, ShowPageIndexBox = false, FirstPageText = "首页", LastPageText = "尾页", GoButtonText = "跳转", CssClass = "", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + Model.CurrentPageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next", FirstCss = "", LastCss = "", SpanCSS = "col333 font12 mr10", ShowGoButtonCss = "pagetz" }, null, null, null)
+                    @*  <a href="#" class="prev">上一页</a> <a href="#">1</a> <a href="#" class="active">2</a>
+                <a href="#">3</a> <a href="#">4</a> ... <a href="#" class="next">下一页 </a>*@
+                </div>
+            }
+        </div>
+        <!-- InstanceEndEditable -->
+    </div>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#txt_name").val("@ViewBag.OrderName");
+            $("#txt_number").val("@ViewBag.Number");
+            $("#txt_nicknanme").val("@ViewBag.NickName");
+            //根据当前订单的状态改变标签的样式
+            if ("@ViewBag.State" != "") {
+                changeTag();
+            }
+            //初始化订单下拉列表选择项
+            initSltOrderType();
+            //搜索按钮功能
+            $("#btn_search").click(function () {
+                var strtitle = $("#txt_name").val();
+                var strnumber = $("#txt_number").val();
+                var strnicknanme = $("#txt_nicknanme").val();
+                window.location = "@Url.MerchantSiteUrl().RentalOrder?title=" + strtitle + "&number=" + strnumber + "&nickName=" + strnicknanme + "&orderDate=@ViewBag.OrderDate" + "&state=@ViewBag.State";
+            });
+            //标签点击的时候请求相应类型订单的数据
+            $(".tag ul li").click(function () {
+                window.open($(this).attr("attr"), "_self");
+            });
+            //订单状态下拉列表操作
+            $("#slt_OrderType").change(function () {
+                location.href = $("#slt_OrderType option:selected").attr("attr");
+            });
+
+            $(".col05c.mr10").click(function () {
+                var $Operation = $(this);
+                var orderId = $(this).attr("data-id"); //订单id
+                var orderState = $(this).attr("data-state"); //订单状态
+                var operationType = $(this).attr("data-option"); //订单要改变成的状态   
+                var tip = $(this).attr("tip"); //提示
+
+                //发送起租协议
+                if (operationType == 6) {
+                    $.post("@Url.MerchantSiteUrl().ChangeOrderStatus", { "orderId": orderId, "operationType": operationType }, function (data) {
+
+                        if (!data) {
+                            $.alert("操作失败！");
+                        } else {
+                            location.href = "@Url.MerchantSiteUrl().RentalOrder?state=@ViewBag.State";
+                        }
+
+                    });
+                }
+                //退租同意//退货同意//换货同意
+                if (operationType == 10 || operationType == 13 || operationType == 16) {
+                    $.confirm("是否确认同意" + tip + "？", "询问", function () {
+                        $.post("@Url.MerchantSiteUrl().ChangeOrderStatus", { "orderId": orderId, "operationType": operationType }, function (data) {
+
+                            if (!data) {
+                                $.alert("操作失败！");
+                            } else {
+                                location.href = "@Url.MerchantSiteUrl().RentalOrder?state=@ViewBag.State";
+                            }
+
+                        });
+                    });
+                }
+
+                //退租驳回 //退货驳回//换货驳回//
+                if (operationType == 1111) {
+                    $.content('<div class="layer w260"><a href="#" class="close"></a><div class="layer_box"><div class="tac col333 mb25">驳回理由：<input type="text" id="result" value="" class="intxt_h24" /></div><div class="tac"><input type="button" id="btn_ok" class="btn_red mr10" value="确认" /><input type="button" id="btn_cancel" class="btn_grey" value="取消" /></div></div></div>');
+                    $("#btn_ok").click(function () {
+                        var result = $("#result").val(); //驳回理由
+                        $.post("@Url.MerchantSiteUrl().ChangeOrderStatus", { "orderId": orderId, "operationType": operationType, "res": result }, function (data) {
+                            if (!data) {
+                                $.alert("操作失败！");
+                            } else {
+                                location.href = "@Url.MerchantSiteUrl().RentalOrder?state=@ViewBag.State";
+                            }
+
+                        });
+                    });
+                    $("#btn_cancel").click(function () {
+                        $.closeAll();
+                    });
+                }
+                //退租撤销 //退货撤销//换货撤销//
+                if (operationType == 2222) {
+                    $.confirm("是否确认撤销？", "询问", function () {
+                        $.post("@Url.MerchantSiteUrl().ChangeOrderStatus", { "orderId": orderId, "operationType": operationType }, function (data) {
+
+                            if (!data) {
+                                $.alert("操作失败！");
+                            } else {
+                                location.href = "@Url.MerchantSiteUrl().RentalOrder?state=@ViewBag.State";
+                            }
+
+                        });
+                    });
+                }
+                //退租赔损 //退货驳回//换货驳回//
+                if (operationType == 14) {
+                    $.content('<div class="layer w260"><a href="#" class="close"></a><div class="layer_box"><div class="tac col333 mb25">赔损金额：<input type="text" id="result" value="" class="intxt_h24" /></div><div class="tac"><input type="button" id="btn_ok" class="btn_red mr10" value="确认" /><input type="button" id="btn_cancel" class="btn_grey" value="取消" /></div></div></div>');
+
+                    $("#btn_cancel").click(function () {
+                        $.closeAll();
+                    });
+                }
+
+
+            });
+
+            function changeTag() {
+
+                if ("@ViewBag.State" == 912 || "@ViewBag.State" == 1 || "@ViewBag.State" == 2) {
+                    $("li[tag=1]").addClass("cur").siblings().removeClass("cur");
+                }
+                else if ("@ViewBag.State" == 345 || "@ViewBag.State" == 3 || "@ViewBag.State" == 4 || "@ViewBag.State" == 5) {
+                    $("li[tag=2]").addClass("cur").siblings().removeClass("cur");
+                }
+                else if ("@ViewBag.State" == 678 || "@ViewBag.State" == 6 || "@ViewBag.State" == 7 || "@ViewBag.State" == 8) {
+                    $("li[tag=3]").addClass("cur").siblings().removeClass("cur");
+                }
+                else if ("@ViewBag.State" == 999 || "@ViewBag.State" == 9 || "@ViewBag.State" == 12 || "@ViewBag.State" == 15 || "@ViewBag.State" == 13 || "@ViewBag.State" == 10 || "@ViewBag.State" == 16 || "@ViewBag.State" == 234 || "@ViewBag.State" == 25) {
+                    $("li[tag=4]").addClass("cur").siblings().removeClass("cur");
+                }
+                else if ("@ViewBag.State" == 141 || "@ViewBag.State" == 11 || "@ViewBag.State" == 14 || "@ViewBag.State" == 21) {
+                    $("li[tag=5]").addClass("cur").siblings().removeClass("cur");
+                }
+                else if ("@ViewBag.State" == 78 || "@ViewBag.State" == 18 || "@ViewBag.State" == 17) {
+                    $("li[tag=6]").addClass("cur").siblings().removeClass("cur");
+                }
+                else if ("@ViewBag.State" == 90 || "@ViewBag.State" == 19 || "@ViewBag.State" == 20) {
+                    $("li[tag=7]").addClass("cur").siblings().removeClass("cur");
+                }
+                else {
+                    $("li[tag=0]").addClass("cur").siblings().removeClass("cur");
+                }
+
+            }
+            function initSltOrderType() {
+                $("#slt_OrderType option[tag=@ViewBag.State]").attr("selected", "selected");
+            }
+
+        });
+    </script>
+}

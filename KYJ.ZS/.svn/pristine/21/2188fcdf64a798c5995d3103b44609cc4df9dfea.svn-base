@@ -1,0 +1,90 @@
+﻿ @using Webdiyer.WebControls.Mvc
+ @using KYJ.ZS.Models.RentalGoodses;
+ @using KYJ.ZS.Commons.PictureModular;
+ @model KYJ.ZS.Models.RentalGoodses.RentalGoodsSearchEntity
+ @{
+     ViewBag.Title = "搜索页";
+     Layout = "~/Views/Shared/Layouts/_WebLayout.cshtml";
+}
+@section header{
+       <script type="text/javascript">
+           $(document).ready(function () {
+               var $$ = KYJ.CORE.URL;
+               jQuery.extend({ kyj: $$ });
+               pxinit();
+               $("a[name='sort']").each(function (index) {
+                   var prefix = $(this).attr("prefix");
+                   var value = $(this).attr("value");
+                   var url = $.kyj.set(null, null, value, 3, prefix);
+                   $(this).attr("href", url)
+
+               });
+               $(".searchlist").find("dl").each(function (index) {
+                   if (index % 6 == 0) {
+                       $(this).addClass("first");
+                   }
+               });
+
+           });
+           function pxinit() {
+               var m = $.kyj.pathname.split('/')[1];
+               var s = m.split("-");
+               var p = "";
+               for (var i = 0; i < s.length; i++) {
+                   var value = s[i].match(/[y]\d{1,}/g);
+                   if (value) {
+                       if (s[i] == 'y0') { $("#xl").attr("class", "on") }
+                       if (s[i] == 'y1') { $("a[name='sort']").each(function (index) { $(this).removeClass("on") }); $("#jg").attr("class", "on up"); $("#jg").attr("value", "2") }
+                       if (s[i] == 'y2') { $("a[name='sort']").each(function (index) { $(this).removeClass("on") }); $("#jg").attr("class", "on down"); $("#jg").attr("value", "1") }
+                       if (s[i] == 'y3') { $("a[name='sort']").each(function (index) { $(this).removeClass("on") }); $("#sj").attr("class", "on") }
+                   }
+               }
+           }
+        
+        </script>
+     
+}
+<div class="w1190 clearFix">
+    <div class="forbox mt10">
+      <div class="left">
+      <span class="fl">排序：</span><a name="sort" id="xl" value="0" class="on" prefix="y"  href="#">销量</a><a name="sort" id="jg" value="1" prefix="y" href="#">价格</a>
+      <i></i>
+      <a name="sort" id="sj" value="3" prefix="y" class="last" href="#">上架时间</a></div>
+      @Html.Pager(Model.TotalItemCount, Model.PageSize, Model.CurrentPageIndex, null, null, new PagerOptions { SeparatorHtml = "",AutoHide=false, CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + Model.CurrentPageIndex + "</a>", ShowFirstLast = false, CssClass = "page_1", SelfDefineUrl = ViewData["conPage"].ToString(), PrevCss = "prev end nobor", NextCss = "next end prev", FirstCss = "prev end nobor", LastCss = "next end" }, null, null, null)
+    </div>
+    <div class="searchlist  clearFix">
+    @foreach (var i in  Model.ItemList)
+    {
+        var pic = GetPicture.GetFirstGoodsPicture(i.Guid, true, "SHOW");
+        if (string.IsNullOrEmpty(pic))
+        {
+            pic = PubConstant.StaticUrl + Url.Content("web/web/images/img/img_wh130_01.jpg");
+        }
+        else
+        {
+            pic = pic + ".130_130.jpg";
+        }
+         <dl>
+        <dt><a href="@Url.WebSiteUrl().RentalGoods_Detail(@i.GoodsId)">
+        <img  data-original="@pic" src="">
+        </a></dt>
+        <dd>
+          <p><a href="@Url.WebSiteUrl().RentalGoods_Detail(@i.GoodsId)">
+             @{
+              var name = "";
+              if (!string.IsNullOrEmpty(i.GoodsName))
+              {
+              name = i.GoodsName.Length <= 25 ? i.GoodsName : i.GoodsName.Substring(0, 25)+"...";
+              }
+              }
+              @name
+          </a></p>
+          <div class="price"><i>¥</i><em>@i.MonthPrice</em>/月</div>
+        </dd>
+      </dl>
+  
+        }
+
+    </div>
+    @Html.Pager(Model.TotalItemCount, Model.PageSize, Model.CurrentPageIndex, null, null, new PagerOptions { SeparatorHtml = "",AutoHide=false, CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + Model.CurrentPageIndex + "</a>", ShowFirstLast = true, FirstPageText = "首页", LastPageText = "尾页", CssClass = "page", SelfDefineUrl = ViewData["conPage"].ToString(), PrevCss = "prev end nobor", NextCss = "next end prev", FirstCss = "prev end nobor", LastCss = "next end" }, null, null, null)
+</div>

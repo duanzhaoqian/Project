@@ -1,0 +1,221 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using KYJ.ZS.BLL.Generalizes
+@using KYJ.ZS.BLL.Adverts
+@using KYJ.ZS.Models.RentalGoodses;
+@using KYJ.ZS.Commons.PictureModular;
+@model KYJ.ZS.Models.RentalGoodses.RentalGoodsListEntity
+@{
+    Layout = "~/Views/Shared/Layouts/_WebLayout.cshtml";
+}
+@{
+    AdvertBll advertBll = new AdvertBll();
+    GeneralizeBll generalzeBll = new GeneralizeBll();
+    var leftlocations = advertBll.Web_GetAdvertLocationEntity(ViewBag.ThirdlyCatId, 4);
+    var toplocations = generalzeBll.Web_GetGeneralizeLocationEntity(ViewBag.ThirdlyCatId, 2);
+    int categoryid = ViewBag.ThirdlyCatId; 
+}
+@section header{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var $$ = KYJ.CORE.URL;
+            jQuery.extend({ kyj: $$ });
+            pxinit();
+            $("a[name='sort']").each(function (index) {
+                var prefix = $(this).attr("prefix");
+                var value = $(this).attr("value");
+                var url = $.kyj.set(null, null, value, 3, prefix);
+                $(this).attr("href", url)
+
+            });
+            $(".smallimg").each(function () {
+                $(this).children().find("li").each(function (index) {
+                    $(this).mouseover(function () {
+                        $(this).parents(".dl").children().find(".sc").hide();
+                        $(this).parents(".dl").children().find(".sc").eq(index).show();
+                    })
+                });
+            });
+
+        });
+        function pxinit() {
+            var m = $.kyj.pathname.split('/')[1];
+            var s = m.split("-");
+            var p = "";
+            for (var i = 0; i < s.length; i++) {
+                var value = s[i].match(/[y]\d{1,}/g);
+                if (value) {
+                    if (s[i] == 'y0') { $("#xl").attr("class", "on") }
+                    if (s[i] == 'y1') { $("a[name='sort']").each(function (index) { $(this).removeClass("on") }); $("#jg").attr("class", "on up"); $("#jg").attr("value", "2") }
+                    if (s[i] == 'y2') { $("a[name='sort']").each(function (index) { $(this).removeClass("on") }); $("#jg").attr("class", "on down"); $("#jg").attr("value", "1") }
+                    if (s[i] == 'y3') { $("a[name='sort']").each(function (index) { $(this).removeClass("on") }); $("#sj").attr("class", "on") }
+                }
+            }
+        }
+    </script>
+}
+<div class="container">
+    <!-- InstanceBeginEditable name="EditRegion1" -->
+    @Html.Partial("RentalGoods/_BreadNavigation", new KYJ.ZS.Models.Common.NavigationEntity() { CategoryId = categoryid, Type = 0 })
+    <div class="w1190 clearFix mb20">
+        <div class="con_l">
+            @Html.Partial("RentalGoods/_ListCategoryMenu", Model.CatMenu)
+            <div class="adbox_2">
+                <ul>
+                    @if (leftlocations != null)
+                    {
+                        foreach (var i in leftlocations)
+                        {
+                            var leftlist = advertBll.Web_GetAdvertEntity(i.Id);
+                            if (leftlist != null)
+                            {
+                                foreach (var j in leftlist)
+                                {
+                                    var piclist = GetPicture.GetAdvertisementPictureListNoFilter(j.AdvertGuid, true);
+                                    var pic = PubConstant.StaticUrl + Url.Content("web/web/images/img/img_w220h110_01.jpg");
+                                    if (piclist != null && piclist.Count > 0)
+                                    {
+                                        pic = piclist[0].Path;
+                                    }
+                                    else
+                                    {
+                                    }
+         
+                        <li><a href="@j.Url">
+                            <img  data-original="@pic" src=""></a></li>
+                                }
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+        <!--end con_l-->
+        <div class="con_rr">
+            <div class="hotrent">
+                @if (toplocations != null)
+                {
+                    foreach (var i in toplocations)
+                    {
+                        var toplist = generalzeBll.Web_GetGeneralizeGoodsEntity(i.Id);
+
+                    <div class="hotrent_tit">@i.GLocationName</div>
+
+                    <div class="hotrent_list">
+                        @if (toplist != null)
+                        {
+                            foreach (var j in toplist)
+                            {
+                                var pic = GetPicture.GetFirstGoodsPicture(j.Guid, true, "SHOW");
+                                if (string.IsNullOrEmpty(pic))
+                                {
+                                    pic = PubConstant.StaticUrl + Url.Content("web/web/images/img/img_wh80_01.jpg");
+                                }
+                                else
+                                {
+                                    pic = pic + ".80_80.jpg";
+                                } 
+
+                            <dl>
+                                <dt><a href="@Url.WebSiteUrl().RentalGoods_Detail(@j.GoodsId)">
+                                    <img  data-original="@pic" src=""></a></dt>
+                                <dd>
+                                    <p>
+                                        <a href="@Url.WebSiteUrl().RentalGoods_Detail(@j.GoodsId)">
+                                            @{
+                                            var name = "";
+                                            if (!string.IsNullOrEmpty(j.GoodsName))
+                                            {
+                                                name = j.GoodsName.Length <= 10 ? j.GoodsName : j.GoodsName.Substring(0, 10) + "...";
+                                            }
+                                            }
+                                            @name</a>
+                                    </p>
+                                    <div class="price">
+                                        <span>月租金：</span><i>¥</i><em>@j.MonthPrice.ToString("F2")</em></div>
+                                </dd>
+                            </dl>
+                            }
+                        }
+                    </div>      
+                    }
+                }
+            </div>
+            @Html.Partial("RentalGoods/_SearchMenu", Model.SearchMenu)
+            <div class="forbox">
+                <div class="left">
+                    <span class="fl">排序：</span><a name="sort" id="xl" value="0" prefix="y" href="javascript:void(0);" class="on">销量</a><a
+                        name="sort" id="jg" value="1" prefix="y" href="javascript:void(0);">价格</a> <i></i><a name="sort" id="sj"
+                            value="3" prefix="y" class="last" href="javascript:void(0);">上架时间</a></div>
+                @Html.Pager(Model.TotalItemCount, Model.PageSize, Model.CurrentPageIndex, null, null, new PagerOptions { SeparatorHtml = "",AutoHide=false, CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + Model.CurrentPageIndex + "</a>", ShowFirstLast = false, CssClass = "page_1", SelfDefineUrl = ViewData["conPage"].ToString(), PrevCss = "prev end nobor", NextCss = "next end prev", FirstCss = "prev end nobor", LastCss = "next end" }, null, null, null)
+            </div>
+            <div class="sortfilter clearFix">
+                @foreach (var item in Model.ItemList)
+                {
+                    var pics = GetPicture.GetGoodsPictureListNoFilter(item.Guid, true, "SHOW");
+                    <dl class="dl">
+                        <dt>
+                            @if (pics != null)
+                            {
+                                if (pics.Count>0)
+                                {
+                                    var pic = pics[0].Path + ".130_130.jpg";
+                                <a  class="sc" href="@Url.WebSiteUrl().RentalGoods_Detail(@item.GoodsId)">
+                                    <img data-original="@pic" src=""></a>
+                                }
+                                if (pics.Count>1)
+                                {
+                                    var pic = pics[1].Path + ".130_130.jpg";
+                                <a class="sc" style="display:none" href="@Url.WebSiteUrl().RentalGoods_Detail(@item.GoodsId)">
+                                    <img data-original="@pic" src=""></a>
+                                }
+                            }
+                            else
+                            {
+                                <a  class="sc" href="@Url.WebSiteUrl().RentalGoods_Detail(@item.GoodsId)">
+                                    <img src="@PubConstant.StaticUrl@Url.Content("web/web/images/img/img_wh130_01.jpg")"></a>
+                            }
+                        </dt>
+                        <dd class="smallimg">
+                            <ul>
+                                @if (pics != null && pics.Count>0)
+                                {
+                                    var pic = pics[0].Path + ".26_26.jpg";
+                                    <li><a href="javascript:void(0);">
+                                        <img  data-original="@pic" src=""></a></li>
+                                }
+                                @if (pics != null &&pics.Count>1)
+                                {
+                                    var pic = pics[1].Path + ".26_26.jpg";
+                                    <li><a href="javascript:void(0);">
+                                        <img data-original="@pic"src=""></a></li>
+                                }
+                            </ul>
+                        </dd>
+                        <dd>
+                            <p>
+                                <a href="@Url.WebSiteUrl().RentalGoods_Detail(@item.GoodsId)">
+                                    @{
+                                    var name = "";
+                                    if (!string.IsNullOrEmpty(item.GoodsName))
+                                    {
+                                        name = item.GoodsName.Length <= 25 ? item.GoodsName : item.GoodsName.Substring(0, 25)+"...";
+                                    }
+                                    }
+                                    @name
+                                </a>
+                            </p>
+                            <div class="market">
+                                市场价：<i>¥@item.Price.ToString("F2")</i></div>
+                            <div class="price">
+                                <span>月租金：</span><i>¥</i><em>@item.MonthPrice.ToString("F2")</em></div>
+                        </dd>
+                    </dl>
+                }
+            </div>
+            @Html.Pager(Model.TotalItemCount, Model.PageSize, Model.CurrentPageIndex, null, null, new PagerOptions {SeparatorHtml = "", AutoHide=false,CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + Model.CurrentPageIndex + "</a>", ShowFirstLast = true, FirstPageText = "首页", LastPageText = "尾页", CssClass = "page", SelfDefineUrl = ViewData["conPage"].ToString(), PrevCss = "prev end nobor", NextCss = "next end prev", FirstCss = "prev end nobor", LastCss = "next end" }, null, null, null)
+            <!--end sortfilter-->
+        </div>
+        <!--end con_r-->
+    </div>
+    <!-- InstanceEndEditable -->
+</div>

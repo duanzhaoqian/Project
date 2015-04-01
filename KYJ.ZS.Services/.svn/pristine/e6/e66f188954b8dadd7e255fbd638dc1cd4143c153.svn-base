@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<configuration>
+  <configSections>
+    <section name="taskconfig" type="KYJ.ZS.Task.TaskConfigSection, KYJ.ZS.Task"/>
+  </configSections>
+  <taskconfig triggerinterval="1"><!--服务执行频率，单位秒-->
+    <tasks>
+      <!--
+      runtime:"秒 分 时 日 月 星期"
+      格式：l
+        "* * * * * *"表示每秒钟(由服务执行频率决定)都会执行
+        "* 25,26,30 * * * *"表示分钟数为25,26,30...时执行
+        "* 10 10 * * 1,2,3,4,5"表示周一到周五 10:10分时执行
+      enable："是否启用"
+      -->
+      <add name="OrderStartRentTask" runtime="* 0,10,20,30,40,50 * * * *" type="KYJ.ZS.Task.Task.OrderStartRentTask, KYJ.ZS.Task" enable="true"/>
+      <!--作者：邓福伟 时间：2014-06-05 描述：订单待付款、付款失败超过24小时服务-->
+      <add name="OrderPendingPaymentTask" runtime="* * * * * *" type="KYJ.ZS.Task.Task.OrderPendingPaymentTask, KYJ.ZS.Task" enable="true"/>
+      <add name="RentalGoodsesAddedTask" runtime="* * * * * *" type="KYJ.ZS.Task.Task.RentalGoodsesAddedTask, KYJ.ZS.Task" enable="true"/>
+      <add name="RentalGoodsesDropsTask" runtime="* * * * * *" type="KYJ.ZS.Task.Task.RentalGoodsesDropsTask, KYJ.ZS.Task" enable="true"/>
+      <add name="OrderRenewalStateTask" runtime="* * * * * *" type="KYJ.ZS.Task.Task.OrderRenewalStateTask, KYJ.ZS.Task" enable="true"/>
+    </tasks>
+  </taskconfig>
+  
+  <connectionStrings>
+    <!--只读库-->
+    <add name="kyj.zushourdb" connectionString="Data Source=192.168.3.156;Initial Catalog=Kyj_ZushouDB;user id=sa;pwd=110" providerName="System.Data.SqlClient" />
+    <!--只写库-->
+    <add name="kyj.zushouwdb" connectionString="Data Source=192.168.3.156;Initial Catalog=Kyj_ZushouDB;user id=sa;pwd=110" providerName="System.Data.SqlClient" />
+  </connectionStrings>
+  
+  
+<startup><supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/></startup></configuration>

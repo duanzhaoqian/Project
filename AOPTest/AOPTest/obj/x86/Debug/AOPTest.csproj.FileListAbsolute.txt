@@ -1,0 +1,4 @@
+D:\Visual Studio 2010\Projects\AOPTest\AOPTest\bin\Debug\AOPTest.exe
+D:\Visual Studio 2010\Projects\AOPTest\AOPTest\bin\Debug\AOPTest.pdb
+D:\Visual Studio 2010\Projects\AOPTest\AOPTest\obj\x86\Debug\AOPTest.exe
+D:\Visual Studio 2010\Projects\AOPTest\AOPTest\obj\x86\Debug\AOPTest.pdb

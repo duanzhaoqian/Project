@@ -1,0 +1,125 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using KYJ.ZS.Models.Logs
+@model IList<LogIndexEntity>
+@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.RIZHICHAYUE;
+    ViewBag.Title = "日志查询";
+
+    LogSearchEntity entity = (LogSearchEntity)ViewData["searchEntity"];
+    int areaId = Auxiliary.ToInt32(ViewData["areaId"]);
+
+    int totalItemCount = Auxiliary.ToInt32(ViewData["totalItemCount"]);
+    int pagesize = Auxiliary.ToInt32(ViewData["pagesize"]);
+    int pageIndex = Auxiliary.ToInt32(ViewData["pageIndex"]);
+}
+
+<div class="tag_n">
+            <ul>
+                <li><a href="javascript:void(0);">日志查询</a></li>
+            </ul>
+        </div>
+      <div class="conbox" >
+        <div class="serchbox clearFix">
+        <form id="frm_search" action="@Url.ManagerSiteUrl().Log_Manage" method="get">
+        <div class="clearFix">
+          <div class="fl col666 mr10">登录账号： 
+            <input name="txt_loginname" type="text" value="@(entity.LoginName)" maxlength="30" class="intxt w200" />
+          </div>
+            <div class="fl col666 mr10">权限角色：
+                <select id="sel_role" name="sel_role" class="formselect w200">
+                <option value="0">请选择</option>
+            </select>
+            </div>
+        </div>
+        <div class=" mt10 clearFix">
+          <div class="fl col666 mr10">职员姓名：
+            <input name="txt_realname" type="text" value="@(entity.StaffName)" maxlength="30" class="intxt w200" />
+          </div>
+          <div class="fl col666   mr10">功能区：
+            <select id="sel_module" name="sel_module" class="formselect w200">
+                <option value="0">请选择</option>
+            </select>
+          </div>
+          <div class="">
+            <input id="btn_search" type="button" class="btn_f65c33" value="搜索"  />
+          </div></div>
+          </form>
+        </div>
+        <div class="list">
+          <table>
+            <tr>
+              <th>时间</th>
+              <th>账号</th>
+              <th>姓名</th>
+              <th>权限</th>
+              <th>功能区</th>
+              <th class="tdlast">操作</th>
+            </tr>
+            @if (Model != null && Model.Count > 0)
+            {
+                foreach (var log in Model)
+                {
+            <tr>
+              <td>@log.CreateTime.ToString("yyyy-MM-dd HH:mm")</td>
+              <td>@log.LoginName</td>
+              <td>@log.RealName</td>
+              <td>@log.RoleName</td>
+              <td>@log.ModuleName</td>
+              <td  class="tdlast">@log.Remark</td>
+            </tr>
+                }
+            }
+          </table>
+   @Html.Pager(totalItemCount, pagesize, pageIndex, "manage", "log", new PagerOptions { AutoHide = false, SeparatorHtml = " ", ShowFirstLast = false, ShowPageIndexBox = false, CssClass = "page", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + pageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next end prev", SpanCSS = "" }, null, null, null)
+    </div>
+      </div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            // 权限角色加载
+            $.getJSON('@Url.ManagerSiteUrl().Log_GetRoles' + "?ram=" + Math.random(),
+                                function (response) {
+                                    if (response && response.success) {
+                                        if (response.items) {
+                                            var strStmp = "";
+                                            $.each(response.items, function () {
+                                                if ('@entity.RoleId' == this.RoleCode) {
+                                                    strStmp = "selected=selected";
+                                                } else {
+                                                    strStmp = "";
+                                                }
+                                                $("<option value='" + this.RoleCode + "' " + strStmp + " >" + this.RoleName + "</option>").appendTo($("#sel_role"));
+                                            });
+                                        }
+                                    }
+                                }
+                            );
+
+            // 功能区加载
+            $.getJSON('@Url.ManagerSiteUrl().Log_GetModules' + "?ram=" + Math.random(),
+                                function (response) {
+                                    if (response && response.success) {
+                                        if (response.items) {
+                                            var strStmp = "";
+                                            $.each(response.items, function () {
+                                                if ('@areaId' == this.ModuleCode) {
+                                                    strStmp = "selected=selected";
+                                                } else {
+                                                    strStmp = "";
+                                                }
+                                                $("<option value='" + this.ModuleCode + "' " + strStmp + " >" + this.ModuleName + "</option>").appendTo($("#sel_module"));
+                                            });
+                                        }
+                                    }
+                                }
+                            );
+
+            // 搜索
+            $("#btn_search").click(function () {
+                $("#frm_search").submit();
+            })
+        })
+    </script>
+}

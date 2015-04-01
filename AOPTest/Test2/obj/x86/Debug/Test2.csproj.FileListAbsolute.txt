@@ -1,0 +1,7 @@
+D:\Visual Studio 2010\Projects\AOPTest\Test2\bin\Debug\Test2.exe
+D:\Visual Studio 2010\Projects\AOPTest\Test2\bin\Debug\Test2.pdb
+D:\Visual Studio 2010\Projects\AOPTest\Test2\bin\Debug\AOPTest.exe
+D:\Visual Studio 2010\Projects\AOPTest\Test2\bin\Debug\AOPTest.pdb
+D:\Visual Studio 2010\Projects\AOPTest\Test2\obj\x86\Debug\Test2.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\AOPTest\Test2\obj\x86\Debug\Test2.exe
+D:\Visual Studio 2010\Projects\AOPTest\Test2\obj\x86\Debug\Test2.pdb

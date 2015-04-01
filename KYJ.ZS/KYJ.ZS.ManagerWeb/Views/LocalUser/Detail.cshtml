@@ -1,0 +1,183 @@
+﻿@model KYJ.ZS.Models.LocalUsers.LocalUserEntity
+@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.GUANLIPUTONGYONGHU;
+    ViewBag.Title = "管理普通用户";
+
+    // 权限
+    string userPermission = KYJ.ZS.Commons.Common.CookieTool.GetCookie("userPermission");
+    List<KYJ.ZS.Models.DB.RoleManagement> list = Auxiliary.FromJsonTo<List<KYJ.ZS.Models.DB.RoleManagement>>(userPermission);
+
+    string permissions = list.Find(c => c.ModuleId == (int)ManagerNavigation.GUANLIPUTONGYONGHU).Permission;
+
+    decimal? price = (decimal?)ViewData["price"];
+}
+ <div class="tag_n">
+        <ul>
+          <li><a href="javascript:void(0);">用户资料</a></li>
+        </ul>
+      </div>
+      <div class="part">
+        
+        <div class="tabbox">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_1">
+            <tr>
+              <th width="12%" >头像：</th>
+              <td>
+              @{
+                  var pic = KYJ.ZS.Commons.PictureModular.GetPicture.GetUserPictureInfo(Model.Guid, true, KYJ.ZS.Commons.PictureModular.UserPictureType.LOGO.ToString()).Path;
+                  if (string.IsNullOrEmpty(pic))
+                  {
+                      pic = PubConstant.StaticUrl + Url.Content("web/manager/images/userpic.gif");
+                  }
+                  else
+                  {
+                      pic += ".115_115.jpg";
+                  }
+                }
+              <img src="@pic" width="115" height="115" />
+              </td>
+              <th width="12%">身份认证：</th>
+              <td >
+              @{
+                  var parpersPic = KYJ.ZS.Commons.PictureModular.GetPicture.GetUserPictureInfo(Model.Guid, true, KYJ.ZS.Commons.PictureModular.UserPictureType.PASSPORT.ToString()).Path;
+                  if (string.IsNullOrEmpty(parpersPic))
+                  {
+                      parpersPic = PubConstant.StaticUrl + Url.Content("web/manager/images/defaultpic.gif");
+                  }
+                  else
+                  {
+                      parpersPic += ".240_150.jpg";
+                  }
+                }
+              <img src="@parpersPic" width="240" height="150" />
+              </td>
+              <td>
+              @if (permissions.IndexOf('3') >= 0)
+              {
+                  if (Model.State == 0)
+                  {
+              <input id="brn_freeze" type="button" class="btn_or80" value="冻结" />
+                  }
+                  else
+                  {
+              <input id="brn_thaw" type="button" class="btn_or80" value="解除冻结" />
+                  }
+              }
+              </td>
+            </tr>
+            <tr>
+              <th>昵称：</th>
+              <td>@Model.NickName</td>
+              <th>账户：</th>
+              <td colspan="2">@(price.HasValue ? price.Value.ToString("F2") : "0.00")</td>
+            </tr>
+            <tr>
+              <th>真实姓名：</th>
+              <td>@Model.RealName
+                </td>
+              <th>注册时间：</th>
+              <td colspan="2">@Model.CreateTime.ToString("yyyy-MM-dd HH:mm")</td>
+            </tr>
+            <tr>
+              <th>性别：</th>
+              <td>@(Model.Sex == 0 ? "保密" : (Model.Sex == 1 ? "男" : "女"))</td>
+              <th>最后登录时间：</th>
+              <td colspan="2">@Model.LastLoginTime.ToString("yyyy-MM-dd HH:mm")</td>
+            </tr>
+            <tr>
+              <th valign="top">生日：</th>
+              <td>@Model.BirthdayYear - @Model.BirthdayMonth - @Model.BirthdayDay</td>
+              <th valign="top">状态：</th>
+              <td colspan="2">@(Model.State == 0 ? "正常" : "已冻结")</td>
+            </tr>
+            <tr>
+              <th>星座：</th>
+              <td>@Constellation.GetConstellation(Model.Constellation)</td>
+              <th>&nbsp;</th>
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <th>居住地：</th>
+              <td>@Model.LiveProvinceName - @Model.LiveCityName - @Model.LiveDistrictName
+                </td>
+              <th>&nbsp;</th>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <th>家乡：</th>
+              <td>@Model.HomeProvinceName - @Model.HomeCityName - @Model.HomeDistrictName</td>
+              <th>&nbsp;</th>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <th>大学：</th>
+              <td>@(string.IsNullOrEmpty(Model.College) ? "无" : Model.College)</td>
+              <th>&nbsp;</th>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <th> 高中：</th>
+              <td>@(string.IsNullOrEmpty(Model.HighSchool) ? "无" : Model.HighSchool)</td>
+              <th>&nbsp;</th>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <th> 初中：</th>
+              <td>@(string.IsNullOrEmpty(Model.MiddleSchool) ? "无" : Model.MiddleSchool)</td>
+              <th>&nbsp;</th>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <th> 小学：</th>
+              <td>@(string.IsNullOrEmpty(Model.PrimarySchool) ? "无" : Model.PrimarySchool)</td>
+              <th>&nbsp;</th>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <th> 公司：</th>
+              <td>@(string.IsNullOrEmpty(Model.CompanyName) ? "无" : Model.CompanyName)</td>
+              <th>&nbsp;</th>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <th> 职位：</th>
+              <td>@(string.IsNullOrEmpty(Model.CompanyPosition) ? "无" : Model.CompanyPosition)</td>
+              <th>&nbsp;</th>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+     
+      </div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#brn_freeze,#brn_thaw").click(function () {
+                var msg = (this.id == "brn_freeze" ? "是否确认冻结用户？" : "是否确认解除冻结用户？"),
+                    userId = '@Model.UserId',
+                    userName = '@Model.LoginName',
+                    isFreeze = (this.id == "brn_freeze" ? true : false);
+
+                $.confirm(msg, '询问', function () {
+                    $.get('@Url.ManagerSiteUrl().LocalUser_Freeze', { userId: userId, userName: userName, isFreeze: isFreeze },
+                        function (data) {
+                            var _data = data.toUpperCase();
+                            // 操作成功
+                            if (_data.indexOf("TRUE") > -1) {
+                                location.reload();
+                            }
+                            else if (_data.indexOf("FALSE") > -1) {
+                                $.alert('操作失败，请重试！');
+                            } else {
+                                $.alert(data);
+                            }
+                        }
+                    );
+                });
+            });
+        });
+    </script>
+}

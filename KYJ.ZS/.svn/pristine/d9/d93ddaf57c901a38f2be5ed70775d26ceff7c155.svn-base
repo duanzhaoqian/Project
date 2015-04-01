@@ -1,0 +1,792 @@
+﻿@using System.CodeDom
+@using KYJ.ZS.Commons.PictureModular
+@using KYJ.ZS.Models.Categories
+@using KYJ.ZS.Models.DB
+@using KYJ.ZS.Models.FreightTemplates
+@model KYJ.ZS.Models.RentalGoodses.RentalGoodsEntity
+@{
+    ViewBag.Title = "修改商品";
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+    ViewBag.Navigation = MerchantNavigation.SHANGPINGUANLI;
+
+    var attr = ViewData["CategoryAttr"] as List<CategoryAttributeEntity>;
+    var attrVal = ViewData["CategoryAttrValue"] as List<CategoryAttributeValue>;
+    var color = ViewData["CategoryColor"] as List<CategoryColor>;
+    var norm = ViewData["CategoryNorm"] as List<CategoryNorm>;
+    var tenancyTemplate = ViewData["TenancyTemplate"] as KYJ.ZS.Models.Pages.PageData<TenancyTemplate>;
+    var freightTemplate = ViewData["FreightTemplate"] as List<FreightSelectEntity>;
+    var brands = ViewData["CategoryBrands"] as List<Brand>;
+    var gp = (Model.GoodsPrice != null && Model.GoodsPrice.Count > 0);
+}
+@section header{
+<style type="text/css">
+        input.error{ border-color:Red;}
+</style>
+<script src="@PubConstant.StaticUrl@Url.Content("base/js/public/config.js")" type="text/javascript"></script>
+    <link href="@PubConstant.StaticUrl@Url.Content("base/plug/datepicker/css/jquery.datepicker.css")" rel="stylesheet" type="text/css" />
+    <script src="@PubConstant.StaticUrl@Url.Content("base/plug/datepicker/jquery.datepicker.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/plug/ueditor/ueditor.config.zs.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/plug/ueditor/ueditor.all.min.js")" type="text/javascript"></script>
+}
+<div class="tag">
+    <ul>
+        <li class="cur">
+            <a href="#">修改商品信息</a></li>
+    </ul>
+</div>
+<form id="formSubmit" action="@Url.MerchantSiteUrl().RentalGoodses_SaveUpdateGoods" method="post">
+    <input type="hidden" name="rentalGoodsId" value="@(Model.RentalGoods.Id)"/>
+    <input type="hidden" name="isHasAttr" value="@((attr != null && attr.Count > 0) ? 1 : 0)"/>
+    <input type="hidden" name="isHasColor" value="@((color != null && color.Count > 0) ? 1 : 0)"/>
+    <input type="hidden" name="isHasNorm" value="@((norm != null && norm.Count > 0) ? 1 : 0)"/>
+    <div class="conbox clearFix mt15">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab_1">
+            <tr>
+                <th width="13%">商品标题： </th>
+                <td width="87%">
+                    <input type="text" class="intxt w490" name="Title" value="@Model.RentalGoods.Title" />
+                </td>
+            </tr>
+            
+            <tr>
+                 <th valign="top">属性： </th>
+                 <td>
+                        <div class="property clearFix" id="div_attr">
+                            @if (brands != null && brands.Count > 0)
+                            {                                
+                                <dl>
+                                    <dt>品牌</dt>
+                                    <dd>
+                                        <ul style="display: none;">
+                                            @foreach (var b in brands)
+                                            {
+                                                <li value="@b.Id">@b.Name</li> 
+                                            }
+                                            
+                                        </ul>
+                                        <input type="text" class="intxt_pro sct_click" value="@(Model.RentalGoods.BrandId < 1 ? "请选择" : Model.RentalGoods.BrandName)" />
+                                        <input type="hidden" name="brands" value="@( ";" + Model.RentalGoods.BrandId + ";" + Model.RentalGoods.BrandName + ";")" />
+                                    </dd>
+                                </dl>
+                                
+                            }
+                            @if (attr != null && attr.Count > 0)
+                            {
+                                foreach (var a in attr)
+                                {
+                                    var sAttr = new CategoryAttributeValue();
+                                    var attrValId = "";
+                                    var attrValTxt = "";
+                                    <dl>
+                                        <dt>@a.AttributeName</dt>
+                                        <dd>
+                                            <ul style="display: none;">
+                                                @if (attrVal != null)
+                                                {
+                                                    foreach (var av in attrVal.Where(o => o.AttributeId == a.AttributeId))
+                                                    {
+                                                        if (Model.GoodsAttribute != null)
+                                                        {
+                                                            var oAttr = Model.GoodsAttribute.Find(i => i.CategoryAttrId == a.Id);
+                                                            if (oAttr != null && attrVal.Exists(o => o.AttributeValId == oAttr.AttrValId))
+                                                            {
+                                                                sAttr = attrVal.Find(o => o.AttributeValId == oAttr.AttrValId);
+                                                                attrValId = oAttr.AttrValId.ToString();
+                                                                attrValTxt = oAttr.GoodsAttrVal;
+                                                            }
+                                                        }
+                                                    
+                                                    
+                                                    
+                                                        <li value="@av.AttributeValId">@av.AttributeValName</li>  
+                                                    }
+                                                }
+                                            </ul>
+                                            <input type="text" class="intxt_pro sct_click" value="@(sAttr.AttributeValId < 1 ? "请选择" : sAttr.AttributeValName)" />
+                                            <input type="hidden" name="hideAttr" value="@(a.AttributeId + ";" + attrValId + ";" + attrValTxt + ";" + a.Id)" defval="@a.AttributeId" defid="@a.Id"/>
+                                        </dd>
+                                    </dl>
+                                }
+                            }
+                            <dl>
+                                <dt>重量</dt>
+                                <dd>
+                                    <input type="text" class="intxt_pro" style="background:#FFFFFF" value="@Model.RentalGoods.Weight" name="Weight"/>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>体积</dt>
+                                <dd>   
+                                    <input type="text" class="intxt_pro" style="background:#FFFFFF" value="@Model.RentalGoods.Volume" name="Volume"/> 
+                                </dd>
+                            </dl>
+                        </div>
+                    </td>
+            </tr>
+            
+            @{
+                var c = (color != null && color.Count > 0);
+                var n = (norm != null && norm.Count > 0);
+            }
+            @if (c || n)
+            {
+                <tr>
+                    <th valign="top">规格： </th>
+                    <td>
+                        <div class="property ptb_10_0">
+                            @if (c)
+                            {
+                                <p class="col666">
+                                    颜色</p>
+                                <div class="collist clearFix">
+                                    
+                                    @foreach (var i in color)
+                                    {
+                                        var sColor = 0;
+                                        if (Model.GoodsColor != null && Model.GoodsColor.Exists(o => o.ColorId == i.Id))
+                                        {
+                                            sColor = Model.GoodsColor.First(o => o.ColorId == i.Id).Id;
+                                        }
+                                            
+                                        <ul>
+                                            <li>
+                                                <label>
+                                                    <span>
+                                                        <input type="checkbox" @(sColor > 0 ? "checked" : "") class="btn_checkbox" value="@(i.Id + ";" + i.Name + ";" + i.Code + ";" + sColor)" defval="@sColor" txt="@i.Name" name="colorList"/> 
+                                                    </span>
+                                                    <span class="bgcol_208505"></span>
+                                                    @i.Name
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    }
+                                </div>
+                            }
+                            @if (n)
+                            {
+                                <p class="col666 mt15">
+                                    尺码</p>
+                                <div class="collist clearFix nobb">
+                                    @foreach (var i in norm)
+                                    {
+                                        var sNorm = 0;
+                                        if (Model.GoodsNorm != null && Model.GoodsNorm.Exists(o => o.NormId == i.Id))
+                                        {
+                                            sNorm = Model.GoodsNorm.First(o => o.NormId == i.Id).Id;
+                                        } 
+                                        <ul>
+                                            <li class="w145">
+                                                <label>
+                                                    <span>
+                                                        <input type="checkbox" @(sNorm > 0 ? "checked" : "") class="btn_checkbox" value="@(i.Id + ";" + i.Name + ";" + sNorm)" defval="@sNorm" txt="@i.Name" name="normList" /></span>
+                                                    @i.Name
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    }
+                                </div>
+                            }
+                        </div>
+                        <div class="mtr_10_90 clearFix" style=" display:none;" id="div_pricelist">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab_3">
+                                <tr>
+                                    <th width="14%">颜色 </th>
+                                    <th width="20%">尺码 </th>
+                                    <th width="15%">租金 </th>
+                                    <th width="15%">数量 </th>
+                                    <th width="15%">商家编码 </th>
+                                    <th width="21%" class="br_colddd">商品条形码 </th>
+                                </tr>
+                                
+                                @if (gp)
+                                {
+                                    foreach (var i in Model.GoodsPrice)
+                                    {
+                                        var colorName = "";
+                                        if (Model.GoodsColor != null)
+                                        {
+                                            colorName = Model.GoodsColor.Find(o => o.Id == i.ColorId).ColorName;
+                                        }
+                                        var normName = "";
+                                        if (Model.GoodsNorm != null)
+                                        {
+                                            normName = Model.GoodsNorm.Find(o => o.Id == i.NormId).NormName;
+                                        }
+                                         
+                                        <tr class="@(i.ColorId + "" + i.NormId)">
+                                            <td><div class="col333">@(colorName)</div></td>
+                                            <td><div class="col333">@(normName)</div></td>
+                                            <td><input data-val='hPrice' name="hPrice" type="text" class="intxt_h24_colbbb w80" value="@i.Price" /></td>
+                                            <td><input data-val='hNumber' name="hNumber" type="text" class="intxt_h24_colbbb w80" value="@i.Number" /></td>
+                                            <td><input data-val='hCode' name="hCode" type="text" class="intxt_h24_colbbb w80" value="@i.Code" /></td>
+                                            <td><input data-val='hBarcode' name="hBarcode" type="text" class="intxt_h24_colbbb w130" value="@i.Barcode" /></td>
+                                            <input type="hidden" name="hide_pricelist" value="@(i.ColorId + ";" + colorName + ";" + i.NormId + ";" + normName)"/>
+                                        </tr>
+                                    }
+
+                                }
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            }
+            <tr id="tr_Number">
+                <th>商品数量： </th>
+                <td>
+                    <input type="text" class="intxt w220" value="@Model.RentalGoods.Number" name="Number"/>
+                </td>
+            </tr>
+            <tr id="tr_Code">
+                <th>商家编号： </th>
+                <td>
+                    <input type="text" class="intxt w220" value="@Model.RentalGoods.Code" name="Code"/>
+                </td>
+            </tr>
+            <tr id="tr_Barcode">
+                <th>商家条形码： </th>
+                <td>
+                    <input type="text" class="intxt w220" value="@Model.RentalGoods.Barcode" name="Barcode"/>
+                </td>
+            </tr>
+            <tr>
+                <th valign="top">商品图片： </th>
+                <td>
+                    <div class="mb10">
+                        @{ Html.RenderAction("Upload", "Upload", new { guid = Model.RentalGoods.Guid, picturetype = "SHOW", maxnum = 5, pictureNo = 0 }); }
+                    </div>
+                    <div class="upimgbox clearFix" id="GalleryContainer">
+                        @{
+                            var goodsshowlist = GetPicture.GetGoodsPictureListNoFilter(Model.RentalGoods.Guid, true, "SHOW");
+                            var maxshowuploadnum = 5;
+                        }
+                        <ul id="sortable1">
+                            @if (null != goodsshowlist && goodsshowlist.Count > 0)
+                            {
+                                maxshowuploadnum = maxshowuploadnum - goodsshowlist.Count;
+                                var mac = 99;
+                                foreach (var item in goodsshowlist)
+                                {
+                                    <li class="js_sort" data_imageid="@item.Id">
+                                        <img src="@(item.Path + ".136_136.jpg")" />
+                                        @*<a class="js_deleteShow" href="@PubConstant.ImgUploadBaseUrl/Goods/Delete.ashx?para=@Model.RentalGoods.Guid^@item.Id^SHOW">删除</a>*@
+                                        <span class="close js_deleteShow" dataurl="@PubConstant.ImgUploadBaseUrl/Goods/Delete.ashx?para=@Model.RentalGoods.Guid^@item.Id^SHOW"></span>
+                                    </li>
+                                                                                                                                                           mac--;
+                                }
+                            }
+                            @*@if (maxshowuploadnum > 0)
+                            {
+                                for (int i = 0; i < maxshowuploadnum; i++)
+                                {
+                                    var picNo = "PicUp" + i;
+                                    <li class="adimg" dataurl="@Url.Action("Upload", "Upload", new { guid = Model.RentalGoods.Guid, picturetype = "SHOW", maxnum = 5, pictureNo = picNo })">
+                                        @{ Html.RenderAction("Upload", "Upload", new { guid = Model.RentalGoods.Guid, picturetype = "SHOW", maxnum = 5, pictureNo = picNo }); }
+                                    </li>
+                                }
+                            }*@
+                        </ul>
+                    </div>
+                    <div class="wxt">
+                        温馨提示：最多可上传<span class="cold21b1b"> 5 </span>张商品图片，单张小于<span>2M</span>。</div>
+                </td>
+            </tr>
+            <tr>
+                <th valign="top">商品描述： </th>
+                <td>
+                    <div class="">
+                        @*<img src="../images/img/img_02.jpg" width="725" height="348" />*@
+                        <textarea name="Desc" style=" width:725px; height:348px;" id="myEditor">@Model.RentalOther.Descs</textarea>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div class="bg_fa">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab_2">
+                <tr>
+                    <th width="13%">市场价： </th>
+                    <td width="87%">
+                        <input type="text" class="intxt w220" value="@Model.RentalGoods.Price" name="Price"/><span class="col666 ml5">元</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>押金： </th>
+                    <td>
+                        <input type="text" class="intxt w220" value="@Model.RentalGoods.Deposit" name="Deposit"/><span class="col666 ml5">元</span>
+                    </td>
+                </tr>
+                <tr id="tr_MonthPrice">
+                    <th>月租金： </th>
+                    <td>
+                        <input type="text" class="intxt w220" value="@Model.RentalGoods.MonthPrice" name="MonthPrice"/><span class="col666 ml5">元</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>滞纳金： </th>
+                    <td>
+                        <input type="text" class="intxt w220" value="@Model.RentalGoods.LateFees" name="LateFees"/><span class="col666 ml5">元/天</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>租期模板： </th>
+                    <td>
+                        <select class="selcss w236" name="TtempId">
+                            <option value="">请选择</option>
+                            @if (tenancyTemplate != null && tenancyTemplate.DataList.Count > 0)
+                            {
+                                foreach (var item in tenancyTemplate.DataList)
+                                {
+                                    <option value="@item.TtempId" @(Model.RentalGoods.TtempId == item.TtempId ? "selected" : "")>@item.TtempTitle</option>
+                                }
+                            }
+                        </select><span class="col666 ml5"><a href="@Url.MerchantSiteUrl().TenancyTemplate_Index" target="_blank">制定租期模板</a></span> </td>
+                </tr>
+                <tr>
+                    <th>运费模板： </th>
+                    <td>
+                        <select class="selcss w236" name="FtempId">
+                            <option value="">请选择</option>
+                            @if (freightTemplate != null && freightTemplate.Count > 0)
+                            {
+                                foreach (var item in freightTemplate)
+                                {
+                                    <option value="@item.Id" @(Model.RentalGoods.FtempId == item.Id ? "selected" : "")>@item.Name</option>
+                                }
+                            }
+                        </select><span class="col666 ml5"><a href="@Url.MerchantSiteUrl().FreightTemplates_Index" target="_blank">制定运费模板</a></span> </td>
+                </tr>
+            </table>
+        </div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab_1">
+            <tr>
+                <th width="13%" height="45">开始时间： </th>
+                <td width="87%" height="45">
+                    <label class="col333 mr20">
+                        <input type="radio" name="Mode" class="btn_radio" value="1" @(Model.RentalGoods.Mode == 1 ? "checked" : "")/>立刻</label>
+                    <label class="col333 mr20">
+                        <input type="radio" name="Mode" class="btn_radio"  value="2" @(Model.RentalGoods.Mode == 2 ? "checked" : "")/>放入仓库</label>
+                    <label class="col333 mr20">
+                        <input type="radio" name="Mode" class="btn_radio"  value="3" @(Model.RentalGoods.Mode == 3 ? "checked" : "")/>设定</label>
+                    @{
+                        DateTime? datetime = null;
+                        bool f = false;
+                        if (Model.RentalGoods.BeginTime != null && Model.RentalGoods.Mode != 1)
+                        {
+                            f = true;
+                            datetime = Model.RentalGoods.BeginTime.Value;
+                        }
+                    }
+                    
+                    <input class="selcss w160" name="DateTime_Date" value="@(f ? datetime.Value.Date.ToShortDateString() : "")" readonly="readonly"/>
+                    <select class="selcss w80" name="DateTime_Hour">
+                        <option value="0">时</option>
+                        @for (var i = 1; i <= 24; i++)
+                        {
+                            <option value="@i" @(f ? (datetime.Value.Hour == i ? "selected" : "") : "")>@i</option>
+                        }
+                    </select>
+                    <select class="selcss w80" name="DateTime_Minute">
+                        <option value="0">分</option>
+                        @for (var i = 1; i <= 60; i++)
+                        {
+                            <option value="@i" @(f ? (datetime.Value.Minute == i ? "selected" : "") : "")>@i</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>有效期： </th>
+                <td><label class="col333 mr20">
+                        <input type="radio" name="Validity" class="btn_radio" value="1" @(Model.RentalGoods.Validity == 1 ? "checked" : "")/>1周</label>
+                    <label class="col333 mr20">
+                        <input type="radio" name="Validity" class="btn_radio" value="2" @(Model.RentalGoods.Validity == 2 ? "checked" : "")/>1个月</label>
+                </td>
+            </tr>
+            
+            <tr>
+                <th>&nbsp; </th>
+                <td height="60" valign="top">
+                    <input type="button" class="btn_blue" value="确认修改" id="submit_button"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
+
+@section scripts{
+    
+    <script src="@PubConstant.StaticUrl@Url.Content("web/merchant/js/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/plug/autotip/jquery.autotip.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jQuery.validator.messages_cn.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jQuery.validator.methods.js")" type="text/javascript"></script>
+
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/uploadify/swfobject.js")" type="text/javascript"></script>
+    <link href="@PubConstant.StaticUrl@Url.Content("base/js/uploadify/uploadify.css")" rel="stylesheet" type="text/css" />
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/uploadify/jquery.uploadify.v2.1.4.js")" type="text/javascript"></script>
+
+
+    <script src="@PubConstant.StaticUrl@Url.Content("web/merchant/js/jquery.ui.core.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("web/merchant/js/jquery.ui.widget.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("web/merchant/js/jquery.ui.mouse.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("web/merchant/js/jquery.ui.sortable.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("web/merchant/js/jquery.ui.droppable.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("web/merchant/js/jquery.ui.tabs.js")" type="text/javascript"></script>
+    
+    
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/public/Sort.js")" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+        var timer;
+        $(document).ready(function () {
+            UE.getEditor('myEditor');
+            var tr_html = "<tr><td></td><td></td><td><input data-val='hPrice' name='hPrice' type='text' class='intxt_h24_colbbb w80' value='' /></td>" +
+                "<td><input data-val='hNumber' name='hNumber' type='text' class='intxt_h24_colbbb w80' value='' />" +
+                "</td><td><input data-val='hCode' name='hCode' type='text' class='intxt_h24_colbbb w80' value='' />" +
+                "</td><td><input data-val='hBarcode' name='hBarcode' type='text' class='intxt_h24_colbbb w130' value='' /></td>" +
+                "<input type='hidden' name='hide_pricelist' value=''/></tr>";
+
+            var clist = [], nlist = [];
+
+            var $div_attr = $("#div_attr"),
+                $sct_click = $div_attr.find(".sct_click"),
+                $div_attr_dl = $div_attr.find("dl"),
+                $div_attr_dl_ul = $div_attr_dl.find("ul"),
+                $div_attr_dl_ul_li = $div_attr_dl_ul.find("li"),
+                $div_pricelist = $("#div_pricelist"),
+                $number = $("#tr_Number"),
+                $code = $("#tr_Code"),
+                $barcode = $("#tr_Barcode"),
+                $monthPrice = $("#tr_MonthPrice");
+
+                $('input[name="colorList"]:checked').each(function(key, val) {
+                    clist.push($(val).attr("defVal"));
+                });
+                $('input[name="normList"]:checked').each(function(key, val) {
+                    nlist.push($(val).attr("defVal"));
+                });
+            if ("@(gp)" == "True") {
+                
+                $("#div_pricelist").show();
+                $div_pricelist.show();
+                $number.hide();
+                $code.hide();
+                $barcode.hide();
+                $monthPrice.hide();
+            }
+
+            $("input[name='DateTime_Date']").datepicker({
+                dateFormat: 'yy/mm/dd',
+                minDate: new Date()
+            });
+
+
+            $sct_click.on("click", function() {
+                var obj = $(this).closest("dl");
+                $div_attr_dl.removeClass("z_three");
+                obj.addClass("z_three");
+                obj.find("ul").show();
+            });
+
+
+            $div_attr_dl.on("hover", function() {
+                $(this).removeClass("z_three");
+                $(this).find("ul").hide();
+            });
+
+
+            $div_attr_dl_ul_li.on("click", function() {
+                var obj = $(this).parent();
+                obj.parent().find(".sct_click").val($(this).text());
+                var d = obj.parent().find("input:hidden");
+                d.val("");
+                d.val(d.attr("defval") + ";" + this.value + ";" + $(this).text() + ";" + d.attr("defid"));
+                obj.hide();
+            }).bind("hover", (function() {
+                $(this).addClass("on");
+            }, function() {
+                $(this).removeClass("on");
+            }));
+
+
+            $("input[name='colorList']").on("click", function() {
+                var cval = $(this).attr("defval");
+                var ctxt = $(this).attr("txt");
+
+                if ($(this).is(':checked')) {
+                    clist.push(cval);
+                    if (nlist.length > 0) {
+                        $div_pricelist.show();
+                        $number.hide();
+                        $code.hide();
+                        $barcode.hide();
+                        $monthPrice.hide();
+                        $.each(nlist, function(key, val) {
+                            var ntxt = $("input[name='normList'][defval='" + val + "']").attr("txt");
+                            $(tr_html).appendTo(".tab_3 tbody")
+                                .find("td:eq(0)").text(ctxt)
+                                .end()
+                                .find("td:eq(1)").text(ntxt)
+                                .end()
+                                .attr("class", cval + val)
+                                .find('input[name="hide_pricelist"]').attr("value", cval + ";" + ctxt + ";" + val + ";" + ntxt);
+
+                            hInt();
+                        });
+                    }
+                } else {
+                    $.each(nlist, function(key, val) {
+                        var dd = cval + val;
+                        $(".tab_3 ." + dd).remove();
+                    });
+                    clist.splice($.inArray(cval, clist), 1);
+                    if (nlist.length == 0 || clist.length == 0) {
+                        $div_pricelist.hide();
+                        $number.show();
+                        $code.show();
+                        $barcode.show();
+                        $monthPrice.show();
+                    }
+                }
+            });
+
+
+            $("input[name='normList']").on("click", function() {
+                var nval = $(this).attr("defval");
+                var ntxt = $(this).attr("txt");
+                if ($(this).is(':checked')) {
+                    nlist.push(nval);
+                    if (clist.length > 0) {
+                        $div_pricelist.show();
+                        $number.hide();
+                        $code.hide();
+                        $barcode.hide();
+                        $monthPrice.hide();
+                        $.each(clist, function(key, val) {
+                            var ctxt = $("input[name='colorList'][defval='" + val + "']").attr("txt");
+                            $(tr_html).appendTo(".tab_3 tbody")
+                                .find("td:eq(0)").text(ctxt)
+                                .end()
+                                .find("td:eq(1)").text(ntxt)
+                                .end()
+                                .attr("class", val + nval)
+                                .find('input[name="hide_pricelist"]').attr("value", val + ";" + ctxt + ";" + nval + ";" + ntxt);
+
+                            hInt();
+                        });
+
+                    }
+
+                } else {
+                    $.each(clist, function(key, val) {
+                        var dd = val + nval;
+                        $(".tab_3 ." + dd).remove();
+                    });
+                    nlist.splice($.inArray(nval, nlist), 1);
+                    if (nlist.length == 0 || clist.length == 0) {
+                        $div_pricelist.hide();
+                        $number.show();
+                        $code.show();
+                        $barcode.show();
+                        $monthPrice.show();
+                    }
+                }
+            });
+
+            var $submit = $("#formSubmit");
+
+            $("#submit_button").on("click", function() {
+                $(".tab_3 tr:gt(0)").each(function(key, val) {
+
+                    var d2 = $(this).find("td:eq(2)").find(".intxt_h24_colbbb").val();
+                    var d3 = $(this).find("td:eq(3)").find(".intxt_h24_colbbb").val();
+                    var d4 = $(this).find("td:eq(4)").find(".intxt_h24_colbbb").val();
+                    var d5 = $(this).find("td:eq(5)").find(".intxt_h24_colbbb").val();
+
+                    var dval = d2 + ";" + d3 + ";" + d4 + ";" + d5;
+                    var defval = $(this).find('input[name="hide_pricelist"]').val();
+                    $(this).find('input[name="hide_pricelist"]').attr("value", defval + ";" + dval);
+
+                });
+                $submit.submit();
+            });
+            
+            $.validator.addMethod("defautValue", function () {
+                return $("input[name='Title']").val() != "最长30个中文字符";
+            }, "<span class='no'>请填写标题</span>");
+            $submit.validate({
+//               onsubmit: true,
+                ignore: true,
+                rules: {
+                    Title: { required: true, defautValue: true, maxlength: 30 },
+                    Number: { required: true, digits: true },
+                    Code: { maxlength: 20 },
+                    Barcode: { maxlength: 50 },
+                    Desc: { required: true },
+                    Price: { required: true, range: [0, 999999999] },
+                    Deposit: { range: [0, 999999999] },
+                    MonthPrice: { range: [0, 999999999] },
+                    LateFees: { range: [0, 999999999] },
+                    Mode: { required: true },
+                    Validity: { required: true },
+                    TtempId: { required: true },
+                    FtempId: { required: true }
+                    
+                },
+                errorPlacement: function (error, element) {
+                    if (element.is("input[name='Price']") || element.is("input[name='Deposit']")
+                            || element.is("input[name='MonthPrice']") || element.is("input[name='LateFees']")) {
+                        $().appendTo(element.parent());
+                        error.appendTo(element.parent());
+                    } else if (element.is("input[name='Mode']") || element.is("input[name='Validity']")) {
+                        $().appendTo(element.parent().parent());
+                        error.appendTo(element.parent().parent());
+                    } else {
+                        error.appendTo(element.parent());
+                    }
+                },
+                submitHandler: function () {
+                    $.ajax({
+                        type: "post",
+                        dataType: "json",
+                        url: "@Url.MerchantSiteUrl().RentalGoodses_SaveUpdateGoods",
+                        data: $submit.serialize(),
+                        success: function (response) {
+                            if (response.result) {
+                                location.href = "@Url.MerchantSiteUrl().RentalGoodses_Index()";
+                            } else {
+                                $.msg(response.message, 2, -1);
+                            }
+                        }
+                    });
+                }
+            });
+
+            $("input[name='Mode']").on("click", function () {
+                if ($(this).val() == 3) {
+                    $("input[name='DateTime_Date']").rules("add", {
+                        required: true
+                    });
+                } else {
+                    $("input[name='DateTime_Date']").removeClass("error").rules("remove");
+                }
+            });
+            $("input[name='Weight']").rules("add", {
+                required: true,
+                range: [0, 999999999],
+                messages: { required: "", range: "" }
+            });
+            $("input[name='Volume']").rules("add", {
+                required: true,
+                range: [0, 999999999],
+                messages: { required: "", range: "" }
+            });
+            var hInt = function() {
+                $("[data-val='hPrice']").each(function (index, value) {
+                    var name = $(this).attr("name");
+                    $(this).attr("name", name + index);
+                    $(this).rules("add", {
+                        required: true,
+                        range: [0, 999999999],
+                        messages: { required: "", range: "" }
+                    });
+
+                });
+                $("[data-val='hNumber']").each(function (index, value) {
+                    var name = $(this).attr("name");
+                    $(this).attr("name", name + index);
+                    $(this).rules("add", {
+                        required: true,
+                        digits: true,
+                        messages: { required: "", digits: "" }
+                    });
+
+                });
+                $("[data-val='hCode']").each(function (index, value) {
+                    var name = $(this).attr("name");
+                    $(this).attr("name", name + index);
+                    $(this).rules("add", {
+                        maxlength: 20,
+                        messages: { maxlength: "" }
+                    });
+
+                });
+                $("[data-val='hBarcode']").each(function (index, value) {
+                    var name = $(this).attr("name");
+                    $(this).attr("name", name + index);
+                    $(this).rules("add", {
+                        maxlength: 50,
+                        messages: { maxlength: "" }
+                    });
+
+                });
+            }
+
+            hInt();
+
+            //删除商品展示图片
+            $("span.js_deleteShow").live('click', function(e) {
+                e.preventDefault();
+                var rongqi = $(this).closest("li");
+                if (confirm("确定执行当前操作？")) {
+                    var href = $(this).attr("dataurl");
+                    $.ajax({
+                        url: href,
+                        type: "get",
+                        dataType: "jsonp",
+                        jsonp: "callbackparam",
+                        jsonpCallback: "success_jsonpCallback",
+                        success: function(data) {
+                            $.map(data, function(item) {
+                                rongqi.remove();
+                                alert("删除成功");
+                            });
+                        },
+                        error: function() { alert("删除图片出错!"); }
+                    });
+                }
+            });
+
+
+            ////////////////////商品图片排序
+            
+            var InitDroppable = function() {
+                $("#sortable1").sortable();
+                var $tabs = $("#GalleryContainer").tabs();
+
+                var $tab_items = $("ul:first li", $tabs).droppable({
+                    drop: function(event, ui) {
+                        timer = setInterval(sortimage, 200);
+                    }
+                });
+                $("#GalleryContainer").removeClass("ui-widget-content");
+            }
+
+            InitDroppable();
+
+
+        });
+
+        function sortimage() {
+            $(this).sortOneTypePic({
+                innerCode: '@Model.RentalGoods.Guid',
+                picData: $('li.js_sort'),  //装在数据的页面元素
+                dataName: 'data_imageid',  //装在各个数据的元素节点名称，也就是存图片Id的节点名称,请再所有节点使用同样的名称
+                imgUploadBaseUrl: '@PubConstant.ImgUploadBaseUrl', //文件上传服务器所在地址
+                picturetype: 'SHOW'   //图片操作类型
+            });
+            clearInterval(timer);
+        }
+
+        function LoadLoPic(rongqi) {
+            var url = rongqi.attr("dataurl");
+            $.ajax({
+                url: url,
+                type: "get",
+                dataType: "html",
+                success: function(data) {
+                    rongqi.html(data);
+                }
+            });
+        }
+
+    </script>
+}

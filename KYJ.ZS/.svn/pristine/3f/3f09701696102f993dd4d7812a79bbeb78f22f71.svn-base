@@ -1,0 +1,82 @@
+﻿@using KYJ.ZS.Models.RentalGoodses
+@model KYJ.ZS.Models.View.MerchantMainView
+@{
+    ViewBag.Title = "商户中心";
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+}
+@section scripts
+{
+    
+}
+<div class="rightbox b_colf5f5f5">
+    <div class="caption clearFix">
+        <div class="klklogo" style="background:url(@ViewBag.LogoPic);background-size:98px 34px;background-repeat:no-repeat;">
+            <a href="#"></a>
+        </div>
+        <div class="klktit">
+            @CurrentUser.NickName</div>
+        <div class="service" style="display:none">
+            <span class="fl">服务认证：</span><i class="s_1">&nbsp;</i> <i class="s_2">&nbsp;</i>
+            <i class="s_3">&nbsp;</i> <i class="s_4">&nbsp;</i> <i class="s_5">&nbsp;</i></div>
+    </div>
+    <div class="cap_list">
+        <div class="cap_list_r bcol_1">
+        </div>
+        <dl>
+            <dt>金额</dt>
+            <dd>
+                <span class="price">@Model.LongMoney.</span><span class="colf30">@Model.PointMoney</span>元</dd>
+            <dd>
+                <a href="@Url.MerchantSiteUrl().ApplyFor">提现</a></dd>
+            <dd>
+                <a href="@Url.MerchantSiteUrl().WaterSubsidiary">账户流水明细</a></dd>
+            <dd>
+                <a href="@Url.MerchantSiteUrl().ManageBank">管理提现账户</a></dd>
+        </dl>
+    </div>
+    <div class="cap_list">
+        <div class="cap_list_r bcol_2">
+        </div>
+        <dl id="dl_rentalorder">
+            <dt>订单</dt>
+            <dd>
+                待付款<span><a href="@Url.MerchantSiteUrl().Order_Manager()?OrderStateType=1">（@Model.GetOrderNum(1)）</a></span></dd>
+            <dd>
+                待发货<span><a href="@Url.MerchantSiteUrl().Order_Manager()?OrderStateType=3">（@Model.GetOrderNum(3)）</a></span></dd>
+            <dd>
+                待收货<span><a href="@Url.MerchantSiteUrl().Order_Manager()?OrderStateType=4">（@Model.GetOrderNum(4)）</a></span></dd>
+            @*<dd>
+                待评价<span><a href="@Url.MerchantSiteUrl().RentalOrder?state=14">（@Model.GetOrderNum(14)）</a></span></dd>*@
+            <dd>
+                成功单<span><a href="@Url.MerchantSiteUrl().OrderManager((int)OrderStateAreaType.Successed)">（@(Model.GetOrderNum(17)+Model.GetOrderNum(18))）</a></span></dd>
+            <dd>
+                关闭单<span><a href="@Url.MerchantSiteUrl().OrderManager((int)OrderStateAreaType.Closed)">（@(Model.GetOrderNum(19)+Model.GetOrderNum(20))）</a></span></dd>
+        </dl>
+    </div>
+    <div class="cap_list">
+        <div class="cap_list_r bcol_3">
+        </div>
+        <dl>
+            <dt>商品</dt>
+             <dd>
+                出售中<span><a href="@Url.MerchantSiteUrl().RentalGoodses_Index()">（@Model.GetRentalGoodsNum(1)）</a></span></dd>
+            <dd>
+                待出售<span><a href="@Url.MerchantSiteUrl().RentalGoodses_Index()">（@Model.GetRentalGoodsNum(2)）</a></span></dd>
+        </dl>
+    </div>
+   @* <div class="cap_list">
+        <div class="cap_list_r bcol_4">
+        </div>
+        <dl>
+            <dt>评价</dt>
+            <dd>
+                今日收到评价</dd>
+            <dd>
+                差评<span class="colf30">（99）</span></dd>
+            <dd>
+                一般<span class="colf30">（99）</span></dd>
+            <dd>
+                好评<span class="colf30">（99）</span></dd>
+        </dl>
+    </div>*@
+</div>

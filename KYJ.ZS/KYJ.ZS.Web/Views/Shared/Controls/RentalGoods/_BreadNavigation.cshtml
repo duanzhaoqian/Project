@@ -1,0 +1,53 @@
+﻿@using KYJ.ZS.BLL.Categories;
+@model KYJ.ZS.Models.Common.NavigationEntity
+<div class="bread">
+    @if (Model.Type == 0)
+    {
+        CategoryBll catBll = new CategoryBll();
+        var cat = catBll.GetCategoryList().List.FirstOrDefault((a) => a.Id == Model.CategoryId);
+
+        if (cat != null)
+        {
+            if (cat.Level == 1)
+            {
+
+                var firstcat = catBll.GetCategoryList().List.FirstOrDefault((a) => a.Id == cat.Pid);
+                var name = firstcat.Name + "-" + cat.Name;
+        <a href="@Url.WebSiteUrl().Index">首页</a>@Html.Raw("&nbsp;&nbsp;&gt;&nbsp;&nbsp;")@name
+            }
+            if (cat.Level == 2)
+            {
+                var sencondcat = catBll.GetCategoryList().List.FirstOrDefault((a) => a.Id == cat.Pid);
+                var firstcat = catBll.GetCategoryList().List.FirstOrDefault((a) => a.Id == sencondcat.Pid);
+                var channelUrl = "c" + firstcat.Id + "-d" + sencondcat.Id;
+                if (!string.IsNullOrEmpty(Model.Content))
+                {
+                    var categoryUrl = channelUrl + "-e" + cat.Id;
+        <a href="@Url.WebSiteUrl().Index">首页</a>@Html.Raw("&nbsp;&nbsp;&gt;&nbsp;&nbsp;")<a name="channel"  value="@channelUrl" href="">@firstcat.Name-@sencondcat.Name</a>@Html.Raw("&nbsp;&nbsp;&gt;&nbsp;&nbsp;")<a name="category" value="@categoryUrl">@cat.Name</a>@Html.Raw("&nbsp;&nbsp;&gt;&nbsp;&nbsp;")@(Model.Content.Length <= 6 ? Model.Content : Model.Content.Substring(0, 6) + "...")
+                }
+                else
+                {
+        <a href="@Url.WebSiteUrl().Index">首页</a>@Html.Raw("&nbsp;&nbsp;&gt;&nbsp;&nbsp;")<a name="channel"  value="@channelUrl" href="">@firstcat.Name-@sencondcat.Name</a>@Html.Raw("&nbsp;&nbsp;&gt;&nbsp;&nbsp;")@cat.Name
+                }
+            }
+        }
+        else
+        {
+            if (!string.IsNullOrEmpty(Model.Content))
+            {
+        <a href="@Url.WebSiteUrl().Index">首页</a>@Html.Raw("&nbsp;&nbsp;&gt;&nbsp;&nbsp;")@(Model.Content.Length <= 6 ? Model.Content : Model.Content.Substring(0, 6) + "...")
+            }
+        }
+    }
+    else
+    {
+        if (!string.IsNullOrEmpty(Model.Content))
+        {
+        <a href="@Url.WebSiteUrl().Index">首页</a>@Html.Raw("&nbsp;&nbsp;&gt;&nbsp;&nbsp;")<a href="@Url.WebSiteUrl().SaleGoods_Index">闲置物品</a>@Html.Raw("&nbsp;&nbsp;&gt;&nbsp;&nbsp;")@(Model.Content.Length <= 6 ? Model.Content : Model.Content.Substring(0, 6) + "...")
+        }
+        else
+        {
+        <a href="@Url.WebSiteUrl().Index">首页</a>@Html.Raw("&nbsp;&nbsp;&gt;&nbsp;&nbsp;闲置物品")
+        }
+    }
+</div>

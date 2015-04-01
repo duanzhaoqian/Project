@@ -1,0 +1,311 @@
+﻿@using System.Globalization
+@using KYJ.ZS.Commons.PictureModular
+@using KYJ.ZS.Models.Common
+@using KYJ.ZS.Models.DB
+@{
+    ViewBag.Title = "修改商品";
+    Layout = "~/Views/Shared/Layouts/_UserLayout.cshtml";
+    ViewBag.Navigation = UserNavigation.XINXIGUANLI;
+    var guid = Model.SaleGoods.Guid == Guid.Empty.ToString() ? Guid.NewGuid().ToString() : Model.SaleGoods.Guid;
+    
+}
+@model KYJ.ZS.Models.SaleGoodses.SaleGoodsEntity
+@section header{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/plug/ueditor/ueditor.config.zs.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/plug/ueditor/ueditor.all.min.js")" type="text/javascript"></script>
+}
+<form id="formSubmit" action="@Url.UserSiteUrl().SaveUpdateSaleGoods" method="post">
+<input type="hidden" name="Id" value="@Model.SaleGoods.Id"/>
+<input type="hidden" name="Guid" value="@guid"/>
+<div class="tag">
+    <ul>
+        <li class="cur">
+            <a href="#">修改信息</a></li>
+    </ul>
+</div>
+@if (Model.SaleGoods.State == 1 || Model.SaleGoods.State == 3)
+{
+    <div class="upd_ts">@Model.SaleGoods.ShelfReason</div>
+}
+<div class="er_location2">
+    <form action="" method="post">
+    <table cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                <th>新旧程度：</th>
+                <td>
+                    <select class="w100" name="Degree">
+                        <option value="">请选择</option>
+                        <option value="10" @(Model.SaleGoods.Degree == 10 ? "selected" : "")>全新</option>
+                        <option value="9" @(Model.SaleGoods.Degree == 9 ? "selected" : "")>9成</option>
+                        <option value="8" @(Model.SaleGoods.Degree == 8 ? "selected" : "")>8成</option>
+                        <option value="7" @(Model.SaleGoods.Degree == 7 ? "selected" : "")>7成</option>
+                        <option value="6" @(Model.SaleGoods.Degree == 6 ? "selected" : "")>6成</option>
+                        <option value="5" @(Model.SaleGoods.Degree == 5 ? "selected" : "")>5成</option>
+                        <option value="4" @(Model.SaleGoods.Degree == 4 ? "selected" : "")>4成</option>
+                        <option value="3" @(Model.SaleGoods.Degree == 3 ? "selected" : "")>3成</option>
+                        <option value="2" @(Model.SaleGoods.Degree == 2 ? "selected" : "")>2成</option>
+                        <option value="1" @(Model.SaleGoods.Degree == 1 ? "selected" : "")>1成</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <th>价格： </th>
+                <td>
+                    <input type="text" name="Price" class="input_txt w248" value="@Model.SaleGoods.Price"/>
+                    <span>元</span><span class="pl30">
+                        <input type="checkbox" class="btn_checkbox" name="IsBargain" @(Model.SaleGoods.IsBargain == false ? "" : "checked")>不讲价</span> </td>
+            </tr>
+            <tr>
+                <th>上传图片：</th>
+                <td>
+                    <div class="mb10">
+                        @{ Html.RenderAction("Upload", "Upload", new { guid, picturetype = "FREE", maxnum = 1, pictureNo = 0 }); }
+                    </div>
+                    @{var imgurl = KYJ.ZS.Commons.PictureModular.GetPicture.GetFirstGoodsPicture(Model.SaleGoods.Guid, true, "FREE");}
+                    <div class="upimgbox clearFix" id="GalleryContainer">
+                        <ul id="sortable1">
+                            @if (!string.IsNullOrEmpty(imgurl))
+                            { 
+                                <li>
+                                    <img src="@imgurl.136_136.jpg"></li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="wxt">
+                        温馨提示：上传的商品图片需小于<span class="cold21b1b">2M</span>，格式为jpg、bmp、png。</div>
+                </td>
+            </tr>
+            <tr>
+                <th>标题：</th>
+                <td>
+                    <input type="text" class="input_txt w490" name="Title" value="@Model.SaleGoods.Title" />
+                </td>
+            </tr>
+            <tr>
+                <th width="12%">详细描述：</th>
+                <td>
+                    <textarea name="Desc" cols="45" rows="5" class="w640" id="myEditor">@(Model.SaleOther != null ? Model.SaleOther.Descs : "")</textarea>
+                </td>
+            </tr>
+            <tr>
+                <th>所在地：</th>
+                <td>
+                    <select id="ProvinceId" name="ProvinceId" class="w100">
+                        <option value="0">请选择</option>
+                    </select>
+                    <input type="hidden" id="ProvinceName" name="ProvinceName" value="@Model.SaleGoods.ProvinceName" />
+                    <select id="CityId" name="CityId" class="w100">
+                        <option value="0">请选择</option>
+                    </select>
+                    <input type="hidden" id="CityName" name="CityName" value="@Model.SaleGoods.CityName" />
+                    <select id="DistrictId" name="DistrictId" class="w100">
+                        <option value="0">请选择</option>
+                    </select>
+                    <input type="hidden" id="DistrictName" name="DistrictName" value="@Model.SaleGoods.DistrictName" />
+                    <span id="msg"></span></td>
+            </tr>
+            <tr>
+                <th>联系人：</th>
+                <td>
+                    <input type="text" name="Contact" class="input_txt w248" value="@Model.SaleGoods.Contact"/>
+                </td>
+            </tr>
+            <tr>
+                <th>联系电话：</th>
+                <td>
+                    <input type="text" name="ContactPhone" class="input_txt w248" value="@Model.SaleGoods.ContactPhone"/>
+                </td>
+            </tr>
+            <tr>
+                <th>选择标签：</th>
+                <td>
+                    @if (ViewData["Tags"] != null)
+                    {
+                        bool fTag = !Model.SaleGoods.Tag.IsNullOrEmpty();
+                        var tArrty = Model.SaleGoods.Tag.Split(',');
+                        foreach (var item in ViewData["Tags"] as List<Tag>)
+                        {
+                            var ftag = fTag ? (tArrty.Contains(item.Id.ToString()) ? "bg_ffefd8" : "") : "";
+                        <a class="bg_gray @(ftag)" name="a_Tag" value="@item.Id">@item.Name</a>
+                        }
+                    }
+                    <input type="hidden" name="Tag" value="@Model.SaleGoods.Tag"/>
+                </td>
+            </tr>
+            <tr>
+                <th>&nbsp;</th>
+                <td><span class="remind">请选择 1- 3个标签</span></td>
+            </tr>
+            <tr>
+                <th>&nbsp;</th>
+                <td>
+                    <input type="button" class="btn_yellow" value="确认修改" /></td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+</div>
+</form>
+@section scripts{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jQuery.validator.messages_cn.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jQuery.validator.methods.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/uploadify/swfobject.js")" type="text/javascript"></script>
+    <link href="@PubConstant.StaticUrl@Url.Content("base/js/uploadify/uploadify.css")" rel="stylesheet" type="text/css" />
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/uploadify/jquery.uploadify.v2.1.4.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(function() {
+            var selectProvinces = $("#ProvinceId");
+            var selectCities = $("#CityId");
+            var selectDistricts = $("#DistrictId");
+            $(selectProvinces).change(function() {
+                $ProvinceID = parseInt($(this).val());
+                $ProvinceName = $(this).find("option:selected").text();
+                $("#ProvinceName").val($ProvinceName);
+                $(this).closest("label").find("input").val($ProvinceName);
+                Common.ClearListItems(selectCities);
+                Common.ClearListItems(selectDistricts);
+                if ($ProvinceID > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("cities")?geographyCode=' + this.value + "&ram=" + Math.random(), 0, selectCities);
+                }
+            });
+            $(selectCities).change(function() {
+                $CityID = parseInt($(this).val());
+                $CityName = $(this).find("option:selected").text();
+                $("#CityName").val($CityName);
+                $(this).closest("label").find("input").val($CityName);
+                Common.ClearListItems(selectDistricts);
+                if ($CityID > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("districts")?geographyCode=' + this.value + "&ram=" + Math.random(), 0, selectDistricts);
+                }
+            });
+            $(selectDistricts).change(function() {
+                $DistrictName = $(this).find("option:selected").text();
+                $("#DistrictName").val($DistrictName);
+                $(this).closest("label").find("input").val($DistrictName);
+            });
+            var Init = function(intPId, intCId, intDId) {
+                Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("provinces")', intPId, selectProvinces);
+                if (intPId > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("cities")?geographyCode=' + intPId + "&ram=" + Math.random(), intCId, selectCities);
+                }
+                if (intCId > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("districts")?geographyCode=' + intCId + "&ram=" + Math.random(), intDId, selectDistricts);
+                }
+            };
+
+            Init(@(Model.SaleGoods.ProvinceId), @(Model.SaleGoods.CityId), @(Model.SaleGoods.DistrictId));
+        });
+
+        $(function() {
+            var tagArray = "@(Model.SaleGoods.Tag)".split(",");
+
+            $("a[name='a_Tag']").on("click", function() {
+                var isHas = $(this).hasClass("bg_ffefd8");
+                var val = $(this).attr("value");
+                var $hide = $(this).siblings("input:hidden");
+
+                if (!isHas) {
+                    if (tagArray.length > 2) {
+                        return;
+                    }
+                    $(this).addClass("bg_ffefd8");
+                    tagArray.push(val);
+                    $hide.val(tagArray.join(","));
+                } else {
+                    $(this).removeClass("bg_ffefd8");
+                    val = $(this).attr("value");
+                    tagArray.splice($.inArray(val, tagArray), 1);
+                    $hide.val(tagArray.join(","));
+                }
+            });
+
+            //删除商品展示图片
+            $("a.js_deleteShow").live('click', function(e) {
+                e.preventDefault();
+                var rongqi = $(this).closest("span");
+                if (confirm("确定执行当前操作？")) {
+                    var href = $(this).attr("href");
+                    $.ajax({
+                        url: href,
+                        type: "get",
+                        dataType: "jsonp",
+                        jsonp: "callbackparam",
+                        jsonpCallback: "success_jsonpCallback",
+                        success: function(data) {
+                            $.map(data, function(item) {
+                                //rongqi.addClass("adimg");
+                                LoadLoPic(rongqi);
+                                alert("删除成功");
+                            });
+                        },
+                        error: function() { alert("删除图片出错!"); }
+                    });
+                }
+            });
+
+        });
+
+        $(function() {
+            UE.getEditor('myEditor');
+            var $submit = $("#formSubmit");
+            $(".btn_yellow").on("click", function() {
+                $submit.submit();
+            });
+
+            $submit.validate({
+                onsubmit: true,
+                ignore: true,
+                rules: {
+                    Title: { required: true, maxlength: 30 },
+                    Contact: { required: true, maxlength: 30 },
+                    ContactPhone: { required: false, isTel: true },
+                    Desc: { required: true},
+                    Price: { required: true, range: [0, 999999999] },
+                    DistrictId: { min: 1 },
+                    Tag:{required:true}
+                },
+                messages: {
+                    DistrictId: { min: "<span class='no'>请选择所在地区</span>" },
+                    ContactPhone:{isTel:"<span class='no'>请正确填写您的联系方式</span>"}
+                },
+                errorPlacement: function (error, element) {
+                    if (element.is("input[name='Price']")) {
+                        $('<br/>').appendTo(element.parent());
+                    }                    
+                    error.appendTo(element.parent());
+                },
+                submitHandler: function() {
+                    $.ajax({
+                    type: "post",
+                    dataType: "json",
+                    url: "@Url.UserSiteUrl().SaveUpdateSaleGoods",
+                    data: $submit.serialize(),
+                    success: function(response) {
+                        if (response.result) {
+                            location.href = "@Url.UserSiteUrl().ShowPage";
+                        } else {
+                            $.msg(response.message, 2);
+                        }
+                    }
+                    });
+                }
+
+            });
+        });
+
+        function LoadLoPic(rongqi) {
+            var url = rongqi.attr("dataurl");
+            $.ajax({
+                url: url,
+                type: "get",
+                dataType: "html",
+                success: function(data) {
+                    rongqi.html(data);
+                }
+            });
+        }
+
+    </script>
+}

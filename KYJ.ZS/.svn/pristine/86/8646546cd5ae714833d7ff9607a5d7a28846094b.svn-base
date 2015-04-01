@@ -1,0 +1,413 @@
+﻿@using KYJ.ZS.Commons.PictureModular
+@using KYJ.ZS.Models.OrderGoodses
+@using KYJ.ZS.Models.Orders
+@using KYJ.ZS.Models.RentalGoodses
+@using Webdiyer.WebControls.Mvc
+@model  KYJ.ZS.Models.View.OrderManagerView
+@{
+    ViewBag.Title = "出租的订单";
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+    ViewBag.Navigation = MerchantNavigation.CHUZUDEDINGDAN;
+}
+@section scripts
+{
+    <script type="text/javascript">
+        //全局参数
+        var intCueerntArea = "@Model.GetCurrentArea()";
+        var intPageIndex = @Model.RentOrderPms.PageIndex;
+        $(function() {
+            var arrdom = $("[name=goodsPic]");
+            for (var i = 0; i < arrdom.length; i++) {
+                var guid = $(arrdom[i]).attr("guid");
+                $.get("@Url.MerchantSiteUrl().RentalGoodses_GetGoodsPic?guid=" + guid, function(data) {
+                    var dom = $("[guid=" + data.guid + "]");
+                  $(dom).prop("src",data.url);
+                },"json");
+            }
+            $("#li_area" + intCueerntArea).addClass("cur");
+            //选项卡切换事件
+            $("#ul_OrderArea li").click(function() {
+                location.href = $(this).attr("attr");
+            });
+            //搜索
+            $("#btn_search").click(function() {
+                $("[name=PageIndex]").val("0");
+                document.getElementById("ff").submit();
+            });
+
+            //发送起租协议
+            $("[name=btn_SendAgreement]").click(function() {
+                Post("@Url.MerchantSiteUrl().Order_SendAgreement", { orderId: $(this).attr("oid") });
+            });
+            //退租同意
+            $("[name=btn_BackRentAgree]").click(function() {
+                Post("@Url.MerchantSiteUrl().Order_BackRentAgree", { orderId: $(this).attr("oid") });
+            });
+
+            //赔损
+            $("[name=btn_loss]").click(function() {
+                var orderId = $(this).attr("oid");
+                var orderState = $(this).attr("os");
+                var strHtml = "<div class='layer w260'>";
+                strHtml += " <a href='#' class='close'></a>";
+                strHtml += "<div class='layer_box'>";
+                strHtml += "<div class='tac col333' style='color:red' id='div_Info'></div>";
+                strHtml += " <div class='tac col333 mb25'>赔损金额：<input id='Loss_Money' type='text' value=''placeholder='请输入赔损金额'  class='intxt_h24' /></div>";
+                strHtml += "<div class='tac'><input type='button' id='btn_Loss_OK' class='btn_red mr10' value='确认' />" +
+                    "<input type='button' class='btn_grey' value='取消'  id='btn_Loss_Cancle'/></div>";
+                strHtml += "</div></div>";
+                $.content(strHtml, 200, 100, 0);
+                $("#btn_Loss_OK").click(function() {
+                    var lossMoney = $("#Loss_Money").val();
+                    if (lossMoney == "" && orderId.length > 0 && parseFloat(lossMoney) < 0 && parseInt(orderId) < 1) {
+                        //$.alert("请输入正确的信息！", 250);
+                        $("#div_Info").html("请输入正确的信息!");
+                        return false;
+                    }
+                    Post("@Url.MerchantSiteUrl().Order_LossMoney", { orderState: orderState, orderId: orderId, money: lossMoney, area: intCueerntArea });
+                });
+
+                $("#btn_Loss_Cancle").click(function() {
+                    $.closeAll();
+                });
+            });
+            //发货
+            $("[name=btn_SendGoods]").click(function() {
+                var domThis = $(this);
+                var strHtml = "<div class='layer w260'>";
+                // strHtml += " <a href='#' class='close'></a>";
+                strHtml += "<div class='layer_box'>";
+                strHtml += "<div class='tac col333' style='color:red' id='div_Info'></div>";
+                strHtml += " <div class='tac col333 mb25'>快递公司：<input id='SendGoods_Compy' type='text' value=''placeholder='请输入快递公司名'  class='intxt_h24' /></div>";
+                strHtml += " <div class='tac col333 mb25'>快递单号：<input id='SendGoods_Num' type='text' value=''placeholder='请输入快递单号'  class='intxt_h24' /></div>";;
+                strHtml += "<div class='tac'><input type='button' id='btn_SendGoods_OK' class='btn_red mr10' value='确认' />" +
+                    "<input type='button' class='btn_grey' value='取消' id='btn_SendGoods_Cancle'/></div>";
+                strHtml += "</div></div>";
+                $.content(strHtml, 200, 100, 0);
+                $("#btn_SendGoods_OK").click(function() {
+                    var strCompany = $("#SendGoods_Compy").val();
+                    var strNum = $("#SendGoods_Num").val();
+                    var strOrderId = $(domThis).attr("oid");
+                    if (strCompany.length < 1 || strNum.length < 1 || strOrderId.length < 1) {
+                        //$.alert("请输入完整的发货信息！", 250);
+                        $("#div_Info").html("请输入完整的发货信息！");
+                        return false;
+                    }
+                    Post("@Url.MerchantSiteUrl().Order_SendGoods", { orderId: strOrderId, expressCompany: strCompany, expressNum: strNum, area: intCueerntArea });
+                });
+                $("#btn_SendGoods_Cancle").click(function() {
+                    $.closeAll();
+                });
+            });
+
+            //返回上级订单状态
+
+            $("[name=GoBack]").click(function() {
+                var orderState = $(this).attr("os");
+                var oid = $(this).attr("oid");
+                var strHtml = "<div class='layer w260'>";
+                strHtml += " <a href='#' class='close'></a>";
+                strHtml += "<div class='layer_box'>";
+                strHtml += "<div class='tac col333' style='color:red' id='div_Info'></div>";
+                strHtml += " <div class='tac col333 mb25'>驳回理由：<input id='txt_GoBack_Message' type='text' value=''placeholder='请输入驳回理由'  class='intxt_h24' /></div>";
+                strHtml += "<div class='tac'><input type='button' id='btn_OK' class='btn_red mr10' value='确认' />" +
+                    "<input type='button' class='btn_grey' value='取消' id='btn_Cancle'/></div>";
+                strHtml += "</div></div>";
+                $.content(strHtml, 200, 100, 0);
+                $("#btn_OK").click(function() {
+                    if (parseInt(orderState) > 0 && parseInt(oid) > 0 && $("#txt_GoBack_Message").val().length > 0) {
+                        Post("@Url.MerchantSiteUrl().Order_GoBack", { orderId: oid, orderState: orderState, message: $("#txt_GoBack_Message").val() });
+                    } else {
+                        $("#div_Info").html("请输入完整的信息!");
+                        //$.alert("请输入完整的信息!", 250);
+                    }
+                });
+
+                $("#btn_Cancle").click(function() {
+                    $.closeAll();
+                });
+            });
+
+            //改变金额
+            $("[name=btn_ChangMoney]").click(function() {
+                var domThis = $(this);
+                var strHtml = "<div class='layer w260'>";
+                strHtml += " <a href='#' class='close'></a>";
+                strHtml += "<div class='layer_box'>";
+                strHtml += "<div class='tac col333' style='color:red' id='div_Info'></div>";
+                strHtml += " <div class='tac col333 mb25'>输入金额：<input type='text' value='' id='txtChangeMoney' class='intxt_h24' /></div>";
+                strHtml += "<div class='tac'><input type='button' class='btn_red mr10' id='btn_ChangeMoney_OK' value='确认' />" +
+                    "<input type='button' class='btn_grey' id='btn_ChangeMoney_Cancle' value='取消' /></div>";
+                strHtml += "</div></div>";
+                $.content(strHtml, 200, 100, 0);
+                $("#btn_ChangeMoney_OK").click(function() {
+                    var strOrderId = $(domThis).attr("oid");
+                    var strMoney = $("#txtChangeMoney").val();
+                    if (parseFloat(strMoney) > -1 && parseInt(strOrderId) > 0) {
+                        Post("@Url.MerchantSiteUrl().Order_ChangeMoney", { orderId: strOrderId, money: strMoney, area: intCueerntArea });
+                    } else {
+                        $("#div_Info").html("请输入正确的金额!");
+                        //$.alert("请输入正确的金额！", 200);
+                    }
+                });
+
+                $("#btn_ChangeMoney_Cancle").click(function() {
+                    $.closeAll();
+                });
+            });
+            //下拉搜索
+            $("#slt_OrderType").change(function() {
+                location.href = $("#slt_OrderType option:selected").attr("src");
+            });
+
+            //换货同意
+            $("[name=btn_ExchangeGoodsAgree]").click(function() {
+                var orderId = $(this).attr("oid");
+                var orderState = $(this).attr("os");
+                Post("@Url.MerchantSiteUrl().Order_ExchangeGoodsAgree", { orderId: orderId, orderState: orderState });
+            });
+            //换货取消
+            $("[name=btn_CancleExchange]").click(function() {
+                var orderId = $(this).attr("oid");
+                Post("@Url.MerchantSiteUrl().Order_CancleExchange", { orderId: orderId });
+            });
+
+            //退货同意
+            $("[name=btn_BackGoodsAgree]").click(function() {
+                var orderId = $(this).attr("oid");
+                Post("@Url.MerchantSiteUrl().BackGoodsAgree", { orderId: orderId });
+            });
+            //商户结算
+            $("[name=btn_MerchantSettlement]").click(function() {
+                var orderId = $(this).attr("oid");
+                var orderState = $(this).attr("os");
+                Post("@Url.MerchantSiteUrl().Order_MerchantSettlement", { orderId: orderId, orderState: orderState });
+            });
+
+            //下拉框选中
+            $("#slt_OrderType option[value=@((int)Model.RentOrderPms.OrderStateType)]").attr("selected", "selected");
+
+        });
+
+        //统一提交方法
+        function Post(url, data, successFun, failedFun) {
+            data.area = intCueerntArea;
+            $.post(url, data, function(backData) {
+                if (backData.Action == 1) {
+                    location.href = backData.StrUrl;
+                } else {
+                    if ($("#div_Info").length == 0) {
+                        $.alert(backData.Message, 250);
+                    } else {
+                        $("#div_Info").html(backData.Message);
+                    }
+                }
+            }, "json");
+        }
+    </script>
+}
+<div class="tag">
+    <ul id="ul_OrderArea">
+        <li id="li_area@((int)OrderStateAreaType.All)"  attr="@Url.MerchantSiteUrl().OrderManager((int)OrderStateAreaType.All)" tag="@((int)OrderStateAreaType.All)">
+            <a href="javascript:void(0)">全部订单</a></li>
+        <li id="li_area@((int)OrderStateAreaType.WaitPay)" attr="@Url.MerchantSiteUrl().OrderManager((int)OrderStateAreaType.WaitPay)" tag="@((int)OrderStateAreaType.WaitPay)">
+            <a href="javascript:void(0)">待付款区</a> </li>
+        <li id="li_area@((int)OrderStateAreaType.SendGoods)" attr="@Url.MerchantSiteUrl().OrderManager((int)OrderStateAreaType.SendGoods)" tag="@((int)OrderStateAreaType.SendGoods)">
+            <a href="javascript:void(0)">发货区</a> </li>
+        <li id="li_area@((int)OrderStateAreaType.RentGoods)" attr="@Url.MerchantSiteUrl().OrderManager((int)OrderStateAreaType.RentGoods)" tag="@((int)OrderStateAreaType.RentGoods)">
+            <a href="javascript:void(0)">租用区</a> </li>
+        <li id="li_area@((int)OrderStateAreaType.ReturnAndBackGoods)" attr="@Url.MerchantSiteUrl().OrderManager((int)OrderStateAreaType.ReturnAndBackGoods)" tag="@((int)OrderStateAreaType.ReturnAndBackGoods)">
+            <a href="javascript:void(0)">退租及退换货区</a> </li>
+        <li id="li_area@((int)OrderStateAreaType.Settlement)" attr="@Url.MerchantSiteUrl().OrderManager((int)OrderStateAreaType.Settlement)" tag="@((int)OrderStateAreaType.Settlement)">
+            <a href="javascript:void(0)">结算区</a> </li>
+        <li id="li_area@((int)OrderStateAreaType.Successed)" attr="@Url.MerchantSiteUrl().OrderManager((int)OrderStateAreaType.Successed)" tag="@((int)OrderStateAreaType.Successed)">
+            <a href="javascript:void(0)">成功订单</a> </li>
+        <li id="li_area@((int)OrderStateAreaType.Closed)" attr="@Url.MerchantSiteUrl().OrderManager((int)OrderStateAreaType.Closed)" tag="@((int)OrderStateAreaType.Closed)">
+            <a href="javascript:void(0)">关闭订单</a> </li>
+    </ul>
+</div>
+<div class="conbox">
+    <div class="serchbox clearFix">
+        <form id="ff" method="GET" action="@Url.MerchantSiteUrl().OrderManager(Model.GetCurrentArea())">
+        <input type="hidden" name="PageIndex" value="@Model.RentOrderPms.PageIndex"/>
+        <input type="hidden" name="areaType" value="@Model.GetCurrentArea()"/>
+        <div class="ml17 fl">
+            商品名称：<input type="text" name="GoodsName"  value="@Model.RentOrderPms.GoodsName" class="intxt_h24 w130" /></div>
+        <div class="ml15 fl">
+            订单编号：
+            <input type="text" name="OrderNum" value="@Model.RentOrderPms.OrderNum" class="intxt_h24 w130" /></div>
+        <div class="ml15 fl">
+            买家昵称：
+            <input type="text" name="BuyersNickName"  value="@Model.RentOrderPms.BuyersNickName" class="intxt_h24 w130" /></div>
+        <div class="fl ml15">
+            <input type="button" class="btn_red" id="btn_search" value="搜索" /></div>
+        </form>
+    </div>
+    <div class="listbox">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab_4">
+            <tr>
+                <th width="31%">
+                    商品
+                </th>
+                <th width="10%">
+                    月租(元)
+                </th>
+                <th width="10%">
+                    数量
+                </th>
+                <th width="13%">
+                    买家
+                </th>
+                <th width="13%">
+                    实收款(元)
+                </th>
+                <th width="13%">
+                    @if (Model.GetCurrentAreaType() == OrderStateAreaType.All)
+                    {
+                        <span>订单状态</span>
+                    }
+                    else
+                    {
+                        OrderStateEnumOper oper = new OrderStateEnumOper();
+                        <select id="slt_OrderType" src="@Url.MerchantSiteUrl().OrderManager(Model.GetCurrentArea())" class="selcss">
+                            <option src="@Url.MerchantSiteUrl().OrderManager(Model.GetCurrentArea())" value="0">
+                                选择全部</option>
+                            @foreach (int i in oper.GetOrderStates(Model.GetCurrentAreaType()))
+                            {
+                                <option  src="@Url.MerchantSiteUrl().Order_Manager()?OrderStateType=@i" value="@i">@oper.GetOrderStateDes(i)
+                                </option>
+                            }
+                        </select>
+                    }
+                </th>
+                <th width="10%" class="br_colddd">
+                    操作
+                </th>
+            </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab_3 nobt">
+            @foreach (OrderManageEntity orderManage in Model.PageData.DataList)
+            {
+                <tr>
+                    <th colspan="7" class="nobb bor_ddd">
+                        <div class="fl normal ml10 col666 w260 tal">
+                            订单编号：@orderManage.Number</div>
+                        <div class="fl col999 normal mr10">
+                            @(new OrderStateEnumOper().GetOrderStateTimeDes(orderManage.State))时间：@orderManage.UpdateTime</div>
+                        <a href="javascript:void(0);" class="fr mr20 col05c normal">订单详情 </a>
+                    </th>
+                </tr>
+                <tr>
+                    <td width="31%" class="nobr">
+                        <div class="imgbox ml10">
+                            <img name="goodsPic" guid="@orderManage.Guid" src="http://static.zushou.com/static_v1.0/web/merchant/images/img/img_01.jpg" width="50" height="50" /></div>
+                        <div class="sptit">
+                            <a target="_blank" href="@Url.WebSiteUrl().RentalGoods_Detail(orderManage.GoodsId )">@orderManage.Title</a></div>
+                        <div class="bian">
+                            @orderManage.NomrAndColor
+                        </div>
+                    </td>
+                    <td width="10%" class="nobr">
+                        @orderManage.MonthPrice.ToString("0.00")
+                    </td>
+                    <td width="10%">
+                        @orderManage.GoodsNum
+                    </td>
+                    <td width="13%">
+                        @orderManage.UserNikeName
+                    </td>
+                    <td width="13%">
+                        <strong class="cold21b1b">@orderManage.TotalPrice.ToString("0.00")</strong>
+                        <div class="col999">
+                            (含快递：@orderManage.FreightCost.ToString("0.00"))</div>
+                    </td>
+                    <td width="13%">
+                        <a href="javascript:void(0);" class="colf30">@(new OrderStateEnumOper().GetOrderStateDes(orderManage.State))
+                            @*@orderManage.State*@ </a>
+                    </td>
+                    <td width="10%">
+                        @switch (orderManage.State)
+                        {
+                            case 3:
+                            <a href="javascript:void(0);" name="btn_SendGoods" oid="@orderManage.OrderId">发货</a>
+                                                                               break;
+                            case 5:
+                            <a href="javascript:void(0);" oid="@orderManage.OrderId" name="btn_SendAgreement">发送起租协议</a>
+                                                          break;
+                            case 9:
+                            <a href="javascript:void(0);" oid="@orderManage.OrderId" os="@orderManage.State" name="btn_BackRentAgree">
+                                同意</a>  <br />
+                            <a href="javascript:void(0);" oid="@orderManage.OrderId" os="@orderManage.State" name="GoBack">
+                                驳回</a>  
+                                                                                    break;
+                            case 10:
+                            <a href="javascript:void(0);" oid="@orderManage.OrderId" os="@orderManage.State" name="btn_loss">
+                                赔损</a>  
+                                                                                    break;
+                            case 22:
+                            <a href="javascript:void(0);" oid="@orderManage.OrderId"  os="@orderManage.State"  name="btn_ChangMoney">
+                                修改金额</a>  
+                                                                                     break;
+                            case 23:
+                            <a href="javascript:void(0);" oid="@orderManage.OrderId"os="@orderManage.State" name="btn_ChangMoney">
+                                修改金额</a>  
+                                                                                   break;
+                            case 11:
+                            <a href="javascript:void(0);" oid="@orderManage.OrderId"os="@orderManage.State" name="btn_MerchantSettlement">
+                                确认</a> <br /> 
+@*         <a href="javascript:void(0);" oid="@orderManage.OrderId"os="@orderManage.State">支付</a>  *@
+                                                                                   break;
+                            case 12:
+                            <a href="javascript:void(0);" oid="@orderManage.OrderId"os="@orderManage.State" name="btn_BackGoodsAgree">
+                                同意</a>  <br />
+                            <a href="javascript:void(0);" os="@orderManage.State" oid="@orderManage.OrderId"name="GoBack">
+                                驳回</a>   
+                                                                                  break;
+                            case 13:
+                            <a href="javascript:void(0);" oid="@orderManage.OrderId"name="btn_loss" os="@orderManage.State">
+                                赔损</a>  
+                                                                                                   break;
+                            case 24:
+                            <a href="javascript:void(0);" oid="@orderManage.OrderId"os="@orderManage.State" name="btn_ChangMoney">
+                                修改金额</a>  
+                                                                                   break;
+                            case 25:
+                            <a href="javascript:void(0);" oid="@orderManage.OrderId"os="@orderManage.State" name="btn_ChangMoney">
+                                修改金额</a>  
+                                                                                   break;
+                            case 14:
+                            <a href="javascript:void(0);" oid="@orderManage.OrderId"os="@orderManage.State" name="btn_MerchantSettlement">
+                                确认</a>  <br /> 
+@*<a href="javascript:void(0);" oid="@orderManage.OrderId"os="@orderManage.State">支付</a>*@ 
+                                                                                   break;
+                            case 15:
+                            <a href="javascript:void(0);" oid="@orderManage.OrderId"os="@orderManage.State" name="btn_ExchangeGoodsAgree">
+                                同意</a>  <br />
+                            <a href="javascript:void(0);" os="@orderManage.State" oid="@orderManage.OrderId"   name="GoBack">
+                                驳回</a>   
+                                                                                  break;
+                            case 16: 
+                            <a href="javascript:void(0);" oid="@orderManage.OrderId" os="@orderManage.State" name="btn_loss">
+                                赔损</a>  <br />
+                            <a href="javascript:void(0);" os="@orderManage.State" oid="@orderManage.OrderId" name="btn_CancleExchange">
+                                撤销</a> 
+@*     <a href="javascript:void(0);" name="btn_SendGoods" oid="@orderManage.OrderId">发货</a>  *@
+                                                                                  break;
+                            case 26:
+                            <a href="javascript:void(0);" oid="@orderManage.OrderId" name="btn_ChangMoney">修改金额</a>break;
+                            case 21:
+                            <a href="javascript:void(0);" oid="@orderManage.OrderId" name="btn_MerchantSettlement">
+                                确认</a>  <br /> 
+@*<a href="javascript:void(0);" oid="@orderManage.OrderId">支付</a>*@  
+                                                          break;
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+        <div class="page mb10">
+            @Html.Pager(Model.PageData.RecordCount, Model.PageData.PageSize, Model.PageData.PageIndex, "ordermanager", "order", new PagerOptions { AutoHide = false, ShowGoButton = false, SeparatorHtml = " ", ShowFirstLast = true, ShowPageIndexBox = false, FirstPageText = "首页", LastPageText = "尾页", GoButtonText = "跳转", CssClass = "", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + Model.PageData.PageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "", NextCss = "", FirstCss = "", LastCss = "", SpanCSS = "col333 font12 mr10", ShowGoButtonCss = "pagetz" }, null, new { areaType = Model.GetCurrentArea() }, null)
+        </div>
+    </div>
+</div>
+<!-- InstanceEndEditable -->

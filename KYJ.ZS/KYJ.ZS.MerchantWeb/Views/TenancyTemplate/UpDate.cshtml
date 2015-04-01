@@ -1,0 +1,197 @@
+﻿@model KYJ.ZS.Models.DB.TenancyTemplate
+@{
+    ViewBag.Title = "更新租期模板";
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+    ViewBag.Navigation = MerchantNavigation.ZUQIMOBANSHEZHI;
+}
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            BindinEevents();
+            //提交
+            $("#btn_OK").click(function () {
+                var strName = $("[name=tname]").val();
+                var arrNum = GetArr();
+                if (strName.length <= 0 || arrNum.length <= 0) {
+                    $.alert("请完善租期模板！");
+                    return false;
+                }
+                $.post("@Url.MerchantSiteUrl().TenancyTemplate_UpDate(Model.TtempId)", { tName: strName, tmonth: arrNum.toString() }, function (data) {
+                    if (data.Action == 1) {
+                        location.href = data.StrUrl;
+                    } else {
+                        $.alert(data.Message);
+                    }
+                }, "json");
+            });
+            //添加
+            $("#btn_add").click(function () {
+                var ArrNum = GetArr();
+                if (ArrNum.length >= 10) {
+                    return false;
+                }
+                //判断即将添加的是否已经添加过了
+                for (var i = 0; i < ArrNum.length; i++) {
+                    if (ArrNum[i] == $("#txt_months").val()) {
+                        return false;
+                    }
+                }
+                var strMonths = $("#txt_months").val();
+                if (parseInt(strMonths) > 99) {
+                    $("#txt_months").val("");
+                    return false;
+                }
+                if (strMonths.length > 0 && IsMatch(/^\+?[1-9][0-9]*$/, strMonths)) { //验证并添加租期
+                    ArrNum[ArrNum.length] = parseInt(strMonths);
+                    ArrNum = arrSort(ArrNum);
+                    SetA(ArrNum);
+                    BindinEevents();
+                }
+                $("#txt_months").val("");
+            });
+        });
+
+        //获取数组
+        function GetArr() {
+            var arrDom = $("#li_months a");
+            var ArrNum = [];
+            for (var i = 0; i < arrDom.length; i++) {
+                ArrNum[i] = parseInt($(arrDom[i]).html());
+            }
+            //把最低起租期和代售期添加到数组
+            if ($("#txt_monthMin").html() != "") {
+                ArrNum[ArrNum.length] = parseInt($("#txt_monthMin").html());
+            }
+            if ($("#txt_monthMax").html() != "") {
+                ArrNum[ArrNum.length] = parseInt($("#txt_monthMax").html());
+            }
+            return arrSort(ArrNum);
+        }
+
+        //设置
+        function SetA(ArrNum) {
+            if (ArrNum.length == 1) {
+                $("#txt_monthMin").html(ArrNum[0]);
+            } else if (ArrNum.length == 2) {
+                $("#txt_monthMin").html(ArrNum[0]);
+                $("#txt_monthMax").html(ArrNum[ArrNum.length - 1]);
+            } else {
+                $("#txt_monthMax").html(ArrNum[ArrNum.length - 1]);
+                $("#txt_monthMin").html(ArrNum[0]);
+                var strHtml = "";
+                for (var i = 1; i < ArrNum.length - 1; i++) {
+                    strHtml += "<a href='javascript:void(0);'>" + ArrNum[i] + "</a>";
+                }
+                $("#li_months").html(strHtml);
+            }
+        }
+
+        //绑定事件
+        function BindinEevents() {
+            //鼠标移动事件
+            $("#li_months a").hover(function () {
+                $(this).addClass("lia");
+            }, function () {
+                $(this).removeClass("lia");
+            });
+            //单击移除
+            $("#li_months a").click(function () {
+                var boohasClass = $(this).hasClass("lia");
+                if (boohasClass) {
+                    $(this).remove();
+                    //SetA(GetArr());
+                }
+            });
+        }
+
+        //插入排序
+        function arrSort(array) {
+            var i = 1, j, temp, key, len = array.length;
+            for (; i < len; i++) {
+                temp = j = i;
+                key = array[j];
+                while (--j > -1) {
+                    if (array[j] > key) {
+                        array[j + 1] = array[j];
+                    } else {
+                        break;
+                    }
+                }
+                array[j + 1] = key;
+            }
+            return array;
+        }
+
+        //正则匹配
+        function IsMatch(regex, input) {
+            if (!(regex instanceof RegExp) || typeof input !== 'string') /* throw {msg:"参数不正确"}; // 考虑使用异常*/ return false;
+            return regex.test(input);
+        }
+    </script>
+}
+<div class="tag">
+    <ul>
+        <li class="cur"><a href="#">修改租期模板</a></li>
+    </ul>
+</div>
+<!--添加租期模板内容开始-->
+<div class="det1">
+    <div class="det2">
+        <ul>
+            <li class="cur1 ml10">模板名称：
+                <input class="intxt" type="text" name="tname" value="@Model.TtempTitle"/>
+            </li>
+            <li class="cur2">
+                <div class="det3">
+                    自定义租期：<input class="intxt_h24" type="" id="txt_months" /></div>
+                <span><a class="btn_red" id="btn_add" href="javascript:void(0);">添加</a></span>
+                <p>
+                    温馨提示：最多只可添加10个选项</p>
+            </li>
+        </ul>
+    </div>
+    <div class="det4">
+        <ul class="fl">
+            <li class="li1 fl">
+                <div class="lis">
+                    <span>效果：</span><a id="txt_monthMin" href="javascript:void(0);" class="">@Model.TMonths[0]</a><!--<input type="" value="1"/>--></div>
+                <p>
+                    最低起租期<br />
+                    <span>点击租期可删除</span></p>
+            </li>
+            <li class="li2 fl" id="li_months">
+                @for (int i = 1; i < Model.TMonths.Length - 1; i++)
+                {
+                    <a href="javascript:void(0);">@Model.TMonths[i]</a>
+                }
+            </li>
+            <li class="li3 fl"><a href="javascript:void(0);" id="txt_monthMax">@(Model.TMonths.Length == 1 ? "" : Model.TMonths[Model.TMonths.Length - 1])</a>
+                <p>
+                    代售</p>
+            </li>
+        </ul>
+        @*<ul>
+            <li class="li1">
+                <div class="lis">
+                    效果：<input type="" id="txt_monthMin" value="@Model.TMonths[0]" /></div>
+                <p>
+                    最低起租期<br />
+                    <span>点击租期可删除</span></p>
+            </li>
+            <li class="li2" id="li_months">
+                @for (int i = 1; i < Model.TMonths.Length - 1; i++)
+                {
+                    <a>@Model.TMonths[i]</a>
+                }
+            </li>
+            <li class="li3"><a id="txt_monthMax" href="javascript:void(0);">@(Model.TMonths.Length == 1 ? "" : Model.TMonths[Model.TMonths.Length - 1])</a>
+                <p>
+                    代售</p>
+            </li>
+        </ul>*@
+    </div>
+    <div class="det5 fl">
+        <a class="btn_blue" id="btn_OK" href="javascript:void(0);">确认修改</a><a class="btn_ccc"
+            href="@Url.MerchantSiteUrl().TenancyTemplate_Index">取消</a></div>
+</div>

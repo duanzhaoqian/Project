@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7FF678B1-4C6E-4A2B-AB6E-BA3928450E12}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KYJ.ZS.Models</RootNamespace>
+    <AssemblyName>KYJ.ZS.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\libs\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\AdminEntity.cs" />
+    <Compile Include="Adverts\Manager_AdvertLocationEntity.cs" />
+    <Compile Include="Adverts\Web_AdvertEntity.cs" />
+    <Compile Include="Adverts\Web_AdvertLocationEntity.cs" />
+    <Compile Include="Attributes\AttributeEntity.cs" />
+    <Compile Include="Authority\AdminsEntity.cs" />
+    <Compile Include="Authority\RoleManagerEntity.cs" />
+    <Compile Include="Authority\RoleShowEntity.cs" />
+    <Compile Include="BankAccounts\BankAccountEntity.cs" />
+    <Compile Include="BrowseHistorys\BrowseHistoryEntity.cs" />
+    <Compile Include="Carts\CartEntity.cs" />
+    <Compile Include="Categories\CatResult.cs" />
+    <Compile Include="Categories\CatregoryEntity.cs" />
+    <Compile Include="Collections\CollectionEntity.cs" />
+    <Compile Include="Common\GeographyItemEntity.cs" />
+    <Compile Include="Common\NavigationEntity.cs" />
+    <Compile Include="Common\UpLoadGoodsImageViewModel.cs" />
+    <Compile Include="DB\Account.cs" />
+    <Compile Include="DB\AccountLog.cs" />
+    <Compile Include="DB\Admins.cs" />
+    <Compile Include="DB\Advert.cs" />
+    <Compile Include="DB\BankAccount.cs" />
+    <Compile Include="DB\Brand.cs" />
+    <Compile Include="DB\CollectionGoods.cs" />
+    <Compile Include="DB\Enum.cs" />
+    <Compile Include="DB\Generalizes.cs" />
+    <Compile Include="DB\GoodsAttribute.cs" />
+    <Compile Include="DB\GoodsColor.cs" />
+    <Compile Include="DB\GoodsNorm.cs" />
+    <Compile Include="DB\GoodsPrice.cs" />
+    <Compile Include="DB\GoodsTenanci.cs" />
+    <Compile Include="DB\Logs.cs" />
+    <Compile Include="DB\Merchant.cs" />
+    <Compile Include="DB\Message.cs" />
+    <Compile Include="DB\Modules.cs" />
+    <Compile Include="DB\OrderOther.cs" />
+    <Compile Include="DB\PictureFolder.cs" />
+    <Compile Include="DB\RentalGoods.cs" />
+    <Compile Include="DB\RentalOther.cs" />
+    <Compile Include="DB\RoleManagement.cs" />
+    <Compile Include="DB\RolePermissions.cs" />
+    <Compile Include="DB\Roles.cs" />
+    <Compile Include="DB\SaleGoods.cs" />
+    <Compile Include="DB\SaleOther.cs" />
+    <Compile Include="DB\TagCategory.cs" />
+    <Compile Include="DB\Tag.cs" />
+    <Compile Include="DB\WithdrawCash.cs" />
+    <Compile Include="FreightTemplates\FreightTemplateEntity.cs" />
+    <Compile Include="FreightTemplates\Web_FreightTemplateEntity.cs" />
+    <Compile Include="Generalizes\Manager_GeneralizeLocationEntity.cs" />
+    <Compile Include="LocalUsers\AuthenticationEntity.cs" />
+    <Compile Include="Generalizes\Web_GeneralizeLocationEntity.cs" />
+    <Compile Include="LocalUsers\LocalUserEntity.cs" />
+    <Compile Include="LocalUsers\LocalUserManageEntity.cs" />
+    <Compile Include="LocalUsers\RegisterUserEntity.cs" />
+    <Compile Include="LocalUsers\SyncUserEntity.cs" />
+    <Compile Include="LocalUsers\UserAccountEntity.cs" />
+    <Compile Include="LocalUsers\UserInfoEntity.cs" />
+    <Compile Include="Logs\LogEntity.cs" />
+    <Compile Include="Merchants\MerchantEntity.cs" />
+    <Compile Include="Module\ModuleEntity.cs" />
+    <Compile Include="OrderGoodses\OrderGoodsEntity.cs" />
+    <Compile Include="OrderGoodses\RentalOrderEntity.cs" />
+    <Compile Include="OrderGoodses\RentOrderPms.cs" />
+    <Compile Include="Orders\OrderEntity.cs" />
+    <Compile Include="Orders\OrderManageEntity.cs" />
+    <Compile Include="Orders\OrderOpertHtml.cs" />
+    <Compile Include="Orders\RentalOrderEntity.cs" />
+    <Compile Include="Orders\Services_OrderPPEntity.cs" />
+    <Compile Include="Orders\Web_OrderConfirm.cs" />
+    <Compile Include="Orders\Web_OrderParameterEntity.cs" />
+    <Compile Include="Pages\PageData.cs" />
+    <Compile Include="DB\Attribute.cs" />
+    <Compile Include="DB\AttributeValue.cs" />
+    <Compile Include="DB\Category.cs" />
+    <Compile Include="DB\CategoryAttribute.cs" />
+    <Compile Include="DB\CategoryColor.cs" />
+    <Compile Include="DB\CategoryNorm.cs" />
+    <Compile Include="DB\Collection.cs" />
+    <Compile Include="DB\DeliveryAddress.cs" />
+    <Compile Include="DB\FreightCost.cs" />
+    <Compile Include="DB\FreightTemplate.cs" />
+    <Compile Include="DB\IntegralRecord.cs" />
+    <Compile Include="DB\LocalUser.cs" />
+    <Compile Include="DB\LocalUserOther.cs" />
+    <Compile Include="DB\Order.cs" />
+    <Compile Include="DB\OrderGoods.cs" />
+    <Compile Include="DB\TenancyTemplate.cs" />
+    <Compile Include="Pages\PagePms.cs" />
+    <Compile Include="Payments\PaymentEntity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RentalGoodses\Manager_RentalGoodsAduitEntity.cs" />
+    <Compile Include="RentalGoodses\OrderStateEnum.cs" />
+    <Compile Include="RentalGoodses\RentalGoodsCatMenuEntity.cs" />
+    <Compile Include="RentalGoodses\RentalGoodsChannelEntity.cs" />
+    <Compile Include="RentalGoodses\RentalGoodsEntity.cs" />
+    <Compile Include="RentalGoodses\RentalGoodsIllegalGoodsEntity.cs" />
+    <Compile Include="RentalGoodses\RentalGoodsListEntity.cs" />
+    <Compile Include="RentalGoodses\RentalGoodsListItemEntity.cs" />
+    <Compile Include="RentalGoodses\RentalGoodsSearchEntity.cs" />
+    <Compile Include="RentalGoodses\RentalGoodsSearchMenuEntity.cs" />
+    <Compile Include="RentalGoodses\Web_RentalGoodsEntity.cs" />
+    <Compile Include="RentalGoodses\WareHouseGoodsEntity.cs" />
+    <Compile Include="RolePermission\RolePermissionEntity.cs" />
+    <Compile Include="Role\RoleEntity.cs" />
+    <Compile Include="SaleGoodses\SaleGoodsCatMenuEntity.cs" />
+    <Compile Include="SaleGoodses\SaleGoodsEntity.cs" />
+    <Compile Include="SaleGoodses\SaleGoodsListEntity.cs" />
+    <Compile Include="SaleGoodses\SaleGoods_InformatioManagementEntity.cs" />
+    <Compile Include="SaleGoodses\Web_SaleGoodsEntity.cs" />
+    <Compile Include="Tags\TagEntity.cs" />
+    <Compile Include="View\AttrCategorySelectEntity.cs" />
+    <Compile Include="View\BackMessage.cs" />
+    <Compile Include="View\MerchantMainView.cs" />
+    <Compile Include="View\OrderManagerView.cs" />
+    <Compile Include="View\RentalGoodsesQueryPms.cs" />
+    <Compile Include="View\RentalGoodsIndexView.cs" />
+    <Compile Include="WithdrawCashs\WithdrawCashEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Filters\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

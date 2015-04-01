@@ -1,0 +1,83 @@
+﻿@using KYJ.ZS.Models.DB
+@using Webdiyer.WebControls.Mvc
+@model KYJ.ZS.Models.Pages.PageData<KYJ.ZS.Models.DB.TenancyTemplate>
+@{
+    ViewBag.Title = "租期模板列表";
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+    ViewBag.Navigation = MerchantNavigation.ZUQIMOBANSHEZHI;
+}
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $("[name=btn_delete]").click(function () {
+                var me = this;
+                $.confirm("确认删除该租期模板吗？", "询问", function () {
+                    var strUrl = $(me).attr("src");
+                    //if (strUrl.Length > 0) {
+                        $.post(strUrl, {}, function (data) {
+                            if (data.Action == 1) {
+                                location.href = data.StrUrl;
+                            } else {
+                                $.alert(data.Message);
+                            }
+                        }, "json");
+                    //}
+                });
+               // return false;
+            });
+        });
+    </script>
+}
+<div class="tag">
+    <ul>
+        <li class="cur"><a href="#">租期模板设置</a></li>
+    </ul>
+</div>
+<!--租期模板设置开始-->
+<div class="yf_tep">
+    <div class="yf_tit">
+        <p>
+            温馨提示：修改或删除租期模板会直接影响到使用此模板的商品，请谨慎操作。</p>
+        <span><a href="@Url.MerchantSiteUrl().TenancyTemplate_Insert" class="btn_blue">新增租期模板</a></span>
+    </div>
+    <div class="yf_tab">
+        <table width="100%" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <th class="nobt" width="43%">
+                        模板名称
+                    </th>
+                    <th class="nobt" width="47%">
+                        租期(月)
+                    </th>
+                    <th class="nobt bdr" width="10%">
+                        操作
+                    </th>
+                </tr>
+                @foreach (TenancyTemplate template in Model.DataList)
+                {
+                    <tr>
+                        <td>
+                            <div class="tal pl20">
+                                @template.TtempTitle </div>
+                        </td>
+                        <td>
+                            @template.TtempMonths
+                        </td>
+                        <td>
+                            <a href="@Url.MerchantSiteUrl().TenancyTemplate_UpDate(template.TtempId)" class="blue">
+                                修改</a> | <a name="btn_delete" href="javascript:void(0);" src="@(Url.MerchantSiteUrl().TenancyTemplate_Delete(template.TtempId)+"&pageIndex="+Model.PageIndex)" class="blue">
+                                    删除</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="page">
+        @*  <a href="#" class="prev">上一页</a> <a href="#">1</a> <a href="#" class="active">2</a>
+        <a href="#">3</a> <a href="#">4</a> ... <a href="#" class="next">下一页 </a>*@
+        @Html.Pager(Model.RecordCount, Model.PageSize, Model.PageIndex, "index", "tenancytemplate", new PagerOptions { AutoHide = false, ShowGoButton = false, SeparatorHtml = " ", ShowFirstLast = true, ShowPageIndexBox = false, FirstPageText = "首页", LastPageText = "尾页", GoButtonText = "跳转", CssClass = "", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + Model.PageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "", NextCss = "", FirstCss = "", LastCss = "", SpanCSS = "col333 font12 mr10", ShowGoButtonCss = "pagetz" }, null, null, null)
+    </div>
+</div>

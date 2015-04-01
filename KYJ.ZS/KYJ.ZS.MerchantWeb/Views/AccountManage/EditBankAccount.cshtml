@@ -1,0 +1,179 @@
+﻿@model KYJ.ZS.Models.DB.BankAccount
+@using KYJ.ZS.Commons.Web
+@{
+    ViewBag.Title = "管理银行账户";
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+    ViewBag.Navigation = MerchantNavigation.TIXIANGUANLI;
+}
+@section header{
+<script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery.validate.min.js")" type="text/javascript"></script>
+}
+@using (Html.BeginForm("editbankaccount", "accountmanage", FormMethod.Post, new { name = "form1", id = "form1" }))
+{
+    <div class="rightbox">
+        @Html.Partial("~/Views/Shared/Controls/_AccountManage.cshtml")
+        <div class="conbox conbox1">
+            <div class="mingx">
+                <div class="txzl cold21b1b">
+                    修改帐户信息</div>
+                @Html.HiddenFor(model => model.Id)@*隐藏域记录当前商户银行账号的ID*@
+                <table width="100%" cellspacing="0" cellpadding="0" class="tab_1">
+                    <tr>
+                        <th>
+                            <span class="cold21b1b">* </span>开户名称：
+                        </th>
+                        <td>
+                            <input class="intxt w187" name="name" value="@Model.Name" id="txtName"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <span class="cold21b1b">* </span>账户：
+                        </th>
+                        <td>
+                            <input class="intxt w187" name="number"  value="@Model.Number" id="txtNumber"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <span class="cold21b1b">* </span>开户行：
+                        </th>
+                        <td>
+                            <input class="intxt w280" name="bankname" value="@Model.BankName" id="txtBankName"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            备注：
+                        </th>
+                        <td>
+                            <input class="intxt w280" name="remark" value="@Model.Remark" id="txtRemark"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                        </th>
+                        <td>
+                            <input type="submit" class="btn_blue mr10 fl" value="确认修改" id="btnModify" />
+                            <input type="button" id="btn_cancel" class="fl btn_grey" value="取消" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+}
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            //选择当前标签
+            if ("@ViewBag.Tag" != "") {
+                $("li[tag=@ViewBag.Tag]").addClass("cur").siblings().removeClass("cur");
+            }
+            else {
+                $("li[tag=1]").addClass("cur").siblings().removeClass("cur");
+            }
+            $(".tag ul li").click(function () {
+                window.open($(this).attr("attr"), "_self");
+            })
+            //取消
+            $("#btn_cancel").click(function () {
+                location.href = "@Url.MerchantSiteUrl().ManageBank";
+            });
+
+            $("#txtNumber").keyup(funKeyup)
+            function funKeyup() {
+                this.value = this.value.replace(/\s/g, '').replace(/\D/g, '').replace(/(\d{4})(?=\d)/g, "$1 "); ;
+            };
+
+            //20140527  add by cy 
+            function check() {
+                var name = $("#txtName").val();   //开户名称
+                name = $.trim(name);
+                var number = $("#txtNumber").val();  //账户
+                number = $.trim(number);
+                var bankName = $("#txtBankName").val();  //开户行
+                bankName = $.trim(bankName);
+                var remark = $("#txtRemark").val();  //备注
+                remark = $.trim(remark);
+                if (name == '' || Number == '' || bankName == '') {
+                    $.alert("必填项不能为空！");
+                    return false;
+                }
+                if (/^\d+$/.test(number.replaceAll(" ", ""))) {
+
+                    //全为数字，执行业务逻辑
+                }
+                else {
+                    $.alert("账户必须全部都是数字！");
+                    $("#txtNumber").select();
+                    return false;
+                }
+                return true;
+            }
+
+            $("#btnModify").click(function () {
+                if ($("#form1").valid()) {
+
+                }
+                else {
+                    return false;
+                }
+
+            });
+
+            //添加验证
+            $("#form1").validate({
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    number: {
+                        required: true,
+                        isNumber: true
+                    },
+                    bankname: {
+                        required: true
+                    }
+                },
+                messages: {
+                    name: {
+                        required: "<span class='no sp1 ml10 cold21b1b'>此项为必填项</span>"
+                    },
+                    number: {
+                        required: "<span class='no sp1 ml10 cold21b1b'>此项为必填项</span>",
+                        isNumber: "<span class='no sp1 ml10 cold21b1b'>银行账户只能输入数字</span>"
+                    },
+                    bankname: {
+                        required: "<span class='no sp1 ml10 cold21b1b'>此项为必填项</span>"
+                    }
+                },
+                onkeyup: false,
+                errorElement: "span",
+                errorPlacement: function (error, element) {
+                    isValidate = false;
+                    element.parent().find("span").remove();
+                    error.appendTo(element.parent());
+                }
+            });
+
+        });
+
+        jQuery.validator.addMethod("isNumber", function (value, element) {
+            var flag = false;
+            var number = trim(element.value);
+            if (/^\d+$/.test(number)) {
+                //全为数字，执行业务逻辑
+                flag = true;
+            }
+            return this.optional(element) || flag;
+        });
+
+        //去空格
+        function trim(str) {
+            return str.replace(/[ ]/g, "");  //去除字符算中的空格
+        }
+    </script>
+}

@@ -1,0 +1,159 @@
+﻿@model KYJ.ZS.Models.LocalUsers.LocalUserEntity
+@{
+    ViewBag.Title = "账号管理-工作名片";
+    Layout = "~/Views/Shared/Layouts/_UserLayout.cshtml";
+    ViewBag.Navigation = UserNavigation.JIBENZILIAO;
+}
+@section header{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery.validate.min.js")" type="text/javascript"></script>
+}
+<div class="nTab">
+    <div class="TabTitle">
+        <ul id="myTab">
+            <li class="normal">
+                <a href="@Url.UserSiteUrl().Information">基本资料</a></li>
+            <li class="normal">
+                <a href="@Url.UserSiteUrl().Avatar">头像照片</a></li>
+            <li class="normal">
+                <a href="@Url.UserSiteUrl().Education">教育情况</a></li>
+            <li class="active">
+                <a href="@Url.UserSiteUrl().Card">工作名片</a></li>
+            <li class="normal">
+                <a href="@Url.UserSiteUrl().Password">修改密码</a></li>
+        </ul>
+    </div>
+    <div class="TabContent">
+        <div id="myTab_Content3">
+            <!--开始4-->
+            <div class="er_location">
+                <form id="ResetForm" name="ResetForm" action="@Url.UserSiteUrl().ResetCard" method="post">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <th>公司名称：</th>
+                            <td>
+                                <input type="text" id="companyname" name="companyname" value="@Model.CompanyName" class="input_txt w248" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>职位：</th>
+                            <td>
+                                <input type="text" id="companyposition" name="companyposition" value="@Model.CompanyPosition" class="input_txt w248" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <td>
+                                <input type="button" id="sub_button" data="on" class="btn_yellow btnoper" value="保 存" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </form>
+            </div>
+            <!--结束4-->
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ResetForm").validate({
+                rules: {
+                    companyname: {
+                        required: true,
+                        maxlength: 100
+                    },
+                    companyposition: {
+                        required: true,
+                        maxlength: 100
+                    }
+                },
+                messages: {
+                    companyname: {
+                        required: "<span class='no'>请填写正确信息！</span>",
+                        maxlength: jQuery.format("<span class='no'>公司名称不能大于{0}个字符！</span>")
+                    },
+                    companyposition: {
+                        required: "<span class='no'>请填写正确信息！</span>",
+                        maxlength: jQuery.format("<span class='no'>职位不能大于{0}个字符！</span>")
+                    }
+                },
+                success: function (element) {
+                    element.parent().find("span").html("<span class='yes'>&nbsp;</span>");
+                },
+                submitHandler: function (form) {
+
+                    $(".btnoper").attr("data", "off");
+                    var parm = $("#ResetForm").serialize();
+
+                    var url = $("#ResetForm").attr("action");
+
+                    $.post(url, parm, function (response) {
+                        if (response.result) {
+                            $.alert(response.message, null, null, 1);
+                            $(".btnoper").attr("data", "on");
+                            return;
+                        } else {
+                            $.alert(response.message);
+                            $(".btnoper").attr("data", "on");
+                            return;
+                        }
+                    });
+                },
+                onkeyup: false,
+                errorElement: "span",
+                errorPlacement: function (error, element) {
+                    element.parent().find("span").remove();
+                    error.appendTo(element.parent());
+                }
+            });
+
+            $("#myTab li").on("click", function () {
+                var num = $(this).find("a");
+                window.location.href = num.attr("href");
+            });
+
+            $("#sub_button").on("click", function () {
+                var data = $(this).attr("data");
+                if ("on" == data) {
+                    $("#ResetForm").submit();
+                }
+            });
+
+            $("#newpassword").on("keyup", function () {
+                var data = $(this).val();
+                if (data) {
+                    var result = getResult(data);
+                    switch (result) {
+                        case 1:
+                            $("#pwd_intension").find("span").eq(0).attr("class", "bg_df2727")
+                            $("#pwd_intension").find("span").eq(0).html("弱");
+                            $("#pwd_intension").find("span").eq(1).attr("class", "bg0_e7e7e7");
+                            $("#pwd_intension").find("span").eq(1).html("中");
+                            $("#pwd_intension").find("span").eq(2).attr("class", "bg0_e7e7e7");
+                            $("#pwd_intension").find("span").eq(2).html("强");
+                            break;
+                        case 2:
+                            $("#pwd_intension").find("span").eq(0).attr("class", "bg_ff7200");
+                            $("#pwd_intension").find("span").eq(0).html("&nbsp;");
+                            $("#pwd_intension").find("span").eq(1).attr("class", "bg_ff7200");
+                            $("#pwd_intension").find("span").eq(1).html("中");
+                            $("#pwd_intension").find("span").eq(2).attr("class", "bg0_e7e7e7");
+                            break;
+                        case 3:
+                            $("#pwd_intension").find("span").eq(0).attr("class", "bg_46d21b");
+                            $("#pwd_intension").find("span").eq(0).html("&nbsp;");
+                            $("#pwd_intension").find("span").eq(1).attr("class", "bg_46d21b");
+                            $("#pwd_intension").find("span").eq(1).html("&nbsp;");
+                            $("#pwd_intension").find("span").eq(2).attr("class", "bg_46d21b");
+                            $("#pwd_intension").find("span").eq(2).html("强");
+                            break;
+                        default:
+                            $("#pwd_intension").find("span").attr("class", "bg0_e7e7e7");
+                            break;
+                    }
+                }
+            });
+        });
+    </script>
+}

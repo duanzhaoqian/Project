@@ -1,0 +1,451 @@
+﻿@{
+    ViewBag.Title = "修改登录密码";
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+    ViewBag.Navigation = MerchantNavigation.XIUGAIDENGLUMIMA;
+
+}
+@section header
+{
+    <style type="text/css">
+        .mima .sp2
+        {
+            margin-top: 7px;
+        }
+        form.cmxform label.error, label.error
+        {
+            color: red;
+            font-style: italic;
+        }
+    </style>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/public/config.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/plug/layer/layer.dialog.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery.validate.min.js")" type="text/javascript"></script>
+}
+<div class="rightbox">
+    <!-- InstanceBeginEditable name="EditRegion1" -->
+    <div class="tag">
+        <ul>
+            <li class="cur"><a href="#">账户管理-修改密码</a></li>
+        </ul>
+    </div>
+    <!--账户管理-修改密码-->
+    <!--action="@Url.MerchantSiteUrl().ModifyPwd"-->
+    <form id="form1" name="form1" method="post" action="">
+    <div class="conbox conbox1">
+        <div class="mima">
+            <table cellpadding="0" cellspacing="0" class="tab_1">
+                <tr>
+                    <th>
+                        <span class="cold21b1b">*</span> 原密码：
+                    </th>
+                    <td>
+                        <input class="fl w187 intxt col999" type="password" name="oldpwd" id="passport" maxlength="16" />
+                        <span class="sp2 fl ml10 col999" id="passname"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <span class="cold21b1b">*</span> 新密码：
+                    </th>
+                    <td>
+                       @* <input class="fl w187 intxt col999" value="请输" type="text" name="newpwd1"
+                            maxlength="16" id="showPwd" style="color: #CCC;" />*@
+                            <input id="pwd" class="fl w187 intxt col999" name="newpwd" type="password" />  
+                        @*<span class="sp2 fl ml10 col999" id="passwname">请输入6-16位英文字母、数字或符号</span>*@
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                    </th>
+                    <td class="htd" id="chkResult">
+                        <div>
+                            <span id="a1" class="bg0_e7e7e7">弱</span><span id="a2" class="bg0_e7e7e7">中</span><span
+                                id="a3" class="bg0_e7e7e7">强</span></div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <span class="cold21b1b">*</span> 确认密码：
+                    </th>
+                    <td>
+                    <input class="fl w187 intxt col999" value="" type="password" name="confirmpwd"
+                            maxlength="16" id="pwd2" style="color: #CCC;" />
+                        @*<input class="fl w187 intxt col999" value="请输入6-16位英文字符" type="text" name="confirmpwd"
+                            maxlength="16" id="pwd2" onfocus="if(this.value==defaultValue) {this.value='';this.type='password'}"
+                            onblur="if(!value) {value=defaultValue; this.type='text';}" style="color: #CCC;" />*@
+                        @*<span class="sp2 fl ml10 col999" id="passname2">请输入6-16位英文字母、数字或符号</span>*@
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                    </th>
+                    <td class="col999">
+                        温馨提示：定期更换密码对账户安全有利
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                    </th>
+                    <td>
+                        <input type="button" id="btn_modify" data="on" class="btn_blue btn_w80_blue" value="确认修改" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </form>
+    <!-- InstanceEndEditable -->
+</div>
+@section scripts{
+    <script type="text/javascript">
+        var asd = false;
+
+        $().ready(function () {
+            //onfocus = "if(this.value==defaultValue) {this.value='';this.type='password'}"
+            //onblur = "if(!value) {value=defaultValue; this.type='text';}"
+
+//            var showPwd = $("#showPwd"), pwd = $("#pwd");
+//            showPwd.focus(function () {
+//                pwd.val("");
+//                showPwd.val("");
+//                pwd.show().focus();
+//                showPwd.hide();
+//                //alert(pwd.val())
+//            });
+
+//            pwd.blur(function () {
+//                if (pwd.val() == "") {
+//                    showPwd.val("请输");
+//                    showPwd.show();
+//                    pwd.hide();
+//                }
+//            });
+
+
+            //            $("#passport").focus(function () {
+            //                //20140526  add by cy 获得焦点的时候  取消错误提示
+            //                $("#passname").text("").removeClass().addClass("sp2 fl ml10 col999");
+            //            }).blur(function () {
+            //                var x = checkname();
+            //                //alert("asd=" + asd)
+            //            });
+            //            $("#pwd").focus(function () {
+            //                checkpasswords();
+            //            }).blur(function () {
+            //                checkpasswordss(this);
+            //            }).keyup(function () {
+            //                chkpwd(this);
+            //            });
+            //            $("#pwd2").focus(function () {
+            //                checkpasswords2();
+            //            }).blur(function () {
+            //                checkpassword2(this.value);
+            //            });
+
+        });
+        //检查当前用户名是否输入正确
+        function checkname(pass) {
+            //var pass = $("#passport").val();
+            $.post("@Url.MerchantSiteUrl().CheckPwd", { "pwd": pass },
+                   function (data) {
+                       asd = data;
+                       //alert("data=" + data);
+                       if (data) {
+                           $("#passname").html("&nbsp;").removeClass().addClass("yes");
+                       }
+                       else {
+                           $("#passname").text("原密码输入有误").removeClass().addClass("no sp1 fl ml10 cold21b1b");
+                       }
+                   });
+        }
+        //新密码验证
+        function checkpasswords() {
+            $("#passwname").text("请输入6-16位英文字母、数字或符号").removeClass().addClass("sp2 fl ml10 col999");
+
+        }
+        function checkpasswordss(obj) {
+            var pwd = $(obj).val();
+            if (pwd == null || pwd == '') {
+                $("#passwname").text("请输入至少6位字母，数字或符号").removeClass().addClass("no sp1 fl ml10 cold21b1b");
+                $("#chkResult a").removeClass("a_bg");
+            } else if (pwd.match(/[\u4e00-\u9fa5]/ig)) {
+                $("#chkResult a").removeClass("a_bg");
+                $("#passwname").text("请输入至少6位字母，数字或符号").removeClass().addClass("no sp1 fl ml10 cold21b1b");
+            } else if (pwd.length < 6) {
+                $("#chkResult a").removeClass("a_bg");
+                $("#passwname").text("请输入至少6位字母，数字或符号").removeClass().addClass("no sp1 fl ml10 cold21b1b");
+            } else {
+                $("#passwname").text("").removeClass().addClass("sp fl ml10");
+            }
+
+
+        }
+        //确认密码验证
+        function checkpasswords2() {
+            $("#passname2").html("请输入6-16位字母、数字或符号").removeClass().addClass("sp2 fl ml10 col999");
+        }
+        function checkpassword2(pwd2) {
+            if (pwd2 == null || pwd2 == '') {
+                $("#passname2").html("请再次输入密码").removeClass().addClass("no sp1 fl ml10 cold21b1b");
+            } else if (pwd2.length < 6) {
+                $("#passname2").html("请输入至少6位字母，数字或符号").removeClass().addClass("no sp1 fl ml10 cold21b1b");
+            } else {
+                var pwd = $("#pwd").val();
+                if (pwd != pwd2) {
+                    $("#passname2").html("确认密码与新密码不一致，请重新输入").removeClass().addClass("no sp1 fl ml10 cold21b1b");
+                } else {
+                    $("#passname2").html("").removeClass().addClass("sp fl ml10");
+                }
+            }
+        }
+        //密码安全度判断
+        function chkpwd(obj) {
+            var t = obj[0].value;
+            var temp = getResult(t);
+            //定义对应的消息提示
+            var msg = new Array(3); ;
+            msg[0] = "弱";
+            msg[1] = "中";
+            msg[2] = "强。";
+            //设置显示效果
+            if (temp == 0) {
+                $("#chkResult span").removeClass().addClass("bg0_e7e7e7");
+
+            }
+            else {
+                if (temp == 1) {
+                    $("#chkResult span[id=a1]").removeClass().addClass("bg_df2727");
+                    $("#chkResult span[id=a2]").removeClass().addClass("bg0_e7e7e7");
+                    $("#chkResult span[id=a3]").removeClass().addClass("bg0_e7e7e7");
+                }
+                else if (temp == 2) {
+                    $("#chkResult span[id=a1]").removeClass().addClass("bg_ff7200");
+                    $("#chkResult span[id=a2]").removeClass().addClass("bg_ff7200");
+                    $("#chkResult span[id=a3]").removeClass().addClass("bg0_e7e7e7");
+                }
+                else if (temp == 3) {
+                    $("#chkResult span").removeClass().addClass("bg_46d21b");
+                }
+
+            }
+            checkpasswordss(obj);
+        }
+
+        //定义检测函数,返回0/1/2/3分别代表无效/差/一般/强
+        function getResult(s) {
+            if (s.length < 6) {
+                return 0;
+            }
+            if (s.match(/[\u4e00-\u9fa5]/ig)) {
+                return -1;
+            }
+            var ls = 0;
+
+            if (s.match(/[A-Z]/ig)) {
+                ls++;
+            }
+            if (s.match(/[0-9]/ig)) {
+                ls++;
+            }
+            if (s.match(/(.[^a-zA-Z0-9])/ig)) {
+                ls++;
+            }
+
+            return ls;
+        }
+        //前端验证
+        function check() {
+            var name = $("#passport").val();   //原密码
+            var pwd = $("#pwd").val();         //新密码
+            var pwd2 = $("#pwd2").val();       //确认新密码 
+            if (name == '') {
+                $("#passname").html("此项为必填项").removeClass().addClass("no ml10 sp1 fl cold21b1b");
+                return false;
+            } else if (pwd == '') {
+                $("#passwname").html("此项为必填项").removeClass().addClass("sp1 fl cold21b1b");
+                return false;
+            } else if (pwd.length < 6) {
+                $("#passwname").html("请输入6-16位英文字母、数字或符号，区分大小写").removeClass().addClass("sp1 fl cold21b1b");
+                return false;
+            } else if (pwd2 == '') {
+                $("#passname2").html("请再次输入密码").removeClass().addClass("sp1 fl cold21b1b");
+                return false;
+            } else if (pwd2.length < 6) {
+                $("#passname2").html("密码输入不一致，请重新输入").removeClass().addClass("sp1 fl cold21b1b");
+                return false;
+            } else if (pwd != pwd2) {
+                $("#passname2").html("密码输入不一致，请重新输入").removeClass().addClass("sp1 fl cold21b1b");
+                return false;
+            }
+            return true;
+        }
+        
+    </script>
+    <script type="text/javascript">
+        //        $.validator.setDefaults({
+        //            submitHandler: function () {
+        //                alert("已经提交!");
+        //            }
+        //        });
+
+        var isValidate = true;
+        jQuery.validator.addMethod("isPassword", function (value, element) {
+            var flag = true;
+            if ($("#pwd").is(":hidden") == false) {
+                flag=false;
+            }
+//            if (element.type == "text")
+            //                flag = false;
+            return this.optional(element) || flag;
+        });
+        jQuery.validator.addMethod("checkPWD", function (value, element) {
+            chkpwd($("#pwd"));
+            return this.optional(element) || true;
+        });
+
+
+        $().ready(function () {
+
+            $("#btn_modify").on("click", function () {
+                //如果密码框有中文，则清空
+                var $newPWD1 = $("#pwd");
+                if ($newPWD1[0].type == "text") {
+                    //$newPWD1[0].value = "   ";
+                }
+                var $newPWD2 = $("#pwd2");
+                if ($newPWD2[0].type == "text") {
+                    //$newPWD2[0].value = "   ";
+                }
+
+                var data = $(this).attr("data");
+                if ("on" == data) {
+                    $("#form1").submit();
+                }
+            });
+
+            $("#form1").validate({
+                rules: {
+                    oldpwd: {
+                        required: true,
+                        isRightPWD: false
+                    },
+                    newpwd: {
+                        required: true,
+                        minlength: 6,
+                        maxlength: 16,
+                        isPassword: false
+                    },
+                    confirmpwd: {
+                        required: true,
+                        isPassword: false,
+                        equalTo: "#pwd"
+                    }
+                },
+                messages: {
+                    oldpwd: {
+                        required: "<span class='no sp1 fl ml10 cold21b1b' id='passname0'>此项为必填项</span>",
+                        isRightPWD: "<span class='no sp1 fl ml10 cold21b1b' id='passname0'>原密码输入错误</span>"
+                    },
+                    newpwd: {
+                        required: "<span class='no sp1 fl ml10 cold21b1b' id='passwname'>请输入至少6位字母，数字或符号</span>",
+                        isPassword: "<span class='no sp1 fl ml10 cold21b1b' id='passwname'>请输入至少6位字母，数字或符号</span>",
+                        minlength: "<span class='no sp1 fl ml10 cold21b1b' id='passwname'>密码不能少于6个字符</span>"
+                    },
+                    confirmpwd: {
+                        required: "<span class='no sp1 fl ml10 cold21b1b' id='passname2'>请输入确认密码</span>",
+                        isPassword: "<span class='no sp1 fl ml10 cold21b1b' id='passwname2'>请输入至少6位字母，数字或符号</span>",
+                        equalTo: "<span class='no sp1 fl ml10 cold21b1b' id='passname2'>确认密码与新密码不一致，请重新输入</span>"
+                    }
+                },
+                success: function (element) {
+                    element.parent().find("span").html("<span class='yes'>&nbsp;</span>");
+                    //alert("成功")
+                    //isValidate = true;
+                },
+                submitHandler: function (form) {
+                    //alert("提交");
+                    var oldPwd = $("#passport").val();
+                    var newPwd = $("#pwd").val();
+                    var confirmPwd = $("#pwd2").val();
+                    $.post("@Url.MerchantSiteUrl().ModifyPwd", { "oldPwd": oldPwd, "newPwd": newPwd, "confirmPwd": confirmPwd }, function (data) {
+                        //alert(data);
+                        if (!data.result) {
+                            $.alert("原密码输入有误，修改失败！");
+                        } else {
+                            //location.href = "@Url.MerchantSiteUrl().Common_LoginOut";
+                            location.href = "@Url.MerchantSiteUrl().Order_Main()";
+                        }
+
+                    });
+                },
+                onkeyup: false,
+                errorElement: "span",
+                errorPlacement: function (error, element) {
+                    isValidate = false;
+                    //alert("isValidate=" + isValidate);
+                    element.parent().find("span").remove();
+                    error.appendTo(element.parent());
+                }
+            });
+
+            $("#passport").on("blur", function () {
+                //                var data = $(this);
+                //                //checkname(data.val());
+
+            });
+            //密码强度判断
+            $("#pwd").on("keyup", function () {
+                var data = $(this);
+                chkpwd(data);
+            });
+
+        });
+        //确定修改
+        $("#btn_modify").click(function () {
+            //            if ($('#form1').valid()) {
+            //                alert("通过验证");
+            //            }
+            //            else {
+            //                alert("未通过验证");
+            //                isValidate = true;
+            //            }
+
+        });
+        jQuery.validator.addMethod("isRightPWD", function (value, element) {
+            //chkpwd($("#pwd"));
+            var pass = element.value;
+            var flag = false;
+            $.post("@Url.MerchantSiteUrl().CheckPwd", { "pwd": pass },
+                   function (data) {
+                       if (data) {
+                           flag = true;
+                       }
+                   });
+            return this.optional(element) || flag;
+        });
+
+        //        function xxx() {
+        //            var pass = $("#passport").val();
+        //            $.post("@Url.MerchantSiteUrl().CheckPwd", { "pwd": pass },
+        //                   function (data) {
+        //                       if (data) {
+        //                           return true
+        //                       }
+        //                       else {
+        //                           return false;
+        //                       }
+        //                   });
+        //        }
+
+        //        $(function(){
+        //            $("#passport").blur(function(){
+        //                if (xxx()) {
+        //                    $.alert("true");
+        //                }
+        //                else { 
+        //                $.alert("false")
+        //                 }
+        //            });
+        //        });
+    </script>
+}

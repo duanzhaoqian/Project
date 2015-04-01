@@ -1,0 +1,213 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using KYJ.ZS.Models.Orders
+@using KYJ.ZS.Models.RentalGoodses
+@model IList<OrderManageEntity>
+@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.GUANLIDINGDAN;
+    ViewBag.Title = "管理订单";
+
+    OrderStateAreaType areaEnum = (OrderStateAreaType)ViewData["area"];
+    OrderState stateEnum = (OrderState)ViewData["state"];
+
+    int totalItemCount = Auxiliary.ToInt32(ViewData["totalItemCount"]);
+    int pagesize = Auxiliary.ToInt32(ViewData["pagesize"]);
+    int pageIndex = Auxiliary.ToInt32(ViewData["pageIndex"]);
+}
+<div class="tag">
+        <ul id="ul_area" class="clearFix">
+            <li @(areaEnum == OrderStateAreaType.All ? "class=cur" : "") data="@((int)OrderStateAreaType.All)"><a href="javascript:void(0)">
+                全部订单</a></li>
+            <li @(areaEnum == OrderStateAreaType.WaitPay ? "class=cur" : "") data="@((int)OrderStateAreaType.WaitPay)"><a href="javascript:void(0)">
+                未付款区</a></li>
+            <li @(areaEnum == OrderStateAreaType.SendGoods ? "class=cur" : "") data="@((int)OrderStateAreaType.SendGoods)"><a href="javascript:void(0)">
+                发货区</a></li>
+            <li @(areaEnum == OrderStateAreaType.RentGoods ? "class=cur" : "") data="@((int)OrderStateAreaType.RentGoods)"><a href="javascript:void(0)">
+                租用区</a></li>
+            <li @(areaEnum == OrderStateAreaType.ReturnAndBackGoods ? "class=cur" : "") data="@((int)OrderStateAreaType.ReturnAndBackGoods)"><a href="javascript:void(0)">
+                退租及退换货区</a></li>
+            <li @(areaEnum == OrderStateAreaType.Settlement ? "class=cur" : "") data="@((int)OrderStateAreaType.Settlement)"><a href="javascript:void(0)">
+                结算区</a></li>
+            <li @(areaEnum == OrderStateAreaType.Successed ? "class=cur" : "") data="@((int)OrderStateAreaType.Successed)"><a href="javascript:void(0)">
+                成功订单</a></li>
+            <li @(areaEnum == OrderStateAreaType.Closed ? "class=cur" : "") data="@((int)OrderStateAreaType.Closed)"><a href="javascript:void(0)">
+                关闭订单</a></li>
+        </ul>
+      </div>
+<div class="conbox" >
+        <div class="serchbox clearFix">
+        <form id="frm_search" action="@Url.ManagerSiteUrl().Order_Manage" method="get">
+            <div class="fl col666 mr10">
+                商品名称：<input type="text" id="txt_title" name="txt_title" maxlength="100" value="@ViewData["goodsTitle"]" class="intxt" /></div>
+            <div class=" fl col666 mr10">
+                订单编号：
+                <input type="text" id="txt_number" name="txt_number" value="@ViewData["number"]" maxlength="100" class="intxt" /></div>
+            <div class="fl col666 mr10">
+                买家昵称：
+                <input type="text" id="txt_userNikeName" name="txt_userNikeName" value="@ViewData["userNikeName"]" maxlength="20" class="intxt" /></div>
+            <div class="">
+                <input type="button" id="btn_search" class="btn_f65c33" value="搜索" /></div>
+                <input id="hdn_area" name="hdn_area" type="hidden" value="@((int)areaEnum)" />
+                <input id="hdn_state" name="hdn_state" type="hidden" value="@((int)stateEnum)" />
+                </form>
+        </div>
+        <div class="list_1">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_3">
+                <tr>
+                  <th width="31%">商品</th>
+                  <th width="10%"> 月租(元)</th>
+                  <th width="10%">数量</th>
+                  <th width="13%"> 买家 </th>
+                  <th width="13%">实收款(元)</th>
+                  <th width="13%">
+                  @if (areaEnum == OrderStateAreaType.All)
+                        {
+                            <span>订单状态</span>
+                        }
+                        else if (areaEnum == OrderStateAreaType.WaitPay)
+                        {
+                            <select name="sel_state" class="selcss">
+                                <option value="-1" @(stateEnum == OrderState.All ? "selected=selected" : "")>全部订单状态</option>
+                                <option value="@((int)OrderState.WaitPay)" @(stateEnum == OrderState.WaitPay ? "selected=selected" : "")>待付款</option>
+                                <option value="@((int)OrderState.PayFailed)" @(stateEnum == OrderState.PayFailed ? "selected=selected" : "")>付款失败</option>
+                            </select>
+                        }
+                        else if (areaEnum == OrderStateAreaType.SendGoods)
+                        {
+                            <select name="sel_state" class="selcss">
+                                <option value="-1" @(stateEnum == OrderState.All ? "selected=selected" : "")>全部订单状态</option>
+                                <option value="@((int)OrderState.WaitSendGoods)" @(stateEnum == OrderState.WaitSendGoods ? "selected=selected" : "")>待发货</option>
+                                <option value="@((int)OrderState.WaitReceive)" @(stateEnum == OrderState.WaitReceive ? "selected=selected" : "")>已发货</option>
+                                <option value="@((int)OrderState.Received)" @(stateEnum == OrderState.Received ? "selected=selected" : "")>已收货</option>
+                            </select>
+                        }
+                        else if (areaEnum == OrderStateAreaType.RentGoods)
+                        {
+                            <select name="sel_state" class="selcss">
+                                <option value="-1" @(stateEnum == OrderState.All ? "selected=selected" : "")>全部订单状态</option>
+                                <option value="@((int)OrderState.WaitRent)" @(stateEnum == OrderState.WaitRent ? "selected=selected" : "")>待确认起租</option>
+                                <option value="@((int)OrderState.Renting)" @(stateEnum == OrderState.Renting ? "selected=selected" : "")>租用中</option>
+                                <option value="@((int)OrderState.WaitRenewal)" @(stateEnum == OrderState.WaitRenewal ? "selected=selected" : "")>待续租</option>
+                            </select>
+                        }
+                        else if (areaEnum == OrderStateAreaType.ReturnAndBackGoods)
+                        {
+                            <select name="sel_state" class="selcss">
+                                <option value="-1" @(stateEnum == OrderState.All ? "selected=selected" : "")>全部订单状态</option>
+                                <option value="@((int)OrderState.ApplyBackRent)" @(stateEnum == OrderState.ApplyBackRent ? "selected=selected" : "")>申请退租</option>
+                                <option value="@((int)OrderState.BackRentCheck)" @(stateEnum == OrderState.BackRentCheck ? "selected=selected" : "")>退租验收</option>
+                                <option value="@((int)OrderState.ApplyBackGoods)" @(stateEnum == OrderState.ApplyBackGoods ? "selected=selected" : "")>申请退货</option>
+                                <option value="@((int)OrderState.BackGoodsCheck)" @(stateEnum == OrderState.BackGoodsCheck ? "selected=selected" : "")>退货验收</option>
+                                <option value="@((int)OrderState.ApplyExchangeGoods)" @(stateEnum == OrderState.ApplyExchangeGoods ? "selected=selected" : "")>申请换货</option>
+                                <option value="@((int)OrderState.ExchangeGoodsCheck)" @(stateEnum == OrderState.ExchangeGoodsCheck ? "selected=selected" : "")>换货验收</option>
+                            </select>
+                        }
+                        else if (areaEnum == OrderStateAreaType.Settlement)
+                        {
+                            <select name="sel_state" class="selcss">
+                                <option value="-1" @(stateEnum == OrderState.All ? "selected=selected" : "")>全部订单状态</option>
+                                <option value="@((int)OrderState.BackRentWaitConfirm)" @(stateEnum == OrderState.BackRentWaitConfirm ? "selected=selected" : "")>退租用户结算待确认</option>
+                                <option value="@((int)OrderState.BackRentWaitPay)" @(stateEnum == OrderState.BackRentWaitPay ? "selected=selected" : "")>退租用户结算待支付</option>
+                                <option value="@((int)OrderState.BackGoodsWaitConfirm)" @(stateEnum == OrderState.BackGoodsWaitConfirm ? "selected=selected" : "")>退货用户结算待确认</option>
+                                <option value="@((int)OrderState.BackGoodsWaitPay)" @(stateEnum == OrderState.BackGoodsWaitPay ? "selected=selected" : "")>退货用户结算待支付</option>
+                                <option value="@((int)OrderState.ExchaneGoodsWaitPay)" @(stateEnum == OrderState.ExchaneGoodsWaitPay ? "selected=selected" : "")>换货用户结算待支付</option>
+                                <option value="@((int)OrderState.BackRentSettlement)" @(stateEnum == OrderState.BackRentSettlement ? "selected=selected" : "")>退租结算</option>
+                                <option value="@((int)OrderState.BackGoodsSettlement)" @(stateEnum == OrderState.BackGoodsSettlement ? "selected=selected" : "")>退货结算</option>
+                                <option value="@((int)OrderState.SaleSettlement)" @(stateEnum == OrderState.SaleSettlement ? "selected=selected" : "")>代售结算</option>
+                            </select>
+                        }
+                        else if (areaEnum == OrderStateAreaType.Successed)
+                        {
+                            <select name="sel_state" class="selcss">
+                                <option value="-1" @(stateEnum == OrderState.All ? "selected=selected" : "")>全部订单状态</option>
+                                <option value="@((int)OrderState.BackRentSucceed)" @(stateEnum == OrderState.BackRentSucceed ? "selected=selected" : "")>退租成功</option>
+                                <option value="@((int)OrderState.SaleSucceed)" @(stateEnum == OrderState.SaleSucceed ? "selected=selected" : "")>代售成功</option>
+                            </select>
+                        }
+                        else if (areaEnum == OrderStateAreaType.Closed)
+                        {
+                            <select name="sel_state" class="selcss">
+                                <option value="-1" @(stateEnum == OrderState.All ? "selected=selected" : "")>全部订单状态</option>
+                                <option value="@((int)OrderState.OrderClosed)" @(stateEnum == OrderState.OrderClosed ? "selected=selected" : "")>订单关闭</option>
+                                <option value="@((int)OrderState.BackGoodsClosed)" @(stateEnum == OrderState.BackGoodsClosed ? "selected=selected" : "")>退货关闭</option>
+                            </select>
+                        }
+                        </th>
+                  <th width="10%" class="br_colddd">操作</th>
+                </tr>
+              </table>
+            @if (Model != null)
+            {       
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_4 nobt">
+              @foreach (var item in Model)
+              {
+                  var pic = KYJ.ZS.Commons.PictureModular.GetPicture.GetFirstGoodsPicture(item.Guid, true, "SHOW");
+                  if (string.IsNullOrEmpty(pic))
+                  {
+                      pic = PubConstant.StaticUrl + Url.Content("web/merchant/images/img/img_01.jpg");
+                  }
+                  else
+                  {
+                      pic += ".60_60.jpg";
+                  }
+                  <tr>
+                   <th colspan="7" class="nobb">
+                      <div class="fl normal ml10 col666 w260 tal">订单编号：@item.Number</div>
+                      <div class="fl col999 normal mr10">@(new OrderStateEnumOper().GetOrderStateTimeDes(item.State))时间：@item.UpdateTime.ToString("yyyy-MM-dd HH:mm")</div>
+                   </th>
+                </tr>
+                   <tr>
+                  <td width="31%">
+                    <div class="imgcon"><img src="@pic" width="50" height="50" /></div>
+                      <div class="imgtxt"><a href="javascript:void(0);">@item.Title</a></div>
+                      <div class="imggui">
+                      @{
+                  var normColor = item.NormName;
+                  if (string.IsNullOrEmpty(normColor))
+                  {
+                      normColor = string.IsNullOrEmpty(item.ColorName) ? "" : ("颜色分类：" + item.ColorName);
+                  }
+                  else if (!string.IsNullOrEmpty(item.ColorName))
+                  {
+                      normColor += "|颜色分类：" + item.ColorName;
+                  }
+                          }
+                      @normColor</div>
+                  </td>
+                  <td width="10%">@item.MonthPrice.ToString("F2")</td>
+                  <td width="10%">@item.GoodsNum</td>
+                  <td width="13%">@item.UserNikeName</td>
+                  <td width="13%"><strong class="cold21b1b">@item.TotalPrice.ToString("F2")</strong><div class="col999">(含快递：@item.FreightCost.ToString("F2"))</div></td>
+                  <td width="13%">@(new OrderStateEnumOper().GetOrderStateDes(item.State))</td>
+                  <td class="nnbor" width="10%"></td>
+                </tr>  
+              } 
+            </table>  
+            }
+   @Html.Pager(totalItemCount, pagesize, pageIndex, "manage", "order", new PagerOptions { AutoHide = false, SeparatorHtml = " ", ShowFirstLast = false, ShowPageIndexBox = false, CssClass = "page", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + pageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next end prev", SpanCSS = "" }, null, null, null)
+        </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            // 订单区域切换
+            $("#ul_area li").click(function () {
+                var areaId = $(this).attr("data");
+                $("#hdn_area").val(areaId);
+                $("#hdn_state").val('-1');
+                $("#frm_search").submit();
+            })
+            // 订单状态切换
+            $("[name='sel_state']").change(function () {
+                var stateId = $(this).find(":selected").val();
+                $("#hdn_state").val(stateId);
+                $("#frm_search").submit();
+            })
+            // 搜索
+            $("#btn_search").click(function () {
+                $("#frm_search").submit();
+            })
+        })
+    </script>
+}

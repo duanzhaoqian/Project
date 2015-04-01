@@ -1,0 +1,61 @@
+﻿@using KYJ.ZS.Models.RentalGoodses;
+@using KYJ.ZS.BLL.Categories;
+@{
+    CategoryBll catBll = new CategoryBll();
+    var firstlyCatList = catBll.GetCategoryList().List.Where((a) => a.Pid == 0);
+}
+<div id="sort" class="sort">
+    <h1>
+        <a href="@Url.WebSiteUrl().Index">全部分类</a></h1>
+    <div id="category" class="category" style="display: none;">
+        <div class="category_bg">
+            <dl>
+                <dt>热门品牌</dt>
+                <dd>
+                    <a href="http://www.kyjzs.com/zu/c1-d4-e30-r16">海尔</a>
+                    <a href="http://www.kyjzs.com/zu/c1-d6-e91-r23">伊莱克斯</a>
+                    <a href="http://www.kyjzs.com/zu/c1-d4-e30-r17">美的</a>
+                    <a href="http://www.kyjzs.com/zu/c1-d4-e97-r19">飞利浦</a>
+                    <a href="http://www.kyjzs.com/zu/c1-d4-e90-r20">松下</a>
+                    <a href="http://www.kyjzs.com/zu/c1-d4-e35-r18">格力</a>
+                    <a href="http://www.kyjzs.com/zu/c1-d8-e93-r21">格兰仕</a>
+                   
+                    </dd>
+            </dl>
+            @foreach (var i in firstlyCatList)
+            {
+                var secondaryCategory = catBll.GetCategoryList().List.Where((a) => a.Pid == i.Id);
+                <dl>
+                    <dt>@i.Name</dt>
+                    <dd>
+                        @foreach (var j in secondaryCategory)
+                        {
+                            var value = "c" + i.Id + "-d" + j.Id;
+                            <a name="channel" value="@value" href="">@j.Name</a>
+                        }
+                    </dd>
+                </dl>
+            }
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $$ = KYJ.CORE.URL;
+        jQuery.extend({ kyj: $$ });
+        $("a[name='channel']").each(function (index) {
+            var value = $(this).attr("value");
+            var url = $.kyj.set("channel", null, value, 4, "")
+            $(this).attr("href", url)
+        });
+        $("a[name='category']").each(function (index) {
+            var prefix = $(this).attr("prefix");
+            var value = $(this).attr("value");
+            var url = $.kyj.set("zu", null, value, 4, null);
+            $(this).attr("href", url)
+
+        });
+        $(".category_bg>dl:last").addClass("nob");
+
+    });
+</script>

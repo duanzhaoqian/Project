@@ -1,0 +1,58 @@
+﻿@using KYJ.ZS.Models.RentalGoodses;
+@model RentalGoodsCatMenuEntity
+<div class="category_two">
+    @foreach (var item in Model.CatMenuItems)
+    {
+        var menuvalue = "c" + item.Channel.Pid + "-d" + @item.Channel.Id;
+
+        <dl>
+            <dt><a href="" class="up" value="@menuvalue" name="channel" itemvalue="@item.Channel.Id" prefix="d">@item.Channel.Name</a></dt>
+            <dd class="hide" style="display: block;">
+                @foreach (var cat in item.Categories)
+                {
+                    var itemvalue = "c" + item.Channel.Pid + "-d" + @item.Channel.Id + "-e" + @cat.Id;
+
+                    <a href="" value="@itemvalue" name="category">@cat.Name</a>
+                }
+            </dd>
+        </dl>
+
+    }
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $$ = KYJ.CORE.URL;
+        jQuery.extend({ kyj: $$ });
+        $("a[name='category']").each(function (index) {
+            var prefix = $(this).attr("prefix");
+            var value = $(this).attr("value");
+            var zuUrl = "@Url.WebSiteUrl().RentalList";
+            var url = $.kyj.set(zuUrl, null, value, 4, null);
+            $(this).attr("href", url)
+
+        });
+        $("a[name='channel']").each(function (index) {
+            var value = $(this).attr("value");
+            var itemvalue = $(this).attr("itemvalue");
+            var prefix = $(this).attr("prefix");
+            var channelUrl = "@Url.WebSiteUrl().Channel_Index";
+            var url = $.kyj.set(channelUrl, null, value, 4, "")
+            $(this).attr("href", url)
+            $(this).click(function () { window.location = url; });
+            var reg = RegExp(prefix + "(\\d{1,})", "g");
+            var str = $.kyj.pathname.match(reg);
+            if (str != null)
+                for (var i = 0; i < str.length; i++) {
+                    if (str[i] == prefix+itemvalue) {
+                        $(this).addClass("up");
+                        $(this).parent().next().removeClass("hide");
+                    }
+                    else {
+
+                    }
+                }
+        });
+
+    });
+  
+</script>

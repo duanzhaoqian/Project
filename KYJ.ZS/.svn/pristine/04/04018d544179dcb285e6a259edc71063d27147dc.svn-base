@@ -1,0 +1,83 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model IList<KYJ.ZS.Models.Merchants.MerchantIndexEntity>
+@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.GUANLISHANGHU;
+    ViewBag.Title = "管理商户";
+
+    int totalItemCount = Auxiliary.ToInt32(ViewData["totalItemCount"]);
+    int pagesize = Auxiliary.ToInt32(ViewData["pagesize"]);
+    int pageIndex = Auxiliary.ToInt32(ViewData["pageIndex"]);
+}
+
+<div class="tag_n">
+            <ul>
+                <li><a href="javascript:void(0);">商户列表</a></li>
+            </ul>
+        </div>
+      <div class="conbox" >
+        <div class="serchbox clearFix">
+        <form id="frm_search" action="@Url.ManagerSiteUrl().MerchantManage_Manage" method="get">
+          <div class="fl col666 mr10">企业名称： 
+            <input id="txt_name" name="txt_name" type="text" value="@(ViewData["name"] as string)" maxlength="30" class="intxt w260" />
+          </div>
+          <div class="fl col666 mr10">企业账号：
+            <input id="txt_loginname" name="txt_loginname" type="text" value="@(ViewData["loginName"] as string)" maxlength="30" class="intxt w260" />
+          </div>
+          <div class="">
+            <input id="btn_search" type="button" class="btn_f65c33" value="搜索"  />
+          </div>
+          </form>
+        </div>
+        <div class="list">
+          <table>
+            <tr>
+              <th>企业账号</th>
+              <th>入驻时间</th>
+              <th>企业LOGO </th>
+              <th >企业名称</th>
+              <th >企业简介 </th>
+              <th class="tdlast">操作</th>
+            </tr>
+            @if (Model != null && Model.Count > 0)
+            {
+                foreach (var merchant in Model)
+                { 
+                    <tr>
+              <td>@merchant.LoginName</td>
+              <td>@merchant.CreateTime.ToString("yyyy-MM-dd HH:mm")</td>
+             <td>
+             @{
+             var pic = KYJ.ZS.Commons.PictureModular.GetPicture.GetUserPictureInfo(merchant.Guid, true, KYJ.ZS.Commons.PictureModular.UserPictureType.MERCHANTLOGO.ToString()).Path;
+             if (string.IsNullOrEmpty(pic))
+             {
+                 pic = PubConstant.StaticUrl + Url.Content("web/manager/images/img/shlogo.gif");
+             }
+             else
+             {
+                 pic += ".98_34.jpg";
+             }
+                 }
+              <img src="@pic"/></td>
+              <td>@merchant.Name</td>
+              <td>@(merchant.Introduction == null ? "" : (merchant.Introduction.Length <= 30 ? merchant.Introduction : merchant.Introduction.Substring(0, 30) + "..."))</td>
+              <td  class="tdlast"><p><a href="@Url.ManagerSiteUrl().MerchantManage_BasicInfo(merchant.Id)">查看详情 </a></p>
+               </td>
+            </tr>
+                }
+            }
+          </table>
+   @Html.Pager(totalItemCount, pagesize, pageIndex, "manage", "merchantmanage", new PagerOptions { AutoHide = false, SeparatorHtml = " ", ShowFirstLast = false, ShowPageIndexBox = false, CssClass = "page", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + pageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next end prev", SpanCSS = "" }, null, null, null)
+        </div>
+      </div>
+      
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#btn_search").click(function () {
+                $("#frm_search").submit();
+            })
+        })
+    </script>
+}
+

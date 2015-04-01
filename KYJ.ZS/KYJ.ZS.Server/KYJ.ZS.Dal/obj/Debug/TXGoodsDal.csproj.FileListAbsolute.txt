@@ -1,0 +1,9 @@
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXGoodsDal\obj\Debug\ResolveAssemblyReference.cache
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXGoodsDal\bin\Debug\TXGoodsDal.dll
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXGoodsDal\bin\Debug\TXGoodsDal.pdb
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXGoodsDal\bin\Debug\KYJ.ZS.Commons.dll
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXGoodsDal\bin\Debug\KYJ.ServiceStack.dll
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXGoodsDal\bin\Debug\Newtonsoft.Json.dll
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXGoodsDal\bin\Debug\KYJ.ZS.Commons.pdb
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXGoodsDal\obj\Debug\TXGoodsDal.dll
+E:\快有家\公共平台\pc\zushou\1.0\KYJ.ZS\TxServer\TXGoodsDal\obj\Debug\TXGoodsDal.pdb

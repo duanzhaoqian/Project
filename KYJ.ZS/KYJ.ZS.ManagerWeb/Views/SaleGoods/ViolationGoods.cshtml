@@ -1,0 +1,217 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using KYJ.ZS.Models.SaleGoodses
+@model IList<KYJ.ZS.Models.SaleGoodses.SaleGoodsIndexEntity>
+@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.WEIGUIXINXI;
+    ViewBag.Title = "违规信息";
+
+    SaleGoodsAreaEnum goodsAreaEnum = (SaleGoodsAreaEnum)ViewData["area"];
+
+    // 发布时间
+    DateTime? beginTime = (DateTime?)ViewData["beginTime"];
+    DateTime? endTime = (DateTime?)ViewData["endTime"];
+
+    int totalItemCount = Auxiliary.ToInt32(ViewData["totalItemCount"]);
+    int pagesize = Auxiliary.ToInt32(ViewData["pagesize"]);
+    int pageIndex = Auxiliary.ToInt32(ViewData["pageIndex"]);
+}
+@section header{
+    <link href="@PubConstant.StaticUrl@Url.Content("base/plug/datepicker/css/jquery.datepicker.css")" type="text/css" rel="stylesheet" />
+}
+<div class="tag">
+    <ul id="ul_menu" class="clearFix">
+        <li @(goodsAreaEnum == SaleGoodsAreaEnum.Pending ? "class=cur" : "") data-area="@((int)SaleGoodsAreaEnum.Pending)"><a href="javascript:void(0);">待审核</a></li>
+        <li @(goodsAreaEnum == SaleGoodsAreaEnum.ViolationGoods ? "class=cur" : "") data-area="@((int)SaleGoodsAreaEnum.ViolationGoods)"><a href="javascript:void(0);">违规信息 </a></li>
+    </ul>
+</div>
+<div class="conbox" >
+        <div class="serchbox clearFix">
+        <form id="frm_search" action="@Url.ManagerSiteUrl().SaleGoods_ViolationGoods" method="get">
+        <div class="clearFix">
+          <div class="fl col666 mr10">信息名称： 
+            <input name="txt_title" type="text" value="@(ViewData["goodsTitle"] as string)" maxlength="30" class="intxt w200" />
+          </div>
+            <div class="fl col666 mr10">发布时间：
+                <input id="txt_beginTime" name="txt_beginTime" type="text" value="@(beginTime.HasValue ? beginTime.Value.ToString("yyyy-MM-dd") : "")" class="intxt w90 text_bg " />
+                &nbsp;
+                -&nbsp;
+    <input id="txt_endTime" name="txt_endTime" type="text" value="@(endTime.HasValue ? endTime.Value.ToString("yyyy-MM-dd") : "")" class="intxt w90 text_bg " />
+            </div>
+        </div>
+        <div class=" mt10 clearFix">
+          <div class="fl col666 mr10">信息编号：
+            <input name="txt_number" type="text" value="@(ViewData["number"] as string)" maxlength="30" class="intxt w200" />
+          </div>
+          <div class="fl col666   mr10">用户账号：
+            <input name="txt_userLoginName" type="text" value="@(ViewData["userLoginName"] as string)" maxlength="30" class="intxt w200" />
+          </div>
+          <div class="">
+            <input id="btn_search" type="button" class="btn_f65c33" value="搜索"  />
+          </div><input id="hdn_area" name="hdn_area" value="@((int)goodsAreaEnum)" type="hidden" />
+          </div>
+          </form>
+        </div>
+        <div class="list">
+          <table>
+          <tr>
+              <th>编号</th>
+              <th>标题</th>
+              <th >价格</th>
+              <th>发布时间</th>
+              <th >用户账号</th>
+              <th class="tdlast">操作</th>
+            </tr>
+            @if (Model != null && Model.Count > 0)
+            {
+                foreach (var goods in Model)
+                {
+            <tr>
+              <td>@goods.Id</td>
+              <td>@goods.Title</td>
+              <td>@goods.Price.ToString("F2")</td>
+              <td>@goods.CreateTime.ToString("yyyy-MM-dd HH:mm")</td>
+              <td>@goods.UserLoginName</td>
+              <td  class="tdlast"><p><a name="a_detail" data-id="@goods.Id" data-name="@goods.Title" data-shelfreason="@goods.ShelfReason" data-href="@Url.WebSiteUrl().SaleGoods_DetailPreview(goods.Id)" href="javascript:void(0);">详情 </a></p></td>
+            </tr>
+                }
+            }
+          </table>
+   @Html.Pager(totalItemCount, pagesize, pageIndex, "violationgoods", "salegoods", new PagerOptions { AutoHide = false, SeparatorHtml = " ", ShowFirstLast = false, ShowPageIndexBox = false, CssClass = "page", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + pageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next end prev", SpanCSS = "" }, null, null, null)
+        </div>
+      </div>
+
+<div id="hdn_dialog" style=" display:none">
+<div class="layer w400 mt10">
+  <div class="layer_title">详情</div>
+    <a name="a_close" href="javascript:void(0);" class="close"></a>
+  <div class="layer_box">
+    <table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>查看详情：</td>
+        <td><a name="a_detailLink" href="javascript:void(0);" target="_blank" class="link_05c">预览</a></td>
+      </tr>
+      <tr>
+        <td valign="top">违规原因：</td>
+        <td><textarea name="area_AuditOpinion" class="area w260 "></textarea><div name="div_error" class="cold21b1b mt5"></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+        @if (goodsAreaEnum == SaleGoodsAreaEnum.Pending)
+        {
+        <input name="btn_violation" data-id="" data-name="" type="button" class="btn_1abc9c mr5" value="确认违规" />
+        }
+        <input name="btn_pass" data-id="" data-name="" type="button" class="btn_1abc9c mr5" value="解除违规" />
+        <input name="btn_cancel" type="button" class="btn_grey" value="取消" /></td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+
+@section scripts{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/plug/datepicker/jquery.datepicker.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            // 发布时间
+            var dates = $("#txt_beginTime,#txt_endTime").datepicker({
+                defaultDate: "+1w",
+                minDate: (this.id == "txt_endTime" ? $("#txt_beginTime").datepicker("getDate") : null),
+                maxDate: (this.id == "txt_beginTime" ? $("#txt_endTime").datepicker("getDate") : '+0d'),
+                onSelect: function (selectedDate) {
+                    var option = this.id == "txt_beginTime" ? "minDate" : "maxDate",
+					instance = $(this).data("datepicker"),
+					date = $.datepicker.parseDate(
+						instance.settings.dateFormat ||
+						$.datepicker._defaults.dateFormat,
+						selectedDate, instance.settings);
+                    dates.not(this).datepicker("option", option, date);
+                }
+            }).attr("readonly", "readonly");
+
+            $("#txt_beginTime,#txt_endTime").keydown(function (e) {
+                e.preventDefault();
+                if (e.keyCode == 8) {
+                    $(this).val('');
+                }
+            });
+
+            // 商品区域选择
+            $("#ul_menu li").click(function () {
+                var areaId = $(this).attr("data-area");
+                $("#hdn_area").val(areaId);
+                $("#frm_search").submit();
+            })
+
+            // 搜索
+            $("#btn_search").click(function () {
+                $("#frm_search").submit();
+            })
+
+            // 商品详情弹窗
+            $("[name='a_detail']").click(function () {
+                var detailHref = $(this).attr("data-href"),
+                    goodsId = $(this).attr("data-id"),
+                    goodsName = $(this).attr("data-name"),
+                    shelfreason = $(this).attr("data-shelfreason");
+                $("#hdn_dialog").find("[name='a_detailLink']").attr("href", detailHref);
+                $("#hdn_dialog").find("[name='btn_violation']").attr("data-id", goodsId).attr("data-name", goodsName);
+                $("#hdn_dialog").find("[name='btn_pass']").attr("data-id", goodsId).attr("data-name", goodsName);
+                $("#hdn_dialog").find("[name='area_AuditOpinion']").html(shelfreason);
+                $.content($("#hdn_dialog").html(), 400, 0, 0);
+            })
+
+            // 关闭弹窗
+            $("[name='a_close'],[name='btn_cancel']").live("click", function () {
+                $.closeAll();
+            })
+
+            // 确认违规
+            $("[name='btn_violation']").live("click", function () {
+                var $div_error = $(this).closest("table").find("[name='div_error']");
+                // 审核意见
+                var auditOpinion = $(this).closest("table").find("[name='area_AuditOpinion']").val();
+                if ($.trim(auditOpinion) == '') {
+                    $div_error.html('请填写违规原因！');
+                    return false;
+                }
+                if (auditOpinion.length > 200) {
+                    $div_error.html('违规原因不能超过200个字！');
+                    return false;
+                }
+                AuditRentalGoods($(this).attr("data-id"), $(this).attr("data-name"), auditOpinion, false, $div_error);
+            })
+
+            // 解除违规
+            $("[name='btn_pass']").live("click", function () {
+                var $div_error = $(this).closest("table").find("[name='div_error']");
+                // 审核意见
+                var auditOpinion = $(this).closest("table").find("[name='area_AuditOpinion']").val();
+                AuditRentalGoods($(this).attr("data-id"), $(this).attr("data-name"), auditOpinion, true, $div_error);
+            })
+
+            function AuditRentalGoods(saleGoodsId, saleGoodsName, auditOpinion, isValidate, $div_error) {
+                $.post('@Url.ManagerSiteUrl().SaleGoods_AuditRentalGoods', { modelMark: 2, saleGoodsId: saleGoodsId, saleGoodsName: saleGoodsName, AuditOpinion: auditOpinion, isValidate: isValidate },
+                                function (data) {
+                                    var _data = data.toUpperCase();
+                                    // 操作成功
+                                    if (_data.indexOf("TRUE") > -1) {
+                                        location.reload();
+                                    }
+                                    else if (_data.indexOf("||") > -1) {
+                                        var erroInfo = data.split('||')[1];
+                                        $div_error.html(erroInfo);
+                                    }
+                                    else if (_data.indexOf("FALSE") > -1) {
+                                        $div_error.html('操作失败，请重试！');
+                                    }
+                                    else {
+                                        $.alert(data);
+                                    }
+                                }
+                            );
+            }
+        });
+    </script>
+}

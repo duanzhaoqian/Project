@@ -1,0 +1,39 @@
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\JiePan.Ass.DalFactory.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\JiePan.Ass.DalFactory.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\obj\Debug\JiePan.Ass.DalFactory.csprojResolveAssemblyReference.cache
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\obj\Debug\JiePan.Ass.DalFactory.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\obj\Debug\JiePan.Ass.DalFactory.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\Autofac.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\Autofac.Integration.Mvc.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\JiePan.Ass.IDal.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\JiePan.Ass.Model.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\JiePan.Common.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\EntityFramework.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\System.Web.Mvc.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\System.Web.Razor.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\System.Web.WebPages.Razor.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\System.Web.WebPages.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\System.Web.WebPages.Deployment.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\JiePan.Ass.IDal.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\JiePan.Ass.Model.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\JiePan.Common.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\Autofac.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\Autofac.Integration.Mvc.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\EntityFramework.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\System.Web.Mvc.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\System.Web.Razor.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\System.Web.WebPages.Razor.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\System.Web.WebPages.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.DalFactory\bin\Debug\System.Web.WebPages.Deployment.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.Web\bin\JiePan.Ass.DalFactory.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Web\bin\JiePan.Ass.DalFactory.pdb
+E:\源代码\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.DalFactory.dll
+E:\源代码\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.DalFactory.pdb
+E:\源代码\ass\Ass\JiePan.Ass.DalFactory\obj\Debug\JiePan.Ass.DalFactory.csprojResolveAssemblyReference.cache
+E:\源代码\ass\Ass\JiePan.Ass.DalFactory\obj\Debug\JiePan.Ass.DalFactory.dll
+E:\源代码\ass\Ass\JiePan.Ass.DalFactory\obj\Debug\JiePan.Ass.DalFactory.pdb
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.DalFactory\obj\Debug\JiePan.Ass.DalFactory.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.DalFactory\obj\Debug\JiePan.Ass.DalFactory.pdb
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.DalFactory.dll
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.DalFactory.pdb
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.DalFactory\obj\Debug\JiePan.Ass.DalFactory.dll

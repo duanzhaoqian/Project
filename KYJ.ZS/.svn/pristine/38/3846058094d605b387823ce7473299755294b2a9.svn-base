@@ -1,0 +1,306 @@
+﻿@using KYJ.ZS.Models.Common
+@using KYJ.ZS.Models.DB
+@{
+    ViewBag.Title = "发布商品";
+    Layout = "~/Views/Shared/Layouts/_UserLayout.cshtml";
+    ViewBag.Navigation = UserNavigation.FABUXINXI;
+    var guid = Guid.NewGuid().ToString();
+}
+@section header{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/plug/ueditor/ueditor.config.zs.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/plug/ueditor/ueditor.all.min.js")" type="text/javascript"></script>
+}
+<form id="formSubmit" action="@Url.UserSiteUrl().SavePublishSaleGoods" method="post">
+<input type="hidden" name="guid" value="@guid"/>
+<div class="tag">
+    <ul>
+        <li class="cur">
+            <a href="#">发布信息</a></li>
+    </ul>
+</div>
+<div class="er_location2">
+    <form action="" method="post">
+    <table cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                <th>新旧程度：</th>
+                <td>
+                    <select class="w100" name="Degree">
+                        <option value="">请选择</option>
+                        <option value="10">全新</option>
+                        <option value="9">9成</option>
+                        <option value="8">8成</option>
+                        <option value="7">7成</option>
+                        <option value="6">6成</option>
+                        <option value="5">5成</option>
+                        <option value="4">4成</option>
+                        <option value="3">3成</option>
+                        <option value="2">2成</option>
+                        <option value="1">1成</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <th>价格： </th>
+                <td>
+                    <input type="text" name="Price" class="input_txt w248" />
+                    <span>元</span><span class="pl30">
+                        <input type="checkbox" class="btn_checkbox" name="IsBargain">
+                        不讲价</span> </td>
+            </tr>
+            <tr>
+                <th>上传图片：</th>
+                <td>@*<span class=" fl" dataurl="@Url.Action("Upload", "Upload", new { guid, picturetype = "FREE", maxnum = 1, pictureNo = 0 })">
+                                @{ Html.RenderAction("Upload", "Upload", new { guid, picturetype = "FREE", maxnum = 1, pictureNo = 0 }); }
+                            </span>*@
+                    <div class="mb10">
+                        @{ Html.RenderAction("Upload", "Upload", new { guid, picturetype = "FREE", maxnum = 1, pictureNo = 0 }); }
+                    </div>
+                    <div class="upimgbox clearFix" id="GalleryContainer">
+                        <ul id="sortable1">
+                        </ul>
+                    </div>
+                    <div class="wxt">
+                        温馨提示：上传的商品图片需小于<span class="cold21b1b">2M</span>，格式为jpg、bmp、png。</div>
+                </td>
+            </tr>
+            <tr>
+                <th>标题：</th>
+                <td>
+                    <input type="text" class="input_txt w490" name="Title" value="" /></td>
+            </tr>
+            <tr>
+                <th width="12%">详细描述：</th>
+                <td>
+                    <textarea name="Desc" cols="45" rows="5" class="w640" id="myEditor"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <th>所在地：</th>
+                <td>
+                    <select id="ProvinceId" name="ProvinceId" class="w100">
+                        <option value="0">请选择</option>
+                        @if (ViewData["Province"] != null)
+                        {
+                            foreach (var item in ViewData["Province"] as List<GeographyItemEntity>)
+                            {
+                            <option value="@item.GeographyCode">@item.GeographyName</option>
+                            }
+                        }
+                    </select>
+                    <input type="hidden" id="ProvinceName" name="ProvinceName" value="" />
+                    <select id="CityId" name="CityId" class="w100">
+                        <option value="0">请选择</option>
+                    </select>
+                    <input type="hidden" id="CityName" name="CityName" value="" />
+                    <select id="DistrictId" name="DistrictId" class="w100">
+                        <option value="0">请选择</option>
+                    </select>
+                    <input type="hidden" id="DistrictName" name="DistrictName" value="" />
+                </td>
+            </tr>
+            <tr>
+                <th>联系人：</th>
+                <td>
+                    <input type="text" name="Contact" class="input_txt w248" /></td>
+            </tr>
+            <tr>
+                <th>联系电话：</th>
+                <td>
+                    <input type="text" name="ContactPhone" class="input_txt w248" /></td>
+            </tr>
+            <tr>
+                <th>选择标签：</th>
+                <td>
+                    @if (ViewData["Tags"] != null)
+                    {
+                        foreach (var item in ViewData["Tags"] as List<Tag>)
+                        {
+                        <a class="bg_gray" name="a_Tag" value="@item.Id">@item.Name</a>
+                        }
+                    }
+                    <input type="hidden" name="Tag" value="" />
+                </td>
+            </tr>
+            <tr>
+                <th>&nbsp;</th>
+                <td><span class="remind">请选择 1- 3个标签</span></td>
+            </tr>
+            <tr>
+                <th>&nbsp;</th>
+                <td>
+                    <input type="button" class="btn_yellow" value="立刻发布" /></td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+</div>
+</form>
+@section scripts{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/plug/autotip/jquery.autotip.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jQuery.validator.messages_cn.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jQuery.validator.methods.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/uploadify/swfobject.js")" type="text/javascript"></script>
+    <link href="@PubConstant.StaticUrl@Url.Content("base/js/uploadify/uploadify.css")" rel="stylesheet" type="text/css" />
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/uploadify/jquery.uploadify.v2.1.4.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            UE.getEditor('myEditor');
+
+        });
+
+        $(function () {
+            var selectProvinces = $("#ProvinceId");
+            var selectCities = $("#CityId");
+            var selectDistricts = $("#DistrictId");
+            $(selectProvinces).change(function () {
+                $ProvinceID = parseInt($(this).val());
+                $ProvinceName = $(this).find("option:selected").text();
+                $("#ProvinceName").val($ProvinceName);
+                $(this).closest("label").find("input").val($ProvinceName);
+                Common.ClearListItems(selectCities);
+                Common.ClearListItems(selectDistricts);
+                if ($ProvinceID > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("cities")?geographyCode=' + this.value + "&ram=" + Math.random(), 0, selectCities);
+                }
+            });
+            $(selectCities).change(function () {
+                $CityID = parseInt($(this).val());
+                $CityName = $(this).find("option:selected").text();
+                $("#CityName").val($CityName);
+                $(this).closest("label").find("input").val($CityName);
+                Common.ClearListItems(selectDistricts);
+                if ($CityID > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("districts")?geographyCode=' + this.value + "&ram=" + Math.random(), 0, selectDistricts);
+                }
+            });
+            $(selectDistricts).change(function () {
+                $DistrictName = $(this).find("option:selected").text();
+                $("#DistrictName").val($DistrictName);
+                $(this).closest("label").find("input").val($DistrictName);
+            });
+            var Init = function (intPId, intCId, intDId) {
+                Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("provinces")', intPId, selectProvinces);
+                if (intPId > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("cities")?geographyCode=' + intPId + "&ram=" + Math.random(), intCId, selectCities);
+                }
+                if (intCId > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("districts")?geographyCode=' + intCId + "&ram=" + Math.random(), intDId, selectDistricts);
+                }
+            };
+
+            var tagArray = [];
+            $("a[name='a_Tag']").toggle(function () {
+                if (tagArray.length > 2) {
+                    return;
+                }
+                $(this).addClass("bg_ffefd8");
+                var val = $(this).attr("value");
+                tagArray.push(val);
+                var $hide = $(this).siblings("input:hidden");
+                $hide.val(tagArray.join(","));
+            }, function () {
+                if ($(this).hasClass("bg_ffefd8")) {
+                    $(this).removeClass("bg_ffefd8");
+                    var val = $(this).attr("value");
+                    tagArray.splice($.inArray(val, tagArray), 1);
+                    var $hide = $(this).siblings("input:hidden");
+                    $hide.val(tagArray.join(","));
+                }
+
+
+            });
+
+
+            //删除商品展示图片
+            $("a.js_deleteShow").live('click', function (e) {
+                e.preventDefault();
+                var rongqi = $(this).closest("span");
+                if (confirm("确定执行当前操作？")) {
+                    var href = $(this).attr("href");
+                    $.ajax({
+                        url: href,
+                        type: "get",
+                        dataType: "jsonp",
+                        jsonp: "callbackparam",
+                        jsonpCallback: "success_jsonpCallback",
+                        success: function (data) {
+                            $.map(data, function (item) {
+                                //rongqi.addClass("adimg");
+                                LoadLoPic(rongqi);
+                                alert("删除成功");
+                            });
+                        },
+                        error: function () { alert("删除图片出错!"); }
+                    });
+                }
+            });
+
+        });
+
+        $(function () {
+            var $submit = $("#formSubmit");
+            $("input[name='Title']").autoTip({ dvalue: "最长30个中文字符", isfind: true });
+
+            $(".btn_yellow").on("click", function () {
+                $submit.submit();
+                //if ($submit.valid())
+
+            });
+            $.validator.addMethod("defautValue", function () {
+                return $("input[name='Title']").val() != "最长30个中文字符";
+            }, "<span class='no'>请填写标题</span>");
+            $submit.validate({
+                ignore: true,
+                rules: {
+                    Title: { required: true, defautValue: true, maxlength: 30 },
+                    Contact: { required: true, maxlength: 30 },
+                    ContactPhone: { required: false, isTel: true },
+                    Desc: { required: true },
+                    Price: { required: true, range: [0, 999999999] },
+                    DistrictId: { min: 1 },
+                    Tag: { required: true },
+                    Degree: { required: true }
+                },
+                messages: {
+                    DistrictId: { min: "<span class='no'>请选择所在地区</span>" },
+                    ContactPhone: { isTel: "<span class='no'>请正确填写您的联系方式</span>" }
+                },
+                errorPlacement: function (error, element) {
+                    if (element.is("input[name='Price']")) {
+                        $('<br/>').appendTo(element.parent());
+                    }
+                    error.appendTo(element.parent());
+                },
+                submitHandler: function () {
+                    $.ajax({
+                        type: "post",
+                        dataType: "json",
+                        url: "@Url.UserSiteUrl().SavePublishSaleGoods",
+                        data: $submit.serialize(),
+                        success: function (response) {
+                            if (response.result) {
+                                location.href = "@Url.UserSiteUrl().ShowPage";
+                            } else {
+                                $.msg(response.message, 2, -1);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+        function LoadLoPic(rongqi) {
+            var url = rongqi.attr("dataurl");
+            $.ajax({
+                url: url,
+                type: "get",
+                dataType: "html",
+                success: function (data) {
+                    rongqi.html(data);
+                }
+            });
+        }
+
+    </script>
+}

@@ -1,0 +1,153 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using KYJ.ZS.Models.SaleGoodses;
+@using KYJ.ZS.Commons.PictureModular;
+@model KYJ.ZS.Models.SaleGoodses.SaleGoodsListEntity
+@{
+    ViewBag.Title = "闲置物品";
+    Layout = "~/Views/Shared/Layouts/_WebLayout.cshtml";
+}
+@section header{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var $$ = KYJ.CORE.URL;
+            jQuery.extend({ kyj: $$ });
+            tjinit();
+            $("input[type='checkbox']").click(function () {
+                var prefix = $(this).attr("prefix");
+                var value = $(this).attr("value");
+                var url = $.kyj.set(null, null, value, 3, prefix);
+                var reg = RegExp(prefix + "(\\d{1,})", "g");
+                var str = $.kyj.pathname.match(reg);
+                if (str != null)
+                    for (var i = 0; i < str.length; i++) {
+                        if (str[i] == prefix + value) {
+                            url = RemoveAttr(prefix, value)
+                        }
+                    }
+                window.location = url;
+            });
+            $("a[name='px']").each(function (index) {
+                var prefix = $(this).attr("prefix");
+                var value = $(this).attr("value");
+                var url = $.kyj.set(null, null, value, 3, prefix);
+                $(this).attr("href", url)
+
+            });
+        });
+        function tjinit() {
+            var m = $.kyj.pathname.split('/')[1];
+            var s = m.split("-");
+            var p = "";
+            for (var i = 0; i < s.length; i++) {
+                var value = s[i].match(/[y|u|v]\d{1,}/g);
+                if (value) {
+                    if (s[i] == 'y0') { $("#mr").attr("class", "on") }
+                    if (s[i] == 'y1') { $("a[name='px']").each(function (index) { $(this).removeClass("on") }); $("#jg").attr("class", "on up"); $("#jg").attr("value", "2") }
+                    if (s[i] == 'y2') { $("a[name='px']").each(function (index) { $(this).removeClass("on") }); $("#jg").attr("class", "on down"); $("#jg").attr("value", "1") }
+                    if (s[i] == 'u1') { $("#jj").attr("checked", "checked"); }
+                    if (s[i] == 'v1') { $("#qx").attr("checked", "checked"); }
+                }
+            }
+        }
+    </script>
+}
+@Html.Partial("RentalGoods/_BreadNavigation", new KYJ.ZS.Models.Common.NavigationEntity() { Type = 1 })
+<div class="w1190 clearFix mt10">
+    <div class="con_l">
+        @Html.Partial("SaleGoods/_CategoryMenu", Model.CatMenu)
+    </div>
+    <div class="con_rr">
+        <div class="forbox">
+            <div class="left">
+                <span class="fl">排序：</span><a id="mr" name="px" href="" value="0" prefix="y" class="on">默认</a><a
+                    id="jg" name="px" href="" value="1" prefix="y">价格</a>
+                <label class="ml35">
+                    <input id="jj" type="checkbox" prefix="u" value="1" />
+                    可讲价</label>
+                <label>
+                    <input id="qx" prefix="v" value="1" type="checkbox" />
+                    全新转卖</label>
+            </div>
+        </div>
+        <div class="unusedlist">
+            <ul>
+                @foreach (var item in Model.ItemList)
+                {
+                    var pic = GetPicture.GetFirstGoodsPicture(item.SaleGuid, true, "Free");
+                    if (string.IsNullOrEmpty(pic))
+                    {
+                        pic = PubConstant.StaticUrl + Url.Content("web/web/images/img/img_wh80_01.jpg");
+                    }
+                    else
+                    {
+                        pic = pic + ".80_80.jpg";
+                    }
+                    var userpic = GetPicture.GetUserPictureInfo(item.UserGuid, true, "LOGO").Path;
+                    if (string.IsNullOrEmpty(userpic))
+                    {
+                        userpic = PubConstant.StaticUrl + Url.Content("web/web/images/img/img_wh50_01.jpg");
+                    }
+                    else
+                    {
+                        userpic = userpic + ".50_50.jpg";
+                    }
+                    <li>
+                        <dl class="clearFix">
+                            <dt><a href="@Url.WebSiteUrl().SaleGoods_Detail(@item.Id)">
+                                <img  data-original="@pic" src=""></a></dt>
+                            <dd class="infor">
+                                <h2>
+                                    <a href="@Url.WebSiteUrl().SaleGoods_Detail(@item.Id)">
+                                        @{
+                                        var title = "";
+                                        if (!string.IsNullOrEmpty(item.Title))
+                                        {
+                                            title = item.Title.Length <= 30 ? item.Title : item.Title.Substring(0, 30) + "...";
+                                        }
+                                        }
+                                        @title
+                                    </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </h2>
+                                <p class="mb12">
+                                    @{
+                                   var name = "";
+                                   if (!string.IsNullOrEmpty(Auxiliary.RemoveHtml(item.OtherDesc)))
+                                   {
+                                       name = Auxiliary.RemoveHtml(item.OtherDesc).Length <= 30 ? Auxiliary.RemoveHtml(item.OtherDesc) : Auxiliary.RemoveHtml(item.OtherDesc).Substring(0, 30) + "...";
+                                   }
+                                    }
+                                    @name
+                                </p>
+                                <p class="col999">
+                                    @{
+                               string degreeStr = item.Degree < 10 ? ("【" + item.Degree + "成新】") : ("【全新】");
+                                    }
+                                    <span class="color45b12c font12">
+                                        @degreeStr
+                                    </span><a href="#">@item.Location</a><i>|</i>@Auxiliary.DateStringFromNow(@item.UpdateTime)</p>
+                            </dd>
+                            <dd class="value">
+                                <div class="price">
+                                    <i>¥</i><em>@item.Price.ToString("F2")</em></div>
+                                @if (item.IsBargain)
+                                {
+                                    <span class="col45b12c">拒绝讲价</span>
+                                }
+                            </dd>
+                            @if (!string.IsNullOrEmpty(item.NickName))
+                            {
+                                <dd class="nickname">
+                                    <div class="nickimg">
+                                        <img  data-original="@userpic" src=""></div>
+                                    <span>@item.NickName</span>
+                                </dd>
+                            }
+                        </dl>
+                    </li>
+                 
+                }
+            </ul>
+        </div>
+        @Html.Pager(Model.TotalItemCount, Model.PageSize, Model.CurrentPageIndex, null, null, new PagerOptions { SeparatorHtml = "", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + Model.CurrentPageIndex + "</a>", ShowFirstLast = true, FirstPageText = "首页", LastPageText = "尾页", CssClass = "page", SelfDefineUrl = ViewData["conPage"].ToString(), PrevCss = "prev end nobor", NextCss = "next end prev", FirstCss = "prev end nobor", LastCss = "next end" }, null, null, null)
+    </div>
+</div>

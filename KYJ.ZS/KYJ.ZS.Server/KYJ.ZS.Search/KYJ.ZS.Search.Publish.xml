@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="D:\发布\zushou" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="配置文件1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Web.config" publishTime="05/12/2014 17:41:18" />
+    <file relUrl="bin/Apache.NMS.ActiveMQ.dll" publishTime="05/12/2014 09:14:59" />
+    <file relUrl="Attributes/GetAttributes.ashx" publishTime="05/08/2014 14:13:03" />
+    <file relUrl="bin/KYJ.ZS.Commons.dll" publishTime="05/12/2014 17:41:12" />
+    <file relUrl="RedisConfigure.xml" publishTime="05/07/2014 09:47:28" />
+    <file relUrl="bin/Apache.NMS.dll" publishTime="05/12/2014 09:14:59" />
+    <file relUrl="bin/TXSearch.pdb" publishTime="05/12/2014 17:42:24" />
+    <file relUrl="bin/MQ.dll" publishTime="04/16/2014 17:46:56" />
+    <file relUrl="Brands/GetBrands.ashx" publishTime="05/08/2014 16:11:22" />
+    <file relUrl="bin/KYJ.ServiceStack.dll" publishTime="04/28/2014 10:47:41" />
+    <file relUrl="bin/Newtonsoft.Json.dll" publishTime="04/18/2014 13:00:49" />
+    <file relUrl="bin/TXSearch.dll" publishTime="05/12/2014 17:42:24" />
+    <file relUrl="bin/KYJ.ZS.Models.pdb" publishTime="05/12/2014 17:41:11" />
+    <file relUrl="bin/Lucene.Net.dll" publishTime="05/07/2014 09:47:31" />
+    <file relUrl="Categories/GetCategories.ashx" publishTime="05/09/2014 10:03:50" />
+    <file relUrl="bin/KYJ.ZS.Commons.pdb" publishTime="05/12/2014 17:41:12" />
+    <file relUrl="bin/KYJ.ZS.Models.dll" publishTime="05/12/2014 17:41:11" />
+  </publishProfile>
+</publishData>

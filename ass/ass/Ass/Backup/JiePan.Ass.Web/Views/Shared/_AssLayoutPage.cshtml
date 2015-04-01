@@ -1,0 +1,99 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="~/Resource/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/Resource/Scripts/jquery-easyui-1.3.4/jquery.easyui.min.js"></script>
+    <link href="~/Resource/Scripts/jquery-easyui-1.3.4/themes/icon.css" rel="stylesheet" />
+    <link href="~/Resource/Scripts/jquery-easyui-1.3.4/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/Resource/Styles/FormStyle.css" rel="stylesheet" />
+    <link href="~/Resource/Styles/BottonStyle.css" rel="stylesheet" />
+    <script src="~/Resource/Scripts/JiePan.js"></script>
+    <script src="~/Resource/Scripts/JiePan_Validate.js"></script>
+    <link href="~/Resource/Styles/ToolButton.css" rel="stylesheet" />
+    @*<script>
+            $(function () {
+                $(".Btn").hover(function () {
+                    $(this).addClass("HightLight");
+                }, function () {
+                    $(this).removeClass("HightLight");
+                });
+                $(".Btn").click(function () {
+                    $("#iff").attr("src", $(this).attr("src") + "&" + Math.random() + "=" + Math.random());
+                    $('#Lc').panel("setTitle", $(this).attr("title") + "——内容展示中心");
+                });
+            });
+        </script>*@
+    <style>
+        #head {
+            font-family: '微软雅黑';
+            font-size: 30px;
+            padding-left: 50px;
+            padding-top: 20px;
+            font-weight: 700;
+            color: #0000ff;
+        }
+    </style>
+    <script>
+        $(function () {
+            $(".Btn").hover(function () {
+                $(this).addClass("HightLight");
+            }, function () {
+                $(this).removeClass("HightLight");
+            });
+            $(".Btn").click(function () {
+                $("#iff").attr("src", $(this).attr("src") + "&" + Math.random() + "=" + Math.random());
+                $('#Lc').panel("setTitle", $(this).attr("title") + "——内容展示中心");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="cc" class="easyui-layout" fit="true">
+        <div data-options="region:'north'" style="height: 80px; background-image: url('/Resource/Images/head.png')">
+            <div id="head">SafiloCN After Sales System</div>
+        </div>
+        <div data-options="region:'west',title:'Menu',split:true" style="width:150px;">
+            <div id="aa" fit="true" class="easyui-accordion" style="width:300px;height:200px;">
+                <div title="Base Info" data-options="">
+                    <div class="Btn" src="@Url.Action("Index","BackMoney")?1=1" title="New Return">
+                        <img src="/Resource/Images/left.ico" /><br />
+                        <span>New Return</span>
+                    </div>
+                    <div class="Btn" src="@Url.Action("Index","BackMoney")?1=1" title="New Return">
+                        <img src="/Resource/Images/left.ico" /><br />
+                        <span>Edit Return</span>
+                    </div>
+                </div>
+                <div title="Repair">
+                    <div class="Btn" src="@Url.Action("SendGoodsReport","Report")?1=1" title="New Repair">
+                        <img src="/Resource/Images/tables.png" /><br />
+                        <span>New Repair</span>
+                    </div>
+                    <div class="Btn" src="@Url.Action("SendGoodsReport","Report")?1=1" title="New Repair">
+                        <img src="/Resource/Images/tables.png" /><br />
+                        <span>Edit Repair</span>
+                    </div>
+                </div>
+                <div title="Return" data-options="">
+                    <div class="Btn" src="@Url.Action("Index","BackMoney")?1=1" title="New Return">
+                        <img src="/Resource/Images/left.ico" /><br />
+                        <span>New Return</span>
+                    </div>
+                    <div class="Btn" src="@Url.Action("Index","BackMoney")?1=1" title="New Return">
+                        <img src="/Resource/Images/left.ico" /><br />
+                        <span>Edit Return</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="Lc" data-options="region:'center',title:'Content'" style="background:#eee;">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

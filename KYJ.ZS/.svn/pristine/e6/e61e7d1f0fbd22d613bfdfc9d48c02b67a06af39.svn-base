@@ -1,0 +1,269 @@
+﻿@*///作者：maq
+///时间：2014年4月28日10:42:15
+///描述：商品列表视图*@
+@using KYJ.ZS.Commons.PictureModular
+@using KYJ.ZS.Models.RentalGoodses
+@using Webdiyer.WebControls.Mvc
+@model KYJ.ZS.Models.View.RentalGoodsIndexView<WareHouseGoodsEntity>
+@{
+    ViewBag.Title = "仓库中的商品";
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+    ViewBag.Navigation = MerchantNavigation.SHANGPINGUANLI;
+}
+@section header
+{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/public/config.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/plug/layer/layer.dialog.js")" type="text/javascript"></script>
+}
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            var arrdom = $("[name=goodsPic]");
+            for (var i = 0; i < arrdom.length; i++) {
+                var guid = $(arrdom[i]).attr("guid");
+                $.get("@Url.MerchantSiteUrl().RentalGoodses_GetGoodsPic?guid=" + guid, function (data) {
+                    var dom = $("[guid=" + data.guid + "]");
+                    $(dom).prop("src", data.url);
+                }, "json");
+            }
+
+            $(".tag ul li").click(function () {
+                location.href = $(this).attr("src");
+            });
+            //全选或者全不选
+            $("[name=chkSelectAll]").click(function () {
+                var strState = $(this).attr("checked");
+                if (strState) {
+                    $("[name=chkSel]").attr("checked", strState);
+                } else {
+                    $("[name=chkSel]").attr("checked", false);
+                }
+            });
+            //上架
+            $("[name=btnShelves]").click(function () {
+                Curd("s", "上架");
+            });
+            //下架
+            $("[name=btnShelvesOff]").click(function () {
+                Curd("soff", "下架");
+            });
+            //删除
+            $("[name=btnDelete]").click(function () {
+                Curd("del", "删除");
+            });
+            //搜索
+            $("#btnSearch").click(function () {
+                $("[name=PageIndex]").val("1");
+                var strGoodsName = $("[name=GoodsName]").val();
+                var strMerchantNumber;
+                var dblMonthPriceMin = $("[name=MonthPriceMin]").val();
+                var dblMonthPriceMax = $("[name=MonthPriceMax]").val();
+                var intRentalNumMax = $("[name=RentalNumMax]").val();
+                var intRentalNumMin = $("[name=RentalNumMin]").val();
+                if (strGoodsName.length > 30) {
+                    $.alert("商品名称过长，请您输入关键字进行查询！",200);
+                    return false;
+                }
+                strMerchantNumber = $("[name=MerchantNumber]").val();
+                if (strMerchantNumber.length > 30) {
+                    $.alert("商家编码过长，请您重新输入！",200);
+                    return false;
+                }
+                if (!IsMatch(/^[0-9]+(.[0-9]{0,2})?$/, dblMonthPriceMin) && dblMonthPriceMin != "") {
+                    // dialog.alert("请输入正确的数字！", "提示", 16);
+                    $.alert("月租下限输入有误",200);
+                    return false;
+                }
+                if (!IsMatch(/^[0-9]+(.[0-9]{0,2})?$/, dblMonthPriceMax) && dblMonthPriceMax != "") {
+                    $.alert("月租上限输入有误！",200);
+                    return false;
+                }
+                if (!IsMatch(/^\+?[1-9][0-9]*$/, intRentalNumMax) && intRentalNumMax != "") {
+                    $.alert("租用量上限有误！",200);
+                    return false;
+                }
+                if (!IsMatch(/^\+?[1-9][0-9]*$/, intRentalNumMin) && intRentalNumMin != "" && intRentalNumMin != "0") {
+                    $.alert("租用量下限有误！",200);
+                    return false;
+                }
+                document.getElementById("frmSearch").submit();
+            });
+        });
+
+        //上架，下架，删除操作
+        function Curd(type, msg) {
+            var strIdList = GetCheckedIdList();
+            if (strIdList.length == 0) {
+               // $.alert('请您选择商品后在进行操作！');
+                return false;
+            }
+            $.confirm("您确定要对多选择的商品进行<span style='color:red'>" + msg + "</span>操作吗？", "询问", function () {
+                var strUrl = "";
+                if (type == "del") {
+                    strUrl = "@Url.MerchantSiteUrl().RentalGoodses_Delete";
+                } else if (type == "soff") {
+                    strUrl = "@Url.MerchantSiteUrl().RentalGoodses_ShelvesOff";
+                } else if (type == "s") {
+                    strUrl = "@Url.MerchantSiteUrl().RentalGoodses_Shelves";
+                }
+                $.post(strUrl, { idList: strIdList }, function (data) {
+                    var intIcon = -1;
+                    if (!data.Success) {
+                        intIcon = -1;
+                    } else {
+                        var strHref = location.href;
+                        location.href = strHref;
+                    }
+                    $.alert(data.Message,200,150, intIcon);
+                }, "json");
+            });
+        }
+        //得到选择的id列表
+        function GetCheckedIdList() {
+            var dom = $("#tabList input:checked");
+            var strIdList = "";
+            for (var i = 0; i < dom.length; i++) {
+                strIdList += $(dom[i]).attr("gid") + ",";
+            }
+            strIdList = strIdList.substr(0, strIdList.length - 1);
+            return strIdList;
+        }
+
+        function IsMatch(regex, input) {
+            if (!(regex instanceof RegExp) || typeof input !== 'string') /* throw {msg:"参数不正确"}; // 考虑使用异常*/ return false;
+            return regex.test(input);
+        }
+    </script>
+}
+<!-- InstanceBeginEditable name="EditRegion1" -->
+<div class="tag">
+    <ul>
+        <li class="cur" src="@Url.MerchantSiteUrl().RentalGoodses_Index()"><a href="#">仓库中的商品</a></li>
+        <li src="@Url.MerchantSiteUrl().RentalGoods_IllegalGoods()" ><a href="#">违规商品</a></li>
+    </ul>
+</div>
+<div class="conbox">
+    <div class="serchbox clearFix">
+        <form id="frmSearch" action="@Url.MerchantSiteUrl().RentalGoodses_Index()" method="GET">
+        <input type="hidden" name="PageIndex" value="@Model.PageData.PageIndex"/>
+        <div class="ml17 fl">
+            商品名称：<input type="text" value="@Model.QueryPms.GoodsName" name="GoodsName" class="intxt_h24 w140"/></div>
+        <div class="ml15 fl">
+            商家编码：<input type="text" value="@Model.QueryPms.MerchantNumber" name="MerchantNumber" class="intxt_h24 w140" /></div>
+        <div class="ml15 fl">
+            月租：<input type="text" value="@(Model.QueryPms.MonthPriceMin == decimal.MinValue || Model.QueryPms.MonthPriceMin == 0 ? "" : Model.QueryPms.MonthPriceMin.ToString())" name="MonthPriceMin" class="intxt_h24 w55" />&nbsp;-&nbsp;
+            <input type="text" value="@(Model.QueryPms.MonthPriceMax == decimal.MaxValue ? "" : Model.QueryPms.MonthPriceMax.ToString())" name="MonthPriceMax" class="intxt_h24 w55" />
+        </div>
+        <div class="ml15 fl">
+            租用量：<input type="text" value="@(Model.QueryPms.RentalNumMin == int.MinValue || Model.QueryPms.RentalNumMin == 0 ? "" : Model.QueryPms.RentalNumMin.ToString())" name="RentalNumMin" class="intxt_h24 w65" />&nbsp;-&nbsp;
+            <input type="text" name="RentalNumMax" value="@(Model.QueryPms.RentalNumMax == int.MaxValue ? "" : Model.QueryPms.RentalNumMax.ToString())" class="intxt_h24 w65" /></div>
+        <div class="fl ml15">
+            <input type="button" class="btn_red" id="btnSearch" value="搜索" /></div>
+        </form>
+    </div>
+    <div class="listbox">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab_4">
+            <tr>
+                <th width="35%">
+                    商品
+                </th>
+                <th width="9%">
+                    状态
+                </th>
+                <th width="9%">
+                    租金(元)
+                </th>
+                <th width="9%">
+                    库存
+                </th>
+                <th width="9%">
+                    租用量
+                </th>
+                <th width="9%">
+                    销量
+                </th>
+                <th width="13%">
+                    发布时间
+                </th>
+                <th width="7%" class="br_colddd">
+                    操作
+                </th>
+            </tr>
+        </table>
+        <div style="@(Model.PageData.DataList.Count == 0 ? "display:none" : "")">
+            <div class="clearFix fybgf3">
+                <div class="fl">
+                    <input type="checkbox" class="btn_checkbox" name="chkSelectAll" />全选<span class="ml10"><a
+                        href="javascript:void(0);" class="btn_w38" name="btnShelves">上架</a><a href="javascript:void(0);"
+                            name="btnShelvesOff" class="btn_w38 no_blr">下架</a><a href="javascript:void(0);" class="btn_w38"
+                                name="btnDelete">删除</a></span>
+                </div>
+                <div class="page pad0 fr">
+                    @Html.Pager(Model.PageData.RecordCount, Model.PageData.PageSize, Model.PageData.PageIndex, "index", "rentalgoodses", new PagerOptions { AutoHide = false, ShowGoButton = false, SeparatorHtml = " ", ShowFirstLast = true, ShowPageIndexBox = false, FirstPageText = "首页", LastPageText = "尾页", GoButtonText = "跳转", CssClass = "", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + Model.PageData.PageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "", NextCss = "", FirstCss = "", LastCss = "", SpanCSS = "col333 font12 mr10", ShowGoButtonCss = "pagetz" }, null, null, null)
+                </div>
+            </div>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" id="tabList" class="tab_3 nobt">
+                @foreach (WareHouseGoodsEntity m in Model.PageData.DataList)
+                {
+                    <tr>
+                        <td width="5%" class="nobr">
+                            <input type="checkbox" class="btn_checkbox" name="chkSel" gid="@m.Id" />
+                        </td>
+                        <td width="30%">
+                            <div class="imgbox">
+                                <img src="http://static.zushou.com/static_v1.0/web/merchant/images/img/img_01.jpg"
+                                    width="50" height="50" guid="@m.Guid" name="goodsPic" /></div>
+                            <div class="sptit">
+                                <a target="_blank" href="@Url.WebSiteUrl().RentalGoods_Detail(m.Id)">@m.Title </a>
+                            </div>
+                        </td>
+                        <td width="9%">
+                            @switch (m.Status)
+                            {
+                                case RentalStatus.Shelves:
+                                <span>上架</span>
+                                    break;
+                                case RentalStatus.ShelvesOff:
+                                <span>下架</span>
+                                    break;
+                                case RentalStatus.UnKnown:
+                                <span>未知</span>
+                                    break;
+                            }
+                        </td>
+                        <td width="9%">
+                            @m.MonthPrice.ToString("0.00")
+                        </td>
+                        <td width="9%">
+                            @m.Stock
+                        </td>
+                        <td width="9%">
+                            @m.RentNum
+                        </td>
+                        <td width="9%">
+                            @m.SalesVolume
+                        </td>
+                        <td width="13%">
+                            @m.CreateTime
+                        </td>
+                        <td width="7%">
+                            <a href="@Url.MerchantSiteUrl().RentalGoodses_UpdateGoods(m.Id)" class="col05c">修改</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <div class="clearFix mb10">
+                <div class="fl mt10 ml10">
+                    <input type="checkbox" class="btn_checkbox" name="chkSelectAll" />全选<span class="ml10"><a
+                        href="javascript:void(0);" class="btn_w38" name="btnShelves">上架</a><a href="javascript:void(0);"
+                            name="btnShelvesOff" class="btn_w38 no_blr">下架</a><a href="javascript:void(0);" name="btnDelete"
+                                class="btn_w38">删除</a></span>
+                </div>
+                <div class="page fr">
+                    @Html.Pager(Model.PageData.RecordCount, Model.PageData.PageSize, Model.PageData.PageIndex, "index", "rentalgoodses", new PagerOptions { AutoHide = false, ShowGoButton = false, SeparatorHtml = " ", ShowFirstLast = true, ShowPageIndexBox = false, FirstPageText = "首页", LastPageText = "尾页", GoButtonText = "跳转", CssClass = "", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + Model.PageData.PageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "", NextCss = "", FirstCss = "", LastCss = "", SpanCSS = "col333 font12 mr10", ShowGoButtonCss = "pagetz" }, null, null, null)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

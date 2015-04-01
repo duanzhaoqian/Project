@@ -1,0 +1,2168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SearchCountryList">
+        <s:complexType />
+      </s:element>
+      <s:element name="SearchCountryListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchCountryListResult" type="tns:ArrayOfArea" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfArea">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Area" nillable="true" type="tns:Area" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Area">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CityName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lng" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsOpenHOTELHigh" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsOpenDZLow" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsOpenGWHigh" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsOpenGWLow" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsOpenMSHigh" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsOpenMSLow" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProvinceId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchProvinceList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="countryId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchProvinceListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchProvinceListResult" type="tns:ArrayOfArea" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchProvinceByCityId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cityId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchProvinceByCityIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchProvinceByCityIdResult" type="tns:Area" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchCityList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="provinceId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchCityListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchCityListResult" type="tns:ArrayOfArea" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchOpenCityList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchOpenCityListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchOpenCityListResult" type="tns:ArrayOfArea" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateCityIsOpen">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CityName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateCityIsOpenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidateCityIsOpenResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchDistrictList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cityId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchDistrictListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchDistrictListResult" type="tns:ArrayOfDistrict" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDistrict">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="District" nillable="true" type="tns:District" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="District">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lng" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lat" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CityId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sort" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchDistrictListByCityName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchDistrictListByCityNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchDistrictListByCityNameResult" type="tns:ArrayOfDistrict" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentDistrict">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="did" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentDistrictResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrentDistrictResult" type="tns:District" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchBusinessList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="districtId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchBusinessListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchBusinessListResult" type="tns:ArrayOfBusiness" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBusiness">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Business" nillable="true" type="tns:Business" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Business">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lng" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lat" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCurrentBusiness">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="bid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentBusinessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrentBusinessResult" type="tns:Business" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchSchoolList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cityId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dId" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="bId" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nature" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="level" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="schoolType" nillable="true" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="characteristic" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchSchoolListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchSchoolListResult" type="tns:ArrayOfSchool" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSchool">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="School" nillable="true" type="tns:School" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="School">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShotName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Guid" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NatureName" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LevelName" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Characteristic" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SchoolTypeName" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchSchoolNatureList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="schoolTypeId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchSchoolNatureListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchSchoolNatureListResult" type="tns:ArrayOfSchoolNature" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSchoolNature">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SchoolNature" nillable="true" type="tns:SchoolNature" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SchoolNature">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Nature" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NatureName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchSchoolLevelList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="schoolTypeId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchSchoolLevelListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchSchoolLevelListResult" type="tns:ArrayOfSchoolLevel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSchoolLevel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SchoolLevel" nillable="true" type="tns:SchoolLevel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SchoolLevel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Level" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LevelName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchSchoolTypeList">
+        <s:complexType />
+      </s:element>
+      <s:element name="SearchSchoolTypeListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchSchoolTypeListResult" type="tns:ArrayOfSchoolType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSchoolType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SchoolType" nillable="true" type="tns:SchoolType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SchoolType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SchoolTypeId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SchoolTypeName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchVillageList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cityId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="bId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageSize" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchVillageListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchVillageListResult" type="tns:ArrayOfVillage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVillage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Village" nillable="true" type="tns:Village" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Village">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CityId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Guid" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsUsed" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lng" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ManagedType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Developers" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompletedDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContainRate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GreenRate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ManageCost" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ManagedName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Area" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FamilyNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Stall" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NearInstallation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VillageInstallation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Introduce" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Bus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shop" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hospital" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Bank" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BuildeType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LinkPosition" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddInfo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FloorSpace" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrentNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Metro" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Kindergarten" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MidAndPriSchool" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="College" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostOffice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DistrictName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CityName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchVillageListByCityName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dId" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="bId" nillable="true" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageSize" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchVillageListByCityNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchVillageListByCityNameResult" type="tns:ArrayOfVillage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchVillagePageList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cityId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dId" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="bId" nillable="true" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageSize" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchVillagePageListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchVillagePageListResult" type="tns:VillagePage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="VillagePage">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="VillageList" type="tns:ArrayOfVillage" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchVillagePageListByIds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vids" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchVillagePageListByIdsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchVillagePageListByIdsResult" type="tns:VillagePage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentVillage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="vid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentVillageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrentVillageResult" type="tns:Village" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentVillageByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="cityId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentVillageByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrentVillageByNameResult" type="tns:Village" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchTrafficLineList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cityId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchTrafficLineListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchTrafficLineListResult" type="tns:ArrayOfTraffic" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTraffic">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Traffic" nillable="true" type="tns:Traffic" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Traffic">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchTrafficStationList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="lineId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchTrafficStationListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchTrafficStationListResult" type="tns:ArrayOfTraffic" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchTrafficVillageList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchTrafficVillageListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchTrafficVillageListResult" type="tns:ArrayOfTrafficVillage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTrafficVillage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TrafficVillage" nillable="true" type="tns:TrafficVillage" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TrafficVillage">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TrafficId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VillageId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchBankList">
+        <s:complexType />
+      </s:element>
+      <s:element name="SearchBankListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchBankListResult" type="tns:ArrayOfBank" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBank">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Bank" nillable="true" type="tns:Bank" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Bank">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchScenicList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cityId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dId" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="bId" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nature" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="level" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="scenicType" nillable="true" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="characteristic" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchScenicListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchScenicListResult" type="tns:ArrayOfScenic" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfScenic">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Scenic" nillable="true" type="tns:Scenic" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Scenic">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShotName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchHospitalList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cityId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dId" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="bId" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nature" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="level" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="hospitalType" nillable="true" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="characteristic" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchHospitalListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchHospitalListResult" type="tns:ArrayOfHospital" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfHospital">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Hospital" nillable="true" type="tns:Hospital" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Hospital">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShotName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchStationAndAirportList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cityId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dId" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="bId" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nature" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="level" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="stationAndAirportType" nillable="true" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="characteristic" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchStationAndAirportListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchStationAndAirportListResult" type="tns:ArrayOfStationAndAirport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStationAndAirport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StationAndAirport" nillable="true" type="tns:StationAndAirport" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StationAndAirport">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShotName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetHotModel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Type" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CityId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHotModelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHotModelResult" type="tns:ArrayOfHotModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfHotModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="HotModel" nillable="true" type="tns:HotModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HotModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchCityIP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userIP" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchCityIPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchCityIPResult" type="tns:CityIP" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CityIP">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CityId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CityName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PinYin" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchCityIPNew">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userIP" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchCityIPNewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchCityIPNewResult" type="tns:CityIP" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAreaById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAreaByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAreaByIdResult" type="tns:CityIP" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCityById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCityByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCityByIdResult" type="tns:Area" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchPostOfficeList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cityId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="bId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageSize" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchPostOfficeListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchPostOfficeListResult" type="tns:ArrayOfPostOffice" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPostOffice">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PostOffice" nillable="true" type="tns:PostOffice" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PostOffice">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Pid" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CityId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Did" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Bid" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDel" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AdminId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchShopList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cityId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="bId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageSize" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchShopListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchShopListResult" type="tns:ArrayOfShop" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfShop">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Shop" nillable="true" type="tns:Shop" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Shop">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Pid" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CityId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Did" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Bid" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDel" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AdminId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCityList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCityListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCityListResult" type="tns:ArrayOfCity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="City" nillable="true" type="tns:City" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="City">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Spelling" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Logogram" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Initials" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetOpenCityList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetOpenCityListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOpenCityListResult" type="tns:ArrayOfCity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetKYDOpenCityList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetKYDOpenCityListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetKYDOpenCityListResult" type="tns:ArrayOfCity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginByAgent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginByAgentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoginByAgentResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAgentById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAgentByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAgentByIdResult" type="tns:Agent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Agent">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pwd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NikeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RealName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDel" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sex" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="AdminId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdminName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastLoginTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllState" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SpareTelephone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CityId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CityName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdCard" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProvinceID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProvinceName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShopName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ChangeAgentPwd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OldPwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeAgentPwdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ChangeAgentPwdResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SearchCountryListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchCountryList" />
+  </wsdl:message>
+  <wsdl:message name="SearchCountryListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchCountryListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchProvinceListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchProvinceList" />
+  </wsdl:message>
+  <wsdl:message name="SearchProvinceListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchProvinceListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchProvinceByCityIdSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchProvinceByCityId" />
+  </wsdl:message>
+  <wsdl:message name="SearchProvinceByCityIdSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchProvinceByCityIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchCityListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchCityList" />
+  </wsdl:message>
+  <wsdl:message name="SearchCityListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchCityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchOpenCityListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchOpenCityList" />
+  </wsdl:message>
+  <wsdl:message name="SearchOpenCityListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchOpenCityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateCityIsOpenSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateCityIsOpen" />
+  </wsdl:message>
+  <wsdl:message name="ValidateCityIsOpenSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateCityIsOpenResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchDistrictListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchDistrictList" />
+  </wsdl:message>
+  <wsdl:message name="SearchDistrictListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchDistrictListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchDistrictListByCityNameSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchDistrictListByCityName" />
+  </wsdl:message>
+  <wsdl:message name="SearchDistrictListByCityNameSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchDistrictListByCityNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentDistrictSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrentDistrict" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentDistrictSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrentDistrictResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchBusinessListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchBusinessList" />
+  </wsdl:message>
+  <wsdl:message name="SearchBusinessListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchBusinessListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentBusinessSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrentBusiness" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentBusinessSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrentBusinessResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchSchoolListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchSchoolList" />
+  </wsdl:message>
+  <wsdl:message name="SearchSchoolListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchSchoolListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchSchoolNatureListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchSchoolNatureList" />
+  </wsdl:message>
+  <wsdl:message name="SearchSchoolNatureListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchSchoolNatureListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchSchoolLevelListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchSchoolLevelList" />
+  </wsdl:message>
+  <wsdl:message name="SearchSchoolLevelListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchSchoolLevelListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchSchoolTypeListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchSchoolTypeList" />
+  </wsdl:message>
+  <wsdl:message name="SearchSchoolTypeListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchSchoolTypeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchVillageListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchVillageList" />
+  </wsdl:message>
+  <wsdl:message name="SearchVillageListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchVillageListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchVillageListByCityNameSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchVillageListByCityName" />
+  </wsdl:message>
+  <wsdl:message name="SearchVillageListByCityNameSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchVillageListByCityNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchVillagePageListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchVillagePageList" />
+  </wsdl:message>
+  <wsdl:message name="SearchVillagePageListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchVillagePageListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchVillagePageListByIdsSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchVillagePageListByIds" />
+  </wsdl:message>
+  <wsdl:message name="SearchVillagePageListByIdsSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchVillagePageListByIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentVillageSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrentVillage" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentVillageSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrentVillageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentVillageByNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrentVillageByName" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentVillageByNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrentVillageByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchTrafficLineListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchTrafficLineList" />
+  </wsdl:message>
+  <wsdl:message name="SearchTrafficLineListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchTrafficLineListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchTrafficStationListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchTrafficStationList" />
+  </wsdl:message>
+  <wsdl:message name="SearchTrafficStationListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchTrafficStationListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchTrafficVillageListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchTrafficVillageList" />
+  </wsdl:message>
+  <wsdl:message name="SearchTrafficVillageListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchTrafficVillageListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchBankListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchBankList" />
+  </wsdl:message>
+  <wsdl:message name="SearchBankListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchBankListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchScenicListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchScenicList" />
+  </wsdl:message>
+  <wsdl:message name="SearchScenicListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchScenicListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchHospitalListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchHospitalList" />
+  </wsdl:message>
+  <wsdl:message name="SearchHospitalListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchHospitalListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchStationAndAirportListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchStationAndAirportList" />
+  </wsdl:message>
+  <wsdl:message name="SearchStationAndAirportListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchStationAndAirportListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHotModelSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHotModel" />
+  </wsdl:message>
+  <wsdl:message name="GetHotModelSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHotModelResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchCityIPSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchCityIP" />
+  </wsdl:message>
+  <wsdl:message name="SearchCityIPSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchCityIPResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchCityIPNewSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchCityIPNew" />
+  </wsdl:message>
+  <wsdl:message name="SearchCityIPNewSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchCityIPNewResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAreaByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAreaById" />
+  </wsdl:message>
+  <wsdl:message name="GetAreaByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAreaByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCityByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCityById" />
+  </wsdl:message>
+  <wsdl:message name="GetCityByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCityByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchPostOfficeListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchPostOfficeList" />
+  </wsdl:message>
+  <wsdl:message name="SearchPostOfficeListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchPostOfficeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchShopListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchShopList" />
+  </wsdl:message>
+  <wsdl:message name="SearchShopListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchShopListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCityListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCityList" />
+  </wsdl:message>
+  <wsdl:message name="GetCityListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOpenCityListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOpenCityList" />
+  </wsdl:message>
+  <wsdl:message name="GetOpenCityListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOpenCityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetKYDOpenCityListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetKYDOpenCityList" />
+  </wsdl:message>
+  <wsdl:message name="GetKYDOpenCityListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetKYDOpenCityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginByAgentSoapIn">
+    <wsdl:part name="parameters" element="tns:LoginByAgent" />
+  </wsdl:message>
+  <wsdl:message name="LoginByAgentSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginByAgentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAgentByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAgentById" />
+  </wsdl:message>
+  <wsdl:message name="GetAgentByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAgentByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangeAgentPwdSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangeAgentPwd" />
+  </wsdl:message>
+  <wsdl:message name="ChangeAgentPwdSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangeAgentPwdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="BaseDataWebServiceSoap">
+    <wsdl:operation name="SearchCountryList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索国家列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchCountryListSoapIn" />
+      <wsdl:output message="tns:SearchCountryListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchProvinceList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索省份列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchProvinceListSoapIn" />
+      <wsdl:output message="tns:SearchProvinceListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchProvinceByCityId">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索城市所属省份接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchProvinceByCityIdSoapIn" />
+      <wsdl:output message="tns:SearchProvinceByCityIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchCityList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索城市列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchCityListSoapIn" />
+      <wsdl:output message="tns:SearchCityListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchOpenCityList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索开放城市列表接口。type类型为 短租低端:DZLow,购物高端:GWHigh,购物低端:GWLow,酒店高端:HOTELHigh,美食高端:MSHigh,美食低端:MSLow</wsdl:documentation>
+      <wsdl:input message="tns:SearchOpenCityListSoapIn" />
+      <wsdl:output message="tns:SearchOpenCityListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateCityIsOpen">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">验证城市是否开通。type类型为 短租低端:DZLow,购物高端:GWHigh,购物低端:GWLow,酒店高端:HOTELHigh,美食高端:MSHigh,美食低端:MSLow</wsdl:documentation>
+      <wsdl:input message="tns:ValidateCityIsOpenSoapIn" />
+      <wsdl:output message="tns:ValidateCityIsOpenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchDistrictList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索区域列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchDistrictListSoapIn" />
+      <wsdl:output message="tns:SearchDistrictListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchDistrictListByCityName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索区域列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchDistrictListByCityNameSoapIn" />
+      <wsdl:output message="tns:SearchDistrictListByCityNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentDistrict">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">通过区域ID获取区域信息。</wsdl:documentation>
+      <wsdl:input message="tns:GetCurrentDistrictSoapIn" />
+      <wsdl:output message="tns:GetCurrentDistrictSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchBusinessList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索商圈列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchBusinessListSoapIn" />
+      <wsdl:output message="tns:SearchBusinessListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentBusiness">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索商圈对象。</wsdl:documentation>
+      <wsdl:input message="tns:GetCurrentBusinessSoapIn" />
+      <wsdl:output message="tns:GetCurrentBusinessSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchSchoolList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索学校列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchSchoolListSoapIn" />
+      <wsdl:output message="tns:SearchSchoolListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchSchoolNatureList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索学校性质列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchSchoolNatureListSoapIn" />
+      <wsdl:output message="tns:SearchSchoolNatureListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchSchoolLevelList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索学校级别列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchSchoolLevelListSoapIn" />
+      <wsdl:output message="tns:SearchSchoolLevelListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchSchoolTypeList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索学校类型列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchSchoolTypeListSoapIn" />
+      <wsdl:output message="tns:SearchSchoolTypeListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchVillageList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索小区列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchVillageListSoapIn" />
+      <wsdl:output message="tns:SearchVillageListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchVillageListByCityName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索小区列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchVillageListByCityNameSoapIn" />
+      <wsdl:output message="tns:SearchVillageListByCityNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchVillagePageList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索小区列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchVillagePageListSoapIn" />
+      <wsdl:output message="tns:SearchVillagePageListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchVillagePageListByIds">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据小区ID集合获取小区列表。vids=小区ID集合，以;隔开</wsdl:documentation>
+      <wsdl:input message="tns:SearchVillagePageListByIdsSoapIn" />
+      <wsdl:output message="tns:SearchVillagePageListByIdsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentVillage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">通过小区ID获取小区相关信息。</wsdl:documentation>
+      <wsdl:input message="tns:GetCurrentVillageSoapIn" />
+      <wsdl:output message="tns:GetCurrentVillageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentVillageByName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">通过小区名称获取小区ID。</wsdl:documentation>
+      <wsdl:input message="tns:GetCurrentVillageByNameSoapIn" />
+      <wsdl:output message="tns:GetCurrentVillageByNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchTrafficLineList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索地铁线路列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchTrafficLineListSoapIn" />
+      <wsdl:output message="tns:SearchTrafficLineListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchTrafficStationList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索地铁站表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchTrafficStationListSoapIn" />
+      <wsdl:output message="tns:SearchTrafficStationListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchTrafficVillageList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索地铁附近小区Id列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchTrafficVillageListSoapIn" />
+      <wsdl:output message="tns:SearchTrafficVillageListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchBankList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索地铁附近小区Id列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchBankListSoapIn" />
+      <wsdl:output message="tns:SearchBankListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchScenicList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索景点列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchScenicListSoapIn" />
+      <wsdl:output message="tns:SearchScenicListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchHospitalList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索医院列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchHospitalListSoapIn" />
+      <wsdl:output message="tns:SearchHospitalListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchStationAndAirportList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索车展机场列表接口。</wsdl:documentation>
+      <wsdl:input message="tns:SearchStationAndAirportListSoapIn" />
+      <wsdl:output message="tns:SearchStationAndAirportListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHotModel">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取热点商圈、景点、车站机场、学校、医院接口。</wsdl:documentation>
+      <wsdl:input message="tns:GetHotModelSoapIn" />
+      <wsdl:output message="tns:GetHotModelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchCityIP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据ip查询所属城市。</wsdl:documentation>
+      <wsdl:input message="tns:SearchCityIPSoapIn" />
+      <wsdl:output message="tns:SearchCityIPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchCityIPNew">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据ip查询所属城市。</wsdl:documentation>
+      <wsdl:input message="tns:SearchCityIPNewSoapIn" />
+      <wsdl:output message="tns:SearchCityIPNewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAreaById">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据根据Id获取CityIP</wsdl:documentation>
+      <wsdl:input message="tns:GetAreaByIdSoapIn" />
+      <wsdl:output message="tns:GetAreaByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityById">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据Id获取City</wsdl:documentation>
+      <wsdl:input message="tns:GetCityByIdSoapIn" />
+      <wsdl:output message="tns:GetCityByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchPostOfficeList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索邮局列表。</wsdl:documentation>
+      <wsdl:input message="tns:SearchPostOfficeListSoapIn" />
+      <wsdl:output message="tns:SearchPostOfficeListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchShopList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">搜索商场列表。</wsdl:documentation>
+      <wsdl:input message="tns:SearchShopListSoapIn" />
+      <wsdl:output message="tns:SearchShopListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">通过省ID获取城市相关信息。</wsdl:documentation>
+      <wsdl:input message="tns:GetCityListSoapIn" />
+      <wsdl:output message="tns:GetCityListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOpenCityList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取开通城市数据。</wsdl:documentation>
+      <wsdl:input message="tns:GetOpenCityListSoapIn" />
+      <wsdl:output message="tns:GetOpenCityListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKYDOpenCityList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取快有贷开通城市数据。</wsdl:documentation>
+      <wsdl:input message="tns:GetKYDOpenCityListSoapIn" />
+      <wsdl:output message="tns:GetKYDOpenCityListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginByAgent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">经济人登录,登录成功后返回当前经济人的ID</wsdl:documentation>
+      <wsdl:input message="tns:LoginByAgentSoapIn" />
+      <wsdl:output message="tns:LoginByAgentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentById">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">经济ID获取经济人信息</wsdl:documentation>
+      <wsdl:input message="tns:GetAgentByIdSoapIn" />
+      <wsdl:output message="tns:GetAgentByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeAgentPwd">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">通过经济人ID及原密码更新密码</wsdl:documentation>
+      <wsdl:input message="tns:ChangeAgentPwdSoapIn" />
+      <wsdl:output message="tns:ChangeAgentPwdSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BaseDataWebServiceSoap" type="tns:BaseDataWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SearchCountryList">
+      <soap:operation soapAction="http://tempuri.org/SearchCountryList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchProvinceList">
+      <soap:operation soapAction="http://tempuri.org/SearchProvinceList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchProvinceByCityId">
+      <soap:operation soapAction="http://tempuri.org/SearchProvinceByCityId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchCityList">
+      <soap:operation soapAction="http://tempuri.org/SearchCityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchOpenCityList">
+      <soap:operation soapAction="http://tempuri.org/SearchOpenCityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateCityIsOpen">
+      <soap:operation soapAction="http://tempuri.org/ValidateCityIsOpen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchDistrictList">
+      <soap:operation soapAction="http://tempuri.org/SearchDistrictList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchDistrictListByCityName">
+      <soap:operation soapAction="http://tempuri.org/SearchDistrictListByCityName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentDistrict">
+      <soap:operation soapAction="http://tempuri.org/GetCurrentDistrict" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchBusinessList">
+      <soap:operation soapAction="http://tempuri.org/SearchBusinessList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentBusiness">
+      <soap:operation soapAction="http://tempuri.org/GetCurrentBusiness" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchSchoolList">
+      <soap:operation soapAction="http://tempuri.org/SearchSchoolList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchSchoolNatureList">
+      <soap:operation soapAction="http://tempuri.org/SearchSchoolNatureList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchSchoolLevelList">
+      <soap:operation soapAction="http://tempuri.org/SearchSchoolLevelList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchSchoolTypeList">
+      <soap:operation soapAction="http://tempuri.org/SearchSchoolTypeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchVillageList">
+      <soap:operation soapAction="http://tempuri.org/SearchVillageList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchVillageListByCityName">
+      <soap:operation soapAction="http://tempuri.org/SearchVillageListByCityName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchVillagePageList">
+      <soap:operation soapAction="http://tempuri.org/SearchVillagePageList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchVillagePageListByIds">
+      <soap:operation soapAction="http://tempuri.org/SearchVillagePageListByIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentVillage">
+      <soap:operation soapAction="http://tempuri.org/GetCurrentVillage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentVillageByName">
+      <soap:operation soapAction="http://tempuri.org/GetCurrentVillageByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchTrafficLineList">
+      <soap:operation soapAction="http://tempuri.org/SearchTrafficLineList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchTrafficStationList">
+      <soap:operation soapAction="http://tempuri.org/SearchTrafficStationList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchTrafficVillageList">
+      <soap:operation soapAction="http://tempuri.org/SearchTrafficVillageList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchBankList">
+      <soap:operation soapAction="http://tempuri.org/SearchBankList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchScenicList">
+      <soap:operation soapAction="http://tempuri.org/SearchScenicList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchHospitalList">
+      <soap:operation soapAction="http://tempuri.org/SearchHospitalList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchStationAndAirportList">
+      <soap:operation soapAction="http://tempuri.org/SearchStationAndAirportList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHotModel">
+      <soap:operation soapAction="http://tempuri.org/GetHotModel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchCityIP">
+      <soap:operation soapAction="http://tempuri.org/SearchCityIP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchCityIPNew">
+      <soap:operation soapAction="http://tempuri.org/SearchCityIPNew" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAreaById">
+      <soap:operation soapAction="http://tempuri.org/GetAreaById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityById">
+      <soap:operation soapAction="http://tempuri.org/GetCityById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchPostOfficeList">
+      <soap:operation soapAction="http://tempuri.org/SearchPostOfficeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchShopList">
+      <soap:operation soapAction="http://tempuri.org/SearchShopList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityList">
+      <soap:operation soapAction="http://tempuri.org/GetCityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOpenCityList">
+      <soap:operation soapAction="http://tempuri.org/GetOpenCityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKYDOpenCityList">
+      <soap:operation soapAction="http://tempuri.org/GetKYDOpenCityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginByAgent">
+      <soap:operation soapAction="http://tempuri.org/LoginByAgent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentById">
+      <soap:operation soapAction="http://tempuri.org/GetAgentById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeAgentPwd">
+      <soap:operation soapAction="http://tempuri.org/ChangeAgentPwd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BaseDataWebServiceSoap12" type="tns:BaseDataWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SearchCountryList">
+      <soap12:operation soapAction="http://tempuri.org/SearchCountryList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchProvinceList">
+      <soap12:operation soapAction="http://tempuri.org/SearchProvinceList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchProvinceByCityId">
+      <soap12:operation soapAction="http://tempuri.org/SearchProvinceByCityId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchCityList">
+      <soap12:operation soapAction="http://tempuri.org/SearchCityList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchOpenCityList">
+      <soap12:operation soapAction="http://tempuri.org/SearchOpenCityList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateCityIsOpen">
+      <soap12:operation soapAction="http://tempuri.org/ValidateCityIsOpen" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchDistrictList">
+      <soap12:operation soapAction="http://tempuri.org/SearchDistrictList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchDistrictListByCityName">
+      <soap12:operation soapAction="http://tempuri.org/SearchDistrictListByCityName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentDistrict">
+      <soap12:operation soapAction="http://tempuri.org/GetCurrentDistrict" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchBusinessList">
+      <soap12:operation soapAction="http://tempuri.org/SearchBusinessList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentBusiness">
+      <soap12:operation soapAction="http://tempuri.org/GetCurrentBusiness" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchSchoolList">
+      <soap12:operation soapAction="http://tempuri.org/SearchSchoolList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchSchoolNatureList">
+      <soap12:operation soapAction="http://tempuri.org/SearchSchoolNatureList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchSchoolLevelList">
+      <soap12:operation soapAction="http://tempuri.org/SearchSchoolLevelList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchSchoolTypeList">
+      <soap12:operation soapAction="http://tempuri.org/SearchSchoolTypeList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchVillageList">
+      <soap12:operation soapAction="http://tempuri.org/SearchVillageList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchVillageListByCityName">
+      <soap12:operation soapAction="http://tempuri.org/SearchVillageListByCityName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchVillagePageList">
+      <soap12:operation soapAction="http://tempuri.org/SearchVillagePageList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchVillagePageListByIds">
+      <soap12:operation soapAction="http://tempuri.org/SearchVillagePageListByIds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentVillage">
+      <soap12:operation soapAction="http://tempuri.org/GetCurrentVillage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentVillageByName">
+      <soap12:operation soapAction="http://tempuri.org/GetCurrentVillageByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchTrafficLineList">
+      <soap12:operation soapAction="http://tempuri.org/SearchTrafficLineList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchTrafficStationList">
+      <soap12:operation soapAction="http://tempuri.org/SearchTrafficStationList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchTrafficVillageList">
+      <soap12:operation soapAction="http://tempuri.org/SearchTrafficVillageList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchBankList">
+      <soap12:operation soapAction="http://tempuri.org/SearchBankList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchScenicList">
+      <soap12:operation soapAction="http://tempuri.org/SearchScenicList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchHospitalList">
+      <soap12:operation soapAction="http://tempuri.org/SearchHospitalList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchStationAndAirportList">
+      <soap12:operation soapAction="http://tempuri.org/SearchStationAndAirportList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHotModel">
+      <soap12:operation soapAction="http://tempuri.org/GetHotModel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchCityIP">
+      <soap12:operation soapAction="http://tempuri.org/SearchCityIP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchCityIPNew">
+      <soap12:operation soapAction="http://tempuri.org/SearchCityIPNew" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAreaById">
+      <soap12:operation soapAction="http://tempuri.org/GetAreaById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityById">
+      <soap12:operation soapAction="http://tempuri.org/GetCityById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchPostOfficeList">
+      <soap12:operation soapAction="http://tempuri.org/SearchPostOfficeList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchShopList">
+      <soap12:operation soapAction="http://tempuri.org/SearchShopList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityList">
+      <soap12:operation soapAction="http://tempuri.org/GetCityList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOpenCityList">
+      <soap12:operation soapAction="http://tempuri.org/GetOpenCityList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKYDOpenCityList">
+      <soap12:operation soapAction="http://tempuri.org/GetKYDOpenCityList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginByAgent">
+      <soap12:operation soapAction="http://tempuri.org/LoginByAgent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentById">
+      <soap12:operation soapAction="http://tempuri.org/GetAgentById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeAgentPwd">
+      <soap12:operation soapAction="http://tempuri.org/ChangeAgentPwd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BaseDataWebService">
+    <wsdl:port name="BaseDataWebServiceSoap" binding="tns:BaseDataWebServiceSoap">
+      <soap:address location="http://webservice.cjkjb.com/BaseDataWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BaseDataWebServiceSoap12" binding="tns:BaseDataWebServiceSoap12">
+      <soap12:address location="http://webservice.cjkjb.com/BaseDataWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

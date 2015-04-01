@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- InstanceBeginEditable name="doctitle" -->
+        <title>@ViewBag.Title</title>
+        <!-- InstanceEndEditable -->
+        <link href="@PubConstant.StaticUrl@Url.Content("web/user/css/global.css")" type="text/css" rel="stylesheet" />
+        <link href="@PubConstant.StaticUrl@Url.Content("web/user/css/wy.css")" type="text/css" rel="stylesheet" />
+        <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery-1.8.3.min.js")" type="text/javascript"></script>
+        <script src="@PubConstant.StaticUrl@Url.Content("base/js/public/config.js")" type="text/javascript"></script>
+        @*<script src="@PubConstant.StaticUrl@Url.Content("base/plug/layer/jquery.layer.js")" type="text/javascript"></script>*@
+        <script src="@PubConstant.StaticUrl@Url.Content("base/plug/layer/layer.dialog.js")" type="text/javascript"></script>
+        <script src="@PubConstant.StaticUrl@Url.Content("base/plug/autotip/jquery.autotip.js")" type="text/javascript"></script>
+        <!--[if IE 6]>
+<script src="@PubConstant.StaticUrl@Url.Content("base/js/public/DD_belatedPNG_0.0.8a.js")"  language="javascript" type="text/javascript">
+</script>
+<script type="text/javascript">
+DD_belatedPNG.fix('*');
+</script>
+<![endif]-->
+        <!-- InstanceBeginEditable name="head" -->
+        @RenderSection("header", false)
+        <!-- InstanceEndEditable -->
+    </head>
+    <body>
+        @helper Navigation()
+            {
+                if (ViewBag.Navigation != null)
+                {
+                    var result = (CommonNavigation)ViewBag.Navigation == CommonNavigation.LOGIN ? "欢迎登录" : (CommonNavigation)ViewBag.Navigation == CommonNavigation.REGISTER ? "欢迎注册" : "找回密码";
+            @result
+                }
+        }
+        <!--头部开始-->
+        <div class="header_new">
+            <div class="w1000 clearFix">
+                <a href="@Url.WebSiteUrl().Index" class="logo">
+                    <img src="@PubConstant.StaticUrl@Url.Content("web/user/images/logo.png")" alt="" /></a>
+                <div class="title">
+                    @Navigation()</div>
+            </div>
+        </div>
+        <!--中间部分开始-->
+        <div class="log_content">
+            @RenderBody()
+        </div>
+        <!--底部开始-->
+        <div class="footer">
+            <div class="w1190 clearFix">
+                <dl>
+                    <dt>快有租</dt>
+                    <dd>
+                        <a href="#">关于我们</a></dd>
+                    <dd>
+                        <a href="#">商家入驻</a></dd>
+                    <dd>
+                        <a href="#">广告服务</a></dd>
+                    <dd>
+                        <a href="#">客服中心</a></dd>
+                    <dd>
+                        <a href="#">人才招聘</a></dd>
+                </dl>
+                <dl>
+                    <dt>快有家旗下</dt>
+                    <dd>
+                        <a href="#">房产信息</a></dd>
+                    <dd>
+                        <a href="#">服务平台</a></dd>
+                </dl>
+                <dl>
+                    <dt>合作伙伴</dt>
+                    <dd>
+                        <a href="#">连接地产</a></dd>
+                    <dd>
+                        <a href="#">公司公司</a></dd>
+                    <dd>
+                        <a href="#">公司公司</a></dd>
+                    <dd>
+                        <a href="#">公司公司</a></dd>
+                    <dd>
+                        <a href="#">公司公司</a></dd>
+                </dl>
+                <dl class="w300">
+                    <dd>微信公众平台：搜索“快有租”<br />
+                        或扫描下面的二维码：</dd>
+                    <dd class="mt10">
+                        <a href="#">
+                            <img src="@PubConstant.StaticUrl@Url.Content("web/user/images/weixin.jpg")" /></a></dd>
+                </dl>
+                <dl class="nobg w280">
+                    <dd>Copyright © 2014 kuaiyoujia.com<br />
+                        All Rights Reserved. 版权声明<br />
+                        京ICP备11027796号-2<br />
+                        客服热线：400-999-3535<br />
+                        邮箱：service@kuaiyoujia.com</dd>
+                </dl>
+                <div class="clear">
+                </div>
+                <div class="describe clearFix">
+                    无论你多么讨厌你的旧家具，当你离开久了，<a href="#">www.kuaiyoujia.com</a>&nbsp;还是会想念它。
+                </div>
+            </div>
+        </div>
+        @RenderSection("scripts", false)
+        <!--end footer-->
+    </body>
+    <!-- InstanceEnd -->
+    </html>

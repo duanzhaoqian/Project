@@ -1,0 +1,13 @@
+﻿<Redis  SendTimeout="60" Host="192.168.3.98"  Port="11000" DefaultDB="0" PassWord=""
+        IMGPATH_BASE="D:\uploadimg\" IMGWEB_BASE="http://img.kyjzs.com/" USER_IMGPATH_BASE="D:\uploadimg\" USER_IMGWEB_BASE="http://img.kyjzs.com/"
+        RetryCount="2" RetryTimeout="70"
+        HouseImage01="http://redis.cjkjb.com:8080/lua0"
+        HouseImage02="http://redis.cjkjb.com:8080/lua0"
+       
+        UserHeadImage01="http://redis.cjkjb.com:8080/lua0"
+	      UserHeadImage02="http://redis.cjkjb.com:8080/lua0"
+       
+	      BidPrice01="http://redis.cjkjb.com:8080/lua0"
+
+	      ViewCount01="http://redis.cjkjb.com:8080/lua0"
+        RedisServerDefault="http://redis.cjkjb.com:8080/lua0"/>

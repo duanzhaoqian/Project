@@ -1,0 +1,61 @@
+﻿@using KYJ.ZS.Commons.PictureModular
+@model KYJ.ZS.Models.Common.UpLoadGoodsImageViewModel
+<div class="js_upDiv">
+    @{
+        var upbtn = Model.PictureNo + "_uploadify";
+        var queueId = @Model.PictureNo + "_fileQueue";
+    }
+
+    <input type="file" name='@upbtn' id="@upbtn"
+           value="浏览" class="js_upimage " />
+     <br/>
+    @*<div id="@queueId" style="float: left; margin-left: 10px; width: 136px" >
+    </div>*@
+</div>
+<script type="text/javascript">
+    @{
+        var upid = "#" + Model.PictureNo + "_uploadify";
+        var url = PubConstant.ImgUploadBaseUrl + "/Goods/upload.ashx?para=" + Model._Guid + "^" + Model.PictureType + "^" + Model.Maxnum;
+    }
+    $(document).ready(function () {
+        var updiv = $("@upid");
+        updiv.uploadify({
+            'uploader': '../../Scripts/uploadify/uploadify.swf',
+            'script': '@url',
+            'cancelImg': '../../Scripts/uploadify/cancel.png',
+            'folder': 'uploads',
+            'queueID': '@queueId',
+            'auto': true,
+            'scriptAccess': 'always',
+            'multi': true,
+            'width': 88,
+            'height': 26,
+            'queueSizeLimit': 1,
+            'wmode': 'opaque',
+            'fileExt': '*.jpg;*.jpeg;*.gif;*.png;',
+            'fileDesc': '请选择图片文件:*.jpg;*.jpeg;*.gif;*.png;',
+            'buttonText': '点击上传',
+            'buttonImg': '../../Scripts/uploadify/upbtn.gif',
+            'sizeLimit': 2 * 1024 * 1024,
+            'removeCompleted': false,
+            onComplete: function(event, queueId, fileObj, response, data) {
+                if (response != "error") {
+                    var img = response.split(",")[0];
+                    var html = "<li><img src='" + img + "' /></li>";
+                    $("#sortable1").html(html);
+                    //updiv.uploadifySettings('buttonImg',img);
+                }
+            },
+            onQueueFull: function(event, queueSizeLimit) {
+                alert("每组最多上传1张");
+            },
+            onError: function(event, queueId, fileObj, errorObj) {
+                if (errorObj) {
+                    if (errorObj.type == "File Size") {
+                        alert("上传文件不能超过2M！");
+                    }
+                }
+            }
+        });
+    });
+</script>

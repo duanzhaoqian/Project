@@ -1,0 +1,71 @@
+﻿@model KYJ.ZS.Models.SaleGoodses.SaleGoodsCatMenuEntity
+@{
+    var count = new KYJ.ZS.BLL.SaleGoodses.SaleGoodsBll().GetSaleGoodsTotalCount();
+    }
+<div class="items">
+        <h3><a name="all" prefix="b" href="@Url.WebSiteUrl().SaleGoods_Index">全部<em>(@count)</em></a></h3>
+        <ul class="clearFix">
+        @foreach (var item in Model.Tags)
+        {
+          <li><a name="catMenu" value="@item.Id" prefix="b" href="">@item.Name</a></li>
+        }
+        </ul>
+      </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $$ = KYJ.CORE.URL;
+        jQuery.extend({ kyj: $$ });
+        $("a[name='catMenu']").each(function (index) {
+            var prefix = $(this).attr("prefix")
+            var value = $(this).attr("value");
+            var url = $.kyj.set(null, null, value, 5, prefix)
+            var reg = RegExp(prefix + "(\\d{1,})", "g");
+            $(this).attr("href", url)
+            var str = $.kyj.pathname.match(reg);
+            if (str != null)
+                for (var i = 0; i < str.length; i++) {
+                    if (str[i] == prefix + value) {
+                        $(this).addClass("hover");
+                    }
+                    else {
+
+                    }
+                }
+        });
+
+    });
+ 
+    function RemoveAttr(prefix, value) {
+
+        var pathname = location.pathname.substr(1, location.pathname.length);
+        var qArray = location.pathname.substr(1, location.pathname.length).split("/");
+        var query = new Array();
+        if (qArray == undefined || qArray == "") { return; }
+        qArray = pathname.split('/'); //xf,sub
+        var lastArr = qArray[qArray.length - 1]; //qy
+        query = lastArr.split('-'); //qy
+        var q = query.join('-').split('-');
+
+        var a = qArray[0];
+
+        var str = q.join('-');
+        var reg = RegExp(prefix + "(\\d{1,}[_]\\d{1,})|" + prefix + "(\\d{1,})");
+        if (str.match(reg) == null) {
+        }
+        else {
+
+            for (var i = 0; i < q.length; i++) {
+                if (reg.test(q[i])) {
+                    var flat = (q[i]== prefix + value);
+                    if (flat) {
+                        q.splice(i, 1);
+                    }
+                }
+            }
+            var page = q.join('-').match(/-i\d{1,}/g); //分页
+            return "/" + a + "/" + q.join('-').replace(page, "");
+        }
+    }
+  
+</script>

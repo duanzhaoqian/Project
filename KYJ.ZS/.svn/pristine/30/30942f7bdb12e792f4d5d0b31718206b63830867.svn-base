@@ -1,0 +1,823 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using KYJ.ZS.Models.Pages
+@using KYJ.ZS.Models.DB
+@using KYJ.ZS.Models.Adverts
+@model Advert
+@{
+    ViewBag.Title = (Model == null ? "发布" : "修改") + "广告";
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = Model == null ? ManagerNavigation.FABUGUANGGAO : ManagerNavigation.GUANLIGUANGGAO;
+    // 类目
+    int firstCategory = Auxiliary.ToInt32(ViewData["firstCategory"]);
+    int secondCategory = Auxiliary.ToInt32(ViewData["secondCategory"]);
+    int thirdCategory = Auxiliary.ToInt32(ViewData["thirdCategory"]);
+
+    Manager_AdvertLocationEntity locationEntity = ViewBag.locationEntity as Manager_AdvertLocationEntity;
+
+    string categoryName = ViewBag.categoryName as string;  //根据广告的分类ID查找其父分类名称
+
+    //页面
+    List<AdvertTypes> list = ViewBag.pageData as List<AdvertTypes>;
+    List<string> listHour = ViewBag.listHour as List<string>;
+    List<string> listMinute = ViewBag.listMinute as List<string>;
+
+    bool isModify = Model == null ? false : true;
+    var stateId = ViewBag.stateId as string;
+
+    string guid = Model == null ? Guid.NewGuid().ToString() : Model.Guid;
+    AdvertSize advertSize = ViewBag.advertSize as AdvertSize;
+    string maxNum = ViewBag.maxNum as string;
+
+    List<Category> categoryList = (List<Category>)ViewData["listCategory"];
+}
+@section header{
+    <link href="@PubConstant.StaticUrl@Url.Content("base/plug/datepicker/css/jquery.datepicker.css")" type="text/css" rel="stylesheet" />
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery.validate.min.js")" type="text/javascript"></script>
+}
+<div class="">
+    <!-- InstanceBeginEditable name="EditRegion1" -->
+    <div class="tag_n">
+        <ul>
+            <li><a href="#">@(Model == null ? "发布广告" : "修改广告")</a></li>
+        </ul>
+    </div>
+    <form action="" id="form1" name="form1" method="post">
+    <div class="part">
+        <h1>
+            基本信息</h1>
+        <div class="tabbox">
+            <input id="hidAdvertId" name="hidAdvertId" value="@(Model == null ? 0 : Model.AdvertId)" type="hidden" />
+            <input type="hidden" id="hidStateId" name="hidStateId" value="@stateId" />
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_1">
+                @if (Model == null)
+                {
+                    <tr>
+                        <th width="12%">
+                            页面：
+                        </th>
+                        <td width="88%">
+                            <select class="selcss w220" id="sel_Page" name="sel_Page">
+                                <option value="0">--请选择--</option>
+                                @foreach (var item in list)
+                                {
+                                    <option value="@item.AdvertTypeID">@item.AdvertTypeName</option>
+                                }
+                            </select>@*<span id="spnPage" class="cold21b1b pl20"></span>*@
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            分类：
+                        </th>
+                        <td>
+                            <select class="selcss w220" id="sel_firstCategory" name="sel_firstCategory">
+                                <option value="0">--请选择--</option>
+                            </select>
+                            <span id="spn2">
+                                <select class="selcss w220 mr10 ml10" id="sel_secondCategory" name="sel_secondCategory">
+                                    <option value="0">--请选择--</option>
+                                </select></span> <span id="spn3">
+                                    <select class="selcss w220" id="sel_thirdCategory" name="sel_thirdCategory">
+                                        <option value="0">--请选择--</option>
+                                    </select></span><span id="spnCategory" class="cold21b1b pl20"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            位置：
+                        </th>
+                        <td>
+                            <select class="selcss w220" id="sel_Position" name="sel_Position">
+                                <option value="0">--请选择--</option>
+                            </select>
+                            @*<span id="spnPosition" class="cold21b1b pl20"></span>*@
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <th width="12%">
+                            页面：
+                        </th>
+                        <td width="88%">@(locationEntity == null ? "" : locationEntity.AdvertTypeName)
+                        </td>
+                    </tr>
+                    <tr>
+                        @* <th>
+                            分类：
+                        </th>
+                        <td>@categoryName @(locationEntity == null ? "" : locationEntity.CategoryName)
+                        </td>*@
+                        @if (categoryList.Count == 2)
+                        {
+                            <th>
+                                分类：
+                            </th>
+                            <td>
+                                <span>@categoryList[0].Name - @categoryList[1].Name</span>
+                            </td>
+                        }
+                        else if (categoryList.Count == 3)
+                        {
+                            <th>
+                                分类：
+                            </th>
+                            <td>
+                                <span>@categoryList[0].Name - @categoryList[1].Name - @categoryList[2].Name</span>
+                            </td>
+                         
+                        }
+                    </tr>
+                    <tr>
+                        <th>
+                            位置：
+                        </th>
+                        <td>@(locationEntity == null ? "" : locationEntity.LocationName)
+                            <input type="hidden" id="hidPosition" name="sel_Position" value="@Model.AdvertLocationId" />
+                        </td>
+                    </tr>
+
+                }
+                <tr>
+                    <th>
+                        广告名称：
+                    </th>
+                    <td>
+                        <input type="text" class="intxt_h24 w670" id="txtAdvertName" name="txtAdvertName" value="@(Model == null ? "" : Model.Name)" />
+                        @*<span id="spnAdvertName" class="cold21b1b pl20"></span>*@
+                    </td>
+                </tr>
+                <tr>
+                    <th valign="top">
+                        说明：
+                    </th>
+                    <td>
+                        <textarea class="area w670" id="txtAdvertRemark" name="txtAdvertRemark">@(Model == null ? "" : Model.Remark)</textarea>
+                        @*<span id="spnRemark" class="cold21b1b pl20"></span>*@
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        链接地址：
+                    </th>
+                    <td>
+                        <input type="text" class="intxt_h24 w670" id="txtAdvertUrl" name="txtAdvertUrl" value="@(Model == null ? "" : Model.Address)" />
+                        @*<span id="spnUrl" class="cold21b1b pl20"></span>*@
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <h1>
+            广告排期</h1>
+        <div class="tabbox">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_1">
+                <tr>
+                    <th width="13%">
+                        开始时间：
+                    </th>
+                    <td width="41%">
+                        <input type="text" id="text_beginTime" name="text_beginTime" class="intxt" value='@(Model == null ? "" : Model.BeginTime.ToString("yyyy-MM-dd"))' />
+                        <select id="sel_begin_hour" name="sel_begin_hour" class="selcss w60 mr5">
+                            @foreach (var item in listHour)
+                            {
+                                if (Model != null)
+                                {
+                                    var hour = Model.BeginTime.ToString("HH");
+                                    if (hour == item)
+                                    {
+                                <option value="@item" selected="selected">@item</option>
+                                    }
+                                    else
+                                    {
+                                <option value="@item">@item</option>
+                                    }
+                                }
+                                else
+                                {
+                                <option value="@item">@item</option>
+                                }
+
+                            }
+                        </select>：<select id="sel_begin_minute" name="sel_begin_minute" class="selcss w60">
+                            @foreach (var item in listMinute)
+                            {
+                                if (Model != null)
+                                {
+                                    var minute = Model.BeginTime.ToString("mm");
+                                    if (minute == item)
+                                    {
+                                <option value="@item" selected="selected">@item</option>
+                                    }
+                                    else
+                                    {
+                                <option value="@item">@item</option>
+                                    }
+                                }
+                                else
+                                {
+                                <option value="@item">@item</option>
+                                }
+                            }
+                        </select>@*<span class="cold21b1b pl10"></span>*@
+                    </td>
+                    <th width="8%">
+                        结束时间：
+                    </th>
+                    <td width="41%">
+                        <input type="text" id="text_endTime" name="text_endTime" class="intxt" value='@(Model == null ? "" : Model.EndTime.ToString("yyyy-MM-dd"))' />
+                        <select id="sel_end_hour" name="sel_end_hour" class="selcss w60 mr5">
+                            @foreach (var item in listHour)
+                            {
+                                if (Model != null)
+                                {
+                                    var hour = Model.EndTime.ToString("HH");
+                                    if (hour == item)
+                                    {
+                                <option value="@item" selected="selected">@item</option>
+                                    }
+                                    else
+                                    {
+                                <option value="@item">@item</option>
+                                    }
+                                }
+                                else
+                                {
+                                <option value="@item">@item</option>
+                                }
+                            }
+                        </select>：<select id="sel_end_minute" name="sel_end_minute" class="selcss w60">
+                            @foreach (var item in listMinute)
+                            {
+                                if (Model != null)
+                                {
+                                    var minute = Model.EndTime.ToString("mm");
+                                    if (minute == item)
+                                    {
+                                <option value="@item" selected="selected">@item</option>
+                                    }
+                                    else
+                                    {
+                                <option value="@item">@item</option>
+                                    }
+                                }
+                                else
+                                {
+                                <option value="@item">@item</option>
+                                }
+                            }
+                        </select><span id="spnTime" class="cold21b1b pl10"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="12%">
+                        顺 序：
+                    </th>
+                    <td colspan="3" width="80%">
+                        <select class="selcss w220" id="sel_Order" name="sel_Order">
+                            <option value='0'>--请选择--</option>
+                        </select>@*<span id="spnOrder" class="cold21b1b pl20"></span>*@
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <h1>
+            图片信息</h1>
+        <div class="tabbox">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_1">
+                <tr>
+                    <th width="12%">
+                        广告图片：
+                    </th>
+                    <td width="88%">
+                        <div class="mb10">
+                            @{ Html.RenderAction("UploadAdvertisement", "Upload", new { guid = guid }); }
+                            <input type="hidden" id="hidGuid" name="hidGuid" value="@guid" />
+                        </div>
+                        <div id="showAdvertisement" class="area w670" style="background-color: lightblue;
+                            width: 680px; height: 390px;">
+                            @{
+                                if (Model != null)
+                                {
+                                    var pics = KYJ.ZS.Commons.PictureModular.GetPicture.GetAdvertisementPictureListNoFilter(Model.Guid, true);
+                                    var pic = PubConstant.StaticUrl + Url.Content("web/manager/images/img/sp1.jpg");
+                                    if (pics == null || pics.Count <= 0)
+                                    {
+                                     
+                                    }
+                                    else
+                                    {
+                                        pic = pics[0].Path;
+                                    }
+                                <img id="imgPhoto" name="imgPhoto" src="@pic" alt="" width="@(advertSize == null ? 680 : advertSize.AdvertWidth)" height="@(advertSize == null ? 390 : advertSize.AdvertHeight)"/>
+                                    //pic += ".60_60.jpg";
+                                }
+                            }
+                        </div>
+                        <span id="spnImg" style="margin-top: 10px;" class="cold21b1b pl20"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2" style="margin-left: 128px; position: absolute;">
+                        请上传规格为<span id="sp_width"></span>*<span id="sp_height"></span>的JPG、GIF、PNG图片文件，以保证图片的清晰
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="mt20">
+        <input type="button" style="margin-left: 145px;" class="btn_gr mr10" id="btnApply"
+            name="btnApply" value="申请审核" /><input type="button" class="btn_or" id="btnSave" name="btnSave"
+                value="保存" /></div>
+    </form>
+</div>
+@section scripts{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/public/common.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/plug/datepicker/jquery.datepicker.js")" type="text/javascript"></script>
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/uploadify/swfobject.js")" type="text/javascript"></script>
+    <link href="@PubConstant.StaticUrl@Url.Content("base/js/uploadify/uploadify.css")" rel="stylesheet" type="text/css" />
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/uploadify/jquery.uploadify.v2.1.4.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            Common.ClearListItems($("#sel_thirdCategory"));
+            Common.ClearListItems($("#sel_firstCategory"));
+            Common.ClearListItems($("#sel_secondCategory"));
+            Common.ClearListItems($("#sel_Position"));
+            $("#sel_Page option:first").prop("selected", 'selected');
+            //$("#txtAdvertRemark").html('@(Model == null ? "" : Model.Remark)');
+
+            GetMaxNum(@(Model == null ? 0 : Model.AdvertLocationId));
+//            $("#sel_Order option[value='1']").attr("selected",true);//有效
+
+            if('@Model'!=null){
+                
+            }
+            var $categoryId = 0;
+            $("#spn2").hide();
+            $("#spn3").hide();
+            //$("#sel_firstCategory").attr("disabled", "disabled");
+            $("#sel_Page").change(function () {
+                //var pageValue = $("#sel_Page ").val();
+                var pageName = $("#sel_Page").find("option:selected").text();
+                $("#sel_firstCategory option:first").prop("selected", 'selected');
+                $("#sel_secondCategory option:first").prop("selected", 'selected');
+                $("#sel_thirdCategory option:first").prop("selected", 'selected');
+                //如果选中的是“首页” 则禁用分类
+                switch (pageName) {
+                    case "--请选择--":
+                        $("#sel_firstCategory option:first").prop("selected", 'selected');
+                        $("#sel_firstCategory").attr("disabled", "disabled");
+                        $("#spn2").hide();
+                        $("#spn3").hide();
+                        break;
+                    case "首页":
+                        //$("#channelplatform").attr("disabled", "disabled");
+                        //$("#channelplatform").removeAttr("disabled"); 
+                        //jQuery('#myspan').show();
+                        //jQuery('#myspan').css("dispaly", "");
+                        //禁用分类下拉框
+                        //sel_firstCategory sel_secondCategory sel_thirdCategory
+                        $("#sel_firstCategory option:first").prop("selected", 'selected');
+                        $("#sel_firstCategory").attr("disabled", "disabled");
+                        $("#spn2").hide();
+                        $("#spn3").hide();
+                        break;
+                    case "二级页面":
+                        $("#sel_firstCategory").removeAttr("disabled");
+                        $("#spn2").show();
+                        $("#spn3").hide();
+                        break;
+                    case "三级页面":
+                        $("#sel_firstCategory").removeAttr("disabled");
+                        $("#spn2").show();
+                        $("#spn3").show();
+                        break;
+                }
+                //获取广告页面ID  首页
+                var advertTypeId = $(this).val();
+                Common.ClearListItems($("#sel_Position"));
+                if (advertTypeId > 0) {
+                    Common.LoadGeographyItems('@Url.ManagerSiteUrl().AdvertLocation("getlocation")?advertTypeId=' + advertTypeId + "&ram=" + Math.random(), 0, $("#sel_Position"));
+                    //var categoryId = $categoryId
+                    //var locationId = $("#sel_Position").val();
+                    //GetMaxNum(advertTypeId, categoryId, locationId);
+                }
+            });
+
+            $("#sel_Position").change(function () {
+                var locationId = $(this).val();
+                var advertTypeId = $("#sel_Page ").val();
+                var categoryId = $categoryId;
+                GetMaxNum(locationId);
+            });
+
+            //三级类目下拉改变事件
+            $("#sel_thirdCategory").change(function () {
+                Common.ClearListItems($("#sel_Position"));
+                var categoryId = $(this).val();
+                $categoryId = categoryId;
+                var advertTypeId = $("#sel_Page ").val();  //获取advertTypeId  页面
+                if (categoryId > 0) {
+                    Common.LoadGeographyItems('@Url.ManagerSiteUrl().AdvertLocation("getlocation")?advertTypeId=' + advertTypeId + "&categoryId=" + categoryId, 0, $("#sel_Position"));
+                    if(advertTypeId==3)
+                        $("#spnCategory").html("");
+                }
+
+            });
+
+            // 二级类目下拉改变事件
+            $("#sel_secondCategory").change(function () {
+                var categoryId = $(this).val();
+                $categoryId = categoryId;
+                Common.ClearListItems($("#sel_thirdCategory"));
+                Common.ClearListItems($("#sel_Position"));
+                if (categoryId > 0) {
+                    Common.LoadGeographyItems('@Url.ManagerSiteUrl().CategoryLocation("secondthirdcategory")?categoryCode=' + categoryId + "&ram=" + Math.random(), 0, $("#sel_thirdCategory"));
+                }
+                var advertTypeId = $("#sel_Page ").val();  //获取advertTypeId  页面
+                if (categoryId > 0) {
+                    Common.LoadGeographyItems('@Url.ManagerSiteUrl().AdvertLocation("getlocation")?advertTypeId=' + advertTypeId + "&categoryId=" + categoryId, 0, $("#sel_Position"));
+                    if(advertTypeId==2)
+                        $("#spnCategory").html("");
+                }
+            });
+            // 一级类目下拉改变事件
+            $("#sel_firstCategory").change(function () {
+                //var pageValue = $("#sel_Page ").val();
+                //if (pageValue==0) {
+                //    $("#spnPage").html("未选中页面");
+                //}
+                var categoryId = $(this).val();
+                $categoryId = categoryId;
+                Common.ClearListItems($("#sel_secondCategory"));
+                Common.ClearListItems($("#sel_thirdCategory"));
+                if (categoryId > 0) {
+                    Common.LoadGeographyItems('@Url.ManagerSiteUrl().CategoryLocation("secondthirdcategory")?categoryCode=' + categoryId + "&ram=" + Math.random(), 0, $("#sel_secondCategory"));
+                }
+            });
+            var Init = function (intFId, intSId, intTId) {
+                Common.LoadGeographyItems('@Url.ManagerSiteUrl().CategoryLocation("firstcategory")', intFId, $("#sel_firstCategory"));
+                if (intFId > 0) {
+                    Common.LoadGeographyItems('@Url.ManagerSiteUrl().CategoryLocation("secondthirdcategory")?categoryCode=' + intFId, intSId, $("#sel_secondCategory"));
+                }
+                if (intSId > 0) {
+                    Common.LoadGeographyItems('@Url.ManagerSiteUrl().CategoryLocation("secondthirdcategory")?categoryCode=' + intSId, intTId, $("#sel_thirdCategory"));
+                }
+            };
+            // 类目列表初次加载
+            Init('@firstCategory', '@secondCategory', '@thirdCategory');
+
+            //时间
+            var dates = $("#text_beginTime,#text_endTime").datepicker({
+                defaultDate: "+1w",
+                minDate: (this.id == "text_endTime" ? $("#text_beginTime").datepicker("getDate") :'+0d'),
+                maxDate: (this.id == "text_beginTime" ? $("#text_endTime").datepicker("getDate") : ''),
+                onSelect: function (selectedDate) {
+                    var option = this.id == "text_beginTime" ? "minDate" : "maxDate",
+        					instance = $(this).data("datepicker"),
+        					date = $.datepicker.parseDate(
+        						instance.settings.dateFormat ||
+        						$.datepicker._defaults.dateFormat,
+        						selectedDate, instance.settings);
+                    dates.not(this).datepicker("option", option, date);
+                }
+            }).attr("readonly", "readonly");
+             
+            //保存
+            $("#btnSave").click(function () {
+                if($("#form1").valid()){
+                    //验证图片
+                    if(checkTime() && checkImage()){
+                        var isModify='@isModify';
+                        if (isModify=='True') {
+                            $("#form1").attr("action", "@Url.ManagerSiteUrl().AdvertManage_Publish(true)&isModify=1");
+                        }else{
+                            $("#form1").attr("action", "@Url.ManagerSiteUrl().AdvertManage_Publish(true)");
+                        }
+                        $("#form1").submit();
+                    }
+                }
+            });
+
+            //提交审核
+            $("#btnApply").click(function () {
+                if($("#form1").valid()){
+                    if(checkTime() && checkImage()){
+                        var isModify='@isModify';
+                       if (isModify=='True') {
+                            $("#form1").attr("action", "@Url.ManagerSiteUrl().AdvertManage_Publish(false)&isModify=1");
+                        }else{
+                            $("#form1").attr("action", "@Url.ManagerSiteUrl().AdvertManage_Publish(false)");
+                        }
+                        $("#form1").submit();
+                    }
+                }
+            });
+
+
+
+            $("#form1").validate({
+                rules: {
+                    sel_Page:{
+                        min:1
+                    },
+                    sel_Position:{
+                        min:1
+                    },
+                    txtAdvertName:{
+                        required:true,
+                        maxlength:30
+                    },
+                    txtAdvertUrl: {
+                        required:true,
+                        url: false
+                    },
+                    sel_Order:{
+                        min:1
+                    }
+                },
+                messages: {
+                    sel_Page:{
+                        min:"<span class='ml10 cold21b1b'>未选择页面</span>"
+                    },
+                    sel_Position:{
+                        min:"<span class='ml10 cold21b1b'>未选择位置</span>"
+                    },
+                    txtAdvertName:{
+                        required:"<span class='ml10 cold21b1b'>请输入广告名称</span>",
+                        maxlength:"<span class='ml10 cold21b1b'>广告名称应该小于30个字符！</span>"
+                    },
+                    txtAdvertUrl:{
+                        required:"<span class='ml10 cold21b1b'>请输入链接地址</span>",
+                        url: "<span class='ml10 cold21b1b'>网址错误(如 http://www.baidu.com)</span>"
+                    },
+                    sel_Order:{
+                        min:"<span class='ml10 cold21b1b'>未选择顺序</span>"
+                    }
+                },
+                onkeyup: false,
+                errorElement: "span",
+                errorPlacement: function (error, element) {
+                    isValidate = false;
+                    //alert("isValidate=" + isValidate);
+                    element.parent().find("span").remove();
+                    error.appendTo(element.parent());
+                }
+            });
+
+            $("#sel_Page").on("change", function () {
+                //$.alert($(this).val());
+                //获取选中的值
+                var advertTypeId=$(this).val();
+                //验证分类
+                if (advertTypeId==0||advertTypeId==1) {
+                    $("#spnCategory").html("");
+                }
+                if (advertTypeId == 2) {  //二级分类
+                    var secondCategoryId = $("#sel_secondCategory").val();
+                    if (secondCategoryId == 0) {
+                        $("#spnCategory").html("未选择分类");
+                        flag = false;
+                    }else{
+                        $("#spnCategory").html("");
+                    }
+                }
+                if (advertTypeId == 3) {  //三级分类
+                    var secondCategoryId = $("#sel_thirdCategory").val();
+                    if (secondCategoryId == 0) {
+                        $("#spnCategory").html("未选择分类");
+                        flag = false;
+                    }else{
+                        $("#spnCategory").html("");
+                    }
+                }
+            });
+
+            //验证开始时间与结束时间
+            $("#text_beginTime").on("blur",function(){
+                if(checkTime()){
+                    $("#spnTime").html("");
+                    return true;
+                }
+            });
+            $("#text_endTime").on("blur",function(){
+                if(checkTime()){
+                    $("#spnTime").html("");
+                    return true;
+                }
+            });
+
+            $("#sel_begin_hour").on("change",function(){
+                if(checkTime()){
+                    $("#spnTime").html("");
+                    return true;
+                }
+            });
+            $("#sel_begin_minute").on("change",function(){
+                if(checkTime()){
+                    $("#spnTime").html("");
+                    return true;
+                }
+            });
+
+            $("#sel_end_hour").on("change",function(){
+                if(checkTime()){
+                    $("#spnTime").html("");
+                    return true;
+                }
+            });
+            $("#sel_end_minute").on("change",function(){
+                checkImage()   //测试
+                if(checkTime()){
+                    $("#spnTime").html("");
+                    return true;
+                }
+            });
+        })
+
+        function GetMaxNum(locationId) {
+            var strUrl = "@Url.ManagerSiteUrl().AdvertManage_MaxNum";
+            $("#sel_Order option").remove();
+            $("#sel_Order").append("<option value='0'>--请选择--</option>");
+            $.post(strUrl, {locationId: locationId }, function (data) {
+                if (data.Success) {
+                    var num = data.Message;
+                    //$.alert("su:"+num)
+                    for (var i = 0; i < num; i++) {
+                        var stemp='@(Model == null ? 0 : Model.Sort)';
+                        if(stemp==(i+1)){
+                            $("#sel_Order").append("<option selected='selected' value='" + (i + 1) + "'>" + (i + 1) + "</option>");
+                        }
+                        else{
+                            $("#sel_Order").append("<option value='" + (i + 1) + "'>" + (i + 1) + "</option>");
+                        }
+                    }
+
+                } else {
+                    //$.alert("err:" + data.Success)
+                }
+            }, "json");
+        }
+
+       
+       //var isModify = '@Model' == null ? false : true;
+        //验证数据
+        function Check() {
+            var flag = true;
+            var isModify='@isModify';
+            if(isModify=='False'){
+                //验证 页面
+                var advertTypeId = $("#sel_Page ").val();
+                if (advertTypeId == 0) {
+                    $("#spnPage").html("未选择页面");
+                    flag = false;
+                }else{
+                    $("#spnPage").html("");
+                }
+                //验证分类
+                if (advertTypeId == 2) {  //二级分类
+                    var secondCategoryId = $("#sel_secondCategory").val();
+                    if (secondCategoryId == 0) {
+                        $("#spnCategory").html("未选择分类");
+                        flag = false;
+                    }else{
+                    $("#spnCategory").html("");
+                }
+                }
+                if (advertTypeId == 3) {  //三级分类
+                    var secondCategoryId = $("#sel_thirdCategory").val();
+                    if (secondCategoryId == 0) {
+                        $("#spnCategory").html("未选择分类");
+                        flag = false;
+                    }else{
+                        $("#spnCategory").html("");
+                    }
+                }
+
+                //验证位置
+                var position = $("#sel_Position ").val();
+                if (position == 0) {
+                    $("#spnPosition").html("未选择位置");
+                    flag = false;
+                }else{
+                    $("#spnPosition").html("");
+                }
+            }
+            //验证广告名称
+            var advertName = $("#txtAdvertName").val();
+            if (advertName == "") {
+                $("#spnAdvertName").html("请输入广告名称");
+                flag = false;
+            }
+            else{
+                $("#spnAdvertName").html("");
+                if(advertName.length>30)
+                {
+                    $("#spnAdvertName").html("广告名称应该小于30个字符！");
+                    flag = false;
+                }else{
+                    $("#spnAdvertName").html("");
+                }
+            }
+            
+
+            //            //验证说明
+            //            var advertRemark = $("#txtAdvertRemark").val();
+            //            if (advertRemark == "") {
+            //                $("#spnRemark").html("请输入广告说明");
+            //                return false;
+            //            }
+            //验证链接地址
+            var advertUrl = $("#txtAdvertUrl").val();
+            if (advertUrl == "") {
+                $("#spnUrl").html("请输入链接地址");
+                flag = false;
+            }else{$("#spnUrl").html("");}
+            //验证时间格式
+            var begin = $("#text_beginTime").val();
+            var end = $("#text_endTime").val();
+            var beginHour = $("#sel_begin_hour").val();
+            var beginMinute = $("#sel_begin_minute").val();
+            var endHour = $("#sel_end_hour").val();
+            var endMinute = $("#sel_end_minute").val();
+            // 年 月 日 相等  比较 时 分
+            if (begin == end) {
+                if (beginHour > endHour) {
+                    $("#spnTime").html("时间录入错误");
+                    flag = false;
+                } else if (beginHour == endHour) {
+                    //小时相等的时候  判断分钟
+                    if (beginMinute >= endMinute) {
+                        $("#spnTime").html("时间录入错误");
+                        flag = false;
+                    }
+                }
+            }
+
+            //验证排序
+            var order = $("#sel_Order ").val();
+            if (order == 0) {
+                $("#spnOrder").html("未选择页面");
+                flag = false;
+            }
+            else
+            {
+                $("#spnOrder").html("");
+            }
+            return flag;
+        }
+
+        //验证时间
+        function checkTime()
+        {
+            var flag = true;
+            //验证时间格式
+            var begin = $("#text_beginTime").val();
+            var end = $("#text_endTime").val();
+            var beginHour = $("#sel_begin_hour").val();
+            var beginMinute = $("#sel_begin_minute").val();
+            var endHour = $("#sel_end_hour").val();
+            var endMinute = $("#sel_end_minute").val();
+            // 年 月 日 相等  比较 时 分
+            if(begin==""||end==""){
+                $("#spnTime").html("时间录入错误");
+                flag = false;
+            }else{
+                if (begin == end) {
+                    if (beginHour > endHour) {
+                        $("#spnTime").html("时间录入错误");
+                        flag = false;
+                    } else if (beginHour == endHour) {
+                        //小时相等的时候  判断分钟
+                        if (beginMinute >= endMinute) {
+                            $("#spnTime").html("时间录入错误");
+                            flag = false;
+                        }
+                    }
+                }
+            }
+            return flag;
+        }
+        //验证用户是否上传过图片
+        function checkImage(){
+            var flag=true;
+            var $div=$("#showAdvertisement");
+            //判断这个DIV中是否有img标签
+            var imgCount=$div.children("img").length;
+            if (imgCount>0) {
+                //获取img的src属性
+                var src = $div.children("img")[0].src;
+                $("#spnImg").html("");
+            }
+            else
+            {
+                $("#spnImg").html("请上传图片");
+                return false;
+            }
+            return flag;
+        }
+
+        
+    </script>
+}

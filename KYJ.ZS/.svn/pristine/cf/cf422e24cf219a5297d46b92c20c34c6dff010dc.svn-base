@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.GUANLISHANGHU;
+    ViewBag.Title = "企业详情-企业基本资料";
+
+    // 商户ID
+    int merchantId = Auxiliary.ToInt32(ViewData["merchantId"]);
+}
+<div class="tag">
+    <ul id="ul_menu" class="clearFix fl">
+        <li class="cur"><a href="@Url.ManagerSiteUrl().MerchantManage_BasicInfo(merchantId)">企业基本资料</a></li>
+        <li><a href="@Url.ManagerSiteUrl().MerchantManage_OrderRecord(merchantId)">租售记录 </a></li>
+        <li><a href="@Url.ManagerSiteUrl().MerchantManage_CreditRecord(merchantId)">信誉记录 </a></li>
+        <li><a href="@Url.ManagerSiteUrl().MerchantManage_SecurityServices(merchantId)">保障服务 </a></li>
+        <li><a href="@Url.ManagerSiteUrl().MerchantManage_WithdrawalsLog(merchantId)">提现日志 </a></li>
+    </ul><div class="fr mt5 mr10"><a href="@Url.ManagerSiteUrl().MerchantManage_Manage" class="link_05c">返回>></a></div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#ul_menu li").click(function () {
+                window.location = $(this).find("a").attr("href");
+            })
+        })
+    </script>
+}

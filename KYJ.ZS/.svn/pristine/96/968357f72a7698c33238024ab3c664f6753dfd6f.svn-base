@@ -1,0 +1,74 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model IList<KYJ.ZS.Models.DB.WithdrawCash>
+@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.GUANLISHANGHU;
+    ViewBag.Title = "企业详情-提现日志";
+
+    // 商户ID
+    int merchantId = Auxiliary.ToInt32(ViewData["merchantId"]);
+
+    int totalItemCount = Auxiliary.ToInt32(ViewData["totalItemCount"]);
+    int pagesize = Auxiliary.ToInt32(ViewData["pagesize"]);
+    int pageIndex = Auxiliary.ToInt32(ViewData["pageIndex"]);
+}
+<div class="tag">
+    <ul id="ul_menu" class="clearFix fl">
+        <li><a href="@Url.ManagerSiteUrl().MerchantManage_BasicInfo(merchantId)">企业基本资料</a></li>
+        <li><a href="@Url.ManagerSiteUrl().MerchantManage_OrderRecord(merchantId)">租售记录 </a></li>
+        <li><a href="@Url.ManagerSiteUrl().MerchantManage_CreditRecord(merchantId)">信誉记录 </a></li>
+        <li><a href="@Url.ManagerSiteUrl().MerchantManage_SecurityServices(merchantId)">保障服务 </a></li>
+        <li class="cur"><a href="@Url.ManagerSiteUrl().MerchantManage_WithdrawalsLog(merchantId)">提现日志 </a></li>
+    </ul><div class="fr mt5 mr10"><a href="@Url.ManagerSiteUrl().MerchantManage_Manage" class="link_05c">返回>></a></div>
+</div>
+      <div class="conbox" style="display:none;">
+        <div class="list">
+          <table>
+            <tr>                                                                                                                         
+              <th width="15%">提现单号</th>
+              <th width="15%">提现日期</th>
+              <th width="30%">账户信息 </th>
+              <th width="20%">提现金额</th>
+              <th class="tdlast">状态 </th>
+            </tr>
+            @if (Model != null && Model.Count > 0)
+            {
+                foreach (var item in Model)
+                {
+            <tr>
+              <td>@item.Number</td>
+              <td>@item.CreateTime.ToString("yyyy-MM-dd HH:mm")</td>
+              <td><p> <span class="col666 w120">开户名称： </span> <span class="col333">@item.Name</span></p>
+              <p> <span class="col666 w120">账　　户： </span> <span class="col333">@item.BandNumber</span></p>
+              <p> <span class="col666 w120">开　户 行： </span> <span class="col333">@item.BankName</span></p>
+              <p> <span class="col666 w120">备　　注： </span> <span class="col333">@item.Remark</span></p>
+</td>
+              <td><p> <span class="col666">提现金额：</span><span class="cold21b1b blod">@item.Price.ToString("F2")</span> <span class="col333">元</span></p>
+              <p> <span class="col666">余　　额：</span><span  class="cold21b1b blod">@item.Balance.ToString("F2")</span> <span class="col333">元</span></p>
+              </td>
+              <td>
+              @if(item.State==(int)KYJ.ZS.Models.WithdrawCashs.WithdrawCashEnum.NotPassApproval)
+              {<p>已驳回</p>
+              <p> <span class="col666">理　由：</span> <span class="col333">@item.Rejectreason</span></p>
+              }
+              else
+              {
+                @WithdrawCashStates.GetStateTitle(item.State)
+              }</td>
+            </tr>
+                }
+            }
+          </table>
+   @Html.Pager(totalItemCount, pagesize, pageIndex, "withdrawalslog", "merchantmanage", new PagerOptions { AutoHide = false, SeparatorHtml = " ", ShowFirstLast = false, ShowPageIndexBox = false, CssClass = "page", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + pageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next end prev", SpanCSS = "" }, null, null, null)
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#ul_menu li").click(function () {
+                window.location = $(this).find("a").attr("href");
+            })
+        })
+    </script>
+}

@@ -1,0 +1,595 @@
+﻿@{
+    ViewBag.Title = "订单页";
+    Layout = "~/Views/Shared/Layouts/_PayLayout.cshtml";
+}
+@model KYJ.ZS.Models.Orders.Web_OrderConfirm
+@using KYJ.ZS.Commons.PictureModular;
+@section header{
+     <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery.validate.min.js")" type="text/javascript"></script>
+     <script src="@Url.Content("~/js/lazyload.js")" type="text/javascript"></script>
+@*     <style type="text/css">
+         .no {
+                background: url("@PubConstant.StaticUrl@Url.Content("web/user/images/wrong.gif")") no-repeat scroll left center rgba(0, 0, 0, 0);
+                color: #d21b1b;
+                display: inline-block;
+                font-size: 12px;
+                line-height: 25px;
+                margin-left: 5px;
+                padding-left: 15px;
+         }
+     </style>*@
+     
+}
+<div class="container clearFix">
+    <!-- InstanceBeginEditable name="EditRegion1" -->
+    <ul class="flowbar">
+        <li class="active">确认订单</li>
+        <li>网络支付</li>
+        <li>发货中</li>
+        <li>确认收货</li>
+        <li>确认起租</li>
+    </ul>
+    <div class="wrapper">
+        <h2>
+            收货人信息</h2>
+        <div id="div_DeliveryAddresses" class="mt20 mb20">
+            @if (ViewData["DeliveryAddress"] != null)
+            {
+                List<KYJ.ZS.Models.DB.DeliveryAddress> list=ViewData["DeliveryAddress"] as List<KYJ.ZS.Models.DB.DeliveryAddress>;
+                foreach (var entity in list)
+                {
+                <div class="site clearFix @(entity.IsDefault ? "hover" : "")" >
+                    <label>
+                        <input type="radio" autocomplete="off" name="rdo_DeliveryAddresses" DeliveryId="@entity.Id" CityId="@entity.CityId" @(entity.IsDefault ? "checked" : "")   />
+                        <span>@entity.RealName</span>
+                        @entity.ProvinceName - @entity.CityName - @entity.DistrictName
+                        @entity.Address
+                        <span class="ml20">@entity.Code</span> <span>@entity.Tel</span> <em>@(entity.ResTel == null ? "" : entity.ResTel)</em>
+                    </label>
+                    <div class="f_r">
+                        <a href="javascript:return false;" id="a_EditDelivery"  DeliveryId="@entity.Id">编辑</a>
+                    </div>
+                </div>
+                }
+                <div class="site clearFix" id="div_DeliveryAddresses_Add" style="@(list.Count==0?"display: none;":"")">
+                    <label>
+                        <input type="radio" name="rdo_DeliveryAddresses" deliveryid="0" />
+                        <span>添加收货人</span>
+                    </label>
+                </div>
+            }
+        </div>
+        <form action="#" id="frm_address" name="frm_address" method="post">
+        <table id="tab_AddEditDelivery" class="contact" style="display: none;">
+            <tr>
+                <td align="right">
+                    <span>*</span>收货人：
+                </td>
+                <td>
+                    <input class="text" type="text" value="" id="txt_DeliveryRealName" name="txt_DeliveryRealName" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span>*</span>所在地区：
+                </td>
+                <td>
+                    <select id="sel_LiveProvinceId" class=" con_select w100">
+                        <option value="0">请选择</option>
+                    </select>
+                    <select id="sel_CityId" class=" con_select w100">
+                        <option value="0">请选择</option>
+                    </select>
+                    <select id="sel_DistrictId" name="sel_DistrictId" class="con_select w100">
+                        <option value="0">请选择</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span>*</span>街道地址：
+                </td>
+                <td>
+                    <input class="text w490px" type="text" value="" id="txt_DeliveryAddress" name="txt_DeliveryAddress" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span>*</span>邮政编码：
+                </td>
+                <td>
+                    <input class="text" type="text" value="" id="txt_DeliveryCode" name="txt_DeliveryCode" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span>*</span>联系电话：
+                </td>
+                <td>
+                    <input class="text" type="text" value="" id="txt_DeliveryTel" name="txt_DeliveryTel" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    备用联系电话：
+                </td>
+                <td>
+                    <input class="text" type="text" value="" id="txt_DeliveryResTel" name="txt_DeliveryResTel" /> （选填）
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <input class="btn" type="submit" value="保存收货人信息" id="btn_SaveDelivery" />
+                </td>
+            </tr>
+        </table>
+        </form>
+        <input type="hidden" id="hid_DeliveryId" value="0" />
+        <input type="hidden" id="hid_IsDefault" value="false" />
+        <h2>
+            送货方式</h2>
+        <ul class="deliver">
+            <li>
+                <label>
+                    <input type="radio" autocomplete="off" name="rdo_ShippingMethod" value="1" />
+                    不限</label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" autocomplete="off" name="rdo_ShippingMethod" value="2" />
+                    只工作日送货</label>
+            </li>
+            <li class="w168px">
+                <label>
+                    <input type="radio" autocomplete="off" name="rdo_ShippingMethod" value="3" />
+                    只双休日、假日送货</label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" autocomplete="off" id="chk_IsPhoneConfirm" />
+                    送货前电话联系</label>
+            </li>
+        </ul>
+        <h2>
+            商品信息</h2>
+        <table class="details">
+            @if (ViewData["ParameterJudge"].ToString() == "0")
+            { 
+                <tr>
+                    <th>
+                        商品
+                    </th>
+                    <th>
+                        押金（元）
+                    </th>
+                    <th>
+                        月租（元）
+                    </th>
+                    <th>
+                        物流费（元）
+                    </th>
+                    <th>
+                        预定租期
+                    </th>
+                    <th>
+                        最低起租
+                    </th>
+                </tr>
+                <tr>
+                    <td width="480">
+                        <div class="int">
+                            <div class="int_img">
+                            @{
+                                var pic = GetPicture.GetFirstGoodsPicture(Model.RentalGuid, true, "SHOW");
+                                if (string.IsNullOrEmpty(pic))
+                                {
+                                    pic = PubConstant.StaticUrl + Url.Content("web/web/images/img/int_img.gif");
+                                }
+                                else
+                                {
+                                    pic = pic + ".50_50.jpg";
+                                }    
+                            }
+                                <a target="_blank" href="@Url.WebSiteUrl().RentalGoods_Detail(Model.Id)">
+                                    <img src="@pic" alt="" /></a></div>
+                            <div class="int_title">
+                                <h3>
+                                    <a target="_blank" href="@Url.WebSiteUrl().RentalGoods_Detail(Model.Id)">@Model.Title</a></h3>
+                                <p>
+                                    &nbsp;@Model.NormName&nbsp;@Model.ColorName<span>数量：@Model.GoodsNum</span></p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <strong>￥@((Model.Deposit*Model.GoodsNum).ToString("F2"))</strong>
+                    </td>
+                    <td>
+                        <strong>￥@((Model.MothPrice*Model.GoodsNum).ToString("F2"))</strong>
+                    </td>
+                    <td>
+                        <strong>￥<label id="lab_Freight">0.00
+                        </label>
+                        </strong>
+                    </td>
+                    <td>
+                        @(Model.GoodsMonth)个月
+                    </td>
+                    <td>
+                        @(Model.GoodsLowestMonth)个月
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>
+                        @ViewData["ParameterJudgeText"].ToString()
+                    </td>
+                </tr>
+            }
+        </table>
+        <div class="bton">
+            应付金额：<span><label id="lab_TotalPrice"></label></span>元
+            <input type="button" id="btn_Submit" value="提交订单" /></div>
+    </div>
+    <!-- InstanceEndEditable -->
+</div>
+@section scripts{
+    <!--城市联动-->
+    <script type="text/javascript">
+        var selectProvinces = $("#sel_LiveProvinceId");
+        var selectCities = $("#sel_CityId");
+        var selectDistricts = $("#sel_DistrictId");
+        $(selectProvinces).change(function () {
+            $ProvinceID = parseInt($(this).val());
+            Common.ClearListItems(selectCities);
+            Common.ClearListItems(selectDistricts);
+            if ($ProvinceID > 0) {
+                Common.LoadGeographyItems('@Url.WebSiteUrl().GeographyLocation("cities")?geographyCode=' + this.value + "&ram=" + Math.random(), 0, selectCities);
+            }
+        });
+        $(selectCities).change(function () {
+            $CityID = parseInt($(this).val());
+            Common.ClearListItems(selectDistricts);
+            if ($CityID > 0) {
+                Common.LoadGeographyItems('@Url.WebSiteUrl().GeographyLocation("districts")?geographyCode=' + this.value + "&ram=" + Math.random(), 0, selectDistricts);
+            }
+        });
+        //城市联动赋值
+        var Init = function (intPId, intCId, intDId) {
+            Common.LoadGeographyItems('@Url.WebSiteUrl().GeographyLocation("provinces")', intPId, selectProvinces);
+            if (intPId > 0) {
+                Common.LoadGeographyItems('@Url.WebSiteUrl().GeographyLocation("cities")?geographyCode=' + intPId + "&ram=" + Math.random(), intCId, selectCities);
+            }
+            if (intCId > 0) {
+                Common.LoadGeographyItems('@Url.WebSiteUrl().GeographyLocation("districts")?geographyCode=' + intCId + "&ram=" + Math.random(), intDId, selectDistricts);
+            }
+        };
+        //城市联动清空
+        var ClearUp = function () {
+            $("#sel_LiveProvinceId").val(0);
+            Common.ClearListItems(selectCities);
+            Common.ClearListItems(selectDistricts);
+        } 
+    </script>
+    <!--运费计算和总价格计算-->
+    <script type="text/javascript">
+        //运费计算
+        function FreightCost() {
+            var objFreightTemplate=eval(@Html.Raw(Model.GoodsFreightTemplate)); //获取运费模版
+            var strFreightCost = ""; //运费结果
+            var intGoodsNum =@Model.GoodsNum;  //获取购买数量
+            var dblGoodsTotal = 0; //商品总数（件数，重量数，体积数）
+            $.each(objFreightTemplate, function (index, item) {
+                if (item.IsFreeship) //包邮 
+                {
+                    strFreightCost = 0;
+                }
+                else //不包邮 
+                {
+                    //计算出总数（件数，重量数，体积数）
+                    var dblWeight=@Model.Weight; 
+                    var dblVolume=@Model.Volume;
+                    switch (item.Mode) {
+                        case 1: dblGoodsTotal = intGoodsNum; break; //按件
+                        case 2: dblGoodsTotal = intGoodsNum*dblWeight; break; //按重量
+                        case 3: dblGoodsTotal = intGoodsNum*dblVolume; break; //按体积
+                    }
+                    var dblMoney=0;
+                    if(dblGoodsTotal>item.FirsTime)
+                    {
+                        dblMoney=item.FirstPrice  //首次费用
+                                +(parseInt((dblGoodsTotal-item.FirsTime) / item.ContinueTime) * item.ContinuePrice)  //续次取整费用
+                                +(((dblGoodsTotal-item.FirsTime) % item.ContinueTime)>0 ? item.ContinuePrice:0); //续次取余费用
+                    }
+                    else
+                    {
+                        dblMoney=item.FirstPrice;  //首次费用
+                    }
+                    //判断是否同意城市
+                    if(item.CityId==$("[name=rdo_DeliveryAddresses]:checked").attr("CityId"))
+                    {
+                        if (item.CityIds != -1)//本市运费  
+                        {
+                                strFreightCost = dblMoney;                        
+                        }
+                    }
+                    else
+                    {
+                        if (item.CityIds== -1)  //其它运费
+                        {
+                            strFreightCost =dblMoney ;
+                        }
+                    } 
+                }
+            })
+            $("#lab_Freight").text(strFreightCost.toFixed(2));
+        }
+        //总价格计算
+        function TotalPriceCost()
+        {
+                var dblTotalPrice=(@Model.GoodsNum * @Model.Deposit) +   //获取总押金
+                                (@Model.GoodsNum * @Model.MothPrice * @Model.GoodsLowestMonth)+  //获取总租金
+                                parseFloat($("#lab_Freight").text()); //获取总运费
+                $("#lab_TotalPrice").text(dblTotalPrice.toFixed(2));
+        }
+    </script>
+    <!--收获人地址列表-->
+    <script type="text/javascript">
+        //判断是否显示添加收货人地址
+        function ShowAddDeliveryAddress() {
+            if ($("#div_DeliveryAddresses>div").length==1 ) {
+                //显示添加收货人地址
+                $("#div_AddDelivery,#tab_AddEditDelivery").toggle();
+            }
+        }
+        //判断是否计算运费和总价格
+        function DeliveryAddressesChecked() {
+            if ($("[name=rdo_DeliveryAddresses]:checked").length > 0) {
+                FreightCost();
+                TotalPriceCost();
+            }
+        }
+        //收货地址详情数据清空
+        function DeliveryEmpty() {
+            $("#txt_DeliveryRealName").val("")
+            $("#txt_DeliveryAddress").val("")
+            $("#txt_DeliveryCode").val("")
+            $("#txt_DeliveryTel").val("")
+            $("#txt_DeliveryResTel").val("")
+            $("#hid_DeliveryId").val("0")
+            $("#hid_IsDefault").val("false")
+            ClearUp(); //城市联动清空
+        }
+    </script>
+    <!--添加收货人地址-->
+    <script type="text/javascript">
+        //保存收获人，添加单击事件
+        function SaveDelivery() {
+            var intId = $("#hid_DeliveryId").val();
+            var strRealName = $("#txt_DeliveryRealName").val();
+
+            var intProvinceId = $("#sel_LiveProvinceId").val();
+            var strProvinceName = $("#sel_LiveProvinceId").find("option:selected").text()
+            var intCityId = $("#sel_CityId").val();
+            var strCityName = $("#sel_CityId").find("option:selected").text();
+            var intDistrictId = $("#sel_DistrictId").val();
+            var strDistrictName = $("#sel_DistrictId").find("option:selected").text();
+
+            var strAddress = $("#txt_DeliveryAddress").val();
+            var strCode = $("#txt_DeliveryCode").val();
+            var strTel = $("#txt_DeliveryTel").val();
+            var strResTel = $("#txt_DeliveryResTel").val();
+            var blIsDefault = $("#hid_IsDefault").val();
+
+            $.post(
+                      "@Url.WebSiteUrl().Orders_DeliveryAddressesAddEdit",
+                      {
+                          id: intId,
+                          realname: strRealName,
+                          provinceid: intProvinceId,
+                          provincename: strProvinceName,
+                          cityid: intCityId,
+                          cityname: strCityName,
+                          districtid: intDistrictId,
+                          districtname: strDistrictName,
+                          address: strAddress,
+                          code: strCode,
+                          tel: strTel,
+                          restel: strResTel,
+                          isdefault: blIsDefault
+                      },
+                      function (data) {
+                          if (data > 0) {
+                              if (intId == 0) {  //添加
+                                  var strDeliveryAddresses = '<div class="site clearFix" >' +
+                                                                '<label>' +
+                                                                '<input type="radio" autocomplete="off" name="rdo_DeliveryAddresses"   DeliveryId="' + data + '" CityId="' + intCityId + '" />' +
+                                                                '<span>' + strRealName + '</span>' +
+                                                                    strProvinceName + ' - ' + strCityName + ' - ' + strDistrictName +" "+strAddress +
+                                                                '<span class="ml20">' + strCode + '</span>' +
+                                                                '<span>' + strTel + '</span>' +
+                                                                '<em>' + strResTel + '</em>' +
+                                                                '</label>' +
+                                                                '<div class="f_r"><a href="javascript:return false;" id="a_EditDelivery"  DeliveryId="' + data + '" >编辑</a></div>' +
+                                                        '</div>'
+
+                                  $("#div_DeliveryAddresses_Add").before(strDeliveryAddresses)
+                                  $("#div_DeliveryAddresses_Add").show();
+                                  intId = data; //获取最新的Id
+                              }
+                              else {  //修改
+                                  var strDeliveryAddresses = '<label>' +
+                                                             '<input type="radio" autocomplete="off" name="rdo_DeliveryAddresses"   DeliveryId="' + intId + '" CityId="' + intCityId + '" />' +
+                                                             '<span>' + strRealName + '</span>' +
+                                                                strProvinceName + ' - ' + strCityName + ' - ' + strDistrictName + " " + strAddress +
+                                                             '<span class="ml20">' + strCode + '</span>' +
+                                                             '<span>' + strTel + '</span>' +
+                                                             '<em>' + strResTel + '</em>' +
+                                                             '</label>' +
+                                                             '<div class="f_r"><a href="javascript:return false;" id="a_EditDelivery"  DeliveryId="' + intId + '" >编辑</a></div>';
+                                  var objDA = $("[DeliveryId=" + intId + "]").parent().parent().html(strDeliveryAddresses)
+                              }
+                              //添加收货人地址隐藏
+                              $("#tab_AddEditDelivery").toggle();
+                              //删除选中状态
+                              $("#rdo_DeliveryAddresses").attr('checked', 'false');
+                              $("#div_DeliveryAddresses").children().removeClass("hover")
+                              //添加选中状态
+                              $("[DeliveryId=" + intId + "]").attr('checked', 'true');
+                              $("[DeliveryId=" + intId + "]").parent().parent().addClass("hover");
+                              //收藏数据清空
+                              DeliveryEmpty();
+                              //判断是否计算运费和总价格
+                              DeliveryAddressesChecked()
+                          }
+                          else {
+                              $.alert("保存失败！")
+                          }
+                      }
+                   )
+        }
+    </script>
+    <!--收货人地址验证-->
+    <script type="text/javascript">
+        jQuery.validator.addMethod("code", function (value, element) {
+            var tel = /^[0-9]{6}$/;
+            return this.optional(element) || (tel.test(value));
+        }, "请填写正确邮政编码");
+        jQuery.validator.addMethod("tel", function (value, element) {
+            var tel = /^(13[0-9]|15[012356789]|18[0-9]|14[57])[0-9]{8}$/;
+            return this.optional(element) || (tel.test(value));
+        }, "请填写正确联系电话");
+        $("#frm_address").validate({
+            rules: {
+                txt_DeliveryRealName: { required: true },
+                txt_DeliveryAddress: { required: true },
+                txt_DeliveryCode: { required: true, code: true },
+                txt_DeliveryTel: { required: true, tel: true },
+                txt_DeliveryResTel: { tel: true },
+                sel_DistrictId: { min: 1 }
+            },
+            messages: {
+                txt_DeliveryRealName: { required: "<span class='no'>收货人不能为空！</span>" },
+                txt_DeliveryAddress: { required: "<span class='no'>街道地址不能为空！</span>" },
+                txt_DeliveryCode: { required: "<span class='no'>邮政编码不能为空！</span>", code: "<span class='no'>请正确填写邮政编码！</span>" },
+                txt_DeliveryTel: { required: "<span class='no'>联系电话不能为空！</span>", tel: "<span class='no'>请正确填写您的联系电话！</span>" },
+                txt_DeliveryResTel: { tel: "<span class='no'>请正确填写您的备用联系电话！</span>" },
+                sel_DistrictId: { min: "<span class='no'>请正确填写您的所在地区！</span>" }
+            },
+            success: function (element) {
+                element.parent().find("label").html("<span class='yes'>&nbsp;</span>");
+            },
+            submitHandler: function () {
+                SaveDelivery();
+            }
+        });
+    </script>
+    <!--提交订单-->
+    <script type="text/javascript">
+        function SubmitOrder() { 
+               
+               var intShippingMethod=$("[name=rdo_ShippingMethod]:checked").val(); //送货方式
+               var blIsPhoneConfirm=$("#chk_IsPhoneConfirm").attr("checked")?1:0;   //是否电话
+               var intDeliveryId= $("[name=rdo_DeliveryAddresses]:checked").attr("DeliveryId"); //获取收获地址Id
+
+               var intGoodsId = @Model.Id; //商品Id
+               var intGoodsNum = @Model.GoodsNum; //商品数量
+               var intGoodsMonth= @Model.GoodsMonth;  //商品租期
+               var intGoodsColor_Id = @Model.GoodsColorId;  //商品颜色Id
+               var intGoodsNorm_Id = @Model.GoodsNormId;  //商品规格Id
+              
+               if(intDeliveryId ==null)
+               {
+                  $.alert("请选择收货地址!");
+               }
+               else if(intShippingMethod==null)
+               {
+                  $.alert("请选择送货方式!");
+               }
+               else
+               {
+                  $.post(
+                    "@Url.WebSiteUrl().Orders_SubmitOrder",
+                    { 
+                        shippingmethod: intShippingMethod, 
+                        isphoneconfirm: blIsPhoneConfirm,
+                         
+                        delivery_id: intDeliveryId,
+                        goods_id:intGoodsId,
+                        goods_num: intGoodsNum,
+                        goods_month:intGoodsMonth,
+                        goods_colorid: intGoodsColor_Id,
+                        goods_normid:intGoodsNorm_Id
+                    },
+                    function (data) {
+                        
+                        if(data.indexOf("http")>=0)
+                        {
+                              window.location.href=data;
+                        }
+                        else
+                        {
+                              $.alert(data);
+                        }
+                           
+                    }
+                 )
+               }
+        }
+    </script>
+    <!--事件注册和方法调用-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //城市初始化
+            Init(0, 0, 0);
+            //判断是否显示添加收货人地址
+            ShowAddDeliveryAddress();
+            //判断是否计算运费和总价格 
+            DeliveryAddressesChecked();
+            //收货地址的单击事件
+            $("[name=rdo_DeliveryAddresses]").live("click", function () {
+                //修改背景颜色
+                var objDA = $("#div_DeliveryAddresses").children();
+                objDA.removeClass("hover")
+                $(this).parent().parent().addClass("hover");
+                //是添加收货人地址
+                if ($(this).attr("DeliveryId") == 0) {
+                    $("#tab_AddEditDelivery").show()
+                    //判断是否编辑数据
+                    if ($("#hid_DeliveryId").val() > 0) {
+                        DeliveryEmpty(); //收藏数据清空
+                    }
+                }
+                //否添加收货人地址
+                else {
+                    $("#tab_AddEditDelivery").hide();
+                    FreightCost(); //计算运费
+                    TotalPriceCost(); //计算总价格  
+                }
+            })
+            //编辑收货人，添加单击事件
+            $("#a_EditDelivery").live("click", function () {
+                $("#tab_AddEditDelivery").show();
+                var intDeliveryId = $(this).attr("DeliveryId");
+                $.get("@Url.WebSiteUrl().Orders_DeliveryAddressesEntity" + "?id=" + intDeliveryId, function (data) {
+                    $("#txt_DeliveryRealName").val(data.RealName)
+                    $("#txt_DeliveryAddress").val(data.Address)
+                    $("#txt_DeliveryCode").val(data.Code)
+                    $("#txt_DeliveryTel").val(data.Tel)
+                    $("#txt_DeliveryResTel").val(data.ResTel)
+                    $("#hid_DeliveryId").val(data.Id)
+                    $("#hid_IsDefault").val(data.IsDefault)
+                    Init(data.ProvinceId, data.CityId, data.DistrictId);
+                })
+            })
+            //提交订单,添加单击事件
+            $("#btn_Submit").click(function () { 
+                SubmitOrder(); //提交订单
+            })
+           
+        })
+    </script>
+}

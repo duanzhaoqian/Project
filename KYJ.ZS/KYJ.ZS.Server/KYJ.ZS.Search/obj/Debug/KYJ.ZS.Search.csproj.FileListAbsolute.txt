@@ -1,0 +1,15 @@
+D:\zushou\1.0\KYJ.ZS\KYJ.ZS.Server\KYJ.ZS.Search\bin\TXSearch.dll
+D:\zushou\1.0\KYJ.ZS\KYJ.ZS.Server\KYJ.ZS.Search\bin\TXSearch.pdb
+D:\zushou\1.0\KYJ.ZS\KYJ.ZS.Server\KYJ.ZS.Search\bin\KYJ.ZS.Commons.dll
+D:\zushou\1.0\KYJ.ZS\KYJ.ZS.Server\KYJ.ZS.Search\bin\KYJ.ServiceStack.dll
+D:\zushou\1.0\KYJ.ZS\KYJ.ZS.Server\KYJ.ZS.Search\bin\Newtonsoft.Json.dll
+D:\zushou\1.0\KYJ.ZS\KYJ.ZS.Server\KYJ.ZS.Search\bin\KYJ.ZS.Commons.pdb
+D:\zushou\1.0\KYJ.ZS\KYJ.ZS.Server\KYJ.ZS.Search\obj\Debug\ResolveAssemblyReference.cache
+D:\zushou\1.0\KYJ.ZS\KYJ.ZS.Server\KYJ.ZS.Search\obj\Debug\TXSearch.dll
+D:\zushou\1.0\KYJ.ZS\KYJ.ZS.Server\KYJ.ZS.Search\obj\Debug\TXSearch.pdb
+D:\zushou\1.0\KYJ.ZS\KYJ.ZS.Server\KYJ.ZS.Search\bin\Lucene.Net.dll
+D:\zushou\1.0\KYJ.ZS\KYJ.ZS.Server\KYJ.ZS.Search\bin\KYJ.ZS.Models.dll
+D:\zushou\1.0\KYJ.ZS\KYJ.ZS.Server\KYJ.ZS.Search\bin\MQ.dll
+D:\zushou\1.0\KYJ.ZS\KYJ.ZS.Server\KYJ.ZS.Search\bin\Apache.NMS.dll
+D:\zushou\1.0\KYJ.ZS\KYJ.ZS.Server\KYJ.ZS.Search\bin\Apache.NMS.ActiveMQ.dll
+D:\zushou\1.0\KYJ.ZS\KYJ.ZS.Server\KYJ.ZS.Search\bin\KYJ.ZS.Models.pdb

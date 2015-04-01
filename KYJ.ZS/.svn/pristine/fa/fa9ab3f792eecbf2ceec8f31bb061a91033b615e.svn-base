@@ -1,0 +1,84 @@
+﻿@using KYJ.ZS.Models.DB
+@model Webdiyer.WebControls.Mvc.PagedList<Message>
+@using Webdiyer.WebControls.Mvc
+@using KYJ.ZS.Commons.Web
+@{
+    ViewBag.Title = "站内通知";
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+    ViewBag.Navigation = MerchantNavigation.ZHANNEITONGZHI;
+}
+
+<div class="rightbox">
+    <!-- InstanceBeginEditable name="EditRegion1" -->
+    <div class="tag">
+        <ul>
+            <li class="cur"><a href="#">站内信</a></li>
+        </ul>
+    </div>
+    <div class="sta_let">
+        @if (Model != null)
+        {
+            foreach (Message m in Model)
+            { 
+            <dl class="clearFix">
+                <dt class="col999">@m.Content</dt>
+                <dd>
+                    <span class="fl">@m.UpdateTime</span><a href="javascript:void(0);"  data-isRead='@m.IsRead.ToString().ToLower()'  data-id="@m.Id" class="btn_grey fr">已读</a>
+                </dd>
+            </dl>
+       
+            }
+            <div class="page mr">
+               @Html.Pager(Model.TotalItemCount, Model.PageSize, Model.CurrentPageIndex, null, null, new PagerOptions { ShowGoButton = false, SeparatorHtml = " ", ShowFirstLast = true, ShowPageIndexBox = false, FirstPageText = "首页", LastPageText = "尾页", GoButtonText = "跳转", CssClass = "", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + Model.CurrentPageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "", NextCss = "", FirstCss = "", LastCss = "", SpanCSS = "col333 font12 mr10", ShowGoButtonCss = "pagetz",AutoHide = false }, null, null, null)
+            </div>
+
+    
+        }
+    </div>
+</div>
+    <script type="text/javascript">
+        $(function () {
+            $('a[data-isRead="true"]').removeClass("btn_blue fr").addClass("btn_grey fr");
+            $('a[data-isRead="false"]').removeClass("btn_grey fr").addClass("btn_blue fr");
+            //站内信已读操作
+            $('a[data-isRead="false"]').click(function () {
+                //$.alert("未读")
+                $thisButton = $(this);
+                $.post("@Url.MerchantSiteUrl().IsRead", { "id": $thisButton.attr("data-id") },
+               function (data) {
+                   if (data) {
+                       $thisButton.removeClass("btn_blue fr").addClass("btn_grey fr");
+                       //window.location='@Url.MerchantSiteUrl().SiteNotice';
+                       location.reload();  //刷新 重新获取未读的站内信
+                   }
+               });
+            });
+        });
+       //初始化“已读”按钮状态      
+             
+    </script>
+    @*点击按钮页面刷新的时候  记住滚动条的位置*@
+    <script type="text/javascript">
+        window.onbeforeunload = function () {
+            var scrollPos;
+            if (typeof window.pageYOffset != 'undefined') {
+                scrollPos = window.pageYOffset;
+            }
+            else if (typeof document.compatMode != 'undefined' &&
+          document.compatMode != 'BackCompat') {
+                scrollPos = document.documentElement.scrollTop;
+            }
+            else if (typeof document.body != 'undefined') {
+                scrollPos = document.body.scrollTop;
+            }
+            document.cookie = "scrollTop=" + scrollPos; //存储滚动条位置到cookies中  
+        }
+
+        window.onload = function () {
+            if (document.cookie.match(/scrollTop=([^;]+)(;|$)/) != null) {
+                var arr = document.cookie.match(/scrollTop=([^;]+)(;|$)/); //cookies中不为空，则读取滚动条位置  
+                document.documentElement.scrollTop = parseInt(arr[1]);
+                document.body.scrollTop = parseInt(arr[1]);
+            }
+        }   
+</script>  

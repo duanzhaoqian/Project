@@ -1,0 +1,120 @@
+﻿@using KYJ.ZS.Commons.PictureModular
+@model KYJ.ZS.Models.LocalUsers.AuthenticationEntity
+@{
+    ViewBag.Title = "账号管理-实名认证";
+    Layout = "~/Views/Shared/Layouts/_UserLayout.cshtml";
+    ViewBag.Navigation = UserNavigation.GERENRENZHENG;
+}
+@section header{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery.validate.min.js")" type="text/javascript"></script>
+}
+@helper Status(int state)
+    {
+        var stemp = "";
+        switch (state)
+        {
+            case 1:
+                stemp = "未认证";
+                break;
+            case 2:
+                stemp = "认证中";
+                break;
+            case 3:
+                stemp = "认证未通过";
+                break;
+            case 4:
+                stemp = "认证通过";
+                break;
+            default:
+                stemp = "未认证";
+                break;
+        }
+    @stemp
+}
+<div class="tag">
+    <ul>
+        <li class="cur">
+            <a href="@Url.UserSiteUrl().Authentication">实名认证</a></li>
+    </ul>
+</div>
+<div class="er_location">
+    <form id="ApplyForm" name="ApplyForm" action="@Url.UserSiteUrl().Apply" method="post">
+    <table cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                <td colspan="3" align="center">
+                    <div class="col05c font16 b_colf5f5f5 ml17 mr10">@Status(Model.PapersStatus)</div>
+                </td>
+            </tr>
+            <tr>
+                <th>真实姓名：</th>
+                <td>
+                    @Model.RealName
+                </td>
+                <td><span class="col999 ml75">示例照片</span></td>
+            </tr>
+            <tr>
+                <th>证件类型：</th>
+                <td>
+                    @{var paperstype = Model.PapersType == 1 ? "身份证" : "护照";
+                        @paperstype
+                    }
+                </td>
+                <td rowspan="5">
+                    <span class="rzpic ml75">
+                    @{
+                        var pic = KYJ.ZS.Commons.PictureModular.GetPicture.GetUserPictureInfo(CurrentUser._Guid, true, "PASSPORT").Path;
+                        if (string.IsNullOrEmpty(pic))
+                        {
+                            pic = PubConstant.StaticUrl + Url.Content("web/manager/images/img/col_bigpic.jpg");
+                        }
+                        else
+                        {
+                            pic += ".260_260.jpg";
+                        }
+                        }
+                        @if (!string.IsNullOrEmpty(pic))
+                        {
+                            <img src="@pic"/>
+                        }  
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <th>证件号码：</th>
+                <td>
+                    @Model.Papers
+                </td>
+            </tr>
+            @{
+                if (Model.PapersStatus == 3)
+                {
+                <tr>
+                    <th>&nbsp;</th>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <th><span class="cold21b1b">未通过原因：</span></th>
+                    <td><span class="cold21b1b">@Model.PapersRemark</span> </td>
+                </tr>
+                <tr>
+                    <th>&nbsp;</th>
+                    <td>
+                        <input type="button" id="sub_button" class="btn_yellow" value="重新提交申请" />
+                    </td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+    </form>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sub_button").on("click", function () {
+                window.location.href = "@Url.UserSiteUrl().Apply";
+            });
+        });
+    </script>
+}

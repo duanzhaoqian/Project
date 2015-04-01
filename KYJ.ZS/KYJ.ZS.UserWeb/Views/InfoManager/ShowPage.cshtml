@@ -1,0 +1,143 @@
+﻿@*
+//作者：孟国栋
+//时间：2014.05.08
+//描述：信息管理
+*@
+@using KYJ.ZS.Models.Pages;
+@using Webdiyer.WebControls.Mvc;
+@model PageData<KYJ.ZS.Models.SaleGoodses.SaleGoods_InformatioManagementEntity>
+@{
+    ViewBag.Title = "信息管理";
+    Layout = "~/Views/Shared/Layouts/_UserLayout.cshtml";
+    ViewBag.Navigation = UserNavigation.XINXIGUANLI;
+    
+}
+<div class="tag">
+    <ul>
+        <li class="cur"><a href="javascript:void(0);">信息管理</a></li>
+    </ul>
+</div>
+<div class="issue_content">
+    <table border="0" cellpadding="0" cellspacing="1">
+        @foreach (var item in Model.DataList)
+        {
+            var pic = KYJ.ZS.Commons.PictureModular.GetPicture.GetFirstGoodsPicture(item.Guid, true, "Free");
+            if (string.IsNullOrEmpty(pic))
+            {
+                pic = PubConstant.StaticUrl + Url.Content("web/user/images/img/sp1.jpg");
+                
+            }
+            else
+            {
+                pic = pic + ".60_60.jpg";
+            }
+            <tr>
+                <td>
+                    <div class="issue_img">
+                        <a href="@Url.WebSiteUrl().SaleGoods_Detail(item.Id)">
+                            <img src="@pic"/></a></div>
+                    <div class="issue_title">
+                        <p>
+                            <a href="@Url.WebSiteUrl().SaleGoods_Detail(item.Id)">@item.Title</a>
+                            @if (item.State == 3)
+                            {
+                                <span class="cold21b1b">[违规下架]</span>
+                            }
+                            else if (item.Status == 1)
+                            {
+                                <span class="col1d9e08">[显示中]</span>
+                            }
+                            else
+                            {
+                                <span class="col1d9e08"></span>
+                            }
+                        </p>
+                        <p>
+                            <table border="0" cellspacing="0" cellpadding="0" class="issue_littab">
+                                <tr>
+                                    <td class=" w58">
+                                        <i><span class="cold21b1b bold ">@item.Price</span></i>
+                                    </td>
+                                    <td class=" w40">
+                                        元
+                                    </td>
+                                    <td class="w290">
+                                        <span class="col666 ">@item.ProvinceName - @item.CityName - @item.DistrictName</span>
+                                    </td>
+                                    <td class="w70">
+                                        <span class="col333  ">@item.Contact</span>
+                                    </td>
+                                    <td>
+                                        <span class="col333 ">@item.ContactPhone</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </p>
+                        <p>
+                            <i><span class="col1d9e08">@item.Degree 成新 </span></i><span class="col666 ">浏览次数：</span><span
+                                class="col999">@item.BrowseCount 次</span></p>
+                    </div>
+                </td>
+                <td>
+                    <p class="col999">
+                        发布时间：@item.CreateTime</p>
+                    <p class="mt20">
+                        @foreach (var tags in item.TagsList)
+                        {
+                            <span class="bg_ffefd8">@tags</span>
+                        }
+                        @*  <span class="bg_ffefd8"> 时尚 </span><span class="bg_ffefd8"> 童装 </span><span class="bg_ffefd8"> 相机 </span>*@
+                    </p>
+                </td>
+                <td class=" w58" align="center">
+                    <p>
+                        @if (item.Status == 1)
+                        {
+                            <a href="@Url.UserSiteUrl().ShowGoods(item.Id, 2, Model.PageIndex)">隐藏</a>
+                        }
+                        else
+                        {
+                            <a href="@Url.UserSiteUrl().ShowGoods(item.Id, 1, Model.PageIndex)">显示</a>
+                        }
+                    </p>
+                    <p>
+                        <a href="@Url.UserSiteUrl().UpdateSaleGoods(item.Id)">修改</a></p>
+                    <p>
+                        <a href="javascript:void(0);" onclick="del(@item.Id,@Model.PageIndex)">删除</a></p>@*@Url.UserSiteUrl().Delete(item.Id, Model.PageIndex)*@
+                </td>
+            </tr>
+
+                                                                       if (item.State == 1||item.State == 3)
+                                                                       { 
+            <tr class="bg_faf9f9">
+                <td colspan="3">
+                    <span class="cold21b1b pl10">@item.ShelfReason</span>
+                </td>
+            </tr>
+
+                                                                       }
+        }
+    </table>
+    @*<div class="page mb10"> <a href="#" class="prev"> 上一页</a> <a href="#">1</a> <a href="#" class="active">2</a> <a href="#">3</a> <a href="#">4</a> ... <a href="#" class="next">下一页 </a></div>              
+            </div>
+*@
+    <div class="page mb10">@Html.Pager(Model.RecordCount, Model.PageSize, Model.PageIndex, "showpage", "infomanager", new PagerOptions { ShowGoButton = false, SeparatorHtml = "", ShowFirstLast = false, ShowPageIndexBox = false, GoButtonText = "跳转", CssClass = "", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + Model.PageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next end prev", FirstCss = "", LastCss = "", SpanCSS = "col333 font12 mr10", ShowGoButtonCss = "pagetz", AlwaysShowFirstLastPageNumber = true, NumericPagerItemCount = 4 }, null, null, null)</div>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+        function del(id, page) {
+            $.confirm("确认删除吗？", "提示", function () {
+                var strUrl = "@Url.UserSiteUrl().DelGoods";
+                $.post(strUrl, { saleId: id, pageIndex: page, m: Math.random() }, function (data) {
+                    if (data > 0) {
+                        var strHref = location.href;
+                        location.href = strHref;
+                    } else {
+                        $.alert("删除失败，请重试");
+                    }
+                }, "json");
+            });
+        }
+    </script>
+}

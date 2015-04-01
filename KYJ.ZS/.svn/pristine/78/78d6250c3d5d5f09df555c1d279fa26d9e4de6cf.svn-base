@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "商户入驻-签署协议";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#btn_OK").click(function () {
+                if ($("#txt_Name").val().length > 0 && $("#chk_agree").attr("checked") == "true") {
+                   
+                }
+            });
+
+
+        });
+    </script>
+}
+<div class="w1190 clearFix">
+    <!-- InstanceBeginEditable name="EditRegion2" -->
+    <div class="pact">
+        <ul>
+            <li class="mb35">输入企业名称：
+                <input type="text" id="txt_Name" value="" class="intxt w792" />
+            </li>
+            <li>请仔细阅读以下协议内容</li>
+            <li class="pactbox">
+                <h2>
+                    租售协议</h2>
+                <p>
+                    一 . 协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协 议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内
+                    容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议 的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容
+                    协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协</p>
+                <p>
+                    一 . 协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协 议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内
+                    容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议 的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容
+                    协议的内容协议的内容协议的内容协议的内容协议的内容协议的内容协</p>
+            </li>
+            <li class="tac font12">
+                <input type="checkbox" id="chk_agree" class="btn_checkbox" />
+                <span class="blue">阅读并接受协议</span></li>
+            <li class="tac">
+                <input type="button" id="btn_OK" class="btn_blue line34" value="确认入驻申请" />
+            </li>
+        </ul>
+    </div>
+</div>

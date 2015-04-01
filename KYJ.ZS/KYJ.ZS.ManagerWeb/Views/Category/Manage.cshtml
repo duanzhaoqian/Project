@@ -1,0 +1,243 @@
+﻿@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.SHANGPINFENLEIGUANLI;
+    ViewBag.Title = "商品分类管理";
+
+    // 权限
+    string userPermission = KYJ.ZS.Commons.Common.CookieTool.GetCookie("userPermission");
+    List<KYJ.ZS.Models.DB.RoleManagement> list = Auxiliary.FromJsonTo<List<KYJ.ZS.Models.DB.RoleManagement>>(userPermission);
+
+    string permissions = list.Find(c => c.ModuleId == (int)ManagerNavigation.SHANGPINFENLEIGUANLI).Permission;
+}
+@section header{
+    <style type="text/css">
+        .selectedLi{ background-color:rgb(252, 245, 204);}
+        .error{ border-color:Red;}
+        .sort ul li .error{ border-color:Red;}
+    </style>
+}
+<div class="tag_n">
+        <ul>
+          <li><a href="javascript:void(0);">商品分类管理</a></li>
+        </ul>
+      </div>
+      <div class="assort clearFix">
+        <div class="sort">
+          <h1>一级类目</h1>
+          <ul id="ul_first">
+          </ul>
+          @if (permissions.IndexOf('1') >= 0)
+          {
+          <div class="bdbox">
+            <input name="txt_Name" type="text" value="" maxlength="50" class="in26" />
+            <input name="btn_Add" type="button" value="添加" class="btn_or56 mt8" />
+          </div>
+          }
+        <input id="hdn_firstId" type="hidden" />
+        </div>
+        <div class="sort">
+          <h1>二级类目</h1>
+          <ul id="ul_second">
+          </ul>
+          @if (permissions.IndexOf('1') >= 0)
+          {
+          <div class="bdbox">
+            <input name="txt_Name" type="text" value="" maxlength="50" class="in26" />
+            <input name="btn_Add" type="button" value="添加" class="btn_or56 mt8" />
+          </div>
+          }
+        <input id="hdn_secondId" type="hidden" />
+        </div>
+        <div class="sort nomr">
+          <h1>三级类目</h1>
+          <ul id="ul_third">
+          </ul>
+          @if (permissions.IndexOf('1') >= 0)
+          {
+          <div class="bdbox">
+            <input name="txt_Name" type="text" value="" maxlength="50" class="in26" />
+            <input name="btn_Add" type="button" value="添加" class="btn_or56 mt8" />
+          </div>
+          }
+        </div>
+      </div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            // 一级类目加载
+            LoadCategoryItems('@Url.ManagerSiteUrl().CategoryLocation("firstcategory")' + "?ram=" + Math.random(), $("#ul_first"));
+            // 二级类目加载
+            $("#ul_first div").live("click", function () {
+                $(this).closest("div.sort").removeClass("error");
+
+                var categoryCode = $(this).attr("data-id");
+                $("#hdn_firstId").val(categoryCode);
+                $("#hdn_secondId").val('');
+
+                $(this).closest("ul").find("li.selectedLi").attr("class", "");
+                $(this).parent().attr("class", "selectedLi");
+
+                $("#ul_third").html('');
+                LoadCategoryItems('@Url.ManagerSiteUrl().CategoryLocation("secondthirdcategory")?categoryCode=' + categoryCode + "&ram=" + Math.random(), $("#ul_second"));
+            })
+            // 三级类目加载
+            $("#ul_second div").live("click", function () {
+                $(this).closest("div.sort").removeClass("error");
+
+                var categoryCode = $(this).attr("data-id");
+                $("#hdn_secondId").val(categoryCode);
+
+                $(this).closest("ul").find("li.selectedLi").attr("class", "");
+                $(this).parent().attr("class", "selectedLi");
+
+                LoadCategoryItems('@Url.ManagerSiteUrl().CategoryLocation("secondthirdcategory")?categoryCode=' + categoryCode + "&ram=" + Math.random(), $("#ul_third"));
+            })
+
+            // 添加
+            $("input[name='btn_Add']").click(function () {
+                var categoryName = $(this).prev().val(), //类目名称
+                    firstId = $("#hdn_firstId").val(), //选中的一级类目ID
+                    secondId = $("#hdn_secondId").val(), //选中的二级类目ID
+                    $ulId = $(this).parent().prev(),  //类目所在UL
+                    level = $ulId.attr("id") == "ul_first" ? 0 : ($ulId.attr("id") == "ul_second" ? 1 : 2); //节点深度
+
+                $(this).closest("div.sort").prev().removeClass("error");
+
+                if ((level == 1 && $.trim(firstId) == '') || (level == 2 && $.trim(secondId) == '')) {
+                    //$.alert("请选择上级分类！");
+                    $(this).closest("div.sort").prev().addClass("error");
+                    return false;
+                }
+                if ($.trim(categoryName) == '') {
+                    $.alert("请填写分类名称！");
+                    return false;
+                }
+                var pId = level == 0 ? 0 : (level == 1 ? firstId : secondId);
+                var $addText = $(this).prev();
+                $.post('@Url.ManagerSiteUrl().Category_Create', { pId: pId, categoryName: categoryName, level: level },
+                                function (data) {
+                                    var _data = data.toUpperCase();
+                                    // 添加成功
+                                    if (_data.indexOf("TRUE") > -1) {
+                                        var addId = data.split('||')[1];
+                                        var $addLi = $("<li class=last><div data-id='" + addId + "' class=tl><em>" + categoryName + "</em></div></li>")
+                                        if ('@permissions.IndexOf("3")' >= 0) {
+                                            $aEdit = $("<a name='a_edit' data-id='" + addId + "' data-name='" + categoryName + "' href='javascript:void(0);'>修改</a>");
+                                            $addLi.append($aEdit);
+                                        }
+                                        if ('@permissions.IndexOf("2")' >= 0) {
+                                            $aDelete = "<a name='a_delete' data-id='" + addId + "' href='javascript:void(0);'>删除</a>";
+                                            $addLi.append($aDelete);
+                                        }
+                                        $ulId.find("li:last").removeClass("last");
+                                        $ulId.append($addLi);
+                                        $addText.val('');
+                                    }
+                                    else if (_data.indexOf("||") > -1) {
+                                        var erroInfo = data.split('||')[1];
+                                        $.alert(erroInfo);
+                                    }
+                                    else if (_data.indexOf("FALSE") > -1) {
+                                        $.alert('添加失败，请重试！');
+                                    }
+                                }
+                            );
+            })
+            // 修改
+            $("a[name='a_edit']").live("click", function () {
+                var $editLi = $("<li><div class=tl><input type='text' maxlength='50' class=txtbox value='" + $(this).attr("data-name") + "' /></div><a name='a_comitEdit' data-id='" + $(this).attr("data-id") + "' href='javascript:void(0);'>修改</a><a name='a_cancel' href='javascript:void(0);'>取消</a></li>");
+                $(this).closest("li").after($editLi).hide();
+            })
+            // 确认修改
+            $("a[name='a_comitEdit']").live("click", function () {
+                var $editLi = $(this).closest("li"),
+                    $infoLi = $editLi.prev(),
+                    id = $(this).attr("data-id"),
+                    name = $(this).prev().find("input.txtbox").val(),
+                    oldName = $infoLi.find("em").html();
+
+                $(this).prev().find("input.txtbox").removeClass("error");
+
+                if ($.trim(name) == '') {
+                    //$.alert("请输入分类名称！");
+                    $(this).prev().find("input.txtbox").addClass("error");
+                    return false;
+                }
+                $.get('@Url.ManagerSiteUrl().Category_Edit', { id: id, name: name, oldName: oldName },
+                                function (data) {
+                                    var _data = data.toUpperCase();
+                                    // 修改成功
+                                    if (_data.indexOf("TRUE") > -1) {
+                                        $infoLi.find("em").html($.trim(name));
+                                        $infoLi.find("a[name='a_edit']").attr("data-name", $.trim(name));
+                                        $infoLi.show();
+                                        $editLi.remove();
+                                    }
+                                    else if (_data.indexOf("||") > -1) {
+                                        var erroInfo = data.split('||')[1];
+                                        $.alert(erroInfo);
+                                    }
+                                    else if (_data.indexOf("FALSE") > -1) {
+                                        $.alert('修改失败，请重试！');
+                                    }
+                                }
+                            );
+            })
+            // 取消修改
+            $("a[name='a_cancel']").live("click", function () {
+                $(this).closest("li").prev().show();
+                $(this).closest("li").remove();
+            })
+            // 删除
+            $("a[name='a_delete']").live("click", function () {
+                var categoryCode = $(this).attr("data-id"),
+                    $removeli = $(this).closest("li"),
+                    name = $removeli.find("em").html();
+                $.get('@Url.ManagerSiteUrl().Category_Delete', { categoryCode: categoryCode, name: name },
+                                function (data) {
+                                    var _data = data.toUpperCase();
+                                    // 删除成功
+                                    if (_data.indexOf("TRUE") > -1) {
+                                        $removeli.remove();
+                                    }
+                                    else if (_data.indexOf("||") > -1) {
+                                        var erroInfo = data.split('||')[1];
+                                        $.alert(erroInfo, 320);
+                                    }
+                                    else if (_data.indexOf("FALSE") > -1) {
+                                        $.alert('删除失败，请重试！');
+                                    }
+                                }
+                            );
+            });
+
+            //加载分类列表信息，url:请求路径，container：需要加载的jquery对象，onComplete回调函数
+            function LoadCategoryItems(url, container) {
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    async: false,
+                    dataType: "json",
+                    success: function (response) {
+                        if (response && response.success) {
+                            var categoryList = "";
+                            $.each(response.items, function () {
+                                categoryList += "<li><div data-id='" + this.GeographyCode + "' class=tl><em>" + this.GeographyName + "</em></div>";
+                                if ('@permissions.IndexOf("3")' >= 0) {
+                                    categoryList += "<a name='a_edit' data-id='" + this.GeographyCode + "' data-name='" + this.GeographyName + "' href='javascript:void(0);'>修改</a>";
+                                }
+                                if ('@permissions.IndexOf("2")' >= 0) {
+                                    categoryList += "<a name='a_delete' data-id='" + this.GeographyCode + "' href='javascript:void(0);'>删除</a>";
+                                }
+                                categoryList += "</li>";
+                            });
+                            container.html(categoryList);
+                            container.find("li:last").attr("class", "last");
+                        }
+                    }
+                });
+            }
+        })
+    </script>
+}

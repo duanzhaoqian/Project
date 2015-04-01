@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- InstanceBeginEditable name="doctitle" -->
+        <title>@ViewBag.Title</title>
+        <!-- InstanceEndEditable -->
+        <link href="@PubConstant.StaticUrl@Url.Content("web/user/css/global.css")" type="text/css" rel="stylesheet" />
+        <link href="@PubConstant.StaticUrl@Url.Content("web/user/css/gyc.css")" type="text/css" rel="stylesheet" />
+        <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery-1.8.3.min.js")" type="text/javascript"></script>
+        <script src="@PubConstant.StaticUrl@Url.Content("base/js/public/config.js")" type="text/javascript"></script>
+        <script src="@PubConstant.StaticUrl@Url.Content("base/plug/layer/layer.dialog.js")" type="text/javascript"></script>
+        <script src="@PubConstant.StaticUrl@Url.Content("base/js/public/common.js")" type="text/javascript"></script>
+        <script src="@PubConstant.StaticUrl@Url.Content("web/user/js/web.js")" type="text/javascript"></script>
+        <script src="@PubConstant.StaticUrl@Url.Content("web/user/js/hover.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/js/url.js")" type="text/javascript"></script>
+        <!--[if IE 6]>
+<script src="@PubConstant.StaticUrl@Url.Content("base/js/public/DD_belatedPNG_0.0.8a.js")"  language="javascript" type="text/javascript">
+</script>
+<script type="text/javascript">
+DD_belatedPNG.fix('*');
+</script>
+<![endif]-->
+        <!-- InstanceBeginEditable name="head" -->
+        @RenderSection("header", false)
+        <!-- InstanceEndEditable -->
+    </head>
+    <body>
+        @helper Navigation(UserNavigation navigation)
+            {
+                if (ViewBag.Navigation != null)
+                {
+                    var result = navigation == (UserNavigation)ViewBag.Navigation ? "class=current" : "";
+            @result
+                }
+        }
+        <!--头部开始-->
+        <div class="top">
+            <div class="w1190 clearFix">
+                <span class="fl">
+                    <a href="javascript:Common.AddToFavorite();">收藏快租售网站</a></span> <span class="fr"><span>
+                        欢迎回家，<em class="colff8a00 mr5">@CurrentUser.NickName
+                            ！</em></span><a href="@Url.UserSiteUrl().Index">我的快租售</a><i>|</i><a href="@Url.UserSiteUrl().CollectList">收藏夹</a><i>|</i><a href="@Url.MerchantSiteUrl().Index">商户通道</a><i>|</i><a
+                                href="#">帮助中心</a><i>|</i><a href="@Url.UserSiteUrl().Logout">退出</a>
+                    </span>
+            </div>
+        </div>
+        <!--搜索框部分开始-->
+        <div class="header">
+            <div class="w1190 clearFix">
+                <a href="@Url.WebSiteUrl().Index" class="logo"></a>
+                <div class="write">
+                </div>
+                @Html.Partial("RentalGoods/_Search")
+                @*<div class="right">
+                    <div class="clearFix">
+                        <input type="text" class="serch_txt" value="请输入商品名称" />
+                        <input type="button" class="btn_serch" value="搜  索" />
+                    </div>
+                    <div class="hotser">
+                        热门搜索：<a href="#">沙发</a><a href="#">餐桌</a><a href="#">海尔电视</a><a href="#">平板</a><a
+                            href="#">apple</a><a href="#">三星</a><a href="#">飞利浦</a></div>
+                </div>*@
+            </div>
+        </div>
+        <!--中间部分开始-->
+        <div id="content">
+            <div class="cont w1190 clearFix">
+                <!--左边部分开始-->
+                <!-- InstanceBeginEditable name="EditRegion1" -->
+                <div class="cont_l fl">
+                    @RenderBody()
+                </div>
+                <!-- InstanceEndEditable -->
+                <!--右边部分开始-->
+                <div class="cont_r fl">
+                    <span class="show tac font18 col666 yahei"><a href="@Url.UserSiteUrl().Index">用户中心</a></span>
+                    <div class="cont_r1">
+                        <p class="tac col666 blod">
+                            我的闲置物品</p>
+                        <a href="@Url.UserSiteUrl().PublishSaleGoods" @Navigation(UserNavigation.FABUXINXI)>
+                            发布信息</a>
+                        <a href="@Url.UserSiteUrl().ShowPage" @Navigation(UserNavigation.XINXIGUANLI)>信息管理</a>
+                        <a href="@Url.UserSiteUrl().RentOrdersList" @Navigation(UserNavigation.ZUYONGZHONGXIN)>
+                            租用中心</a>
+                        <p class="tac col666 blod">
+                            我的租用</p>
+                        <a href="@Url.UserSiteUrl().CollectList" @Navigation(UserNavigation.SHOUCANGJIA)>收藏夹</a>
+                        <p class="tac col666 blod">
+                            账号中心</p>
+                        <a href="@Url.UserSiteUrl().Information" @Navigation(UserNavigation.JIBENZILIAO)>基本资料</a>
+                        <a href="@Url.UserSiteUrl().AddressList" @Navigation(UserNavigation.SHOUHUODIZHI)>收货地址</a>
+                        <a href="@Url.UserSiteUrl().Authentication" @Navigation(UserNavigation.GERENRENZHENG)>
+                            个人认证</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--底部开始-->
+        <div class="footer">
+            <div class="w1190 clearFix">
+                <dl>
+                    <dt>快有租</dt>
+                    <dd>
+                        <a href="#">关于我们</a></dd>
+                    <dd>
+                        <a href="#">商家入驻</a></dd>
+                    <dd>
+                        <a href="#">广告服务</a></dd>
+                    <dd>
+                        <a href="#">客服中心</a></dd>
+                    <dd>
+                        <a href="#">人才招聘</a></dd>
+                </dl>
+                <dl>
+                    <dt>快有家旗下</dt>
+                    <dd>
+                        <a href="#">房产信息</a></dd>
+                    <dd>
+                        <a href="#">服务平台</a></dd>
+                </dl>
+                <dl>
+                    <dt>合作伙伴</dt>
+                    <dd>
+                        <a href="#">连接地产</a></dd>
+                    <dd>
+                        <a href="#">公司公司</a></dd>
+                    <dd>
+                        <a href="#">公司公司</a></dd>
+                    <dd>
+                        <a href="#">公司公司</a></dd>
+                    <dd>
+                        <a href="#">公司公司</a></dd>
+                </dl>
+                <dl class="w300">
+                    <dd>微信公众平台：搜索“快有租”<br />
+                        或扫描下面的二维码：</dd>
+                    <dd class="mt10">
+                        <a href="#">
+                            <img src="@PubConstant.StaticUrl@Url.Content("web/user/images/weixin.jpg")" /></a></dd>
+                </dl>
+                <dl class="nobg w280">
+                    <dd>Copyright © 2014 kuaiyoujia.com<br />
+                        All Rights Reserved. 版权声明<br />
+                        京ICP备11027796号-2<br />
+                        客服热线：400-999-3535<br />
+                        邮箱：service@kuaiyoujia.com</dd>
+                </dl>
+                <div class="clear">
+                </div>
+                <div class="describe clearFix">
+                    无论你多么讨厌你的旧家具，当你离开久了，<a href="#">www.kuaiyoujia.com</a>&nbsp;还是会想念它。
+                </div>
+            </div>
+        </div>
+        @RenderSection("scripts", false)
+        <!--end footer-->
+    </body>
+    <!-- InstanceEnd -->
+    </html>

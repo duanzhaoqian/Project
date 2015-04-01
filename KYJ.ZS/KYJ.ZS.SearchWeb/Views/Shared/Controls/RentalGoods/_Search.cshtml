@@ -1,0 +1,65 @@
+﻿    @{
+        string[] keys = Auxiliary.ConfigKey("hotkey").Split(',');
+        }
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var $$ = KYJ.CORE.URL;
+            jQuery.extend({ kyj: $$ });
+
+            $("#search_key").focus(function () { if ($(this).val() == "请输入商品名称") { $(this).val(""); } }).blur(function () { if ($(this).val() == "") { $(this).val("请输入商品名称"); } });
+
+            var key = location.href.match(/[-]{0,}w_[%a-zA-Z0-9]+/g);
+            key = key == undefined || key == null ? "" : key.toString().replace(/[-]{0,}w_/g, "");
+            if (key != null && key != "") $("#search_key").val(decodeURI(key));
+            $("#btn_serch").click(function () {
+                SearchList();
+            }
+            );
+            $(".hotser>a").each(function () {
+                var value = encodeURI(FilterSpecialCharacter($(this).text()));
+                searchUrl = "@Url.SearchSiteUrl().Index";
+                var url = $.kyj.set(searchUrl, null, value, 4, "w_");
+                $(this).attr("href", url);
+
+            });
+        });
+        function SearchList() {
+            var $$ = KYJ.CORE.URL;
+            jQuery.extend({ kyj: $$ });
+            var k = location.href.match(/[-]{0,}w_[%a-zA-Z0-9]+/g);
+            var i = location.href.match(/-i[0-9]+/g);
+            var value = encodeURI(FilterSpecialCharacter($("#search_key").val()));
+            searchUrl = "@Url.SearchSiteUrl().Index";
+            var url = $.kyj.set(searchUrl, null, value, 4, "w_");
+            var u = $("#search_key").val();
+            if (u != "请输入商品名称") {
+              location.href = url;
+            }
+
+            else {
+                location.href = location.href.replace(k, "").replace(i, "");
+            }
+        }
+
+        function FilterSpecialCharacter(d) {
+            var c = new RegExp("[ `~!！@@#$￥%^……&*(（)）—=+{【}】\\|、;；:：'\"’‘”“,.，。<>《》/?？]");
+            var a = new Array();
+            for (var b = 0; b < d.length; b++) { a.push(d.substr(b, 1).replace(c, "").replace("[", "").replace("]", "").replace("-", "")) }
+            return a.join("")
+        }
+
+    </script>
+      <div class="right">
+                <div class="clearFix">
+                    <input type="text" id="search_key" class="serch_txt" value="请输入商品名称" />
+                    <input type="button" id="btn_serch" class="btn_serch" value="搜  索" />
+                </div>
+                <div class="hotser">
+                    热门搜索：
+                    @foreach (var i in keys)
+                    {
+                    <a href="#">@i</a>
+                    }
+                   </div>
+            </div>

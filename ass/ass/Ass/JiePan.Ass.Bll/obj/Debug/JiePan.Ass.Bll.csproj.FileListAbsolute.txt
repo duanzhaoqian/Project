@@ -1,0 +1,15 @@
+F:\项目\2014\ASS\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Bll.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Bll.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.Bll\obj\Debug\JiePan.Ass.Bll.csprojResolveAssemblyReference.cache
+F:\项目\2014\ASS\Ass\JiePan.Ass.Bll\obj\Debug\JiePan.Ass.Bll.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Bll\obj\Debug\JiePan.Ass.Bll.pdb
+E:\源代码\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Bll.dll
+E:\源代码\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Bll.pdb
+E:\源代码\ass\Ass\JiePan.Ass.Bll\obj\Debug\JiePan.Ass.Bll.csprojResolveAssemblyReference.cache
+E:\源代码\ass\Ass\JiePan.Ass.Bll\obj\Debug\JiePan.Ass.Bll.dll
+E:\源代码\ass\Ass\JiePan.Ass.Bll\obj\Debug\JiePan.Ass.Bll.pdb
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.Bll\obj\Debug\JiePan.Ass.Bll.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.Bll\obj\Debug\JiePan.Ass.Bll.pdb
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Bll.dll
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.Bll.pdb
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.Bll\obj\Debug\JiePan.Ass.Bll.dll

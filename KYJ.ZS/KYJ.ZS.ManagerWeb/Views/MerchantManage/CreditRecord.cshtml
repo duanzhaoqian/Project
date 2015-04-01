@@ -1,0 +1,82 @@
+﻿@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.GUANLISHANGHU;
+    ViewBag.Title = "企业详情-信誉记录";
+
+    // 商户ID
+    int merchantId = Auxiliary.ToInt32(ViewData["merchantId"]);
+}
+<div class="tag">
+    <ul id="ul_menu" class="clearFix fl">
+        <li><a href="@Url.ManagerSiteUrl().MerchantManage_BasicInfo(merchantId)">企业基本资料</a></li>
+        <li><a href="@Url.ManagerSiteUrl().MerchantManage_OrderRecord(merchantId)">租售记录 </a></li>
+        <li class="cur"><a href="@Url.ManagerSiteUrl().MerchantManage_CreditRecord(merchantId)">信誉记录 </a></li>
+        <li><a href="@Url.ManagerSiteUrl().MerchantManage_SecurityServices(merchantId)">保障服务 </a></li>
+        <li><a href="@Url.ManagerSiteUrl().MerchantManage_WithdrawalsLog(merchantId)">提现日志 </a></li>
+    </ul><div class="fr mt5 mr10"><a href="@Url.ManagerSiteUrl().MerchantManage_Manage" class="link_05c">返回>></a></div>
+</div>
+      <div class="conbox" style="display:none;" >
+        <div class="serchbox clearFix">
+          <div class="fl col666 ">累计信用：<span class="colf30">4</span> </div>
+          <div class=" fr col666 " >好评率：<span class="colf30">100.00%</span> </div>
+        
+        </div>
+        <div class="list">
+          <table>
+            <tr>
+              <th></th>
+              <th>最近1周</th>
+              <th>最近1个月 </th>
+              <th>最近6个月</th>
+              <th >6个月前</th>
+              <th class="tdlast">总计</th>
+            </tr>
+            <tr>
+              <th>好评</th>
+              <td>0</td>
+              <td>0</td>
+              <td>5</td>
+              <td>0</td>
+              <td class="tdlast">5</td>
+            </tr>
+            <tr>
+              <th>中评</th>
+              <td>0</td>
+              <td>0</td>
+              <td>5</td>
+              <td>0</td>
+              <td class="tdlast">5</td>
+            </tr>
+            <tr>
+              <th>差评</th>
+               <td>0</td>
+              <td>0</td>
+              <td>5</td>
+              <td>0</td>
+              <td class="tdlast">5</td>
+            </tr>
+            <tr>
+              <th>总计</th>
+              <td>0</td>
+              <td>0</td>
+              <td>15</td>
+              <td>0</td>
+              <td class="tdlast">5</td>
+            </tr>
+           
+            </tr>
+          </table>
+          
+    </div>
+      </div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#ul_menu li").click(function () {
+                window.location = $(this).find("a").attr("href");
+            })
+        })
+    </script>
+}

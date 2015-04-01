@@ -1,0 +1,199 @@
+﻿@model KYJ.ZS.Models.DB.DeliveryAddress
+@{
+    ViewBag.Title = "收货地址";
+    Layout = "~/Views/Shared/Layouts/_UserLayout.cshtml";
+    ViewBag.Navigation = UserNavigation.SHOUHUODIZHI;
+}
+@section header{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery.validate.min.js")" type="text/javascript"></script>
+}
+<div class="nTab">
+    <div class="TabTitle">
+        <ul id="myTab">
+            <a href="@Url.UserSiteUrl().AddressList"><li class="normal" onclick="nTabs(this,0);">收货地址</li></a>
+            <li class="active" onclick="nTabs(this,1);"><a href="javascript:void(0);">修改地址</a></li>
+        </ul>
+    </div>
+    <div class="TabContent">
+        <div id="myTab_Content1">
+            <!--开始2-->
+            <div class="er_location">
+                <form action="#" id="frm_address" name="frm_address" method="post">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <th>
+                                收货人：
+                            </th>
+                            <td>
+                                <input type="text" name="txt_RealName" class="input_txt  w295" id="txt_RealName" value="@Model.RealName" />
+                                <input type="hidden" name="hdn_AddressId" class="input_txt  w295" id="hdn_AddressId" value="@Model.Id" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                所在地区：
+                            </th>
+                            <td>
+                                <label>
+                                    <select id="LiveProvinceId" name="LiveProvinceId" class="w100">
+                                        <option value="0">请选择</option>
+                                    </select>
+                                    <input type="hidden" id="LiveProvinceName" name="LiveProvinceName" value="@Model.ProvinceName" />
+                                </label>
+                                <label>
+                                    <select id="LiveCityId" name="LiveCityId" class="w100">
+                                        <option value="0">请选择</option>
+                                    </select>
+                                    <input type="hidden" id="LiveCityName" name="LiveCityName" value="@Model.CityName" />
+                                </label>
+                                <label>
+                                    <select id="LiveDistrictId" name="LiveDistrictId" class="w100">
+                                        <option value="0">请选择</option>
+                                    </select>
+                                    <input type="hidden" id="LiveDistrictName" name="LiveDistrictName" value="@Model.DistrictName" />
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                街道地址：
+                            </th>
+                            <td>
+                                <input type="text" name="txt_Address" class="input_txt w295" id="txt_Address" value="@Model.Address" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                邮政编码：
+                            </th>
+                            <td>
+                                <input type="text" name="txt_Code" class="input_txt w295" id="txt_Code" value="@Model.Code" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                联系电话：
+                            </th>
+                            <td>
+                                <input type="text" name="txt_Tel" class="input_txt w295" id="txt_Tel" value="@Model.Tel" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                备用联系电话：
+                            </th>
+                            <td>
+                                <input type="text" name="txt_ResTel" class="input_txt w295" id="txt_ResTel" value="@Model.ResTel" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                            </th>
+                            <td>
+                                <input name="checkbox" type="checkbox" id="checkbox" @(Model.IsDefault==true?"checked":"") />设为默认地址
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                &nbsp;
+                            </th>
+                            <td>
+                                <input type="submit" id="sub_button" class="btn_yellow" value="修改地址" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </form>
+            </div>
+            <!--结束2-->
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+        jQuery.validator.addMethod("code", function (value, element) {
+                var tel = /^[0-9]{6}$/;
+                return this.optional(element) || (tel.test(value));
+            }, "请填写正确邮政编码");
+            jQuery.validator.addMethod("tel", function (value, element) {
+                 var tel = /^((13[0-9]|15[012356789]|18[0-9]|14[57])[0-9]{8})$/;
+                var tel1 = /^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$/;
+                return this.optional(element) || (tel.test(value))||(tel1.test(value));
+            }, "请填写正确联系电话");
+            $("#frm_address").validate({
+                rules: {
+                    txt_RealName: { required: true, minlength: 2,maxlength:20 },
+                    txt_Address: { required: true, minlength: 3,maxlength:200 },
+                    txt_Code: { required: true, code: true },
+                    txt_Tel: { required: true, tel: true },
+                    txt_ResTel: { tel: true },
+                    LiveDistrictId: { min: 1 }
+                },
+                messages: {
+                    txt_RealName: { required: "<span class='no'>请填写正确信息！</span>", minlength: "<span class='no'>请填写正确信息！</span>", maxlength: "<span class='no'>请填写正确信息！</span>" },
+                    txt_Address: { required: "<span class='no'>请填写正确信息！</span>", minlength: "<span class='no'>请填写正确信息！</span>", maxlength: "<span class='no'>请填写正确信息！</span>" },
+                    txt_Code: { required: "<span class='no'>请填写正确信息！</span>", code: "<span class='no'>请填写正确信息！</span>" },
+                    txt_Tel: { required: "<span class='no'>请填写正确信息！</span>", tel: "<span class='no'>请填写正确信息！</span>" },
+                    txt_ResTel: { required: "<span class='no'>请填写正确信息！</span>", tel: "<span class='no'>请填写正确信息！</span>" },
+                    LiveDistrictId: { min: "&nbsp;&nbsp;&nbsp;<span class='no'>请填写正确信息！</span>" }
+                }
+                ,  submitHandler: function () {
+                    $.ajax({
+                        type: "post",
+                        dataType: "json",
+                        url: "@Url.UserSiteUrl().UpdateDeliveryAddress",
+                        data: $("#frm_address").serialize(),
+                        success: function (response) {
+                            if (response.result) {
+                                location.href="@Url.UserSiteUrl().AddressList";
+                            } else {
+                                $.alert(response.message);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+        $(function () {
+            var selectProvinces = $("#LiveProvinceId");
+            var selectCities = $("#LiveCityId");
+            var selectDistricts = $("#LiveDistrictId");
+            $(selectProvinces).change(function () {
+                $ProvinceID = parseInt($(this).val());
+                $ProvinceName=$(this).find("option:selected").text();
+                $(this).closest("label").find("input").val($ProvinceName);
+                Common.ClearListItems(selectCities);
+                Common.ClearListItems(selectDistricts);
+                if ($ProvinceID > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("cities")?geographyCode=' + this.value + "&ram=" + Math.random(),0, selectCities);
+                }
+            });
+            $(selectCities).change(function () {
+                $CityID = parseInt($(this).val());
+                $CityName=$(this).find("option:selected").text();
+                $(this).closest("label").find("input").val($CityName);
+                Common.ClearListItems(selectDistricts);
+                if ($CityID > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("districts")?geographyCode=' + this.value + "&ram=" + Math.random(),0, selectDistricts);
+                }
+            });
+            $(selectDistricts).change(function () {
+                $DistrictName=$(this).find("option:selected").text();
+                $(this).closest("label").find("input").val($DistrictName);
+            });
+            var Init = function (intPId, intCId, intDId) {
+                Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("provinces")',intPId, selectProvinces);
+                if (intPId > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("cities")?geographyCode=' + intPId + "&ram=" + Math.random(),intCId, selectCities);
+                }
+                if (intCId > 0) {
+                    Common.LoadGeographyItems('@Url.UserSiteUrl().GeographyLocation("districts")?geographyCode=' + intCId + "&ram=" + Math.random(),intDId, selectDistricts);
+                }
+            };
+
+            Init(@Model.ProvinceId,@Model.CityId,@Model.DistrictId);
+        });
+    </script>
+}

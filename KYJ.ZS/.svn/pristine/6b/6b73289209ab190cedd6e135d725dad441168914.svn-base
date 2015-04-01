@@ -1,0 +1,260 @@
+﻿@using KYJ.ZS.BLL.Generalizes
+@using KYJ.ZS.BLL.Adverts
+@using KYJ.ZS.Commons.PictureModular;
+@model KYJ.ZS.Models.RentalGoodses.RentalGoodsChannelEntity
+@{
+  
+    Layout = "~/Views/Shared/Layouts/_WebLayout.cshtml";
+   
+  
+}
+@{
+    GeneralizeBll generalzeBll = new GeneralizeBll();
+    AdvertBll advertBll = new AdvertBll();
+    var midellocations = generalzeBll.Web_GetGeneralizeLocationEntity(ViewBag.SecondaryCatId, 5);
+    var rightlocations = generalzeBll.Web_GetGeneralizeLocationEntity(ViewBag.SecondaryCatId, 6);
+    var toplocations = advertBll.Web_GetAdvertLocationEntity(ViewBag.SecondaryCatId, 2);
+    var leftlocations = advertBll.Web_GetAdvertLocationEntity(ViewBag.SecondaryCatId, 4);
+    var toprightlocations = advertBll.Web_GetAdvertLocationEntity(ViewBag.SecondaryCatId, 3);
+    int categoryid = ViewBag.SecondaryCatId; 
+}
+@Html.Partial("RentalGoods/_BreadNavigation", new KYJ.ZS.Models.Common.NavigationEntity() { CategoryId = categoryid, Type = 0 })
+<div class="w1190 clearFix mb30">
+    <div class="con_l">
+        @Html.Partial("RentalGoods/_ChannelCategoryMenu", Model.CatMenu)
+        <div class="adbox_2">
+            @if (leftlocations != null)
+            {
+                <ul>
+                    @foreach (var i in leftlocations)
+                    {
+                        var leftlist = advertBll.Web_GetAdvertEntity(i.Id);
+                        if (leftlist != null)
+                        {
+                            foreach (var j in leftlist)
+                            {
+                                var piclist = GetPicture.GetAdvertisementPictureListNoFilter(j.AdvertGuid, true);
+
+                                var pic = PubConstant.StaticUrl + Url.Content("web/web/images/img/img_w220h110_01.jpg");
+                                if (piclist != null && piclist.Count > 0)
+                                {
+                                    pic = piclist[0].Path;
+                                }
+                                else
+                                {
+                                }
+                        <li><a href="@j.Url">
+                            <img data-original="@pic" src=""></a></li>
+                            }
+                        }
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+    <div class="con_r">
+        <div class="clearFix">
+            <div class="adbox_1">
+                @if (toprightlocations != null)
+                {
+                    <ul>
+                        @for (int i = 0; i < toprightlocations.Count; i++)
+                        {
+                            var toprightlist = advertBll.Web_GetAdvertEntity(toprightlocations[i].Id);
+                            if (toprightlist != null)
+                            {
+                                foreach (var j in toprightlist)
+                                {
+                                    var piclist = GetPicture.GetAdvertisementPictureListNoFilter(j.AdvertGuid, true);
+
+                                    var pic = PubConstant.StaticUrl + Url.Content("web/web/images/img/img_w246h126_01.jpg");
+                                    if (piclist != null && piclist.Count > 0)
+                                    {
+                                        pic = piclist[0].Path;
+                                    }
+                                    else
+                                    {
+                                    }
+
+                                    if (i < 1)
+                                    {
+                            <li><a href="@j.Url">
+                                <img  data-original="@pic" src=""></a></li>
+                                    }
+                                    else
+                                    {
+                            <li class="last"><a href="@j.Url">
+                                <img  data-original="@pic" src=""></a></li>
+                                    }
+
+                                }
+                            }
+
+                        }
+                    </ul>
+                }
+            </div>
+            @if (toplocations != null || toplocations != null)
+            {
+                int count = 0;
+                <div class="scrool">
+                    @if (toplocations != null)
+                    {
+                        <ul class="slider">
+                            @foreach (var i in toplocations)
+                            {
+                                var toplist = advertBll.Web_GetAdvertEntity(i.Id);
+                                if (toplist != null)
+                                {
+                                    count = toplist.Count;
+                                    foreach (var j in toplist)
+                                    {
+                                        var piclist = GetPicture.GetAdvertisementPictureListNoFilter(j.AdvertGuid, true);
+                                        var pic = PubConstant.StaticUrl + Url.Content("web/web/images/img/img_w698h278_01.jpg");
+                                        if (piclist != null && piclist.Count > 0)
+                                        {
+                                            pic = piclist[0].Path;
+                                        }
+                                        else
+                                        {
+                                        }
+                                <li><a href="@j.Url">
+                                    <img  data-original="@pic" src=""></a></li>
+                                    }
+                                }
+                            }
+                        </ul>
+                
+                        <ul class="num">
+                            @for (int i = 1; i <= count; i++)
+                            {
+                                if (i == 1)
+                                {
+                                <li class="on">1</li>
+                                }
+                                else
+                                {
+                                <li>@i</li>
+                                }
+                            }
+                        </ul>
+                    }
+                </div>
+            }
+        </div>
+        <!--end banner-->
+        @if (midellocations != null)
+        {
+            for (int i = 0; i < midellocations.Count; i++)
+            {
+                var midelitemlist = generalzeBll.Web_GetGeneralizeGoodsEntity(midellocations[i].Id);
+            <div class="con_r_box">
+                <div class="classify_two">
+                    <div class="two_tit">
+                        <span>@midellocations[i].GLocationName</span></div>
+                    @if (midelitemlist != null)
+                    {
+                        foreach (var goods in midelitemlist)
+                        {
+                            var pic = GetPicture.GetFirstGoodsPicture(goods.Guid, true, "SHOW");
+                            if (string.IsNullOrEmpty(pic))
+                            {
+                                pic = PubConstant.StaticUrl + Url.Content("web/web/images/img/img_wh130_01.jpg");
+                            }
+                            else
+                            {
+                                pic = pic + ".130_130.jpg";
+                            }
+                        <dl>
+                            <dt><a href="@Url.WebSiteUrl().RentalGoods_Detail(@goods.GoodsId)">
+                                <img data-original="@pic" src=""></a></dt>
+                            <dd>
+                                <p>
+                                    <a href="@Url.WebSiteUrl().RentalGoods_Detail(@goods.GoodsId)">
+                                        @{
+                                        var name = "";
+                                        if (!string.IsNullOrEmpty(goods.GoodsName))
+                                        {
+                                            name = goods.GoodsName.Length <= 25 ? goods.GoodsName : goods.GoodsName.Substring(0, 25) + "...";
+                                        }
+                                        }
+                                        @name
+                                    </a>
+                                </p>
+                                <div class="market">
+                                    市场价：<i>¥@goods.Price.ToString("F2")</i></div>
+                                <div class="price">
+                                    <span>月租金：</span><i>¥</i><em>@goods.MonthPrice.ToString("F2")</em></div>
+                            </dd>
+                        </dl>
+              
+                        }
+                    }
+                </div>
+                @if (rightlocations != null && rightlocations[i] != null)
+                {
+                    var rightlitemlist = generalzeBll.Web_GetGeneralizeGoodsEntity(rightlocations[i].Id);
+
+                    <div class="sales">
+                        <h4>@rightlocations[i].GLocationName</h4>
+                        <div class="sales_list">
+                            <ul>
+                                @if (rightlitemlist != null)
+                                {
+                                    for (int j = 0; j < rightlitemlist.Count; j++)
+                                    {
+                                        var pic = GetPicture.GetFirstGoodsPicture(rightlitemlist[j].Guid, true, "SHOW");
+                                        if (string.IsNullOrEmpty(pic))
+                                        {
+                                            pic = PubConstant.StaticUrl + Url.Content("web/web/images/img/img_wh60_01.jpg");
+                                        }
+                                        else
+                                        {
+                                            pic = pic + ".60_60.jpg";
+                                        }
+                                  
+                                    <li>
+                                        @if (j < 3)
+                                        {
+                                            <span class="on">@(j + 1)</span> 
+                                        }
+                                        else
+                                        {
+                                            <span>@(j + 1)</span> 
+                                        }
+                                        <a class="picimg" href="@Url.WebSiteUrl().RentalGoods_Detail(@rightlitemlist[j].GoodsId)">
+                                            <img data-original="@pic" src=""></a>
+                                        <div class="text">
+                                            <p>
+                                                <a href="@Url.WebSiteUrl().RentalGoods_Detail(@rightlitemlist[j].GoodsId)">
+                                                    @{
+                                                    var name = "";
+                                                    if (!string.IsNullOrEmpty(rightlitemlist[j].GoodsName))
+                                                    {
+                                                        name = @rightlitemlist[j].GoodsName.Length <= 20 ? @rightlitemlist[j].GoodsName : @rightlitemlist[j].GoodsName.Substring(0, 20) + "...";
+                                                    }
+                                                    }
+                                                    @name
+                                                </a>
+                                            </p>
+                                            <div class="price">
+                                                <i>¥</i><em>@rightlitemlist[j].MonthPrice.ToString("F2")</em>/月</div>
+                                        </div>
+                                    </li>
+
+                      
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+               
+                }
+                <!--end sales-->
+                <div class="clear">
+                </div>
+            </div>
+            }
+        }
+    </div>
+</div>

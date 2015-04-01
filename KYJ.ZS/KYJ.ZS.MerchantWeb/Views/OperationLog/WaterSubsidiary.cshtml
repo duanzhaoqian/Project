@@ -1,0 +1,70 @@
+﻿@using KYJ.ZS.Models.DB
+@model PagedList<AccountLog>
+@using Webdiyer.WebControls.Mvc
+@{
+    ViewBag.Title = "流水明细";
+    Layout = "~/Views/Shared/Layouts/_MerchantLayout.cshtml";
+}
+@Html.Partial("~/Views/Shared/Controls/_AccountManage.cshtml")
+<div class="rightbox">
+    <div class="conbox">
+        <div class="mingx">
+            <table class="tab_3" width="100%" cellspacing="0" cellpadding="0">
+                <tr class="br_colddd">
+                    <th width="9%">
+                        序号
+                    </th>
+                    <th width="18%">
+                        时间
+                    </th>
+                    <th width="73%">
+                        操作日志
+                    </th>
+                </tr>
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td>
+                            @String.Format("{0:g}", item.CreateTime)
+                        </td>
+                        <td>
+                            <div class="tal ml10">
+                                @item.Desc</div>
+                        </td>
+                    </tr>
+                    }
+                }
+            </table>
+        </div>
+        @if (Model != null)
+        {
+            <div class="clearFix mr85">
+                <div class="page fr clearFix">
+                    @Html.Pager(Model.TotalItemCount, Model.PageSize, Model.CurrentPageIndex, "WaterSubsidiary", "OperationLog", new PagerOptions { ShowGoButton = false, SeparatorHtml = " ", ShowFirstLast = true, ShowPageIndexBox = false, FirstPageText = "首页", LastPageText = "尾页", GoButtonText = "跳转", CssClass = "", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + Model.CurrentPageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", NextCss = "next", FirstCss = "", LastCss = "", SpanCSS = "col333 font12 mr10", ShowGoButtonCss = "pagetz" }, null, null, null)
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            //选择当前标签
+            if ("@ViewBag.Tag" != "") {
+                $("li[tag=@ViewBag.Tag]").addClass("cur").siblings().removeClass("cur");
+            }
+            else {
+                $("li[tag=1]").addClass("cur").siblings().removeClass("cur");
+            }
+            $(".tag ul li").click(function () {
+                window.open($(this).attr("attr"), "_self");
+            });
+        });
+    </script>
+}

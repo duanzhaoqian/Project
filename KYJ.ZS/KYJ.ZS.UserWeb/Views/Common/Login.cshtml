@@ -1,0 +1,172 @@
+﻿@{
+    ViewBag.Title = "登录";
+    Layout = "~/Views/Shared/Layouts/_Layout.cshtml";
+    ViewBag.Navigation = CommonNavigation.LOGIN;
+}
+@section header{
+    <script src="@PubConstant.StaticUrl@Url.Content("base/js/jquery.validate.min.js")" type="text/javascript"></script>
+}
+<div class="w1000 clearFix">
+    <div class="log_l">
+    </div>
+    <div class="login_form">
+        <form id="LoginForm" name="LoginForm" action="@Url.UserSiteUrl().Login" method="post">
+        <div class="h30">
+            <div style="margin:25px auto 10px auto;">
+                <div id="log_msg" class="log_ts hide">
+                    <div id="msg_content" class="log_tsxx">
+                        账号或密码错误，请重新输入。
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="log_rdiv clearFix">
+            <span class="fl font14 bold col666">会员登录 </span><span class="fr">
+                <a href="@Url.UserSiteUrl().Register" class="link05c">免费注册</a></span>
+        </div>
+        <div class="form_item_wrap">
+            <div class="form_item">
+                <label class="user_ico">&nbsp;</label>
+                <input id="loginname" name="loginname" tabindex="1" class="ipt ipt_username" placeholder="用户名/手机"
+                    value="" type="text" />
+            </div>
+            <div class="form_item">
+                <label class="paswd_ico">&nbsp;</label>
+                <input id="password" name="password" tabindex="2" placeholder="密码" class="ipt ipt_password"
+                    type="password" />
+            </div>
+        </div>
+        @{
+            if (ViewBag.LoginNumber != null && Auxiliary.ToInt32(ViewBag.LoginNumber) > 0)
+            {
+            <div class="log_rdiv  clearFix">
+                <span class="fl">
+                    <input id="code" name="code" tabindex="3" dvalue="" type="text" class="input_yzm w100"
+                        maxlength="4" value="" /><img id="code_img" src="@Url.UserSiteUrl().Code" onclick='this.src = "@Url.UserSiteUrl().Code?r="+Math.random()'
+                            width="110" height="49" /></span><span class="fl"></span><span class="fl yzlink"><a
+                                id="h_code" href="javascript:void(0);" class="link05c">换张图</a></span>
+            </div>
+            }
+        }
+        <div class="log_rdiv clearFix">
+            <span class="fl col666">
+                <input name="isautologin" type="checkbox" tabindex="4" id="isautologin" value="true" />
+                下次自动登录</span><span class="fr"><a href="@Url.UserSiteUrl().FindPWD">忘记密码？</a></span>
+        </div>
+        <div class="log_rdiv ">
+            <input type="hidden" id="returnUrl" name="returnUrl" value="@ViewBag.ReturnUrl" />
+            <input id="btn_login" name="btn_login" data="on" type="button" tabindex="5" class="loginbtn w295 btnoper"
+                value="登　录" />
+        </div>
+        </form>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+//            $("#loginname").autoTip({ dvalue: "用户名/手机", isfind: true, findclass: "div" });
+//            $("#password").autoTip({ dvalue: "", isfind: true, findclass: "div" });
+            $("#btn_login").on("click", function () {
+                var data = $(".btnoper").attr("data");
+                if ("on" == data) {
+                    $("#LoginForm").submit();
+                }
+            });
+            $("#h_code").on("click", function () {
+                var r = Math.random();
+                $("#code_img").attr("src", "@Url.UserSiteUrl().Code?r=" + r);
+            });
+            var $inp = $('input');
+            $inp.keypress(function (e) {
+                var key = e.which;
+                if (key == 13) {
+                    var data = $(".btnoper").attr("data");
+                    if ("on" == data) {
+                        $("#LoginForm").submit();
+                    }
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        jQuery.validator.addMethod("isDefault", function (value, element) {
+            var dvalue = $(element.outerHTML).attr("dvalue");
+            return this.optional(element) || (dvalue == value ? false : true);
+
+        }, "<span class='no'>请填写正确信息！</span>");
+
+        $(document).ready(function () {
+            $("#LoginForm").validate({
+                rules: {
+                    loginname: {
+                        required: true
+                    },
+                    password: {
+                        required: true,
+                        minlength: 6
+                    },
+                    code: {
+                        required: true
+                    }
+                },
+                messages: {
+                    loginname: {
+                        required: "请填写正确信息！",
+                        isDefault: "请填写正确信息！"
+                    },
+                    password: {
+                        required: "请填写正确信息！",
+                        minlength: "请填写正确信息！"
+                    },
+                    code: {
+                        required: "请填写正确信息！"
+                    }
+                },
+                success: function (element) {
+                    $("#log_msg").addClass("hide");
+                },
+                submitHandler: function (form) {
+
+                    $(".btnoper").attr("data", "off");
+                    $(".btnoper").val("登录中...");
+                    var parm = $("#LoginForm").serialize();
+
+                    var url = $("#LoginForm").attr("action");
+
+                    $.post(url, parm, function (response) {
+                        if (response.result) {
+                            window.location.href = response.returnurl;
+                        } else {
+                            if (1 == response.type || 2 == response.type) {
+                                window.location.reload();
+                            } else if (3 == response.type) {
+                                $("#log_msg").removeClass("hide");
+                                $("#msg_content").html(response.message);
+                                $(".btnoper").val("登　录");
+                                $(".btnoper").attr("data", "on");
+                            } else if (10 == response.type) {
+                                $("#log_msg").removeClass("hide");
+                                $("#msg_content").html(response.message);
+                                $(".btnoper").val("登　录");
+                                $(".btnoper").attr("data", "on");
+                            } else if (20 == response.type) {
+                                $("#log_msg").removeClass("hide");
+                                $("#msg_content").html(response.message);
+                                $(".btnoper").val("登　录");
+                                $(".btnoper").attr("data", "on");
+                            }
+                        }
+                    });
+                },
+                onkeyup: false,
+                errorElement: "span",
+                errorPlacement: function (error, element) {
+                    $("#log_msg").removeClass("hide");
+                    $("#msg_content").html(error);
+                    //                    element.parent().find("span").remove();
+                    //                    error.appendTo(element.parent().parent());
+                }
+            });
+        });
+    </script>
+}

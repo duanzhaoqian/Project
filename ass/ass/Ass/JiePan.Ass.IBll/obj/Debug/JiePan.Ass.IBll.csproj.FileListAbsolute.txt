@@ -1,0 +1,34 @@
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\JiePan.Ass.IBll.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\JiePan.Ass.IBll.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\obj\Debug\JiePan.Ass.IBll.csprojResolveAssemblyReference.cache
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\obj\Debug\JiePan.Ass.IBll.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\obj\Debug\JiePan.Ass.IBll.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\JiePan.Ass.Model.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\JiePan.Common.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\EntityFramework.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\System.Web.Mvc.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\Autofac.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\System.Web.WebPages.Razor.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\System.Web.WebPages.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\System.Web.WebPages.Deployment.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\JiePan.Ass.Model.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\JiePan.Common.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\EntityFramework.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\System.Web.Mvc.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\Autofac.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\System.Web.WebPages.Razor.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\System.Web.WebPages.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\System.Web.WebPages.Deployment.xml
+F:\项目\2014\ASS\Ass\JiePan.Ass.IBll\bin\Debug\Autofac.pdb
+F:\项目\2014\ASS\Ass\JiePan.Ass.Web\bin\JiePan.Ass.IBll.dll
+F:\项目\2014\ASS\Ass\JiePan.Ass.Web\bin\JiePan.Ass.IBll.pdb
+E:\源代码\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.IBll.dll
+E:\源代码\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.IBll.pdb
+E:\源代码\ass\Ass\JiePan.Ass.IBll\obj\Debug\JiePan.Ass.IBll.csprojResolveAssemblyReference.cache
+E:\源代码\ass\Ass\JiePan.Ass.IBll\obj\Debug\JiePan.Ass.IBll.dll
+E:\源代码\ass\Ass\JiePan.Ass.IBll\obj\Debug\JiePan.Ass.IBll.pdb
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.IBll\obj\Debug\JiePan.Ass.IBll.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.IBll\obj\Debug\JiePan.Ass.IBll.pdb
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.IBll.dll
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.Web\bin\JiePan.Ass.IBll.pdb
+D:\Visual Studio 2010\Projects\ass\ass\Ass\JiePan.Ass.IBll\obj\Debug\JiePan.Ass.IBll.dll

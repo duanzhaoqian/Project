@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<configuration>
+  <appSettings>
+
+    <add key="AttributesIndexPath" value="D:\Index\AttributesIndex"/>
+    <add key="BrandsIndexPath" value="D:\Index\BrandsIndex"/>
+    <add key="CategoriesIndexPath" value="D:\Index\CategoriesIndex"/>
+    <add key="SaleGoodsesIndexPath" value="D:\Index\SaleGoodsesIndex"/>
+    <add key="RentalGoodsesIndexPath" value="D:\Index\RentalGoodsesIndex"/>
+    <add key="LogPath" value="D:\Log\Log.txt"/>
+    <add key="kyj.zushourdb" value="Data Source=192.168.3.156;Initial Catalog=Kyj_ZushouDB;user id=sa;pwd=110"/>
+
+  </appSettings>
+  
+    <system.web>
+        <compilation debug="true" targetFramework="4.0" />
+    </system.web>
+  
+</configuration>

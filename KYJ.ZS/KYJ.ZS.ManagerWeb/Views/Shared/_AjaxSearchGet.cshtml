@@ -1,0 +1,139 @@
+﻿@using System.Activities.Expressions
+@using KYJ.ZS.Models.RentalGoodses
+@using Webdiyer.WebControls.Mvc
+@model KYJ.ZS.Models.Pages.PageData<KYJ.ZS.Models.RentalGoodses.Manager_RentalGoodsAduitEntity>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_2">
+    <tr>
+        <th width="6%">
+            <div class="tac">
+                选择</div>
+        </th>
+        <th width="42%">
+            商品名称
+        </th>
+        <th width="10%">
+            月租(元)
+        </th>
+        <th width="15%">
+            商户名称
+        </th>
+        <th width="15%">
+            商家编号
+        </th>
+        <th width="12%" class="nnbor">
+            品牌
+        </th>
+    </tr>
+    @if (Model!=null&&Model.DataList!=null&&Model.DataList.Count>0)
+    {
+       
+        foreach (var item in Model.DataList)
+        {
+            <tr>
+                <td align="center">
+                    <input name="ck_good" value="@item.GoodsId" type="checkbox" />
+                </td>
+                <td>
+                    @item.GoodsName
+                </td>
+                <td>
+                    @item.MonthPrice.ToString("F2")
+                </td>
+                <td>
+                    @item.MerchantName
+                </td>
+                <td>
+                    @item.GoodsCode
+                </td>
+                <td class="nnbor">
+                    @item.Brand
+                </td>
+            </tr>
+        } 
+    }
+</table>
+    @*<a href="#" class="prev">上一页</a><a href="#">1</a><a href="#">2</a><a href="#">3</a><a
+            href="#" class="end active">4</a> <span class="fl">...</span> <a href="#">100</a><a
+                href="#" class="next end prev">下一页 </a>*@
+    @Ajax.Pager(Model.RecordCount, Model.PageSize, Model.PageIndex, "ajaxsearchget", "generalize", "Default", new PagerOptions { AutoHide = false, SeparatorHtml = "", ShowFirstLast = false, ShowPageIndexBox = false, CssClass = "page clearFix", CurrentPagerItemWrapperFormatString = "<a class=\"active\">" + Model.PageIndex + "</a>", SelfParameterLenght = -1, PrevCss = "prev", LastCss = "next end", NextCss = "next end prev", SpanCSS = "f1" }, null, new AjaxOptions { UpdateTargetId = "articles" }, null)
+
+<script type="text/javascript">
+    $(function () {
+        $("input[name='ck_good']").each(function () {
+               var goodsId = $(this).val();
+               if ($("#table_selectGoods").find("a[data-id='" + goodsId + "']").length > 0) {
+                $(this).prop("checked", true);
+
+         }
+          
+        });
+
+        $("input[name='ck_good']").on("change", function () {
+            var num = $("#em_number").html();
+            if ($.trim(num) == '') {
+                $.alert('请选择位置！');
+                return false;
+            }
+            var goodsId = $(this).val();
+            if ($(this).prop("checked") == true) {
+                var option = "";
+                for (var i = 1; i <= num; i++) {
+                    option += "<option value='" + goodsId + "|" + i + "'>" + i + "</option>";
+                }
+
+                var $tr = $(this).closest("tr"),
+                    $goodsName = $tr.find("td").eq(1).clone(),
+                    $monthPrice = $tr.find("td").eq(2).clone(),
+                    $merchantName = $tr.find("td").eq(3).clone(),
+                    $goodsCode = $tr.find("td").eq(4).clone(),
+                    $select = $("<td><select class='selcss w60 mr5' name='goodssort'>" + option + "</select></td>"),
+                    $a_delete = $("<td><a name='a_delete' href='javascript:void(0);' data-id='" + goodsId + "' class='link_05c'>删除</a></td>"),
+                    $addTr = $("<tr></tr>");
+
+                $addTr.append($goodsName).append($monthPrice).append($merchantName).append($goodsCode).append($select).append($a_delete).append("<td class='nnbor'></td>");
+                if ($("#table_selectGoods tr").length>num) {
+                    $.alert("排序商品已达上限");
+                } else {
+                     $("#table_selectGoods").append($addTr);
+                }
+               
+            }
+            else {
+                $("#table_selectGoods").find("a[data-id='" + goodsId + "']").closest("tr").remove();
+            }
+        });
+        $("#table_selectGoods").on("click", "a[name='a_delete']", function () {
+            $(this).closest("tr").remove();
+            $("#articles table").find("input[value='" + $(this).attr("data-id") + "']").prop("checked", false);
+            ValidateNumber();
+        });
+        $("select[name='goodssort']").live("change", function () {
+            ValidateNumber();
+        });
+
+        function ValidateNumber() {
+            $("#table_selectGoods").find("span.cold21b1b").remove();
+            var result = true;
+            $("select[name='goodssort']").each(function () {
+                var number = $(this).find("option:selected").text(),
+                        $td = $(this).closest("tr").find("td.nnbor");
+                $("select[name='goodssort']").not($(this)).each(function () {
+                    if ($(this).find("option:selected").text() == number) {
+                        $td.html("<span class='cold21b1b'>排序重复！</span>");
+                        result = false;
+                        return false;
+                    }
+                });
+            });
+            return result;
+        }
+    });
+
+</script>
+<script language="javascript">
+    //给分页控件添加边框
+    $(function () {
+        $("#articles").children("div").children("a:last").addClass("end");
+    })
+</script>

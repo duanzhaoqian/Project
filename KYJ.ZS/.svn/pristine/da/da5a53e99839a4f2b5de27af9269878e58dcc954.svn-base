@@ -1,0 +1,109 @@
+﻿@{
+    Layout = "~/Views/Shared/Layouts/_ManagerLayout.cshtml";
+    ViewBag.Navigation = ManagerNavigation.GUANLISHANGHU;
+    ViewBag.Title = "企业详情-保障服务";
+
+    // 商户ID
+    int merchantId = Auxiliary.ToInt32(ViewData["merchantId"]);
+}
+<div class="tag">
+    <ul id="ul_menu" class="clearFix fl">
+        <li><a href="@Url.ManagerSiteUrl().MerchantManage_BasicInfo(merchantId)">企业基本资料</a></li>
+        <li><a href="@Url.ManagerSiteUrl().MerchantManage_OrderRecord(merchantId)">租售记录 </a></li>
+        <li><a href="@Url.ManagerSiteUrl().MerchantManage_CreditRecord(merchantId)">信誉记录 </a></li>
+        <li class="cur"><a href="@Url.ManagerSiteUrl().MerchantManage_SecurityServices(merchantId)">保障服务 </a></li>
+        <li><a href="@Url.ManagerSiteUrl().MerchantManage_WithdrawalsLog(merchantId)">提现日志 </a></li>
+    </ul><div class="fr mt5 mr10"><a href="@Url.ManagerSiteUrl().MerchantManage_Manage" class="link_05c">返回>></a></div>
+</div>
+<div class="conbox" style="display: none;">
+    <div class="bg_fdfcf2 clearFix">
+        <span class="col333 font14 mr20 blod">保障服务</span> <span class="col666">总额度：</span><span
+            class="cold21b1b blod">100,000.00</span><span class="col666"> 元 </span>
+    </div>
+    <div class="serve_list">
+        <table>
+            <tr>
+                <th>
+                    <p>
+                        <img src="@PubConstant.StaticUrl@Url.Content("web/manager/images/serve_ico1.gif")" /></p>
+                    <p>
+                        消费者保障服务
+                    </p>
+                </th>
+                <td>
+                    <div class="borright fl">
+                        已缴纳：<span class="cold21b1b">6000.00</span>元</div>
+                    <div class="fl pl50">
+                        有效期：2014-05-07 至 2015-05-06</div>
+                </td>
+                <td>
+                    <span class="col1d9e08">已开通</span>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <p>
+                        <img src="@PubConstant.StaticUrl@Url.Content("web/manager/images/serve_ico2.gif")" /></p>
+                    <p>
+                        消费者保障服务
+                    </p>
+                </th>
+                <td>
+                    <div class="borright fl">
+                        已缴纳：<span class="cold21b1b">0.00</span>元</div>
+                    <div class="fl pl50">
+                        有效期：无</div>
+                </td>
+                <td>
+                    <span class="colf65c33">未开通</span>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <p>
+                        <img src="@PubConstant.StaticUrl@Url.Content("web/manager/images/serve_ico3.gif")" /></p>
+                    <p>
+                        消费者保障服务
+                    </p>
+                </th>
+                <td>
+                    <div class="borright fl">
+                        已缴纳：<span class="cold21b1b">6000.00</span>元</div>
+                    <div class="fl pl50">
+                        有效期：2014-05-07 至 2015-05-06</div>
+                </td>
+                <td>
+                    <span class="col1d9e08">已开通</span>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <p>
+                        <img src="@PubConstant.StaticUrl@Url.Content("web/manager/images/serve_ico4.gif")" /></p>
+                    <p>
+                        消费者保障服务
+                    </p>
+                </th>
+                <td>
+                    <div class="borright fl">
+                        已缴纳：<span class="cold21b1b">0.00</span>元</div>
+                    <div class="fl pl50">
+                        有效期：无</div>
+                </td>
+                <td>
+                    <span class="colf65c33">未开通</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#ul_menu li").click(function () {
+                window.location = $(this).find("a").attr("href");
+            })
+        })
+    </script>
+}
