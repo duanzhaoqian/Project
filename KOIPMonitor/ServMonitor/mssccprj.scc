@@ -1,0 +1,5 @@
+SCC = This is a Source Code Control file
+
+[ServMonitor.csproj]
+SCC_Aux_Path = "\\192.168.0.156\databases"
+SCC_Project_Name = "$/KOIPMonitor.root/KOIPMonitor/ServMonitor", KYDAAAAA

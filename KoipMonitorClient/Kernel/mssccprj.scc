@@ -1,0 +1,5 @@
+SCC = This is a Source Code Control file
+
+[Kernel.csproj]
+SCC_Aux_Path = "\\192.168.3.156\databases"
+SCC_Project_Name = "$/KoipMonitorClient.root/KoipMonitorClient/Kernel", NBMAAAAA

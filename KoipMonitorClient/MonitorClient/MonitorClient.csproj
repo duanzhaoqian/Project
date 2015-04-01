@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C9424BD2-43FC-4F95-AEB6-71DAC8921CE9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MonitorClient</RootNamespace>
+    <AssemblyName>MonitorClient</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppUtility\CmdType.cs" />
+    <Compile Include="AppUtility\CommClass.cs" />
+    <Compile Include="AppUtility\CommonList.cs" />
+    <Compile Include="AppUtility\config.cs" />
+    <Compile Include="AppUtility\Currentsocket.cs" />
+    <Compile Include="AppUtility\delegatelist.cs" />
+    <Compile Include="AppUtility\Encrypt.cs" />
+    <Compile Include="AppUtility\localserverinfo.cs" />
+    <Compile Include="AppUtility\ServerStateTimer.cs" />
+    <Compile Include="AppUtility\SessionMag.cs" />
+    <Compile Include="CtrMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrMain.Designer.cs">
+      <DependentUpon>CtrMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrServerinfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrServerinfo.Designer.cs">
+      <DependentUpon>CtrServerinfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrServerRuning.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrServerRuning.Designer.cs">
+      <DependentUpon>CtrServerRuning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrServerType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrServerType.Designer.cs">
+      <DependentUpon>CtrServerType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrUpdatePwd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrUpdatePwd.Designer.cs">
+      <DependentUpon>CtrUpdatePwd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CtrUserinfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CtrUserinfo.Designer.cs">
+      <DependentUpon>CtrUserinfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrMain.Designer.cs">
+      <DependentUpon>FrMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmServerInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmServerInfo.Designer.cs">
+      <DependentUpon>FrmServerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ServerInfo.cs" />
+    <Compile Include="NetClassLibrary\5808.cs" />
+    <Compile Include="NetClassLibrary\tcpClient_ExceptionHandlingEvent.cs" />
+    <Compile Include="NetClassLibrary\tcpClient_ReceiveEvent.cs" />
+    <Compile Include="NetClassLibrary\5809.cs" />
+    <Compile Include="NetClassLibrary\5812.cs" />
+    <Compile Include="NetClassLibrary\5810.cs" />
+    <Compile Include="NetClassLibrary\5811.cs" />
+    <Compile Include="NetClassLibrary\5817.cs" />
+    <Compile Include="NetClassLibrary\5821.cs" />
+    <Compile Include="NetClassLibrary\5820.cs" />
+    <Compile Include="NetClassLibrary\5819.cs" />
+    <Compile Include="NetClassLibrary\5813.cs" />
+    <Compile Include="NetClassLibrary\5816.cs" />
+    <Compile Include="NetClassLibrary\5814.cs" />
+    <Compile Include="NetClassLibrary\5815.cs" />
+    <Compile Include="NetClassLibrary\5827.cs" />
+    <Compile Include="NetClassLibrary\5802.cs" />
+    <Compile Include="NetClassLibrary\5806.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CtrMain.resx">
+      <DependentUpon>CtrMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrServerinfo.resx">
+      <DependentUpon>CtrServerinfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrServerRuning.resx">
+      <DependentUpon>CtrServerRuning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrServerType.resx">
+      <DependentUpon>CtrServerType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrUpdatePwd.resx">
+      <DependentUpon>CtrUpdatePwd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CtrUserinfo.resx">
+      <DependentUpon>CtrUserinfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrMain.resx">
+      <DependentUpon>FrMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmServerInfo.resx">
+      <DependentUpon>FrmServerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kernel\Kernel.csproj">
+      <Project>{B7BD6330-9523-4BAC-BEE8-A00BEB219C6F}</Project>
+      <Name>Kernel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

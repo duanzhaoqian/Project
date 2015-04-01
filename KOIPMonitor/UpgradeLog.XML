@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="KOIPMonitor">
+</Property><Property Name="解决方案文件" Value="E:\workstation\C#\ising99\KOIPMonitor\KOIPMonitor.sln">
+</Property><Property Name="用户选项文件" Value="E:\workstation\C#\ising99\KOIPMonitor\KOIPMonitor.suo">
+</Property><Property Name="Date" Value="2014-12-01">
+</Property><Property Name="Time" Value="10:17">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="KOIPMonitor.sln" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor.sln">
+</Event><Event ErrorLevel="0" Project="" Source="KOIPMonitor.suo" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor.suo">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\KOIPMonitor.csproj" Description="项目文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor\KOIPMonitor.csproj">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\CommandType.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor\CommandType.cs">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\CommClass.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor\CommClass.cs">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\CommonFunction.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor\CommonFunction.cs">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\ErrorDef.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor\ErrorDef.cs">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\RspGetServList.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor\RspGetServList.cs">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\Program.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor\Program.cs">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\Properties\AssemblyInfo.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\ServMonitor_AlarmHandlingEvent.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor\ServMonitor_AlarmHandlingEvent.cs">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\tcpClient_ExceptionHandlingEvent.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor\tcpClient_ExceptionHandlingEvent.cs">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\tcpClient_ReceiveEvent.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor\tcpClient_ReceiveEvent.cs">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\tcpServer_ExceptionHandlingEvent.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor\tcpServer_ExceptionHandlingEvent.cs">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\tcpServer_ReceiveEvent.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor\tcpServer_ReceiveEvent.cs">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\RspGetServState.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor\RspGetServState.cs">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\RspServOpt.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor\RspServOpt.cs">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\ServMonitor_OptHandlingEvent.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor\ServMonitor_OptHandlingEvent.cs">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\RspUserLogin.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor\RspUserLogin.cs">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\app.config" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\KOIPMonitor\app.config">
+</Event><Event ErrorLevel="1" Project="KOIPMonitor" Source="KOIPMonitor\KOIPMonitor.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\KOIPMonitor.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="KOIPMonitor" Source="KOIPMonitor\KOIPMonitor.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ServMonitor" Source="ServMonitor\ServMonitor.csproj" Description="项目文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\ServMonitor\ServMonitor.csproj">
+</Event><Event ErrorLevel="0" Project="ServMonitor" Source="ServMonitor\CommClass.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\ServMonitor\CommClass.cs">
+</Event><Event ErrorLevel="0" Project="ServMonitor" Source="ServMonitor\Common.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\ServMonitor\Common.cs">
+</Event><Event ErrorLevel="0" Project="ServMonitor" Source="ServMonitor\ConsoleManage.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\ServMonitor\ConsoleManage.cs">
+</Event><Event ErrorLevel="0" Project="ServMonitor" Source="ServMonitor\MonitorInterface.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\ServMonitor\MonitorInterface.cs">
+</Event><Event ErrorLevel="0" Project="ServMonitor" Source="ServMonitor\Properties\AssemblyInfo.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\ServMonitor\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="ServMonitor" Source="ServMonitor\RobotByServList.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\ServMonitor\RobotByServList.cs">
+</Event><Event ErrorLevel="0" Project="ServMonitor" Source="ServMonitor\RobotByServMonitor.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\ServMonitor\RobotByServMonitor.cs">
+</Event><Event ErrorLevel="0" Project="ServMonitor" Source="ServMonitor\ServInfoState.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\ServMonitor\ServInfoState.cs">
+</Event><Event ErrorLevel="0" Project="ServMonitor" Source="ServMonitor\ServMonitorAlarmHandlingEvent.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\ServMonitor\ServMonitorAlarmHandlingEvent.cs">
+</Event><Event ErrorLevel="0" Project="ServMonitor" Source="ServMonitor\ServMag.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\ServMonitor\ServMag.cs">
+</Event><Event ErrorLevel="0" Project="ServMonitor" Source="ServMonitor\ServMonitorOptHandlingEvent.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\ServMonitor\ServMonitorOptHandlingEvent.cs">
+</Event><Event ErrorLevel="0" Project="ServMonitor" Source="ServMonitor\ServOptState.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\ServMonitor\ServOptState.cs">
+</Event><Event ErrorLevel="0" Project="ServMonitor" Source="ServMonitor\app.config" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\ServMonitor\app.config">
+</Event><Event ErrorLevel="1" Project="ServMonitor" Source="ServMonitor\ServMonitor.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="ServMonitor" Source="ServMonitor\ServMonitor.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="ServMonitor" Source="ServMonitor\ServMonitor.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\Kernel.csproj" Description="项目文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\Kernel.csproj">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\AsynchronousServerExceptionHandlingEvent.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\AsynchronousServerExceptionHandlingEvent.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\AsynchronousSocketListenerReceiveEvent.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\AsynchronousSocketListenerReceiveEvent.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\AsynTCPClient.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\AsynTCPClient.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\AsynTCPClientReceiveEvent.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\AsynTCPClientReceiveEvent.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\AsynTCPSocket.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\AsynTCPSocket.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\AsynUDPClient.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\AsynUDPClient.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\AsynUDPClientReceiveEvent.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\AsynUDPClientReceiveEvent.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\AsynUDPServer.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\AsynUDPServer.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\AsynUDPServerReceiveEvent.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\AsynUDPServerReceiveEvent.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\KConsole.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\KConsole.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\DiskIO.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\DiskIO.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\Properties\AssemblyInfo.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\RandomSession.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\RandomSession.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\StateObject.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\StateObject.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\Tools.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\Tools.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\UDPClientStateObject.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\UDPClientStateObject.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\UDPServerStateObject.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\UDPServerStateObject.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\TCPClientStateObject.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\TCPClientStateObject.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\AsynClientExceptionHandlingEvent.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\AsynClientExceptionHandlingEvent.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\SystemMonitorSocketReceiveEvent.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\SystemMonitorSocketReceiveEvent.cs">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\ClassDiagram_kernel.cd" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Kernel\ClassDiagram_kernel.cd">
+</Event><Event ErrorLevel="1" Project="Kernel" Source="Kernel\Kernel.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\Kernel.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="Kernel" Source="Kernel\Kernel.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Commonality" Source="Commonality\Commonality.csproj" Description="项目文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Commonality\Commonality.csproj">
+</Event><Event ErrorLevel="0" Project="Commonality" Source="Commonality\CommClass.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Commonality\CommClass.cs">
+</Event><Event ErrorLevel="0" Project="Commonality" Source="Commonality\ConsoleManage.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Commonality\ConsoleManage.cs">
+</Event><Event ErrorLevel="0" Project="Commonality" Source="Commonality\DictionaryConvertString.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Commonality\DictionaryConvertString.cs">
+</Event><Event ErrorLevel="0" Project="Commonality" Source="Commonality\Encrypt.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Commonality\Encrypt.cs">
+</Event><Event ErrorLevel="0" Project="Commonality" Source="Commonality\FilePath.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Commonality\FilePath.cs">
+</Event><Event ErrorLevel="0" Project="Commonality" Source="Commonality\ListConvertString.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Commonality\ListConvertString.cs">
+</Event><Event ErrorLevel="0" Project="Commonality" Source="Commonality\Properties\AssemblyInfo.cs" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Commonality\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="Commonality" Source="Commonality\app.config" Description="文件已成功备份为 E:\workstation\C#\ising99\KOIPMonitor\Backup\Commonality\app.config">
+</Event><Event ErrorLevel="1" Project="Commonality" Source="Commonality\Commonality.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="Commonality" Source="Commonality\Commonality.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="Commonality" Source="Commonality\Commonality.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="KOIPMonitor.sln" Description="成功转换解决方案">
+</Event><Event ErrorLevel="3" Project="" Source="KOIPMonitor.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="KOIPMonitor" Source="KOIPMonitor\app.config" Description="文件已成功转换。所有的 &lt;supportedRuntime&gt; 和 &lt;requiredRuntime&gt; 标记都已移除，以使项目能够用 Visual Studio 2005 生成并运行。">
+</Event><Event ErrorLevel="3" Project="KOIPMonitor" Source="KOIPMonitor\app.config" Description="Converted">
+</Event><Event ErrorLevel="2" Project="ServMonitor" Source="ServMonitor\app.config" Description="在第 2 行遇到分析错误。xml 声明无效。&#xA;">
+</Event><Event ErrorLevel="3" Project="ServMonitor" Source="ServMonitor\app.config" Description="未转换">
+</Event><Event ErrorLevel="0" Project="ServMonitor" Source="ServMonitor\ServMonitor.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="Kernel" Source="Kernel\Kernel.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="Commonality" Source="Commonality\app.config" Description="文件已成功转换。所有的 &lt;supportedRuntime&gt; 和 &lt;requiredRuntime&gt; 标记都已移除，以使项目能够用 Visual Studio 2005 生成并运行。">
+</Event><Event ErrorLevel="3" Project="Commonality" Source="Commonality\app.config" Description="Converted">
+</Event></UpgradeLog>
