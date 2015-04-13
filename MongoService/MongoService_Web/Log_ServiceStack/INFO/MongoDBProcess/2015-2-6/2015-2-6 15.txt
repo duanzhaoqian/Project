@@ -1,0 +1,169 @@
+====
+Content：GetDataById方法开始执行
+Content：GetDataById
+传入参数：参数名：id，参数值："1"   
+Name：MongoDBProcess 
+Date：2015/2/6 15:17:18
+====
+====
+Content：GetDataById方法执行完成，消耗时间：00:00:00.6456779
+Content：GetDataById 
+Name：MongoDBProcess 
+Date：2015/2/6 15:17:19
+====
+====
+Content：GetDataById方法开始执行
+Content：GetDataById
+传入参数：参数名：id，参数值："1"   
+Name：MongoDBProcess 
+Date：2015/2/6 15:17:39
+====
+====
+Content：GetDataById方法执行完成，消耗时间：00:00:00.0023935
+Content：GetDataById 
+Name：MongoDBProcess 
+Date：2015/2/6 15:17:39
+====
+====
+Content：GetDataById方法开始执行
+Content：GetDataById
+传入参数：参数名：id，参数值："1"   
+Name：MongoDBProcess 
+Date：2015/2/6 15:17:54
+====
+====
+Content：GetDataById方法执行完成，消耗时间：00:00:00.0011964
+Content：GetDataById 
+Name：MongoDBProcess 
+Date：2015/2/6 15:17:54
+====
+====
+Content：GetDataById方法开始执行
+Content：GetDataById
+传入参数：参数名：id，参数值："1"   
+Name：MongoDBProcess 
+Date：2015/2/6 15:17:54
+====
+====
+Content：GetDataById方法执行完成，消耗时间：00:00:00.0012247
+Content：GetDataById 
+Name：MongoDBProcess 
+Date：2015/2/6 15:17:54
+====
+====
+Content：GetDataById方法开始执行
+Content：GetDataById
+传入参数：参数名：id，参数值："1"   
+Name：MongoDBProcess 
+Date：2015/2/6 15:17:54
+====
+====
+Content：GetDataById方法执行完成，消耗时间：00:00:00.0040934
+Content：GetDataById 
+Name：MongoDBProcess 
+Date：2015/2/6 15:17:54
+====
+====
+Content：GetDataById方法开始执行
+Content：GetDataById
+传入参数：参数名：id，参数值："1"   
+Name：MongoDBProcess 
+Date：2015/2/6 15:17:55
+====
+====
+Content：GetDataById方法执行完成，消耗时间：00:00:00.0018134
+Content：GetDataById 
+Name：MongoDBProcess 
+Date：2015/2/6 15:17:55
+====
+====
+Content：GetDataById方法开始执行
+Content：GetDataById
+传入参数：参数名：id，参数值："1"   
+Name：MongoDBProcess 
+Date：2015/2/6 15:17:58
+====
+====
+Content：GetDataById方法执行完成，消耗时间：00:00:00.0011345
+Content：GetDataById 
+Name：MongoDBProcess 
+Date：2015/2/6 15:17:58
+====
+====
+Content：GetDataById方法开始执行
+Content：GetDataById
+传入参数：参数名：id，参数值："1"   
+Name：MongoDBProcess 
+Date：2015/2/6 15:18:19
+====
+====
+Content：GetDataById方法执行完成，消耗时间：00:00:00.0011843
+Content：GetDataById 
+Name：MongoDBProcess 
+Date：2015/2/6 15:18:19
+====
+====
+Content：GetDataById方法开始执行
+Content：GetDataById
+传入参数：参数名：id，参数值："1"   
+Name：MongoDBProcess 
+Date：2015/2/6 15:18:36
+====
+====
+Content：GetDataById方法执行完成，消耗时间：00:00:00.0017136
+Content：GetDataById 
+Name：MongoDBProcess 
+Date：2015/2/6 15:18:36
+====
+====
+Content：GetDataById方法开始执行
+Content：GetDataById
+传入参数：参数名：id，参数值："1"   
+Name：MongoDBProcess 
+Date：2015/2/6 15:18:36
+====
+====
+Content：GetDataById方法执行完成，消耗时间：00:00:00.0011892
+Content：GetDataById 
+Name：MongoDBProcess 
+Date：2015/2/6 15:18:36
+====
+====
+Content：GetDataById方法开始执行
+Content：GetDataById
+传入参数：参数名：id，参数值："1"   
+Name：MongoDBProcess 
+Date：2015/2/6 15:18:36
+====
+====
+Content：GetDataById方法执行完成，消耗时间：00:00:00.0011920
+Content：GetDataById 
+Name：MongoDBProcess 
+Date：2015/2/6 15:18:36
+====
+====
+Content：GetDataById方法开始执行
+Content：GetDataById
+传入参数：参数名：id，参数值："1"   
+Name：MongoDBProcess 
+Date：2015/2/6 15:18:41
+====
+====
+Content：GetDataById方法执行完成，消耗时间：00:00:00.0013413
+Content：GetDataById 
+Name：MongoDBProcess 
+Date：2015/2/6 15:18:41
+====
+====
+Content：GetDataById方法开始执行
+Content：GetDataById
+传入参数：参数名：id，参数值："1"   
+Name：MongoDBProcess 
+Date：2015/2/6 15:18:48
+====
+====
+Content：GetDataById方法执行完成，消耗时间：00:00:00.0013186
+Content：GetDataById 
+Name：MongoDBProcess 
+Date：2015/2/6 15:18:48
+====

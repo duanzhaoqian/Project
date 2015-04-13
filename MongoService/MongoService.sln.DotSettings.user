@@ -1,0 +1,20 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/CodeStyle/LiveTemplatesUseVar/PreferVar/@EntryValue">False</s:Boolean>
+	
+	
+	
+	
+	
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
+  &lt;Assembly Path="D:\kuaiyoujiaPrj\pubPlatform\dotnet\公共数据操作工具\MongoService\dll\Newtonsoft.Json.dll" /&gt;&#xD;
+&lt;/AssemblyExplorer&gt;</s:String>
+	<s:Boolean x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=5637494F9E6844F88B345DDA52374EDD/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=5637494F9E6844F88B345DDA52374EDD/Name/@EntryValue">All tests from TestMongoService</s:String>
+	
+	
+	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=5637494F9E6844F88B345DDA52374EDD/XmlSerializedElements/@EntryValue">&lt;Session&gt;&lt;Elements&gt;&lt;UnitTestElement Provider="MSTest" Id="MsTest:TestMongoService.UnitTest1" type="MsTestTestClassElement" TypeName="TestMongoService.UnitTest1" Project="0A5E5299-3265-4B97-82C0-8A63EDEDBC20" /&gt;&lt;UnitTestElement Provider="MSTest" Id="MsTest:TestMongoService.UnitTest1.TestMethod1" ParentId="MsTest:TestMongoService.UnitTest1" type="MsTestTestMethodElement" MethodName="TestMethod1" TypeName="TestMongoService.UnitTest1" Project="0A5E5299-3265-4B97-82C0-8A63EDEDBC20" /&gt;&lt;UnitTestElement Provider="MSTest" Id="MsTest:TestMongoService.UnitTest1.TestMethod2" ParentId="MsTest:TestMongoService.UnitTest1" type="MsTestTestMethodElement" MethodName="TestMethod2" TypeName="TestMongoService.UnitTest1" Project="0A5E5299-3265-4B97-82C0-8A63EDEDBC20" /&gt;&lt;/Elements&gt;&lt;/Session&gt;</s:String>
+	<s:Boolean x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=C3BBBAF8AFEB4104B513EE09030F7E27/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=C3BBBAF8AFEB4104B513EE09030F7E27/Name/@EntryValue">UnitTest1</s:String>
+	
+	
+	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=C3BBBAF8AFEB4104B513EE09030F7E27/XmlSerializedElements/@EntryValue">&lt;Session&gt;&lt;Elements&gt;&lt;UnitTestElement Provider="MSTest" Id="MsTest:TestMongoService.UnitTest1" type="MsTestTestClassElement" TypeName="TestMongoService.UnitTest1" Project="0A5E5299-3265-4B97-82C0-8A63EDEDBC20" /&gt;&lt;UnitTestElement Provider="MSTest" Id="MsTest:TestMongoService.UnitTest1.TestMethod1" ParentId="MsTest:TestMongoService.UnitTest1" type="MsTestTestMethodElement" MethodName="TestMethod1" TypeName="TestMongoService.UnitTest1" Project="0A5E5299-3265-4B97-82C0-8A63EDEDBC20" /&gt;&lt;UnitTestElement Provider="MSTest" Id="MsTest:TestMongoService.UnitTest1.TestMethod2" ParentId="MsTest:TestMongoService.UnitTest1" type="MsTestTestMethodElement" MethodName="TestMethod2" TypeName="TestMongoService.UnitTest1" Project="0A5E5299-3265-4B97-82C0-8A63EDEDBC20" /&gt;&lt;/Elements&gt;&lt;/Session&gt;</s:String></wpf:ResourceDictionary>

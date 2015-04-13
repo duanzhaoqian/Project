@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EDEEA99E-1049-49C0-B1F4-96CCBCC1EFB2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ServiceStack</RootNamespace>
+    <AssemblyName>KYJ.ServiceStack</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\dll\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\dll\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\dll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis">
+      <HintPath>..\dll\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DESEncrypt.cs" />
+    <Compile Include="EnumHelper.cs" />
+    <Compile Include="AOP\AOPAttribute.cs" />
+    <Compile Include="AOP\AOPFilterAttribute.cs" />
+    <Compile Include="AOP\AOPFilterContainer.cs" />
+    <Compile Include="AOP\AOPProxy.cs" />
+    <Compile Include="Log\FileLog.cs" />
+    <Compile Include="AOP\IAOPFilter.cs" />
+    <Compile Include="Log\FileLogger.cs" />
+    <Compile Include="Log\ILog.cs" />
+    <Compile Include="AOP\IProcess.cs" />
+    <Compile Include="Log\LogBase.cs" />
+    <Compile Include="Log\LogClassBase.cs" />
+    <Compile Include="Log\LogConfig.cs" />
+    <Compile Include="Log\LogFileAttribute.cs" />
+    <Compile Include="Log\LoggerFactory.cs" />
+    <Compile Include="Log\MailHelp.cs" />
+    <Compile Include="Log\MailLog.cs" />
+    <Compile Include="AOP\Processer.cs" />
+    <Compile Include="AOP\ProcesserWrapper.cs" />
+    <Compile Include="Log\MailLogger.cs" />
+    <Compile Include="Mongo\IMongo.cs" />
+    <Compile Include="Mongo\MongoHelper.cs" />
+    <Compile Include="Mongo\PagerInfo.cs" />
+    <Compile Include="RCache\AddCache.cs" />
+    <Compile Include="Redis.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RedisCommon.cs" />
+    <Compile Include="RedisHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RedisType.cs" />
+    <Compile Include="TCP\RedisClientHelper.cs" />
+    <Compile Include="TCP\RedisHelperv2.cs" />
+    <Compile Include="TCP\RedisHostEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TCP\Tool.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TCP\XMLHelper.cs" />
+    <Compile Include="Tool.cs" />
+    <Compile Include="ZipWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Log\AopLog.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

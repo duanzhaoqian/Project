@@ -1,0 +1,1 @@
+﻿SELECT 994  Id-- from S_LongHouseBase(NOLOCK)

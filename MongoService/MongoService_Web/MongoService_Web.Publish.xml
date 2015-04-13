@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="E:\上线\MongoService" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="配置文件1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Web.config" publishTime="01/23/2015 09:33:06" />
+    <file relUrl="bin/MongoService.pdb" publishTime="01/23/2015 09:32:58" />
+    <file relUrl="MongoHouseService.svc" publishTime="01/07/2015 10:04:22" />
+    <file relUrl="bin/MongoDal.pdb" publishTime="01/23/2015 09:32:58" />
+    <file relUrl="bin/MongoDB.Driver.dll" publishTime="12/01/2014 15:42:22" />
+    <file relUrl="bin/MongoDB.Driver.pdb" publishTime="12/01/2014 15:42:22" />
+    <file relUrl="bin/MongoImpl.dll" publishTime="01/23/2015 09:32:59" />
+    <file relUrl="bin/MongoDB.Bson.dll" publishTime="12/01/2014 15:42:22" />
+    <file relUrl="bin/MongoService_Web.dll" publishTime="01/23/2015 09:33:00" />
+    <file relUrl="bin/MongoService.dll" publishTime="01/23/2015 09:32:58" />
+    <file relUrl="baseHouseSql.txt" publishTime="01/23/2015 09:32:44" />
+    <file relUrl="TCPRedisConfigure.xml" publishTime="01/15/2015 11:42:15" />
+    <file relUrl="bin/MongoImpl.pdb" publishTime="01/23/2015 09:32:59" />
+    <file relUrl="bin/MongoService_Web.pdb" publishTime="01/23/2015 09:33:00" />
+    <file relUrl="bin/KYJ.ServiceStack.dll" publishTime="01/23/2015 09:32:58" />
+    <file relUrl="bin/ServiceStack.Redis.dll" publishTime="12/01/2014 15:42:22" />
+    <file relUrl="bin/baseHouseSql.txt" publishTime="01/23/2015 09:32:44" />
+    <file relUrl="bin/MongoDal.dll" publishTime="01/23/2015 09:32:58" />
+    <file relUrl="bin/Newtonsoft.Json.dll" publishTime="12/01/2014 15:42:22" />
+    <file relUrl="bin/MongoProcess.pdb" publishTime="01/23/2015 09:32:58" />
+    <file relUrl="bin/MongoProcess.dll" publishTime="01/23/2015 09:32:58" />
+    <file relUrl="bin/MongoDB.Bson.xml" publishTime="12/01/2014 15:42:22" />
+    <file relUrl="bin/KYJ.ServiceStack.pdb" publishTime="01/23/2015 09:32:58" />
+    <file relUrl="bin/MongoDB.Bson.pdb" publishTime="12/01/2014 15:42:22" />
+  </publishProfile>
+</publishData>

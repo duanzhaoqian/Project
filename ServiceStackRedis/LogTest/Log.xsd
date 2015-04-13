@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Log"
+    targetNamespace="http://tempuri.org/Log.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/Log.xsd"
+    xmlns:mstns="http://tempuri.org/Log.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+
+  <xs:element name="Log">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Logger">
+          <xs:complexType>
+            <xs:attribute name="name" type="xs:string"></xs:attribute>
+            <xs:attribute name="type" type="xs:string"></xs:attribute>
+            <xs:attribute name="config" type="xs:string"></xs:attribute>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LoggerConfig">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Config">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="FilePath"></xs:element>
+                    <xs:element name="SmtpHost"></xs:element>
+                    <xs:element name="SmtpUserName"></xs:element>
+                    <xs:element name="SmtpPwd"></xs:element>
+                    <xs:element name="SmtpEnableSsl"></xs:element>
+                    <xs:element name="MailFrom"></xs:element>
+                    <xs:element name="MailDisplayName"></xs:element>
+                    <xs:element name="MailChaoSong"></xs:element>
+                    <xs:element name="MailTo"></xs:element>
+                    <xs:element name="MailSubject"></xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="name"></xs:attribute>
+                  <xs:attribute name="type"></xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

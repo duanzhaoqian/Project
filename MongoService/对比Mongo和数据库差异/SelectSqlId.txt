@@ -1,0 +1,4 @@
+﻿select 
+ a.Id
+ from s_longhouse(nolock) a
+ where a.IsDel=0 and a.state=1 and IsKjw=1 and PType<>4   and a.AuthenticationState=1 and a.IsSVip=1 

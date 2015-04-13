@@ -1,0 +1,6 @@
+﻿IsDel=False
+State=1
+IsKjw=True
+PType<>4
+AuthenticationState=1
+IsSVip=True
