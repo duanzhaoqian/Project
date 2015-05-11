@@ -58,7 +58,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="kyj_HouseDB_5_4DataSet.xsc">
       <DependentUpon>kyj_HouseDB_5_4DataSet.xsd</DependentUpon>
     </None>
